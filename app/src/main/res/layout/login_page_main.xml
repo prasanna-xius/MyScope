@@ -152,8 +152,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_24"
-                        android:layout_marginRight="@dimen/dimen_24"
+                        android:layout_marginTop="@dimen/dimen_30"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -161,12 +160,13 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/btn_facebook"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/dimen_40"
-                            android:layout_margin="@dimen/dimen_5"
+                            android:layout_height="@dimen/dimen_45"
+                            android:layout_marginRight="@dimen/dimen_5"
                             android:layout_weight="1"
                             android:background="@drawable/button_facebook"
-                            android:drawableRight="@drawable/fbicon"
+                            android:drawableRight="@drawable/fblogo1"
                             android:gravity="center"
+                            android:paddingRight="@dimen/dimen_10"
                             android:text="Continue using Facebook"
                             android:textColor="#ffffff"
                             android:textSize="@dimen/dimen_16"
@@ -175,11 +175,12 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/btn_google"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/dimen_40"
-                            android:layout_margin="@dimen/dimen_5"
+                            android:layout_height="@dimen/dimen_45"
+                            android:layout_marginLeft="@dimen/dimen_5"
                             android:layout_weight="1"
+                            android:paddingRight="@dimen/dimen_14"
                             android:background="@drawable/button_google"
-                            android:drawableRight="@drawable/google_icon"
+                            android:drawableRight="@drawable/google_icon1"
                             android:gravity="center"
                             android:text="Google Signin"
                             android:textColor="#ffffff"

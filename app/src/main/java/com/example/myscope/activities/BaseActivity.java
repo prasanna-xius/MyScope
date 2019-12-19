@@ -33,6 +33,7 @@ public class BaseActivity extends AppCompatActivity {
 
     private static final String TAG = BaseActivity.class.getName();
 
+
     public void showShortToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
@@ -57,22 +58,22 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     //
-    public void showLongSnackBar(String message) {
-        Snackbar snackbar = Snackbar
-                .make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG);
+//    public void showLongSnackBar(String message) {
+//        Snackbar snackbar = Snackbar
+//                .make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG);
+//
+//        snackbar.show();
+//    }
 
-        snackbar.show();
-    }
-
-    public void navigateToActivity(Intent intent) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            startActivity(intent,
-                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-
-        } else {
-            startActivity(intent);
-        }
-    }
+//    public void navigateToActivity(Intent intent) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            startActivity(intent,
+//                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+//
+//        } else {
+//            startActivity(intent);
+//        }
+//    }
 
     public boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
@@ -102,70 +103,25 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    public long getContactID(ContentResolver contactHelper,
-                             String number) {
-        Uri contactUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
-                Uri.encode(number));
-
-        String[] projection = {ContactsContract.PhoneLookup._ID};
-        Cursor cursor = null;
-
-        try {
-            cursor = contactHelper.query(contactUri, projection, null, null,
-                    null);
-
-            if (cursor.moveToFirst()) {
-                int personID = cursor.getColumnIndex(ContactsContract.PhoneLookup._ID);
-                return cursor.getLong(personID);
-            }
-
-            return -1;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-                cursor = null;
-            }
-        }
-
-        return -1;
-    }
 
 
-    public boolean deleteContact(ContentResolver contactHelper, String number) {
 
-        ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
-        String[] args = new String[]{String.valueOf(getContactID(
-                contactHelper, number))};
 
-        ops.add(ContentProviderOperation.newDelete(ContactsContract.RawContacts.CONTENT_URI)
-                .withSelection(ContactsContract.RawContacts.CONTACT_ID + "=?", args).build());
-        try {
-            contactHelper.applyBatch(ContactsContract.AUTHORITY, ops);
-            return true;
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (OperationApplicationException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
-    public String getRealPathFromURI(Context context, Uri contentUri) {
-        Cursor cursor = null;
-        try {
-            String[] proj = {MediaStore.Images.Media.DATA};
-            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-    }
+//    public String getRealPathFromURI(Context context, Uri contentUri) {
+//        Cursor cursor = null;
+//        try {
+//            String[] proj = {MediaStore.Images.Media.DATA};
+//            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+//            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+//            cursor.moveToFirst();
+//            return cursor.getString(column_index);
+//        } finally {
+//            if (cursor != null) {
+//                cursor.close();
+//            }
+//        }
+//    }
 
 //    public void lunchFragemnt(Fragment fragment){
 //        FragmentManager fragmentManager = getSupportFragmentManager();

@@ -2,6 +2,7 @@ package com.example.myscope.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +12,7 @@ import androidx.annotation.Nullable;
 
 import com.example.myscope.R;
 
-public class MobileChange_Activity  extends BaseActivity implements View.OnClickListener {
+public class MobileChange_Activity extends BaseActivity implements View.OnClickListener {
 
     Button btn_send_link;
     EditText edtRegisterEmail;
@@ -21,12 +22,13 @@ public class MobileChange_Activity  extends BaseActivity implements View.OnClick
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mobile_change_main);
-        btn_send_link=(Button)findViewById(R.id.btn_send_link);
-        edtRegisterEmail=(EditText)findViewById(R.id.edt_register_email);
+        btn_send_link = (Button) findViewById(R.id.btn_send_link);
+        edtRegisterEmail = (EditText) findViewById(R.id.edt_register_email);
 
+        edtRegisterEmail.setFilters(new InputFilter[]{ new MinMaxFilter("1", "30")});
 
         btn_send_link.setOnClickListener(this);
-
+        hideKeyBoard();
     }
 
     @Override
@@ -40,7 +42,7 @@ public class MobileChange_Activity  extends BaseActivity implements View.OnClick
                     onSignupFailed();
                     return;
                 }
-                Intent btn_otp=new Intent(getApplicationContext(), Login_Page.class);
+                Intent btn_otp = new Intent(getApplicationContext(), Login_Page.class);
                 startActivity(btn_otp);
                 Toast.makeText(getApplicationContext(), "Please check your Email and change Mobile Number", Toast.LENGTH_SHORT).show();
 
@@ -57,6 +59,7 @@ public class MobileChange_Activity  extends BaseActivity implements View.OnClick
         btn_send_link.setEnabled(true);
 
     }
+
     private boolean validate() {
         boolean valid = true;
 
