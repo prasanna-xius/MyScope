@@ -2,6 +2,7 @@ package com.example.myscope.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,12 +30,15 @@ public class Login_Page extends BaseActivity implements View.OnClickListener {
         btn_otp = (Button) findViewById(R.id.btn_otp_send);
         btn_register = (TextView) findViewById(R.id.btn_register);
         edtMobile = (EditText) findViewById(R.id.mobile_number);
+        edtMobile.setFilters(new InputFilter[]{ new MinMaxFilter("1", "10")});
 
         change_mobile_btn = (TextView) findViewById(R.id.change_mobile_btn);
 
         btn_otp.setOnClickListener(this);
         change_mobile_btn.setOnClickListener(this);
         btn_register.setOnClickListener(this);
+
+        hideKeyBoard();
 
     }
 

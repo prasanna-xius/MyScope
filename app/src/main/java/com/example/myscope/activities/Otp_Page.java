@@ -2,6 +2,7 @@ package com.example.myscope.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,12 +23,13 @@ public class Otp_Page extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.otppage_main);
 
-        btn_verify_otp=(Button)findViewById(R.id.btn_verify_otp);
-        edtOtp=(EditText)findViewById(R.id.edt_otp);
+        btn_verify_otp = (Button) findViewById(R.id.btn_verify_otp);
+        edtOtp = (EditText) findViewById(R.id.edt_otp);
+        edtOtp.setFilters(new InputFilter[]{ new MinMaxFilter("1", "6")});
 
 
         btn_verify_otp.setOnClickListener(this);
-
+        hideKeyBoard();
     }
 
     @Override
@@ -42,9 +44,10 @@ public class Otp_Page extends BaseActivity implements View.OnClickListener {
                     onSignupFailed();
                     return;
                 }
-                Intent btn_otp=new Intent(getApplicationContext(), Main_Activity.class);
+                Intent btn_otp = new Intent(getApplicationContext(), Navigation_drawer.class);
                 startActivity(btn_otp);
-                Toast.makeText(getApplicationContext(), "Login Successfully Completed", Toast.LENGTH_SHORT).show();
+                showShortToast("Login Successfully Completed");
+//                Toast.makeText(getApplicationContext(), "Login Successfully Completed", Toast.LENGTH_SHORT).show();
 
                 break;
 
@@ -59,6 +62,7 @@ public class Otp_Page extends BaseActivity implements View.OnClickListener {
         btn_verify_otp.setEnabled(true);
 
     }
+
     private boolean validate() {
         boolean valid = true;
 

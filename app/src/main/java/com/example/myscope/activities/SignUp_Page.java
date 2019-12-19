@@ -2,6 +2,7 @@ package com.example.myscope.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,9 +37,14 @@ public class SignUp_Page extends BaseActivity implements View.OnClickListener {
         edt_mobile = (EditText) findViewById(R.id.edit_mobile);
         edt_email = (EditText) findViewById(R.id.edt_email);
 
+        edt_firstname.setFilters(new InputFilter[]{ new MinMaxFilter("1", "20")});
+        edt_lastname.setFilters(new InputFilter[]{ new MinMaxFilter("1", "20")});
+        edt_mobile.setFilters(new InputFilter[]{ new MinMaxFilter("1", "10")});
+        edt_email.setFilters(new InputFilter[]{ new MinMaxFilter("1", "30")});
+
         btn_SignUp.setOnClickListener(this);
         btn_login.setOnClickListener(this);
-
+        hideKeyBoard();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.myscope;
+package com.example.myscope.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import com.example.myscope.MainActivity;
+import com.example.myscope.PrefManager;
+import com.example.myscope.R;
 
 public class SliderActivity extends AppCompatActivity {
 
