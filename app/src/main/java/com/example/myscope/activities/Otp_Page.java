@@ -44,7 +44,7 @@ public class Otp_Page extends BaseActivity implements View.OnClickListener {
                     onSignupFailed();
                     return;
                 }
-                Intent btn_otp = new Intent(getApplicationContext(), Main_Activity.class);
+                Intent btn_otp = new Intent(getApplicationContext(), Navigation_drawer.class);
                 startActivity(btn_otp);
                 showShortToast("Login Successfully Completed");
 //                Toast.makeText(getApplicationContext(), "Login Successfully Completed", Toast.LENGTH_SHORT).show();

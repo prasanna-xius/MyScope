@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".SliderActivity">
+        <activity android:name=".activities.SliderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
         </activity>
         <activity android:name=".activities.Otp_Page"/>
         <activity android:name=".activities.BaseActivity"/>
-        <activity android:name=".activities.Main_Activity"/>
+        <activity android:name=".activities.Navigation_drawer"/>
         <activity android:name=".activities.SignUp_Page"/>
         <activity android:name=".activities.View_UserDetails_Activity"/>
         <activity android:name=".activities.MobileChange_Activity"/>

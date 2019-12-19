@@ -32,7 +32,7 @@ import com.google.android.material.navigation.NavigationView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class Main_Activity extends BaseActivity{
+public class Navigation_drawer extends BaseActivity{
 
     private NavigationView navigationView;
     private DrawerLayout drawer;
@@ -62,7 +62,7 @@ public class Main_Activity extends BaseActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_navigation);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -275,13 +275,13 @@ public class Main_Activity extends BaseActivity{
 
     private void doExit() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                Main_Activity.this);
+                Navigation_drawer.this);
 
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(Main_Activity.this, "Logout Successfully Completed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Navigation_drawer.this, "Logout Successfully Completed", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
