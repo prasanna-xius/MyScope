@@ -10,6 +10,16 @@
     <string name="closeDrawer">close_drawer</string>
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
+    <string name="formulation">Formulation</string>
+    <string name="formulation_name">Name</string>
+    <string name="dose_strength">Dose Strength</string>
+    <string name="dose_unit">Dose Unit</string>
+    <string name="how_often_taken">How often taken?</string>
+    <string name="start_date">Start Date</string>
+    <string name="stop_date">Stop Date</string>
+    <string name="medical_condition">Medical Condition</string>
+    <string name="is_prescribed">Is prescribed?</string>
+    <string name="prescription_note">Note</string>
 
     <string-array name="nav_item_activity_titles">
         <item>Home</item>
