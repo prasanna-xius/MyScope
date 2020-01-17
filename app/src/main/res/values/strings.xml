@@ -10,15 +10,15 @@
     <string name="closeDrawer">close_drawer</string>
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
-    <string name="formulation">Formulation</string>
-    <string name="formulation_name">Name</string>
-    <string name="dose_strength">Dose Strength</string>
-    <string name="dose_unit">Dose Unit</string>
-    <string name="how_often_taken">How often taken?</string>
-    <string name="start_date">Start Date</string>
-    <string name="stop_date">Stop Date</string>
-    <string name="medical_condition">Medical Condition</string>
-    <string name="is_prescribed">Is prescribed?</string>
+    <string name="formulation">Formulation <font color='#ff0000'>*</font></string>
+    <string name="formulation_name">Name <font color='#ff0000'>*</font></string>
+    <string name="dose_strength">Dose Strength <font color='#ff0000'>*</font></string>
+    <string name="dose_unit">Dose Unit <font color='#ff0000'>*</font></string>
+    <string name="how_often_taken">How often taken? <font color='#ff0000'>*</font></string>
+    <string name="start_date">Start Date <font color='#ff0000'>*</font></string>
+    <string name="stop_date">Stop Date <font color='#ff0000'>*</font></string>
+    <string name="medical_condition">Medical Condition <font color='#ff0000'>*</font></string>
+    <string name="is_prescribed">Is prescribed? <font color='#ff0000'>*</font></string>
     <string name="prescription_note">Note</string>
 
     <string-array name="nav_item_activity_titles">
@@ -29,5 +29,61 @@
         <item>Feedback</item>
         <item>Contactus</item>
 
+    </string-array>
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+
+    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+
+    <string name="slide_4_title">World Travel</string>
+    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <string name="hospital_name">Hospital Name <font color='#ff0000'>*</font></string>
+    <string name="doctor_name">Doctor Name<font color='#ff0000'>*</font></string>
+    <string name="prescription_manual">Prescription</string>
+
+    <string-array name="formulation_array">
+        <item>Tablet</item>
+        <item>Capsule</item>
+        <item>Injection</item>
+        <item>Inhaler</item>
+        <item>Syrup</item>
+        <item>Cream</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="dose_unit">
+        <item>international unit (iu)</item>
+        <item> Micrograms (mcg)</item>
+        <item>Milliequivalent (meq)</item>
+        <item> Milliequivalent per milliliter (meq/ml)</item>
+        <item>Milligram (mg) </item>
+        <item> Milligram per milliliter (mg/ml)</item>
+        <item>Milliliter (ml) </item>
+        <item>Percentage (%) </item>
+        <item>Unit (unt) </item>
+        <item> Unit per milliliter (unt/ml) </item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="how_often_taken">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Night</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="is_prescribed">
+        <item>Over the counter (OTC)</item>
+        <item>Prescribed</item>
+        <item>Prescribed OTC</item>
     </string-array>
 </resources>

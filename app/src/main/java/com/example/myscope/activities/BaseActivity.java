@@ -1,5 +1,6 @@
 package com.example.myscope.activities;
 
+import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
@@ -7,17 +8,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.os.RemoteException;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,11 +32,13 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.myscope.R;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class BaseActivity extends AppCompatActivity {
 
     private static final String TAG = BaseActivity.class.getName();
+
 
     public void showShortToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -182,4 +189,5 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+   
 }

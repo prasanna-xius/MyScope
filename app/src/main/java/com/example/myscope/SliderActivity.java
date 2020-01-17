@@ -19,6 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.myscope.activities.Prescription_manual;
+
 public class SliderActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
@@ -119,7 +121,7 @@ public class SliderActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(SliderActivity.this, MainActivity.class));
+        startActivity(new Intent(SliderActivity.this, Prescription_manual.class));
         finish();
     }
 
