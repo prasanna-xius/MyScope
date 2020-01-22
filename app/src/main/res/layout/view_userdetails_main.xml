@@ -5,4 +5,13 @@
     android:background="@color/colorPrimary"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="My scope"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="@dimen/dimen_24"/>
+
 </LinearLayout>
