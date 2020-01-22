@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    tools:context=".activities.Family_History">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <include layout="@layout/side_activity"/>
+   <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/family_history"
+    android:textSize="30sp"
+    android:gravity="center"
+    android:textColor="@color/bg_screen2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2.5">
+
+            <TextView
+                android:id="@+id/condition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:text="@string/condition"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/et_family_condition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/diabetes"
+                android:background="@drawable/border_bg"
+                android:textColor="@color/bg_screen2"
+                android:textColorHint="@color/bg_screen2"
+                android:padding="2dp"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2.5">
+
+            <TextView
+                android:id="@+id/relationship"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:text="@string/relationship"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/border_bg"
+                android:layout_height="wrap_content">
+
+            <Spinner
+                android:id="@+id/spinner_family"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/bg_screen2"
+                android:popupBackground="@color/white"
+                android:padding="2dp"
+                android:entries="@array/Relationship_arrays" />
+            </FrameLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2.5">
+
+            <TextView
+                android:id="@+id/relationship_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:text="@string/notes"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <EditText
+
+                android:id="@+id/et1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_75"
+                android:layout_weight="1"
+                android:background="@drawable/border_bg"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_family"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/save"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@color/bg_screen2"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+</ScrollView>

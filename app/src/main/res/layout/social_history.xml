@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.Social_History">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <include layout="@layout/side_activity"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Social History"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="@color/bg_screen2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:weightSum="2">
+
+
+        <TextView
+            android:id="@+id/smoking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/smoking"
+            android:textColor="@color/bg_screen2"
+            android:textSize="16sp"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_bg"
+            android:layout_height="wrap_content">
+        <Spinner
+            android:id="@+id/spinner_smoking"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="2dp"
+            android:backgroundTint="@color/bg_screen2"
+            android:popupBackground="@color/white"
+            android:entries="@array/smoking_arrays"/>
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/smoking_yrs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/total_yrs_of_smoking"
+            android:textColor="@color/bg_screen2"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/et_smoking_yrs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_bg"
+            android:textColor="@color/bg_screen2"
+            android:textColorHint="@color/bg_screen2"
+            android:padding="2dp"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:weightSum="2">
+        <TextView
+            android:id="@+id/tobacco_use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tobacco_usage"
+            android:textColor="@color/bg_screen2"
+            android:textSize="16sp" />
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/checkbox_tobacco"
+    android:orientation="vertical">
+      <CheckBox
+          android:id="@+id/cigar_pipe"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Cigar/Pipe"
+          android:background="@color/white"
+          android:textColor="@color/bg_screen2"/>
+        <CheckBox
+            android:id="@+id/chew_snuff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chew/snuff"
+            android:textColor="@color/bg_screen2"/>
+        <CheckBox
+            android:id="@+id/cigarette"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cigarette"
+            android:textColor="@color/bg_screen2"/>
+    <CheckBox
+        android:id="@+id/beddi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Beddi"
+        android:textColor="@color/bg_screen2"/>
+</LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/drinking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/drinking"
+            android:textColor="@color/bg_screen2"
+            android:textSize="16sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_bg"
+            android:layout_height="wrap_content">
+        <Spinner
+            android:id="@+id/spinner_drinking"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/bg_screen2"
+            android:popupBackground="@color/white"
+            android:padding="2dp"
+            android:entries="@array/drinking_arrays"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/total_yrs_drinking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/total_yrs_of_smoking"
+            android:textColor="@color/bg_screen2"
+            android:textSize="16sp" />
+
+        <EditText
+
+            android:id="@+id/et11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_bg"
+            android:padding="2dp"
+            android:textColor="@color/bg_screen2"
+            android:textColorHint="@color/bg_screen2"
+            android:hint=""
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_social"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:background="@color/bg_screen2"
+        android:textSize="16sp" />
+</LinearLayout>
+
+</ScrollView>

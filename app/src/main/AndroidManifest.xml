@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myscope">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,26 +11,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".activities.Login_Page">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".SliderActivity">
+<!--        <activity android:name=".activities.Medical_History"></activity>-->
+        <activity android:name=".activities.Social_History">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.Otp_Page"/>
-        <activity android:name=".activities.BaseActivity"/>
-        <activity android:name=".activities.Main_Activity"/>
-        <activity android:name=".activities.SignUp_Page"/>
-        <activity android:name=".activities.View_UserDetails_Activity"/>
-        <activity android:name=".activities.MobileChange_Activity"/>
+<!--        <activity android:name=".SliderActivity">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+        <activity android:name=".activities.Otp_Page" />
+        <activity android:name=".activities.BaseActivity" />
+        <activity android:name=".activities.Main_Activity" />
+        <activity android:name=".activities.SignUp_Page" />
+        <activity android:name=".activities.View_UserDetails_Activity" />
+        <activity android:name=".activities.MobileChange_Activity" />
+        <activity android:name=".activities.Medical_History"/>
+        <activity android:name=".activities.Family_History"/>
+<!--        <activity android:name=".activities.Social_History"/>-->
+        <activity android:name=".activities.Diet"/>
     </application>
 
 </manifest>
