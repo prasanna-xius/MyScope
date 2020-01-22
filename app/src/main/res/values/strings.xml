@@ -52,8 +52,10 @@
     <string name="hospital_name">Hospital Name <font color='#ff0000'>*</font></string>
     <string name="doctor_name">Doctor Name<font color='#ff0000'>*</font></string>
     <string name="prescription_manual">Prescription</string>
+    <string name="time">Time</string>
 
     <string-array name="formulation_array">
+        <item>None</item>
         <item>Tablet</item>
         <item>Capsule</item>
         <item>Injection</item>
@@ -63,6 +65,7 @@
         <item>Others</item>
     </string-array>
     <string-array name="dose_unit">
+        <item>None</item>
         <item>international unit (iu)</item>
         <item> Micrograms (mcg)</item>
         <item>Milliequivalent (meq)</item>
@@ -76,14 +79,30 @@
         <item>Others</item>
     </string-array>
     <string-array name="how_often_taken">
+        <item>None</item>
         <item>Morning</item>
         <item>Afternoon</item>
         <item>Night</item>
         <item>Others</item>
     </string-array>
     <string-array name="is_prescribed">
+        <item>None</item>
         <item>Over the counter (OTC)</item>
         <item>Prescribed</item>
         <item>Prescribed OTC</item>
+    </string-array>
+    <string-array name="timings">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
 </resources>

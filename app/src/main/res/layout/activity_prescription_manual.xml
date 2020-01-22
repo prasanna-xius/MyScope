@@ -122,7 +122,7 @@
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_2"
                     android:paddingTop="5dp"
-                    android:popupBackground="@color/bg_screen2"
+                    android:popupBackground="@color/colorWhite"
                     android:entries="@array/formulation_array"
                     android:background="@drawable/edittext_border"/>
 
@@ -211,7 +211,7 @@
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_2"
                     android:entries="@array/dose_unit"
-                    android:popupBackground="@color/bg_screen2"
+                    android:popupBackground="@color/colorWhite"
                     android:background="@drawable/edittext_border"
                    />
 
@@ -239,8 +239,35 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_2"
-                    android:popupBackground="@color/bg_screen2"
                     android:entries="@array/how_often_taken"
+                    android:background="@drawable/edittext_border"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_margin="10dp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/time"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_15" />
+
+                <selva.spinner.multispinner
+                    android:id="@+id/time_of_taken"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/dimen_2"
+                    android:entries="@array/timings"
                     android:background="@drawable/edittext_border"/>
 
             </LinearLayout>
@@ -354,7 +381,7 @@
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_2"
                     android:entries="@array/is_prescribed"
-                    android:popupBackground="@color/bg_screen2"
+                    android:popupBackground="@color/colorWhite"
                     android:background="@drawable/edittext_border"/>
 
             </LinearLayout>
