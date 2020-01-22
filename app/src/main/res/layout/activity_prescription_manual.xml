@@ -261,7 +261,7 @@
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15" />
 
-                <selva.spinner.multispinner
+                <cz.destil.settleup.gui.MultiSpinner
                     android:id="@+id/time_of_taken"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

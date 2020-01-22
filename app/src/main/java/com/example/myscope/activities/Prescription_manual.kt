@@ -17,6 +17,11 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import com.example.myscope.R
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 
  class Prescription_manual : BaseActivity() {
@@ -27,9 +32,11 @@ import com.example.myscope.R
          super.onCreate(savedInstanceState)
          setContentView(R.layout.activity_prescription_manual)
 //         val multiselection = findViewById<MultiSpinner>()
-         val howOftenTaken = resources.getStringArray(R.array.how_often_taken)
-         val timings = resources.getStringArray(R.array.timings)
+         val howOftenTaken = resources.getStringArray(com.example.myscope.R.array.how_often_taken)
+         val timings = resources.getStringArray(com.example.myscope.R.array.timings)
 //         val ms = findViewById<multispinner>(R.id.time_of_taken)
+
+//         val listVOs = ArrayList()
 
          errorRemove(doctor_name)
          errorRemove(hosp_name)
