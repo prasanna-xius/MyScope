@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myscope">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,26 +11,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".activities.Login_Page">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.SliderActivity">
+        <!--        <activity android:name=".activities.Login_Page">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
+
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
+
+        <activity android:name=".activities.Splash_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.Otp_Page"/>
-        <activity android:name=".activities.BaseActivity"/>
-        <activity android:name=".activities.Navigation_drawer"/>
-        <activity android:name=".activities.SignUp_Page"/>
-        <activity android:name=".activities.View_UserDetails_Activity"/>
-        <activity android:name=".activities.MobileChange_Activity"/>
+        <activity android:name=".activities.Login_Page" />
+        <activity android:name=".activities.Otp_Page" />
+        <activity android:name=".activities.BaseActivity" />
+        <activity android:name=".activities.Navigation_Drawer_Blogs" />
+        <activity android:name=".activities.Navigation_drawer" />
+        <activity android:name=".activities.SignUp_Page" />
+        <activity
+            android:name=".activities.View_UserDetails_Activity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activities.MobileChange_Activity" />
+        <activity android:name=".fragments.Dash_Board_Activity" />
+        <activity android:name=".activities.Medical_History_Activity" />
+        <activity android:name=".activities.medical_history.Medical_History_BlogActivity" />
+        <activity android:name=".activities.medical_history.Family_History_Activity" />
+        <activity android:name=".activities.medical_history.Social_History_Activity" />
+        <activity android:name=".activities.medical_history.Diet_Activity" />
+        <activity android:name=".activities.medical_history.Allergies_Activity" />
+        <activity android:name=".activities.medical_history.Immunization_History_Activity" />
+        <activity android:name=".activities.medical_history.Medication_History_Activity" />
+        <activity android:name=".activities.medical_history.Surgery_History_Activity" />
+        <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />
+
+
     </application>
 
 </manifest>

@@ -3,18 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/view_container"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_header_height"
+    android:layout_height="@dimen/dimen_145"
     android:background="@color/colorWhite"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/nav_header_height1"
-        android:paddingLeft="@dimen/dimen_25"
-
-        android:orientation="horizontal">
-
+        android:layout_height="@dimen/dimen_140"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dimen_25">
 
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,23 +20,24 @@
             android:layout_width="@dimen/dimen_85"
             android:layout_height="@dimen/dimen_85"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dimen_12"
-
-            android:src="@drawable/ic_launcher_background" />
+            android:layout_marginTop="@dimen/dimen_5"
+            android:src="@drawable/ic_person"
+            app:civ_border_color="@color/colorBackground"
+            app:civ_border_width="@dimen/dimen_1" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/nav_header_height"
+            android:layout_height="@dimen/dimen_140"
             android:layout_marginLeft="@dimen/dimen_15"
             android:gravity="center"
-            android:paddingTop="@dimen/dimen_20"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dimen_20">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="MyScope"
-                android:textColor="@color/color_black"
+                android:textColor="@color/colorBackground"
                 android:textSize="@dimen/dimen_15"
                 android:textStyle="bold" />
 
@@ -46,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hyderabad,India"
-                android:textColor="@color/color_black"
+                android:textColor="@color/colorBackground"
                 android:textSize="@dimen/dimen_12" />
 
         </LinearLayout>
@@ -58,5 +57,5 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_1"
         android:layout_marginRight="@dimen/dimen_8"
-        android:background="#80000000" />
+        android:background="#1F78D3" />
 </LinearLayout>
