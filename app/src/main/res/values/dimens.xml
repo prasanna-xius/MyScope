@@ -45,6 +45,7 @@
     <dimen name="nav_header_height1">155dp</dimen>
     <dimen name="dimen_54">54dp</dimen>
 
+
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -55,6 +56,7 @@
     <dimen name="slide_title">30dp</dimen>
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
+
     <dimen name="dimen_4">4dp</dimen>
     <dimen name="dimen_3">3dp</dimen>
     <dimen name="dimen_80">80dp</dimen>
@@ -70,4 +72,9 @@
     <dimen name="dimen_80sp">80sp</dimen>
     <dimen name="navigation_drawer_width">240dp</dimen>
     <dimen name="dimen_145">145dp</dimen>
+</resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

@@ -304,5 +304,4 @@ public class Navigation_drawer extends BaseActivity{
 
     }
 
-
 }

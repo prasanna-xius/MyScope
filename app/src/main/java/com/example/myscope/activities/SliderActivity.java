@@ -123,7 +123,7 @@ public class SliderActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(SliderActivity.this, MainActivity.class));
+        startActivity(new Intent(SliderActivity.this, Prescription_manual.class));
         finish();
     }
 
