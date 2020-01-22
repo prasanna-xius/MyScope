@@ -8,17 +8,14 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.myscope.R
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.otppage_main.*
 
 class Otp_Page : BaseActivity(), View.OnClickListener {
-    var btn_verify_otp: Button? = null
-    var edtOtp: EditText? = null
-    var otp_layout: TextInputLayout? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.otppage_main)
-        btn_verify_otp = findViewById<View>(R.id.btn_verify_otp) as Button
-        edtOtp = findViewById<View>(R.id.edt_otp) as EditText
-        otp_layout = findViewById<View>(R.id.otp_layout) as TextInputLayout
+
         btn_verify_otp!!.setOnClickListener(this)
         hideKeyBoard()
     }
@@ -45,7 +42,7 @@ class Otp_Page : BaseActivity(), View.OnClickListener {
 
     private fun validate(): Boolean {
         var valid = true
-        val otpNumber = edtOtp!!.text.toString()
+        val otpNumber = edt_otp!!.text.toString()
         if (otpNumber.isEmpty() || otpNumber.length < 6) {
             otp_layout!!.error = "enter OTP number"
             valid = false

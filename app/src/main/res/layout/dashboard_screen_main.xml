@@ -8,7 +8,7 @@
     android:background="@color/colorWhite"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".activities.Navigation_drawer">
+    tools:context=".activities.Navigation_Drawer_Blogs">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

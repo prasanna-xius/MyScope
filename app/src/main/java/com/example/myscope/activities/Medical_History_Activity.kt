@@ -57,32 +57,32 @@ class Medical_History_Activity : BaseActivity() {
             rowView.setOnClickListener {
                 // TODO Auto-generated method stub
                 if (position == 0) {
-                    val i = Intent(applicationContext, Medical_History_BlogActivity::class.java)
-                    startActivity(i)
+//                    val i = Intent(applicationContext, Medical_History_BlogActivity::class.java)
+//                    startActivity(i)
                 } else if (position == 1) {
-                    val i = Intent(applicationContext, Family_History_Activity::class.java)
-                    startActivity(i)
+//                    val i = Intent(applicationContext, Family_History_Activity::class.java)
+//                    startActivity(i)
                 } else if (position == 2) {
-                    val i = Intent(applicationContext, Social_History_Activity::class.java)
-                    startActivity(i)
+//                    val i = Intent(applicationContext, Social_History_Activity::class.java)
+//                    startActivity(i)
                 } else if (position == 3) {
-                    val i = Intent(applicationContext, Diet_Activity::class.java)
-                    startActivity(i)
+//                    val i = Intent(applicationContext, Diet_Activity::class.java)
+//                    startActivity(i)
                 } else if (position == 4) {
-                    val i = Intent(applicationContext, Allergies_Activity::class.java)
-                    startActivity(i)
+//                    val i = Intent(applicationContext, Allergies_Activity::class.java)
+//                    startActivity(i)
                 } else if (position == 5) {
-                    val i = Intent(applicationContext, Immunization_History_Activity::class.java)
-                    startActivity(i)
+//                    val i = Intent(applicationContext, Immunization_History_Activity::class.java)
+//                    startActivity(i)
                 } else if (position == 6) {
-                    val i = Intent(applicationContext, Medication_History_Activity::class.java)
-                    startActivity(i)
+//                    val i = Intent(applicationContext, Medication_History_Activity::class.java)
+//                    startActivity(i)
                 } else if (position == 7) {
-                    val i = Intent(applicationContext, Surgery_History_Activity::class.java)
-                    startActivity(i)
+//                    val i = Intent(applicationContext, Surgery_History_Activity::class.java)
+//                    startActivity(i)
                 } else if (position == 8) {
-                    val i = Intent(applicationContext, Adverse_Drug_Reaction_Activity::class.java)
-                    startActivity(i)
+//                    val i = Intent(applicationContext, Adverse_Drug_Reaction_Activity::class.java)
+//                    startActivity(i)
                 }
                 Toast.makeText(context, "You Clicked " + result[position], Toast.LENGTH_SHORT).show()
             }

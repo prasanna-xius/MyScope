@@ -12,31 +12,14 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.myscope.R
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.signuppage_main.*
 
 class SignUp_Page : BaseActivity(), View.OnClickListener {
-    var btn_SignUp: Button? = null
-    var btn_login: TextView? = null
-    var edt_firstname: EditText? = null
-    var edt_lastname: EditText? = null
-    var edt_mobile: EditText? = null
-    var edt_email: EditText? = null
-    var firstname_layout: TextInputLayout? = null
-    var lastname_layout: TextInputLayout? = null
-    var mobile_layout: TextInputLayout? = null
-    var email_layout: TextInputLayout? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.signuppage_main)
-        btn_SignUp = findViewById<View>(R.id.btn_SignUp) as Button
-        btn_login = findViewById<View>(R.id.btn_login) as TextView
-        edt_firstname = findViewById<View>(R.id.edt_firstname) as EditText
-        edt_lastname = findViewById<View>(R.id.edt_lastname) as EditText
-        edt_mobile = findViewById<View>(R.id.edit_mobile) as EditText
-        edt_email = findViewById<View>(R.id.edt_email) as EditText
-        firstname_layout = findViewById<View>(R.id.firstname_layout) as TextInputLayout
-        lastname_layout = findViewById<View>(R.id.lastname_layout) as TextInputLayout
-        mobile_layout = findViewById<View>(R.id.mobile_layout) as TextInputLayout
-        email_layout = findViewById<View>(R.id.email_layout) as TextInputLayout
+
         btn_SignUp!!.setOnClickListener(this)
         btn_login!!.setOnClickListener(this)
         hideKeyBoard()
@@ -57,7 +40,7 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
         Log.d(TAG, "SignUp_Page")
         val firstName = edt_firstname!!.text.toString().trim { it <= ' ' }
         val lastName = edt_lastname!!.text.toString().trim { it <= ' ' }
-        val mobileNumber = edt_mobile!!.text.toString().trim { it <= ' ' }
+        val mobileNumber = edit_mobile!!.text.toString().trim { it <= ' ' }
         val emailId = edt_email!!.text.toString().trim { it <= ' ' }
         if (validate() == false) {
             onSignupFailed()
@@ -79,7 +62,7 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
         var valid = true
         val firstName = edt_firstname!!.text.toString().trim { it <= ' ' }
         val lastName = edt_lastname!!.text.toString().trim { it <= ' ' }
-        val mobileNumber = edt_mobile!!.text.toString().trim { it <= ' ' }
+        val mobileNumber = edit_mobile!!.text.toString().trim { it <= ' ' }
         val emailId = edt_email!!.text.toString().trim { it <= ' ' }
         firstname_layout!!.error = null
         lastname_layout!!.error = null
