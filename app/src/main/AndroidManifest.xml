@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myscope">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-feature android:name="android.hardware.camera2" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -15,9 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".ImageUpload"></activity>
         <activity android:name=".activities.Login_Page" />
-        <activity android:name=".activities.Prescription_manual">
+        <activity android:name=".activities.">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,6 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ImageUpload" />
+        <activity android:name=".activities.Prescription_manual" />
         <activity android:name=".MainActivity" />
         <activity android:name=".activities.Otp_Page" />
         <activity android:name=".activities.BaseActivity" />
