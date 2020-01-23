@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".activities.Social_History">
+    tools:context=".activities.medical_history.Social_History">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

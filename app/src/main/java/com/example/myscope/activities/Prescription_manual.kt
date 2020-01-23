@@ -1,25 +1,17 @@
 package com.example.myscope.activities
 
-import androidx.appcompat.app.AppCompatActivity
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.custom_spinner.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item.*
-
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import com.example.myscope.R
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
 
 
@@ -96,11 +88,9 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
          val timpicker = view.findViewById<TimePicker>(R.id.customtimepicker)
          val checkbox = view.findViewById<View>(R.id.checkbox)
-         linearlayout.addView(view, 0)
 
 
      }
-
 
      private fun updateLabel() {
          val myFormat = "MM/dd/yyyy" //In which you need put here

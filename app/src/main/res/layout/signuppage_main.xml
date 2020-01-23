@@ -178,7 +178,7 @@
 
 
                             <EditText
-                                android:id="@+id/edit_mobile"
+                                android:id="@+id/edt_mobile"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/dimen_40"
                                 android:hint="Enter Mobile Number"

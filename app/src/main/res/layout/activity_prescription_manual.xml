@@ -261,7 +261,7 @@
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15" />
 
-                <cz.destil.settleup.gui.MultiSpinner
+                <Spinner
                     android:id="@+id/time_of_taken"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
