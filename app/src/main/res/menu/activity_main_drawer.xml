@@ -188,45 +188,4 @@
         </menu>
     </item>
 
-    <item
-        android:id="@+id/nav_health_services"
-        android:icon="@drawable/home"
-        android:title="@string/health_services" />
-
-
-    <item
-        android:id="@+id/nav_educational_blog"
-        android:icon="@drawable/home"
-        android:title="@string/educational_blog" />
-
-
-    <item
-        android:id="@+id/nav_appointments"
-        android:icon="@drawable/home"
-        android:title="@string/appointments" />
-    <item
-        android:id="@+id/nav_notification"
-        android:icon="@drawable/notification"
-        android:title="@string/notification" />
-
-    <item
-        android:id="@+id/nav_profile_history"
-        android:icon="@drawable/account"
-        android:title="@string/nav_profile_history" />
-
-    <item
-        android:id="@+id/nav_services"
-        android:icon="@drawable/services"
-        android:iconTint="#6D94CF"
-        android:title="@string/nav_services" />
-
-    <item
-        android:id="@+id/nav_feedback"
-        android:icon="@drawable/feedback"
-        android:iconTint="#6D94CF"
-        android:title="@string/nav_feedback" />
-    <item
-        android:id="@+id/nav_contactus"
-        android:title="@string/nav_contactus" />
-
 </menu>

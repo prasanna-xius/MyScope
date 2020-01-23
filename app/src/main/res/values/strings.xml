@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">CurvePicture</string>
+
     <!--Medical History-->
     <string name="medical_history">MEDICAL HISTORY</string>
     <string name="known_condition">Known Condition <font color='#a4c639'>*</font></string>
@@ -63,14 +63,8 @@
     <!--Medication History-->
     <string name="medication_history">Medication History</string>
     <string name="paracetamol">Paracetamol</string>
-    <string name="how_often_taken">How often taken<font color='#a4c639'>*</font></string>
-    <string name="dose_strength">Dose Strength</string>
     <string name="eg_dose_strength">E.g. 500</string>
-    <string name="formulation">Formulation</string>
-    <string name="dose_unit">Dose Unit</string>
     <string name="reason">Reason</string>
-    <string name="medical_condition">Medical Condition</string>
-    <string name="is_prescribed">Is Prescribed</string>
     <!--Medication History-->
 
 
@@ -82,7 +76,6 @@
     <string name="eg_body_location">E.g. Stomach</string>
     <string name="provider">Provider</string>
     <string name="eg_provider">E.g. Doctor Name</string>
-    <string name="hospital_name">Hospital Name</string>
     <!--Surgery History-->
 
 
@@ -182,7 +175,6 @@
         <item>6. None</item>
     </string-array>
 
-    <string name="home">Home</string>
     <string name="allergies" >Allergies</string>
     <string name="immuzination_history" >Immuzination History</string>
 
@@ -214,8 +206,6 @@
     <string name="colonoscopy_reports" >ColonoScopy</string>
     <string name="other_reports" >Others</string>
 
-    <string name="self_monitoring" >Self Monitoring</string>
-
 
     <string name="self_monitoring" >Self Monitoring</string>
     <string name="blood_glucose_monitoring" >Blood Glucose Monitoring</string>
@@ -224,10 +214,6 @@
     <string name="weight_height" >Weight/Height/BMI</string>
     <string name="exercise_tracker" >Exercise Tracker</string>
     <string name="emotional_state" >Emotional State</string>
-    <string name="health_services" >Health Services</string>
-    <string name="educational_blog" >Educational Blog</string>
-    <string name="appointments" >Appointments</string>
-
 
     <string name="health_services" >Health Services</string>
 
@@ -238,14 +224,6 @@
     <string name="app_name">My Scope</string>
     <string name="home">Home</string>
 
-
-    <string name="openDrawer">open_drawer</string>
-    <string name="closeDrawer">close_drawer</string>
-
-    <string name="radio_male">Male</string>
-  <string name="radio_female">Female</string>
-
-    <string name="action_settings">Settings</string>
     <string name="action_settings">Settings</string>
     <string name="openDrawer">open_drawer</string>
     <string name="closeDrawer">close_drawer</string>
@@ -277,16 +255,6 @@
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
-    <string name="slide_1_title">Hello Food!</string>
-    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
-    <string name="slide_2_title">Movie Tickets</string>
-    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
-    <string name="slide_3_title">Great Discounts</string>
-    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
-    <string name="slide_4_title">World Travel</string>
-    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
     <string name="action_notification">Notification</string>
 
     <string name="slide_1_title">Hello Food!</string>

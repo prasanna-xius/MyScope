@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:background="@color/colorWhite"
     tools:context=".activities.Medical_History">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <include layout="@layout/side_activity" />
+        <include layout="@layout/background_image" />
 
         <TextView
             android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/bg_screen2"
-                    android:popupBackground="@color/white"
+                    android:popupBackground="@color/colorWhite"
                     android:layout_weight="1"
 
                     android:entries="@array/disease_arrays"
@@ -211,7 +211,7 @@
             android:background="@color/bg_screen2"
             android:layout_marginTop="@dimen/dimen_10"
             android:text="@string/save"
-            android:textColor="@color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="16sp" />
     </LinearLayout>
 </ScrollView>

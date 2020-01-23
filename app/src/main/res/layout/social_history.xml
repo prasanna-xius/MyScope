@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/colorWhite"
     tools:context=".activities.Social_History">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <include layout="@layout/side_activity"/>
+    <include layout="@layout/background_image"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
             android:layout_height="match_parent"
             android:padding="2dp"
             android:backgroundTint="@color/bg_screen2"
-            android:popupBackground="@color/white"
+            android:popupBackground="@color/colorWhite"
             android:entries="@array/smoking_arrays"/>
         </FrameLayout>
     </LinearLayout>
@@ -101,7 +101,7 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="Cigar/Pipe"
-          android:background="@color/white"
+          android:background="@color/colorWhite"
           android:textColor="@color/bg_screen2"/>
         <CheckBox
             android:id="@+id/chew_snuff"
@@ -149,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/bg_screen2"
-            android:popupBackground="@color/white"
+            android:popupBackground="@color/colorWhite"
             android:padding="2dp"
             android:entries="@array/drinking_arrays"/>
         </FrameLayout>
@@ -192,7 +192,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/save"
-        android:textColor="@color/white"
+        android:textColor="@color/colorWhite"
         android:background="@color/bg_screen2"
         android:textSize="16sp" />
 </LinearLayout>

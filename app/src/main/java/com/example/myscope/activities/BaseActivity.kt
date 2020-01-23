@@ -24,30 +24,21 @@ import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-
-
 import com.example.myscope.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.*
-
 import java.io.File
 import java.util.ArrayList
-
 open class BaseActivity : AppCompatActivity() {
-
-
     fun showShortToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
     fun showLongToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
-
     fun setStatusBarTopColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val window = window
@@ -55,24 +46,33 @@ open class BaseActivity : AppCompatActivity() {
             window.statusBarColor = Color.parseColor("#246ce5")
         }
     }
-
-    fun showShortSnackBar(message: String?) {
+    fun showShortSnackBar(message: String) {
         val snackbar = Snackbar
-                .make(findViewById(android.R.id.content), message!!, Snackbar.LENGTH_SHORT)
+                .make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
         snackbar.show()
     }
-
-
-    fun isPasswordValid(password: String): Boolean { //TODO: Replace this with your own logic
+    //
+    fun showLongSnackBar(message: String) {
+        val snackbar = Snackbar
+                .make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
+        snackbar.show()
+    }
+    fun navigateToActivity(intent: Intent) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+        } else {
+            startActivity(intent)
+        }
+    }
+    fun isPasswordValid(password: String): Boolean {
+        //TODO: Replace this with your own logic
         return password.length > 4
     }
-
-    fun showError(editText: EditText, message: String?) {
+    fun showError(editText: EditText, message: String) {
         editText.error = message
         editText.requestFocus()
-
     }
-
     fun showToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
@@ -80,7 +80,6 @@ open class BaseActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
     }
-
     fun showBlackToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
@@ -88,23 +87,18 @@ open class BaseActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
     }
-
     fun getContactID(contactHelper: ContentResolver,
                      number: String): Long {
         val contactUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
                 Uri.encode(number))
-
         val projection = arrayOf(ContactsContract.PhoneLookup._ID)
         var cursor: Cursor? = null
-
         try {
             cursor = contactHelper.query(contactUri, projection, null, null, null)
-
             if (cursor!!.moveToFirst()) {
                 val personID = cursor.getColumnIndex(ContactsContract.PhoneLookup._ID)
                 return cursor.getLong(personID)
             }
-
             return -1
         } catch (e: Exception) {
             e.printStackTrace()
@@ -114,17 +108,12 @@ open class BaseActivity : AppCompatActivity() {
                 cursor = null
             }
         }
-
         return -1
     }
-
-
     fun deleteContact(contactHelper: ContentResolver, number: String): Boolean {
-
         val ops = ArrayList<ContentProviderOperation>()
         val args = arrayOf(getContactID(
                 contactHelper, number).toString())
-
         ops.add(ContentProviderOperation.newDelete(ContactsContract.RawContacts.CONTENT_URI)
                 .withSelection(ContactsContract.RawContacts.CONTACT_ID + "=?", args).build())
         try {
@@ -135,10 +124,8 @@ open class BaseActivity : AppCompatActivity() {
         } catch (e: OperationApplicationException) {
             e.printStackTrace()
         }
-
         return false
     }
-
     fun getRealPathFromURI(context: Context, contentUri: Uri): String {
         var cursor: Cursor? = null
         try {
@@ -151,15 +138,12 @@ open class BaseActivity : AppCompatActivity() {
             cursor?.close()
         }
     }
-
     //    public void lunchFragemnt(Fragment fragment){
     //        FragmentManager fragmentManager = getSupportFragmentManager();
     //        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
     //        fragmentTransaction.replace(R.id.fragment_container, fragment, fragment.getClass().getName());
     //        fragmentTransaction.commit();
     //    }
-
-
     fun hideKeyBoard() {
         val view = this.currentFocus
         if (view != null) {
@@ -167,40 +151,28 @@ open class BaseActivity : AppCompatActivity() {
             imm.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
-
-
-    companion object {
-        private val TAG = BaseActivity::class.java.name
-    }
-}
-
     fun errorDisplay(editText: EditText) {
         val dr = resources.getDrawable(R.drawable.error)
         dr.setBounds(0, 0, dr.intrinsicWidth, dr.intrinsicHeight)
         editText.setCompoundDrawables(null, null, dr, null)
     }
-
     fun errorRemove(editText: EditText) {
         editText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
             }
-
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 errorDisplay(editText)
             }
-
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 editText.setCompoundDrawables(null, null, null, null)
             }
         })
     }
-
     fun spinnerSet(spinner: Spinner,array: Array<String>){
         if (spinner != null) {
             val adapter = ArrayAdapter(this,
                     R.layout.spinner_dropdown_item,array)
-            spinner.adapter = adapter
-
+            spinner.adapter = adapter as SpinnerAdapter?
             spinner.onItemSelectedListener = object :
                     AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>,
@@ -213,12 +185,7 @@ open class BaseActivity : AppCompatActivity() {
             }
         }
     }
-
-
     companion object {
-
         private val TAG = BaseActivity::class.java.name
     }
-
 }
-

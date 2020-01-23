@@ -1,11 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
-
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
-
-
 repositories {
     google()
     maven { url 'https://maven.fabric.io/public' }
@@ -29,7 +26,6 @@ android {
         }
     }
 }
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -45,8 +41,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-}
-repositories {
-    mavenCentral()
 }

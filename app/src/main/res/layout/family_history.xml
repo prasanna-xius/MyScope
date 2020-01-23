@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:background="@color/colorWhite"
     tools:context=".activities.Family_History">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <include layout="@layout/side_activity"/>
+    <include layout="@layout/background_image"/>
    <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/bg_screen2"
-                android:popupBackground="@color/white"
+                android:popupBackground="@color/colorWhite"
                 android:padding="2dp"
                 android:entries="@array/Relationship_arrays" />
             </FrameLayout>
@@ -114,7 +114,7 @@
             android:text="@string/save"
             android:layout_marginTop="@dimen/dimen_10"
             android:background="@color/bg_screen2"
-            android:textColor="@color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="16sp" />
     </LinearLayout>
 

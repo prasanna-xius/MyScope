@@ -42,7 +42,7 @@
 <!--        </activity>-->
      
   
-        <activity android:name=".activities.Main_Activity" />
+
         <activity android:name=".activities.SignUp_Page" />
         <activity android:name=".activities.View_UserDetails_Activity" />
         <activity android:name=".activities.MobileChange_Activity" />
@@ -54,12 +54,7 @@
         <activity android:name=".activities.Otp_Page" />
         <activity android:name=".activities.BaseActivity" />
         <activity android:name=".activities.Navigation_Drawer_Blogs" />
-        <activity android:name=".activities.Navigation_drawer" />
-        <activity android:name=".activities.SignUp_Page" />
-        <activity
-            android:name=".activities.View_UserDetails_Activity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activities.MobileChange_Activity" />
+
         <activity android:name=".fragments.Dash_Board_Activity" />
         <activity android:name=".activities.Medical_History_Activity" />
         <activity android:name=".activities.medical_history.Medical_History_BlogActivity" />
