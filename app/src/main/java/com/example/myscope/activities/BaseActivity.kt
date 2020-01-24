@@ -1,6 +1,7 @@
 package com.example.myscope.activities
 import android.app.Activity
 import android.app.ActivityOptions
+import android.app.DatePickerDialog
 import android.content.ContentProviderOperation
 import android.content.ContentResolver
 import android.content.Context
@@ -31,7 +32,8 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 import java.io.File
-import java.util.ArrayList
+import java.util.*
+
 open class BaseActivity : AppCompatActivity() {
     fun showShortToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -185,6 +187,8 @@ open class BaseActivity : AppCompatActivity() {
             }
         }
     }
+
+
     companion object {
         private val TAG = BaseActivity::class.java.name
     }
