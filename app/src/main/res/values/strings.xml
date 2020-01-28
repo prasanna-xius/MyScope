@@ -274,7 +274,7 @@
     <string name="hospital_name">Hospital Name <font color='#ff0000'>*</font></string>
     <string name="doctor_name">Doctor Name<font color='#ff0000'>*</font></string>
     <string name="prescription_manual">Prescription</string>
-    <string name="time">Time</string>
+    <string name="time">Time<font color='#ff0000'>*</font></string>
 
     <string-array name="formulation_array">
         <item>None</item>
@@ -314,6 +314,7 @@
         <item>Prescribed OTC</item>
     </string-array>
     <string-array name="timings">
+        <item>None</item>
         <item>1 A.M</item>
         <item>2 A.M</item>
         <item>3 A.M</item>

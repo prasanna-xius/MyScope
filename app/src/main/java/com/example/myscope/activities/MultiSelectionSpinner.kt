@@ -59,10 +59,11 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
             return sb.toString()
         }
 
+    @SuppressLint("ResourceType")
     constructor(context: Context) : super(context) {
 
         simple_adapter = ArrayAdapter(context,
-                R.layout.spinner_dropdown_item)
+                R.layout.spinner_dropdown_item,R.style.MyDialogTheme)
         super.setAdapter(simple_adapter)
     }
 
@@ -85,7 +86,7 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
     }
 
     override fun performClick(): Boolean {
-        val builder = AlertDialog.Builder(context)
+        val builder = AlertDialog.Builder(context,R.style.MyDialogTheme)
         builder.setMultiChoiceItems(_items, mSelection, this)
 
         builder.setPositiveButton("Ok") { arg0, arg1 -> }

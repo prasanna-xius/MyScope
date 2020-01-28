@@ -36,4 +36,10 @@
     <color name="bluegray700">#455A64</color>
     <color name="bluegray300">#90A4AE</color>
 
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:textColor">@color/bg_screen2</item>
+        <item name="colorAccent">@color/bg_screen2</item>
+    </style>
+
 </resources>

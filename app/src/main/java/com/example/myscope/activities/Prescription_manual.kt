@@ -3,98 +3,134 @@ package com.example.myscope.activities
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
-
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
 import com.example.myscope.R
-import com.example.myscope.activities.MultiSelectionSpinner
-
+import android.widget.Spinner
+import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
+import java.text.DateFormat
+import java.util.*
 
 class Prescription_manual : BaseActivity() {
-//     var arrayList: ArrayList<Values> = ArrayList()
+    internal lateinit var myCalendar: Calendar
+    private var startDateOrEndDAte = true
+    var formulation: Spinner? = null
+    var dose: Spinner? = null
+    var isprescribed: Spinner? = null
+    @SuppressLint("ResourceAsColor")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_prescription_manual)
+        formulation = findViewById<Spinner>(R.id.formulation_id)
+        dose = findViewById<Spinner>(R.id.dose_unit)
+        isprescribed = findViewById<Spinner>(R.id.is_prescribed)
+        val how_oftenspinner = findViewById<MultiSelectionSpinner>(R.id.how_often_taken)
+        val timeSpinner = findViewById<MultiSelectionSpinner>(R.id.time_of_taken)
 
-     internal lateinit var myCalendar: Calendar
-     @SuppressLint("ResourceAsColor")
-     override fun onCreate(savedInstanceState: Bundle?) {
-         super.onCreate(savedInstanceState)
-         setContentView(R.layout.activity_prescription_manual)
+        /*Custom spinner code*/
+        how_oftenspinner.setItems(resources.getStringArray(R.array.how_often_taken))
+        timeSpinner.setItems(resources.getStringArray(R.array.timings))
 
-         errorRemove(doctor_name)
-         errorRemove(hosp_name)
-         errorRemove(formulation_name)
-         errorRemove(dose_strength)
-         errorRemove(medical_condition)
+        // access the spinner
+        val formulationadapter = ArrayAdapter(this,
+                R.layout.spinner_dropdown_item, resources.getStringArray(R.array.formulation_array))
+        formulation!!.adapter = formulationadapter
 
+        val doseunitadapter = ArrayAdapter(this,
+                R.layout.spinner_dropdown_item, resources.getStringArray(R.array.dose_unit))
+        dose!!.adapter = doseunitadapter
 
-         // access the spinner
-         spinnerSet(formulation_id, resources.getStringArray(R.array.formulation_array))
-         spinnerSet(dose_unit, resources.getStringArray(R.array.dose_unit))
-         spinnerSet(is_prescribed, resources.getStringArray(R.array.is_prescribed))
-
-         /*Custom spinner code*/
-         val spinner = findViewById(R.id.how_often_taken) as MultiSelectionSpinner
-         val timeSpinner = findViewById(R.id.time_of_taken) as MultiSelectionSpinner
-         spinner.setItems(resources.getStringArray(R.array.how_often_taken))
-         timeSpinner.setItems(resources.getStringArray(R.array.timings))
+        val isprescribedadapter = ArrayAdapter(this,
+                R.layout.spinner_dropdown_item, resources.getStringArray(R.array.is_prescribed))
+        isprescribed!!.adapter = isprescribedadapter
 
 
-        /* Implementing on click listner and checking null values */
-         prescription_save.setOnClickListener {
-             if (doctor_name.text.toString().equals("")) {
-                 errorDisplay(doctor_name)
-             } else if (hosp_name.text.toString().equals("")) {
-                 errorDisplay(hosp_name)
-             } else if (formulation_name.text.toString().equals("")) {
-                 errorDisplay(formulation_name)
-             } else if (dose_strength.text.toString().equals("")) {
-                 errorDisplay(dose_strength)
-             } else if (medical_condition.text.toString().equals("")) {
-                 errorDisplay(medical_condition)
-             }
-             showLongToast("This is prescription page "+ hosp_name.text.toString())
-         }
-
-         /*Start date amd stop date validations */
-         myCalendar = Calendar.getInstance()
-         val date = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-             // TODO Auto-generated method stub
-             myCalendar.set(Calendar.YEAR, year)
-             myCalendar.set(Calendar.MONTH, monthOfYear)
-             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-         }
-
-         start_date.setOnClickListener {
-             // TODO Auto-generated method stub
-             DatePickerDialog(this@Prescription_manual,R.style.MyDatePicker, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                     myCalendar.get(Calendar.DAY_OF_MONTH)).show()
-             CalendarValidation()
-             val myFormat = "MM/dd/yyyy" //In which you need put here
-             val sdf = SimpleDateFormat(myFormat, Locale.US)
-             start_date.text = sdf.format(myCalendar.time)
-
-         }
-         stop_date.setOnClickListener{
-             DatePickerDialog(this@Prescription_manual,R.style.MyDatePicker, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                     myCalendar.get(Calendar.DAY_OF_MONTH)).show()
-             CalendarValidation()
-             val myFormat = "MM/dd/yyyy" //In which you need put here
-             val sdf = SimpleDateFormat(myFormat, Locale.US)
-             stop_date.text = sdf.format(myCalendar.time)
-         }
-
-     }
-     fun CalendarValidation() {
-        var myCalendar = Calendar.getInstance()
+        /*Start date amd stop date validations */
+        myCalendar = Calendar.getInstance()
         val date = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
             // TODO Auto-generated method stub
             myCalendar.set(Calendar.YEAR, year)
             myCalendar.set(Calendar.MONTH, monthOfYear)
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
+            if (startDateOrEndDAte) {
+                start_date.setText(date1)
+            } else {
+                stop_date.setText(date1)
+            }
+        }
+        start_date.setOnClickListener {
+                // TODO Auto-generated method stub
+                DatePickerDialog(this@Prescription_manual, R.style.MyDatePicker, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+                startDateOrEndDAte = true
+            }
+            stop_date.setOnClickListener {
+                DatePickerDialog(this@Prescription_manual, R.style.MyDatePicker, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+                startDateOrEndDAte = false
 
+            }
+
+        /* Implementing on click listner */
+        prescription_save.setOnClickListener()
+        {
+            assignValuetoVariable()
+            validate(formulation!!)
+            validate(dose!!)
+            validate(isprescribed!!)
+            validateDate()
+
+        }
+
+    }
+
+    /* function for checking null values in the required fields*/
+    private fun assignValuetoVariable() {
+        var hospitalName = hosp_name.text.toString()
+        var doctorName = doctor_name.text.toString()
+        var formulationName = formulation_name.text.toString()
+        var doseStrength = dose_strength.text.toString()
+        var medicalCondition = medical_condition.text.toString()
+        var formulationId = formulation!!.selectedItem.toString()
+        var doseunit = dose!!.selectedItem.toString()
+        var isprescribedunit = isprescribed!!.selectedItem.toString()
+        var howoftenvalue = how_often_taken!!.selectedItem.toString()
+        var timeofmedicine = time_of_taken!!.selectedItem.toString()
+        var startDate = start_date.text.toString()
+        var stopDate = stop_date.text.toString()
+        validateInput(doctor_name, doctorName)
+        validateInput(hosp_name, hospitalName)
+        validateInput(formulation_name, formulationName)
+        validateInput(dose_strength, doseStrength)
+        validateInput(medical_condition, medicalCondition)
+        validateSpinner(formulation!!, formulationId)
+        validateSpinner(dose!!, doseunit)
+        validateSpinner(isprescribed!!, isprescribedunit)
+        validateSpinner(how_often_taken!!,howoftenvalue)
+        validateSpinner(time_of_taken!!,timeofmedicine)
+
+        if ((!doctorName.equals("")) &&
+                (!hospitalName.equals("")) &&
+                (!formulationName.equals("")) &&
+                (!doseStrength.equals("")) &&
+                (!medicalCondition.equals("") &&
+                        (!formulationId.equals("None")) &&
+                        (!doseunit.equals("None")) &&
+                        (!isprescribedunit.equals("None"))&&
+                                (!howoftenvalue.equals("None"))&&
+                                        (!timeofmedicine.equals("None")) &&
+                                                (!startDate.equals("")) &&
+                                                (!stopDate.equals("")))){
+            showLongToast("Values are saved....Thank you!! ")
+        } else {
 
         }
     }
- }
+
+
+}
+
+
+
