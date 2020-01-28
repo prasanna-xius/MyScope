@@ -8,20 +8,15 @@ import android.content.Context
 import android.content.Intent
 import android.content.OperationApplicationException
 import android.database.Cursor
-import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
-import android.os.Environment
 import android.os.RemoteException
 import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
-import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
@@ -29,8 +24,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.*
+
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import kotlinx.android.synthetic.main.spinner_item.view.*
 import java.io.File
@@ -38,6 +33,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 open class BaseActivity : AppCompatActivity() {
+
     fun showShortToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
@@ -56,16 +52,18 @@ open class BaseActivity : AppCompatActivity() {
                 .make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
         snackbar.show()
     }
-    //
     fun showLongSnackBar(message: String) {
         val snackbar = Snackbar
                 .make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
         snackbar.show()
     }
-    fun navigateToActivity(intent: Intent) {
+
+    fun navigateToActivity(intent: Intent?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            intent!!.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent,
                     ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+
         } else {
             startActivity(intent)
         }

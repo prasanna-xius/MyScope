@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.example.myscope.activities.medical_history
 
 import android.os.Bundle
 import android.widget.ArrayAdapter

@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.example.myscope.activities.medical_history
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -16,7 +16,6 @@ class Medical_History : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history)
         var edit_text1=findViewById<EditText>(R.id.edit_text1)
-
 
         var spinner_disease = findViewById(R.id.spinner_disease) as Spinner
         val adapter = ArrayAdapter.createFromResource(this, R.array.disease_arrays, R.layout.spinner_item)

@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.example.myscope.activities.medical_history.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -26,26 +25,21 @@ class Medical_History_Activity : BaseActivity() {
         setStatusBarTopColor()
         header!!.text = "Medical History"
     }
-
     private inner class CustomAdapter(var context: Context, var result: Array<String>, var imageId: IntArray) : BaseAdapter() {
         private var inflater: LayoutInflater? = null
         override fun getCount(): Int { // TODO Auto-generated method stub
             return result.size
         }
-
         override fun getItem(position: Int): Any { // TODO Auto-generated method stub
             return position
         }
-
         override fun getItemId(position: Int): Long { // TODO Auto-generated method stub
             return position.toLong()
         }
-
         inner class Holder {
             var os_text: TextView? = null
             var os_image: ImageView? = null
         }
-
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View { // TODO Auto-generated method stub
             val holder = Holder()
             val rowView: View
@@ -57,38 +51,28 @@ class Medical_History_Activity : BaseActivity() {
             rowView.setOnClickListener {
                 // TODO Auto-generated method stub
                 if (position == 0) {
-                    val i = Intent(applicationContext, Medical_History_BlogActivity::class.java)
-                    startActivity(i)
+                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
                 } else if (position == 1) {
-                    val i = Intent(applicationContext, Family_History_Activity::class.java)
-                    startActivity(i)
+                    navigateToActivity(Intent(applicationContext, Family_History::class.java))
                 } else if (position == 2) {
-                    val i = Intent(applicationContext, Social_History_Activity::class.java)
-                    startActivity(i)
+                    navigateToActivity(Intent(applicationContext, Social_History::class.java))
                 } else if (position == 3) {
-                    val i = Intent(applicationContext, Diet_Activity::class.java)
-                    startActivity(i)
+                    navigateToActivity(Intent(applicationContext, Diet::class.java))
                 } else if (position == 4) {
-                    val i = Intent(applicationContext, Allergies_Activity::class.java)
-                    startActivity(i)
+                    navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
                 } else if (position == 5) {
-                    val i = Intent(applicationContext, Immunization_History_Activity::class.java)
-                    startActivity(i)
+                    navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
                 } else if (position == 6) {
-                    val i = Intent(applicationContext, Medication_History_Activity::class.java)
-                    startActivity(i)
+                    navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
                 } else if (position == 7) {
-                    val i = Intent(applicationContext, Surgery_History_Activity::class.java)
-                    startActivity(i)
+                    navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
                 } else if (position == 8) {
-                    val i = Intent(applicationContext, Adverse_Drug_Reaction_Activity::class.java)
-                    startActivity(i)
+                    navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
                 }
                 Toast.makeText(context, "You Clicked " + result[position], Toast.LENGTH_SHORT).show()
             }
             return rowView
         }
-
         init { // TODO Auto-generated constructor stub
             inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         }

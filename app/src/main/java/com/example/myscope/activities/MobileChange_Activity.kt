@@ -19,7 +19,6 @@ class MobileChange_Activity : BaseActivity(), View.OnClickListener {
         btn_send_link!!.setOnClickListener(this)
         hideKeyBoard()
     }
-
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_send_link -> {
@@ -27,19 +26,15 @@ class MobileChange_Activity : BaseActivity(), View.OnClickListener {
                     onSignupFailed()
                     return
                 }
-                val btn_mobile_change = Intent(applicationContext, Login_Page::class.java)
-                btn_mobile_change.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                startActivity(btn_mobile_change)
-                Toast.makeText(applicationContext, "Please check your Email and change Mobile Number", Toast.LENGTH_SHORT).show()
+                navigateToActivity(Intent(applicationContext,Login_Page::class.java))
+                showLongToast("Please check your Email and change Mobile Number")
             }
         }
     }
-
     private fun onSignupFailed() {
-        Toast.makeText(baseContext, "Please Enter Valid EmailId", Toast.LENGTH_LONG).show()
+        showLongToast("Please Enter Valid EmailId")
         btn_send_link!!.isEnabled = true
     }
-
     private fun validate(): Boolean {
         var valid = true
         val emailId = edt_register_email!!.text.toString()
