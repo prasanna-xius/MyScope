@@ -197,7 +197,7 @@
     <string name="hospital_name">Hospital Name <font color='#ff0000'>*</font></string>
     <string name="doctor_name">Doctor Name<font color='#ff0000'>*</font></string>
     <string name="prescription_manual">Prescription</string>
-    <string name="time">Time</string>
+    <string name="time">Time<font color='#ff0000'>*</font></string>
 
     <string-array name="formulation_array">
         <item>None</item>
@@ -237,17 +237,30 @@
         <item>Prescribed OTC</item>
     </string-array>
     <string-array name="timings">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
+        <item>None</item>
+        <item>1 A.M</item>
+        <item>2 A.M</item>
+        <item>3 A.M</item>
+        <item>4 A.M</item>
+        <item>5 A.M</item>
+        <item>6 A.M</item>
+        <item>7 A.M</item>
+        <item>8 A.M</item>
+        <item>9 A.M</item>
+        <item>10 A.M</item>
+        <item>11 A.M</item>
+        <item>12 A.M</item>
+        <item>1 P.M</item>
+        <item>2 P.M</item>
+        <item>3 P.M</item>
+        <item>4 P.M</item>
+        <item>5 P.M</item>
+        <item>6 P.M</item>
+        <item>7 P.M</item>
+        <item>8 P.M</item>
+        <item>9 P.M</item>
+        <item>10 P.M</item>
+        <item>11 P.M</item>
+        <item>12 P.M</item>
     </string-array>
 </resources>

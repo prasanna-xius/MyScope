@@ -8,7 +8,7 @@
     android:background="@color/colorWhite">
 
     <TextView
-        android:id="@+id/textBox"
+        android:id="@+id/text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -16,16 +16,16 @@
         android:textColor="@color/bg_screen2"
         android:layout_weight="1"
         android:textAlignment="gravity" />
-    <TimePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:timePickerMode="spinner"
-        android:layout_weight="1"
-        android:id="@+id/customtimepicker"
-        />
+<!--    <TimePicker-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:timePickerMode="spinner"-->
+<!--        android:layout_weight="1"-->
+<!--        android:id="@+id/customtimepicker"-->
+<!--        />-->
 
     <CheckBox
-        android:id="@+id/checkbox"
+        android:id="@+id/check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

@@ -123,7 +123,6 @@
                     android:padding="@dimen/dimen_2"
                     android:paddingTop="5dp"
                     android:popupBackground="@color/colorWhite"
-                    android:entries="@array/formulation_array"
                     android:background="@drawable/edittext_border"/>
 
             </LinearLayout>
@@ -210,7 +209,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_2"
-                    android:entries="@array/dose_unit"
                     android:popupBackground="@color/colorWhite"
                     android:background="@drawable/edittext_border"
                    />
@@ -233,13 +231,14 @@
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15" />
 
-                <Spinner
+                <com.example.myscope.activities.MultiSelectionSpinner
                     android:id="@+id/how_often_taken"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_2"
                     android:entries="@array/how_often_taken"
+                    android:popupBackground="@color/colorWhite"
                     android:background="@drawable/edittext_border"/>
 
             </LinearLayout>
@@ -261,13 +260,15 @@
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15" />
 
-                <Spinner
+
+                <com.example.myscope.activities.MultiSelectionSpinner
                     android:id="@+id/time_of_taken"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_2"
                     android:entries="@array/timings"
+                    android:popupBackground="@color/colorWhite"
                     android:background="@drawable/edittext_border"/>
 
             </LinearLayout>
@@ -353,7 +354,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_2"
-                    android:textColor="@color/color_black"
+                    android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"/>
 
             </LinearLayout>
@@ -380,7 +381,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_2"
-                    android:entries="@array/is_prescribed"
                     android:popupBackground="@color/colorWhite"
                     android:background="@drawable/edittext_border"/>
 
@@ -409,7 +409,7 @@
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_2"
                     android:importantForAutofill="no"
-                    android:textColor="@color/color_black"
+                    android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"
                     />
 
