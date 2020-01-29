@@ -4,7 +4,7 @@
     <!--Medical History-->
     <string name="medical_history">MEDICAL HISTORY</string>
     <string name="known_condition">Known Condition <font color='#a4c639'>*</font></string>
-    <string name="disease_statues"> Disease Statues</string>
+    <string name="disease_statues"> Disease Statues <font color='#a4c639'>*</font></string>
     <string name="disease_duration"> Disease Duration</string>
     <string name="no_of_yrs"> No of yrs</string>
     <string name="when_started">When Started <font color='#a4c639'>*</font></string>

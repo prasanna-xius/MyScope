@@ -79,7 +79,6 @@
                     android:backgroundTint="@color/bg_screen2"
                     android:popupBackground="@color/colorWhite"
                     android:layout_weight="1"
-
                     android:entries="@array/disease_arrays"
                     android:paddingLeft="@dimen/dimen_4" />
             </FrameLayout>
@@ -204,7 +203,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/save_button"
+            android:id="@+id/bt_medicalHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
