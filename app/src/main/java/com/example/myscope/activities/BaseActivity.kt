@@ -24,11 +24,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
-import kotlinx.android.synthetic.main.spinner_item.view.*
-import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
