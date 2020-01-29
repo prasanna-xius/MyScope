@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <include layout="@layout/app_bar_main" />
+
         <include layout="@layout/background_image" />
 
         <TextView
@@ -29,7 +31,6 @@
             android:weightSum="2.5">
 
             <TextView
-                android:id="@+id/known_condition"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
@@ -38,7 +39,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/edit_text1"
+                android:id="@+id/condition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -58,7 +59,6 @@
             android:weightSum="2.5">
 
             <TextView
-                android:id="@+id/disease_statues"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
@@ -93,7 +93,6 @@
             android:weightSum="2.5">
 
             <TextView
-                android:id="@+id/diseased_duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -123,7 +122,6 @@
             android:weightSum="2.5">
 
             <TextView
-                android:id="@+id/WhenStarted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -131,8 +129,8 @@
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/edit_text4"
+            <TextView
+                android:id="@+id/et_startDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -153,7 +151,6 @@
             android:weightSum="2.5">
 
             <TextView
-                android:id="@+id/when_ended"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -161,8 +158,8 @@
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/edit_text5"
+            <TextView
+                android:id="@+id/et_stopDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -183,7 +180,6 @@
             android:weightSum="2.5">
 
             <TextView
-                android:id="@+id/notes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
