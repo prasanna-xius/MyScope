@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.example.myscope.activities.medical_history
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -13,7 +13,7 @@ class Diet : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.diet)
         var spinner_diet = findViewById(R.id.spinner_diet) as Spinner
-        val adapter = ArrayAdapter.createFromResource(this, R.array.diet_arrays, R.layout.spinner_item)
+        val adapter = ArrayAdapter.createFromResource(this, R.array.diet_arrays, R.layout.spinner_dropdown_item)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
 
         spinner_diet.setAdapter(adapter)

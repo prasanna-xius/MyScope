@@ -19,7 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center"
         >
 
         <include layout="@layout/background_image"/>"
@@ -29,13 +28,14 @@
             android:textAllCaps="true"
             android:text="@string/prescription_manual"
             android:textSize="30sp"
-           android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
             android:textStyle="bold"
             android:textColor="@color/bg_screen2"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-          android:layout_margin="@dimen/dimen_10"
+            android:layout_margin="@dimen/dimen_10"
             android:orientation="vertical"
             >
             <LinearLayout
@@ -53,7 +53,6 @@
                     android:text="@string/doctor_name"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15"
-
                     />
 
                 <EditText
@@ -61,8 +60,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/dimen_2"
-                    android:inputType="text"
+                    android:padding="@dimen/dimen_4"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:textSize="15sp"
                     android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"
                     />
@@ -74,7 +74,6 @@
                 android:orientation="horizontal"
                 android:weightSum="2"
                 android:layout_margin="@dimen/dimen_10"
-
                 >
 
                 <TextView
@@ -91,8 +90,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="text"
-                    android:padding="@dimen/dimen_2"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:padding="@dimen/dimen_4"
+                    android:textSize="15sp"
                     android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"
 
@@ -104,7 +104,6 @@
                 android:orientation="horizontal"
                 android:weightSum="2"
                 android:layout_margin="10dp"
-                android:padding="@dimen/dimen_2"
                 >
 
                 <TextView
@@ -120,11 +119,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/dimen_2"
-                    android:paddingTop="5dp"
                     android:popupBackground="@color/colorWhite"
-                    android:entries="@array/formulation_array"
-                    android:background="@drawable/edittext_border"/>
+                    android:background="@drawable/edittext_border"
+                    android:padding="@dimen/dimen_4"/>
+<!--                    android:paddingRight="1dp"-->
+<!--                    android:paddingLeft="@dimen/dimen_2"-->
+<!--                    android:paddingTop="@dimen/dimen_2"-->
+<!--                    android:paddingBottom="@dimen/dimen_2"-->
+
 
             </LinearLayout>
 
@@ -150,11 +152,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/dimen_2"
-                    android:hint="Paracetmol"
+                    android:digits="text"
+                    android:padding="@dimen/dimen_4"
+                    android:textSize="15sp"
                     android:textColor="@color/bg_screen2"
                     android:textColorHint="@color/bg_screen1"
-                    android:importantForAutofill="no"
                     android:background="@drawable/edittext_border"/>
 
             </LinearLayout>
@@ -181,7 +183,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="500"
-                    android:padding="@dimen/dimen_2"
+                    android:inputType="text"
+                    android:padding="@dimen/dimen_4"
+                    android:textSize="15sp"
                     android:textColor="@color/bg_screen2"
                     android:textColorHint="@color/bg_screen1"
                     android:background="@drawable/edittext_border"/>
@@ -191,7 +195,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_10"
                 android:orientation="horizontal"
                 android:weightSum="2"
                 android:layout_margin="10dp"
@@ -209,8 +212,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/dimen_2"
-                    android:entries="@array/dose_unit"
+                    android:padding="@dimen/dimen_4"
                     android:popupBackground="@color/colorWhite"
                     android:background="@drawable/edittext_border"
                    />
@@ -233,13 +235,15 @@
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15" />
 
-                <Spinner
+                <com.example.myscope.activities.MultiSelectionSpinner
                     android:id="@+id/how_often_taken"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/dimen_2"
+                    android:padding="@dimen/dimen_4"
+                    android:textSize="15sp"
                     android:entries="@array/how_often_taken"
+                    android:popupBackground="@color/colorWhite"
                     android:background="@drawable/edittext_border"/>
 
             </LinearLayout>
@@ -261,13 +265,16 @@
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15" />
 
-                <cz.destil.settleup.gui.MultiSpinner
+
+                <com.example.myscope.activities.MultiSelectionSpinner
                     android:id="@+id/time_of_taken"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/dimen_2"
+                    android:padding="@dimen/dimen_4"
+                    android:textSize="15sp"
                     android:entries="@array/timings"
+                    android:popupBackground="@color/colorWhite"
                     android:background="@drawable/edittext_border"/>
 
             </LinearLayout>
@@ -294,7 +301,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:focusable="false"
-                    android:padding="@dimen/dimen_2"
+                    android:padding="@dimen/dimen_4"
+                    android:inputType="date"
+                    android:textSize="15sp"
                     android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"
                     />
@@ -325,6 +334,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:focusable="false"
+                    android:textSize="15sp"
+                    android:inputType="date"
+                    android:padding="@dimen/dimen_4"
                     android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"
                     />
@@ -352,8 +364,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/dimen_2"
-                    android:textColor="@color/color_black"
+                    android:padding="@dimen/dimen_4"
+                    android:inputType="text"
+                    android:textSize="15sp"
+                    android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"/>
 
             </LinearLayout>
@@ -379,8 +393,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/dimen_2"
-                    android:entries="@array/is_prescribed"
+                    android:padding="@dimen/dimen_4"
+                    android:textSize="15sp"
                     android:popupBackground="@color/colorWhite"
                     android:background="@drawable/edittext_border"/>
 
@@ -407,9 +421,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/dimen_2"
+                    android:padding="@dimen/dimen_4"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:textSize="15sp"
                     android:importantForAutofill="no"
-                    android:textColor="@color/color_black"
+                    android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"
                     />
 

@@ -1,26 +1,22 @@
 package com.example.myscope.activities
 import android.app.Activity
 import android.app.ActivityOptions
+import android.app.DatePickerDialog
 import android.content.ContentProviderOperation
 import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.OperationApplicationException
 import android.database.Cursor
-import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
-import android.os.Environment
 import android.os.RemoteException
 import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
-import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
@@ -30,9 +26,13 @@ import com.example.myscope.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.*
-import java.io.File
-import java.util.ArrayList
+
+import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
+import java.text.SimpleDateFormat
+import java.util.*
+
 open class BaseActivity : AppCompatActivity() {
+
     fun showShortToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
@@ -51,16 +51,18 @@ open class BaseActivity : AppCompatActivity() {
                 .make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT)
         snackbar.show()
     }
-    //
     fun showLongSnackBar(message: String) {
         val snackbar = Snackbar
                 .make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
         snackbar.show()
     }
-    fun navigateToActivity(intent: Intent) {
+
+    fun navigateToActivity(intent: Intent?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            intent!!.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent,
                     ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+
         } else {
             startActivity(intent)
         }
@@ -151,40 +153,74 @@ open class BaseActivity : AppCompatActivity() {
             imm.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
+    /*Edit text error code */
     fun errorDisplay(editText: EditText) {
         val dr = resources.getDrawable(R.drawable.error)
         dr.setBounds(0, 0, dr.intrinsicWidth, dr.intrinsicHeight)
         editText.setCompoundDrawables(null, null, dr, null)
     }
-    fun errorRemove(editText: EditText) {
-        editText.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                errorDisplay(editText)
-            }
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                editText.setCompoundDrawables(null, null, null, null)
-            }
-        })
+
+    /*Text view error code */
+    fun errorDisplayTextview(textview: TextView) {
+        val dr = resources.getDrawable(R.drawable.error)
+        dr.setBounds(0, 0, dr.intrinsicWidth, dr.intrinsicHeight)
+        textview.setCompoundDrawables(null, null, dr, null)
     }
-    fun spinnerSet(spinner: Spinner,array: Array<String>){
-        if (spinner != null) {
-            val adapter = ArrayAdapter(this,
-                    R.layout.spinner_dropdown_item,array)
-            spinner.adapter = adapter as SpinnerAdapter?
-            spinner.onItemSelectedListener = object :
-                    AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>,
-                                            view: View, position: Int, id: Long) {
-                    text1.setText(array[position])
-                }
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
+    /*Spinner error code */
+     fun validateSpinner(spinnername: Spinner, spinnertext: String) {
+        if(spinnertext.equals("None"))
+        {
+            errorDisplayTextview(spinnername.text1)
         }
     }
+
+    /*Edit text validation */
+    fun validateInput(editText:EditText, editvalue:String) {
+        if(editvalue.equals(""))
+        {
+            errorDisplay(editText)
+            showLongSnackBar("Please fill the required fields")
+        } else {
+            editText.setCompoundDrawables(null, null, null, null)
+        }
+    }
+
+    /* on item click listner of spinner */
+    fun validate(spinnername: Spinner) {
+        spinnername.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>,
+                                        view: View, position: Int, id: Long) {
+                val spinnertext = parent.getItemAtPosition(position).toString()
+               if(spinnertext.equals("None")) {
+                   errorDisplayTextview(spinnername.text1)
+               }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // write code to perform some action
+            }
+
+        }
+    }
+
+    fun validateDate() {
+        if (!start_date.text.toString().equals("") && !stop_date.text.toString().equals("")) {
+            start_date.setCompoundDrawables(null, null, null, null)
+            stop_date.setCompoundDrawables(null, null, null, null)
+            val startDate = SimpleDateFormat("dd-MMM-yyyy").format(Date(start_date.text.toString()))
+            val endDate = SimpleDateFormat("dd-MMM-yyyy").format(Date(stop_date.text.toString()))
+            if (startDate > endDate) {
+                // date in text view is current date
+                showLongSnackBar("Start date cannot be after end date")
+                errorDisplayTextview(start_date)
+            }
+        } else {
+            errorDisplayTextview(start_date)
+            errorDisplayTextview(stop_date)
+        }
+    }
+
     companion object {
         private val TAG = BaseActivity::class.java.name
     }

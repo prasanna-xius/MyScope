@@ -12,6 +12,7 @@ object ExpandableListDataPump {
             val services: List<String> = ArrayList()
             val contactus: List<String> = ArrayList()
             val medicalhistory: MutableList<String> = ArrayList()
+
             medicalhistory.add("Medical History")
             medicalhistory.add("Family History")
             medicalhistory.add("Social History")
@@ -21,10 +22,12 @@ object ExpandableListDataPump {
             medicalhistory.add("Medication History")
             medicalhistory.add("Surgery History")
             medicalhistory.add("Adverse Drug Reaction")
+
             val prescriptions: MutableList<String> = ArrayList()
             prescriptions.add("Prescriptions")
             prescriptions.add("Antibiotic")
             prescriptions.add("Ayurvedic")
+
             val medicaldocuments: MutableList<String> = ArrayList()
             medicaldocuments.add("Discharge Summery")
             medicaldocuments.add("Dental Recards")
@@ -34,6 +37,7 @@ object ExpandableListDataPump {
             medicaldocuments.add("Diet Chart")
             medicaldocuments.add("Education Material")
             medicaldocuments.add("Other Documets")
+
             val labreports: MutableList<String> = ArrayList()
             labreports.add("Blood Reports")
             labreports.add("Urine Report")
@@ -47,6 +51,7 @@ object ExpandableListDataPump {
             labreports.add("SonoGraphy")
             labreports.add("Colono Scopy")
             labreports.add("Others")
+
             val selfmonitoring: MutableList<String> = ArrayList()
             selfmonitoring.add("Blood Glucose  Monitoring")
             selfmonitoring.add("Blood pressure")

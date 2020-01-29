@@ -10,9 +10,7 @@ class Splash_Activity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_main)
         Handler().postDelayed({
-            val i = Intent(this@Splash_Activity, Login_Page::class.java)
-            startActivity(i)
-            // close this activity
+            navigateToActivity(Intent(applicationContext,Login_Page::class.java))
             finish()
         }, 2000)
     }
