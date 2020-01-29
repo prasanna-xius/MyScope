@@ -198,6 +198,7 @@
     <string name="doctor_name">Doctor Name<font color='#ff0000'>*</font></string>
     <string name="prescription_manual">Prescription</string>
     <string name="time">Time</string>
+    <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
 
     <string-array name="formulation_array">
         <item>None</item>

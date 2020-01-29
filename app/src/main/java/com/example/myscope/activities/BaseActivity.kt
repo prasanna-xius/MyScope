@@ -75,6 +75,16 @@ open class BaseActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
+
+        
+//        imgToolBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                toolbarSearchDialog.dismiss();
+//            }
+//        });
+
+
     }
     fun showBlackToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
@@ -83,45 +93,7 @@ open class BaseActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
     }
-    fun getContactID(contactHelper: ContentResolver,
-                     number: String): Long {
-        val contactUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
-                Uri.encode(number))
-        val projection = arrayOf(ContactsContract.PhoneLookup._ID)
-        var cursor: Cursor? = null
-        try {
-            cursor = contactHelper.query(contactUri, projection, null, null, null)
-            if (cursor!!.moveToFirst()) {
-                val personID = cursor.getColumnIndex(ContactsContract.PhoneLookup._ID)
-                return cursor.getLong(personID)
-            }
-            return -1
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            if (cursor != null) {
-                cursor.close()
-                cursor = null
-            }
-        }
-        return -1
-    }
-    fun deleteContact(contactHelper: ContentResolver, number: String): Boolean {
-        val ops = ArrayList<ContentProviderOperation>()
-        val args = arrayOf(getContactID(
-                contactHelper, number).toString())
-        ops.add(ContentProviderOperation.newDelete(ContactsContract.RawContacts.CONTENT_URI)
-                .withSelection(ContactsContract.RawContacts.CONTACT_ID + "=?", args).build())
-        try {
-            contactHelper.applyBatch(ContactsContract.AUTHORITY, ops)
-            return true
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        } catch (e: OperationApplicationException) {
-            e.printStackTrace()
-        }
-        return false
-    }
+
     fun getRealPathFromURI(context: Context, contentUri: Uri): String {
         var cursor: Cursor? = null
         try {
@@ -134,12 +106,7 @@ open class BaseActivity : AppCompatActivity() {
             cursor?.close()
         }
     }
-    //    public void lunchFragemnt(Fragment fragment){
-    //        FragmentManager fragmentManager = getSupportFragmentManager();
-    //        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-    //        fragmentTransaction.replace(R.id.fragment_container, fragment, fragment.getClass().getName());
-    //        fragmentTransaction.commit();
-    //    }
+
     fun hideKeyBoard() {
         val view = this.currentFocus
         if (view != null) {

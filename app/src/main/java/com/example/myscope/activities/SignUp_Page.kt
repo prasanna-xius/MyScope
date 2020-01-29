@@ -40,7 +40,6 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
         showLongToast("Registration Successfully Completed")
     }
     private fun onSignupFailed() {
-        showLongToast("Please Enter all fields")
         btn_SignUp!!.isEnabled = true
     }
     private fun validate(): Boolean {
@@ -53,16 +52,29 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
         lastname_layout!!.error = null
         mobile_layout!!.error = null
         email_layout!!.error = null
-        if (firstName.isEmpty() || firstName.length < 3) {
-            firstname_layout!!.error = "at least 3 characters"
+
+        if (firstName.isEmpty()) {
+            firstname_layout!!.error = "Please Enter First Name"
             valid = false
         }
-        if (lastName.isEmpty() || lastName.length < 3) {
-            lastname_layout!!.error = "at least 3 characters"
+        else if (firstName.length < 3) {
+            firstname_layout!!.error = "At least 3 characters"
             valid = false
         }
-        if (mobileNumber.isEmpty() || mobileNumber.length < 10) {
-            mobile_layout!!.error = "enter mobile number"
+        if (lastName.isEmpty()) {
+            lastname_layout!!.error = "Please Enter Last Name"
+            valid = false
+        }
+        else if (lastName.length < 3) {
+            lastname_layout!!.error = "At least 3 characters"
+            valid = false
+        }
+        if (mobileNumber.isEmpty()) {
+            mobile_layout!!.error = "Enter mobile number"
+            valid = false
+        }
+       else if (mobileNumber.length < 10) {
+            mobile_layout!!.error = "Enter Valid mobile number"
             valid = false
         }
         if (TextUtils.isEmpty(emailId)) {
