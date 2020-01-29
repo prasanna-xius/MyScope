@@ -75,7 +75,7 @@
                         android:textColor="@color/color_black"
                         android:textColorHint="@color/bluegray700"
                         android:hint="Enter OTP Here"
-                        android:inputType="textPassword"
+                        android:inputType="numberPassword"
                         android:textSize="@dimen/dimen_16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
