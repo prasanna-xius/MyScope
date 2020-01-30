@@ -12,11 +12,10 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 import com.example.myscope.R
+import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 
 
-
-
- class Prescription_manual : BaseActivity() {
+class Prescription_manual : BaseActivity() {
 //     var arrayList: ArrayList<Values> = ArrayList()
 
      internal lateinit var myCalendar: Calendar
@@ -57,6 +56,7 @@ import com.example.myscope.R
              } else if (medical_condition.text.toString().equals("")) {
                  errorDisplay(medical_condition)
              }
+
          }
 
          myCalendar = Calendar.getInstance()

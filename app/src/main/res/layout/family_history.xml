@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <include layout="@layout/background_image"/>
+        <include layout="@layout/app_bar_main" />
+
+        <include layout="@layout/background_image"/>
    <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -26,7 +28,6 @@
             android:weightSum="2.5">
 
             <TextView
-                android:id="@+id/condition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -97,11 +98,11 @@
                 android:textSize="16sp" />
 
             <EditText
-
                 android:id="@+id/et1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_75"
                 android:layout_weight="1"
+                android:gravity="start"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />

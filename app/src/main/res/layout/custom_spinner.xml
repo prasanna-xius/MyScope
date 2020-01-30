@@ -21,8 +21,7 @@
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"
         android:layout_weight="1"
-        android:id="@+id/customtimepicker"
-        />
+        android:id="@+id/customtimepicker" />
 
     <CheckBox
         android:id="@+id/checkbox"
