@@ -44,5 +44,6 @@
 
     <color name="jet_black">#464646</color>
     <color name="colortext">#267CBC</color>
+    <color name="color_toolbar">#2879FE</color>
 
 </resources>

@@ -24,7 +24,6 @@ class Otp_Page : BaseActivity(), View.OnClickListener {
                 }
 
                 navigateToActivity(Intent(applicationContext,Navigation_Drawer_Blogs::class.java))
-                showLongToast("Login Successfully Completed")
             }
         }
     }
@@ -35,7 +34,7 @@ class Otp_Page : BaseActivity(), View.OnClickListener {
 
     private fun validate(): Boolean {
         var valid = true
-        val otpNumber = edt_otp!!.text.toString()
+        val otpNumber = edt_otp!!.text.toString().trim()
         if (otpNumber.isEmpty()) {
             otp_layout!!.error = "Enter OTP number"
             valid = false

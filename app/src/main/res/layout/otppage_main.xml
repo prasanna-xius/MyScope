@@ -71,6 +71,7 @@
                         android:paddingLeft="@dimen/dimen_8"
                         android:paddingTop="@dimen/dimen_8"
                         android:maxLength="6"
+                        android:singleLine="true"
                         android:backgroundTint="@color/jet_black"
                         android:textColor="@color/color_black"
                         android:textColorHint="@color/bluegray700"

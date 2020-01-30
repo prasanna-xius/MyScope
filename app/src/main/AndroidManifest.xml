@@ -2,9 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myscope">
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.camera2" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -47,9 +54,10 @@
         <activity android:name=".activities.medical_history.Medication_History_Activity" />
         <activity android:name=".activities.medical_history.Surgery_History_Activity" />
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />
-
+        <activity android:name=".activities.Prescription_manual_Activity" />
         <activity android:name=".ImageUpload" />
         <activity android:name=".activities.Prescription_manual" />
+        <activity android:name=".activities.Medical_Documents_Activity" />
        
 
     </application>

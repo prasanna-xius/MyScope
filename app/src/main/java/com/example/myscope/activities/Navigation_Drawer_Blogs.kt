@@ -96,28 +96,28 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
             }
             R.id.card_Pres -> {
-                navigateToActivity(Intent(applicationContext,Prescription_manual::class.java))
+                navigateToActivity(Intent(applicationContext,Prescription_manual_Activity::class.java))
             }
             R.id.card_MD -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
             }
             R.id.card_LabReports -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
             }
             R.id.card_selfmonitoring -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
             }
             R.id.card_health_services -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
             }
             R.id.card_EducationalBlog -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
             }
             R.id.card_appointments -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
             }
             R.id.card_Contactus -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
 
             }
         }

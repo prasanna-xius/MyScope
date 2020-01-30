@@ -40,7 +40,6 @@ class Login_Page : BaseActivity(), View.OnClickListener {
         }
     }
     private fun onSignupFailed() {
-        showLongToast("Please Enter all fields")
         btn_otp_send!!.isEnabled = true
     }
     private fun validate(): Boolean {

@@ -199,6 +199,7 @@
     <string name="prescription_manual">Prescription</string>
     <string name="time">Time</string>
     <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
+    <string name="mobile">0123456789</string>
 
     <string-array name="formulation_array">
         <item>None</item>
