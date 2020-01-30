@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <include layout="@layout/app_bar_main" />
         <include layout="@layout/background_image" />
 
         <TextView
@@ -26,24 +27,24 @@
             android:layout_margin="10dp"
             android:orientation="horizontal"
             android:layout_marginRight="2dp"
-            android:weightSum="2.5">
+            android:weightSum="2">
 
             <TextView
-                android:id="@+id/known_condition"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:text="@string/known_condition"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/edit_text1"
+                android:id="@+id/et_condition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/disease"
                 android:paddingLeft="@dimen/dimen_4"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
@@ -55,33 +56,25 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal"
-            android:weightSum="2.5">
+            android:weightSum="2">
 
             <TextView
-                android:id="@+id/disease_statues"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:text="@string/disease_statues"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
-            <FrameLayout
+            <Spinner
+                android:id="@+id/spinner_disease"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/border_bg"
-                android:layout_height="wrap_content">
+                android:popupBackground="@color/colorWhite"
+                android:background="@drawable/edittext_border"
+                android:padding="@dimen/dimen_4"/>
 
-                <Spinner
-                    android:id="@+id/spinner_disease"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/bg_screen2"
-                    android:popupBackground="@color/colorWhite"
-                    android:layout_weight="1"
-                    android:entries="@array/disease_arrays"
-                    android:paddingLeft="@dimen/dimen_4" />
-            </FrameLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -89,19 +82,18 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal"
-            android:weightSum="2.5">
+            android:weightSum="2">
 
             <TextView
-                android:id="@+id/diseased_duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:text="@string/disease_duration"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/edit_text2"
+                android:id="@+id/et_noOfYrs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -119,19 +111,18 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal"
-            android:weightSum="2.5">
+            android:weightSum="2">
 
             <TextView
-                android:id="@+id/WhenStarted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:text="@string/when_started"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/edit_text4"
+            <TextView
+                android:id="@+id/et_startDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -149,19 +140,18 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal"
-            android:weightSum="2.5">
+            android:weightSum="2">
 
             <TextView
-                android:id="@+id/when_ended"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:text="@string/when_ended"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/edit_text5"
+            <TextView
+                android:id="@+id/et_stopDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -179,19 +169,18 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal"
-            android:weightSum="2.5">
+            android:weightSum="2">
 
             <TextView
-                android:id="@+id/notes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:text="@string/notes"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16dp" />
 
             <EditText
-                android:id="@+id/edit_text3"
+                android:id="@+id/notes_medicalHistory"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_75"
                 android:layout_weight="1"
@@ -203,14 +192,16 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/bt_medicalHistory"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_medicalHistory"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@color/bg_screen2"
+            android:background="@drawable/background_button"
+            android:backgroundTint="#1F78D3"
             android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
             android:text="@string/save"
-            android:textColor="@color/colorWhite"
             android:textSize="16sp" />
     </LinearLayout>
 </ScrollView>

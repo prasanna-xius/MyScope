@@ -1,7 +1,5 @@
 package com.example.myscope.activities
-import android.app.Activity
 import android.app.ActivityOptions
-import android.app.DatePickerDialog
 import android.content.ContentProviderOperation
 import android.content.ContentResolver
 import android.content.Context
@@ -14,8 +12,6 @@ import android.os.Build
 import android.os.RemoteException
 import android.provider.ContactsContract
 import android.provider.MediaStore
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -25,7 +21,6 @@ import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import java.text.SimpleDateFormat
@@ -178,8 +173,10 @@ open class BaseActivity : AppCompatActivity() {
     fun validateInput(editText:EditText, editvalue:String) {
         if(editvalue.equals(""))
         {
+
             errorDisplay(editText)
             showLongSnackBar("Please fill the required fields")
+
         } else {
             editText.setCompoundDrawables(null, null, null, null)
         }
@@ -194,6 +191,7 @@ open class BaseActivity : AppCompatActivity() {
                 val spinnertext = parent.getItemAtPosition(position).toString()
                if(spinnertext.equals("None")) {
                    errorDisplayTextview(spinnername.text1)
+                   showLongSnackBar("Please fill the required fields")
                }
             }
 
@@ -204,20 +202,20 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun validateDate() {
-        if (!start_date.text.toString().equals("") && !stop_date.text.toString().equals("")) {
-            start_date.setCompoundDrawables(null, null, null, null)
-            stop_date.setCompoundDrawables(null, null, null, null)
-            val startDate = SimpleDateFormat("dd-MMM-yyyy").format(Date(start_date.text.toString()))
-            val endDate = SimpleDateFormat("dd-MMM-yyyy").format(Date(stop_date.text.toString()))
-            if (startDate > endDate) {
+    fun validateDate(startDate: TextView, stopDate: TextView) {
+        if (!startDate.text.toString().equals("") && !stopDate.text.toString().equals("")) {
+            startDate.setCompoundDrawables(null, null, null, null)
+            stopDate.setCompoundDrawables(null, null, null, null)
+            val startDate1 = SimpleDateFormat("dd-MMM-yyyy").format(Date(startDate.text.toString()))
+            val endDate1 = SimpleDateFormat("dd-MMM-yyyy").format(Date(stopDate.text.toString()))
+            if (startDate1 > endDate1) {
                 // date in text view is current date
                 showLongSnackBar("Start date cannot be after end date")
-                errorDisplayTextview(start_date)
+                errorDisplayTextview(startDate)
             }
         } else {
-            errorDisplayTextview(start_date)
-            errorDisplayTextview(stop_date)
+            errorDisplayTextview(startDate)
+            errorDisplayTextview(stopDate)
         }
     }
 

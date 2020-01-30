@@ -3,12 +3,10 @@ package com.example.myscope.activities
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import com.example.myscope.R
 import android.widget.Spinner
-import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import java.text.DateFormat
 import java.util.*
 
@@ -80,7 +78,7 @@ class Prescription_manual : BaseActivity() {
             validate(formulation!!)
             validate(dose!!)
             validate(isprescribed!!)
-            validateDate()
+            validateDate(start_date,stop_date)
 
         }
 

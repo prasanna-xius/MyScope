@@ -5,13 +5,13 @@
     <string name="home">Home</string>
     <!--Medical History-->
     <string name="medical_history">MEDICAL HISTORY</string>
-    <string name="known_condition">Known Condition <font color='#a4c639'>*</font></string>
-    <string name="disease_statues"> Disease Statues <font color='#a4c639'>*</font></string>
+    <string name="known_condition">Known Condition <font color='#ff0000'>*</font></string>
+    <string name="disease_statues"> Disease Statues <font color='#ff0000'>*</font></string>
     <string name="disease_duration"> Disease Duration</string>
     <string name="no_of_yrs"> No of yrs</string>
-    <string name="when_started">When Started <font color='#a4c639'>*</font></string>
+    <string name="when_started">When Started <font color='#ff0000'>*</font></string>
     <string name="started_date">Started Date</string>
-    <string name="when_ended">When Ended <font color='#a4c639'>*</font></string>
+    <string name="when_ended">When Ended <font color='#ff0000'>*</font></string>
     <string name="ended_date"> Ended Date</string>
     <string name="notes">Notes</string>
     <string name="save">SAVE</string>
@@ -19,20 +19,21 @@
     <string name="disease"> Disease</string>
     <!--Family History-->
     <string name="family_history"> Family History</string>
-    <string name="condition">Condition<font color='#a4c639'>*</font></string>
+    <string name="condition">Condition<font color='#ff0000'>*</font></string>
     <string name="diabetes"> Diabetes</string>
-    <string name="relationship">Relationship<font color='#a4c639'>*</font></string>
+    <string name="relationship">Relationship<font color='#ff0000'>*</font></string>
     <!--/Family History-->
     <!--Social History-->
     <string name="social_history"> Social History</string>
-    <string name="smoking">Smoking<font color='#a4c639'>*</font></string>
+    <string name="smoking">Smoking<font color='#ff0000'>*</font></string>
     <string name="total_yrs_of_smoking">Total yrs of smoking</string>
-    <string name="drinking">Drinking<font color='#a4c639'>*</font></string>
-    <string name="tobacco_usage">Tobacco usage<font color='#a4c639'>*</font></string>
+    <string name="drinking">Drinking<font color='#ff0000'>*</font></string>
+    <string name="total_yrs_of_drinking">Total yrs of drinking</string>
+    <string name="tobacco_usage">Tobacco usage<font color='#ff0000'>*</font></string>
     <!--Social History-->
     <!--Diet-->
     <string name="diet_title">DIET</string>
-    <string name="diet">DIET<font color='#a4c639'>*</font></string>
+    <string name="diet">DIET<font color='#ff0000'>*</font></string>
     <!--Diet-->
     <!--Allergy-->
     <string name="allergy">Allergy</string>
@@ -85,24 +86,24 @@
         <item>7. Others</item>
     </string-array>
     <string-array name="smoking_arrays">
-        <item>Select status</item>
-        <item>1. Never smoke</item>
-        <item>2. Former smoker</item>
-        <item>3. Occasional Smoker</item>
-        <item>4. Monthly Smoker</item>
-        <item>5. Weekly Smoker</item>
-        <item>6. Daily Light Smoker (Less than 2 cigarettes/day)</item>
-        <item>7. Daily Heavy Smoker (More than 5 cigarettes/day)</item>
+        <item>None</item>
+        <item>Never smoke</item>
+        <item>Former smoker</item>
+        <item>Occasional Smoker</item>
+        <item>Monthly Smoker</item>
+        <item>Weekly Smoker</item>
+        <item>Daily Light Smoker (Less than 2 cigarettes/day)</item>
+        <item>Daily Heavy Smoker (More than 5 cigarettes/day)</item>
     </string-array>
     <string-array name="Relationship_arrays">
-        <item>Select Relationship</item>
-        <item>1. Grandfather</item>
-        <item>2. Grandmother</item>
-        <item>3. Father</item>
-        <item>4. Mother</item>
-        <item>5. Sister</item>
-        <item>6. Brother</item>
-        <item>7. Others</item>
+        <item>None</item>
+        <item>Grandfather</item>
+        <item>Grandmother</item>
+        <item>Father</item>
+        <item>Mother</item>
+        <item>Sister</item>
+        <item>Brother</item>
+        <item>Others</item>
     </string-array>
     <string-array name="is_prescribed_arrays">
         <item>Select prescription</item>
@@ -111,14 +112,21 @@
         <item>3. Prescribed OTC </item>
     </string-array>
     <string-array name="drinking_arrays">
-        <item>Select status</item>
-        <item>1. Never Drink</item>
-        <item>2. Former Drinker</item>
-        <item>3. Occasional Drinker</item>
-        <item>4. Monthly Drinker</item>
-        <item>5. Weekly Drinker</item>
-        <item>6. Daily Light Drinker (Less than 2 Drinker /day)</item>
-        <item>7. Daily Heavy Drinker (More than 2 Drinker /day)</item>
+        <item>None</item>
+        <item>Never Drink</item>
+        <item>Former Drinker</item>
+        <item>Occasional Drinker</item>
+        <item>Monthly Drinker</item>
+        <item>Weekly Drinker</item>
+        <item>Daily Light Drinker (Less than 2 Drinker /day)</item>
+        <item>Daily Heavy Drinker (More than 2 Drinker /day)</item>
+    </string-array>
+    <string-array name="tobacco_array">
+        <item>None</item>
+        <item>Cigar/Pipe</item>
+        <item>Chew/ snuff </item>
+        <item>Cigarette </item>
+        <item>Beddi </item>
     </string-array>
     <string-array name="dose_unit_arrays">
         <item>Select dose</item>
@@ -135,16 +143,16 @@
         <item>11. Others</item>
     </string-array>
     <string-array name="disease_arrays">
-        <item>Select status</item>
+        <item>None</item>
         <item>Current: Currently has this</item>
         <item>Intermittent: Comes and Goes</item>
         <item>Past: No Longer has this</item>
     </string-array>
     <string-array name="diet_arrays">
-        <item>Select status</item>
-        <item>1. Veg</item>
-        <item>2. Non-veg</item>
-        <item>3. Mixed Diet</item>
+        <item>None</item>
+        <item>Veg</item>
+        <item>Non-veg</item>
+        <item>Mixed Diet</item>
     </string-array>
     <string-array name="allergy_arrays">
         <item>Select status</item>

@@ -1,41 +1,33 @@
 package com.example.myscope.activities.medical_history
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
 import android.widget.*
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
-import kotlinx.android.synthetic.main.calander_layout.*
-import kotlinx.android.synthetic.main.custom_spinner.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.medical_history.*
-import java.text.SimpleDateFormat
+import java.text.DateFormat
 import java.util.*
 
 class Medical_History : BaseActivity() {
-
     internal lateinit var myCalendar: Calendar
+    private var startDateOrEndDAte = true
+    var spinner_disease: Spinner? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history)
+        showToolbar()
+        header!!.text = "Medical History"
+        spinner_disease = findViewById<Spinner>(R.id.spinner_disease)
 
-//        val adapter = ArrayAdapter.createFromResource(this, R.array.disease_arrays, R.layout.spinner_item)
-//        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-//        spinner_disease.setAdapter(adapter)
-
-        errorRemove(condition)
-        spinnerSet(spinner_disease,resources.getStringArray(R.array.disease_arrays))
-
-
-
-        bt_medicalHistory.setOnClickListener {
-            if (condition.text.toString().trim().equals("")) {
-                errorDisplay(condition)
-            }
-        }
+        val adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
+                resources.getStringArray(R.array.disease_arrays))
+        spinner_disease!!.adapter = adapter
 
         myCalendar = Calendar.getInstance()
         val date = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -43,40 +35,60 @@ class Medical_History : BaseActivity() {
             myCalendar.set(Calendar.YEAR, year)
             myCalendar.set(Calendar.MONTH, monthOfYear)
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
+            if (startDateOrEndDAte) {
+                et_startDate.setText(date1)
+            } else {
+                et_stopDate.setText(date1)
+            }
         }
-
-
 
         et_startDate.setOnClickListener {
             // TODO Auto-generated method stub
             DatePickerDialog(this, R.style.MyDatePicker, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+            startDateOrEndDAte = true
         }
 
-        val layoutInflater: LayoutInflater = LayoutInflater.from(applicationContext)
+        et_stopDate.setOnClickListener {
+            DatePickerDialog(this, R.style.MyDatePicker, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                    myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+            startDateOrEndDAte = false
+        }
 
-        // Inflate the layout using LayoutInflater
-        val view: View = layoutInflater.inflate(
-                R.layout.custom_spinner,
-                linearlayout, // Root layout to attach the view
-                false
-        )
-        val label = view.findViewById<TextView>(R.id.textBox)
-//        label.setText(spinner_disease)
-//        val timpicker = view.findViewById<TimePicker>(R.id.customtimepicker)
-//        val checkbox = view.findViewById<View>(R.id.checkbox)
+        btn_medicalHistory.setOnClickListener {
+            assignValuestoVariable()
+            validate(spinner_disease!!)
+            validateDate(et_startDate, et_stopDate)
+        }
 
+    }
+
+
+    private fun assignValuestoVariable() {
+
+        val condition = et_condition.text.toString()
+        val diseases = spinner_disease!!.selectedItem.toString()
+        val startDate = et_startDate.text.toString()
+        val stopDate = et_stopDate.text.toString()
+        validateInput(et_condition, condition)
+        validateSpinner(spinner_disease!!, diseases)
+
+        if ((condition != "") &&
+                (diseases != "None") &&
+                (startDate != "") &&
+                (stopDate != "")) {
+
+            showLongToast("save the details")
+
+//                  intent = Intent(applicationContext,Family_History::class.java)
+//                  startActivity(intent)
+        } else {
 
 
         }
 
-    private fun updateLabel() {
-        val myFormat = "MM/dd/yyyy" //In which you need put here
-        val sdf = SimpleDateFormat(myFormat, Locale.US)
-        et_startDate.text = sdf.format(myCalendar.time)
 
-        }
-
-
-
+    }
 }
