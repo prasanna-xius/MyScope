@@ -3,6 +3,7 @@
 
     <string name="app_name">My Scope</string>
     <string name="home">Home</string>
+    <string name="nameerror">Name Required</string>
     <!--Medical History-->
     <string name="medical_history">MEDICAL HISTORY</string>
     <string name="known_condition">Known Condition <font color='#a4c639'>*</font></string>

@@ -42,10 +42,10 @@
         <activity android:name=".activities.medical_history.Family_History"/>
         <activity android:name=".activities.medical_history.Social_History"/>
         <activity android:name=".activities.medical_history.Diet"/>
-        <activity android:name=".activities.medical_history.Allergies_Activity" />
-        <activity android:name=".activities.medical_history.Immunization_History_Activity" />
-        <activity android:name=".activities.medical_history.Medication_History_Activity" />
-        <activity android:name=".activities.medical_history.Surgery_History_Activity" />
+        <activity android:name=".activities.medical_history.Allergies"/>
+        <activity android:name=".activities.medical_history.ImmunizationHistory" />
+        <activity android:name=".activities.medical_history.MedicationHistory" />
+        <activity android:name=".activities.medical_history.SurgeryHistory" />
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />
 
         <activity android:name=".ImageUpload" />
