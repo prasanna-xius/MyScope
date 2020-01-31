@@ -21,9 +21,9 @@ class Medical_History_Activity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history_main)
         home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
-        showToolbar()
-        setStatusBarTopColor()
+        showToolbar1()
         header!!.text = "Medical History"
+
     }
     private inner class CustomAdapter(var context: Context, var result: Array<String>, var imageId: IntArray) : BaseAdapter() {
         private var inflater: LayoutInflater? = null

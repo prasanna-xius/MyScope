@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -80,14 +81,34 @@ open class BaseActivity : AppCompatActivity() {
         editText.error = message
         editText.requestFocus()
     }
+    fun getBackButton(): ImageButton {
+        return back_btn;
+    }
     fun showToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
 
-        
+
+//        imgToolBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                toolbarSearchDialog.dismiss();
+//            }
+//        });
+
+
+    }
+    fun showToolbar1() {
+        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
+//        supportActionBar!!.setDisplayShowHomeEnabled(true)
+//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        getBackButton().setOnClickListener {
+            finish()
+        }
+
 //        imgToolBack.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -100,9 +121,8 @@ open class BaseActivity : AppCompatActivity() {
     fun showBlackToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
+//        supportActionBar!!.setDisplayShowHomeEnabled(true)
+//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     fun getRealPathFromURI(context: Context, contentUri: Uri): String {
@@ -160,9 +180,9 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
     fun showPictureDialog() {
-        val pictureDialog = AlertDialog.Builder(this)
-
+        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
         pictureDialog.setTitle("Select Action")
+
         val pictureDialogItems = arrayOf(
                 "Select photo from gallery",
                 "Capture photo from camera",

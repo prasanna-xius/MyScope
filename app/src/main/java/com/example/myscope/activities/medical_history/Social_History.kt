@@ -13,8 +13,8 @@ class Social_History : BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.social_history)
 
-        showToolbar()
-        header!!.text = "Social_History"
+        showToolbar1()
+        header!!.text = "Social History"
 
 
 //        var spinnersmoking = findViewById<Spinner>(R.id.spinner_smoking)

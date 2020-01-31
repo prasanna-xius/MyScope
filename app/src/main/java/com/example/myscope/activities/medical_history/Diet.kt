@@ -18,7 +18,7 @@ class Diet : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.diet)
-        showToolbar()
+        showToolbar1()
         header!!.text = "Diet"
 
 //        var spinner_diet = findViewById(R.id.spinner_diet) as Spinner

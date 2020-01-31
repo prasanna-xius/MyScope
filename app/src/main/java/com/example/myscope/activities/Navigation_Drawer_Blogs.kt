@@ -32,7 +32,6 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
         setContentView(R.layout.activity_navigation_blogs)
 
         showToolbar()
-        setStatusBarTopColor()
         headerTextView = findViewById<View>(R.id.header) as TextView
         headerTextView!!.text = "DashBoard"
 

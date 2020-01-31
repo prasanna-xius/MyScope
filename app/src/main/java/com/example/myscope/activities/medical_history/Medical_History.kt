@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.*
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.custom_spinner.*
 import kotlinx.android.synthetic.main.medical_history.*
 import java.text.SimpleDateFormat
@@ -19,6 +20,9 @@ class Medical_History : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history)
+
+        showToolbar1()
+        header!!.text = "Medical History"
 
         val adapter = ArrayAdapter.createFromResource(this, R.array.disease_arrays, R.layout.spinner_item)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)

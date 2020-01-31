@@ -26,6 +26,12 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="Alert_Dialogue_Background" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:textColor">@color/bg_screen2</item>
+
+    </style>
+
     <dimen name="_14ssp">14sp</dimen>
     <color name="bluegray700">#455A64</color>
     <color name="bluegray300">#90A4AE</color>

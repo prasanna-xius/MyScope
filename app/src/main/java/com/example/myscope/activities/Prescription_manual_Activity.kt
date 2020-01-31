@@ -21,14 +21,13 @@ import kotlinx.android.synthetic.main.medical_history_main.*
 class Prescription_manual_Activity : BaseActivity() {
 
     var images = intArrayOf(R.drawable.helopathy, R.drawable.homeopathy, R.drawable.ayurveda)
-    var names = arrayOf("HoloPathy", "HomeoPathy", "Ayurvedha")
+    var names = arrayOf("Allopathy", "Homeopathy", "Ayurveda")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.prescriptions_drug_main)
         home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
-        showToolbar()
-        setStatusBarTopColor()
+        showToolbar1()
         header!!.text = "Prescriptions"
     }
     private inner class CustomAdapter(var context: Context, var result: Array<String>, var imageId: IntArray) : BaseAdapter() {
