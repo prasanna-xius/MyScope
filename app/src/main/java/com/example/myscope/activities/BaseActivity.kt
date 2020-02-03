@@ -1,21 +1,12 @@
 package com.example.myscope.activities
-import android.app.Activity
 import android.app.ActivityOptions
-import android.app.DatePickerDialog
-import android.content.ContentProviderOperation
-import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
-import android.content.OperationApplicationException
 import android.database.Cursor
 import android.graphics.Color
 import android.net.Uri
 import android.os.Build
-import android.os.RemoteException
-import android.provider.ContactsContract
 import android.provider.MediaStore
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -24,8 +15,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_prescription_manual.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import java.text.SimpleDateFormat
@@ -81,6 +70,16 @@ open class BaseActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
+
+        
+//        imgToolBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                toolbarSearchDialog.dismiss();
+//            }
+//        });
+
+
     }
     fun showBlackToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
@@ -89,45 +88,7 @@ open class BaseActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
     }
-    fun getContactID(contactHelper: ContentResolver,
-                     number: String): Long {
-        val contactUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
-                Uri.encode(number))
-        val projection = arrayOf(ContactsContract.PhoneLookup._ID)
-        var cursor: Cursor? = null
-        try {
-            cursor = contactHelper.query(contactUri, projection, null, null, null)
-            if (cursor!!.moveToFirst()) {
-                val personID = cursor.getColumnIndex(ContactsContract.PhoneLookup._ID)
-                return cursor.getLong(personID)
-            }
-            return -1
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            if (cursor != null) {
-                cursor.close()
-                cursor = null
-            }
-        }
-        return -1
-    }
-    fun deleteContact(contactHelper: ContentResolver, number: String): Boolean {
-        val ops = ArrayList<ContentProviderOperation>()
-        val args = arrayOf(getContactID(
-                contactHelper, number).toString())
-        ops.add(ContentProviderOperation.newDelete(ContactsContract.RawContacts.CONTENT_URI)
-                .withSelection(ContactsContract.RawContacts.CONTACT_ID + "=?", args).build())
-        try {
-            contactHelper.applyBatch(ContactsContract.AUTHORITY, ops)
-            return true
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        } catch (e: OperationApplicationException) {
-            e.printStackTrace()
-        }
-        return false
-    }
+
     fun getRealPathFromURI(context: Context, contentUri: Uri): String {
         var cursor: Cursor? = null
         try {
@@ -140,12 +101,7 @@ open class BaseActivity : AppCompatActivity() {
             cursor?.close()
         }
     }
-    //    public void lunchFragemnt(Fragment fragment){
-    //        FragmentManager fragmentManager = getSupportFragmentManager();
-    //        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-    //        fragmentTransaction.replace(R.id.fragment_container, fragment, fragment.getClass().getName());
-    //        fragmentTransaction.commit();
-    //    }
+
     fun hideKeyBoard() {
         val view = this.currentFocus
         if (view != null) {
@@ -168,7 +124,7 @@ open class BaseActivity : AppCompatActivity() {
     }
     /*Spinner error code */
      fun validateSpinner(spinnername: Spinner, spinnertext: String) {
-        if(spinnertext.equals("None"))
+        if(spinnertext.equals("None") || spinnertext.equals("") )
         {
             errorDisplayTextview(spinnername.text1)
         }
@@ -204,21 +160,25 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun validateDate() {
-        if (!start_date.text.toString().equals("") && !stop_date.text.toString().equals("")) {
-            start_date.setCompoundDrawables(null, null, null, null)
-            stop_date.setCompoundDrawables(null, null, null, null)
-            val startDate = SimpleDateFormat("dd-MMM-yyyy").format(Date(start_date.text.toString()))
-            val endDate = SimpleDateFormat("dd-MMM-yyyy").format(Date(stop_date.text.toString()))
-            if (startDate > endDate) {
+    fun validateDate(startDate: TextView, stopDate: TextView, boolean: Any): Boolean {
+        if (!startDate.text.toString().equals("") && !stopDate.text.toString().equals("")) {
+            startDate.setCompoundDrawables(null, null, null, null)
+            stopDate.setCompoundDrawables(null, null, null, null)
+            val startDate1 = SimpleDateFormat("dd-MMM-yyyy").format(Date(startDate.text.toString()))
+            val endDate1 = SimpleDateFormat("dd-MMM-yyyy").format(Date(stopDate.text.toString()))
+            if (startDate1 > endDate1) {
                 // date in text view is current date
+                stopDate.setText("")
                 showLongSnackBar("Start date cannot be after end date")
-                errorDisplayTextview(start_date)
+                errorDisplayTextview(startDate)
+                return false;
             }
         } else {
-            errorDisplayTextview(start_date)
-            errorDisplayTextview(stop_date)
+            errorDisplayTextview(startDate)
+            errorDisplayTextview(stopDate)
+            return false
         }
+        return true
     }
 
     companion object {

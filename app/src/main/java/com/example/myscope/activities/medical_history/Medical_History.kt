@@ -15,7 +15,6 @@ class Medical_History : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history)
-        var edit_text1=findViewById<EditText>(R.id.edit_text1)
 
         var spinner_disease = findViewById(R.id.spinner_disease) as Spinner
         val adapter = ArrayAdapter.createFromResource(this, R.array.disease_arrays, R.layout.spinner_dropdown_item)

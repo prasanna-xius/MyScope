@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <include layout="@layout/background_image"/>
+        <include layout="@layout/app_bar_main" />
+
+        <include layout="@layout/background_image"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:inputType="number"
             android:background="@drawable/border_bg"
             android:textColor="@color/bg_screen2"
             android:textColorHint="@color/bg_screen2"
@@ -138,21 +141,20 @@
             android:text="@string/drinking"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:background="@drawable/border_bg"
             android:layout_height="wrap_content">
+
         <Spinner
             android:id="@+id/spinner_drinking"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/bg_screen2"
+            android:layout_height="wrap_content"
             android:popupBackground="@color/colorWhite"
             android:padding="2dp"
             android:entries="@array/drinking_arrays"/>
-        </FrameLayout>
+        </FrameLayout>>
     </LinearLayout>
 
     <LinearLayout
@@ -167,21 +169,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/total_yrs_of_smoking"
+            android:text="@string/total_yrs_of_drinking"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
         <EditText
-
-            android:id="@+id/et11"
+            android:id="@+id/et_yrsOfDrinkig"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/border_bg"
             android:padding="2dp"
+            android:inputType="number"
             android:textColor="@color/bg_screen2"
-            android:textColorHint="@color/bg_screen2"
-            android:hint=""
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -191,7 +191,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_marginBottom="@dimen/dimen_10"
         android:text="@string/save"
+        android:backgroundTint="#1F78D3"
         android:textColor="@color/colorWhite"
         android:background="@color/bg_screen2"
         android:textSize="16sp" />

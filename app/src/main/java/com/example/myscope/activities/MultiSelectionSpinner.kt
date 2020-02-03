@@ -74,14 +74,16 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
     }
 
     override fun onClick(dialog: DialogInterface, which: Int, isChecked: Boolean) {
-        if (mSelection != null && which < mSelection!!.size) {
+        if (mSelection != null && which < mSelection!!.size && which>=1) {
             mSelection!![which] = isChecked
 
             simple_adapter.clear()
             simple_adapter.add(buildSelectedItemString())
         } else {
-            throw IllegalArgumentException(
-                    "Argument 'which' is out of bounds.")
+            if(which.equals(0)) {
+            mSelection!![0] = false
+            }
+
         }
     }
 
