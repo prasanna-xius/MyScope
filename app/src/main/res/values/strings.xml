@@ -28,6 +28,7 @@
     <string name="smoking">Smoking<font color='#a4c639'>*</font></string>
     <string name="total_yrs_of_smoking">Total yrs of smoking</string>
     <string name="drinking">Drinking<font color='#a4c639'>*</font></string>
+    <string name="total_yrs_of_drinking">Total yrs of drinking</string>
     <string name="tobacco_usage">Tobacco usage<font color='#a4c639'>*</font></string>
     <!--Social History-->
     <!--Diet-->
@@ -82,72 +83,72 @@
         <item>4. Inhaler</item>
         <item>5. Syrup</item>
         <item>6. cream</item>
-        <item>7. Others</item>
+        <item>Others</item>
     </string-array>
     <string-array name="smoking_arrays">
-        <item>Select status</item>
-        <item>1. Never smoke</item>
-        <item>2. Former smoker</item>
-        <item>3. Occasional Smoker</item>
-        <item>4. Monthly Smoker</item>
-        <item>5. Weekly Smoker</item>
-        <item>6. Daily Light Smoker (Less than 2 cigarettes/day)</item>
-        <item>7. Daily Heavy Smoker (More than 5 cigarettes/day)</item>
+        <item>None</item>
+        <item>Never smoke</item>
+        <item>Former smoker</item>
+        <item>Occasional Smoker</item>
+        <item>Monthly Smoker</item>
+        <item>Weekly Smoker</item>
+        <item>Daily Light Smoker (Less than 2 cigarettes/day)</item>
+        <item>Daily Heavy Smoker (More than 5 cigarettes/day)</item>
     </string-array>
     <string-array name="Relationship_arrays">
-        <item>Select Relationship</item>
-        <item>1. Grandfather</item>
-        <item>2. Grandmother</item>
-        <item>3. Father</item>
-        <item>4. Mother</item>
-        <item>5. Sister</item>
-        <item>6. Brother</item>
-        <item>7. Others</item>
+        <item>None</item>
+        <item>Grandfather</item>
+        <item>Grandmother</item>
+        <item>Father</item>
+        <item>Mother</item>
+        <item>Sister</item>
+        <item>Brother</item>
+        <item>Others</item>
     </string-array>
     <string-array name="is_prescribed_arrays">
-        <item>Select prescription</item>
-        <item>1. Over the counter (OTC) </item>
-        <item>2. Prescribed </item>
-        <item>3. Prescribed OTC </item>
+        <item>None</item>
+        <item>Over the counter (OTC) </item>
+        <item>Prescribed </item>
+        <item>Prescribed OTC </item>
     </string-array>
     <string-array name="drinking_arrays">
-        <item>Select status</item>
-        <item>1. Never Drink</item>
-        <item>2. Former Drinker</item>
-        <item>3. Occasional Drinker</item>
-        <item>4. Monthly Drinker</item>
-        <item>5. Weekly Drinker</item>
-        <item>6. Daily Light Drinker (Less than 2 Drinker /day)</item>
-        <item>7. Daily Heavy Drinker (More than 2 Drinker /day)</item>
+        <item>None</item>
+        <item>Never Drink</item>
+        <item>Former Drinker</item>
+        <item>Occasional Drinker</item>
+        <item>Monthly Drinker</item>
+        <item>Weekly Drinker</item>
+        <item>Daily Light Drinker (Less than 2 Drinker /day)</item>
+        <item>Daily Heavy Drinker (More than 2 Drinker /day)</item>
     </string-array>
     <string-array name="dose_unit_arrays">
-        <item>Select dose</item>
-        <item>1. international unit (iu)</item>
-        <item>2. Micrograms (mcg)</item>
-        <item>3. Milliequivalent (meq)</item>
-        <item>4. Milliequivalent per milliliter (meq/ml)</item>
-        <item>5. Milligram (mg)</item>
-        <item>6. Milligram per milliliter (mg/ml)</item>
-        <item>7. Milliliter (ml)</item>
-        <item>8. Percentage (%)</item>
-        <item>9. Unit (unt)</item>
-        <item>10. Unit per milliliter (unt/ml)</item>
-        <item>11. Others</item>
+        <item>None</item>
+        <item>international unit (iu)</item>
+        <item>Micrograms (mcg)</item>
+        <item>Milliequivalent (meq)</item>
+        <item>Milliequivalent per milliliter (meq/ml)</item>
+        <item>Milligram (mg)</item>
+        <item>Milligram per milliliter (mg/ml)</item>
+        <item>Milliliter (ml)</item>
+        <item>Percentage (%)</item>
+        <item>Unit (unt)</item>
+        <item>Unit per milliliter (unt/ml)</item>
+        <item>Others</item>
     </string-array>
     <string-array name="disease_arrays">
-        <item>Select status</item>
+        <item>None</item>
         <item>Current: Currently has this</item>
         <item>Intermittent: Comes and Goes</item>
         <item>Past: No Longer has this</item>
     </string-array>
     <string-array name="diet_arrays">
-        <item>Select status</item>
-        <item>1. Veg</item>
-        <item>2. Non-veg</item>
-        <item>3. Mixed Diet</item>
+        <item>None</item>
+        <item>Veg</item>
+        <item>Non-veg</item>
+        <item>Mixed Diet</item>
     </string-array>
     <string-array name="allergy_arrays">
-        <item>Select status</item>
+        <item>None</item>
         <item>1. Drug</item>
         <item>2. Food</item>
         <item>3. Plant</item>
@@ -195,9 +196,10 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
     <string name="hospital_name">Hospital Name <font color='#ff0000'>*</font></string>
-    <string name="doctor_name">Doctor Name<font color='#ff0000'>*</font></string>
+    <string name="doctor_name">Doctor Name <font color='#ff0000'>*</font></string>
     <string name="prescription_manual">Prescription</string>
-    <string name="time">Time<font color='#ff0000'>*</font></string>
+    <string name="time">Time <font color='#ff0000'>*</font></string>
+    <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
 
     <string-array name="formulation_array">
         <item>None</item>
@@ -238,29 +240,29 @@
     </string-array>
     <string-array name="timings">
         <item>None</item>
-        <item>1 A.M</item>
-        <item>2 A.M</item>
-        <item>3 A.M</item>
-        <item>4 A.M</item>
-        <item>5 A.M</item>
-        <item>6 A.M</item>
-        <item>7 A.M</item>
-        <item>8 A.M</item>
-        <item>9 A.M</item>
-        <item>10 A.M</item>
-        <item>11 A.M</item>
-        <item>12 A.M</item>
-        <item>1 P.M</item>
-        <item>2 P.M</item>
-        <item>3 P.M</item>
-        <item>4 P.M</item>
-        <item>5 P.M</item>
-        <item>6 P.M</item>
-        <item>7 P.M</item>
-        <item>8 P.M</item>
-        <item>9 P.M</item>
-        <item>10 P.M</item>
-        <item>11 P.M</item>
-        <item>12 P.M</item>
+        <item>1 AM</item>
+        <item>2 AM</item>
+        <item>3 AM</item>
+        <item>4 AM</item>
+        <item>5 AM</item>
+        <item>6 AM</item>
+        <item>7 AM</item>
+        <item>8 AM</item>
+        <item>9 AM</item>
+        <item>10 AM</item>
+        <item>11 AM</item>
+        <item>12 AM</item>
+        <item>1 PM</item>
+        <item>2 PM</item>
+        <item>3 PM</item>
+        <item>4 PM</item>
+        <item>5 PM</item>
+        <item>6 PM</item>
+        <item>7 PM</item>
+        <item>8 PM</item>
+        <item>9 PM</item>
+        <item>10 PM</item>
+        <item>11 PM</item>
+        <item>12 PM</item>
     </string-array>
 </resources>

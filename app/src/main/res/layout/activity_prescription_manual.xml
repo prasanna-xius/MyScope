@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
+    android:orientation="vertical"
     >
-<LinearLayout
+<!--    <include layout="@layout/app_bar_main"></include>-->
+
+    <ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -20,8 +23,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-
-        <include layout="@layout/background_image"/>"
+        <include layout="@layout/background_image"/>
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/edit_icon1"
+            android:layout_gravity="right"
+            android:id="@+id/editbutton"
+            android:layout_marginRight="@dimen/dimen_20"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_10"
             android:orientation="vertical"
+            android:id="@+id/parentview"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/dimen_4"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:textSize="15sp"
                     android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"
@@ -90,7 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:padding="@dimen/dimen_4"
                     android:textSize="15sp"
                     android:textColor="@color/bg_screen2"
@@ -152,7 +163,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:digits="text"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:padding="@dimen/dimen_4"
                     android:textSize="15sp"
                     android:textColor="@color/bg_screen2"
@@ -183,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="500"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="@dimen/dimen_4"
                     android:textSize="15sp"
                     android:textColor="@color/bg_screen2"
@@ -300,7 +311,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:focusable="false"
                     android:padding="@dimen/dimen_4"
                     android:inputType="date"
                     android:textSize="15sp"
@@ -333,7 +343,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:focusable="false"
                     android:textSize="15sp"
                     android:inputType="date"
                     android:padding="@dimen/dimen_4"
@@ -424,6 +433,9 @@
                     android:padding="@dimen/dimen_4"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:textSize="15sp"
+                    android:lines="4"
+                    android:gravity="left"
+                    android:inputType="textMultiLine"
                     android:importantForAutofill="no"
                     android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"
@@ -440,9 +452,21 @@
                 android:layout_marginTop="@dimen/dimen_10"
                 android:layout_marginBottom="@dimen/dimen_10"
                 />
+
+            <Button
+                android:id="@+id/prescription_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_button"
+                android:backgroundTint="#1F78D3"
+                android:text="Update"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginBottom="@dimen/dimen_10"
+                android:visibility="gone"
+                />
         </LinearLayout>
 
 
     </LinearLayout>
-</LinearLayout>
 </ScrollView>
+</LinearLayout>

@@ -33,6 +33,7 @@
                 android:layout_below="@+id/home_item_image_view"
                 android:layout_centerHorizontal="true"
                 android:gravity="center|start"
+
                 android:layout_marginLeft="@dimen/dimen_8"
                 android:text="dfsdfdf hfgh gjhfghfgh fghf"
                 android:textColor="@color/colortext"
