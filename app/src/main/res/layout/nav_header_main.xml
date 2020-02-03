@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_container"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_145"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_140"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dimen_25">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/img_header_bg"
+            android:layout_width="@dimen/dimen_85"
+            android:layout_height="@dimen/dimen_85"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_5"
+            android:src="@drawable/ic_person"
+            app:civ_border_color="@color/colorBackground"
+            app:civ_border_width="@dimen/dimen_1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_140"
+            android:layout_marginLeft="@dimen/dimen_15"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dimen_20">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MyScope"
+                android:textColor="@color/colorBackground"
+                android:textSize="@dimen/dimen_15"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hyderabad,India"
+                android:textColor="@color/colorBackground"
+                android:textSize="@dimen/dimen_12" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:layout_marginRight="@dimen/dimen_8"
+        android:background="#1F78D3" />
+</LinearLayout>

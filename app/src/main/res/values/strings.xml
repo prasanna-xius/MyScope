@@ -1,3 +1,256 @@
-<resources>
-    <string name="app_name">MyScope</string>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name">My Scope</string>
+    <string name="home">Home</string>
+    <!--Medical History-->
+    <string name="medical_history">MEDICAL HISTORY</string>
+    <string name="known_condition">Known Condition <font color='#a4c639'>*</font></string>
+    <string name="disease_statues"> Disease Statues</string>
+    <string name="disease_duration"> Disease Duration</string>
+    <string name="no_of_yrs"> No of yrs</string>
+    <string name="when_started">When Started <font color='#a4c639'>*</font></string>
+    <string name="started_date">Started Date</string>
+    <string name="when_ended">When Ended <font color='#a4c639'>*</font></string>
+    <string name="ended_date"> Ended Date</string>
+    <string name="notes">Notes</string>
+    <string name="save">SAVE</string>
+     <!--end-->
+    <string name="disease"> Disease</string>
+    <!--Family History-->
+    <string name="family_history"> Family History</string>
+    <string name="condition">Condition<font color='#a4c639'>*</font></string>
+    <string name="diabetes"> Diabetes</string>
+    <string name="relationship">Relationship<font color='#a4c639'>*</font></string>
+    <!--/Family History-->
+    <!--Social History-->
+    <string name="social_history"> Social History</string>
+    <string name="smoking">Smoking<font color='#a4c639'>*</font></string>
+    <string name="total_yrs_of_smoking">Total yrs of smoking</string>
+    <string name="drinking">Drinking<font color='#a4c639'>*</font></string>
+    <string name="total_yrs_of_drinking">Total yrs of drinking</string>
+    <string name="tobacco_usage">Tobacco usage<font color='#a4c639'>*</font></string>
+    <!--Social History-->
+    <!--Diet-->
+    <string name="diet_title">DIET</string>
+    <string name="diet">DIET<font color='#a4c639'>*</font></string>
+    <!--Diet-->
+    <!--Allergy-->
+    <string name="allergy">Allergy</string>
+    <string name="add_allergy">Add Allergy<font color='#a4c639'>*</font></string>
+    <string name="name">Name<font color='#a4c639'>*</font></string>
+    <string name="eg_allergy">Aspirin,sea food,dust</string>
+    <string name="reaction">Reaction<font color='#a4c639'>*</font></string>
+    <string name="eg_reaction">sneezing,itching</string>
+    <string name="treatment">Treatment</string>
+    <string name="eg_treatment">Anti Allergic drugs</string>
+    <string name="first_observed">First observed</string>
+    <string name="calender">Calender</string>
+    <!--Allergy-->
+    <!--Immunization History-->
+    <string name="immunization_history">Immunization History</string>
+    <string name="hepatitis_b">Hepatitis B</string>
+    <string name="when_given">When given<font color='#a4c639'>*</font></string>
+    <string name="adverse_event">Adverse event<font color='#a4c639'>*</font></string>
+    <string name="brand">Brand</string>
+    <!--Immunization History-->
+    <!--Medication History-->
+    <string name="medication_history">Medication History</string>
+    <string name="paracetamol">Paracetamol</string>
+    <string name="eg_dose_strength">E.g. 500</string>
+    <string name="reason">Reason</string>
+    <!--Medication History-->
+    <!--Surgery History-->
+    <string name="surgery_history">Surgery History</string>
+    <string name="eg_Surgery">E.g. Endoscopy</string>
+    <string name="when_performed">When performed<font color='#a4c639'>*</font></string>
+    <string name="body_location">Body Location<font color='#a4c639'>*</font></string>
+    <string name="eg_body_location">E.g. Stomach</string>
+    <string name="provider">Provider</string>
+    <string name="eg_provider">E.g. Doctor Name</string>
+    <!--Surgery History-->
+    <string-array name="how_often_taken_arrays">
+        <item>Select time</item>
+        <item>1. Morning </item>
+        <item>2.  Afternoon </item>
+        <item>3.  Night </item>
+        <item>4. other </item>
+    </string-array>
+    <string-array name="formulation_arrays">
+        <item>1. Tablet</item>
+        <item>2. Capsule</item>
+        <item>3. Injection</item>
+        <item>4. Inhaler</item>
+        <item>5. Syrup</item>
+        <item>6. cream</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="smoking_arrays">
+        <item>None</item>
+        <item>Never smoke</item>
+        <item>Former smoker</item>
+        <item>Occasional Smoker</item>
+        <item>Monthly Smoker</item>
+        <item>Weekly Smoker</item>
+        <item>Daily Light Smoker (Less than 2 cigarettes/day)</item>
+        <item>Daily Heavy Smoker (More than 5 cigarettes/day)</item>
+    </string-array>
+    <string-array name="Relationship_arrays">
+        <item>None</item>
+        <item>Grandfather</item>
+        <item>Grandmother</item>
+        <item>Father</item>
+        <item>Mother</item>
+        <item>Sister</item>
+        <item>Brother</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="is_prescribed_arrays">
+        <item>None</item>
+        <item>Over the counter (OTC) </item>
+        <item>Prescribed </item>
+        <item>Prescribed OTC </item>
+    </string-array>
+    <string-array name="drinking_arrays">
+        <item>None</item>
+        <item>Never Drink</item>
+        <item>Former Drinker</item>
+        <item>Occasional Drinker</item>
+        <item>Monthly Drinker</item>
+        <item>Weekly Drinker</item>
+        <item>Daily Light Drinker (Less than 2 Drinker /day)</item>
+        <item>Daily Heavy Drinker (More than 2 Drinker /day)</item>
+    </string-array>
+    <string-array name="dose_unit_arrays">
+        <item>None</item>
+        <item>international unit (iu)</item>
+        <item>Micrograms (mcg)</item>
+        <item>Milliequivalent (meq)</item>
+        <item>Milliequivalent per milliliter (meq/ml)</item>
+        <item>Milligram (mg)</item>
+        <item>Milligram per milliliter (mg/ml)</item>
+        <item>Milliliter (ml)</item>
+        <item>Percentage (%)</item>
+        <item>Unit (unt)</item>
+        <item>Unit per milliliter (unt/ml)</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="disease_arrays">
+        <item>None</item>
+        <item>Current: Currently has this</item>
+        <item>Intermittent: Comes and Goes</item>
+        <item>Past: No Longer has this</item>
+    </string-array>
+    <string-array name="diet_arrays">
+        <item>None</item>
+        <item>Veg</item>
+        <item>Non-veg</item>
+        <item>Mixed Diet</item>
+    </string-array>
+    <string-array name="allergy_arrays">
+        <item>None</item>
+        <item>1. Drug</item>
+        <item>2. Food</item>
+        <item>3. Plant</item>
+        <item>4. Environment</item>
+        <item>5. Others</item>
+        <item>6. None</item>
+    </string-array>
+
+    <string name="action_settings">Settings</string>
+    <string name="openDrawer">open_drawer</string>
+    <string name="closeDrawer">close_drawer</string>
+
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+    <string name="formulation">Formulation <font color='#ff0000'>*</font></string>
+    <string name="formulation_name">Name <font color='#ff0000'>*</font></string>
+    <string name="dose_strength">Dose Strength <font color='#ff0000'>*</font></string>
+    <string name="dose_unit">Dose Unit <font color='#ff0000'>*</font></string>
+    <string name="how_often_taken">How often taken? <font color='#ff0000'>*</font></string>
+    <string name="start_date">Start Date <font color='#ff0000'>*</font></string>
+    <string name="stop_date">Stop Date <font color='#ff0000'>*</font></string>
+    <string name="medical_condition">Medical Condition <font color='#ff0000'>*</font></string>
+    <string name="is_prescribed">Is prescribed? <font color='#ff0000'>*</font></string>
+    <string name="prescription_note">Note</string>
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="action_notification">Notification</string>
+
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+
+    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+
+    <string name="slide_4_title">World Travel</string>
+    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <string name="hospital_name">Hospital Name <font color='#ff0000'>*</font></string>
+    <string name="doctor_name">Doctor Name<font color='#ff0000'>*</font></string>
+    <string name="prescription_manual">Prescription</string>
+    <string name="time">Time</string>
+    <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
+    <string name="mobile">0123456789</string>
+
+    <string-array name="formulation_array">
+        <item>None</item>
+        <item>Tablet</item>
+        <item>Capsule</item>
+        <item>Injection</item>
+        <item>Inhaler</item>
+        <item>Syrup</item>
+        <item>Cream</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="dose_unit">
+        <item>None</item>
+        <item>international unit (iu)</item>
+        <item> Micrograms (mcg)</item>
+        <item>Milliequivalent (meq)</item>
+        <item> Milliequivalent per milliliter (meq/ml)</item>
+        <item>Milligram (mg) </item>
+        <item> Milligram per milliliter (mg/ml)</item>
+        <item>Milliliter (ml) </item>
+        <item>Percentage (%) </item>
+        <item>Unit (unt) </item>
+        <item> Unit per milliliter (unt/ml) </item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="how_often_taken">
+        <item>None</item>
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Night</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="is_prescribed">
+        <item>None</item>
+        <item>Over the counter (OTC)</item>
+        <item>Prescribed</item>
+        <item>Prescribed OTC</item>
+    </string-array>
+    <string-array name="timings">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
 </resources>

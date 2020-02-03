@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myscope">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera2" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -8,14 +12,51 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <activity android:name=".activities.Splash_Activity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activities.BaseActivity" />
+
+        <activity android:name=".activities.SignUp_Page"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".activities.Login_Page"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".activities.Otp_Page"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".activities.MobileChange_Activity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+
+        <activity android:name=".activities.Navigation_Drawer_Blogs" />
+
+        <activity android:name=".activities.View_UserDetails_Activity" />
+
+        <activity android:name=".fragments.Dash_Board_Activity" />
+
+        <activity android:name=".activities.Medical_History_Activity" />
+
+        <activity android:name=".activities.medical_history.Medical_History"/>
+        <activity android:name=".activities.medical_history.Family_History"/>
+        <activity android:name=".activities.medical_history.Social_History"/>
+        <activity android:name=".activities.medical_history.Diet"/>
+        <activity android:name=".activities.Prescription_manual_Activity"/>
+        <activity android:name=".activities.medical_history.Allergies_Activity" />
+        <activity android:name=".activities.medical_history.Immunization_History_Activity" />
+        <activity android:name=".activities.medical_history.Medication_History_Activity" />
+        <activity android:name=".activities.medical_history.Surgery_History_Activity" />
+        <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />
+
+        <activity android:name=".ImageUpload" />
+        <activity android:name=".activities.Prescription_manual" />
+        <activity android:name=".activities.Medical_Documents_Activity" />
+
     </application>
 
 </manifest>

@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Gradle: com.archit.calendar:awesome-calendar:1.1.4@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7142edbdb9dda614e3b7eb9e8ab63db2/jetified-awesome-calendar-1.1.4/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7142edbdb9dda614e3b7eb9e8ab63db2/jetified-awesome-calendar-1.1.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7142edbdb9dda614e3b7eb9e8ab63db2/jetified-awesome-calendar-1.1.4/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.archit.calendar/awesome-calendar/1.1.4/bffc6e00ec2cfcc85b26fcdf31d6aadc0338f444/awesome-calendar-1.1.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.archit.calendar/awesome-calendar/1.1.4/405790c9351432fe3a1f2fc0976f66ca9020e987/awesome-calendar-1.1.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
