@@ -24,7 +24,9 @@ class Medical_History : BaseActivity() {
         showToolbar1()
         header!!.text = "Medical History"
 
-        val adapter = ArrayAdapter.createFromResource(this, R.array.disease_arrays, R.layout.spinner_item)
+   
+        var spinner_disease = findViewById(R.id.spinner_disease) as Spinner
+        val adapter = ArrayAdapter.createFromResource(this, R.array.disease_arrays, R.layout.spinner_dropdown_item)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spinner_disease.setAdapter(adapter)
 

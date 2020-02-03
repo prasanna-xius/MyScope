@@ -20,6 +20,9 @@ class Diet : BaseActivity() {
         setContentView(R.layout.diet)
         showToolbar1()
         header!!.text = "Diet"
+        var spinner_diet = findViewById(R.id.spinner_diet) as Spinner
+        val adapter = ArrayAdapter.createFromResource(this, R.array.diet_arrays, R.layout.spinner_dropdown_item)
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
 
 //        var spinner_diet = findViewById(R.id.spinner_diet) as Spinner
 //        val adapter = ArrayAdapter.createFromResource(this, R.array.diet_arrays, R.layout.spinner_item)

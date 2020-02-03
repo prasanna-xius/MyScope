@@ -15,16 +15,15 @@ class Family_History : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.family_history)
-
-        showToolbar1()
+        showToolbar()
         header!!.text = "Family History"
 
         var spinner_family = findViewById(R.id.spinner_family) as Spinner
-        val adapter = ArrayAdapter.createFromResource(this, R.array.Relationship_arrays, R.layout.spinner_item)
+        val adapter = ArrayAdapter.createFromResource(this, R.array.Relationship_arrays, R.layout.spinner_dropdown_item)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
 
         spinner_family.setAdapter(adapter)
 
-        errorRemove(et_family_condition)
+//        errorRemove(et_family_condition)
     }
 }

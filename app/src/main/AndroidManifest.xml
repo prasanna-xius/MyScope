@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-        <activity android:name=".activities.Splash_Activity">
+        <activity android:name=".activities.SliderActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,6 +51,10 @@
         <activity android:name=".activities.medical_history.Immunization_History_Activity" />
         <activity android:name=".activities.medical_history.Medication_History_Activity" />
         <activity android:name=".activities.medical_history.Surgery_History_Activity" />
+        <activity android:name=".activities.medical_history.Allergies"/>
+        <activity android:name=".activities.medical_history.ImmunizationHistory" />
+        <activity android:name=".activities.medical_history.MedicationHistory" />
+        <activity android:name=".activities.medical_history.SurgeryHistory" />
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />
 
         <activity android:name=".ImageUpload" />

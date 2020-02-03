@@ -55,6 +55,18 @@ class Social_History : BaseActivity(){
 
 
         }
+
+        var spinnersmoking = findViewById<Spinner>(R.id.spinner_smoking)
+        val adapter = ArrayAdapter.createFromResource(this, R.array.smoking_arrays, R.layout.spinner_dropdown_item)
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinnersmoking.setAdapter(adapter)
+
+
+
+        var spinnerdrinking = findViewById<Spinner>(R.id.spinner_drinking)
+        val adapter1 = ArrayAdapter.createFromResource(this, R.array.drinking_arrays, R.layout.spinner_dropdown_item)
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinnerdrinking.setAdapter(adapter1)
     }
 
 }

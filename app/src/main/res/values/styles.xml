@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -9,7 +9,11 @@
 
     </style>
 
-
+    <style name="MyDatePicker" parent="android:Widget.Material.Light.DatePicker" tools:targetApi="lollipop">
+        <item name="colorAccent">@color/bg_screen2</item>
+        <item name="android:textColorPrimary">@color/bg_screen2</item>
+        <item name="android:textColor">@color/bg_screen2</item>
+    </style>
     <style name="TextStyle_Title">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -35,5 +39,11 @@
     <dimen name="_14ssp">14sp</dimen>
     <color name="bluegray700">#455A64</color>
     <color name="bluegray300">#90A4AE</color>
+
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:textColor">@color/bg_screen2</item>
+        <item name="colorAccent">@color/bg_screen2</item>
+    </style>
 
 </resources>
