@@ -24,7 +24,8 @@ class Diet : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.diet)
 
-        showToolbar()
+        activitiesToolbar()
+
         header!!.text = "Diet"
 
         spinner_diet = findViewById(R.id.spinner_diet)

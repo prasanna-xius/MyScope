@@ -25,7 +25,9 @@ class Family_History : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.family_history)
-        showToolbar()
+
+        activitiesToolbar()
+
         header!!.text = "Family History"
         relationshipSpinner = findViewById<Spinner>(R.id.spinner_family)
 

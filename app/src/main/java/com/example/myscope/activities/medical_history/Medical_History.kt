@@ -24,7 +24,9 @@ class Medical_History : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history)
-        showToolbar()
+
+        activitiesToolbar()
+
         header!!.text = "Medical History"
         spinner_disease = findViewById<Spinner>(R.id.spinner_disease)
 

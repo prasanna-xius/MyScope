@@ -7,7 +7,9 @@ import android.util.Log
 import android.util.Patterns
 import android.view.View
 import com.example.myscope.R
+import kotlinx.android.synthetic.main.mobile_change_main.*
 import kotlinx.android.synthetic.main.signuppage_main.*
+import java.util.regex.Pattern
 
 
 class SignUp_Page : BaseActivity(), View.OnClickListener {
@@ -32,10 +34,7 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
 
     private fun signup() {
         Log.d(TAG, "SignUp_Page")
-        val firstName = edt_firstname!!.text.toString().trim { it <= ' ' }
-        val lastName = edt_lastname!!.text.toString().trim { it <= ' ' }
-        val mobileNumber = edt_mobile!!.text.toString().trim { it <= ' ' }
-        val emailId = edt_email!!.text.toString().trim { it <= ' ' }
+
         if (validate() == false) {
             onSignupFailed()
             return
@@ -50,16 +49,17 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
 
     private fun validate(): Boolean {
         var valid = true
-        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]"
 
         val firstName = edt_firstname!!.text.toString().trim { it <= ' ' }
         val lastName = edt_lastname!!.text.toString().trim { it <= ' ' }
         val mobileNumber = edt_mobile!!.text.toString().trim { it <= ' ' }
         val emailId = edt_email!!.text.toString().trim { it <= ' ' }
+        
         firstname_layout!!.error = null
         lastname_layout!!.error = null
         mobile_layout!!.error = null
         email_layout!!.error = null
+
 
         if (firstName.isEmpty()) {
             firstname_layout!!.error = "Please Enter First Name"
@@ -86,12 +86,11 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
             mobile_layout!!.error = "Enter Valid mobile number"
             valid = false
         }
-        if (TextUtils.isEmpty(emailId)) {
-            email_layout!!.error = "Email is required"
-            return false
-        } else if (EMAIL_ADDRESS.matcher(emailId).matches()) {
-            email_layout!!.error = "Enter a valid email"
-            return false
+        if (emailId.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailId).matches()) {
+            email_layout!!.error = "Enter Register Email Address"
+            valid = false
+        } else {
+            email_layout!!.error = null
         }
         return valid
     }

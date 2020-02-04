@@ -84,62 +84,38 @@ open class BaseActivity : AppCompatActivity() {
     fun getBackButton(): ImageButton {
         return back_btn;
     }
-    fun showToolbar() {
+    fun navigationToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
 
-      
-//        imgToolBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                toolbarSearchDialog.dismiss();
-//            }
-//        });
-
-
     }
-    fun showToolbar1() {
+    fun activitiesToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-//        supportActionBar!!.setDisplayShowHomeEnabled(true)
-//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         getBackButton().setOnClickListener {
             finish()
         }
 
-//        imgToolBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                toolbarSearchDialog.dismiss();
-//            }
-//        });
-
-
-    }
-    fun showBlackToolbar() {
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
 
     }
 
-    fun getRealPathFromURI(context: Context, contentUri: Uri): String {
-        var cursor: Cursor? = null
-        try {
-            val proj = arrayOf(MediaStore.Images.Media.DATA)
-            cursor = context.contentResolver.query(contentUri, proj, null, null, null)
-            val column_index = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            cursor.moveToFirst()
-            return cursor.getString(column_index)
-        } finally {
-            cursor?.close()
-        }
-    }
+
+//    fun getRealPathFromURI(context: Context, contentUri: Uri): String {
+//        var cursor: Cursor? = null
+//        try {
+//            val proj = arrayOf(MediaStore.Images.Media.DATA)
+//            cursor = context.contentResolver.query(contentUri, proj, null, null, null)
+//            val column_index = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+//            cursor.moveToFirst()
+//            return cursor.getString(column_index)
+//        } finally {
+//            cursor?.close()
+//        }
+//    }
 
     fun hideKeyBoard() {
         val view = this.currentFocus
@@ -324,40 +300,6 @@ open class BaseActivity : AppCompatActivity() {
         return ""
     }
 
-//    fun requestMultiplePermissions() {
-//        Dexter.withActivity(this)
-//                .withPermissions(
-//                        Manifest.permission.CAMERA,
-//                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                        Manifest.permission.READ_EXTERNAL_STORAGE)
-//                .withListener(object : MultiplePermissionsListener {
-//                    override fun onPermissionsChecked(report: MultiplePermissionsReport) { // check if all permissions are granted
-//                        if (report.areAllPermissionsGranted()) {
-//                            Toast.makeText(applicationContext, "All permissions are granted by user!", Toast.LENGTH_SHORT).show()
-//                        }
-//                        // check for permanent denial of any permission
-//                        if (report.isAnyPermissionPermanentlyDenied) { // show alert dialog navigating to Settings
-////openSettingsDialog();
-//                        }
-//                    }
-//
-//                    override fun onPermissionRationaleShouldBeShown(permissions: List<PermissionRequest>, token: PermissionToken) {
-//                        token.continuePermissionRequest()
-//                    }
-//                }).withErrorListener { Toast.makeText(applicationContext, "Some Error! ", Toast.LENGTH_SHORT).show() }
-//                .onSameThread()
-//                .check()
-//    }
-
-    val EMAIL_ADDRESS = Pattern.compile(
-            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                    "\\@" +
-                    "[a-zA-Z]" +
-                    "(" +
-                    "\\." +
-                    "[a-zA-Z]" +
-                    ")+"
-    )
 
     companion object {
         private val TAG = BaseActivity::class.java.name

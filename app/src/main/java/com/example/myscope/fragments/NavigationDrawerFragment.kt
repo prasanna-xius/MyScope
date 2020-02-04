@@ -16,9 +16,9 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.myscope.R
+import com.example.myscope.activities.Dash_Board_Activity
 import com.example.myscope.activities.Medical_Documents_Activity
 import com.example.myscope.activities.Prescription_manual
-import com.example.myscope.activities.View_UserDetails_Activity
 import com.example.myscope.activities.medical_history.*
 import com.example.myscope.adapters.ExpandableListAdapter
 import java.util.*
