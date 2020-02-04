@@ -27,7 +27,6 @@ class Social_History : BaseActivity() {
         showToolbar()
         header!!.text = "Social History"
 
-
         spinnersmoking= findViewById(R.id.spinner_smoking)
         spinnerdrinking= findViewById(R.id.spinner_drinking)
         val  tobaccoUsage = findViewById<MultiSelectionSpinner>(R.id.tobacco_usage)
@@ -71,8 +70,6 @@ class Social_History : BaseActivity() {
 
                showLongToast("save the details")
 
-//               intent = Intent(this,Diet::class.java)
-//               startActivity(intent)
            }
         else{
 
