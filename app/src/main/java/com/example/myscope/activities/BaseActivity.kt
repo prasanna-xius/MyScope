@@ -28,7 +28,6 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.util.regex.Pattern
-
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -174,8 +173,10 @@ open class BaseActivity : AppCompatActivity() {
     fun validateInput(editText:EditText, editvalue:String) {
         if(editvalue.equals(""))
         {
+
             errorDisplay(editText)
             showLongSnackBar("Please fill the required fields")
+
         } else {
             editText.setCompoundDrawables(null, null, null, null)
         }
@@ -190,6 +191,7 @@ open class BaseActivity : AppCompatActivity() {
                 val spinnertext = parent.getItemAtPosition(position).toString()
                if(spinnertext.equals("None")) {
                    errorDisplayTextview(spinnername.text1)
+                   showLongSnackBar("Please fill the required fields")
                }
             }
 
@@ -199,6 +201,7 @@ open class BaseActivity : AppCompatActivity() {
 
         }
     }
+
 
     fun validateDate(startDate: TextView, stopDate: TextView, boolean: Any): Boolean {
         if (!startDate.text.toString().equals("") && !stopDate.text.toString().equals("")) {
@@ -212,11 +215,11 @@ open class BaseActivity : AppCompatActivity() {
                 showLongSnackBar("Start date cannot be after end date")
                 errorDisplayTextview(startDate)
                 return false;
-            }
+           }
         } else {
             errorDisplayTextview(startDate)
             errorDisplayTextview(stopDate)
-            return false
+          return false
         }
         return true
     }

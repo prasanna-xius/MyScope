@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorWhite"
     tools:context=".activities.medical_history.Family_History">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <include layout="@layout/app_bar_main" />
 
         <include layout="@layout/background_image"/>
@@ -20,101 +22,102 @@
     android:gravity="center"
     android:textColor="@color/bg_screen2" />
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="10dp"
-            android:weightSum="2.5">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:text="@string/condition"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
+
             <EditText
                 android:id="@+id/et_family_condition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/diabetes"
                 android:background="@drawable/border_bg"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:hint="@string/diabetes"
+                android:padding="2dp"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
-                android:padding="2dp"
                 android:textSize="16sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="10dp"
-            android:weightSum="2.5">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <TextView
-                android:id="@+id/relationship"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/relationship"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/border_bg"
-                android:layout_height="wrap_content">
-
             <Spinner
                 android:id="@+id/spinner_family"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="@color/bg_screen2"
-                android:popupBackground="@color/colorWhite"
-                android:padding="2dp"
-                android:entries="@array/Relationship_arrays" />
-            </FrameLayout>
-
-
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_border"
+                android:padding="@dimen/dimen_4"
+                android:popupBackground="@color/colorWhite" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="10dp"
-            android:weightSum="2.5">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <TextView
-                android:id="@+id/relationship_notes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:text="@string/notes"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et1"
+
+                android:id="@+id/relationship_notes"
+
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_75"
                 android:layout_weight="1"
                 android:gravity="start"
+                android:inputType="textMultiLine"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
         </LinearLayout>
+
         <Button
             android:id="@+id/btn_family"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
             android:layout_gravity="center"
-            android:text="@string/save"
+            android:layout_marginLeft="@dimen/dimen_10"
             android:layout_marginTop="@dimen/dimen_10"
-            android:background="@color/bg_screen2"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:background="@drawable/background_button"
+            android:backgroundTint="#1F78D3"
+            android:text="@string/save"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
     </LinearLayout>
