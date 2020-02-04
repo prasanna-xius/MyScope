@@ -107,19 +107,19 @@ class NavigationDrawerFragment : Fragment() {
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Allergies) { // call activity here
-                    val intent = Intent(activity, Allergies_Activity::class.java)
+                    val intent = Intent(activity, Allergies::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Immunization_History) { // call activity here
-                    val intent = Intent(activity, Immunization_History_Activity::class.java)
+                    val intent = Intent(activity, ImmunizationHistory::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Medication_History) { // call activity here
-                    val intent = Intent(activity, Medication_History_Activity::class.java)
+                    val intent = Intent(activity, MedicationHistory::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Surgery_History) { // call activity here
-                    val intent = Intent(activity, Surgery_History_Activity::class.java)
+                    val intent = Intent(activity, SurgeryHistory::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Adverse_Drug_Reaction) { // call activity here

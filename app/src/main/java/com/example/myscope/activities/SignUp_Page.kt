@@ -64,21 +64,25 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
         if (firstName.isEmpty()) {
             firstname_layout!!.error = "Please Enter First Name"
             valid = false
-        } else if (firstName.length < 3) {
+
+        }
+        else if (firstName.length < 3) {
             firstname_layout!!.error = "At least 3 characters"
             valid = false
         }
         if (lastName.isEmpty()) {
             lastname_layout!!.error = "Please Enter Last Name"
             valid = false
-        } else if (lastName.length < 3) {
+        }
+        else if (lastName.length < 3) {
             lastname_layout!!.error = "At least 3 characters"
             valid = false
         }
         if (mobileNumber.isEmpty()) {
             mobile_layout!!.error = "Enter mobile number"
             valid = false
-        } else if (mobileNumber.length < 10) {
+        }
+       else if (mobileNumber.length < 10) {
             mobile_layout!!.error = "Enter Valid mobile number"
             valid = false
         }
