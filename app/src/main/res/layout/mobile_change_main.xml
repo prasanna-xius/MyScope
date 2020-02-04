@@ -74,6 +74,7 @@
                         android:hint="Enter Register Email"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="@dimen/dimen_8"
+                        android:singleLine="true"
                         android:paddingTop="@dimen/dimen_8"
                         android:textSize="@dimen/dimen_16sp"
                         android:backgroundTint="@color/jet_black"

@@ -26,20 +26,19 @@ class MobileChange_Activity : BaseActivity(), View.OnClickListener {
                     onSignupFailed()
                     return
                 }
-                navigateToActivity(Intent(applicationContext,Login_Page::class.java))
                 showLongToast("Please check your Email and change Mobile Number")
+                navigateToActivity(Intent(applicationContext,Login_Page::class.java))
             }
         }
     }
     private fun onSignupFailed() {
-        showLongToast("Please Enter Valid EmailId")
         btn_send_link!!.isEnabled = true
     }
     private fun validate(): Boolean {
         var valid = true
         val emailId = edt_register_email!!.text.toString()
         if (emailId.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailId).matches()) {
-            mobile_change_layout!!.error = "enter a valid email address"
+            mobile_change_layout!!.error = "Enter Register Email Address"
             valid = false
         } else {
             mobile_change_layout!!.error = null

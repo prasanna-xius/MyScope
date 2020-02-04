@@ -2,7 +2,9 @@ package com.example.myscope.activities.medical_history
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.BaseAdapter
 import android.widget.Spinner
+import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
 
@@ -11,6 +13,9 @@ import com.example.myscope.activities.BaseActivity
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.diet.*
 
+import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
+
+
 class Diet : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -18,6 +23,7 @@ class Diet : BaseActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.diet)
+
         showToolbar()
         header!!.text = "Diet"
 
@@ -42,6 +48,7 @@ class Diet : BaseActivity() {
 
         validateSpinner(spinner_diet!!,dietS)
 
+
         if ((!dietS.equals("None")))
         {
             showLongToast("save details")
@@ -50,4 +57,3 @@ class Diet : BaseActivity() {
             showLongSnackBar("Please fill the required fields")
         }
     }
-}

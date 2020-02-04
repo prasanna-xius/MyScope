@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".activities.medical_history.MedicationHistory">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <include layout="@layout/side_activity"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/medication_history"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="@color/bg_screen2" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/name"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+
+                android:background="@drawable/border_bg"
+                android:textSize="16sp"
+                android:hint="@string/paracetamol"
+                android:textColor="@color/bg_screen2"
+                android:textColorHint="@color/bg_screen2"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/how_often_taken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/how_often_taken"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+            <Spinner
+                android:id="@+id/spinner_how_often_taken"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/spr_bg"
+                android:entries="@array/how_often_taken_arrays"
+                android:padding="2dp" />
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/dose_strength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/dose_strength"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <EditText
+
+                android:id="@+id/et_dose_strength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:background="@drawable/border_bg"
+                android:textSize="16sp"
+                android:hint="@string/eg_dose_strength"
+                android:textColor="@color/bg_screen2"
+                android:textColorHint="@color/bg_screen2"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/formulation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/formulation"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+            <Spinner
+                android:id="@+id/spinner_formulation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:popupBackground="#fff"
+                android:background="@drawable/spr_bg"
+                android:entries="@array/formulation_arrays"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/dose_unit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/dose_unit"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+            <Spinner
+                android:id="@+id/spinner_dose_unit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:popupBackground="#fff"
+                android:background="@drawable/spr_bg"
+                android:entries="@array/dose_unit_arrays"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/reason"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <EditText
+
+                android:id="@+id/et_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:background="@drawable/border_bg"
+                android:textSize="16sp"
+                android:hint="@string/medical_condition"
+                android:textColor="@color/bg_screen2"
+                android:textColorHint="@color/bg_screen2"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/start_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/started_date"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2.0"
+                android:layout_weight="1.0"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.0"
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="14sp"
+                    android:id="@+id/buttonStartdate_medicalHistory"
+                    android:background="@color/bg_screen2"
+                    android:text="choose date"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:textColor="@color/bg_screen2"
+                    android:id="@+id/textviewStartdate_medicalHistory"
+                    android:padding="2dp"
+                    android:text=" " />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/stop_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/ended_date"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2.0"
+                android:layout_weight="1.0"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.0"
+                    android:textColor="#fff"
+                    android:padding="3dp"
+                    android:textSize="14sp"
+                    android:id="@+id/buttonEnddate_MH"
+                    android:background="@color/bg_screen2"
+                    android:text="choose date"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:textColor="@color/bg_screen2"
+                    android:id="@+id/textviewEnddate_MH"
+                    android:padding="2dp"
+                    android:text=" " />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/is_prescribed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/is_prescribed"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+            <Spinner
+                android:id="@+id/spinner_is_prescribed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:padding="2dp"
+                android:popupBackground="#fff"
+                android:background="@drawable/spr_bg"
+                android:entries="@array/is_prescribed_arrays"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/notes_allergies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/notes"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_notes_med"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:textColorHint="@color/bg_screen2"
+                android:background="@drawable/border_bg"
+                android:textSize="16sp"
+                android:hint="Enter Notes"
+                android:textColor="@color/bg_screen2" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_medication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/save"
+           android:layout_marginTop="15dp"
+            android:background="@color/bg_screen2"
+            android:textColor="@color/colorWhite"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp" />
+    </LinearLayout>
+</ScrollView>

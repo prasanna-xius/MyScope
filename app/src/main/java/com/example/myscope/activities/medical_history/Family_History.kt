@@ -6,12 +6,11 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 
-import androidx.appcompat.app.AppCompatActivity
-
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.family_history.*
+
 import kotlinx.android.synthetic.main.medical_history.*
 import java.util.*
 
@@ -22,13 +21,12 @@ class Family_History : BaseActivity() {
     private var startDateOrEndDAte = true
     var relationshipSpinner: Spinner? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.family_history)
         showToolbar()
         header!!.text = "Family History"
-
-
         relationshipSpinner = findViewById<Spinner>(R.id.spinner_family)
 
         val adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
@@ -58,14 +56,13 @@ class Family_History : BaseActivity() {
 
             showLongToast("save the details")
 
-//            intent = Intent(applicationContext,Social_History::class.java)
-//            startActivity(intent)
-
         }
         else{
 
 
+
         }
+
 
     }
 }

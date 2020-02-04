@@ -11,5 +11,7 @@ public class View_UserDetails_Activity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_userdetails_main);
+
+
     }
 }

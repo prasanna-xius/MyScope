@@ -11,10 +11,8 @@
 
     <style name="MyDatePicker" parent="android:Widget.Material.Light.DatePicker" tools:targetApi="lollipop">
         <item name="colorAccent">@color/bg_screen2</item>
-        <item name="android:textColorPrimary">@color/colorWhite</item>
-        <item name="android:textColor">@color/colorWhite</item>
-
-
+        <item name="android:textColorPrimary">@color/bg_screen2</item>
+        <item name="android:textColor">@color/bg_screen2</item>
     </style>
     <style name="TextStyle_Title">
         <item name="android:layout_width">match_parent</item>
@@ -30,6 +28,12 @@
     <style name="error_appearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/colorAccent1</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Alert_Dialogue_Background" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:textColor">@color/bg_screen2</item>
+
     </style>
 
     <dimen name="_14ssp">14sp</dimen>
