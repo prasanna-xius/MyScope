@@ -16,7 +16,7 @@ class Family_History : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.family_history)
 
-        showToolbar1()
+        activitiesToolbar()
         header!!.text = "Family History"
 
         var spinner_family = findViewById(R.id.spinner_family) as Spinner

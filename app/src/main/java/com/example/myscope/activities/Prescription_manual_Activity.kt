@@ -27,7 +27,7 @@ class Prescription_manual_Activity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.prescriptions_drug_main)
         home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
-        showToolbar1()
+        activitiesToolbar()
         header!!.text = "Prescriptions"
     }
     private inner class CustomAdapter(var context: Context, var result: Array<String>, var imageId: IntArray) : BaseAdapter() {

@@ -31,7 +31,7 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation_blogs)
 
-        showToolbar()
+        navigationToolbar()
         headerTextView = findViewById<View>(R.id.header) as TextView
         headerTextView!!.text = "DashBoard"
 

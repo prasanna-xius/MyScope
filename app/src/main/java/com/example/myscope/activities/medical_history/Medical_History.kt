@@ -21,7 +21,7 @@ class Medical_History : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history)
 
-        showToolbar1()
+        activitiesToolbar()
         header!!.text = "Medical History"
 
         val adapter = ArrayAdapter.createFromResource(this, R.array.disease_arrays, R.layout.spinner_item)

@@ -13,7 +13,7 @@ class Social_History : BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.social_history)
 
-        showToolbar1()
+        activitiesToolbar()
         header!!.text = "Social History"
 
 
