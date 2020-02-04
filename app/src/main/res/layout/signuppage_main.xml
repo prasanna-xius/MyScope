@@ -119,7 +119,6 @@
                                 android:maxLength="20"
                                 android:paddingLeft="@dimen/dimen_8"
                                 android:paddingTop="@dimen/dimen_8"
-                                android:singleLine="true"
                                 android:textSize="@dimen/dimen_16sp"
                                 android:backgroundTint="@color/jet_black"
                                 android:textColor="@color/color_black"

@@ -69,7 +69,6 @@ class Prescription_manual_Activity : BaseActivity() {
 //                    navigateToActivity(Intent(applicationContext, Social_History::class.java))
                     showPictureDialog()
                 }
-                Toast.makeText(context, "You Clicked " + result[position], Toast.LENGTH_SHORT).show()
             }
             return rowView
         }

@@ -69,7 +69,6 @@ class Medical_History_Activity : BaseActivity() {
                 } else if (position == 8) {
                     navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
                 }
-                Toast.makeText(context, "You Clicked " + result[position], Toast.LENGTH_SHORT).show()
             }
             return rowView
         }
