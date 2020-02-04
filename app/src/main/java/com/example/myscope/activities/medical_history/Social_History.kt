@@ -20,7 +20,9 @@ class Social_History : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.social_history)
-        showToolbar()
+
+        activitiesToolbar()
+
         header!!.text = "Social History"
 
         spinnersmoking= findViewById(R.id.spinner_smoking)

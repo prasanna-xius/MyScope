@@ -29,7 +29,7 @@ class Prescription_manual_Activity : BaseActivity() {
         setContentView(R.layout.prescriptions_drug_main)
         home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
 
-        showToolbar1()
+        activitiesToolbar()
 
         header!!.text = "Prescriptions"
     }
