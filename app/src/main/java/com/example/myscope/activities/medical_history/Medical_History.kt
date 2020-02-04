@@ -1,12 +1,10 @@
 package com.example.myscope.activities.medical_history
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
-import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.medical_history.*
 import java.text.DateFormat
@@ -16,6 +14,7 @@ class Medical_History : BaseActivity() {
     internal lateinit var myCalendar: Calendar
     private var startDateOrEndDAte = true
     var spinner_disease: Spinner? = null
+    var boolean: Boolean? = true
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +59,7 @@ class Medical_History : BaseActivity() {
         btn_medicalHistory.setOnClickListener {
             assignValuestoVariable()
             validate(spinner_disease!!)
-            validateDate(et_startDate, et_stopDate)
+            boolean = validateDate(et_startDate, et_stopDate, false)
         }
 
     }
@@ -78,17 +77,13 @@ class Medical_History : BaseActivity() {
         if ((condition != "") &&
                 (diseases != "None") &&
                 (startDate != "") &&
-                (stopDate != "")) {
-
+                (stopDate != "") &&
+                boolean!!.equals(false)) {
             showLongToast("save the details")
-
-//                  intent = Intent(applicationContext,Family_History::class.java)
-//                  startActivity(intent)
-        } else {
-
-
         }
-
-
+        else {
+             }
     }
 }
+
+

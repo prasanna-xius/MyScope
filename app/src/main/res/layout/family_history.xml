@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/border_bg"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="@string/diabetes"
                 android:padding="2dp"
                 android:textColor="@color/bg_screen2"
@@ -99,6 +99,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_75"
                 android:layout_weight="1"
+                android:gravity="start"
+                android:inputType="textMultiLine"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />

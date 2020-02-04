@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorWhite"
     tools:context=".activities.medical_history.Medical_History">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,8 +44,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/disease"
-                android:paddingLeft="@dimen/dimen_4"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:padding="@dimen/dimen_4"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:background="@drawable/border_bg"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
@@ -99,7 +100,7 @@
                 android:layout_weight="1"
                 android:hint="@string/no_of_yrs"
                 android:background="@drawable/border_bg"
-                android:paddingLeft="@dimen/dimen_4"
+                android:padding="@dimen/dimen_4"
                 android:inputType="number"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
@@ -128,7 +129,7 @@
                 android:layout_weight="1"
                 android:hint="@string/started_date"
                 android:background="@drawable/border_bg"
-                android:paddingLeft="@dimen/dimen_4"
+                android:padding="@dimen/dimen_4"
                 android:inputType="date"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
@@ -157,7 +158,7 @@
                 android:layout_weight="1"
                 android:hint="@string/ended_date"
                 android:background="@drawable/border_bg"
-                android:paddingLeft="@dimen/dimen_4"
+                android:padding="@dimen/dimen_4"
                 android:inputType="date"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
@@ -185,8 +186,9 @@
                 android:layout_height="@dimen/dimen_75"
                 android:layout_weight="1"
                 android:background="@drawable/border_bg"
-                android:inputType="text"
-                android:paddingLeft="@dimen/dimen_4"
+                android:inputType="textMultiLine"
+                android:gravity="start"
+                android:padding="@dimen/dimen_4"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
         </LinearLayout>
