@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-        <activity android:name=".activities.medical_history.Diet">
+        <activity android:name=".activities.SliderActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

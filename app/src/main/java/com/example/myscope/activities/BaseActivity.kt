@@ -16,6 +16,7 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.annotation.IntegerRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
@@ -23,6 +24,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
+import kotlinx.android.synthetic.main.view_userdetails_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -202,7 +204,61 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun validateDate(startDate: TextView, stopDate: TextView) {
+
+    fun bmicalculator(weight: EditText,height: EditText,bmi: TextView)
+    {
+        if(!height.text.toString().equals("") && !weight.text.toString().equals("")) {
+            val height= (height.text.toString()).toFloat()
+
+            val square = height * height
+            val weight = (weight.text.toString()).toFloat()
+
+            val bmivalue = weight / square
+            bmi.text = bmivalue.toString()
+
+            if (bmivalue < 16) {
+                showLongToast("Severely underweight")
+            } else if (bmivalue < 18.5) {
+                showLongToast("Severely underweight")
+            } else if (bmivalue < 25) {
+                showLongToast("Normal")
+            } else if (bmivalue < 30) {
+                showLongToast("Obese")
+            }
+        } else {
+            errorDisplay(weight)
+            errorDisplay(height)
+            errorDisplayTextview(bmi)
+        }
+
+    }
+
+
+
+    fun validateDate1( dob: TextView, today :TextView){
+        if(!dob.text.toString().equals("") ){
+            dob.setCompoundDrawables(null,null,null,null)
+            val dob1 = SimpleDateFormat("yyyy").format(Date(dob.text.toString()))
+//            val dob2 =  dob1.get(Calendar.YEAR)
+            showLongToast(dob1.toString())
+            val today1: Int = Calendar.getInstance().get(Calendar.YEAR)
+            var age = today1 - dob1.toInt()
+                today.text = age.toString()
+
+
+            if (dob1.toInt() > today1)
+            {
+                showLongSnackBar("Date of birth should be less than today")
+            }
+        }
+        else
+        {
+            errorDisplayTextview(dob)
+            errorDisplayTextview(today)
+
+        }
+    }
+    fun validateDate(startDate: TextView, stopDate: TextView, boolean: Boolean):Boolean {
         if (!startDate.text.toString().equals("") && !stopDate.text.toString().equals("")) {
             startDate.setCompoundDrawables(null, null, null, null)
             stopDate.setCompoundDrawables(null, null, null, null)
@@ -212,14 +268,14 @@ open class BaseActivity : AppCompatActivity() {
                 // date in text view is current date
                 showLongSnackBar("Start date cannot be after end date")
                 errorDisplayTextview(startDate)
+                return false
             }
         } else {
             errorDisplayTextview(startDate)
             errorDisplayTextview(stopDate)
+            return false
         }
+        return true
     }
 
-    companion object {
-        private val TAG = BaseActivity::class.java.name
-    }
 }

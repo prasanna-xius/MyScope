@@ -78,7 +78,7 @@ class Prescription_manual : BaseActivity() {
             validate(formulation!!)
             validate(dose!!)
             validate(isprescribed!!)
-            validateDate(start_date,stop_date)
+            validateDate(start_date,stop_date,false)
 
         }
 
