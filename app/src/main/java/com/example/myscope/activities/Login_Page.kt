@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.TextView
 import com.example.myscope.R
 import kotlinx.android.synthetic.main.login_page_main.*
+import kotlinx.android.synthetic.main.login_page_main.mobile_layout
+import kotlinx.android.synthetic.main.signuppage_main.*
 
 class Login_Page : BaseActivity(), View.OnClickListener {
     var btn_facebook: TextView? = null
@@ -38,14 +40,17 @@ class Login_Page : BaseActivity(), View.OnClickListener {
         }
     }
     private fun onSignupFailed() {
-        showLongToast("Please Enter all fields")
         btn_otp_send!!.isEnabled = true
     }
     private fun validate(): Boolean {
         var valid = true
         val mobileNumber = mobile_number!!.text.toString().trim { it <= ' ' }
-        if (mobileNumber.isEmpty() || mobileNumber.length < 10) {
-            mobile_layout!!.error = "please enter mobile number"
+        if (mobileNumber.isEmpty()) {
+            mobile_layout!!.error = "Enter mobile number"
+            valid = false
+        }
+        else if (mobileNumber.length < 10) {
+            mobile_layout!!.error = "Enter Valid mobile number"
             valid = false
         } else {
             mobile_layout!!.error = null

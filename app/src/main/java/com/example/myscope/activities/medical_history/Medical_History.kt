@@ -2,6 +2,10 @@ package com.example.myscope.activities.medical_history
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+
+import android.view.LayoutInflater
+import android.view.View
+
 import android.widget.*
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity

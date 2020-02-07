@@ -24,23 +24,25 @@ class Otp_Page : BaseActivity(), View.OnClickListener {
                 }
 
                 navigateToActivity(Intent(applicationContext,Navigation_Drawer_Blogs::class.java))
-                showLongToast("Login Successfully Completed")
             }
         }
     }
 
     private fun onSignupFailed() {
-        showLongToast("Please Enter valid OTP")
         btn_verify_otp!!.isEnabled = true
     }
 
     private fun validate(): Boolean {
         var valid = true
-        val otpNumber = edt_otp!!.text.toString()
-        if (otpNumber.isEmpty() || otpNumber.length < 6) {
-            otp_layout!!.error = "enter OTP number"
+        val otpNumber = edt_otp!!.text.toString().trim()
+        if (otpNumber.isEmpty()) {
+            otp_layout!!.error = "Enter OTP number"
             valid = false
-        } else {
+        }
+        else if (otpNumber.length<6){
+            otp_layout!!.error = "Please Enter Valid OTP"
+            valid = false
+        }else {
             otp_layout!!.error = null
         }
         return valid

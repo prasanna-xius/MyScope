@@ -1,34 +1,44 @@
 package com.example.myscope.activities
 import android.app.ActivityOptions
-import android.content.ContentProviderOperation
-import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
-import android.content.OperationApplicationException
 import android.database.Cursor
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
-import android.os.RemoteException
-import android.provider.ContactsContract
+import android.os.Environment
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.annotation.IntegerRes
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_prescription_manual.*
-
+import kotlinx.android.synthetic.main.app_bar_main.*
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.util.regex.Pattern
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import kotlinx.android.synthetic.main.view_userdetails_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 open class BaseActivity : AppCompatActivity() {
+
+    private val GALLERY = 1
+    private val CAMERA = 2
+    private val PICK_PDF_REQUEST = 3
+    private var filePath: Uri? = null
 
     fun showShortToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -72,12 +82,43 @@ open class BaseActivity : AppCompatActivity() {
         editText.error = message
         editText.requestFocus()
     }
+    fun getBackButton(): ImageButton {
+        return back_btn;
+    }
     fun showToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
+
+      
+//        imgToolBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                toolbarSearchDialog.dismiss();
+//            }
+//        });
+
+
+    }
+    fun showToolbar1() {
+        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+        setSupportActionBar(toolbar)
+//        supportActionBar!!.setDisplayShowHomeEnabled(true)
+//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        getBackButton().setOnClickListener {
+            finish()
+        }
+
+//        imgToolBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                toolbarSearchDialog.dismiss();
+//            }
+//        });
+
+
     }
     fun showBlackToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
@@ -85,46 +126,9 @@ open class BaseActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
+
     }
-    fun getContactID(contactHelper: ContentResolver,
-                     number: String): Long {
-        val contactUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
-                Uri.encode(number))
-        val projection = arrayOf(ContactsContract.PhoneLookup._ID)
-        var cursor: Cursor? = null
-        try {
-            cursor = contactHelper.query(contactUri, projection, null, null, null)
-            if (cursor!!.moveToFirst()) {
-                val personID = cursor.getColumnIndex(ContactsContract.PhoneLookup._ID)
-                return cursor.getLong(personID)
-            }
-            return -1
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            if (cursor != null) {
-                cursor.close()
-                cursor = null
-            }
-        }
-        return -1
-    }
-    fun deleteContact(contactHelper: ContentResolver, number: String): Boolean {
-        val ops = ArrayList<ContentProviderOperation>()
-        val args = arrayOf(getContactID(
-                contactHelper, number).toString())
-        ops.add(ContentProviderOperation.newDelete(ContactsContract.RawContacts.CONTENT_URI)
-                .withSelection(ContactsContract.RawContacts.CONTACT_ID + "=?", args).build())
-        try {
-            contactHelper.applyBatch(ContactsContract.AUTHORITY, ops)
-            return true
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        } catch (e: OperationApplicationException) {
-            e.printStackTrace()
-        }
-        return false
-    }
+
     fun getRealPathFromURI(context: Context, contentUri: Uri): String {
         var cursor: Cursor? = null
         try {
@@ -137,12 +141,7 @@ open class BaseActivity : AppCompatActivity() {
             cursor?.close()
         }
     }
-    //    public void lunchFragemnt(Fragment fragment){
-    //        FragmentManager fragmentManager = getSupportFragmentManager();
-    //        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-    //        fragmentTransaction.replace(R.id.fragment_container, fragment, fragment.getClass().getName());
-    //        fragmentTransaction.commit();
-    //    }
+
     fun hideKeyBoard() {
         val view = this.currentFocus
         if (view != null) {
@@ -165,7 +164,7 @@ open class BaseActivity : AppCompatActivity() {
     }
     /*Spinner error code */
      fun validateSpinner(spinnername: Spinner, spinnertext: String) {
-        if(spinnertext.equals("None"))
+        if(spinnertext.equals("None") || spinnertext.equals("") )
         {
             errorDisplayTextview(spinnername.text1)
         }
@@ -203,6 +202,7 @@ open class BaseActivity : AppCompatActivity() {
 
         }
     }
+
 
 
     fun bmicalculator(weight: EditText,height: EditText,bmi: TextView)
@@ -258,7 +258,8 @@ open class BaseActivity : AppCompatActivity() {
 
         }
     }
-    fun validateDate(startDate: TextView, stopDate: TextView, boolean: Boolean):Boolean {
+   
+    fun validateDate(startDate: TextView, stopDate: TextView, boolean: Any): Boolean {
         if (!startDate.text.toString().equals("") && !stopDate.text.toString().equals("")) {
             startDate.setCompoundDrawables(null, null, null, null)
             stopDate.setCompoundDrawables(null, null, null, null)
@@ -266,16 +267,165 @@ open class BaseActivity : AppCompatActivity() {
             val endDate1 = SimpleDateFormat("dd-MMM-yyyy").format(Date(stopDate.text.toString()))
             if (startDate1 > endDate1) {
                 // date in text view is current date
+                stopDate.setText("")
                 showLongSnackBar("Start date cannot be after end date")
                 errorDisplayTextview(startDate)
+
                 return false
             }
         } else {
             errorDisplayTextview(startDate)
             errorDisplayTextview(stopDate)
             return false
-        }
+
+                return false;
+           }
+        
         return true
     }
+    fun showPictureDialog() {
+        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
+        pictureDialog.setTitle("Select Action")
+
+        val pictureDialogItems = arrayOf(
+                "Select photo from gallery",
+                "Capture photo from camera",
+                "Select pdf file from folder",
+                "Manual Entry")
+        pictureDialog.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> choosePhotoFromGallary()
+                1 -> takePhotoFromCamera()
+                2 -> showFileChooser()
+                3 -> showFilemanual()
+
+            }
+        }
+        pictureDialog.show()
+    }
+
+    private fun showFilemanual() {
+
+        navigateToActivity(Intent(applicationContext, Prescription_manual::class.java))
+    }
+
+    private fun showFileChooser() {
+
+//        DownloadTask(this@Image_Uploader3, URL)
+
+        val intent = Intent()
+        intent.type = "application/pdf"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(Intent.createChooser(intent, "Select Pdf"), PICK_PDF_REQUEST)
+    }
+
+    private fun takePhotoFromCamera() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent, CAMERA)
+    }
+
+    private fun choosePhotoFromGallary() {
+        val galleryIntent = Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(galleryIntent, GALLERY)
+    }
+
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        /* if (resultCode == this.RESULT_CANCELED) {
+             return
+         }*/
+        if (requestCode == GALLERY) {
+            if (data != null) {
+                val contentURI: Uri?
+                contentURI = data.data
+                try {
+                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
+                    val path = saveImage(bitmap)
+                    Toast.makeText(this@BaseActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
+//                    iv!!.setImageBitmap(bitmap)
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                    Toast.makeText(this@BaseActivity, "Failed!", Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else if (requestCode == CAMERA) {
+            val thumbnail = data!!.extras!!["data"] as Bitmap?
+//            iv!!.setImageBitmap(thumbnail)
+            saveImage(thumbnail)
+            Toast.makeText(this@BaseActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
+        } else if (requestCode == PICK_PDF_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+            filePath = data.data
+        }
+    }
+
+    private fun saveImage(myBitmap: Bitmap?): String {
+        val bytes = ByteArrayOutputStream()
+        myBitmap!!.compress(Bitmap.CompressFormat.JPEG, 90, bytes)
+        val wallpaperDirectory = File(Environment.getExternalStorageDirectory().toString() + IMAGE_DIRECTORY)
+        // have the object build the directory structure, if needed.
+        if (!wallpaperDirectory.exists()) {
+            wallpaperDirectory.mkdirs()
+        }
+        try {
+            val f = File(wallpaperDirectory, Calendar.getInstance()
+                    .timeInMillis.toString() + ".jpg")
+            f.createNewFile()
+            val fo = FileOutputStream(f)
+            fo.write(bytes.toByteArray())
+            MediaScannerConnection.scanFile(this, arrayOf(f.path), arrayOf("image/jpeg"), null)
+            fo.close()
+            Log.d("TAG", "File Saved::---&gt;" + f.absolutePath)
+            return f.absolutePath
+        } catch (e1: IOException) {
+            e1.printStackTrace()
+        }
+        return ""
+    }
+
+//    fun requestMultiplePermissions() {
+//        Dexter.withActivity(this)
+//                .withPermissions(
+//                        Manifest.permission.CAMERA,
+//                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                        Manifest.permission.READ_EXTERNAL_STORAGE)
+//                .withListener(object : MultiplePermissionsListener {
+//                    override fun onPermissionsChecked(report: MultiplePermissionsReport) { // check if all permissions are granted
+//                        if (report.areAllPermissionsGranted()) {
+//                            Toast.makeText(applicationContext, "All permissions are granted by user!", Toast.LENGTH_SHORT).show()
+//                        }
+//                        // check for permanent denial of any permission
+//                        if (report.isAnyPermissionPermanentlyDenied) { // show alert dialog navigating to Settings
+////openSettingsDialog();
+//                        }
+//                    }
+//
+//                    override fun onPermissionRationaleShouldBeShown(permissions: List<PermissionRequest>, token: PermissionToken) {
+//                        token.continuePermissionRequest()
+//                    }
+//                }).withErrorListener { Toast.makeText(applicationContext, "Some Error! ", Toast.LENGTH_SHORT).show() }
+//                .onSameThread()
+//                .check()
+//    }
+
+    val EMAIL_ADDRESS = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                    "\\@" +
+                    "[a-zA-Z]" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z]" +
+                    ")+"
+    )
+
+
+    companion object {
+        private val TAG = BaseActivity::class.java.name
+        private const val IMAGE_DIRECTORY = "/myfiles"
+
+
+    }
+
 
 }

@@ -14,6 +14,6 @@ class Dash_Board_Activity : BaseActivity() {
         showToolbar()
         setStatusBarTopColor()
         headerTextView = findViewById<View>(R.id.header) as TextView
-        headerTextView!!.text = "Machine"
+        headerTextView!!.text = "DashBoard"
     }
 }

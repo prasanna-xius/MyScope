@@ -76,6 +76,8 @@
                         android:hint="Enter Mobile Number"
                         android:inputType="phone"
                         android:maxLength="10"
+                        android:singleLine="true"
+                        android:digits="@string/mobile"
                         android:paddingLeft="@dimen/dimen_8"
                         android:paddingTop="@dimen/dimen_8"
                         android:textSize="@dimen/dimen_16sp"

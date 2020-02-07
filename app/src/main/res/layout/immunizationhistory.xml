@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".activities.medical_history.ImmunizationHistory">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <include layout="@layout/side_activity"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/immunization_history"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="@color/bg_screen2" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:weightSum="2">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/name"
+        android:textColor="@color/bg_screen2"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:background="@drawable/border_bg"
+        android:textSize="16sp"
+        android:hint="@string/hepatitis_b"
+        android:textColor="@color/bg_screen2"
+        android:textColorHint="@color/bg_screen2"/>
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:weightSum="2.0">
+
+    <TextView
+        android:id="@+id/when_given"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/when_given"
+        android:textColor="@color/bg_screen2"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2.0"
+        android:layout_weight="1.0"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:textColor="#fff"
+            android:padding="5dp"
+            android:textSize="14sp"
+            android:id="@+id/buttondate_immu"
+            android:background="@color/bg_screen2"
+            android:text="choose date"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textColor="@color/bg_screen2"
+            android:id="@+id/textviewdate_immu"
+
+            android:padding="2dp"
+            android:text="" />
+    </LinearLayout>
+
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:weightSum="2">
+
+    <TextView
+        android:id="@+id/adverse_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/adverse_event"
+        android:textColor="@color/bg_screen2"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/et_adverse_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:background="@drawable/border_bg"
+        android:textSize="16sp"
+        android:hint=""
+        android:textColor="@color/bg_screen2"
+        android:textColorHint="@color/bg_screen2"/>
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:weightSum="2">
+
+    <TextView
+        android:id="@+id/brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/brand"
+        android:textColor="@color/bg_screen2"
+        android:textSize="16sp" />
+
+    <EditText
+
+        android:id="@+id/et_brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:background="@drawable/border_bg"
+        android:textSize="16sp"
+        android:hint=""
+        android:textColor="@color/bg_screen2"
+        android:textColorHint="@color/bg_screen2"/>
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:weightSum="2">
+
+    <TextView
+        android:id="@+id/notes_allergies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/notes"
+        android:textColor="@color/bg_screen2"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_notes_immun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:background="@drawable/border_bg"
+        android:textSize="16sp"
+        android:textColor="@color/bg_screen2" />
+</LinearLayout>
+<Button
+    android:id="@+id/btn_immunization"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="50sp"
+    android:text="@string/save"
+    android:textColor="@color/colorWhite"
+    android:background="@color/bg_screen2"
+    android:textSize="16sp" />
+</LinearLayout>
+</ScrollView>

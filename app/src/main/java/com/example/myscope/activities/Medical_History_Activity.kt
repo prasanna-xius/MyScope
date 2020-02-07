@@ -21,9 +21,9 @@ class Medical_History_Activity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history_main)
         home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
-        showToolbar()
-        setStatusBarTopColor()
+        showToolbar1()
         header!!.text = "Medical History"
+
     }
     private inner class CustomAdapter(var context: Context, var result: Array<String>, var imageId: IntArray) : BaseAdapter() {
         private var inflater: LayoutInflater? = null
@@ -59,13 +59,13 @@ class Medical_History_Activity : BaseActivity() {
                 } else if (position == 3) {
                     navigateToActivity(Intent(applicationContext, Diet::class.java))
                 } else if (position == 4) {
-                    navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
+                    navigateToActivity(Intent(applicationContext,Allergies::class.java))
                 } else if (position == 5) {
-                    navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
+                    navigateToActivity(Intent(applicationContext,ImmunizationHistory::class.java))
                 } else if (position == 6) {
-                    navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
+                    navigateToActivity(Intent(applicationContext,MedicationHistory::class.java))
                 } else if (position == 7) {
-                    navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
+                    navigateToActivity(Intent(applicationContext,SurgeryHistory::class.java))
                 } else if (position == 8) {
                     navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
                 }
