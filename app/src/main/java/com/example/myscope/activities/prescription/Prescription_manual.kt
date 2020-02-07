@@ -1,19 +1,21 @@
-package com.example.myscope.activities
+package com.example.myscope.activities.prescription
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.view.WindowManager
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
+import com.example.myscope.activities.MultiSelectionSpinner
+import kotlinx.android.synthetic.main.app_bar_main.*
 
-import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import java.text.DateFormat
 import java.util.*
 
 
 class Prescription_manual : BaseActivity() {
+
     /* declaring variables */
     internal lateinit var myCalendar: Calendar
     private var startDateOrEndDAte = true
@@ -21,18 +23,31 @@ class Prescription_manual : BaseActivity() {
     var dose: Spinner? = null
     var isprescribed: Spinner? = null
     var datecheck: Boolean? = true
+    var hospitalName: String? = null
+    var doctorName: String? = null
+    var formulationName: String? = null
+    var doseStrength: String? = null
+    var medicalCondition: String? = null
+    var formulationId: String? = null
+    var doseunit: String? = null
+    var isprescribedunit: String? = null
+    var howoftenvalue: String? = null
+    var timeofmedicine: String? = null
+    var startDate: String? = null
+    var stopDate: String? = null
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prescription_manual)
 
-//        val linearlayout = findViewById<LinearLayout>(R.id.parentview)
-//        editbutton.setOnClickListener(){
+//        editbutton.setOnClickListener() {
+//            showShortToast("edit button is clicked")
+////            if (!parentview.equals(null)) {
+////                parentview.getBackground().setAlpha(100);
 //
-//                linearlayout.background!!.alpha(100)
-//
-//            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+////            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+////            }
 //        }
 
         /* getting id's by findviewbyid method */
@@ -100,39 +115,37 @@ class Prescription_manual : BaseActivity() {
             validate(formulation!!)
             validate(dose!!)
             validate(isprescribed!!)
-
         }
-
     }
 
     /* function for checking null values in the required fields*/
     private fun assignValuetoVariable() {
 
         /*getting values from edit text views */
-        var hospitalName = hosp_name.text.toString()
-        var doctorName = doctor_name.text.toString()
-        var formulationName = formulation_name.text.toString()
-        var doseStrength = dose_strength.text.toString()
-        var medicalCondition = medical_condition.text.toString()
-        var formulationId = formulation!!.selectedItem.toString()
-        var doseunit = dose!!.selectedItem.toString()
-        var isprescribedunit = isprescribed!!.selectedItem.toString()
-        var howoftenvalue = how_often_taken!!.selectedItem.toString()
-        var timeofmedicine = time_of_taken!!.selectedItem.toString()
-        var startDate = start_date.text.toString()
-        var stopDate = stop_date.text.toString()
+         hospitalName = hosp_name.text.toString()
+         doctorName = doctor_name.text.toString()
+         formulationName = formulation_name.text.toString()
+         doseStrength = dose_strength.text.toString()
+         medicalCondition = medical_condition.text.toString()
+         formulationId = formulation!!.selectedItem.toString()
+         doseunit = dose!!.selectedItem.toString()
+         isprescribedunit = isprescribed!!.selectedItem.toString()
+         howoftenvalue = how_often_taken!!.selectedItem.toString()
+         timeofmedicine = time_of_taken!!.selectedItem.toString()
+         startDate = start_date.text.toString()
+         stopDate = stop_date.text.toString()
 
         /*validating the inputs through function call */
-        validateInput(doctor_name, doctorName)
-        validateInput(hosp_name, hospitalName)
-        validateInput(formulation_name, formulationName)
-        validateInput(dose_strength, doseStrength)
-        validateInput(medical_condition, medicalCondition)
-        validateSpinner(formulation!!, formulationId)
-        validateSpinner(dose!!, doseunit)
-        validateSpinner(isprescribed!!, isprescribedunit)
-        validateSpinner(how_often_taken!!, howoftenvalue)
-        validateSpinner(time_of_taken!!, timeofmedicine)
+        validateInput(doctor_name, doctorName!!)
+        validateInput(hosp_name, hospitalName!!)
+        validateInput(formulation_name, formulationName!!)
+        validateInput(dose_strength, doseStrength!!)
+        validateInput(medical_condition, medicalCondition!!)
+        validateSpinner(formulation!!, formulationId!!)
+        validateSpinner(dose!!, doseunit!!)
+        validateSpinner(isprescribed!!, isprescribedunit!!)
+        validateSpinner(how_often_taken!!, howoftenvalue!!)
+        validateSpinner(time_of_taken!!, timeofmedicine!!)
         datecheck = validateDate(start_date,stop_date,true)
 
         /*checking if the data is empty or not */
@@ -149,18 +162,17 @@ class Prescription_manual : BaseActivity() {
                         (!startDate.equals("")) &&
                         (!stopDate.equals(""))) && datecheck!!.equals(true)) {
             showLongToast("Values are saved....Thank you!! ")
-            val PrescriptionManualDataClass = PrescriptionManualDataClass(doctorName,
-                    hospitalName,formulationName,doseStrength,medicalCondition,formulationId,doseunit,
-                    isprescribedunit ,howoftenvalue,timeofmedicine,startDate,stopDate)
+            val PrescriptionManualDataClass = PrescriptionManualDataClass(doctorName!!,
+                    hospitalName!!, formulationName!!, doseStrength!!, medicalCondition!!, formulationId!!, doseunit!!,
+                    isprescribedunit!!, howoftenvalue!!, timeofmedicine!!, startDate!!, stopDate!!)
             showLongToast(PrescriptionManualDataClass.toString())
         } else {
-
         }
     }
+}
+
+private operator fun Float.invoke(d: Double) {
 
 }
 
-//private operator fun Int.invoke(i: Int) {
-//
-//}
 

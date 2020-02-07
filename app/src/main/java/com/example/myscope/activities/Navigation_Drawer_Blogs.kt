@@ -11,6 +11,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myscope.R
+import com.example.myscope.activities.medical_history.Medical_History_HomePage
+import com.example.myscope.activities.prescription.Prescriptions_HomePage
 import com.example.myscope.fragments.NavigationDrawerFragment
 import com.example.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks
 import de.hdodenhof.circleimageview.CircleImageView
@@ -92,31 +94,31 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
     override fun onClick(v: View) {
         when (v.id) {
             R.id.card_MH -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext, Medical_History_HomePage::class.java))
             }
             R.id.card_Pres -> {
-                navigateToActivity(Intent(applicationContext,Prescription_manual_Activity::class.java))
+                navigateToActivity(Intent(applicationContext, Prescriptions_HomePage::class.java))
             }
             R.id.card_MD -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_LabReports -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_selfmonitoring -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_health_services -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_EducationalBlog -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_appointments -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_Contactus -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
 
             }
         }
