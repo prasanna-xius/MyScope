@@ -3,7 +3,6 @@ package com.example.myscope.activities.medical_history
 import android.annotation.TargetApi
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -19,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.surgeryhistory.*
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.Calendar.getInstance
 
 @TargetApi(Build.VERSION_CODES.N)
 class SurgeryHistory : AppCompatActivity() {
@@ -27,7 +27,7 @@ class SurgeryHistory : AppCompatActivity() {
 
     var button_date_surg: Button? = null;var button_surg: Button? = null;
     var textview_date_surg: TextView? = null
-    var cal_surg = Calendar.getInstance()
+    var cal_surg = getInstance()
 
 
     var namesurg:String?=null;var whensurg:String?=null;var bodysurg:String?=null;var notessurg:String?=null;

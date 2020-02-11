@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dimen_300"
+        android:layout_marginTop="@dimen/dimen_350"
         android:background="@drawable/login_background">
 
 
@@ -20,14 +20,13 @@
         android:layout_marginTop="@dimen/dimen_20"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
-            android:layout_width="@dimen/dimen_106"
+            android:layout_width="200dp"
             android:layout_height="@dimen/dimen_106"
             android:layout_gravity="center"
-            android:src="@drawable/logo1"
-            app:civ_border_color="#4B73B0"
-            app:civ_border_width="2dp" />
+            android:src="@drawable/myscopelogo"
+           />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
@@ -82,7 +81,7 @@
                         android:paddingTop="@dimen/dimen_8"
                         android:textSize="@dimen/dimen_16sp"
                         android:backgroundTint="@color/jet_black"
-                        android:textColor="@color/color_black"
+                        android:textColor="@color/colorBackground"
                         android:textColorHint="@color/bluegray700" />
 
 
@@ -98,7 +97,7 @@
                     android:layout_marginTop="@dimen/dimen_24"
                     android:layout_marginRight="@dimen/dimen_40"
                     android:background="@drawable/background_button"
-                    android:backgroundTint="#1F78D3"
+                    android:backgroundTint="#1D2F47"
                     android:text="Send Otp"
                     android:textColor="#ffffff"
                     android:textSize="@dimen/dimen_14" />

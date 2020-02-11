@@ -59,12 +59,6 @@ class Family_History : BaseActivity() {
             showLongToast("save the details")
 
         }
-        else{
-
-
-
-        }
-
 
     }
 }
