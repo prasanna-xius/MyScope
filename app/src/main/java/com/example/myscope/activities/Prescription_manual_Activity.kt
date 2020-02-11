@@ -11,10 +11,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.myscope.R
-import com.example.myscope.activities.medical_history.Diet
-import com.example.myscope.activities.medical_history.Family_History
-import com.example.myscope.activities.medical_history.Medical_History
-import com.example.myscope.activities.medical_history.Social_History
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.medical_history_main.*
 

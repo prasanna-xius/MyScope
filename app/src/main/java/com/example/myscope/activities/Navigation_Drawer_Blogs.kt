@@ -1,6 +1,7 @@
 package com.example.myscope.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
@@ -8,11 +9,13 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myscope.R
 import com.example.myscope.fragments.NavigationDrawerFragment
 import com.example.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks
+import com.google.firebase.auth.FirebaseAuth
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_navigation_blogs.*
 import kotlinx.android.synthetic.main.dashboard_screen_main.*
@@ -120,5 +123,32 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
 
             }
         }
+    }
+    override fun onBackPressed() {
+        doExit()
+    }
+
+    private fun doExit() {
+        val alertDialog = AlertDialog.Builder(
+                this@Navigation_Drawer_Blogs)
+        alertDialog.setPositiveButton("Yes") { dialog, which ->
+
+            FirebaseAuth.getInstance().signOut()
+//            Toast.makeText(this@Navigation_Drawer_Blogs, "Logout Successfully Completed", Toast.LENGTH_SHORT).show()
+            navigateToActivity(Intent(applicationContext,Login_Page::class.java))
+//            finish()
+        }
+
+        alertDialog.setNegativeButton("No", null)
+        alertDialog.setMessage("Do you want to Logout?")
+        alertDialog.setTitle("MyScope")
+        val dialog = alertDialog.create()
+        dialog.show()
+        dialog.window!!.setBackgroundDrawableResource(R.color.bg_screen1)
+        val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        val negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+        positiveButton.setTextColor(Color.parseColor("#FF0B8B42"))
+        negativeButton.setTextColor(Color.parseColor("#FFFF0400"))
+
     }
 }

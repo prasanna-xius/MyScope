@@ -94,6 +94,13 @@
                     android:text="Verify OTP"
                     android:textColor="#ffffff"
                     android:textSize="@dimen/dimen_14sp" />
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/dimen_20"
+                    android:id="@+id/progressBar"
+                    />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

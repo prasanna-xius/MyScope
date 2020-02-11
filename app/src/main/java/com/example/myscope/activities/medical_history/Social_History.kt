@@ -2,6 +2,8 @@ package com.example.myscope.activities.medical_history
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
