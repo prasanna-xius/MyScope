@@ -14,7 +14,6 @@ import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myscope.R
 import com.example.myscope.activities.medical_history.Medical_History_HomePage
-import com.example.myscope.activities.prescription.Prescriptions_HomePage
 import com.example.myscope.fragments.NavigationDrawerFragment
 import com.example.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks
 import com.google.firebase.auth.FirebaseAuth
@@ -46,7 +45,7 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
         card_MedicalDocument!!.setOnClickListener(this)
         card_LabReports!!.setOnClickListener(this)
         card_selfMont!!.setOnClickListener(this)
-        card_Health!!.setOnClickListener(this)
+        card_HealthServices!!.setOnClickListener(this)
         card_EducationalBlog!!.setOnClickListener(this)
         card_Appoint!!.setOnClickListener(this)
         card_ContactUs!!.setOnClickListener(this)
@@ -99,30 +98,30 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
             R.id.card_MH -> {
                 navigateToActivity(Intent(applicationContext, Medical_History_HomePage::class.java))
             }
-            R.id.card_Pres -> {
-                navigateToActivity(Intent(applicationContext, Prescriptions_HomePage::class.java))
-            }
+//            R.id.card_Pres -> {
+//                navigateToActivity(Intent(applicationContext, Pres::class.java))
+//            }
 
             R.id.card_MedicalDocument -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_LabReports -> {
                 navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_selfMont -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
-            R.id.card_Health-> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+            R.id.card_HealthServices-> {
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_EducationalBlog -> {
                 navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_Appoint -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_ContactUs -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
         }
     }
