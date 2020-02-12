@@ -39,13 +39,13 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
 
         card_MH!!.setOnClickListener(this)
         card_Pres!!.setOnClickListener(this)
-        card_MD!!.setOnClickListener(this)
+        card_MedicalDocument!!.setOnClickListener(this)
         card_LabReports!!.setOnClickListener(this)
-        card_selfmonitoring!!.setOnClickListener(this)
-        card_health_services!!.setOnClickListener(this)
+        card_selfMont!!.setOnClickListener(this)
+        card_Health!!.setOnClickListener(this)
         card_EducationalBlog!!.setOnClickListener(this)
-        card_appointments!!.setOnClickListener(this)
-        card_Contactus!!.setOnClickListener(this)
+        card_Appoint!!.setOnClickListener(this)
+        card_ContactUs!!.setOnClickListener(this)
         //
         mHandler = Handler()
 
@@ -98,25 +98,25 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
             R.id.card_Pres -> {
                 navigateToActivity(Intent(applicationContext,Prescription_manual::class.java))
             }
-            R.id.card_MD -> {
+            R.id.card_MedicalDocument -> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
             }
             R.id.card_LabReports -> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
             }
-            R.id.card_selfmonitoring -> {
+            R.id.card_selfMont -> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
             }
-            R.id.card_health_services -> {
+            R.id.card_Health-> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
             }
             R.id.card_EducationalBlog -> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
             }
-            R.id.card_appointments -> {
+            R.id.card_Appoint -> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
             }
-            R.id.card_Contactus -> {
+            R.id.card_ContactUs -> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
 
             }

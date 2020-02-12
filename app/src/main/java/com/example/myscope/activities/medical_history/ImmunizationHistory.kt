@@ -4,8 +4,7 @@ import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.icu.util.Calendar
-import android.icu.util.Calendar.getInstance
+
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -21,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.immunizationhistory.*
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.Calendar.getInstance
 
 class ImmunizationHistory : AppCompatActivity() {
     var btn_immunization: Button?=null

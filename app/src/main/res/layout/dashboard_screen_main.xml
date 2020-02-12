@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    tools:context=".activities.Navigation_Drawer_Blogs">
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -28,8 +27,6 @@
                 android:background="@color/colorPrimary"
                 android:orientation="horizontal">
 
-
-
                 <TextView
                     android:id="@+id/header"
                     android:layout_width="wrap_content"
@@ -37,7 +34,7 @@
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Inventory management Form"
+                    android:text=""
                     android:textColor="@color/colorWhite"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -54,40 +51,39 @@
         android:id="@+id/llchild1"
         android:orientation="horizontal"
         android:weightSum="2.0"
+        android:layout_weight="1.0"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="90dp"
+            android:layout_height="match_parent"
             app:cardCornerRadius="12dp"
             android:layout_weight="1.0"
             android:id="@+id/card_MH"
-            app:cardBackgroundColor="#ffffff"
             android:clickable="true"
             android:layout_margin="8dp"
-            android:background="@drawable/cardbg"
-            android:layout_gravity="center"
-            >
+            android:background="#ffffff"
+            android:layout_gravity="center">
 
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-
-                android:background="@drawable/lines_bg_one"
+                android:background="#ffffff"
                 android:weightSum="3.0"
+                android:layout_gravity="center"
                 android:orientation="vertical"
                 >
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center|center_horizontal"
                     android:layout_weight="2.0"
                     android:layout_marginTop="3dp"
-                    android:src="@drawable/medical_history1"
+                    android:src="@drawable/medical_historydb"
                     android:layout_height="wrap_content">
 
                 </ImageView>
@@ -95,9 +91,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textColor="@color/colortext"
-
-                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/colorText"
+                    android:layout_gravity="center|center_horizontal"
                     android:layout_weight="1.0"
                     android:text="Medical History"
                     android:textSize="14dp"/>
@@ -110,7 +105,7 @@
             android:layout_width="150dp"
             app:cardCornerRadius="12dp"
             app:cardBackgroundColor="#ffffff"
-            android:layout_height="90dp"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:clickable="true"
             android:id="@+id/card_Pres"
@@ -121,10 +116,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:background="@drawable/lines_bg_one"
+                android:background="#fff"
                 android:weightSum="3.0"
+                android:layout_gravity="center"
                 android:orientation="vertical"
                 >
 
@@ -133,7 +129,7 @@
                     android:layout_weight="2.0"
                     android:layout_marginTop="3dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/drugs"
+                    android:src="@drawable/prescription"
                     android:layout_height="wrap_content">
 
                 </ImageView>
@@ -142,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
-                    android:textColor="@color/colortext"
+                    android:textColor="@color/colorText"
                     android:layout_weight="1.0"
 
                     android:text="Prescriptions"
@@ -160,17 +156,18 @@
         android:id="@+id/llchild2"
         android:orientation="horizontal"
         android:weightSum="2.0"
-
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
             app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="12dp"
-            android:layout_height="90dp"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
-            android:id="@+id/card_MD"
+            android:id="@+id/card_MedicalDocument"
             android:layout_margin="8dp"
             android:background="@drawable/cardbg"
             android:layout_gravity="center"
@@ -180,10 +177,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:background="@drawable/lines_bg_one"
+                android:background="#fff"
                 android:weightSum="3.0"
+                android:layout_gravity="center"
                 android:orientation="vertical"
                 >
 
@@ -192,7 +190,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
                     android:layout_weight="2.0"
-                    android:src="@drawable/medical_report"
+                    android:src="@drawable/medical_healthcare"
                     android:layout_height="wrap_content">
 
                 </ImageView>
@@ -202,7 +200,7 @@
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1.0"
-                    android:textColor="@color/colortext"
+                    android:textColor="@color/colorText"
                     android:text="Medical Documents"
                     android:textSize="14dp"/>
 
@@ -213,7 +211,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
             app:cardBackgroundColor="#ffffff"
-            android:layout_height="90dp"
+            android:layout_height="match_parent"
+
             android:layout_weight="1.0"
             app:cardCornerRadius="12dp"
             android:clickable="true"
@@ -225,10 +224,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:weightSum="3.0"
-                android:background="@drawable/lines_bg_one"
+                android:layout_gravity="center"
+                android:background="#fff"
                 android:orientation="vertical"
                 >
 
@@ -237,7 +237,7 @@
                     android:layout_weight="2.0"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:src="@drawable/lab_test"
+                    android:src="@drawable/lab_reports"
                     android:layout_height="wrap_content">
 
                 </ImageView>
@@ -246,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
-                    android:textColor="@color/colortext"
+                    android:textColor="@color/colorText"
                     android:layout_weight="1.0"
                     android:text="Lab Reports"
                     android:textSize="14dp"/>
@@ -262,22 +262,22 @@
 
         android:id="@+id/llchild3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
         android:weightSum="1.0"
-
-
+        android:gravity="center"
         android:orientation="horizontal"
         >
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_health_services"
+            android:id="@+id/card_Health"
             android:layout_width="match_parent"
             android:layout_marginRight="5dp"
             app:cardCornerRadius="12dp"
+            app:cardElevation="8dp"
             android:layout_marginLeft="5dp"
             app:cardBackgroundColor="#ffffff"
-            android:layout_height="90dp"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:layout_gravity="center"
             android:layout_margin="8dp"
@@ -289,10 +289,10 @@
             <LinearLayout
                 android:id="@+id/self_monitoring"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:background="@drawable/lines_bg_one"
-
+                android:background="#fff"
+                android:layout_gravity="center"
                 android:orientation="vertical"
                 android:weightSum="3.0">
 
@@ -301,7 +301,7 @@
                     android:layout_marginTop="3dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.0"
-                    android:src="@drawable/counselling_new_fourtyeight">
+                    android:src="@drawable/healthcare">
 
                 </ImageView>
 
@@ -310,7 +310,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1.0"
-                    android:textColor="@color/colortext"
+                    android:textColor="@color/colorText"
                     android:text="Health Services"
                     android:textSize="14dp"
                     android:textStyle="bold" />
@@ -321,21 +321,24 @@
 
     <LinearLayout
 
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:id="@+id/llchild4"
         android:orientation="horizontal"
         android:weightSum="2.0"
+
+        android:layout_weight="1.0"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="90dp"
+            android:layout_height="match_parent"
             app:cardCornerRadius="12dp"
+            app:cardElevation="5dp"
             app:cardBackgroundColor="#ffffff"
             android:layout_weight="1.0"
             android:clickable="true"
-            android:id="@+id/card_appointments"
+            android:id="@+id/card_Appoint"
             android:layout_margin="8dp"
             android:background="@drawable/cardbg"
             android:layout_gravity="center"
@@ -345,9 +348,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:background="@drawable/lines_bg_one"
+                android:layout_gravity="center"
+                android:background="#fff"
                 android:weightSum="3.0"
                 android:orientation="vertical"
                 >
@@ -357,7 +361,7 @@
                     android:layout_gravity="center"
 
                     android:layout_weight="2.0"
-                    android:src="@drawable/schedule_new"
+                    android:src="@drawable/appointments"
                     android:layout_height="wrap_content">
 
                 </ImageView>
@@ -365,7 +369,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textColor="@color/colortext"
+                    android:textColor="@color/colorText"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1.0"
                     android:text="Appointments"
@@ -377,12 +381,13 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="90dp"
+            android:layout_height="match_parent"
             app:cardCornerRadius="12dp"
+            app:cardElevation="5dp"
             android:layout_weight="1.0"
             android:clickable="true"
             app:cardBackgroundColor="#ffffff"
-            android:id="@+id/card_selfmonitoring"
+            android:id="@+id/card_selfMont"
             android:layout_margin="8dp"
             android:layout_gravity="center"
             >
@@ -390,9 +395,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:background="@drawable/lines_bg_one"
+                android:layout_gravity="center"
+                android:background="#fff"
                 android:weightSum="3.0"
                 android:orientation="vertical"
                 >
@@ -403,7 +409,7 @@
                     android:layout_marginTop="3dp"
                     android:layout_gravity="center"
 
-                    android:src="@drawable/self_care"
+                    android:src="@drawable/selfmonitor"
                     android:layout_height="wrap_content">
 
                 </ImageView>
@@ -412,7 +418,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
-                    android:textColor="@color/colortext"
+                    android:textColor="@color/colorText"
                     android:layout_weight="1.0"
                     android:text="Self Monitoring"
                     android:textSize="14dp"/>
@@ -430,13 +436,15 @@
         android:id="@+id/llchild5"
         android:orientation="horizontal"
         android:weightSum="2.0"
+        android:layout_weight="1.0"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="90dp"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
+            app:cardElevation="5dp"
             app:cardCornerRadius="12dp"
             android:layout_margin="8dp"
             android:clickable="true"
@@ -449,10 +457,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_gravity="center"
                 android:weightSum="3.0"
-                android:background="@drawable/lines_bg_one"
+                android:background="#fff"
                 android:orientation="vertical"
                 >
 
@@ -471,7 +480,7 @@
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1.0"
-                    android:textColor="@color/colortext"
+                    android:textColor="@color/colorText"
                     android:text="Educational Blog"
                     android:textSize="14dp"/>
 
@@ -481,12 +490,13 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="150dp"
-            android:layout_height="90dp"
+            android:layout_height="match_parent"
             android:layout_weight="1.0"
+            app:cardElevation="5dp"
             app:cardCornerRadius="12dp"
             android:clickable="true"
             app:cardBackgroundColor="#ffffff"
-            android:id="@+id/card_Contactus"
+            android:id="@+id/card_ContactUs"
             android:layout_margin="8dp"
             android:layout_gravity="center"
             >
@@ -494,20 +504,20 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:background="@drawable/lines_bg_one"
-
+                android:layout_gravity="center|center_horizontal"
+                android:background="#fff"
+                android:layout_marginTop="4dp"
                 android:weightSum="3.0"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_weight="2.0"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="2dp"
-                    android:src="@drawable/contactus1"
+
+                    android:src="@drawable/contact_us"
                     android:layout_height="wrap_content">
 
                 </ImageView>
@@ -516,7 +526,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:textStyle="bold"
-                    android:textColor="@color/colortext"
+                    android:textColor="@color/colorText"
                     android:layout_weight="1.0"
                     android:text="Contact Us"
                     android:textSize="14dp"/>
@@ -525,7 +535,7 @@
         </androidx.cardview.widget.CardView>
 
 
-
     </LinearLayout>
+
 
 </LinearLayout>
