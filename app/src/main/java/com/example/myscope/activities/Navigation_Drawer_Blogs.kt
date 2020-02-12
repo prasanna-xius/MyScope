@@ -1,6 +1,7 @@
 package com.example.myscope.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
@@ -8,11 +9,15 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myscope.R
+import com.example.myscope.activities.medical_history.Medical_History_HomePage
+import com.example.myscope.activities.prescription.Prescriptions_HomePage
 import com.example.myscope.fragments.NavigationDrawerFragment
 import com.example.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks
+import com.google.firebase.auth.FirebaseAuth
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_navigation_blogs.*
 import kotlinx.android.synthetic.main.dashboard_screen_main.*
@@ -31,8 +36,7 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation_blogs)
 
-        showToolbar()
-        setStatusBarTopColor()
+        navigationToolbar()
         headerTextView = findViewById<View>(R.id.header) as TextView
         headerTextView!!.text = "DashBoard"
 
@@ -93,16 +97,17 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
     override fun onClick(v: View) {
         when (v.id) {
             R.id.card_MH -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext, Medical_History_HomePage::class.java))
             }
             R.id.card_Pres -> {
-                navigateToActivity(Intent(applicationContext,Prescription_manual::class.java))
+                navigateToActivity(Intent(applicationContext, Prescriptions_HomePage::class.java))
             }
+
             R.id.card_MedicalDocument -> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
             }
             R.id.card_LabReports -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_selfMont -> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
@@ -111,15 +116,41 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
             }
             R.id.card_EducationalBlog -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_Appoint -> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
             }
             R.id.card_ContactUs -> {
                 navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
-
             }
         }
+    }
+    override fun onBackPressed() {
+        doExit()
+    }
+
+    private fun doExit() {
+        val alertDialog = AlertDialog.Builder(
+                this@Navigation_Drawer_Blogs)
+        alertDialog.setPositiveButton("Yes") { dialog, which ->
+
+            FirebaseAuth.getInstance().signOut()
+//            Toast.makeText(this@Navigation_Drawer_Blogs, "Logout Successfully Completed", Toast.LENGTH_SHORT).show()
+            navigateToActivity(Intent(applicationContext,Login_Page::class.java))
+//            finish()
+        }
+
+        alertDialog.setNegativeButton("No", null)
+        alertDialog.setMessage("Do you want to Logout?")
+        alertDialog.setTitle("MyScope")
+        val dialog = alertDialog.create()
+        dialog.show()
+        dialog.window!!.setBackgroundDrawableResource(R.color.bg_screen1)
+        val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        val negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+        positiveButton.setTextColor(Color.parseColor("#FF0B8B42"))
+        negativeButton.setTextColor(Color.parseColor("#FFFF0400"))
+
     }
 }

@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.example.myscope.activities.prescription
 
 data class PrescriptionManualDataClass(val hospitalname: String,
                                        val doctorname: String,

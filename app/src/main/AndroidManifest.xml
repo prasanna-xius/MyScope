@@ -16,6 +16,7 @@
 
         <activity android:name=".activities.SliderActivity">
 
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,18 +24,22 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.BaseActivity" />
+<!--        <activity android:name=".activities.Prescription_manual" />-->
 
-        <activity android:name=".activities.SignUp_Page" />
-        <activity android:name=".activities.Login_Page" />
-        <activity android:name=".activities.Otp_Page" />
-        <activity android:name=".activities.MobileChange_Activity" />
+        <activity android:name=".activities.SignUp_Page"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".activities.Login_Page"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".activities.Otp_Page"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".activities.MobileChange_Activity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
 
         <activity android:name=".activities.Navigation_Drawer_Blogs" />
 
         <activity android:name=".activities.View_UserDetails_Activity" />
 
-        <activity android:name=".fragments.Dash_Board_Activity" />
+        <activity android:name=".activities.Dash_Board_Activity" />
 
         <activity android:name=".activities.Medical_History_Activity" />
 
@@ -49,8 +54,11 @@
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />
 
         <activity android:name=".ImageUpload" />
+        <activity android:name=".activities.Prescription_manual_Activity"/>
         <activity android:name=".activities.Prescription_manual" />
-       
+
+        <activity android:name=".activities.Medical_Documents_Activity" />
+
 
     </application>
 

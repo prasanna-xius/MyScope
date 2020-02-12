@@ -1,4 +1,4 @@
-package com.example.myscope.fragments
+package com.example.myscope.activities
 
 import android.os.Bundle
 import android.view.View
@@ -11,9 +11,9 @@ class Dash_Board_Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dashboard_screen_main)
-        showToolbar()
+        navigationToolbar()
         setStatusBarTopColor()
         headerTextView = findViewById<View>(R.id.header) as TextView
-        headerTextView!!.text = "Machine"
+        headerTextView!!.text = "DashBoard"
     }
 }

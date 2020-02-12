@@ -16,7 +16,9 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.example.myscope.R
-import com.example.myscope.activities.View_UserDetails_Activity
+import com.example.myscope.activities.Dash_Board_Activity
+import com.example.myscope.activities.Medical_Documents_HomePage
+import com.example.myscope.activities.prescription.Prescription_manual
 import com.example.myscope.activities.medical_history.*
 import com.example.myscope.adapters.ExpandableListAdapter
 import java.util.*
@@ -68,19 +70,19 @@ class NavigationDrawerFragment : Fragment() {
             } else if (groupPosition == ExpandableListAdapter.Self_Monitoring) {
                 retVal = false
             } else if (groupPosition == ExpandableListAdapter.Educational_Blog) { // call some activity here
-                val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
             } else if (groupPosition == ExpandableListAdapter.Appointments) { // call some activity here
-                val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
             } else if (groupPosition == ExpandableListAdapter.Services) { // call some activity here
-                val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
             } else if (groupPosition == ExpandableListAdapter.ContactUs) { // call some activity here
-                val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intent)
             }
@@ -127,121 +129,121 @@ class NavigationDrawerFragment : Fragment() {
                 }
             } else if (groupPosition == ExpandableListAdapter.Presccriptions) {
                 if (childPosition == ExpandableListAdapter.Prescription) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Prescription_manual::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Antibiotic) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Prescription_manual::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Ayurveda) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Prescription_manual::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 }
             } else if (groupPosition == ExpandableListAdapter.Medical_Documents) {
                 if (childPosition == ExpandableListAdapter.Discharge_Summery) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Dental_Recards) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Immuzination) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Health_Insurance) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Diet_Chart) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Education_Material) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Other_Document) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 }
             } else if (groupPosition == ExpandableListAdapter.Lab_Reports) {
                 if (childPosition == ExpandableListAdapter.Blood_Reports) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Urine_Report) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Ultra_Sound) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.X_Ray) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.CT_Scan) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.MRI) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.ECG) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.ECHO) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Stress_Test) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.SonoGraphy) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Colono_Scopy) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Others) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 }
             } else if (groupPosition == ExpandableListAdapter.Self_Monitoring) {
                 if (childPosition == ExpandableListAdapter.Blood_Glucose_Monitoring) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Blood_Pressure) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Cholostrol) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Weight) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Exercise_Tracker) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.SpO2) { // call activity here
-                    val intent = Intent(activity, View_UserDetails_Activity::class.java)
+                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 }

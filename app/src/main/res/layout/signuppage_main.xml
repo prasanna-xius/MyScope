@@ -13,7 +13,7 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -28,14 +28,13 @@
                 android:layout_marginTop="@dimen/dimen_20"
                 android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image"
-                    android:layout_width="@dimen/dimen_106"
+                    android:layout_width="@dimen/dimen_200"
                     android:layout_height="@dimen/dimen_106"
                     android:layout_gravity="center"
-                    android:src="@drawable/logo1"
-                    app:civ_border_color="#4B73B0"
-                    app:civ_border_width="2dp" />
+                    android:src="@drawable/myscopelogo"
+                    />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
@@ -81,10 +80,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/dimen_40"
                                 android:hint="Enter First Name"
-                                android:inputType="text"
+                                android:inputType="textFilter"
                                 android:maxLength="20"
                                 android:paddingLeft="@dimen/dimen_8"
+                                android:digits="@string/alphabets"
                                 android:paddingTop="@dimen/dimen_8"
+                                android:singleLine="true"
                                 android:textSize="@dimen/dimen_16sp"
                                 android:backgroundTint="@color/jet_black"
                                 android:textColor="@color/color_black"
@@ -186,6 +187,8 @@
                                 android:hint="Enter Mobile Number"
                                 android:inputType="phone"
                                 android:maxLength="10"
+                                android:singleLine="true"
+                                android:digits="@string/mobile"
                                 android:paddingLeft="@dimen/dimen_8"
                                 android:paddingTop="@dimen/dimen_8"
                                 android:textSize="@dimen/dimen_16sp"
@@ -219,6 +222,7 @@
                                 android:paddingLeft="@dimen/dimen_8"
                                 android:paddingTop="@dimen/dimen_8"
                                 android:textSize="@dimen/dimen_16sp"
+                                android:singleLine="true"
                                 android:backgroundTint="@color/jet_black"
                                 android:textColor="@color/color_black"
                                 android:textColorHint="@color/bluegray700" />
@@ -239,7 +243,7 @@
                             android:layout_marginRight="@dimen/dimen_40"
                             android:background="@drawable/background_button"
                             android:text="SignUp"
-                            android:backgroundTint="#1F78D3"
+                            android:backgroundTint="#1D2F47"
                             android:textColor="#ffffff"
                             android:textSize="@dimen/dimen_14sp" />
 
@@ -250,7 +254,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen_15"
-                                android:layout_marginBottom="@dimen/dimen_40"                                android:layout_weight="1"
+                                android:layout_marginBottom="@dimen/dimen_40"
+                                android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="Do have an Account? Login here"
                                 android:textColor="#000000"
@@ -262,6 +267,6 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

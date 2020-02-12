@@ -6,13 +6,13 @@
     <string name="nameerror">Name Required</string>
     <!--Medical History-->
     <string name="medical_history">MEDICAL HISTORY</string>
-    <string name="known_condition">Known Condition <font color='#a4c639'>*</font></string>
-    <string name="disease_statues"> Disease Statues</string>
+    <string name="known_condition">Known Condition <font color='#ff0000'>*</font></string>
+    <string name="disease_statues"> Disease Statues <font color='#ff0000'>*</font></string>
     <string name="disease_duration"> Disease Duration</string>
     <string name="no_of_yrs"> No of yrs</string>
-    <string name="when_started">When Started <font color='#a4c639'>*</font></string>
+    <string name="when_started">When Started <font color='#ff0000'>*</font></string>
     <string name="started_date">Started Date</string>
-    <string name="when_ended">When Ended <font color='#a4c639'>*</font></string>
+    <string name="when_ended">When Ended <font color='#ff0000'>*</font></string>
     <string name="ended_date"> Ended Date</string>
     <string name="notes">Notes</string>
     <string name="save">SAVE</string>
@@ -20,21 +20,21 @@
     <string name="disease"> Disease</string>
     <!--Family History-->
     <string name="family_history"> Family History</string>
-    <string name="condition">Condition<font color='#a4c639'>*</font></string>
+    <string name="condition">Condition<font color='#ff0000'>*</font></string>
     <string name="diabetes"> Diabetes</string>
-    <string name="relationship">Relationship<font color='#a4c639'>*</font></string>
+    <string name="relationship">Relationship<font color='#ff0000'>*</font></string>
     <!--/Family History-->
     <!--Social History-->
     <string name="social_history"> Social History</string>
-    <string name="smoking">Smoking<font color='#a4c639'>*</font></string>
+    <string name="smoking">Smoking<font color='#ff0000'>*</font></string>
     <string name="total_yrs_of_smoking">Total yrs of smoking</string>
-    <string name="drinking">Drinking<font color='#a4c639'>*</font></string>
+    <string name="drinking">Drinking<font color='#ff0000'>*</font></string>
     <string name="total_yrs_of_drinking">Total yrs of drinking</string>
-    <string name="tobacco_usage">Tobacco usage<font color='#a4c639'>*</font></string>
+    <string name="tobacco_usage">Tobacco usage<font color='#ff0000'>*</font></string>
     <!--Social History-->
     <!--Diet-->
     <string name="diet_title">DIET</string>
-    <string name="diet">DIET<font color='#a4c639'>*</font></string>
+    <string name="diet">DIET<font color='#ff0000'>*</font></string>
     <!--Diet-->
     <!--Allergy-->
     <string name="allergy">Allergy</string>
@@ -122,6 +122,14 @@
         <item>Daily Light Drinker (Less than 2 Drinker /day)</item>
         <item>Daily Heavy Drinker (More than 2 Drinker /day)</item>
     </string-array>
+    <string-array name="tobacco_array">
+        <item>None</item>
+        <item>Cigar/Pipe</item>
+        <item>Chew/ snuff </item>
+        <item>Cigarette </item>
+        <item>Beddi </item>
+      
+    </string-array>
     <string-array name="dose_unit_arrays">
         <item>None</item>
         <item>international unit (iu)</item>
@@ -199,6 +207,10 @@
     <string name="hospital_name">Hospital Name <font color='#ff0000'>*</font></string>
     <string name="doctor_name">Doctor Name <font color='#ff0000'>*</font></string>
     <string name="prescription_manual">Prescription</string>
+
+   
+    <string name="mobile">0123456789</string>
+
     <string name="time">Time <font color='#ff0000'>*</font></string>
     <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
 

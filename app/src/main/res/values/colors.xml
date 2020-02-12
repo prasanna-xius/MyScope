@@ -27,7 +27,7 @@
     <color name="dot_light_screen2">#93c6fd</color>
     <color name="dot_light_screen3">#93c6fd</color>
     <color name="dot_light_screen4">#e4b5fc</color>
-    <color name="colorBackground">#1F78D3</color>
+    <color name="colorBackground">#1D2F47</color>
 
     <array name="array_dot_active">
         <item>@color/dot_light_screen1</item>
@@ -45,5 +45,6 @@
 
     <color name="jet_black">#464646</color>
     <color name="colortext">#267CBC</color>
+    <color name="color_toolbar">#1D2F47</color>
 
 </resources>
