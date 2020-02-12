@@ -34,7 +34,7 @@
             android:layout_marginTop="@dimen/dimen_20"
             android:gravity="center"
             android:text="Login Page"
-            android:textColor="@color/color_black"
+            android:textColor="@color/colorText"
             android:textSize="@dimen/dimen_24"
             android:textStyle="bold" />
 
@@ -80,7 +80,7 @@
                         android:paddingLeft="@dimen/dimen_8"
                         android:paddingTop="@dimen/dimen_8"
                         android:textSize="@dimen/dimen_16sp"
-                        android:backgroundTint="@color/jet_black"
+                        android:backgroundTint="@color/colorText"
                         android:textColor="@color/colorBackground"
                         android:textColorHint="@color/bluegray700" />
 
