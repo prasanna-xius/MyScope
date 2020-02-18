@@ -213,6 +213,7 @@
 
     <string name="time">Time <font color='#ff0000'>*</font></string>
     <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
+    <string name="action_logout">Logout</string>
 
     <string-array name="formulation_array">
         <item>None</item>
