@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".activities.medical_history.Allergies">
+    tools:context=".activities.medical_history.AllergyUpdate_Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,11 +45,11 @@
                 android:layout_weight="1">
 
                 <Spinner
-                    android:id="@+id/spinnerAllergy"
+                    android:id="@+id/spinnerAllergy_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:popupBackground="#fff"
-
+                    android:background="@drawable/spr_bg"
                     android:entries="@array/allergy_arrays"
                     android:padding="2dp" />
             </FrameLayout>
@@ -74,7 +74,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_name"
+                android:id="@+id/et_name_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -106,7 +106,7 @@
 
             <EditText
 
-                android:id="@+id/et_reaction"
+                android:id="@+id/et_reaction_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -137,7 +137,7 @@
 
             <EditText
 
-                android:id="@+id/et_treatment"
+                android:id="@+id/et_treatment_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -157,7 +157,7 @@
             android:weightSum="2.0">
 
             <TextView
-                android:id="@+id/first_observed"
+                android:id="@+id/first_observed_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
@@ -217,7 +217,7 @@
 
         <EditText
 
-            android:id="@+id/et_notes_allergies"
+            android:id="@+id/et_notes_allergies_update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -229,17 +229,41 @@
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
 
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1.0"
+            android:layout_marginRight="3dp"
+            android:layout_gravity="center"
+            android:background="@color/bg_screen2"
+            android:text="Cancel"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp" />
     <Button
-        android:id="@+id/btn_allergies"
+        android:id="@+id/btn_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"
+        android:layout_weight="1.0"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:background="@color/bg_screen2"
-        android:text="@string/save"
+        android:text="Update"
+        android:layout_marginLeft="3dp"
         android:textColor="@color/colorWhite"
         android:textSize="14sp" />
+
+    </LinearLayout>
 </LinearLayout>
 </ScrollView>
 
