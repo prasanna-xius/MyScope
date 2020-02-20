@@ -35,7 +35,7 @@ class Diet : BaseActivity() {
         spinner_diet.adapter = dietAdapter
 
 
-        btn_diet.setOnClickListener{
+        btn_diet.setOnClickListener {
 
             assignValuestoVariable()
             validate(spinner_diet!!)
@@ -46,14 +46,13 @@ class Diet : BaseActivity() {
     private fun assignValuestoVariable() {
         var dietS = spinner_diet!!.selectedItem.toString()
 
-        validateSpinner(spinner_diet!!,dietS)
+        validateSpinner(spinner_diet!!, dietS)
 
 
-        if ((!dietS.equals("None")))
-        {
+        if ((!dietS.equals("None"))) {
             showLongToast("save details")
-        }
-        else{
+        } else {
             showLongSnackBar("Please fill the required fields")
         }
     }
+}

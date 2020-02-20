@@ -3,18 +3,16 @@ package com.example.myscope.activities.medical_history
 import android.app.DatePickerDialog
 import android.os.Bundle
 
-import android.view.LayoutInflater
-import android.view.View
-
 import android.widget.*
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
+import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.medical_history.*
+import kotlinx.android.synthetic.main.disease_history.*
 import java.text.DateFormat
 import java.util.*
 
-class Medical_History : BaseActivity() {
+class Disease_History : BaseActivity() {
     internal lateinit var myCalendar: Calendar
     private var startDateOrEndDAte = true
     var spinner_disease: Spinner? = null
@@ -23,9 +21,9 @@ class Medical_History : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.medical_history)
+        setContentView(R.layout.disease_history)
         showToolbar()
-        header!!.text = "Medical History"
+        header!!.text = "Disease History"
         spinner_disease = findViewById<Spinner>(R.id.spinner_disease)
 
         val adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
@@ -45,6 +43,7 @@ class Medical_History : BaseActivity() {
             } else {
                 et_stopDate.setText(date1)
             }
+            duration(et_startDate,et_stopDate,et_noOfYrs)
         }
 
         et_startDate.setOnClickListener {
@@ -63,31 +62,26 @@ class Medical_History : BaseActivity() {
         btn_medicalHistory.setOnClickListener {
             assignValuestoVariable()
             validate(spinner_disease!!)
-            boolean = validateDate(et_startDate, et_stopDate, false)
+//            validateDate(et_startDate,et_stopDate,false)
         }
 
     }
-
-
     private fun assignValuestoVariable() {
 
         val condition = et_condition.text.toString()
         val diseases = spinner_disease!!.selectedItem.toString()
-        val startDate = et_startDate.text.toString()
-        val stopDate = et_stopDate.text.toString()
+       val disease_duration = et_noOfYrs.text.toString()
         validateInput(et_condition, condition)
+//        validateInput(et_noOfYrs , disease_duration)
+        errorDisplay(et_noOfYrs)
         validateSpinner(spinner_disease!!, diseases)
 
         if ((condition != "") &&
-                (diseases != "None") &&
-                (startDate != "") &&
-                (stopDate != "") &&
-                boolean!!.equals(false)) {
+                (diseases != "None")
+                && (disease_duration != "")) {
             showLongToast("save the details")
         }
         else {
              }
     }
 }
-
-

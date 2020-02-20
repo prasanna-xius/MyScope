@@ -1,5 +1,8 @@
 package com.example.myscope.activities
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.ActivityOptions
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
@@ -31,6 +34,10 @@ import java.util.regex.Pattern
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import kotlinx.android.synthetic.main.view_userdetails_main.*
 import java.text.SimpleDateFormat
+import java.time.Duration
+import java.time.Month
+import java.time.Year
+import java.time.YearMonth
 import java.util.*
 
 open class BaseActivity : AppCompatActivity() {
@@ -258,19 +265,45 @@ open class BaseActivity : AppCompatActivity() {
 
         }
     }
+
+    @SuppressLint("SetTextI18n")
+    fun duration(startdate: TextView, stopdate :TextView, years : TextView){
+        if(!startdate.text.toString().equals("") && !stopdate.text.toString().equals("")){
+            val dob1 = SimpleDateFormat("MM-YYYY").format(Date(startdate.text.toString()))
+            val dob2 = SimpleDateFormat("MM-YYYY").format(Date(stopdate.text.toString()))
+//            val dob3 = SimpleDateFormat("YYYY").format(Date(startdate.text.toString()))
+//            val dob4 = SimpleDateFormat("YYYY").format(Date(stopdate.text.toString()))
+
+//            if ( dob3.toInt() < dob4.toInt()) {
+////                var age = dob4.toInt() - dob3.toInt()
+////                years.text  =   age.toString() + "Years"
+////            }dob3.toInt() == dob4.toInt() &&
+////            else
+                if(  dob1.toInt() < dob2.toInt()){
+                    var month = dob2.toInt()- dob1.toInt()
+                    years.text = month.toString() +  "Month"
+                }
+            else {
+                years.setText("")
+                showLongSnackBar("Start date cannot be after end date")
+                errorDisplayTextview(years)
+            }
+            }
+        }
+
+
    
-    fun validateDate(startDate: TextView, stopDate: TextView, boolean: Any): Boolean {
+    fun validateDate(startDate: TextView, stopDate: TextView, boolean: Any ): Boolean {
         if (!startDate.text.toString().equals("") && !stopDate.text.toString().equals("")) {
             startDate.setCompoundDrawables(null, null, null, null)
             stopDate.setCompoundDrawables(null, null, null, null)
-            val startDate1 = SimpleDateFormat("dd-MMM-yyyy").format(Date(startDate.text.toString()))
-            val endDate1 = SimpleDateFormat("dd-MMM-yyyy").format(Date(stopDate.text.toString()))
+            val startDate1 = SimpleDateFormat("MM-yyyy").format(Date(startDate.text.toString()))
+            val endDate1 = SimpleDateFormat("MM-yyyy").format(Date(stopDate.text.toString()))
             if (startDate1 > endDate1) {
                 // date in text view is current date
                 stopDate.setText("")
                 showLongSnackBar("Start date cannot be after end date")
                 errorDisplayTextview(startDate)
-
                 return false
             }
         } else {

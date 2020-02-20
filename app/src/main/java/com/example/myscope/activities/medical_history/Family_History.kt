@@ -11,7 +11,7 @@ import com.example.myscope.activities.BaseActivity
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.family_history.*
 
-import kotlinx.android.synthetic.main.medical_history.*
+import kotlinx.android.synthetic.main.disease_history.*
 import java.util.*
 
 class Family_History : BaseActivity() {

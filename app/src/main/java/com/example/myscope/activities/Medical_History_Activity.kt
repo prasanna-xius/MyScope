@@ -51,7 +51,7 @@ class Medical_History_Activity : BaseActivity() {
             rowView.setOnClickListener {
                 // TODO Auto-generated method stub
                 if (position == 0) {
-                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
+                    navigateToActivity(Intent(applicationContext, Disease_History::class.java))
                 } else if (position == 1) {
                     navigateToActivity(Intent(applicationContext, Family_History::class.java))
                 } else if (position == 2) {
