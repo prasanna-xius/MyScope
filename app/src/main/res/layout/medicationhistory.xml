@@ -164,7 +164,7 @@
 
             <TextView
                 android:id="@+id/reason"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/reason"
@@ -174,7 +174,7 @@
             <EditText
 
                 android:id="@+id/et_reason"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
@@ -209,8 +209,8 @@
                 >
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_weight="1.0"
                     android:textColor="#fff"
@@ -223,8 +223,8 @@
                     />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
                     android:layout_weight="1.0"
                     android:gravity="center"
                     android:textColor="@color/bg_screen2"
@@ -258,8 +258,8 @@
                 >
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_weight="1.0"
                     android:textColor="#fff"
@@ -272,8 +272,8 @@
                     />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
                     android:layout_weight="1.0"
                     android:gravity="center"
                     android:textColor="@color/bg_screen2"

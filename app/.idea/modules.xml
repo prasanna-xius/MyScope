@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../BaseBranch-MyScope.iml" filepath="$PROJECT_DIR$/../BaseBranch-MyScope.iml" />
       <module fileurl="file://$PROJECT_DIR$/../MyScope.iml" filepath="$PROJECT_DIR$/../MyScope.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyScope-app.iml" filepath="$PROJECT_DIR$/MyScope-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
     </modules>
   </component>

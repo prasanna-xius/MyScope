@@ -53,10 +53,16 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
 private fun signup() {
     Log.d(TAG, "SignUp_Page")
 
-    if (validate() == false) {
-        onSignupFailed()
-        return
-    }
+
+        if (validate() == false) {
+            onSignupFailed()
+            return
+        }
+
+
+        navigateToActivity(Intent(applicationContext, Login_Page::class.java))
+        showLongToast("Registration Successfully Completed")
+
 
 }
 
