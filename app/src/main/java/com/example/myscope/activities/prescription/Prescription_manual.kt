@@ -2,6 +2,8 @@ package com.example.myscope.activities.prescription
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
@@ -12,6 +14,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 import java.text.DateFormat
 import java.util.*
+
 
 
 class Prescription_manual : BaseActivity() {
@@ -35,12 +38,17 @@ class Prescription_manual : BaseActivity() {
     var timeofmedicine: String? = null
     var startDate: String? = null
     var stopDate: String? = null
+    var timePickerDialog:TimePickerDialog? = null
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prescription_manual)
 
+        header.setText("Prescription Manual")
+        back_btn.setOnClickListener(){
+            navigateToActivity(Intent(applicationContext,Prescriptionmanual_recyclerview::class.java))
+        }
 //        editbutton.setOnClickListener() {
 //            showShortToast("edit button is clicked")
 ////            if (!parentview.equals(null)) {
@@ -56,11 +64,20 @@ class Prescription_manual : BaseActivity() {
         isprescribed = findViewById<Spinner>(R.id.is_prescribed)
 
         val how_oftenspinner = findViewById<MultiSelectionSpinner>(R.id.how_often_taken)
-        val timeSpinner = findViewById<MultiSelectionSpinner>(R.id.time_of_taken)
+//        val timeSpinner = findViewById<MultiSelectionSpinner>(R.id.time_of_taken)
+        time_of_taken.setOnClickListener(){
+            val c = Calendar.getInstance()
+            val hour = Calendar.HOUR
+            val minute = Calendar.MINUTE
+            time_of_taken.setText("")
+//            timePickerDialog = TimePickerDialog(Prescription_manual::., Date().hours, Date().minutes, false)
+//            timePickerDialog.enableMinutes(false)
+        }
 
         /*Custom spinner code*/
         how_oftenspinner.setItems(resources.getStringArray(R.array.how_often_taken))
-        timeSpinner.setItems(resources.getStringArray(R.array.timings))
+
+//        timeSpinner.setItems(resources.getStringArray(R.array.timings))
 
         // formulation spinner
         val formulationadapter = ArrayAdapter(this,
@@ -124,28 +141,28 @@ class Prescription_manual : BaseActivity() {
         /*getting values from edit text views */
          hospitalName = hosp_name.text.toString()
          doctorName = doctor_name.text.toString()
-         formulationName = formulation_name.text.toString()
+         formulationName = brand_name.text.toString()
          doseStrength = dose_strength.text.toString()
          medicalCondition = medical_condition.text.toString()
          formulationId = formulation!!.selectedItem.toString()
          doseunit = dose!!.selectedItem.toString()
          isprescribedunit = isprescribed!!.selectedItem.toString()
          howoftenvalue = how_often_taken!!.selectedItem.toString()
-         timeofmedicine = time_of_taken!!.selectedItem.toString()
+         timeofmedicine = time_of_taken!!.text.toString()
          startDate = start_date.text.toString()
          stopDate = stop_date.text.toString()
 
         /*validating the inputs through function call */
         validateInput(doctor_name, doctorName!!)
         validateInput(hosp_name, hospitalName!!)
-        validateInput(formulation_name, formulationName!!)
+        validateInput(brand_name, formulationName!!)
         validateInput(dose_strength, doseStrength!!)
         validateInput(medical_condition, medicalCondition!!)
         validateSpinner(formulation!!, formulationId!!)
         validateSpinner(dose!!, doseunit!!)
         validateSpinner(isprescribed!!, isprescribedunit!!)
         validateSpinner(how_often_taken!!, howoftenvalue!!)
-        validateSpinner(time_of_taken!!, timeofmedicine!!)
+        validateInput((time_of_taken as EditText?)!!, timeofmedicine!!)
         datecheck = validateDate(start_date,stop_date,true)
 
         /*checking if the data is empty or not */

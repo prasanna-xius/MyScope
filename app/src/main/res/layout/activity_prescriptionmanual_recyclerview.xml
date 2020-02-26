@@ -5,6 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.prescription.Prescriptionmanual_recyclerview"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <include layout="@layout/app_bar_main"></include>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_30"
+       >
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/prescriptionadd"
+            style="@style/floating_botton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="end|bottom"
+            android:padding="@dimen/dimen_30"
+            android:src="@drawable/addbutton">
+
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/prescriptionrecyclerview"
+        tools:listitem="@layout/recyclerview_row"/>
 
 </LinearLayout>

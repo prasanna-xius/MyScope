@@ -1,12 +1,5 @@
 package com.example.myscope.activities;
 
-import com.example.myscope.JSONResponse;
-import com.example.myscope.activities.prescription.PrescriptionManualDataClass;
-import com.google.gson.JsonObject;
-
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.List;
 import retrofit2.Call;
