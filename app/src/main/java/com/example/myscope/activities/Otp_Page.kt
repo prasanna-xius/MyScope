@@ -18,8 +18,6 @@ class Otp_Page : BaseActivity(), View.OnClickListener {
         val bundle = intent.extras
         val number = bundle!!.getString("mobile_no")
         showLongToast(number.toString())
-
-
         btn_verify_otp!!.setOnClickListener(this)
         hideKeyBoard()
     }
