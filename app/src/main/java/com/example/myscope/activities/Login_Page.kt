@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import com.example.myscope.JSONResponse
 import com.example.myscope.R
 import kotlinx.android.synthetic.main.login_page_main.*
 import kotlinx.android.synthetic.main.login_page_main.mobile_layout
@@ -77,17 +76,20 @@ class Login_Page : BaseActivity(), View.OnClickListener {
                         }
                         alertDialogBuilder.setNegativeButton("No") { dialogInterface, which ->
                         }
-
                         alertDialogBuilder.show()
-
                     } else {
-                        navigateToActivity(Intent(applicationContext, Otp_Page::class.java))
+
+                        //Passing value through bundle
+                        var intent = Intent(this@Login_Page,Otp_Page::class.java)
+                        var bundle:Bundle = Bundle()
+                        bundle.putString("mobile_no",mobileNumber)
+                        intent.putExtras(bundle)
+//                         intent.putExtra("mobile_no",mobileNumber)
+                        startActivity(intent)
+//                        navigateToActivity(Intent(applicationContext, Otp_Page::class.java))
 
                     }
-
                 }
-
-
             }
 
         });

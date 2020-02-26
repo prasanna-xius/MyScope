@@ -6,10 +6,19 @@ import android.view.View
 import com.example.myscope.R
 import kotlinx.android.synthetic.main.otppage_main.*
 
+
+
+
 class Otp_Page : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.otppage_main)
+
+        // Getting data through bundle
+        val bundle = intent.extras
+        val number = bundle!!.getString("mobile_no")
+        showLongToast(number.toString())
+
 
         btn_verify_otp!!.setOnClickListener(this)
         hideKeyBoard()
