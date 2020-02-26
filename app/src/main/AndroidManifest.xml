@@ -18,12 +18,23 @@
         <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"></activity>
 
         <activity android:name=".activities.Navigation_Drawer_Blogs">
+
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        >
+
+        <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"></activity>
+        <activity android:name=".activities.prescription.Prescription_manual">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- <activity android:name=".activities.Prescription_manual" /> -->
+        </activity>
+ <!-- <activity android:name=".activities.Prescription_manual" /> -->
+
+        </activity>
+<!--         <activity android:name=".activities.Prescription_manual" />-->
         <activity
             android:name=".activities.SignUp_Page"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -37,7 +48,11 @@
             android:name=".activities.MobileChange_Activity"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
+
         <activity android:name=".activities.SliderActivity" />
+
+        <activity android:name=".activities.Navigation_Drawer_Blogs" />
+
         <activity android:name=".activities.View_UserDetails_Activity" />
         <activity android:name=".activities.Dash_Board_Activity" />
 
@@ -54,11 +69,13 @@
         <activity android:name=".activities.medical_history.SurgeryHistory" />
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />
 
-
-        <activity android:name=".activities.prescription.Prescriptions_HomePage" />
+   <activity android:name=".activities.prescription.Prescriptions_HomePage" />
         <activity android:name=".ImageUpload" />
-        <activity android:name=".activities.prescription.Prescription_manual" />
-        <activity android:name=".activities.Medical_Documents_HomePage" />
+<!--        <activity android:name=".activities.prescription.Prescription_manual" />-->
+
+        <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
+
+        <activity android:name=".activities.labReports.Lab_Reports_Homepage"/>
     </application>
 
 </manifest>
