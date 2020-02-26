@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.example.myscope.activities.medical_history
 
 import android.content.Context
 import android.content.Intent
@@ -8,11 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.myscope.R
-import com.example.myscope.activities.medical_history.*
+import com.example.myscope.activities.BaseActivity
+import com.example.myscope.activities.MobileChange_Activity
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.medical_history_main.*
 
-class Medical_History_Activity : BaseActivity() {
+class Medical_History_HomePage : BaseActivity() {
 
     var images = intArrayOf(R.drawable.medical_history_navigation, R.drawable.family_history_logo, R.drawable.social_history_logo, R.drawable.diet_logo, R.drawable.allergies_logo, R.drawable.immunization_history_logo, R.drawable.medication_history_logo, R.drawable.surgery_history_logo, R.drawable.adverse_drug_reaction_logo)
     var names = arrayOf("Medical Histroy", "Family History", "Social History", "Diet", "Allergies", "Immuzination History", "Medication History", "Surgery History", "Adverse Drug Reaction")
@@ -21,7 +22,7 @@ class Medical_History_Activity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history_main)
         home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
-        showToolbar1()
+        activitiesToolbar()
         header!!.text = "Medical History"
 
     }
@@ -67,9 +68,8 @@ class Medical_History_Activity : BaseActivity() {
                 } else if (position == 7) {
                     navigateToActivity(Intent(applicationContext,SurgeryHistory::class.java))
                 } else if (position == 8) {
-                    navigateToActivity(Intent(applicationContext,MobileChange_Activity::class.java))
+                    navigateToActivity(Intent(applicationContext, MobileChange_Activity::class.java))
                 }
-                Toast.makeText(context, "You Clicked " + result[position], Toast.LENGTH_SHORT).show()
             }
             return rowView
         }

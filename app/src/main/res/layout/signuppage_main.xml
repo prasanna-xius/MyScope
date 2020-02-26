@@ -28,14 +28,13 @@
                 android:layout_marginTop="@dimen/dimen_20"
                 android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image"
-                    android:layout_width="@dimen/dimen_106"
+                    android:layout_width="@dimen/dimen_200"
                     android:layout_height="@dimen/dimen_106"
                     android:layout_gravity="center"
-                    android:src="@drawable/logo1"
-                    app:civ_border_color="#4B73B0"
-                    app:civ_border_width="2dp" />
+                    android:src="@drawable/myscopelogo"
+                    />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
@@ -119,7 +118,6 @@
                                 android:maxLength="20"
                                 android:paddingLeft="@dimen/dimen_8"
                                 android:paddingTop="@dimen/dimen_8"
-                                android:singleLine="true"
                                 android:textSize="@dimen/dimen_16sp"
                                 android:backgroundTint="@color/jet_black"
                                 android:textColor="@color/color_black"
@@ -245,7 +243,7 @@
                             android:layout_marginRight="@dimen/dimen_40"
                             android:background="@drawable/background_button"
                             android:text="SignUp"
-                            android:backgroundTint="#1F78D3"
+                            android:backgroundTint="#1D2F47"
                             android:textColor="#ffffff"
                             android:textSize="@dimen/dimen_14sp" />
 

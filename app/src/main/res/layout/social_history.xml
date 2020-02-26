@@ -11,8 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/app_bar_main" />
-
-        <include layout="@layout/background_image"/>
+       <include layout="@layout/background_image"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +29,6 @@
 
 
         <TextView
-            android:id="@+id/smoking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -60,7 +58,6 @@
         android:weightSum="2">
 
         <TextView
-            android:id="@+id/smoking_yrs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -75,56 +72,36 @@
             android:inputType="number"
             android:background="@drawable/border_bg"
             android:textColor="@color/bg_screen2"
-            android:textColorHint="@color/bg_screen2"
             android:padding="2dp"
             android:textSize="16sp" />
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="10dp"
         android:weightSum="2">
+
         <TextView
-            android:id="@+id/tobacco_use"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/tobacco_usage"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/checkbox_tobacco"
-    android:orientation="vertical">
-      <CheckBox
-          android:id="@+id/cigar_pipe"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Cigar/Pipe"
-          android:background="@color/colorWhite"
-          android:textColor="@color/bg_screen2"/>
-        <CheckBox
-            android:id="@+id/chew_snuff"
-            android:layout_width="wrap_content"
+        <com.example.myscope.activities.MultiSelectionSpinner
+            android:id="@+id/tobacco_usage"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chew/snuff"
-            android:textColor="@color/bg_screen2"/>
-        <CheckBox
-            android:id="@+id/cigarette"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cigarette"
-            android:textColor="@color/bg_screen2"/>
-    <CheckBox
-        android:id="@+id/beddi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Beddi"
-        android:textColor="@color/bg_screen2"/>
-</LinearLayout>
+            android:layout_weight="1"
+            android:background="@drawable/edittext_border"
+            android:entries="@array/tobacco_array"
+            android:padding="@dimen/dimen_4"
+            android:popupBackground="@color/colorWhite"
+            android:textSize="15sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -134,7 +111,6 @@
         android:weightSum="2">
 
         <TextView
-            android:id="@+id/drinking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -165,7 +141,6 @@
         android:weightSum="2">
 
         <TextView
-            android:id="@+id/total_yrs_drinking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -174,7 +149,9 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/et_yrsOfDrinkig"
+
+            android:id="@+id/et_YrsOfDrinking"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -188,7 +165,7 @@
 
     <Button
         android:id="@+id/btn_social"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/dimen_10"
@@ -196,8 +173,10 @@
         android:text="@string/save"
         android:backgroundTint="#1F78D3"
         android:textColor="@color/colorWhite"
-        android:background="@color/bg_screen2"
-        android:textSize="16sp" />
+        android:background="@drawable/background_button"
+        android:textSize="16sp"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"/>
 </LinearLayout>
 
 </ScrollView>

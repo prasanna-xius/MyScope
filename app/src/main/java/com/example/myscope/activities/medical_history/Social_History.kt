@@ -1,72 +1,78 @@
 package com.example.myscope.activities.medical_history
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
+import com.example.myscope.activities.MultiSelectionSpinner
+import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.social_history.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 
-class Social_History : BaseActivity(){
+class Social_History : BaseActivity() {
+
+    var spinnersmoking: Spinner? = null
+    var spinnerdrinking: Spinner? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.social_history)
 
-        showToolbar1()
+        activitiesToolbar()
+
         header!!.text = "Social History"
 
+        spinnersmoking= findViewById(R.id.spinner_smoking)
+        spinnerdrinking= findViewById(R.id.spinner_drinking)
+        val  tobaccoUsage = findViewById<MultiSelectionSpinner>(R.id.tobacco_usage)
 
-//        var spinnersmoking = findViewById<Spinner>(R.id.spinner_smoking)
-//        val adapter = ArrayAdapter.createFromResource(this, R.array.smoking_arrays, R.layout.spinner_item)
-//        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-//        spinnersmoking.setAdapter(adapter)
-
-//        var spinnerdrinking = findViewById<Spinner>(R.id.spinner_drinking)
-//        val adapter1 = ArrayAdapter.createFromResource(this, R.array.drinking_arrays, R.layout.spinner_item)
-//        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-//        spinnerdrinking.setAdapter(adapter1)
-
-        spinnerSet(spinner_smoking,resources.getStringArray(R.array.smoking_arrays))
-        spinnerSet(spinner_drinking,resources.getStringArray(R.array.drinking_arrays))
+        tobaccoUsage.setItems(resources.getStringArray(R.array.tobacco_array))
 
 
-        btn_social.setOnClickListener {
+        val smokingAdapter = ArrayAdapter(this,R.layout.spinner_dropdown_item,
+                resources.getStringArray(R.array.smoking_arrays))
+        spinnersmoking!!.adapter= smokingAdapter
 
-//            if (spinner_smoking.selectedItem.equals("Select status")){
-//
-//
-//            }
-//            else {
-//                if (spinner_drinking.selectedItem.equals("Select status")) {
-//
-//                    Toast.makeText(applicationContext, "error2", Toast.LENGTH_LONG).show()
-//                } else {
-//
-//                    intent= Intent(applicationContext,Diet::class.java)
-//                    startActivity(intent)
-//
-//                }
-//
-//            }
+        val drinkingAdapter = ArrayAdapter(this,R.layout.spinner_dropdown_item,
+                resources.getStringArray(R.array.drinking_arrays))
+        spinnerdrinking!!.adapter = drinkingAdapter
 
 
+        btn_social.setOnClickListener{
 
-
+            assignValuestoVariable()
+            validate(spinnersmoking!!)
+            validate(spinnerdrinking!!)
 
         }
-
-        var spinnersmoking = findViewById<Spinner>(R.id.spinner_smoking)
-        val adapter = ArrayAdapter.createFromResource(this, R.array.smoking_arrays, R.layout.spinner_dropdown_item)
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-        spinnersmoking.setAdapter(adapter)
-
-
-
-        var spinnerdrinking = findViewById<Spinner>(R.id.spinner_drinking)
-        val adapter1 = ArrayAdapter.createFromResource(this, R.array.drinking_arrays, R.layout.spinner_dropdown_item)
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-        spinnerdrinking.setAdapter(adapter1)
     }
 
+    private fun assignValuestoVariable() {
+
+        var smoking = spinnersmoking!!.selectedItem.toString()
+        var drinking = spinnerdrinking!!.selectedItem.toString()
+        var tobaccoUsage = tobacco_usage!!.selectedItem.toString()
+
+        validateSpinner(spinnersmoking!!, smoking)
+        validateSpinner(spinnerdrinking!!, drinking)
+        validateSpinner(tobacco_usage!!, tobaccoUsage)
+
+           if ((!smoking.equals("None")) &&
+                   !drinking.equals("None") &&
+                   !tobaccoUsage.equals("None"))
+           {
+
+
+               showLongToast("save the details")
+
+           }
+        else{
+
+               showLongSnackBar("Please fill the required fields")
+
+           }
+    }
 }

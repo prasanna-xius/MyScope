@@ -6,13 +6,13 @@
     <string name="nameerror">Name Required</string>
     <!--Medical History-->
     <string name="medical_history">MEDICAL HISTORY</string>
-    <string name="known_condition">Known Condition <font color='#a4c639'>*</font></string>
-    <string name="disease_statues"> Disease Statues</string>
+    <string name="known_condition">Known Condition <font color='#ff0000'>*</font></string>
+    <string name="disease_statues"> Disease Statues <font color='#ff0000'>*</font></string>
     <string name="disease_duration"> Disease Duration</string>
     <string name="no_of_yrs"> No of yrs</string>
-    <string name="when_started">When Started <font color='#a4c639'>*</font></string>
+    <string name="when_started">When Started <font color='#ff0000'>*</font></string>
     <string name="started_date">Started Date</string>
-    <string name="when_ended">When Ended <font color='#a4c639'>*</font></string>
+    <string name="when_ended">When Ended <font color='#ff0000'>*</font></string>
     <string name="ended_date"> Ended Date</string>
     <string name="notes">Notes</string>
     <string name="save">SAVE</string>
@@ -20,21 +20,21 @@
     <string name="disease"> Disease</string>
     <!--Family History-->
     <string name="family_history"> Family History</string>
-    <string name="condition">Condition<font color='#a4c639'>*</font></string>
+    <string name="condition">Condition<font color='#ff0000'>*</font></string>
     <string name="diabetes"> Diabetes</string>
-    <string name="relationship">Relationship<font color='#a4c639'>*</font></string>
+    <string name="relationship">Relationship<font color='#ff0000'>*</font></string>
     <!--/Family History-->
     <!--Social History-->
     <string name="social_history"> Social History</string>
-    <string name="smoking">Smoking<font color='#a4c639'>*</font></string>
+    <string name="smoking">Smoking<font color='#ff0000'>*</font></string>
     <string name="total_yrs_of_smoking">Total yrs of smoking</string>
-    <string name="drinking">Drinking<font color='#a4c639'>*</font></string>
+    <string name="drinking">Drinking<font color='#ff0000'>*</font></string>
     <string name="total_yrs_of_drinking">Total yrs of drinking</string>
-    <string name="tobacco_usage">Tobacco usage<font color='#a4c639'>*</font></string>
+    <string name="tobacco_usage">Tobacco usage<font color='#ff0000'>*</font></string>
     <!--Social History-->
     <!--Diet-->
     <string name="diet_title">DIET</string>
-    <string name="diet">DIET<font color='#a4c639'>*</font></string>
+    <string name="diet">DIET<font color='#ff0000'>*</font></string>
     <!--Diet-->
     <!--Allergy-->
     <string name="allergy">Allergy</string>
@@ -122,6 +122,14 @@
         <item>Daily Light Drinker (Less than 2 Drinker /day)</item>
         <item>Daily Heavy Drinker (More than 2 Drinker /day)</item>
     </string-array>
+    <string-array name="tobacco_array">
+        <item>None</item>
+        <item>Cigar/Pipe</item>
+        <item>Chew/ snuff </item>
+        <item>Cigarette </item>
+        <item>Beddi </item>
+      
+    </string-array>
     <string-array name="dose_unit_arrays">
         <item>None</item>
         <item>international unit (iu)</item>
@@ -165,7 +173,8 @@
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
     <string name="formulation">Formulation <font color='#ff0000'>*</font></string>
-    <string name="formulation_name">Name <font color='#ff0000'>*</font></string>
+    <string name="brand_name">Brand name <font color='#ff0000'>*</font></string>
+    <string name="drug_name">Drug name <font color='#ff0000'>*</font></string>
     <string name="dose_strength">Dose Strength <font color='#ff0000'>*</font></string>
     <string name="dose_unit">Dose Unit <font color='#ff0000'>*</font></string>
     <string name="how_often_taken">How often taken? <font color='#ff0000'>*</font></string>
@@ -205,6 +214,8 @@
 
     <string name="time">Time <font color='#ff0000'>*</font></string>
     <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
+    <string name="dialog_message">This number is not being registered.Please register here...</string>
+    <string name="dialog_title">Login Alert !</string>
 
     <string-array name="formulation_array">
         <item>None</item>
@@ -245,29 +256,23 @@
     </string-array>
     <string-array name="timings">
         <item>None</item>
-        <item>1 AM</item>
-        <item>2 AM</item>
-        <item>3 AM</item>
-        <item>4 AM</item>
-        <item>5 AM</item>
-        <item>6 AM</item>
-        <item>7 AM</item>
-        <item>8 AM</item>
-        <item>9 AM</item>
-        <item>10 AM</item>
-        <item>11 AM</item>
-        <item>12 AM</item>
-        <item>1 PM</item>
-        <item>2 PM</item>
-        <item>3 PM</item>
-        <item>4 PM</item>
-        <item>5 PM</item>
-        <item>6 PM</item>
-        <item>7 PM</item>
-        <item>8 PM</item>
-        <item>9 PM</item>
-        <item>10 PM</item>
-        <item>11 PM</item>
-        <item>12 PM</item>
+        <item> 1 </item>
+        <item> 2 </item>
+        <item> 3 </item>
+        <item> 4 </item>
+        <item> 5 </item>
+        <item> 6 </item>
+        <item> 7 </item>
+        <item> 8 </item>
+        <item> 9 </item>
+        <item> 10 </item>
+        <item> 11 </item>
+        <item> 12 </item>
     </string-array>
+    <string-array name="differtime">
+        <item>None</item>
+        <item>A.M</item>
+        <item>P.M</item>
+    </string-array>
+
 </resources>
