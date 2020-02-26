@@ -19,14 +19,13 @@
         <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activities.SliderActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- <activity android:name=".activities.Prescription_manual" /> -->
-
         <activity
             android:name=".activities.SignUp_Page"
             android:windowSoftInputMode="stateAlwaysHidden"
@@ -77,6 +76,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.Medical_Documents_HomePage"
             android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

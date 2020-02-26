@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.example.myscope.R
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login_page_main.*
 import kotlinx.android.synthetic.main.login_page_main.mobile_layout
 import org.json.JSONObject
@@ -16,6 +17,7 @@ import retrofit2.Callback
 import java.lang.System.exit
 
 class Login_Page : BaseActivity(), View.OnClickListener {
+
     var btn_facebook: TextView? = null
     var btn_google: TextView? = null
     var mobileNumber: String? = null
@@ -32,11 +34,18 @@ class Login_Page : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_otp_send -> {
+                val Phonenumber = mobile_number.getText().toString().trim { it <= ' ' }
+
                 if (validate() == false) {
                     onSignupFailed()
                     return
                 }
-                loginApiCall()
+
+//                navigateToActivity(Intent(applicationContext,Otp_Page::class.java))
+
+                val intent = Intent(this@Login_Page, Otp_Page::class.java)
+                intent.putExtra("Phonenumber", Phonenumber)
+                startActivity(intent)
             }
             R.id.btn_register -> {
                 navigateToActivity(Intent(applicationContext, SignUp_Page::class.java))
@@ -116,3 +125,13 @@ class Login_Page : BaseActivity(), View.OnClickListener {
 
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        if (FirebaseAuth.getInstance().currentUser != null) { //verification successful we will start the profile activity
+            val intent = Intent(this@Login_Page, Navigation_Drawer_Blogs::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+        }
+    }
+}

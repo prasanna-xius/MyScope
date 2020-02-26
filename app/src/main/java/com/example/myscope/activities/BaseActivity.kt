@@ -219,6 +219,25 @@ open class BaseActivity : AppCompatActivity() {
         pictureDialog.show()
     }
 
+    fun showPictureDialogReports() {
+        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
+        pictureDialog.setTitle("Select Action")
+
+        val pictureDialogItems = arrayOf(
+                "Select photo from gallery",
+                "Capture photo from camera",
+                "Select pdf file from folder")
+        pictureDialog.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> choosePhotoFromGallary()
+                1 -> takePhotoFromCamera()
+                2 -> showFileChooser()
+
+            }
+        }
+        pictureDialog.show()
+    }
     private fun showFilemanual() {
 
         navigateToActivity(Intent(applicationContext, Prescriptionmanual_recyclerview::class.java))

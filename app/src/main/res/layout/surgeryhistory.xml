@@ -56,16 +56,23 @@
             android:layout_margin="10dp"
             android:weightSum="2">
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:orientation="horizontal">
             <TextView
                 android:id="@+id/when_performed"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/when_performed"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
+            </LinearLayout>
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:weightSum="2.0"
                 android:layout_weight="1.0"
@@ -74,7 +81,7 @@
 
                 <Button
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_weight="1.0"
                     android:textColor="#fff"
@@ -87,8 +94,8 @@
                     />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
                     android:layout_weight="1.0"
                     android:gravity="center"
                     android:textColor="@color/bg_screen2"
@@ -177,7 +184,7 @@
                 android:padding="5dp"
                 android:background="@drawable/border_bg"
                 android:textSize="16sp"
-                android:hint=""
+                android:hint="Hospital Name"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"/>
         </LinearLayout>
@@ -204,6 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
+
                 android:background="@drawable/border_bg"
                 android:textSize="16sp"
                 android:textColor="@color/bg_screen2"/>

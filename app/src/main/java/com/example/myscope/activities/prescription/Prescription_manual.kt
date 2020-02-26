@@ -10,8 +10,6 @@ import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MultiSelectionSpinner
-import kotlinx.android.synthetic.main.app_bar_main.*
-
 import java.text.DateFormat
 import java.util.*
 

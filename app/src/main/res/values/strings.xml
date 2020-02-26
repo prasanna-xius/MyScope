@@ -72,18 +72,18 @@
     <!--Surgery History-->
     <string-array name="how_often_taken_arrays">
         <item>Select time</item>
-        <item>1. Morning </item>
-        <item>2.  Afternoon </item>
-        <item>3.  Night </item>
-        <item>4. other </item>
+        <item>Morning </item>
+        <item>Afternoon </item>
+        <item>Night</item>
+        <item>other</item>
     </string-array>
     <string-array name="formulation_arrays">
-        <item>1. Tablet</item>
-        <item>2. Capsule</item>
-        <item>3. Injection</item>
-        <item>4. Inhaler</item>
-        <item>5. Syrup</item>
-        <item>6. cream</item>
+        <item>Tablet</item>
+        <item>Capsule</item>
+        <item>Injection</item>
+        <item>Inhaler</item>
+        <item>Syrup</item>
+        <item>cream</item>
         <item>Others</item>
     </string-array>
     <string-array name="smoking_arrays">
@@ -180,7 +180,7 @@
     <string name="how_often_taken">How often taken? <font color='#ff0000'>*</font></string>
     <string name="start_date">Start Date <font color='#ff0000'>*</font></string>
     <string name="stop_date">Stop Date <font color='#ff0000'>*</font></string>
-    <string name="medical_condition">Medical Condition <font color='#ff0000'>*</font></string>
+    <string name="medical_condition">Medical Condition</string>
     <string name="is_prescribed">Is prescribed? <font color='#ff0000'>*</font></string>
     <string name="prescription_note">Note</string>
 
@@ -216,6 +216,7 @@
     <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
     <string name="dialog_message">This number is not being registered.Please register here...</string>
     <string name="dialog_title">Login Alert !</string>
+    <string name="action_logout">Logout</string>
 
     <string-array name="formulation_array">
         <item>None</item>
