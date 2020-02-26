@@ -17,13 +17,10 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"></activity>
 
-        <activity android:name=".activities.Navigation_Drawer_Blogs">
+        <activity android:name=".activities.Navigation_Drawer_Blogs"/>
 
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
-        >
 
-        <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"></activity>
+
         <activity android:name=".activities.prescription.Prescription_manual">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +30,6 @@
         </activity>
  <!-- <activity android:name=".activities.Prescription_manual" /> -->
 
-        </activity>
 <!--         <activity android:name=".activities.Prescription_manual" />-->
         <activity
             android:name=".activities.SignUp_Page"
@@ -51,7 +47,6 @@
 
         <activity android:name=".activities.SliderActivity" />
 
-        <activity android:name=".activities.Navigation_Drawer_Blogs" />
 
         <activity android:name=".activities.View_UserDetails_Activity" />
         <activity android:name=".activities.Dash_Board_Activity" />
