@@ -86,7 +86,8 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
 // automatically handle clicks on the Home/Up button, so long
 // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
-        return if (id == R.id.action_settings) {
+        return if (id == R.id.action_Logout) {
+            doExit()
             true
         } else super.onOptionsItemSelected(item)
     }
@@ -146,11 +147,11 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
         alertDialog.setTitle("MyScope")
         val dialog = alertDialog.create()
         dialog.show()
-        dialog.window!!.setBackgroundDrawableResource(R.color.bg_screen1)
+        dialog.window!!.setBackgroundDrawableResource(R.color.colorBackground)
         val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
         val negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-        positiveButton.setTextColor(Color.parseColor("#FF0B8B42"))
-        negativeButton.setTextColor(Color.parseColor("#FFFF0400"))
+        positiveButton.setTextColor(Color.parseColor("#ffffffff"))
+        negativeButton.setTextColor(Color.parseColor("#ffffffff"))
 
     }
 }

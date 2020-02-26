@@ -14,6 +14,7 @@ import java.util.regex.Pattern
 
 class SignUp_Page : BaseActivity(), View.OnClickListener {
 
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +40,8 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
             onSignupFailed()
             return
         }
+
+
         navigateToActivity(Intent(applicationContext, Login_Page::class.java))
         showLongToast("Registration Successfully Completed")
     }
