@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myscope.R
 import com.example.myscope.activities.medical_history.Medical_History_HomePage
+import com.example.myscope.activities.prescription.Prescriptions_HomePage
 import com.example.myscope.fragments.NavigationDrawerFragment
 import com.example.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks
 import com.google.firebase.auth.FirebaseAuth
@@ -85,7 +86,8 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
 // automatically handle clicks on the Home/Up button, so long
 // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
-        return if (id == R.id.action_settings) {
+        return if (id == R.id.action_Logout) {
+            doExit()
             true
         } else super.onOptionsItemSelected(item)
     }
@@ -98,9 +100,9 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
             R.id.card_MH -> {
                 navigateToActivity(Intent(applicationContext, Medical_History_HomePage::class.java))
             }
-//            R.id.card_Pres -> {
-//                navigateToActivity(Intent(applicationContext, Pres::class.java))
-//            }
+            R.id.card_Pres -> {
+                navigateToActivity(Intent(applicationContext, Prescriptions_HomePage::class.java))
+            }
 
             R.id.card_MedicalDocument -> {
                 navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
@@ -145,11 +147,11 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
         alertDialog.setTitle("MyScope")
         val dialog = alertDialog.create()
         dialog.show()
-        dialog.window!!.setBackgroundDrawableResource(R.color.bg_screen1)
+        dialog.window!!.setBackgroundDrawableResource(R.color.colorBackground)
         val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
         val negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-        positiveButton.setTextColor(Color.parseColor("#FF0B8B42"))
-        negativeButton.setTextColor(Color.parseColor("#FFFF0400"))
+        positiveButton.setTextColor(Color.parseColor("#ffffffff"))
+        negativeButton.setTextColor(Color.parseColor("#ffffffff"))
 
     }
 }

@@ -16,6 +16,9 @@ import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.otppage_main.*
 import java.util.concurrent.TimeUnit
 
+
+
+
 class Otp_Page : BaseActivity(), View.OnClickListener {
 
     private var mVerificationId: String? = null
@@ -26,6 +29,11 @@ class Otp_Page : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.otppage_main)
+
+        // Getting data through bundle
+        val bundle = intent.extras
+        val number = bundle!!.getString("mobile_no")
+        showLongToast(number.toString())
 
         progressBar = findViewById(R.id.progressBar)
         //initializing objects

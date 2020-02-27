@@ -1,46 +1,48 @@
-package com.example.myscope.activities.medical_history
+package com.example.myscope.activities.medical_documents
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.BaseAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.MobileChange_Activity
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.medical_history_main.*
+import kotlinx.android.synthetic.main.medicaldocuments_homepage_main.*
 
-class Medical_History_HomePage : BaseActivity() {
-
-    var images = intArrayOf(R.drawable.medical_history_navigation, R.drawable.family_history_logo, R.drawable.social_history_logo, R.drawable.diet_logo, R.drawable.allergies_logo, R.drawable.immunization_history_logo, R.drawable.medication_history_logo, R.drawable.surgery_history_logo, R.drawable.adverse_drug_reaction_logo)
-    var names = arrayOf("Medical Histroy", "Family History", "Social History", "Diet", "Allergies", "Immuzination History", "Medication History", "Surgery History", "Adverse Drug Reaction")
+class Medical_Documents_HomePage : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.medical_history_main)
-        home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
+        setContentView(R.layout.medicaldocuments_homepage_main)
         activitiesToolbar()
-        header!!.text = "Medical History"
-
+        medical_documents_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
+        activitiesToolbar()
+        header!!.text = "Medical Documents"
     }
+
     private inner class CustomAdapter(var context: Context, var result: Array<String>, var imageId: IntArray) : BaseAdapter() {
         private var inflater: LayoutInflater? = null
         override fun getCount(): Int { // TODO Auto-generated method stub
             return result.size
         }
+
         override fun getItem(position: Int): Any { // TODO Auto-generated method stub
             return position
         }
+
         override fun getItemId(position: Int): Long { // TODO Auto-generated method stub
             return position.toLong()
         }
+
         inner class Holder {
             var os_text: TextView? = null
             var os_image: ImageView? = null
         }
+
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View { // TODO Auto-generated method stub
             val holder = Holder()
             val rowView: View
@@ -52,29 +54,51 @@ class Medical_History_HomePage : BaseActivity() {
             rowView.setOnClickListener {
                 // TODO Auto-generated method stub
                 if (position == 0) {
-                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
+//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
+                    showPictureDialogReports()
                 } else if (position == 1) {
-                    navigateToActivity(Intent(applicationContext, Family_History::class.java))
+//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
+                    showPictureDialogReports()
                 } else if (position == 2) {
-                    navigateToActivity(Intent(applicationContext, Social_History::class.java))
+//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
+                    showPictureDialogReports()
                 } else if (position == 3) {
-                    navigateToActivity(Intent(applicationContext, Diet::class.java))
+//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
+                    showPictureDialogReports()
                 } else if (position == 4) {
-                    navigateToActivity(Intent(applicationContext,Allergies::class.java))
+//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
+                    showPictureDialogReports()
                 } else if (position == 5) {
-                    navigateToActivity(Intent(applicationContext,ImmunizationHistory::class.java))
+//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
+                    showPictureDialogReports()
                 } else if (position == 6) {
-                    navigateToActivity(Intent(applicationContext,MedicationHistory::class.java))
-                } else if (position == 7) {
-                    navigateToActivity(Intent(applicationContext,SurgeryHistory::class.java))
-                } else if (position == 8) {
-                    navigateToActivity(Intent(applicationContext, MobileChange_Activity::class.java))
+//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
+                    showPictureDialogReports()
                 }
             }
             return rowView
         }
+
         init { // TODO Auto-generated constructor stub
             inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         }
     }
+
+    var images = intArrayOf(R.drawable.discharge1,
+            R.drawable.dental1,
+            R.drawable.immunization_history_logo,
+            R.drawable.health_insurance,
+            R.drawable.diet,
+            R.drawable.education1,
+            R.drawable.other_documents
+           )
+
+    var names = arrayOf("Discharge summary",
+            "Dental Records",
+            "Immunization",
+            "Health Insurance",
+            "Diet Chart",
+            "Education Material",
+            "Other document"
+            )
 }

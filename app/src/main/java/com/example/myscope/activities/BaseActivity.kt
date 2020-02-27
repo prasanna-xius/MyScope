@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.example.myscope.activities.prescription.Prescription_manual
+import com.example.myscope.activities.prescription.Prescriptionmanual_recyclerview
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.ByteArrayOutputStream
@@ -218,9 +219,28 @@ open class BaseActivity : AppCompatActivity() {
         pictureDialog.show()
     }
 
+    fun showPictureDialogReports() {
+        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
+        pictureDialog.setTitle("Select Action")
+
+        val pictureDialogItems = arrayOf(
+                "Select photo from gallery",
+                "Capture photo from camera",
+                "Select pdf file from folder")
+        pictureDialog.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> choosePhotoFromGallary()
+                1 -> takePhotoFromCamera()
+                2 -> showFileChooser()
+
+            }
+        }
+        pictureDialog.show()
+    }
     private fun showFilemanual() {
 
-        navigateToActivity(Intent(applicationContext, Prescription_manual::class.java))
+        navigateToActivity(Intent(applicationContext, Prescriptionmanual_recyclerview::class.java))
     }
 
     private fun showFileChooser() {

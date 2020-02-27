@@ -7,4 +7,7 @@
     <item
         android:id="@+id/action_notification"
         android:title="@string/action_notification" />
+    <item
+        android:id="@+id/action_Logout"
+        android:title="@string/action_logout" />
 </menu>
