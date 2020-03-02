@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi
 
 import com.example.myscope.R
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.medical_history.*
+import kotlinx.android.synthetic.main.disease_history.*
 import kotlinx.android.synthetic.main.view_userdetails_main.*
 import java.text.DateFormat
 import java.time.Year
@@ -92,14 +92,14 @@ class View_UserDetails_Activity : BaseActivity() {
 
     private fun assignValuestoVariable() {
 
-        var gender = spinner_gender.selectedItem.toString()
-        var bloodGroup = spinner_bloodGroup!!.selectedItem.toString()
-        var firstName = et_first_name.text.toString()
-        var lastName = et_last_name.text.toString()
-        var doctorName = et_doctor_name.text.toString()
-        var pharmacistName = et_pharmacist_name.text.toString()
-        var weight = et_weight.text.toString()
-        var height = et_height.text.toString()
+        val gender = spinner_gender.selectedItem.toString()
+        val bloodGroup = spinner_bloodGroup!!.selectedItem.toString()
+        val firstName = et_first_name.text.toString()
+        val lastName = et_last_name.text.toString()
+        val doctorName = et_doctor_name.text.toString()
+        val pharmacistName = et_pharmacist_name.text.toString()
+        val weight = et_weight.text.toString()
+        val height = et_height.text.toString()
         val dob = et_dob.text.toString()
 
         validateSpinner(spinner_gender,gender)

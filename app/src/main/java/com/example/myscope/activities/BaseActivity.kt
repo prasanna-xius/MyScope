@@ -183,7 +183,6 @@ open class BaseActivity : AppCompatActivity() {
         {
 
             errorDisplay(editText)
-            showLongSnackBar("Please fill the required fields")
 
         } else {
             editText.setCompoundDrawables(null, null, null, null)
@@ -268,27 +267,64 @@ open class BaseActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     fun duration(startdate: TextView, stopdate :TextView, years : TextView){
-        if(!startdate.text.toString().equals("") && !stopdate.text.toString().equals("")){
-            val dob1 = SimpleDateFormat("MM-YYYY").format(Date(startdate.text.toString()))
-            val dob2 = SimpleDateFormat("MM-YYYY").format(Date(stopdate.text.toString()))
-//            val dob3 = SimpleDateFormat("YYYY").format(Date(startdate.text.toString()))
-//            val dob4 = SimpleDateFormat("YYYY").format(Date(stopdate.text.toString()))
+        if(!startdate.text.toString().equals("") && !stopdate.text.toString().equals("")) {
+            val dob1 = SimpleDateFormat("MM").format(Date(startdate.text.toString()))
+            val dob2 = SimpleDateFormat("MM").format(Date(stopdate.text.toString()))
+            val dob3 = SimpleDateFormat("YYYY").format(Date(startdate.text.toString()))
+            val dob4 = SimpleDateFormat("YYYY").format(Date(stopdate.text.toString()))
+            val dob5 = SimpleDateFormat("dd").format(Date(startdate.text.toString()))
+            val dob6 = SimpleDateFormat("dd").format(Date(stopdate.text.toString()))
 
-//            if ( dob3.toInt() < dob4.toInt()) {
-////                var age = dob4.toInt() - dob3.toInt()
-////                years.text  =   age.toString() + "Years"
-////            }dob3.toInt() == dob4.toInt() &&
-////            else
-                if(  dob1.toInt() < dob2.toInt()){
-                    var month = dob2.toInt()- dob1.toInt()
-                    years.text = month.toString() +  "Month"
+            if (dob3.toInt() < dob4.toInt()){
+
+                  if (dob1.toInt() < dob2.toInt()){
+                      val month = dob2.toInt() - dob1.toInt()
+                      val year = dob4.toInt() - dob3.toInt()
+                      years.text = month.toString() + "month  " + year + "Years"
+                  }
+                else if (dob1.toInt() == dob2.toInt()){
+                      val month = dob4.toInt() - dob3.toInt()
+                      years.text = month.toString() + "Years"
+                  }
+                  else if (dob1.toInt() > dob2.toInt()){
+
+                      val x = 12 - dob1.toInt()
+                      val month = x + dob2.toInt()
+                      val year = dob4.toInt() - dob3.toInt() -1
+                      years.text = month.toString() + "month  " + year + "Years"
+                  }
+            }
+            else if (dob3.toInt() == dob4.toInt()){
+
+                if (dob1.toInt() < dob2.toInt()){
+                    val month = dob2.toInt() - dob1.toInt()
+                    years.text = month.toString() + "months"
                 }
-            else {
+                else if (dob1.toInt() == dob2.toInt()){
+                    if (dob6.toInt() > dob5.toInt()) {
+                        val days = dob6.toInt() - dob5.toInt()
+                        years.text = days.toString() + "Days"
+                    }
+                    else{
+                        years.setText("")
+                        errorDisplayTextview(years)
+                        showLongSnackBar("Start date cannot be after end date")
+
+                    }
+
+                }
+                else if (dob1.toInt() > dob2.toInt()){
+                    years.setText("")
+                   errorDisplayTextview(years)
+                    showLongSnackBar("Start date cannot be after end date")
+                }
+            }
+            else if (dob3.toInt() > dob4.toInt()){
                 years.setText("")
-                showLongSnackBar("Start date cannot be after end date")
                 errorDisplayTextview(years)
+                showLongSnackBar("Start date cannot be after end date")
             }
-            }
+        }
         }
 
 

@@ -45,6 +45,8 @@
     <string name="ended_date"> Ended Date</string>
     <string name="notes">Notes</string>
     <string name="save">SAVE</string>
+    <string name="edit">EDIT</string>
+    <string name="update">UDATE</string>
     <!--end-->
     <string name="disease">e.g Diabetes</string>
     <!--Family History-->
