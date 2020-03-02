@@ -19,14 +19,21 @@
         >
 
         <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"></activity>
-        <activity android:name=".activities.prescription.Prescription_manual">
+
+        <activity android:name=".activities.prescription.Prescription_Manual_Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--         <activity android:name=".activities.Prescription_manual" />-->
+
+        <activity
+            android:name=".activities.prescription.DetailActivity"
+
+      ></activity>
+
+        <!--         <activity android:name=".activities.Prescription_manual" />-->
         <activity
             android:name=".activities.SignUp_Page"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -59,7 +66,7 @@
 
         <activity android:name=".activities.prescription.Prescriptions_HomePage" />
         <activity android:name=".ImageUpload" />
-<!--        <activity android:name=".activities.prescription.Prescription_manual" />-->
+        <activity android:name=".activities.prescription.Prescription_manual" />
 
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
 

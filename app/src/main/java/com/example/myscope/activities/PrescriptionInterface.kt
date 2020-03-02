@@ -8,8 +8,8 @@ interface PrescriptionInterface {
     //     @GET("list")
 //    Call<List<PrescriptionManualDataClass>> getData();
     @POST("addRecord")
-    fun createPatient(@Body body: SignupResponse?): Call<List<SignupResponse>?>
+    fun createPatient(@Body body: SignupResponse?): Call<SignupResponse>?
 
     @POST("list/{mobile_no}")
-    fun loginPatient(@Body body: String): Call<List<SignupResponse>?>
+    fun loginPatient(@Body body: String): Call<SignupResponse>?
 }

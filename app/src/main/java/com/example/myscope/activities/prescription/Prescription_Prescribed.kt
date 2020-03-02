@@ -21,53 +21,53 @@ class Prescription_Prescribed : BaseActivity() {
 
         val isprescribedadapter = ArrayAdapter(this,
                 R.layout.spinner_dropdown_item, resources.getStringArray(R.array.is_prescribed))
-        is_prescribed!!.adapter = isprescribedadapter
-
-        is_prescribed?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedItem = parent!!.getItemAtPosition(position).toString()
-
-                if (selectedItem.equals("None")) {
-                    doctor_layout.setVisibility(View.GONE);
-                    hosp_layout.setVisibility(View.GONE);
-                    pharmacy_layout.setVisibility(View.GONE);
-                    // do your stuff
-                } else if (selectedItem.equals("Over the counter (OTC)")) {
-                    doctor_layout.setVisibility(View.GONE);
-                    hosp_layout.setVisibility(View.GONE);
-                    pharmacy_layout.setVisibility(View.GONE);
-                    // do your stuff
-                } else if (selectedItem.equals("Prescribed")) {
-
-                    doctor_layout.setVisibility(View.VISIBLE);
-                    hosp_layout.setVisibility(View.VISIBLE);
-                    pharmacy_layout.setVisibility(View.GONE);
-
-                    // do your stuff
-                } else if (selectedItem.equals("Prescribed OTC")) {
-                    doctor_layout.setVisibility(View.GONE);
-                    hosp_layout.setVisibility(View.GONE);
-                    pharmacy_layout.setVisibility(View.VISIBLE);
-                    // do your stuff
-                }
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                doctor_layout.setVisibility(View.GONE);
-                hosp_layout.setVisibility(View.GONE);
-                pharmacy_layout.setVisibility(View.GONE);
-
-            }
-        }
-
-        prescription_save.setOnClickListener(View.OnClickListener {
-
-
-            navigateToActivity(Intent(applicationContext, Prescription_manual::class.java))
-
-        })
+//        is_prescribed!!.adapter = isprescribedadapter
+//
+//        is_prescribed?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//
+//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+//                val selectedItem = parent!!.getItemAtPosition(position).toString()
+//
+//                if (selectedItem.equals("None")) {
+//                    doctor_layout.setVisibility(View.GONE);
+//                    hosp_layout.setVisibility(View.GONE);
+//                    pharmacy_layout.setVisibility(View.GONE);
+//                    // do your stuff
+//                } else if (selectedItem.equals("Over the counter (OTC)")) {
+//                    doctor_layout.setVisibility(View.GONE);
+//                    hosp_layout.setVisibility(View.GONE);
+//                    pharmacy_layout.setVisibility(View.GONE);
+//                    // do your stuff
+//                } else if (selectedItem.equals("Prescribed")) {
+//
+//                    doctor_layout.setVisibility(View.VISIBLE);
+//                    hosp_layout.setVisibility(View.VISIBLE);
+//                    pharmacy_layout.setVisibility(View.GONE);
+//
+//                    // do your stuff
+//                } else if (selectedItem.equals("Prescribed OTC")) {
+//                    doctor_layout.setVisibility(View.GONE);
+//                    hosp_layout.setVisibility(View.GONE);
+//                    pharmacy_layout.setVisibility(View.VISIBLE);
+//                    // do your stuff
+//                }
+//
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                doctor_layout.setVisibility(View.GONE);
+//                hosp_layout.setVisibility(View.GONE);
+//                pharmacy_layout.setVisibility(View.GONE);
+//
+//            }
+//        }
+//
+//        saveBtn.setOnClickListener(View.OnClickListener {
+//
+//
+//            navigateToActivity(Intent(applicationContext, Prescription_manual::class.java))
+//
+//        })
     }
 
 

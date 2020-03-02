@@ -176,7 +176,25 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
+    fun showPictureDialogReports() {
+        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
+        pictureDialog.setTitle("Select Action")
 
+        val pictureDialogItems = arrayOf(
+                "Select photo from gallery",
+                "Capture photo from camera",
+                "Select pdf file from folder")
+        pictureDialog.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> choosePhotoFromGallary()
+                1 -> takePhotoFromCamera()
+                2 -> showFileChooser()
+
+            }
+        }
+        pictureDialog.show()
+    }
     fun validateDate(startDate: TextView, stopDate: TextView, boolean: Any): Boolean {
         if (!startDate.text.toString().equals("") && !stopDate.text.toString().equals("")) {
             startDate.setCompoundDrawables(null, null, null, null)

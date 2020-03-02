@@ -173,7 +173,7 @@
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
     <string name="formulation">Formulation <font color='#ff0000'>*</font></string>
-    <string name="formulation_name">Name <font color='#ff0000'>*</font></string>
+    <string name="brand_name"> Brand Name <font color='#ff0000'>*</font></string>
     <string name="dose_strength">Dose Strength <font color='#ff0000'>*</font></string>
     <string name="dose_unit">Dose Unit <font color='#ff0000'>*</font></string>
     <string name="how_often_taken">How often taken? <font color='#ff0000'>*</font></string>
@@ -214,6 +214,9 @@
     <string name="time">Time <font color='#ff0000'>*</font></string>
     <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
     <string name="action_logout">Logout</string>
+    <string name="generic_name">Generic Name<font color='#ff0000'>*</font></string>
+    <string name="drug_name">Drug Name</string>
+    <string name="adddrug">Add Drug</string>
 
     <string-array name="formulation_array">
         <item>None</item>
@@ -252,8 +255,51 @@
         <item>Prescribed</item>
         <item>Prescribed OTC</item>
     </string-array>
+
+    <string-array name="drugs_list">
+     <item> Acetaminophen</item>
+     <item> Adderall</item>
+     <item> Alprazolam</item>
+     <item> Amitriptyline</item>
+     <item> Amlodipine</item>
+     <item> Amoxicillin</item>
+     <item> Ativan</item>
+     <item> Atorvastatin</item>
+     <item> Azithromycin</item>
+     <item> Ciprofloxacin</item>
+     <item> Citalopram</item>
+     <item> Clindamycin</item>
+     <item> Clonazepam</item>
+     <item> Codeine</item>
+     <item> Cyclobenzaprine</item>
+     <item> Cymbalta</item>
+     <item> Doxycycline</item>
+     <item> Gabapentin</item>
+     <item> Hydrochlorothiazide</item>
+     <item> Ibuprofen</item>
+     <item> Lexapro</item>
+     <item> Lisinopril</item>
+     <item> Loratadine</item>
+     <item> Lorazepam</item>
+     <item> Losartan</item>
+     <item> Lyrica</item>
+     <item> Meloxicam</item>
+     <item> Metformin</item>
+     <item> Metoprolol</item>
+     <item> Naproxen</item>
+     <item> Omeprazole</item>
+     <item> Oxycodone</item>
+     <item> Pantoprazole</item>
+     <item> Prednisone</item>
+     <item> Tramadol</item>
+     <item> Trazodone</item>
+     <item> Viagra</item>
+     <item> Wellbutrin</item>
+     <item> Xanax</item>
+     <item> Zoloft</item>
+    </string-array>
     <string-array name="timings">
-        <item>None</item>
+        <item>Select time</item>
         <item>1 AM</item>
         <item>2 AM</item>
         <item>3 AM</item>
