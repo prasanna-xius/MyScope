@@ -13,7 +13,7 @@ interface Disease_service {
     fun getDiseaseList(@QueryMap filter: HashMap<String, String>): Call<List<Diseases>>
 
     @GET("diseaselist/{id}")
-    fun getdisease(@Path("id") id: String): Call<Diseases>
+    fun getdisease(@Path("id") id: String): Call<List<Diseases>>
 
 
     //end point of webservice
