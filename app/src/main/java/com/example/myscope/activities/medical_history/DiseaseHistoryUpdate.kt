@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
@@ -16,17 +17,18 @@ import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.services.Disease_service
 import com.example.myscope.activities.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_disease_history_update.*
-import kotlinx.android.synthetic.main.disease_history.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.sql.RowId
 import java.text.DateFormat
 import java.util.*
 
 
 class DiseaseHistoryUpdate : BaseActivity() {
-    var position: Int= 0;
+    var position: Int= 1;
     internal lateinit var myCalendar: Calendar
     private var startDateOrEndDAte = true
     var spinner_disease: Spinner? = null
@@ -102,24 +104,25 @@ class DiseaseHistoryUpdate : BaseActivity() {
 
             override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>> ) {
 
-
+                val destination = response.body()
 //                   Toast.makeText(this@DiseaseHistoryUpdate , "update"+destination.toString(), Toast.LENGTH_SHORT).show()
-                    Log.d("resp:",response.toString())
-                   Log.e("resp:",response.toString())
-                   val disease = destination?.get(position)
-
-                    disease?.let {
-                        et_condition_updated.setText(disease.known_condition)
-                        text1.setText(disease.disease_status)
-                        et_noOfYrs_updated.setText(disease.disease_duration)
-                        et_startDate_updated.setText(disease.when_started)
-                        et_stopDate_updated.setText(disease.when_ended)
-                        notes_diseaseHistory_updated.setText(disease.disease_note)
-
-                    }
+                Log.d("resp:", response.toString())
+                Log.e("resp:", response.toString())
+                val disease = destination?.get(position)
 
 
+                disease?.let {
+                    et_condition_updated.setText(disease.known_condition)
+//                    text1.setText(disease.disease_status)
+                    et_noOfYrs_updated.setText(disease.disease_duration)
+                    et_startDate_updated.setText(disease.when_started)
+                    et_stopDate_updated.setText(disease.when_ended)
+                    notes_diseaseHistory_updated.setText(disease.disease_note)
+//                    disease_id = disease.disease_id
 
+                }
+
+            }
            override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
            Toast.makeText(this@DiseaseHistoryUpdate , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
            }
@@ -148,13 +151,15 @@ class DiseaseHistoryUpdate : BaseActivity() {
             newDisease.when_ended = et_stopDate_updated!!.text.toString().trim()
             newDisease.disease_note = notes_diseaseHistory_updated!!.text.toString().trim()
             newDisease.mobile_no = "8142529582"
+//            newDisease.disease_id = disease_id
 
 
 
 
             val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
-            val requestCall = destinationService.updateDisease(mobile_no  , known_condition,disease_statusUpdate, disease_durationUpdate,
-                    when_startedUpdate,when_endedUpdate,disease_noteUpdate)
+//            val requestCall = destinationService.updateDisease(mobile_no  , known_condition,disease_statusUpdate, disease_durationUpdate,
+//                    when_startedUpdate,when_endedUpdate,disease_noteUpdate)
+            val requestCall = destinationService.updateDisease(newDisease)
 
             requestCall.enqueue(object: Callback<Diseases> {
 
