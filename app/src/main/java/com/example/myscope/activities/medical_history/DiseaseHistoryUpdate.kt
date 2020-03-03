@@ -32,6 +32,7 @@ class DiseaseHistoryUpdate : BaseActivity() {
     internal lateinit var myCalendar: Calendar
     private var startDateOrEndDAte = true
     var spinner_disease: Spinner? = null
+    var diseaseid:Int=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,17 +110,16 @@ class DiseaseHistoryUpdate : BaseActivity() {
                 Log.d("resp:", response.toString())
                 Log.e("resp:", response.toString())
                 val disease = destination?.get(position)
-
+                diseaseid = disease?.disease_id!!
 
                 disease?.let {
                     et_condition_updated.setText(disease.known_condition)
-//                    text1.setText(disease.disease_status)
+
+                    text1.setText(disease.disease_status)
                     et_noOfYrs_updated.setText(disease.disease_duration)
                     et_startDate_updated.setText(disease.when_started)
                     et_stopDate_updated.setText(disease.when_ended)
                     notes_diseaseHistory_updated.setText(disease.disease_note)
-//                    disease_id = disease.disease_id
-
                 }
 
             }
@@ -151,14 +151,9 @@ class DiseaseHistoryUpdate : BaseActivity() {
             newDisease.when_ended = et_stopDate_updated!!.text.toString().trim()
             newDisease.disease_note = notes_diseaseHistory_updated!!.text.toString().trim()
             newDisease.mobile_no = "8142529582"
-//            newDisease.disease_id = disease_id
-
-
-
+            newDisease.disease_id = diseaseid
 
             val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
-//            val requestCall = destinationService.updateDisease(mobile_no  , known_condition,disease_statusUpdate, disease_durationUpdate,
-//                    when_startedUpdate,when_endedUpdate,disease_noteUpdate)
             val requestCall = destinationService.updateDisease(newDisease)
 
             requestCall.enqueue(object: Callback<Diseases> {
@@ -188,26 +183,6 @@ class DiseaseHistoryUpdate : BaseActivity() {
             validate(spinner_disease_updated!!)
         }
 
-
-//        btn_medicalHistory_update.setOnClickListener {
-//
-//
-//            newDisease.known_condition = et_condition_updated!!.text.toString().trim()
-//            newDisease.disease_status = spinner_disease_updated?.getSelectedItem().toString()
-//            text1.setText(newDisease.disease_status)
-//            newDisease.disease_duration = et_noOfYrs_updated!!.text.toString().trim()
-//            newDisease.when_started = et_startDate_updated!!.text.toString().trim()
-//            newDisease.when_ended = et_stopDate_updated!!.text.toString().trim()
-//            newDisease.disease_note = notes_diseaseHistory_updated!!.text.toString().trim()
-//            newDisease.mobile_no = "8142529582"
-//
-//
-//            val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
-////            val requestCall = destinationService.updateDisease(mobile_no , known_conditionUpdate,disease_statusUpdate,disease_durationUpdate,when_startedUpdate,
-////                    when_endedUpdate,disease_noteUpdate  )
-//
-//            val requestCall = destinationService.updateDisease(newDisease)
-//            showLongToast(requestCall.toString())
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
