@@ -9,6 +9,8 @@ import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import com.example.myscope.R
 
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
+import java.text.DateFormat
+import java.util.*
 
 
 class Prescription_manual : BaseActivity() {

@@ -17,9 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.medical_history.DiseaseHistoryUpdate"></activity>
-        <!-- <activity android:name=".activities.medical_history."></activity> -->
-        <activity android:name=".activities.medical_history.Disease_recyclerView">
+<!--        <activity android:name=".activities.medical_history.FamilyHistoryRecyclerView"></activity>-->
+        <activity android:name=".activities.medical_history.FamilyHistoryUpdated" />
+        <activity android:name=".activities.medical_history.SocialHistoryUpdate" />
+        <activity android:name=".activities.medical_history.SocialHistoryRecyclerView" />
+        <activity android:name=".activities.medical_history.DiseaseHistoryUpdate" /> <!-- <activity android:name=".activities.medical_history."></activity> -->
+        <activity android:name=".activities.medical_history.FamilyHistoryRecyclerView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

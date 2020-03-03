@@ -1,16 +1,21 @@
 package com.example.myscope.activities.medical_history
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-
+import android.widget.Toast
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MultiSelectionSpinner
-import kotlinx.android.synthetic.main.activity_prescription_manual.*
+import com.example.myscope.activities.services.ServiceBuilder
+import com.example.myscope.activities.services.Social_service
+import com.google.android.gms.security.ProviderInstaller
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.social_history.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import javax.net.ssl.SSLContext
 
 class Social_History : BaseActivity() {
 
@@ -45,6 +50,51 @@ class Social_History : BaseActivity() {
             validate(spinnersmoking!!)
             validate(spinnerdrinking!!)
 
+
+
+            try {
+                ProviderInstaller.installIfNeeded(getApplicationContext());
+                var sslContext: SSLContext
+                sslContext = SSLContext.getInstance("TLSv1.2");
+                sslContext.init(null, null, null);
+                sslContext.createSSLEngine();
+            }
+            catch (e: Exception) {
+                e.printStackTrace();
+            }
+
+            val newSocialHabits = SocialHabits()
+            newSocialHabits.smoking = spinner_smoking!!.getSelectedItem().toString()
+            newSocialHabits.smoking_duration = et_smoking_yrs?.text.toString().trim()
+            newSocialHabits.tobacco_usage = tobacco_usage!!.getSelectedItem().toString()
+            newSocialHabits.drinking = spinner_drinking!!.getSelectedItem().toString()
+            newSocialHabits.drinking_duration = et_YrsOfDrinking!!.text.toString().trim()
+            newSocialHabits.mobile_no = "8142529582"
+
+            val socialService = ServiceBuilder.buildService(Social_service::class.java)
+
+            val requestCall = socialService.addSocialHabits(newSocialHabits)
+
+            requestCall.enqueue(object : Callback<SocialHabits> {
+
+                override fun onResponse(call: Call<SocialHabits>, resp: Response<SocialHabits>) {
+
+                    if (resp.isSuccessful) {
+                        var newbody = resp.body() // Use it or ignore it
+
+                        Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+                        finish()
+                    } else {
+                        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                override fun onFailure(call: Call<SocialHabits>, t: Throwable) {
+                    //finish()
+//                    Log.d("errormsgfailure ::", t.message)
+//                    Log.e("errorunderfailure:", t.message)
+                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
     }
 
@@ -62,15 +112,10 @@ class Social_History : BaseActivity() {
                    !drinking.equals("None") &&
                    !tobaccoUsage.equals("None"))
            {
-
-
                showLongToast("save the details")
-
            }
         else{
-
                showLongSnackBar("Please fill the required fields")
-
            }
     }
 }

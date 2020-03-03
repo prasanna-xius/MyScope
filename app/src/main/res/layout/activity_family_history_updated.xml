@@ -14,13 +14,13 @@
         <include layout="@layout/app_bar_main" />
 
         <include layout="@layout/background_image"/>
-   <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/family_history"
-    android:textSize="30sp"
-    android:gravity="center"
-    android:textColor="@color/bg_screen2" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/family_history"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="@color/bg_screen2" />
 
 
         <LinearLayout
@@ -39,7 +39,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_family_condition"
+                android:id="@+id/et_family_conditionUpdated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -68,7 +68,7 @@
                 android:textSize="16sp" />
 
             <Spinner
-                android:id="@+id/spinner_family"
+                android:id="@+id/spinner_familyUpdated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -95,7 +95,7 @@
 
             <EditText
 
-                android:id="@+id/relationship_notes"
+                android:id="@+id/relationship_notesUpdated"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_75"
                 android:layout_weight="1"
@@ -107,7 +107,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_family"
+            android:id="@+id/btn_familyUpdated"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center"
