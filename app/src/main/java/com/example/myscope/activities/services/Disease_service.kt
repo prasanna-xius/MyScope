@@ -2,6 +2,7 @@ package com.example.myscope.activities.services
 
 
 import com.example.myscope.activities.medical_history.Diseases
+import com.example.myscope.activities.medical_history.FamilyCondition
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -34,6 +35,24 @@ interface Disease_service {
     @Headers("Content-Type: application/json")
     @POST("updateDiseaseRecord")
     fun updateDisease(@Body newDisease: Diseases): Call<Diseases>
+
+
+    @Headers("Content-Type:application/json")
+    @GET("familylist")
+    fun getFamilyList(@QueryMap filter: HashMap<String, String>): Call<List<FamilyCondition>>
+
+    @GET("familylist/{id}")
+    fun getFamily(@Path("id") id: String): Call<List<FamilyCondition>>
+
+
+    //end point of webservice
+    @Headers("Content-Type: application/json")
+    @POST("addFamily")
+    fun addFamilyList(@Body newFamilyCondition: FamilyCondition): Call<FamilyCondition>
+
+    @Headers("Content-Type: application/json")
+    @POST("updateFamily")
+    fun updateFamily(@Body newFamilyCondition : FamilyCondition): Call<FamilyCondition>
 
 //    @FormUrlEncoded
 //    @POST("diseaselist/updateDiseaseRecord")

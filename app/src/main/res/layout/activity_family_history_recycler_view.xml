@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorWhite"
-    tools:context=".activities.medical_history.FamilyHistoryRecyclerView">
+    tools:context=".activities.medical_history.Disease_recyclerView">
 
 
 
@@ -34,8 +34,9 @@
     </LinearLayout>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_marginTop="@dimen/dimen_40"
         android:gravity="center_horizontal"
         android:layout_height="wrap_content">
@@ -47,11 +48,9 @@
             android:layout_margin="@dimen/fab_margin"
             android:clickable="true"
             android:focusable="true"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
             android:src="@android:drawable/ic_input_add"
             android:tint="@android:color/white"
             app:backgroundTint="#2196F3" />
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
+import com.example.myscope.activities.services.Disease_service
 import com.example.myscope.activities.services.FamilyConditionService
 import com.example.myscope.activities.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_family_history_recycler_view.*
@@ -37,7 +38,7 @@ class FamilyHistoryRecyclerView : BaseActivity() {
 
     private fun loadValues() {
 
-        val destinationService = ServiceBuilder.buildService(FamilyConditionService::class.java)
+        val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
 
         val filter = HashMap<String, String>()
 //        filter["country"] = "India"

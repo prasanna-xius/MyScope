@@ -12,12 +12,12 @@ interface FamilyConditionService {
     fun getFamilyList(@QueryMap filter: HashMap<String, String>): Call<List<FamilyCondition>>
 
     @GET("familylist/{id}")
-    fun getFamilyCondition(@Path("id") id: String): Call<List<FamilyCondition>>
+    fun getFamily(@Path("id") id: String): Call<List<FamilyCondition>>
 
 
     //end point of webservice
     @Headers("Content-Type: application/json")
-    @POST("addFamily")
+    @POST("/addFamily")
     fun addFamilyList(@Body newFamilyCondition: FamilyCondition): Call<FamilyCondition>
 
     /* @FormUrlEncoded

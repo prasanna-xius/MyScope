@@ -11,10 +11,13 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
+import com.example.myscope.activities.services.Disease_service
 import com.example.myscope.activities.services.FamilyConditionService
 import com.example.myscope.activities.services.ServiceBuilder
+import kotlinx.android.synthetic.main.activity_disease_history_update.*
 import kotlinx.android.synthetic.main.activity_family_history_updated.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,8 +25,8 @@ import retrofit2.Response
 
 class FamilyHistoryUpdated : BaseActivity() {
 
-
     var relationshipSpinner: Spinner? = null
+    var familyid: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +65,8 @@ class FamilyHistoryUpdated : BaseActivity() {
 
 
 //val filter = HashMap<String , String>()()
-        val familyService = ServiceBuilder.buildService(FamilyConditionService::class.java)
-        val requestCall = familyService.getFamilyCondition(id)
+        val familyService = ServiceBuilder.buildService(Disease_service::class.java)
+        val requestCall = familyService.getFamily(id)
 
         showLongToast(requestCall.toString())
 
@@ -75,11 +78,14 @@ class FamilyHistoryUpdated : BaseActivity() {
                 if (response.isSuccessful) {
                     val destination = response.body()
                     val familyCondition = destination?.get(position)
+                    familyid = familyCondition?.family_id!!
+                    showLongToast(familyid.toString())
 
                     familyCondition?.let {
-                        et_family_conditionUpdated.setText(familyCondition.familyCondition)
-                        spinner_familyUpdated.text1.setText(familyCondition.relationship)!!
-                        relationship_notesUpdated.setText(familyCondition.relationship_notes)
+                        et_family_conditionUpdated.setText(familyCondition.family_condition)
+                       text1.setText(familyCondition.relationship)!!
+                        relationship_notesUpdated.setText(familyCondition.family_note)
+
 
                     }!!
                 } else {
@@ -100,14 +106,26 @@ class FamilyHistoryUpdated : BaseActivity() {
     private fun initUpdateButton(id: String) {
 
         btn_familyUpdated.setOnClickListener {
+//            assignValuestoVariable()
 
-            val family_condition = et_family_conditionUpdated.text.toString()
-            val relationship = spinner_familyUpdated.text1.text.toString()
-            val relationshipNotes = relationship_notesUpdated.text.toString()
-            val mobile_no = "8142529582"
+            val item = spinner_familyUpdated.text1.text.toString()
 
-            val destinationService = ServiceBuilder.buildService(FamilyConditionService::class.java)
-            val requestCall = destinationService.updateFamily(mobile_no )
+            val newFamily = FamilyCondition()
+            newFamily.family_condition = et_family_conditionUpdated.text.toString()
+
+            if(!item.equals(null)) {
+                newFamily.relationship = item
+            } else {
+                newFamily.relationship = spinner_familyUpdated?.getSelectedItem().toString()
+                text1.setText(newFamily.relationship)
+            }
+            newFamily.family_note = relationship_notesUpdated.text.toString()
+            newFamily.mobile_no = "8142529582"
+            newFamily.family_id = familyid
+
+
+            val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
+            val requestCall = destinationService.updateFamily(newFamily)
 
             requestCall.enqueue(object: Callback<FamilyCondition> {
 
@@ -127,7 +145,6 @@ class FamilyHistoryUpdated : BaseActivity() {
                 }
             })
 
-            assignValuestoVariable()
         }
 
     }

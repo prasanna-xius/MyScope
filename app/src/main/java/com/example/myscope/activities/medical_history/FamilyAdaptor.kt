@@ -23,7 +23,7 @@ class FamilyAdaptor(private val familyList: List<FamilyCondition>) : RecyclerVie
 
         holder.familyConditiondestination = familyList[position]
 
-        holder.familyHistory.text = familyList[position].familyCondition
+        holder.familyHistory.text = familyList[position].family_condition
 
 
 
