@@ -13,7 +13,6 @@ data class Diseases(var  known_condition : String? =null,
                     var mobile_no:String?= null,
                    var disease_id:Int?=0,
 
-
                     var  adverse_drugname : String? =null,
                     var adverse_reaction : String? =null,
                     var adverse_date_of_start:String? =null,
@@ -30,6 +29,8 @@ data class Diseases(var  known_condition : String? =null,
                     var relationship : String? =null,
                     var family_note:String? =null,
                     var family_id:Int?=0
+
+                    var diet:String?=null
+
 )
-{
-}
+

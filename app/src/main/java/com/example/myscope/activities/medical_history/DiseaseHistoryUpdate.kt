@@ -75,9 +75,6 @@ class DiseaseHistoryUpdate : BaseActivity() {
 
 
         val bundle: Bundle? = intent.extras
-
-
-
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
             val id : String = intent.getStringExtra(ARG_ITEM_ID)
@@ -95,9 +92,6 @@ class DiseaseHistoryUpdate : BaseActivity() {
     }
 
     private fun loadDetails(id: String , position : Int) {
-
-
-//val filter = HashMap<String , String>()()
        val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
        val requestCall = diseaseService.getdisease(id)
 
@@ -106,7 +100,6 @@ class DiseaseHistoryUpdate : BaseActivity() {
             override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>> ) {
 
                 val destination = response.body()
-//                   Toast.makeText(this@DiseaseHistoryUpdate , "update"+destination.toString(), Toast.LENGTH_SHORT).show()
                 Log.d("resp:", response.toString())
                 Log.e("resp:", response.toString())
                 val disease = destination?.get(position)
