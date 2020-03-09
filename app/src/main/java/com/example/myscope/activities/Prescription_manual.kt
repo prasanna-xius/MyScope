@@ -36,7 +36,7 @@ class Prescription_manual : BaseActivity() {
 //        }
 
         /* getting id's by findviewbyid method */
-        formulation = findViewById<Spinner>(R.id.formulation_id)
+        formulation = findViewById(R.id.formulation_id)
         dose = findViewById<Spinner>(R.id.dose_unit)
         isprescribed = findViewById<Spinner>(R.id.is_prescribed)
 

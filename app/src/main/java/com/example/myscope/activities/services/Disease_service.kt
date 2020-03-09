@@ -54,6 +54,10 @@ interface Disease_service {
     @POST("updateFamily")
     fun updateFamily(@Body newFamilyCondition : FamilyCondition): Call<FamilyCondition>
 
+    @Headers("Content-Type: application/json")
+    @POST("adddiet")
+    fun addDietList(@Body newDisease: Diseases): Call<Diseases>
+
 //    @FormUrlEncoded
 //    @POST("diseaselist/updateDiseaseRecord")
 //    fun updateDisease(

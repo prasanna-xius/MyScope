@@ -22,7 +22,7 @@
         <activity android:name=".activities.medical_history.SocialHistoryUpdate" />
         <activity android:name=".activities.medical_history.SocialHistoryRecyclerView" />
         <activity android:name=".activities.medical_history.DiseaseHistoryUpdate" /> <!-- <activity android:name=".activities.medical_history."></activity> -->
-        <activity android:name=".activities.medical_history.FamilyHistoryRecyclerView">
+        <activity android:name=".activities.medical_history.Diet">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,7 +46,7 @@
         <activity android:name=".activities.Medical_History_Activity" /> <!-- <activity android:name=".activities.medical_history.Disease_History" /> -->
         <activity android:name=".activities.medical_history.Family_History" />
         <activity android:name=".activities.medical_history.Social_History" />
-        <activity android:name=".activities.medical_history.Diet" />
+<!--        <activity android:name=".activities.medical_history.Diet" />-->
         <activity android:name=".activities.Prescription_manual_Activity" /> <!-- <activity android:name=".activities.disease_history.Allergies_Activity" /> -->
         <!-- <activity android:name=".activities.disease_history.Immunization_History_Activity" /> -->
         <!-- <activity android:name=".activities.disease_history.Medication_History_Activity" /> -->
