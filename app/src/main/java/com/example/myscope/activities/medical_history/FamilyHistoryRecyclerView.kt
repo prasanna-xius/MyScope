@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.services.Disease_service
-import com.example.myscope.activities.services.FamilyConditionService
 import com.example.myscope.activities.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_family_history_recycler_view.*
 import retrofit2.Call
@@ -48,9 +47,9 @@ class FamilyHistoryRecyclerView : BaseActivity() {
 
 
 
-        requestCall.enqueue(object: Callback<List<FamilyCondition>> {
+        requestCall.enqueue(object: Callback<List<Diseases>> {
 
-            override fun onResponse(call: Call<List<FamilyCondition>>, response: Response<List<FamilyCondition>>) {
+            override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>>) {
 
 
                 //Log.e("errpr msg resp",response.message())
@@ -84,7 +83,7 @@ class FamilyHistoryRecyclerView : BaseActivity() {
 
             // Invoked in case of Network Error or Establishing connection with Server
             // or Error Creating Http Request or Error Processing Http Response
-            override fun onFailure(call: Call<List<FamilyCondition>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
 
                 Toast.makeText(this@FamilyHistoryRecyclerView, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }

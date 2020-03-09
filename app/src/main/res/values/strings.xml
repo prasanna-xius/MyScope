@@ -46,7 +46,9 @@
     <string name="notes">Notes</string>
     <string name="save">SAVE</string>
     <string name="edit">EDIT</string>
-    <string name="update">UDATE</string>
+    <string name="update">UPDATE</string>
+    <string name="delete">DELETE</string>
+
     <!--end-->
     <string name="disease">e.g Diabetes</string>
     <!--Family History-->
@@ -101,6 +103,17 @@
     <string name="provider">Provider</string>
     <string name="eg_provider">E.g. Doctor Name</string>
     <!--Surgery History-->
+    <!--Drug Rea ction-->
+    <string name="drug_title">Adverse Drug Reaction</string>
+    <string name="drug_Name">Drug Name<font color='#a4c639'>*</font></string>
+    <string name="reaction_effect">Reaction/Effect</string>
+    <string name="date_of_start">Date of Start</string>
+    <string name="treatment_taken">Treatment taken</string>
+    <string name="drug_Name_hint">E.g. Paracetamol</string>
+    <string name="reaction_hint">Itching, Giddiness etc</string>
+    <!--Medication History-->
+
+
     <string-array name="how_often_taken_arrays">
         <item>Select time</item>
         <item>1. Morning </item>

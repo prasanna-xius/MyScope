@@ -52,7 +52,7 @@ class Family_History : BaseActivity() {
                e.printStackTrace();
            }
 
-           val newFamilyCondition = FamilyCondition()
+           val newFamilyCondition = Diseases()
            newFamilyCondition.family_condition = et_family_condition!!.text.toString().trim()
            newFamilyCondition.relationship = spinner_family?.getSelectedItem().toString()
            newFamilyCondition.family_note = relationship_notes!!.text.toString().trim()
@@ -62,9 +62,9 @@ class Family_History : BaseActivity() {
 
            val requestCall = familyService.addFamilyList(newFamilyCondition)
 
-           requestCall.enqueue(object : Callback<FamilyCondition> {
+           requestCall.enqueue(object : Callback<Diseases> {
 
-               override fun onResponse(call: Call<FamilyCondition>, resp: Response<FamilyCondition>) {
+               override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
 
                    if (resp.isSuccessful) {
                        var newbody = resp.body() // Use it or ignore it
@@ -75,7 +75,7 @@ class Family_History : BaseActivity() {
                        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                    }
                }
-               override fun onFailure(call: Call<FamilyCondition>, t: Throwable) {
+               override fun onFailure(call: Call<Diseases>, t: Throwable) {
                    //finish()
 //                    Log.d("errormsgfailure ::", t.message)
 //                    Log.e("errorunderfailure:", t.message)
@@ -83,7 +83,7 @@ class Family_History : BaseActivity() {
                }
            })
        }
-        }
+    }
 
         private fun assignValuestoVariable() {
 

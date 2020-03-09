@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MultiSelectionSpinner
+import com.example.myscope.activities.services.Disease_service
 import com.example.myscope.activities.services.ServiceBuilder
 import com.example.myscope.activities.services.Social_service
 import com.google.android.gms.security.ProviderInstaller
@@ -63,32 +64,32 @@ class Social_History : BaseActivity() {
                 e.printStackTrace();
             }
 
-            val newSocialHabits = SocialHabits()
+            val newSocialHabits = Diseases()
             newSocialHabits.smoking = spinner_smoking!!.getSelectedItem().toString()
             newSocialHabits.smoking_duration = et_smoking_yrs?.text.toString().trim()
-            newSocialHabits.tobacco_usage = tobacco_usage!!.getSelectedItem().toString()
-            newSocialHabits.drinking = spinner_drinking!!.getSelectedItem().toString()
-            newSocialHabits.drinking_duration = et_YrsOfDrinking!!.text.toString().trim()
+            newSocialHabits.tobacco = tobacco_usage!!.getSelectedItem().toString()
+            newSocialHabits.alcohol = spinner_drinking!!.getSelectedItem().toString()
+            newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
             newSocialHabits.mobile_no = "8142529582"
 
-            val socialService = ServiceBuilder.buildService(Social_service::class.java)
+            val socialService = ServiceBuilder.buildService(Disease_service::class.java)
 
-            val requestCall = socialService.addSocialHabits(newSocialHabits)
+            val requestCall = socialService.addHabit(newSocialHabits)
 
-            requestCall.enqueue(object : Callback<SocialHabits> {
+            requestCall.enqueue(object : Callback<Diseases> {
 
-                override fun onResponse(call: Call<SocialHabits>, resp: Response<SocialHabits>) {
+                override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
 
                     if (resp.isSuccessful) {
                         var newbody = resp.body() // Use it or ignore it
 
                         Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
-                        finish()
+                        //finish()
                     } else {
                         Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                     }
                 }
-                override fun onFailure(call: Call<SocialHabits>, t: Throwable) {
+                override fun onFailure(call: Call<Diseases>, t: Throwable) {
                     //finish()
 //                    Log.d("errormsgfailure ::", t.message)
 //                    Log.e("errorunderfailure:", t.message)

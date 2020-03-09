@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
 
-class FamilyAdaptor(private val familyList: List<FamilyCondition>) : RecyclerView.Adapter<FamilyAdaptor.ViewHolder>()  {
+class FamilyAdaptor(private val familyList: List<Diseases>) : RecyclerView.Adapter<FamilyAdaptor.ViewHolder>()  {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -17,6 +17,8 @@ class FamilyAdaptor(private val familyList: List<FamilyCondition>) : RecyclerVie
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_familycondition, parent, false)
         return ViewHolder(view)
     }
+
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
@@ -56,10 +58,12 @@ class FamilyAdaptor(private val familyList: List<FamilyCondition>) : RecyclerVie
         return familyList.size
     }
 
+
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val familyHistory: TextView = itemView.findViewById(R.id.familyHistoryTitle)  //item_list tv_id
-        var familyConditiondestination: FamilyCondition? = null
+        var familyConditiondestination: Diseases? = null
 
 
         override fun toString(): String {

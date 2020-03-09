@@ -12,9 +12,7 @@ import androidx.annotation.RequiresApi
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.services.Disease_service
-import com.example.myscope.activities.services.FamilyConditionService
 import com.example.myscope.activities.services.ServiceBuilder
-import kotlinx.android.synthetic.main.activity_disease_history_update.*
 import kotlinx.android.synthetic.main.activity_family_history_updated.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.*
@@ -27,7 +25,7 @@ class FamilyHistoryUpdated : BaseActivity() {
 
     var relationshipSpinner: Spinner? = null
     var familyid: Int = 0
-
+    var familyCondition: Diseases? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_family_history_updated)
@@ -46,22 +44,22 @@ class FamilyHistoryUpdated : BaseActivity() {
 
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
-            val id : String = intent.getStringExtra(ARG_ITEM_ID)
+            val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
-            val position : Int? = intent.getIntExtra("position" , 0)
+            val position: Int? = intent.getIntExtra("position", 0)
             showLongToast(position.toString())
 
-            loadDetails(id , position!!)
+            loadDetails(id, position!!)
 
             initUpdateButton(id)
 
-            //initDeleteButton(id)
+
         }
 
     }
 
 
-    private fun loadDetails(id: String , position : Int) {
+    private fun loadDetails(id: String, position: Int) {
 
 
 //val filter = HashMap<String , String>()()
@@ -71,30 +69,29 @@ class FamilyHistoryUpdated : BaseActivity() {
         showLongToast(requestCall.toString())
 
 
-        requestCall.enqueue(object : retrofit2.Callback<List<FamilyCondition>> {
+        requestCall.enqueue(object : retrofit2.Callback<List<Diseases>> {
 
-            override fun onResponse(call: Call<List<FamilyCondition>>, response: Response<List<FamilyCondition>>) {
+            override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>>) {
 
                 if (response.isSuccessful) {
                     val destination = response.body()
-                    val familyCondition = destination?.get(position)
+                    familyCondition = destination?.get(position)
                     familyid = familyCondition?.family_id!!
                     showLongToast(familyid.toString())
 
                     familyCondition?.let {
-                        et_family_conditionUpdated.setText(familyCondition.family_condition)
-                       text1.setText(familyCondition.relationship)!!
-                        relationship_notesUpdated.setText(familyCondition.family_note)
+                        apiResponse()
 
 
                     }!!
+
                 } else {
                     Toast.makeText(this@FamilyHistoryUpdated, "Failed to retrieve details", Toast.LENGTH_SHORT)
                             .show()
                 }
             }
 
-            override fun onFailure(call: Call<List<FamilyCondition>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
                 Toast.makeText(
                         this@FamilyHistoryUpdated, "Failed to retrieve details1 " + t.toString(),
                         Toast.LENGTH_SHORT).show()
@@ -103,14 +100,27 @@ class FamilyHistoryUpdated : BaseActivity() {
 
     }
 
+    private fun apiResponse(): FamilyCondition {
+        var familyid = familyCondition!!.family_id!!
+        et_family_conditionUpdated.setText(familyCondition!!.family_condition)
+        text1.setText(familyCondition!!.relationship)
+//                            text1.setText(familyCondition!!.relationship)
+
+        relationship_notesUpdated.setText(familyCondition!!.family_note)
+        return familyCondition as FamilyCondition
+    }
+
     private fun initUpdateButton(id: String) {
 
         btn_familyUpdated.setOnClickListener {
-//            assignValuestoVariable()
+
+            assignValuestoVariable()
+
+
 
             val item = spinner_familyUpdated.text1.text.toString()
 
-            val newFamily = FamilyCondition()
+            val newFamily = Diseases()
             newFamily.family_condition = et_family_conditionUpdated.text.toString()
 
             if(!item.equals(null)) {
@@ -127,9 +137,9 @@ class FamilyHistoryUpdated : BaseActivity() {
             val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
             val requestCall = destinationService.updateFamily(newFamily)
 
-            requestCall.enqueue(object: Callback<FamilyCondition> {
+            requestCall.enqueue(object: Callback<Diseases> {
 
-                override fun onResponse(call: Call<FamilyCondition>, response: Response<FamilyCondition>) {
+                override fun onResponse(call: Call<Diseases>, response: Response<Diseases>) {
                     if (response.isSuccessful) {
 
                         var updatedDestination = response.body() // Use it or ignore It
@@ -140,7 +150,7 @@ class FamilyHistoryUpdated : BaseActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<FamilyCondition>, t: Throwable) {
+                override fun onFailure(call: Call<Diseases>, t: Throwable) {
                     Toast.makeText(this@FamilyHistoryUpdated, "Failed to update item", Toast.LENGTH_SHORT).show()
                 }
             })
@@ -151,6 +161,7 @@ class FamilyHistoryUpdated : BaseActivity() {
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == android.R.id.home) {
@@ -159,7 +170,6 @@ class FamilyHistoryUpdated : BaseActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
 
 
     companion object {
