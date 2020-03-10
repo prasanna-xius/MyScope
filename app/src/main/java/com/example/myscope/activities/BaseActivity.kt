@@ -1,11 +1,11 @@
 package com.example.myscope.activities
 import android.annotation.SuppressLint
+
 import android.app.Activity
 import android.app.ActivityOptions
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.media.MediaScannerConnection
@@ -13,8 +13,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -24,13 +22,14 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
+import com.example.myscope.activities.prescription.Prescription_manual
+import com.example.myscope.activities.prescription.Prescriptionmanual_recyclerview
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.util.regex.Pattern
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import kotlinx.android.synthetic.main.view_userdetails_main.*
 import java.text.SimpleDateFormat
@@ -92,62 +91,37 @@ open class BaseActivity : AppCompatActivity() {
     fun getBackButton(): ImageButton {
         return back_btn;
     }
-    fun showToolbar() {
+    fun navigationToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
 
-      
-//        imgToolBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                toolbarSearchDialog.dismiss();
-//            }
-//        });
-
-
     }
-    fun showToolbar1() {
+    fun activitiesToolbar() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-//        supportActionBar!!.setDisplayShowHomeEnabled(true)
-//        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         getBackButton().setOnClickListener {
             finish()
         }
 
-//        imgToolBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                toolbarSearchDialog.dismiss();
-//            }
-//        });
-
-
-    }
-    fun showBlackToolbar() {
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
 
     }
 
-    fun getRealPathFromURI(context: Context, contentUri: Uri): String {
-        var cursor: Cursor? = null
-        try {
-            val proj = arrayOf(MediaStore.Images.Media.DATA)
-            cursor = context.contentResolver.query(contentUri, proj, null, null, null)
-            val column_index = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            cursor.moveToFirst()
-            return cursor.getString(column_index)
-        } finally {
-            cursor?.close()
-        }
-    }
+
+//    fun getRealPathFromURI(context: Context, contentUri: Uri): String {
+//        var cursor: Cursor? = null
+//        try {
+//            val proj = arrayOf(MediaStore.Images.Media.DATA)
+//            cursor = context.contentResolver.query(contentUri, proj, null, null, null)
+//            val column_index = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+//            cursor.moveToFirst()
+//            return cursor.getString(column_index)
+//        } finally {
+//            cursor?.close()
+//        }
+//    }
 
     fun hideKeyBoard() {
         val view = this.currentFocus
@@ -374,9 +348,28 @@ open class BaseActivity : AppCompatActivity() {
         pictureDialog.show()
     }
 
+    fun showPictureDialogReports() {
+        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
+        pictureDialog.setTitle("Select Action")
+
+        val pictureDialogItems = arrayOf(
+                "Select photo from gallery",
+                "Capture photo from camera",
+                "Select pdf file from folder")
+        pictureDialog.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> choosePhotoFromGallary()
+                1 -> takePhotoFromCamera()
+                2 -> showFileChooser()
+
+            }
+        }
+        pictureDialog.show()
+    }
     private fun showFilemanual() {
 
-        navigateToActivity(Intent(applicationContext, Prescription_manual::class.java))
+        navigateToActivity(Intent(applicationContext, Prescriptionmanual_recyclerview::class.java))
     }
 
     private fun showFileChooser() {
@@ -453,40 +446,6 @@ open class BaseActivity : AppCompatActivity() {
         return ""
     }
 
-//    fun requestMultiplePermissions() {
-//        Dexter.withActivity(this)
-//                .withPermissions(
-//                        Manifest.permission.CAMERA,
-//                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                        Manifest.permission.READ_EXTERNAL_STORAGE)
-//                .withListener(object : MultiplePermissionsListener {
-//                    override fun onPermissionsChecked(report: MultiplePermissionsReport) { // check if all permissions are granted
-//                        if (report.areAllPermissionsGranted()) {
-//                            Toast.makeText(applicationContext, "All permissions are granted by user!", Toast.LENGTH_SHORT).show()
-//                        }
-//                        // check for permanent denial of any permission
-//                        if (report.isAnyPermissionPermanentlyDenied) { // show alert dialog navigating to Settings
-////openSettingsDialog();
-//                        }
-//                    }
-//
-//                    override fun onPermissionRationaleShouldBeShown(permissions: List<PermissionRequest>, token: PermissionToken) {
-//                        token.continuePermissionRequest()
-//                    }
-//                }).withErrorListener { Toast.makeText(applicationContext, "Some Error! ", Toast.LENGTH_SHORT).show() }
-//                .onSameThread()
-//                .check()
-//    }
-
-    val EMAIL_ADDRESS = Pattern.compile(
-            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                    "\\@" +
-                    "[a-zA-Z]" +
-                    "(" +
-                    "\\." +
-                    "[a-zA-Z]" +
-                    ")+"
-    )
 
 
     companion object {

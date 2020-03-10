@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.example.myscope.activities.prescription
 
 import android.content.Context
 import android.os.Bundle
@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.medical_history_main.*
 
-class Prescription_manual_Activity : BaseActivity() {
+class Prescriptions_HomePage : BaseActivity() {
 
     var images = intArrayOf(R.drawable.helopathy, R.drawable.homeopathy, R.drawable.ayurveda)
    var names = arrayOf("Allopathy", "Homeopathy", "Ayurveda")
@@ -24,9 +24,9 @@ class Prescription_manual_Activity : BaseActivity() {
         setContentView(R.layout.prescriptions_drug_main)
         home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
 
-        showToolbar1()
+        activitiesToolbar()
 
-        header!!.text = "Prescriptions"
+        header!!.text = "Prescription"
     }
     private inner class CustomAdapter(var context: Context, var result: Array<String>, var imageId: IntArray) : BaseAdapter() {
         private var inflater: LayoutInflater? = null
@@ -46,7 +46,7 @@ class Prescription_manual_Activity : BaseActivity() {
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View { // TODO Auto-generated method stub
             val holder = Holder()
             val rowView: View
-            rowView = inflater!!.inflate(R.layout.medical_history_grid_item, null)
+            rowView = inflater!!.inflate(R.layout.gridview_item_main, null)
             holder.os_text = rowView.findViewById<View>(R.id.home_item_textView) as TextView
             holder.os_image = rowView.findViewById<View>(R.id.home_item_image_view) as ImageView
             holder.os_text!!.text = result[position]
@@ -64,7 +64,6 @@ class Prescription_manual_Activity : BaseActivity() {
 //                    navigateToActivity(Intent(applicationContext, Social_History::class.java))
                     showPictureDialog()
                 }
-                Toast.makeText(context, "You Clicked " + result[position], Toast.LENGTH_SHORT).show()
             }
             return rowView
         }

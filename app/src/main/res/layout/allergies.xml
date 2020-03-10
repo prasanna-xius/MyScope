@@ -49,7 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:popupBackground="#fff"
-                    android:background="@drawable/spr_bg"
+
                     android:entries="@array/allergy_arrays"
                     android:padding="2dp" />
             </FrameLayout>

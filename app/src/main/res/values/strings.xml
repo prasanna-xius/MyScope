@@ -116,18 +116,18 @@
 
     <string-array name="how_often_taken_arrays">
         <item>Select time</item>
-        <item>1. Morning </item>
-        <item>2.  Afternoon </item>
-        <item>3.  Night </item>
-        <item>4. other </item>
+        <item>Morning </item>
+        <item>Afternoon </item>
+        <item>Night</item>
+        <item>other</item>
     </string-array>
     <string-array name="formulation_arrays">
-        <item>1. Tablet</item>
-        <item>2. Capsule</item>
-        <item>3. Injection</item>
-        <item>4. Inhaler</item>
-        <item>5. Syrup</item>
-        <item>6. cream</item>
+        <item>Tablet</item>
+        <item>Capsule</item>
+        <item>Injection</item>
+        <item>Inhaler</item>
+        <item>Syrup</item>
+        <item>cream</item>
         <item>Others</item>
     </string-array>
     <string-array name="smoking_arrays">
@@ -217,13 +217,14 @@
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
     <string name="formulation">Formulation <font color='#ff0000'>*</font></string>
-    <string name="formulation_name">Name <font color='#ff0000'>*</font></string>
+    <string name="brand_name">Brand name <font color='#ff0000'>*</font></string>
+    <string name="drug_name">Drug name <font color='#ff0000'>*</font></string>
     <string name="dose_strength">Dose Strength <font color='#ff0000'>*</font></string>
     <string name="dose_unit">Dose Unit <font color='#ff0000'>*</font></string>
     <string name="how_often_taken">How often taken? <font color='#ff0000'>*</font></string>
     <string name="start_date">Start Date <font color='#ff0000'>*</font></string>
     <string name="stop_date">Stop Date <font color='#ff0000'>*</font></string>
-    <string name="medical_condition">Medical Condition <font color='#ff0000'>*</font></string>
+    <string name="medical_condition">Medical Condition</string>
     <string name="is_prescribed">Is prescribed? <font color='#ff0000'>*</font></string>
     <string name="prescription_note">Note</string>
 
@@ -257,6 +258,9 @@
 
     <string name="time">Time <font color='#ff0000'>*</font></string>
     <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
+    <string name="dialog_message">This number is not being registered.Please register here...</string>
+    <string name="dialog_title">Login Alert !</string>
+    <string name="action_logout">Logout</string>
 
     <string-array name="formulation_array">
         <item>None</item>
@@ -297,31 +301,25 @@
     </string-array>
     <string-array name="timings">
         <item>None</item>
-        <item>1 AM</item>
-        <item>2 AM</item>
-        <item>3 AM</item>
-        <item>4 AM</item>
-        <item>5 AM</item>
-        <item>6 AM</item>
-        <item>7 AM</item>
-        <item>8 AM</item>
-        <item>9 AM</item>
-        <item>10 AM</item>
-        <item>11 AM</item>
-        <item>12 AM</item>
-        <item>1 PM</item>
-        <item>2 PM</item>
-        <item>3 PM</item>
-        <item>4 PM</item>
-        <item>5 PM</item>
-        <item>6 PM</item>
-        <item>7 PM</item>
-        <item>8 PM</item>
-        <item>9 PM</item>
-        <item>10 PM</item>
-        <item>11 PM</item>
-        <item>12 PM</item>
+        <item> 1 </item>
+        <item> 2 </item>
+        <item> 3 </item>
+        <item> 4 </item>
+        <item> 5 </item>
+        <item> 6 </item>
+        <item> 7 </item>
+        <item> 8 </item>
+        <item> 9 </item>
+        <item> 10 </item>
+        <item> 11 </item>
+        <item> 12 </item>
     </string-array>
+    <string-array name="differtime">
+        <item>None</item>
+        <item>A.M</item>
+        <item>P.M</item>
+    </string-array>
+
 
     <string-array name="languagesKnown_array">
         <item>None</item>

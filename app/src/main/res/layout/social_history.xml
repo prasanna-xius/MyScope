@@ -165,7 +165,6 @@
         android:layout_marginTop="@dimen/dimen_10"
         android:layout_marginBottom="@dimen/dimen_10"
         android:text="@string/save"
-        android:backgroundTint="#1F78D3"
         android:textColor="@color/colorWhite"
         android:background="@drawable/background_button"
         android:textSize="16sp"

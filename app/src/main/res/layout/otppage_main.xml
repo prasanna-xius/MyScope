@@ -13,14 +13,13 @@
         android:layout_marginTop="@dimen/dimen_20"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
-            android:layout_width="@dimen/dimen_106"
+            android:layout_width="@dimen/dimen_200"
             android:layout_height="@dimen/dimen_106"
             android:layout_gravity="center"
-            android:src="@drawable/logo1"
-            app:civ_border_color="#4B73B0"
-            app:civ_border_width="2dp" />
+            android:src="@drawable/myscopelogo"
+            />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
@@ -90,10 +89,17 @@
                     android:layout_marginRight="@dimen/dimen_40"
                     android:layout_marginBottom="@dimen/dimen_40"
                     android:background="@drawable/background_button"
-                    android:backgroundTint="#1F78D3"
+                    android:backgroundTint="#1D2F47"
                     android:text="Verify OTP"
                     android:textColor="#ffffff"
                     android:textSize="@dimen/dimen_14sp" />
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/dimen_20"
+                    android:id="@+id/progressBar"
+                    />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

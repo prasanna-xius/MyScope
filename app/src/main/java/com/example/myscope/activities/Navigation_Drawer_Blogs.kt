@@ -1,6 +1,7 @@
 package com.example.myscope.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
@@ -8,11 +9,15 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myscope.R
+import com.example.myscope.activities.medical_history.Medical_History_HomePage
+import com.example.myscope.activities.prescription.Prescriptions_HomePage
 import com.example.myscope.fragments.NavigationDrawerFragment
 import com.example.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks
+import com.google.firebase.auth.FirebaseAuth
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_navigation_blogs.*
 import kotlinx.android.synthetic.main.dashboard_screen_main.*
@@ -31,20 +36,20 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation_blogs)
 
-        showToolbar()
+        navigationToolbar()
         headerTextView = findViewById<View>(R.id.header) as TextView
         headerTextView!!.text = "DashBoard"
 
 
         card_MH!!.setOnClickListener(this)
         card_Pres!!.setOnClickListener(this)
-        card_MD!!.setOnClickListener(this)
+        card_MedicalDocument!!.setOnClickListener(this)
         card_LabReports!!.setOnClickListener(this)
-        card_selfmonitoring!!.setOnClickListener(this)
-        card_health_services!!.setOnClickListener(this)
+        card_selfMont!!.setOnClickListener(this)
+        card_HealthServices!!.setOnClickListener(this)
         card_EducationalBlog!!.setOnClickListener(this)
-        card_appointments!!.setOnClickListener(this)
-        card_Contactus!!.setOnClickListener(this)
+        card_Appoint!!.setOnClickListener(this)
+        card_ContactUs!!.setOnClickListener(this)
         //
         mHandler = Handler()
 
@@ -81,7 +86,8 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
 // automatically handle clicks on the Home/Up button, so long
 // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
-        return if (id == R.id.action_settings) {
+        return if (id == R.id.action_Logout) {
+            doExit()
             true
         } else super.onOptionsItemSelected(item)
     }
@@ -92,33 +98,60 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
     override fun onClick(v: View) {
         when (v.id) {
             R.id.card_MH -> {
-                navigateToActivity(Intent(applicationContext,Medical_History_Activity::class.java))
+                navigateToActivity(Intent(applicationContext, Medical_History_HomePage::class.java))
             }
             R.id.card_Pres -> {
-                navigateToActivity(Intent(applicationContext,Prescription_manual_Activity::class.java))
+                navigateToActivity(Intent(applicationContext, Prescriptions_HomePage::class.java))
             }
-            R.id.card_MD -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+
+            R.id.card_MedicalDocument -> {
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_LabReports -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
-            R.id.card_selfmonitoring -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+            R.id.card_selfMont -> {
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
-            R.id.card_health_services -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+            R.id.card_HealthServices-> {
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_EducationalBlog -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
-            R.id.card_appointments -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
+            R.id.card_Appoint -> {
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
-            R.id.card_Contactus -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_Activity::class.java))
-
+            R.id.card_ContactUs -> {
+                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
         }
+    }
+    override fun onBackPressed() {
+        doExit()
+    }
+
+    private fun doExit() {
+        val alertDialog = AlertDialog.Builder(
+                this@Navigation_Drawer_Blogs)
+        alertDialog.setPositiveButton("Yes") { dialog, which ->
+
+            FirebaseAuth.getInstance().signOut()
+//            Toast.makeText(this@Navigation_Drawer_Blogs, "Logout Successfully Completed", Toast.LENGTH_SHORT).show()
+            navigateToActivity(Intent(applicationContext,Login_Page::class.java))
+//            finish()
+        }
+
+        alertDialog.setNegativeButton("No", null)
+        alertDialog.setMessage("Do you want to Logout?")
+        alertDialog.setTitle("MyScope")
+        val dialog = alertDialog.create()
+        dialog.show()
+        dialog.window!!.setBackgroundDrawableResource(R.color.colorBackground)
+        val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+        val negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+        positiveButton.setTextColor(Color.parseColor("#ffffffff"))
+        negativeButton.setTextColor(Color.parseColor("#ffffffff"))
+
     }
 }
