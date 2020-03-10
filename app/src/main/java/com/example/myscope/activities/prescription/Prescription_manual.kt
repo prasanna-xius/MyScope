@@ -13,6 +13,7 @@ import com.example.myscope.activities.MultiSelectionSpinner
 import java.text.DateFormat
 import java.util.*
 
+master:app/src/main/java/com/example/myscope/activities/prescription/Prescription_manual.kt
 
 
 class Prescription_manual : BaseActivity() {
@@ -57,7 +58,7 @@ class Prescription_manual : BaseActivity() {
 //        }
 
         /* getting id's by findviewbyid method */
-        formulation = findViewById<Spinner>(R.id.formulation_id)
+        formulation = findViewById(R.id.formulation_id)
         dose = findViewById<Spinner>(R.id.dose_unit)
         isprescribed = findViewById<Spinner>(R.id.is_prescribed)
 

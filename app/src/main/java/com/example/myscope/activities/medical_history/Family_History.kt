@@ -1,24 +1,25 @@
 package com.example.myscope.activities.medical_history
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-
+import android.widget.Toast
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
+import com.example.myscope.activities.services.Disease_service
+import com.example.myscope.activities.services.ServiceBuilder
+import com.google.android.gms.security.ProviderInstaller
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.family_history.*
-
-import kotlinx.android.synthetic.main.medical_history.*
-import java.util.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import javax.net.ssl.SSLContext
 
 class Family_History : BaseActivity() {
 
 
-    internal lateinit var myCalendar: Calendar
-    private var startDateOrEndDAte = true
     var relationshipSpinner: Spinner? = null
 
 
@@ -40,25 +41,66 @@ class Family_History : BaseActivity() {
 
             assignValuestoVariable()
             validate(relationshipSpinner!!)
-        }
 
+ try {
+               ProviderInstaller.installIfNeeded(getApplicationContext());
+               var sslContext: SSLContext
+               sslContext = SSLContext.getInstance("TLSv1.2");
+               sslContext.init(null, null, null);
+               sslContext.createSSLEngine();
+           }
+           catch (e: Exception) {
+               e.printStackTrace();
+           }
 
+           val newFamilyCondition = Diseases()
+           newFamilyCondition.family_condition = et_family_condition!!.text.toString().trim()
+           newFamilyCondition.relationship = spinner_family?.getSelectedItem().toString()
+           newFamilyCondition.family_note = relationship_notes!!.text.toString().trim()
+           newFamilyCondition.mobile_no = "8142529582"
+
+           val familyService = ServiceBuilder.buildService(Disease_service::class.java)
+
+           val requestCall = familyService.addFamilyList(newFamilyCondition)
+
+           requestCall.enqueue(object : Callback<Diseases> {
+
+               override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
+
+                   if (resp.isSuccessful) {
+                       var newbody = resp.body() // Use it or ignore it
+
+                       Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+                       finish()
+                   } else {
+                       Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                   }
+               }
+               override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                   //finish()
+//                    Log.d("errormsgfailure ::", t.message)
+//                    Log.e("errorunderfailure:", t.message)
+                   Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+               }
+           })
+       }
     }
 
-    private fun assignValuestoVariable() {
+        private fun assignValuestoVariable() {
 
-        var familyCondition = et_family_condition.text.toString()
-        var relationship = relationshipSpinner!!.selectedItem.toString()
-        validateInput(et_family_condition,familyCondition)
-        validateSpinner(relationshipSpinner!!,relationship)
+            var familyCondition = et_family_condition.text.toString()
+            var relationship = relationshipSpinner!!.selectedItem.toString()
+            validateInput(et_family_condition, familyCondition)
+            validateSpinner(relationshipSpinner!!, relationship)
 
-        if ((familyCondition != "")&&
-                (relationship != "None"))
-        {
+            if ((familyCondition != "") &&
+                    (relationship != "None")) {
 
-            showLongToast("save the details")
+                showLongToast("save the details")
+
 
         }
 
+        }
     }
-}
+

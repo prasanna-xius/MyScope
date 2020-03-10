@@ -8,19 +8,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <include layout="@layout/app_bar_main" />
 
         <include layout="@layout/background_image"/>
-   <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/family_history"
-    android:textSize="30sp"
-    android:gravity="center"
-    android:textColor="@color/bg_screen2" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/family_history"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="@color/bg_screen2" />
 
 
         <LinearLayout
@@ -39,7 +39,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_family_condition"
+                android:id="@+id/et_family_conditionUpdated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -68,7 +68,7 @@
                 android:textSize="16sp" />
 
             <Spinner
-                android:id="@+id/spinner_family"
+                android:id="@+id/spinner_familyUpdated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -95,7 +95,7 @@
 
             <EditText
 
-                android:id="@+id/relationship_notes"
+                android:id="@+id/relationship_notesUpdated"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_75"
                 android:layout_weight="1"
@@ -106,19 +106,42 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_family"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/dimen_10"
-            android:layout_marginTop="@dimen/dimen_10"
-            android:layout_marginRight="@dimen/dimen_10"
-            android:background="@drawable/background_button"
-            android:backgroundTint="#1F78D3"
-            android:text="@string/save"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btn_familyDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginRight="@dimen/dimen_10"
+                android:background="@drawable/background_button"
+                android:backgroundTint="#1F78D3"
+                android:text="CANCEL"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_familyUpdated"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginRight="@dimen/dimen_10"
+                android:background="@drawable/background_button"
+                android:backgroundTint="#1F78D3"
+                android:text="@string/update"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 

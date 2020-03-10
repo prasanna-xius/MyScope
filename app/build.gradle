@@ -11,9 +11,10 @@ repositories {
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+
     defaultConfig {
         applicationId "com.example.myscope"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -23,7 +24,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -50,13 +51,12 @@ dependencies {
 
     // GSON
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-
     // Logging
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.constraintlayout:constraintlayout-solver:1.1.3'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
+
     //noinspection GradleCompatible
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
@@ -64,7 +64,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview-selection:1.1.0-beta01'
 
     implementation 'com.google.android.material:material:1.1.0-alpha07'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
     //noinspection GradleCompatible
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
@@ -73,7 +73,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.7'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.4.1.3'
     implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
-
-
 
 }
