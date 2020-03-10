@@ -56,7 +56,6 @@
         <activity android:name=".activities.medical_history.MedicationHistory" />
         <activity android:name=".activities.medical_history.SurgeryHistory" />
         <activity android:name=".activities.medical_history.Disease_History" />
-        <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />
         <activity android:name=".ImageUpload" />
         <activity android:name=".activities.Prescription_manual" />
         <activity android:name=".activities.Medical_Documents_Activity" />

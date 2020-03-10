@@ -9,7 +9,6 @@ import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MultiSelectionSpinner
 import com.example.myscope.activities.services.Disease_service
 import com.example.myscope.activities.services.ServiceBuilder
-import com.example.myscope.activities.services.Social_service
 import com.google.android.gms.security.ProviderInstaller
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.social_history.*

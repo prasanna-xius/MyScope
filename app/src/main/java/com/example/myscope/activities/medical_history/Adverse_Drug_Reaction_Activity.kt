@@ -57,9 +57,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
             } catch (e: Exception) {
                 e.printStackTrace();
             }
-
-
-
+            
             val newDrug = Diseases()
             newDrug.adverse_drugname = et_drug_Name!!.text.toString().trim()
             newDrug.adverse_reaction = reaction_effect!!.text.toString().trim()
@@ -67,10 +65,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
             newDrug.adverse_treatment_taken = et_treatment_taken!!.text.toString().trim()
             newDrug.mobile_no = "8142529582"
 
-
-
             val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
-
 
             val requestCall = diseaseService.addDrugList(newDrug)
 
@@ -94,31 +89,17 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
                     Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                 }
             })
-
-
-
-
-
-
-
-
         }
-
-
     }
 
     private fun assignValuestoVariable() {
         val drugName = et_drug_Name.text.toString()
-
         validateInput(et_drug_Name, drugName)
-
         if ((drugName != "") ) {
             showLongToast("save the details")
-        } else {
-
-            showLongSnackBar("Please fill the required fields")
-
         }
-
+        else {
+            showLongSnackBar("Please fill the required fields")
+        }
     }
 }

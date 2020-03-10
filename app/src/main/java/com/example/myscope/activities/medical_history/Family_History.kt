@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.services.Disease_service
-import com.example.myscope.activities.services.FamilyConditionService
 import com.example.myscope.activities.services.ServiceBuilder
 import com.google.android.gms.security.ProviderInstaller
 import kotlinx.android.synthetic.main.app_bar_main.*

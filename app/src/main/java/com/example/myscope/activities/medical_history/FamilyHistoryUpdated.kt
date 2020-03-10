@@ -100,14 +100,14 @@ class FamilyHistoryUpdated : BaseActivity() {
 
     }
 
-    private fun apiResponse(): FamilyCondition {
+    private fun apiResponse(): Diseases {
         var familyid = familyCondition!!.family_id!!
         et_family_conditionUpdated.setText(familyCondition!!.family_condition)
         text1.setText(familyCondition!!.relationship)
 //                            text1.setText(familyCondition!!.relationship)
 
         relationship_notesUpdated.setText(familyCondition!!.family_note)
-        return familyCondition as FamilyCondition
+        return familyCondition as Diseases
     }
 
     private fun initUpdateButton(id: String) {
