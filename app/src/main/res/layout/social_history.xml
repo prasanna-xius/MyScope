@@ -35,20 +35,17 @@
             android:text="@string/smoking"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp"/>
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_bg"
-            android:layout_height="wrap_content">
+
         <Spinner
             android:id="@+id/spinner_smoking"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="2dp"
-            android:backgroundTint="@color/bg_screen2"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:background="@drawable/edittext_border"
             android:popupBackground="@color/colorWhite"
             android:entries="@array/smoking_arrays"/>
-        </FrameLayout>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -117,20 +114,18 @@
             android:text="@string/drinking"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_bg"
-            android:layout_height="wrap_content">
+
 
         <Spinner
             android:id="@+id/spinner_drinking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_border"
             android:popupBackground="@color/colorWhite"
             android:padding="2dp"
             android:entries="@array/drinking_arrays"/>
-        </FrameLayout>>
+
     </LinearLayout>
 
     <LinearLayout
@@ -151,7 +146,6 @@
         <EditText
 
             android:id="@+id/et_YrsOfDrinking"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

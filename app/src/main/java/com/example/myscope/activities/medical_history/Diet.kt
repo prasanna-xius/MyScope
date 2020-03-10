@@ -10,10 +10,16 @@ import androidx.appcompat.app.AppCompatActivity
 
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
+import com.example.myscope.activities.services.Disease_service
+import com.example.myscope.activities.services.ServiceBuilder
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.diet.*
+import kotlinx.android.synthetic.main.disease_history.*
 
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class Diet : BaseActivity() {
@@ -40,8 +46,34 @@ class Diet : BaseActivity() {
 
             assignValuestoVariable()
             validate(spinner_diet!!)
+            apicall()
 
         }
+    }
+
+    private fun apicall() {
+        val newDiet = Diseases()
+        newDiet.diet = spinner_diet!!.selectedItem.toString()
+        newDiet.mobile_no = "8142529582"
+        val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
+        val requestCall = diseaseService.addDietList(newDiet)
+        requestCall.enqueue(object : Callback<Diseases> {
+
+            override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
+
+                if (resp.isSuccessful) {
+                    var newbody = resp.body() // Use it or ignore it
+                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+            }
+        })
+
     }
 
     private fun assignValuestoVariable() {

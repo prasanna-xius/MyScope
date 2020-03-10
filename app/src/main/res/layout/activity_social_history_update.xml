@@ -1,211 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorWhite"
-    tools:context=".activities.medical_history.Medical_History">
-
+    tools:context=".activities.medical_history.SocialHistoryUpdate">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-
-
         <include layout="@layout/app_bar_main" />
-        <include layout="@layout/background_image" />
-
+        <include layout="@layout/background_image"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Social History"
+            android:textSize="30sp"
             android:gravity="center"
-            android:text="@string/medical_history"
-            android:textColor="@color/bg_screen2"
-            android:textSize="30sp" />
+            android:textColor="@color/bg_screen2" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:orientation="horizontal"
-            android:layout_marginRight="2dp"
+            android:layout_margin="10dp"
             android:weightSum="2">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/known_condition"
-                android:textColor="@color/bg_screen2"
-                android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/et_condition"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/disease"
-                android:padding="@dimen/dimen_4"
-                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:background="@drawable/border_bg"
+                android:text="@string/smoking"
                 android:textColor="@color/bg_screen2"
-                android:textColorHint="@color/bg_screen2"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/disease_statues"
-                android:textColor="@color/bg_screen2"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
 
             <Spinner
-                android:id="@+id/spinner_disease"
+                android:id="@+id/spinner_smokingUpdated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:popupBackground="@color/colorWhite"
+                android:padding="4dp"
                 android:background="@drawable/edittext_border"
-                android:padding="@dimen/dimen_4"/>
+                android:popupBackground="@color/colorWhite"
+                android:entries="@array/smoking_arrays"/>
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:orientation="horizontal"
+            android:layout_margin="10dp"
             android:weightSum="2">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/disease_duration"
+                android:text="@string/total_yrs_of_smoking"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/et_smoking_yrsUpdated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:background="@drawable/border_bg"
+                android:textColor="@color/bg_screen2"
+                android:padding="2dp"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tobacco_usage"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <com.example.myscope.activities.MultiSelectionSpinner
+                android:id="@+id/tobacco_usageUpdated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_border"
+                android:entries="@array/tobacco_array"
+                android:padding="@dimen/dimen_4"
+                android:popupBackground="@color/colorWhite"
+                android:textSize="15sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/drinking"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+
+            <Spinner
+                android:id="@+id/spinner_drinkingUpdated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_border"
+                android:popupBackground="@color/colorWhite"
+                android:padding="2dp"
+                android:entries="@array/drinking_arrays"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/total_yrs_of_drinking"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_noOfYrs"
+
+                android:id="@+id/et_YrsOfDrinkingUpdated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/no_of_yrs"
                 android:background="@drawable/border_bg"
-                android:padding="@dimen/dimen_4"
+                android:padding="2dp"
                 android:inputType="number"
                 android:textColor="@color/bg_screen2"
-                android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/when_started"
-                android:textColor="@color/bg_screen2"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/et_startDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/started_date"
-                android:background="@drawable/border_bg"
-                android:padding="@dimen/dimen_4"
-                android:inputType="date"
-                android:textColor="@color/bg_screen2"
-                android:textColorHint="@color/bg_screen2"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/when_ended"
-                android:textColor="@color/bg_screen2"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/et_stopDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/ended_date"
-                android:background="@drawable/border_bg"
-                android:padding="@dimen/dimen_4"
-                android:inputType="date"
-                android:textColor="@color/bg_screen2"
-                android:textColorHint="@color/bg_screen2"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="@string/notes"
-                android:textColor="@color/bg_screen2"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/notes_medicalHistory"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_75"
-                android:layout_weight="1"
-                android:background="@drawable/border_bg"
-                android:inputType="textMultiLine"
-                android:gravity="start"
-                android:padding="@dimen/dimen_4"
-                android:textColor="@color/bg_screen2"
-                android:textSize="16sp" />
-        </LinearLayout>
 
         <Button
-            android:id="@+id/btn_medicalHistory"
+            android:id="@+id/btn_socialUpdated"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/background_button"
-            android:backgroundTint="#1F78D3"
             android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:text="@string/update"
+            android:backgroundTint="#1F78D3"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/background_button"
+            android:textSize="16sp"
             android:layout_marginLeft="@dimen/dimen_10"
-            android:layout_marginRight="@dimen/dimen_10"
-            android:text="@string/save"
-            android:textSize="16sp" />
+            android:layout_marginRight="@dimen/dimen_10"/>
     </LinearLayout>
+
 </ScrollView>
