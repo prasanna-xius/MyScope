@@ -3,19 +3,24 @@ package com.example.myscope.activities.prescription
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.*
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MultiSelectionSpinner
-import com.google.android.material.snackbar.Snackbar
+import com.example.myscope.activities.MultiSelectionSpinnerTime
+import com.example.myscope.activities.PrescriptionInterface
+import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.prescribed_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.DateFormat
 import java.util.*
 
@@ -27,118 +32,63 @@ class Prescription_manual : BaseActivity() {
     private var startDateOrEndDAte = true
     var formulation: Spinner? = null
     var dose: Spinner? = null
+    var prescription:Int = 0
+
     var howoftenvalue_taken: MultiSelectionSpinner? = null
     var timeSpinner_taken: MultiSelectionSpinner? = null
 
     var drugname_list: AutoCompleteTextView? = null
-//    var brand_name_edit: EditText? = null
 
-
+    var doctor_name_Txt: EditText? = null
+    var hospital_name_Txt: EditText? = null
 
     var isprescribed: Spinner? = null
     var datecheck: Boolean? = true
-    var hospitalName: String? = null
-    var players = ArrayList<Player>()
 
     var drugname: String? = null
-    var doctorName: String? = null
     var brandname: String? = null
     var doseStrength: String? = null
-    var medicalCondition: String? = null
     var formulationId: String? = null
     var doseunit: String? = null
-    var isprescribedunit: String? = null
     var howoftenvalue: String? = null
     var timeofmedicine: String? = null
     var startDate: String? = null
     var stopDate: String? = null
-//    var adapter: MyAdapter? = null
-    var adapter1: Druglist_Adapter? = null
+    var mobile_no:String?=null
 
     var rv: RecyclerView? = null
+    var prescription_id:Int =0
+    var position:Int = 0
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prescription_manual)
+        doctor_name_Txt = findViewById<View>(R.id.et_doctor_name) as EditText
+        hospital_name_Txt = findViewById<View>(R.id.et_hosp_name) as EditText
+        val bundle = intent.extras
+        if (bundle != null) {
+            if(!bundle.equals(null)) {
 
-//        editbutton.setOnClickListener() {
-//            showShortToast("edit button is clicked")
-////            if (!parentview.equals(null)) {
-////                parentview.getBackground().setAlpha(100);
-//
-////            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-////            }
-//        }
+                val doctor_name = bundle!!.getString("doctor_name")
+                val hospital_name = bundle!!.getString("hospital_name")
+                prescription_id = bundle!!.getInt("prescription_id")
 
-        rv = findViewById<View>(R.id.myRecycler) as RecyclerView
-        //SET ITS PROPS
-        rv!!.layoutManager = LinearLayoutManager(this)
-        rv!!.itemAnimator = DefaultItemAnimator()
-        //ADAPTER
-//        adapter1 = Druglist_Adapter(this, players)
-
-        isprescribed = findViewById<Spinner>(R.id.is_prescribed)
-
-
-
-        // prescribed spinner
-        val isprescribedadapter = ArrayAdapter(this,
-                R.layout.spinner_dropdown_item, resources.getStringArray(R.array.is_prescribed))
-        isprescribed!!.adapter = isprescribedadapter
-
-        isprescribed?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedItem = parent!!.getItemAtPosition(position).toString()
-
-                if (selectedItem.equals("None")) {
-                    doctor_layout!!.setVisibility(View.GONE);
-                    hosp_layout!!.setVisibility(View.GONE);
-                    pharmacy_layout!!.setVisibility(View.GONE);
-                    // do your stuff
-                } else if (selectedItem.equals("Over the counter (OTC)")) {
-                    doctor_layout!!.setVisibility(View.GONE);
-                    hosp_layout!!.setVisibility(View.GONE);
-                    pharmacy_layout!!.setVisibility(View.GONE);
-                    // do your stuff
-                } else if (selectedItem.equals("Prescribed")) {
-
-                    doctor_layout!!.setVisibility(View.VISIBLE);
-                    hosp_layout!!.setVisibility(View.VISIBLE);
-                    pharmacy_layout!!.setVisibility(View.GONE);
-
-                    // do your stuff
-                } else if (selectedItem.equals("Prescribed OTC")) {
-                    doctor_layout!!.setVisibility(View.GONE);
-                    hosp_layout!!.setVisibility(View.GONE);
-                    pharmacy_layout!!.setVisibility(View.VISIBLE);
-                    // do your stuff
-                }
-
+                doctor_name_Txt!!.setText(doctor_name)
+                hospital_name_Txt!!.setText(hospital_name)
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                doctor_layout!!.setVisibility(View.GONE);
-                hosp_layout!!.setVisibility(View.GONE);
-                pharmacy_layout!!.setVisibility(View.GONE);
-
-            }
-
         }
-        prescription_save.setOnClickListener {
-            save(doctor_name!!.text.toString(), hosp_name!!.text.toString())
-        }
-//        retrieveBtn.setOnClickListener {
-////            retrieve();
-////        }
+
         add_drug.setOnClickListener {
             showLongToast("clicked")
             showDialog()
         }
 
     }
+    override fun onBackPressed() {
 
+        navigateToActivity(Intent(applicationContext,Prescription_Manual_Main::class.java))
+    }
     private fun showDialog() {
 
         val d = Dialog(this)
@@ -148,27 +98,19 @@ class Prescription_manual : BaseActivity() {
         d.setContentView(R.layout.prescribed_main)
 
         /* getting id's by findviewbyid method */
-        formulation =d. findViewById<Spinner>(R.id.formulation_id)
-        dose =d. findViewById<Spinner>(R.id.dose_unit)
+        formulation = d.findViewById<Spinner>(R.id.formulation_id)
+        dose = d.findViewById<Spinner>(R.id.dose_unit)
 
 
-//        dose =d. findViewById<TextView>(R.id.start_date)
-//        dose =d. findViewById<TextView>(R.id.stop_date)
-//        brandname =d. findViewById<EditText>(R.id.brand_name)
-//        dose =d. findViewById<EditText>(R.id.dose_strength)
-//        dose =d. findViewById<EditText>(R.id.medical_condition)
-        drugname_list =d. findViewById<AutoCompleteTextView>(R.id.drug_name)
+        drugname_list = d.findViewById<AutoCompleteTextView>(R.id.drug_name)
 
 
         val howoftenvalue_taken = d.findViewById<MultiSelectionSpinner>(R.id.how_often_taken)
-        val timeSpinner_taken = d.findViewById<MultiSelectionSpinner>(R.id.time_of_taken)
+        val timeSpinner_taken = d.findViewById<MultiSelectionSpinnerTime>(R.id.time_of_taken)
 
 // Get the array of languages
-//        val drugname_list
-//                = resources.getStringArray(R.array.drugs_list)
-        // Create adapter and add in AutoCompleteTextView
-        val adapter
-                = ArrayAdapter(this,
+
+        val adapter = ArrayAdapter(this,
                 R.layout.spinner_dropdown_item, resources.getStringArray(R.array.drugs_list))
         drugname_list!!.setAdapter(adapter)
 
@@ -195,13 +137,13 @@ class Prescription_manual : BaseActivity() {
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
             val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
             if (startDateOrEndDAte) {
-                start_date.setText(date1)
+                d.start_date.setText(date1)
             } else {
-                stop_date.setText(date1)
+                d.stop_date.setText(date1)
             }
         }
         /*onclick listener for start date */
-        d. start_date.setOnClickListener {
+        d.start_date.setOnClickListener {
             // TODO Auto-generated method stub
             DatePickerDialog(this@Prescription_manual, R.style.MyDatePicker, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show()
@@ -219,37 +161,26 @@ class Prescription_manual : BaseActivity() {
         /* Implementing on click listner */
         d.prescription_save_dialog.setOnClickListener()
         {
-            /*getting values from edit text views */
-//            hospitalName = hosp_name.text.toString()
-//            doctorName = doctor_name.text.toString()
+
             brandname = d.brand_name.text.toString()
-
             doseStrength = d.dose_strength.text.toString()
-            medicalCondition = d.medical_condition.text.toString()
-
             drugname = d.drug_name!!.text.toString()
             formulationId = d.formulation_id!!.selectedItem.toString()
-            doseunit = dose!!.selectedItem.toString()
-            isprescribedunit = isprescribed!!.selectedItem.toString()
-            howoftenvalue = howoftenvalue_taken!!.selectedItem.toString()
-            timeofmedicine = timeSpinner_taken!!.selectedItem.toString()
-            startDate =d. start_date.text.toString()
+            doseunit = d.dose_unit!!.selectedItem.toString()
+            howoftenvalue = howoftenvalue_taken!!.selectedStrings.toString()
+            timeofmedicine = timeSpinner_taken!!.selectedStrings.toString()
+            startDate = d.start_date.text.toString()
             stopDate = d.stop_date.text.toString()
 
-            /*validating the inputs through function call */
-//            validateInput(doctor_name, doctorName!!)
-//            validateInput(hosp_name, hospitalName!!)
             validateInput(d.brand_name, brandname!!)
             validateInput(d.dose_strength, doseStrength!!)
-            validateInput(d.medical_condition, medicalCondition!!)
             validateInput(d.drug_name, drugname!!)
 
-            validateSpinner(formulation!!, formulationId!!)
-            validateSpinner(dose!!, doseunit!!)
-            validateSpinner(isprescribed!!, isprescribedunit!!)
+            validateSpinner(d.formulation_id!!, formulationId!!)
+            validateSpinner(d.dose_unit!!, doseunit!!)
             validateSpinner(d.how_often_taken!!, howoftenvalue!!)
             validateSpinner(d.time_of_taken!!, timeofmedicine!!)
-            datecheck = validateDate(d.start_date,d.stop_date,true)
+            datecheck = validateDate(d.start_date, d.stop_date, true)
 
             /*checking if the data is empty or not */
             if (
@@ -257,108 +188,142 @@ class Prescription_manual : BaseActivity() {
 //                    (!hospitalName.equals("")) &&
                     (!brandname.equals("")) &&
                     (!drugname.equals("")) &&
-
                     (!doseStrength.equals("")) &&
-                    (!medicalCondition.equals("") &&
                             (!formulationId.equals("None")) &&
                             (!doseunit.equals("None")) &&
-                            (!isprescribedunit.equals("None")) &&
                             (!howoftenvalue.equals("None")) &&
                             (!timeofmedicine.equals("None")) &&
                             (!startDate.equals("")) &&
-                            (!stopDate.equals(""))) && datecheck!!.equals(true)) {
+                            (!stopDate.equals("")) && datecheck!!.equals(true)) {
                 showLongToast("Values are saved....Thank you!! ")
                 val PrescriptionManualDataClass = PrescriptionManualDataClass(
 //                        doctorName!!, hospitalName!!,
-                        brandname!!,drugname!!, doseStrength!!, medicalCondition!!, formulationId!!, doseunit!!,
-                        isprescribedunit!!, howoftenvalue!!, timeofmedicine!!, startDate!!, stopDate!!)
+                        brandname!!, drugname!!, doseStrength!!,  formulationId!!, doseunit!!,
+                         howoftenvalue!!, timeofmedicine!!, startDate!!, stopDate!!)
                 showLongToast(PrescriptionManualDataClass.toString())
             } else {
             }
-//            assignValuetoVariable()
             validate(formulation!!)
             validate(dose!!)
-            validate(isprescribed!!)
-//            save_alert(d.drug_name!!.text.toString(), d.brand_name!!.text.toString())
+
+            val newPrescriptionDrug = Prescription_AddDoctor()
+
+            newPrescriptionDrug.formulation = d.formulation_id?.getSelectedItem().toString()
+            newPrescriptionDrug.dose_unit = d.dose_unit?.getSelectedItem().toString()
+            newPrescriptionDrug.how_often_taken = d.how_often_taken.selectedStrings.toString()
+
+            newPrescriptionDrug.drug_name = d.drug_name!!.text.toString().trim()
+            newPrescriptionDrug.brand_name = d.brand_name!!.text.toString().trim()
+            newPrescriptionDrug.dose_strength = d.dose_strength!!.text.toString().trim()
+            newPrescriptionDrug.start_date = d.start_date!!.text.toString().trim()
+            newPrescriptionDrug.stop_date = d.stop_date!!.text.toString().trim()
+            newPrescriptionDrug.time = d.time_of_taken!!.selectedStrings.toString()
+
+
+            newPrescriptionDrug.prescription_id =prescription_id
+
+            val prescriptionDrugservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+
+            //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
+
+            val requestCall = prescriptionDrugservice.addDrug(newPrescriptionDrug)
+
+            requestCall.enqueue(object : Callback<Prescription_AddDoctor> {
+                /**
+                 * Invoked when a network exception occurred talking to the server or when an unexpected
+                 * exception occurred creating the request or processing the response.
+                 */
+                override fun onResponse(call: Call<Prescription_AddDoctor>, resp: Response<Prescription_AddDoctor>) {
+
+                    if (resp.isSuccessful) {
+                        var newbody = resp.body() // Use it or ignore it
+                        Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
+                        val intent = intent
+                        finish()
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Prescription_AddDoctor>, t: Throwable) {
+                    //finish()
+//                    Log.d("errormsgfailure ::", t.message)
+//                    Log.e("errorunderfailure:", t.message)
+                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                }
+            })
+
         }
-//        d. prescription_update.setOnClickListener {
-//            retrieve();
-//        }
+
         d.show()
     }
 
-    /*private fun save_alert(drugname: String, brandname: String) {
-
-        val db = DBAdapter(this)
-        //OPEN
-        db.openDB()
-        //INSERT
-        val result = db.add(drugname, brandname,null,null)
-        if (result > 0) {
-            drug_name!!.setText("")
-           brand_name!!.setText("")
-        } else {
-            Snackbar.make(drug_name!!, "Unable To Insert", Snackbar.LENGTH_SHORT).show()
-        }
-        //CLOSE
-        db.close()
-        //refresh
-        retrieve();
-    }*/
-
-    private fun save(name: String, pos: String) {
-        val db = DBAdapter(this)
-        //OPEN
-        db.openDB()
-        //INSERT
-        val result = db.add(name, pos)
-        if (result > 0) {
-            doctor_name!!.setText("")
-            hosp_name!!.setText("")
-        } else {
-            Snackbar.make(doctor_name!!, "Unable To Insert", Snackbar.LENGTH_SHORT).show()
-        }
-        //CLOSE
-        db.close()
-        //refresh
-//        retrieve();
-    }
-
-    //RETRIEVE
-//    private fun retrieve() {
-//        val db = DBAdapter(this)
-//        //OPEN
-//        db.openDB()
-//        players.clear()
-//        //SELECT
-//        val c = db.allPlayers
-//        //LOOP THRU THE DATA ADDING TO ARRAYLIST
-//        while (c.moveToNext()) {
-//            val id = c.getInt(0)
-//            val drugname = c.getString(3)
-//            val brandname = c.getString(4)
-//            //CREATE PLAYER
-//            val p = Player(drugname, brandname,null,null,id)
-//            //ADD TO PLAYERS
-//            players.add(p)
-//        }
-//        //SET ADAPTER TO RV
-//        if (players.size >= 1) {
-//            rv!!.adapter = adapter1
-//        }
-
-//    }
-
     override fun onResume() {
         super.onResume()
-//        retrieve();
+        loadValues()
+
+//                retrieve();
     }
-    /* function for checking null values in the required fields*/
-    private fun assignValuetoVariable() {
+
+    private fun loadValues() {
+
+        val destinationService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+        rv = findViewById<View>(R.id.recyclerview_doctorlist) as RecyclerView
+
+        val filter = HashMap<String, String>()
+//        filter["country"] = "India"
+//        filter["count"] = "1"
+
+        val requestCall = destinationService.getDrugList(filter)          ///service file method called (binding)
+
+        //val requestCall = destinationService.getAllergy(filter)
+
+        requestCall.enqueue(object : Callback<List<Prescription_AddDoctor>> {
+            /**
+             * Invoked when a network exception occurred talking to the server or when an unexpected
+             * exception occurred creating the request or processing the response.
+             */
 
 
+            // If you receive a HTTP Response, then this method is executed
+            // Your STATUS Code will decide if your Http Response is a Success or Error
+            override fun onResponse(call: Call<List<Prescription_AddDoctor>>, response: Response<List<Prescription_AddDoctor>>) {
+
+
+                if (response.isSuccessful()) {
+
+                    val prescriptionList = response.body()!!
+
+                    val linearlayoutmanager = LinearLayoutManager(applicationContext)
+
+                    linearlayoutmanager.orientation = LinearLayoutManager.VERTICAL
+
+
+                    rv!!.setLayoutManager(linearlayoutmanager)
+                    rv!!.adapter = Prscription_DrugList_Adapter(prescriptionList)
+
+                    rv!!.adapter!!.notifyDataSetChanged()
+
+
+                    Log.e("errpr msg resp succ", response.message())
+
+                } else if (response.code() == 401) {
+                    Toast.makeText(this@Prescription_manual, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+                } else { // Application-level failure
+                    // Your status code is in the range of 300's, 400's and 500's
+                    Toast.makeText(this@Prescription_manual, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            // Invoked in case of Network Error or Establishing connection with Server
+            // or Error Creating Http Request or Error Processing Http Response
+            override fun onFailure(call: Call<List<Prescription_AddDoctor>>, t: Throwable) {
+
+                Toast.makeText(this@Prescription_manual, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+            }
+        })
     }
+
 }
-
-
 

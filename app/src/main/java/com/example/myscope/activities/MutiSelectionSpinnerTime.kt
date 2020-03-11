@@ -14,11 +14,11 @@ import java.util.Arrays
 import java.util.LinkedList
 
 @SuppressLint("AppCompatCustomView")
-class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListener {
+class MultiSelectionSpinnerTime : Spinner, DialogInterface.OnMultiChoiceClickListener {
     internal var _items: Array<String>? = null
     internal var mSelection: BooleanArray? = null
 
-    internal var simple_adapter: ArrayAdapter<String>
+    internal var simple_adaptertime: ArrayAdapter<String>
 
     val selectedStrings: List<String>
         get() {
@@ -62,26 +62,26 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
     @SuppressLint("ResourceType")
     constructor(context: Context) : super(context) {
 
-        simple_adapter = ArrayAdapter(context,
-                R.layout.prescription_multi_item,R.style.MyDialogTheme)
-        super.setAdapter(simple_adapter)
+        simple_adaptertime = ArrayAdapter(context,
+                R.layout.spinner_item,R.style.MyDialogTheme)
+        super.setAdapter(simple_adaptertime)
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        simple_adapter = ArrayAdapter(context,
-               R.layout.prescription_multi_item)
-        super.setAdapter(simple_adapter)
+        simple_adaptertime = ArrayAdapter(context,
+                R.layout.spinner_item)
+        super.setAdapter(simple_adaptertime)
     }
 
     override fun onClick(dialog: DialogInterface, which: Int, isChecked: Boolean) {
         if (mSelection != null && which < mSelection!!.size && which>=1) {
             mSelection!![which] = isChecked
 
-            simple_adapter.clear()
-            simple_adapter.add(buildSelectedItemString())
+            simple_adaptertime.clear()
+            simple_adaptertime.add(buildSelectedItemString())
         } else {
             if(which.equals(0)) {
-            mSelection!![0] = false
+                mSelection!![0] = false
             }
 
         }
@@ -105,16 +105,16 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
     fun setItems(items: Array<String>) {
         _items = items
         mSelection = BooleanArray(_items!!.size)
-        simple_adapter.clear()
-        simple_adapter.add(_items!![0])
+        simple_adaptertime.clear()
+        simple_adaptertime.add(_items!![0])
         Arrays.fill(mSelection!!, false)
     }
 
     fun setItems(items: List<String>) {
         _items = items.toTypedArray()
         mSelection = BooleanArray(_items!!.size)
-        simple_adapter.clear()
-        simple_adapter.add(_items!![0])
+        simple_adaptertime.clear()
+        simple_adaptertime.add(_items!![0])
         Arrays.fill(mSelection!!, false)
     }
 
@@ -139,8 +139,8 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
                 }
             }
         }
-        simple_adapter.clear()
-        simple_adapter.add(buildSelectedItemString())
+        simple_adaptertime.clear()
+        simple_adaptertime.add(buildSelectedItemString())
     }
 
     override fun setSelection(index: Int) {
@@ -153,8 +153,8 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
             throw IllegalArgumentException("Index " + index
                     + " is out of bounds.")
         }
-        simple_adapter.clear()
-        simple_adapter.add(buildSelectedItemString())
+        simple_adaptertime.clear()
+        simple_adaptertime.add(buildSelectedItemString())
     }
 
     fun setSelection(selectedIndicies: IntArray) {
@@ -169,8 +169,8 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
                         + " is out of bounds.")
             }
         }
-        simple_adapter.clear()
-        simple_adapter.add(buildSelectedItemString())
+        simple_adaptertime.clear()
+        simple_adaptertime.add(buildSelectedItemString())
     }
 
     private fun buildSelectedItemString(): String {

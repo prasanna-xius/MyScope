@@ -12,7 +12,7 @@
     tools:showIn="@layout/activity_prescriptionmanual_recyclerview">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/myRecycler"
+        android:id="@+id/recyclerview_doctorlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         class="android.support.v7.widget.RecyclerView" />

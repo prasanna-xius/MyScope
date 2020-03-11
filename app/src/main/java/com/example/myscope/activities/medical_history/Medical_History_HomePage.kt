@@ -44,7 +44,7 @@ class Medical_History_HomePage : BaseActivity() {
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View { // TODO Auto-generated method stub
             val holder = Holder()
             val rowView: View
-            rowView = inflater!!.inflate(R.layout.medical_history_grid_item, null)
+            rowView = inflater!!.inflate(R.layout.gridview_item_main, null)
             holder.os_text = rowView.findViewById<View>(R.id.home_item_textView) as TextView
             holder.os_image = rowView.findViewById<View>(R.id.home_item_image_view) as ImageView
             holder.os_text!!.text = result[position]

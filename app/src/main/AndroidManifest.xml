@@ -65,6 +65,8 @@
 
 
         <activity android:name=".activities.prescription.Prescriptions_HomePage" />
+        <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
+
         <activity android:name=".ImageUpload" />
         <activity android:name=".activities.prescription.Prescription_manual" />
 

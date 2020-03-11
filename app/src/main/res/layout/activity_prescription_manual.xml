@@ -82,7 +82,7 @@
                     android:textSize="@dimen/dimen_15" />
 
                 <EditText
-                    android:id="@+id/doctor_name"
+                    android:id="@+id/et_doctor_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -111,11 +111,10 @@
                     android:layout_weight="1"
                     android:text="@string/hospital_name"
                     android:textColor="@color/bg_screen2"
-                    android:textSize="@dimen/dimen_15"
-                    />
+                    android:textSize="@dimen/dimen_15" />
 
                 <EditText
-                    android:id="@+id/hosp_name"
+                    android:id="@+id/et_hosp_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -128,37 +127,33 @@
                     />
             </LinearLayout>
             <LinearLayout
-
-                android:id="@+id/pharmacy_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2"
                 android:layout_margin="@dimen/dimen_10"
-                >
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="pharmacy Name"
+                    android:text="@string/medical_condition"
                     android:textColor="@color/bg_screen2"
-                    android:textSize="@dimen/dimen_15"
-                    />
+                    android:textSize="@dimen/dimen_15" />
 
                 <EditText
-                    android:id="@+id/pharmacy_name"
+                    android:id="@+id/et_medical_condition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:padding="@dimen/dimen_4"
-                    android:textSize="15sp"
-                    android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"
+                    android:inputType="text"
+                    android:padding="@dimen/dimen_4"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="15sp" />
 
-                    />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,33 +171,23 @@
                     android:textSize="@dimen/dimen_15" />
 
                 <EditText
-                    android:id="@+id/precsription_note"
+                    android:id="@+id/et_precsription_note"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="@dimen/dimen_4"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    android:textSize="15sp"
-                    android:lines="4"
-                    android:gravity="left"
-                    android:inputType="textMultiLine"
-                    android:importantForAutofill="no"
-                    android:textColor="@color/bg_screen2"
                     android:background="@drawable/edittext_border"
-                    />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:gravity="left"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:padding="@dimen/dimen_4"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/prescription_save"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_button"
-                android:backgroundTint="#1F78D3"
-                android:text="Save"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:layout_marginBottom="@dimen/dimen_10"
-                />
+
 
             <LinearLayout
                 android:layout_width="match_parent"

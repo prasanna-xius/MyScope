@@ -19,8 +19,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
-import com.example.myscope.activities.prescription.Prescription_manual
-import com.example.myscope.activities.prescription.Prescriptionmanual_recyclerview
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.ByteArrayOutputStream
@@ -239,7 +237,7 @@ open class BaseActivity : AppCompatActivity() {
 
     private fun showFilemanual() {
 
-        navigateToActivity(Intent(applicationContext, Prescriptionmanual_recyclerview::class.java))
+//        navigateToActivity(Intent(applicationContext, Prescriptionmanual_recyclerview::class.java))
     }
 
     private fun showFileChooser() {
