@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
 
 
-class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescription_AddDoctor>) : RecyclerView.Adapter<Prscription_DoctorList_Adapter.ViewHolder>()  {
+class Prscription_DoctorList_Adapter(private val prescriptionList: List<PrescriptionDataClass>) : RecyclerView.Adapter<Prscription_DoctorList_Adapter.ViewHolder>()  {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,18 +38,18 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
             val  context = v?.context
 
 
-            val intent = Intent(context, Prescription_manual::class.java)
+            val intent = Intent(context, Prescription_manualDrugDialog::class.java)
             var bundle = Bundle()
 
             Toast.makeText(context, "item Clicked" + position, Toast.LENGTH_LONG).show()
 
 
-            bundle.putInt("position" , position)
-
+            bundle.putInt("doctorposition" , position)
+            bundle.putString("isPrescribed", prescriptionList[position].is_prescribed)
             bundle.putString("doctor_name", prescriptionList[position].doctor_name)
             bundle.putString("hospital_name", prescriptionList[position].hospital_name)
             bundle.putInt("prescription_id", prescriptionList[position].prescription_id!!)
-            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
+//            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
             intent.putExtras(bundle)
 //
 //
@@ -71,7 +71,7 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
         val doctor_name: TextView = itemView.findViewById(R.id.doctor_nametxt)  //item_list tv_id
         val hospital_name: TextView = itemView.findViewById(R.id.hospital_nametxt)  //item_list tv_id
 
-        var prescriptiondestination: Prescription_AddDoctor? = null
+        var prescriptiondestination: PrescriptionDataClass? = null
 
 
         override fun toString(): String {

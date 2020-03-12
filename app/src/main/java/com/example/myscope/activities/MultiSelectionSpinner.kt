@@ -12,11 +12,23 @@ import com.example.myscope.R
 
 import java.util.Arrays
 import java.util.LinkedList
+import android.view.LayoutInflater
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+import android.widget.TextView
+
+
+
+
+
+
 
 @SuppressLint("AppCompatCustomView")
 class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListener {
     internal var _items: Array<String>? = null
     internal var mSelection: BooleanArray? = null
+    var allTitle: TextView ?= null
+
 
     internal var simple_adapter: ArrayAdapter<String>
 
@@ -63,13 +75,13 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
     constructor(context: Context) : super(context) {
 
         simple_adapter = ArrayAdapter(context,
-                R.layout.prescription_multi_item,R.style.MyDialogTheme)
+                R.layout.spinner_dropdown_item,R.style.MyDialogTheme)
         super.setAdapter(simple_adapter)
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         simple_adapter = ArrayAdapter(context,
-               R.layout.prescription_multi_item)
+               R.layout.spinner_dropdown_item)
         super.setAdapter(simple_adapter)
     }
 
@@ -89,6 +101,9 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
 
     override fun performClick(): Boolean {
         val builder = AlertDialog.Builder(context,R.style.MyDialogTheme)
+        val titleView = LayoutInflater.from(context).inflate(R.layout.spinner_dropdown_item, null)
+        allTitle = titleView.findViewById(R.id.text1) as TextView
+
         builder.setMultiChoiceItems(_items, mSelection, this)
 
         builder.setPositiveButton("Ok") { arg0, arg1 -> }

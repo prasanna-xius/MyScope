@@ -15,8 +15,6 @@ import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.PrescriptionInterface
 import com.google.android.gms.security.ProviderInstaller
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_prescription_manual.*
-import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.isprescribed_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,10 +22,8 @@ import retrofit2.Response
 import java.util.*
 import javax.net.ssl.SSLContext
 
-class Prescription_Manual_Main : BaseActivity() {
+class Prescription_ManualDoctorDialog : BaseActivity() {
 
-    //    var adapter: MyAdapter? = null
-//    var players = ArrayList<Player>()
     var position: Int = 0
     var mobile_no: String? = null
     var prescription: Int = 0
@@ -49,24 +45,8 @@ class Prescription_Manual_Main : BaseActivity() {
         val fab = findViewById<View>(R.id.fab_addprescribed) as FloatingActionButton
         mobile_no = "8142529582"
         fab.setOnClickListener {
-
-            //            navigateToActivity(Intent(applicationContext, Prescription_manual::class.java))
-
-            //                Intent intent=new Intent(getApplicationContext(),Prescription_manual.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(intent);
             showDialog()
         }
-
-//        //recycler
-//        rv = findViewById<View>(R.id.recyclerview_doctorlist) as RecyclerView
-//        //SET ITS PROPS
-//        rv!!.layoutManager = LinearLayoutManager(this)
-//        rv!!.itemAnimator = DefaultItemAnimator()
-//        //ADAPTER
-//        adapter = MyAdapter(this, players)
-
-        //        retrieve();
     }
 
     private fun showDialog() {
@@ -83,10 +63,6 @@ class Prescription_Manual_Main : BaseActivity() {
 
         position = intent.getIntExtra("position", 0)
 
-//        val doctor_name = d.et_doctor_name.text.toString()
-//        val prescribed = d.is_prescribed!!.selectedItem.toString()
-//        val hospital_name = d.et_hosp_name.text.toString()
-//        val medical_condition = d.et_medical_condition.text.toString()
         // prescribed spinner
         val isprescribedadapter = ArrayAdapter(this,
                 R.layout.spinner_dropdown_item, resources.getStringArray(R.array.is_prescribed))
@@ -162,7 +138,7 @@ class Prescription_Manual_Main : BaseActivity() {
             }
 
 
-            val newPrescription = Prescription_AddDoctor()
+            val newPrescription = PrescriptionDataClass()
             newPrescription.is_prescribed = d.is_prescribed1?.getSelectedItem().toString()
             newPrescription.doctor_name = d.et_doctor_name1!!.text.toString().trim()
             newPrescription.hospital_name = d.et_hosp_name1!!.text.toString().trim()
@@ -180,29 +156,25 @@ class Prescription_Manual_Main : BaseActivity() {
 
             val requestCall = diseaseService.addDoctor(newPrescription)
 
-            requestCall.enqueue(object : Callback<Prescription_AddDoctor> {
+            requestCall.enqueue(object : Callback<PrescriptionDataClass> {
                 /**
                  * Invoked when a network exception occurred talking to the server or when an unexpected
                  * exception occurred creating the request or processing the response.
                  */
-                override fun onResponse(call: Call<Prescription_AddDoctor>, resp: Response<Prescription_AddDoctor>) {
+                override fun onResponse(call: Call<PrescriptionDataClass>, resp: Response<PrescriptionDataClass>) {
 
                     if (resp.isSuccessful) {
 
                         var newbody = resp.body()
                         // Use it or ignore it
                         loadDetails()
-                        navigateToActivity(Intent(applicationContext, Prescription_manual::class.java))
-
-//                        Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
-//                        Toast.makeText(applicationContext, "Successfully Added" +  newbody!!.prescription_id, Toast.LENGTH_SHORT).show()
-
+                        navigateToActivity(Intent(applicationContext, Prescription_manualDrugDialog::class.java))
                     } else {
                         Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                     }
                 }
 
-                override fun onFailure(call: Call<Prescription_AddDoctor>, t: Throwable) {
+                override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
 
                     Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                 }
@@ -216,8 +188,8 @@ class Prescription_Manual_Main : BaseActivity() {
         val prescription_data = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
         val requestCall = prescription_data.getDoctorListbyId(mobile_no.toString())
         showLongToast(requestCall.toString())
-        requestCall.enqueue(object : retrofit2.Callback<List<Prescription_AddDoctor>> {
-            override fun onResponse(call: Call<List<Prescription_AddDoctor>>, response: Response<List<Prescription_AddDoctor>>) {
+        requestCall.enqueue(object : retrofit2.Callback<List<PrescriptionDataClass>> {
+            override fun onResponse(call: Call<List<PrescriptionDataClass>>, response: Response<List<PrescriptionDataClass>>) {
                 if (response.isSuccessful) {
                     val destination = response.body()
                     val prescriptionId = destination?.get(position)
@@ -231,17 +203,12 @@ class Prescription_Manual_Main : BaseActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<List<Prescription_AddDoctor>>, t: Throwable) {
+            override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
                 
             }
         })
     }
 
-    private fun assignValuestoVariable_doctor() {
-
-
-
-    }
 
     override fun onResume() {
         super.onResume()
@@ -255,17 +222,9 @@ class Prescription_Manual_Main : BaseActivity() {
         val destinationService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
         rv = findViewById<View>(R.id.recyclerview_doctorlist) as RecyclerView
 
-        val filter = HashMap<String, String>()
-//        filter["country"] = "India"
-//        filter["count"] = "1"
-
-//        val requestCall = destinationService.getDoctorList(filter)
-// /service file method called (binding)
         val requestCall = destinationService.getDoctorListbyId(mobile_no!!)
 
-        //val requestCall = destinationService.getAllergy(filter)
-
-        requestCall.enqueue(object : Callback<List<Prescription_AddDoctor>> {
+        requestCall.enqueue(object : Callback<List<PrescriptionDataClass>> {
             /**
              * Invoked when a network exception occurred talking to the server or when an unexpected
              * exception occurred creating the request or processing the response.
@@ -274,21 +233,12 @@ class Prescription_Manual_Main : BaseActivity() {
 
             // If you receive a HTTP Response, then this method is executed
             // Your STATUS Code will decide if your Http Response is a Success or Error
-            override fun onResponse(call: Call<List<Prescription_AddDoctor>>, response: Response<List<Prescription_AddDoctor>>) {
-
-
-                //Log.e("errpr msg resp",response.message())
-
-                //Log.d("errpr msg resp",response.message())
-
+            override fun onResponse(call: Call<List<PrescriptionDataClass>>, response: Response<List<PrescriptionDataClass>>) {
 
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val prescriptionList = response.body()!!
 
-                    //linearLayoutManager = LinearLayoutManager(this@AllergyItemListActivity,
-                    // LinearLayoutManager.VERTICAL, false)
-                    //destiny_recycler_view.adapter = AllergyAdapter(diseaseList)
                     val linearlayoutmanager = LinearLayoutManager(applicationContext)
 
                     linearlayoutmanager.orientation = LinearLayoutManager.VERTICAL
@@ -303,18 +253,18 @@ class Prescription_Manual_Main : BaseActivity() {
                     Log.e("errpr msg resp succ", response.message())
 
                 } else if (response.code() == 401) {
-                    Toast.makeText(this@Prescription_Manual_Main, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Prescription_ManualDoctorDialog, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure
                     // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@Prescription_Manual_Main, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Prescription_ManualDoctorDialog, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
                 }
             }
 
             // Invoked in case of Network Error or Establishing connection with Server
             // or Error Creating Http Request or Error Processing Http Response
-            override fun onFailure(call: Call<List<Prescription_AddDoctor>>, t: Throwable) {
+            override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
 
-                Toast.makeText(this@Prescription_Manual_Main, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Prescription_ManualDoctorDialog, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }

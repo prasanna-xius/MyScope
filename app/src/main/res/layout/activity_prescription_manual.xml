@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        tools:context=".activities.prescription.Prescription_manual"
+        tools:context=".activities.prescription.Prescription_manualDrugDialog"
         >
 
         <LinearLayout
@@ -71,7 +71,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2"
-                android:layout_margin="@dimen/dimen_10">
+                android:layout_margin="@dimen/dimen_10"
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -102,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2"
+                android:visibility="visible"
                 android:layout_margin="@dimen/dimen_10"
                 >
 

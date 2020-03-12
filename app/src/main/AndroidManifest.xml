@@ -20,7 +20,7 @@
 
         <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"></activity>
 
-        <activity android:name=".activities.prescription.Prescription_Manual_Main">
+        <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,7 +33,7 @@
 
       ></activity>
 
-        <!--         <activity android:name=".activities.Prescription_manual" />-->
+        <!--         <activity android:name=".activities.Prescription_manualDrugDialog" />-->
         <activity
             android:name=".activities.SignUp_Page"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -68,7 +68,7 @@
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
 
         <activity android:name=".ImageUpload" />
-        <activity android:name=".activities.prescription.Prescription_manual" />
+        <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
 
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
 

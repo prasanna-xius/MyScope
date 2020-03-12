@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
 
 
-class Prscription_DrugList_Adapter(private val prescriptionDrugList: List<Prescription_AddDoctor>) : RecyclerView.Adapter<Prscription_DrugList_Adapter.ViewHolder>()  {
+class Prscription_DrugList_Adapter(private val prescriptionDrugList: List<PrescriptionDataClass>) : RecyclerView.Adapter<Prscription_DrugList_Adapter.ViewHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -33,40 +33,15 @@ class Prscription_DrugList_Adapter(private val prescriptionDrugList: List<Prescr
 
         holder.itemView.setOnClickListener { v: View? ->
 
-            for (i in 0 until prescriptionDrugList.size) {
 
                 val  context = v?.context
                 val intent = Intent(context, PrescriptionDrugListUpdate::class.java)
-
-//            intent.putExtra(PrescriptionDrugListUpdate.ARG_ITEM_ID, holder.prescriptiondestination!!.mobile_no)
-
-                intent.putExtra("position" , position)
                 Toast.makeText(context,"holder data"+v,Toast.LENGTH_LONG).show()
                 var bundle = Bundle()
                 bundle.putInt("position" , position)
-
-                bundle.putString("formulation", prescriptionDrugList[position].formulation)
-
-                bundle.putString("drug_name", prescriptionDrugList[position].drug_name)
-                bundle.putString("brand_name", prescriptionDrugList[position].brand_name)
-                bundle.putString("dose_strength", prescriptionDrugList[position].dose_strength)
-
-                bundle.putString("dose_unit", prescriptionDrugList[position].dose_unit)
-                bundle.putString("how_often_taken", prescriptionDrugList[position].how_often_taken)
-                bundle.putString("time", prescriptionDrugList[position].time)
-
-
-                bundle.putString("start_date", prescriptionDrugList[position].start_date)
-                bundle.putString("stop_date", prescriptionDrugList[position].stop_date)
-
-
-                bundle.putInt("prescription_id", prescriptionDrugList[position].prescription_id!!)
-                Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
+                bundle.putInt("drug_id" , prescriptionDrugList[position].drug_id)
                 intent.putExtras(bundle)
                 context?.startActivity(intent)
-
-            }
-
         }
 
     }
@@ -80,7 +55,7 @@ class Prscription_DrugList_Adapter(private val prescriptionDrugList: List<Prescr
         val drug_name: TextView = itemView.findViewById(R.id.drug_nametxt)  //item_list tv_id
         val timings_text: TextView = itemView.findViewById(R.id.time_txt)  //item_list tv_id
 
-        var prescriptiondestination: Prescription_AddDoctor? = null
+        var prescriptiondestination: PrescriptionDataClass? = null
 
 
         override fun toString(): String {
