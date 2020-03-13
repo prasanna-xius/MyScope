@@ -1,6 +1,8 @@
 package com.example.myscope.activities
 
 import com.example.myscope.activities.prescription.PrescriptionDataClass
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -51,4 +53,11 @@ interface PrescriptionInterface {
     @Headers("Content-Type: application/json")
     @POST("addDruglist")
     fun addDrug(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
+
+
+    @Multipart
+    @POST("preupload")
+    fun uploadImage(
+            @Part file: MultipartBody.Part?, @Part("filename") name: RequestBody?
+    ): Call<String>
 }

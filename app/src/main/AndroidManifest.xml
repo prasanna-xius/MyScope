@@ -18,9 +18,9 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         >
 
-        <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"></activity>
+        <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog"></activity>
 
-        <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog">
+        <activity android:name=".activities.prescription.Prescriptions_HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,10 +28,10 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activities.prescription.DetailActivity"
+<!--        <activity-->
+<!--            android:name=".activities.prescription.DetailActivity"-->
 
-      ></activity>
+<!--      ></activity>-->
 
         <!--         <activity android:name=".activities.Prescription_manualDrugDialog" />-->
         <activity
@@ -64,7 +64,7 @@
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />
 
 
-        <activity android:name=".activities.prescription.Prescriptions_HomePage" />
+<!--        <activity android:name=".activities.prescription.Prescriptions_HomePage" />-->
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
 
         <activity android:name=".ImageUpload" />
