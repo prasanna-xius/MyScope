@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/ll">
+        android:id="@+id/llupdate">
         <include layout="@layout/side_activity" />
 
         <TextView
@@ -49,7 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:popupBackground="#fff"
-                    android:background="@drawable/spr_bg"
+
                     android:entries="@array/allergy_arrays"
                     android:padding="2dp" />
             </FrameLayout>
@@ -170,101 +170,88 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".40"
                 android:orientation="horizontal"
-               >
+                >
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight=".10"
-                android:textColor="#fff"
-                android:padding="5dp"
-                android:textSize="14sp"
-                android:id="@+id/buttondate"
-                android:background="@color/bg_screen2"
-                android:text="choose date"
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight=".10"
+                    android:textColor="#fff"
+                    android:padding="5dp"
+                    android:textSize="14sp"
+                    android:id="@+id/buttondate_update"
+                    android:background="@color/bg_screen2"
+                    android:text="choose date"
 
-                />
+                    />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:textColor="@color/bg_screen2"
-                android:id="@+id/textviewdate"
-                android:padding="2dp"
-                android:text=" " />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:textColor="@color/bg_screen2"
+                    android:id="@+id/textviewdate_update"
+                    android:padding="2dp"
+                    android:text=" " />
             </LinearLayout>
         </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <TextView
-            android:id="@+id/notes_allergies"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/notes"
-            android:textColor="@color/bg_screen2"
-            android:textSize="16sp" />
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <EditText
+            <TextView
+                android:id="@+id/notes_allergies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/notes"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
 
-            android:id="@+id/et_notes_allergies_update"
+            <EditText
+
+                android:id="@+id/et_notes_allergies_update"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:textColorHint="@color/bg_screen2"
+                android:hint="Enter Notes"
+                android:background="@drawable/border_bg"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-
-            android:padding="5dp"
-            android:textColorHint="@color/bg_screen2"
-            android:hint="Enter Notes"
-            android:background="@drawable/border_bg"
-            android:textColor="@color/bg_screen2"
-            android:textSize="16sp" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-
-        android:orientation="horizontal"
-        android:weightSum="2">
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:layout_margin="20dp"
+            android:gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_weight="1.0"
-            android:layout_marginRight="3dp"
-            android:layout_gravity="center"
-            android:background="@color/bg_screen2"
-            android:text="Cancel"
-            android:textColor="@color/colorWhite"
-            android:textSize="14sp" />
-    <Button
-        android:id="@+id/btn_update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_weight="1.0"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:background="@color/bg_screen2"
-        android:text="Update"
-        android:layout_marginLeft="3dp"
-        android:textColor="@color/colorWhite"
-        android:textSize="14sp" />
+            android:orientation="horizontal"
+            android:weightSum="1.0">
 
+            <Button
+                android:id="@+id/btn_update"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_weight="1.0"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/shape_btn"
+                android:text="Update"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </ScrollView>
+
 
 

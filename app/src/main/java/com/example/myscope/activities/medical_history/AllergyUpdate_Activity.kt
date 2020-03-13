@@ -1,26 +1,36 @@
 package com.example.myscope.activities.medical_history
 
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myscope.R
-import com.example.myscope.helpers.ServiceBuilder
-import com.example.myscope.models.Allergy
-import com.example.myscope.services.AllergyService
+import com.example.myscope.services.ServiceBuilder
+import com.example.myscope.models.MedicalHistoryModelActivity
+import com.example.myscope.services.MedicalHistoryService
 import kotlinx.android.synthetic.main.allergies_update.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item_allergy.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item_allergy.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AllergyUpdate_Activity : AppCompatActivity() {
 
-
-
+    var spnrAllergy_Update : Spinner?=null
+    var position: Int= 1;
+    var allergyid:Int=0
+    var cal = Calendar.getInstance()
+    var allergySpinner: Spinner? = null
+    var buttondate_update: Button?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.allergies_update)
@@ -29,13 +39,30 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        buttondate_update=findViewById(R.id.buttondate_update)
+
+        buttondate_update!!.setOnClickListener {
+            DatePickerDialog(this@AllergyUpdate_Activity,
+                    dateSetListener,
+                    // set DatePickerDialog to point to today's date when it loads up
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH)).show()
+
+        }
+        allergySpinner = findViewById<Spinner>(R.id.spinnerAllergy_update)
+        val adapter2 = ArrayAdapter(this, R.layout.spinner_dropdown_item_allergy,
+                resources.getStringArray(R.array.allergy_arrays))
+        allergySpinner!!.adapter = adapter2
+
         val bundle: Bundle? = intent.extras
 
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
-            val id = intent.getIntExtra(ARG_ITEM_ID, 0)
+            val id = intent.getStringExtra(ARG_ITEM_ID)
+            position = intent.getIntExtra("position" , 0)
 
-            loadDetails(id)
+            loadDetails(id,position!!)
 
             initUpdateButton(id)
 
@@ -43,33 +70,71 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         }
     }
 
-    private fun loadDetails(id: Int) {
 
-        val allergyService = ServiceBuilder.buildService(AllergyService::class.java)
-        val requestCall = allergyService.getAllergy(id)
+    val dateSetListener = object : DatePickerDialog.OnDateSetListener {
+        @SuppressLint("NewApi")
+        @RequiresApi(Build.VERSION_CODES.O)
+        override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int,
+                               dayOfMonth: Int) {
+            cal.set(Calendar.YEAR, year)
+            cal.set(Calendar.MONTH, monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            updateDateInView()
+        }
+    }
 
-        requestCall.enqueue(object : retrofit2.Callback<Allergy> {
+    private fun updateDateInView() {
+        val myFormat = "dd-MM-yyyy" // mention the format you need
+        val sdf = SimpleDateFormat(myFormat, Locale.US)
+        textviewdate_update!!.text = sdf.format(cal.getTime())
+    }
 
-            override fun onResponse(call: Call<Allergy>, response: Response<Allergy>) {
+    private fun loadDetails(id: String , position : Int) {
+
+        val allergyService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
+        val requestCall = allergyService.getAllergyByid(id)
+
+        Toast.makeText(applicationContext,"data id ::"+" "+id,Toast.LENGTH_LONG).show()
+
+        requestCall.enqueue(object : retrofit2.Callback<List<MedicalHistoryModelActivity>> {
+
+
+            override fun onResponse(call: Call<List<MedicalHistoryModelActivity>>, response: Response<List<MedicalHistoryModelActivity>>) {
+
+
+
 
                 if (response.isSuccessful) {
-                    val destination = response.body()
+
+                    val alleryRes = response.body()
+
+                    val destination = alleryRes?.get(position)
+
+                    allergyid  =  destination?.allergy_id!!
                     destination?.let {
-                        et_name_update.setText(destination.name)
-                        et_reaction_update.setText(destination.reaction)
-                        et_treatment_update.setText(destination.treatment)
-                        et_name_update.setText(destination.notes)
-                        //spinnerAllergy_update.getString(destination.spinerdata)
+                        et_name_update?.setText(destination.name)
+                        et_reaction_update?.setText(destination.reaction)
+                        et_treatment_update?.setText(destination.treatment)
+                        et_notes_allergies_update?.setText(destination.notes)
+                        textviewdate_update?.setText(destination.date)
+                        tv_allergy?.setText(destination.spnrdata)
+
+
 
                         //collapsing_toolbar.title = destination.city
                     }!!
+
+
+                    Toast.makeText(applicationContext,"sucess::"+" "+destination.toString(),Toast.LENGTH_LONG).show()
+
+
                 } else {
-                    Toast.makeText(this@AllergyUpdate_Activity, "Failed to retrieve details", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@AllergyUpdate_Activity, "Failed to retrieve details under else", Toast.LENGTH_SHORT)
                             .show()
                 }
             }
 
-            override fun onFailure(call: Call<Allergy>, t: Throwable) {
+            override fun onFailure(call: Call<List<MedicalHistoryModelActivity>>, t: Throwable) {
                 Toast.makeText(
                         this@AllergyUpdate_Activity,
                         "Failed to retrieve details " + t.toString(),
@@ -79,23 +144,41 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         })
     }
 
-    private fun initUpdateButton(id: Int) {
+
+    private fun initUpdateButton(id: String) {
 
         btn_update.setOnClickListener {
+            val item = spinnerAllergy_update.tv_allergy.text.toString()
 
-            val nameUpdate = et_name_update.text.toString()
-            val reactionUpdate = et_reaction_update.text.toString()
-            val treatmentUpdate = et_treatment_update.text.toString()
-            val notesUpdate = et_notes_allergies_update.text.toString()
-            val dateobservedUpdate = first_observed_update.text.toString()
+            val newAllergyupdate = MedicalHistoryModelActivity()
 
-            val destinationService = ServiceBuilder.buildService(AllergyService::class.java)
-            val requestCall = destinationService.updateAllergy(id, nameUpdate,reactionUpdate, treatmentUpdate,
-                    notesUpdate,dateobservedUpdate)
 
-            requestCall.enqueue(object: Callback<Allergy> {
 
-                override fun onResponse(call: Call<Allergy>, response: Response<Allergy>) {
+            if (!item.equals(null)) {
+                newAllergyupdate.spnrdata = item
+            } else {
+                newAllergyupdate.spnrdata = spinnerAllergy_update?.getSelectedItem().toString()
+                tv_allergy.setText(newAllergyupdate.spnrdata)
+
+            }
+
+            newAllergyupdate.name = et_name_update.text.toString().trim()
+            newAllergyupdate.reaction = et_reaction_update.text.toString().trim()
+            newAllergyupdate.treatment = et_treatment_update.text.toString().trim()
+            newAllergyupdate.notes = et_notes_allergies_update.text.toString().trim()
+            newAllergyupdate.date = textviewdate_update.text.toString().trim()
+            //newAllergyupdate.date = textviewdate_update.text.toString().trim()
+            newAllergyupdate.mobile_no = "8103421999"
+            newAllergyupdate.allergy_id = allergyid
+            // newAllergy.spnrdata =spnritem!
+
+
+            val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
+            val requestCall = destinationService.updateAllergy(newAllergyupdate)
+
+            requestCall.enqueue(object : Callback<MedicalHistoryModelActivity> {
+
+                override fun onResponse(call: Call<MedicalHistoryModelActivity>, response: Response<MedicalHistoryModelActivity>) {
                     if (response.isSuccessful) {
                         finish() // Move back to DestinationListActivity
                         var updatedDestination = response.body() // Use it or ignore It
@@ -107,7 +190,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<Allergy>, t: Throwable) {
+                override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
                     Toast.makeText(this@AllergyUpdate_Activity,
                             "Failed to update item", Toast.LENGTH_SHORT).show()
                 }
@@ -119,7 +202,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
 
         /* btn_delete.setOnClickListener {
 
-             val destinationService = ServiceBuilder.buildService(AllergyService::class.java)
+             val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
              val requestCall = destinationService.deleteAllergy(id)
 
              requestCall.enqueue(object: Callback<Unit> {
@@ -156,7 +239,6 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         const val ARG_ITEM_ID = "item_id"
     }
 }
-
 
 
 

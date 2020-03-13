@@ -7,20 +7,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myscope.R
 import com.example.myscope.helpers.AllergyAdapter
-import com.example.myscope.helpers.ServiceBuilder
-import com.example.myscope.models.Allergy
-import com.example.myscope.services.AllergyService
+import com.example.myscope.services.ServiceBuilder
+import com.example.myscope.models.MedicalHistoryModelActivity
+import com.example.myscope.services.MedicalHistoryService
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_allergy_list.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AllergyItemListActivity : AppCompatActivity(){
+class AllergyItemListActivity:AppCompatActivity() {
 
     //lateinit var adapter: AllergyAdapter
 
-    var fab : FloatingActionButton?=null
+    var fab :FloatingActionButton?=null
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +34,7 @@ class AllergyItemListActivity : AppCompatActivity(){
 
         fab?.setOnClickListener {
 
-            val intent = Intent(this@AllergyItemListActivity, AllergyUpdate_Activity::class.java)
+            val intent = Intent(this@AllergyItemListActivity, Allergies::class.java)
             startActivity(intent)
         }
     }
@@ -43,11 +43,12 @@ class AllergyItemListActivity : AppCompatActivity(){
         super.onResume()
 
         loadDestinations()
+
     }
 
     private fun loadDestinations() {
 
-        val destinationService = ServiceBuilder.buildService(AllergyService::class.java)
+        val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
 
         val filter = HashMap<String, String>()
 //        filter["country"] = "India"
@@ -57,11 +58,11 @@ class AllergyItemListActivity : AppCompatActivity(){
 
         //val requestCall = destinationService.getAllergy(filter)
 
-        requestCall.enqueue(object: Callback<List<Allergy>> {
+        requestCall.enqueue(object: Callback<List<MedicalHistoryModelActivity>> {
 
             // If you receive a HTTP Response, then this method is executed
             // Your STATUS Code will decide if your Http Response is a Success or Error
-            override fun onResponse(call: Call<List<Allergy>>, response: Response<List<Allergy>>) {
+            override fun onResponse(call: Call<List<MedicalHistoryModelActivity>>, response: Response<List<MedicalHistoryModelActivity>>) {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val allergyList = response.body()!!
@@ -73,7 +74,7 @@ class AllergyItemListActivity : AppCompatActivity(){
                     llm.orientation = LinearLayoutManager.VERTICAL
                     destiny_recycler_view.setLayoutManager(llm)
                     destiny_recycler_view.adapter = AllergyAdapter(allergyList)
-
+                    destiny_recycler_view.adapter?.notifyDataSetChanged()
 
 
                 } else if(response.code() == 401) {
@@ -87,12 +88,11 @@ class AllergyItemListActivity : AppCompatActivity(){
 
             // Invoked in case of Network Error or Establishing connection with Server
             // or Error Creating Http Request or Error Processing Http Response
-            override fun onFailure(call: Call<List<Allergy>>, t: Throwable) {
+            override fun onFailure(call: Call<List<MedicalHistoryModelActivity>>, t: Throwable) {
 
                 Toast.makeText(this@AllergyItemListActivity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }
 }
-
 

@@ -36,7 +36,7 @@
     <string name="diet_title">DIET</string>
     <string name="diet">DIET<font color='#ff0000'>*</font></string>
     <!--Diet-->
-    <!--Allergy-->
+    <!--MedicalHistoryModelActivity-->
     <string name="allergy">Allergy</string>
     <string name="add_allergy">Add Allergy<font color='#a4c639'>*</font></string>
     <string name="name">Name<font color='#a4c639'>*</font></string>
@@ -47,7 +47,7 @@
     <string name="eg_treatment">Anti Allergic drugs</string>
     <string name="first_observed">First observed</string>
     <string name="calender">Calender</string>
-    <!--Allergy-->
+    <!--MedicalHistoryModelActivity-->
     <!--Immunization History-->
     <string name="immunization_history">Immunization History</string>
     <string name="hepatitis_b">Hepatitis B</string>
