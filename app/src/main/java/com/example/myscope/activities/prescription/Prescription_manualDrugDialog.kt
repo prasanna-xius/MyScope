@@ -3,7 +3,9 @@ package com.example.myscope.activities.prescription
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -61,7 +63,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
     var mobile_no:String?=null
     var pos:Int = 0
     var isPrescribed: Spinner? = null
-
+    lateinit var sharedpreferences:SharedPreferences
 
     var rv: RecyclerView? = null
     var prescription_id:Int =0
@@ -81,19 +83,17 @@ class Prescription_manualDrugDialog : BaseActivity() {
                 R.layout.spinner_dropdown_item, resources.getStringArray(R.array.is_prescribed))
         isPrescribed!!.adapter = isprescribedadapter
 
-        val bundle = intent.extras
-            if(!bundle!!.equals(null)) {
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        prescription_id = sharedpreferences.getInt("prescription_id",0)
 
-//               pos = bundle.getInt("doctorposition")
+
+
+//        val bundle = intent.extras
+//            if(!bundle!!.equals(null)) {
+//                prescription_id = bundle!!.getInt("prescription_id")
 //
-//                val doctor_name = bundle!!.getString("doctor_name")
-//                val hospital_name = bundle!!.getString("hospital_name")
-//                val isPrescribed = bundle!!.getString("isPrescribed")
-
-                prescription_id = bundle!!.getInt("prescription_id")
-
-
-            }
+//
+//            }
                 val diseaseService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
                 val requestCall = diseaseService.getDoctorlistbyPID(prescription_id)
 
@@ -106,19 +106,24 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
                         if (resp.isSuccessful) {
                             var newbody = resp.body()
-                            val prescriptiondoctor = newbody?.first()
-                            // Use it or ignore it
-                            doctor_name_Txt!!.setText(prescriptiondoctor!!.doctor_name)
-                            hospital_name_Txt!!.setText(prescriptiondoctor.hospital_name)
-                            val prescribedname = isprescribedadapter.getPosition(prescriptiondoctor.is_prescribed);
-                            is_prescribed.setSelection(prescribedname);
-                            if (prescribedname == 2) {
-                                layout!!.toggleVisibility()
-                                hosp_layout.toggleVisibility()
+
+                            if(newbody!!.isEmpty()){
 
                             } else {
-                                layout!!.toggleVisibility()
-                                hosp_layout.toggleVisibility()
+                                val prescriptiondoctor = newbody?.first()
+                                // Use it or ignore it
+                                doctor_name_Txt!!.setText(prescriptiondoctor!!.doctor_name)
+                                hospital_name_Txt!!.setText(prescriptiondoctor.hospital_name)
+                                val prescribedname = isprescribedadapter.getPosition(prescriptiondoctor.is_prescribed);
+                                is_prescribed.setSelection(prescribedname);
+                                if (prescribedname == 2) {
+                                    layout!!.toggleVisibility()
+                                    hosp_layout.toggleVisibility()
+
+                                } else {
+                                    layout!!.toggleVisibility()
+                                    hosp_layout.toggleVisibility()
+                                }
                             }
                         } else {
                             Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()

@@ -1,6 +1,8 @@
 package com.example.myscope.activities.prescription
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,18 +41,24 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
 
 
             val intent = Intent(context, Prescription_manualDrugDialog::class.java)
-            var bundle = Bundle()
 
-            Toast.makeText(context, "item Clicked" + position, Toast.LENGTH_LONG).show()
+            val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
 
+            val editor: SharedPreferences.Editor = pref.edit()
+            editor.putInt("prescription_id",prescriptionList[position].prescription_id!!)
+            editor.commit()
+//            var bundle = Bundle()
 //
-//            bundle.putInt("doctorposition" , position)
-//            bundle.putString("isPrescribed", prescriptionList[position].is_prescribed )
-//            bundle.putString("doctor_name", prescriptionList[position].doctor_name)
-//            bundle.putString("hospital_name", prescriptionList[position].hospital_name)
-            bundle.putInt("prescription_id", prescriptionList[position].prescription_id!!)
-//            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
-            intent.putExtras(bundle)
+//            Toast.makeText(context, "item Clicked" + position, Toast.LENGTH_LONG).show()
+//
+////
+////            bundle.putInt("doctorposition" , position)
+////            bundle.putString("isPrescribed", prescriptionList[position].is_prescribed )
+////            bundle.putString("doctor_name", prescriptionList[position].doctor_name)
+////            bundle.putString("hospital_name", prescriptionList[position].hospital_name)
+//            bundle.putInt("prescription_id", prescriptionList[position].prescription_id!!)
+////            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
+//            intent.putExtras(bundle)
 //
 //
             context?.startActivity(intent)
