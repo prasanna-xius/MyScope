@@ -388,8 +388,8 @@ class Prescription_manualDrugDialog : BaseActivity() {
 }
 
 private fun LinearLayout.toggleVisibility() {
-    if (visibility == View.VISIBLE) {
-        visibility = View.GONE
+    if (visibility == View.GONE) {
+        visibility = View.VISIBLE
     } else {
         visibility = View.VISIBLE
     }
