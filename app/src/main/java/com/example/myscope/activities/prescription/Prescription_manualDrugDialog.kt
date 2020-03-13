@@ -22,6 +22,7 @@ import kotlinx.android.synthetic.main.prescribed_main.prescription_save_dialog
 import kotlinx.android.synthetic.main.prescribed_main.start_date
 import kotlinx.android.synthetic.main.prescribed_main.stop_date
 import kotlinx.android.synthetic.main.prescribed_main_view.*
+import kotlinx.android.synthetic.main.prescription_multi_item.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -83,27 +84,52 @@ class Prescription_manualDrugDialog : BaseActivity() {
         val bundle = intent.extras
             if(!bundle!!.equals(null)) {
 
-               pos = bundle.getInt("doctorposition")
-
-                val doctor_name = bundle!!.getString("doctor_name")
-                val hospital_name = bundle!!.getString("hospital_name")
-                val isPrescribed = bundle!!.getString("isPrescribed")
+//               pos = bundle.getInt("doctorposition")
+//
+//                val doctor_name = bundle!!.getString("doctor_name")
+//                val hospital_name = bundle!!.getString("hospital_name")
+//                val isPrescribed = bundle!!.getString("isPrescribed")
 
                 prescription_id = bundle!!.getInt("prescription_id")
 
-                doctor_name_Txt!!.setText(doctor_name)
-                hospital_name_Txt!!.setText(hospital_name)
-                val prescribedname = isprescribedadapter.getPosition(isPrescribed);
-                is_prescribed.setSelection(prescribedname);
-                if(prescribedname == 2){
-                    layout!!.toggleVisibility()
-                    hosp_layout.toggleVisibility()
 
-                } else {
-                    layout!!.toggleVisibility()
-                    hosp_layout.toggleVisibility()
-                }
             }
+                val diseaseService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+                val requestCall = diseaseService.getDoctorlistbyPID(prescription_id)
+
+                requestCall.enqueue(object : Callback<List<PrescriptionDataClass>> {
+                    /**
+                     * Invoked when a network exception occurred talking to the server or when an unexpected
+                     * exception occurred creating the request or processing the response.
+                     */
+                    override fun onResponse(call: Call<List<PrescriptionDataClass>>, resp: Response<List<PrescriptionDataClass>>) {
+
+                        if (resp.isSuccessful) {
+                            var newbody = resp.body()
+                            val prescriptiondoctor = newbody?.first()
+                            // Use it or ignore it
+                            doctor_name_Txt!!.setText(prescriptiondoctor!!.doctor_name)
+                            hospital_name_Txt!!.setText(prescriptiondoctor.hospital_name)
+                            val prescribedname = isprescribedadapter.getPosition(prescriptiondoctor.is_prescribed);
+                            is_prescribed.setSelection(prescribedname);
+                            if (prescribedname == 2) {
+                                layout!!.toggleVisibility()
+                                hosp_layout.toggleVisibility()
+
+                            } else {
+                                layout!!.toggleVisibility()
+                                hosp_layout.toggleVisibility()
+                            }
+                        } else {
+                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
+
+                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                    }
+                })
 
 
         add_drug.setOnClickListener {

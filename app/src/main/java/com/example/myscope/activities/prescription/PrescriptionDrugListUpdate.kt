@@ -10,7 +10,9 @@ import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MultiSelectionSpinner
 import com.example.myscope.activities.MultiSpinnerTime
 import com.example.myscope.activities.PrescriptionInterface
+import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.medicationhistory.*
+import kotlinx.android.synthetic.main.medicationhistory.is_prescribed
 import kotlinx.android.synthetic.main.prescribed_main.*
 import kotlinx.android.synthetic.main.prescribed_main_view.*
 import kotlinx.android.synthetic.main.prescription_multi_item.*
@@ -37,8 +39,10 @@ class PrescriptionDrugListUpdate : BaseActivity() {
     var stopdate: TextView? = null
     var howoftentext: TextView? = null
     var drug_id: Int = 0
+    var prescription_idupdate :Int = 0
 
     var prescription_id: Int = 0
+    var formulationupdate:Int = 0
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,8 +104,10 @@ class PrescriptionDrugListUpdate : BaseActivity() {
                     var newbody = resp.body()
                     val prescriptiondrug = newbody?.first()
                     // Use it or ignore it
-                    val formulation_name = formulationadapter.getPosition(prescriptiondrug!!.formulation);
-                    formulation_id_update.setSelection(formulation_name);
+                    formulationupdate = formulationadapter.getPosition(prescriptiondrug!!.formulation);
+                    formulation_id_update.setSelection(formulationupdate);
+//                    formulationid!!.text1.setText(prescriptiondrug!!.formulation)
+                    prescription_idupdate = prescriptiondrug.prescription_id!!
                     brandname!!.setText(prescriptiondrug!!.brand_name)
                     drugname!!.setText(prescriptiondrug.drug_name)
                     dosestrength!!.setText(prescriptiondrug.dose_strength)
@@ -124,57 +130,88 @@ class PrescriptionDrugListUpdate : BaseActivity() {
         })
         prescription_update_dialog.setOnClickListener() {
 
+
+            val item = formulationid!!.text1.text.toString()
+            showLongToast((item))
+            val timeitem = time_of_taken_select!!.prescription_multi.text.toString()
+            showLongToast((timeitem))
+            val howoftenitem = how_often_taken_select!!.text1.text.toString()
+            showLongToast((howoftenitem))
             val newPrescriptionDrug = PrescriptionDataClass()
+            if (!item.equals(null)) {
+                newPrescriptionDrug.formulation = item
+                val formulation_name = formulationadapter.getPosition(newPrescriptionDrug.formulation);
+                formulation_id_update.setSelection(formulation_name);
+            } else {
+                newPrescriptionDrug.formulation = formulationid?.selectedItem.toString()
+                showLongToast(newPrescriptionDrug.formulation!!)
 
-            newPrescriptionDrug.formulation = formulation_id?.getSelectedItem().toString()
+//                val formulation_name = formulationadapter.getPosition(newPrescriptionDrug!!.formulation);
+//                formulation_id_update.setSelection(formulation_name);
+
+            }
+//            newPrescriptionDrug.formulation = formulation_id?.getSelectedItem().toString()
             newPrescriptionDrug.dose_unit = dose_unit_update?.getSelectedItem().toString()
-            newPrescriptionDrug.how_often_taken = how_often_taken_select!!.selectedItemsAsString
 
-            newPrescriptionDrug.drug_name = drugname!!.text.toString().trim()
-            newPrescriptionDrug.brand_name = brandname!!.text.toString().trim()
-            newPrescriptionDrug.dose_strength = dosestrength!!.text.toString().trim()
-            newPrescriptionDrug.start_date = startdate!!.text.toString().trim()
-            newPrescriptionDrug.stop_date = stopdate!!.text.toString().trim()
-            newPrescriptionDrug.time = time_of_taken_select!!.selectedItemsAsString
+            if (!timeitem.equals(null)) {
+                newPrescriptionDrug.time = timeitem
+                time_of_taken_select!!.prescription_multi?.setText(newPrescriptionDrug.time)
+            } else {
+                newPrescriptionDrug.time = time_of_taken_select!!.selectedItemsAsString
+                time_of_taken_select!!.prescription_multi?.setText(newPrescriptionDrug!!.time)
+            }
+            if (!howoftenitem.equals(null)) {
+                    newPrescriptionDrug.how_often_taken = howoftenitem
+                    how_often_taken_select!!.text1?.setText(newPrescriptionDrug.how_often_taken)
+                } else {
+                    newPrescriptionDrug.how_often_taken = how_often_taken_select!!.selectedItemsAsString
+                    how_often_taken_select!!.text1?.setText(newPrescriptionDrug.how_often_taken)
+                }
+//            how_often_taken_select!!.text1?.setText(newPrescriptionDrug.how_often_taken)
+                newPrescriptionDrug.drug_name = drugname!!.text.toString().trim()
+                newPrescriptionDrug.brand_name = brandname!!.text.toString().trim()
+                newPrescriptionDrug.dose_strength = dosestrength!!.text.toString().trim()
+                newPrescriptionDrug.start_date = startdate!!.text.toString().trim()
+                newPrescriptionDrug.stop_date = stopdate!!.text.toString().trim()
+                newPrescriptionDrug.drug_id = drug_id
 
+                val prescriptionDrugservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
 
-            newPrescriptionDrug.drug_id = drug_id
+                //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
 
-            val prescriptionDrugservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+                val requestCall = prescriptionDrugservice.updateDrug(newPrescriptionDrug)
 
-            //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
+                requestCall.enqueue(object : Callback<PrescriptionDataClass> {
+                    /**
+                     * Invoked when a network exception occurred talking to the server or when an unexpected
+                     * exception occurred creating the request or processing the response.
+                     */
+                    override fun onResponse(call: Call<PrescriptionDataClass>, resp: Response<PrescriptionDataClass>) {
 
-            val requestCall = prescriptionDrugservice.updateDrug(newPrescriptionDrug)
-
-            requestCall.enqueue(object : Callback<PrescriptionDataClass> {
-                /**
-                 * Invoked when a network exception occurred talking to the server or when an unexpected
-                 * exception occurred creating the request or processing the response.
-                 */
-                override fun onResponse(call: Call<PrescriptionDataClass>, resp: Response<PrescriptionDataClass>) {
-
-                    if (resp.isSuccessful) {
-                        var newbody = resp.body() // Use it or ignore it
-                        Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
-                        val intent = intent
-                        finish()
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                        if (resp.isSuccessful) {
+                            var newbody = resp.body() // Use it or ignore it
+                            Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
+                            val intent = Intent(applicationContext, Prescription_manualDrugDialog::class.java)
+                            val bundle = Bundle()
+                            bundle.putInt("prescription_id", prescription_idupdate)
+                            intent.putExtras(bundle)
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
+                    override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
 
-                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
-                }
-            })
+                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                    }
+                })
+
+            }
 
         }
-
-
     }
-}
+
 
 
 

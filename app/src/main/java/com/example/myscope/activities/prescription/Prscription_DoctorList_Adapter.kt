@@ -43,11 +43,11 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
 
             Toast.makeText(context, "item Clicked" + position, Toast.LENGTH_LONG).show()
 
-
-            bundle.putInt("doctorposition" , position)
-            bundle.putString("isPrescribed", prescriptionList[position].is_prescribed)
-            bundle.putString("doctor_name", prescriptionList[position].doctor_name)
-            bundle.putString("hospital_name", prescriptionList[position].hospital_name)
+//
+//            bundle.putInt("doctorposition" , position)
+//            bundle.putString("isPrescribed", prescriptionList[position].is_prescribed )
+//            bundle.putString("doctor_name", prescriptionList[position].doctor_name)
+//            bundle.putString("hospital_name", prescriptionList[position].hospital_name)
             bundle.putInt("prescription_id", prescriptionList[position].prescription_id!!)
 //            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
             intent.putExtras(bundle)
