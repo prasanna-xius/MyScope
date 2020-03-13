@@ -12,7 +12,7 @@ import java.util.*
 
 object ServiceBuilder1 {
 
-    private  val URL = "http://10.10.19.49:8484/common/myscope/";
+    val URL = "http://10.10.19.49:8484/common/myscope/";
 
     // Create Logger
     private val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
