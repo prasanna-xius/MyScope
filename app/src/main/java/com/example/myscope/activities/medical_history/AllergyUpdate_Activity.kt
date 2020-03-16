@@ -168,7 +168,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
             newAllergyupdate.notes = et_notes_allergies_update.text.toString().trim()
             newAllergyupdate.date = textviewdate_update.text.toString().trim()
             //newAllergyupdate.date = textviewdate_update.text.toString().trim()
-            newAllergyupdate.mobile_no = "8103421999"
+            newAllergyupdate.mobile_no = "8142529582"
             newAllergyupdate.allergy_id = allergyid
             // newAllergy.spnrdata =spnritem!
 

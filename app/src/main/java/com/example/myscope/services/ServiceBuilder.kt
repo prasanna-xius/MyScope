@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceBuilder {
 
-    private  val URL = "http://10.0.2.2:8181/common/myscope/";
+    private  val URL = "http://10.10.19.49:8484/common/myscope/";
 
     // Create Logger
     /* private val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)

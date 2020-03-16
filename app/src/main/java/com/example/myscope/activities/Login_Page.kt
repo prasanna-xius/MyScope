@@ -36,10 +36,10 @@ class Login_Page : BaseActivity(), View.OnClickListener {
             R.id.btn_otp_send -> {
                 val Phonenumber = mobile_number.getText().toString().trim { it <= ' ' }
 
-                if (validate() == false) {
-                    onSignupFailed()
-                    return
-                }
+//                if (validate() == false) {
+//                    onSignupFailed()
+//                    return
+//                }
 
 //                navigateToActivity(Intent(applicationContext,Otp_Page::class.java))
 
@@ -63,75 +63,75 @@ class Login_Page : BaseActivity(), View.OnClickListener {
 //        val filter = HashMap<String, String>()
         val retrofit = APIClient.getClient()
         var builder = retrofit.create(PrescriptionInterface::class.java)
-        var call = builder.getloginResponse(mobileNumber)
-
-
-        (call as Call<List<SignupResponse>>?)?.enqueue(object : Callback<List<SignupResponse>> {
-            override fun onFailure(response: Call<List<SignupResponse>>, error: Throwable) {
-//                navigateToActivity(Intent(applicationContext, Login_Page::class.java))
-                showLongToast("Check your internet connection")
-                Log.d("Errormessage", error.message + "error")
-
-            }
-
-            override fun onResponse(response: Call<List<SignupResponse>>, resp: retrofit2.Response<List<SignupResponse>>) {
-                if (resp.isSuccessful && resp.body() != null) {
-                    var id = resp.body()!!.size
-                    if (id.equals(0)) {
-                        val alertDialogBuilder = AlertDialog.Builder(this@Login_Page)
-                        alertDialogBuilder.setMessage("This number " + mobileNumber + " is not being registered. Do you want to register it?")
-                        alertDialogBuilder.setPositiveButton("Yes") { dialogInterface, which ->
-                            navigateToActivity(Intent(applicationContext, SignUp_Page::class.java))
-                        }
-                        alertDialogBuilder.setNegativeButton("No") { dialogInterface, which ->
-                        }
-                        alertDialogBuilder.show()
-                    } else {
-
-                        //Passing value through bundle
-                        var intent = Intent(this@Login_Page,Otp_Page::class.java)
-                        var bundle:Bundle = Bundle()
-                        bundle.putString("mobile_no",mobileNumber)
-                        intent.putExtras(bundle)
-//                         intent.putExtra("mobile_no",mobileNumber)
-                        startActivity(intent)
-//                        navigateToActivity(Intent(applicationContext, Otp_Page::class.java))
-
-                    }
-                }
-            }
-
-        });
-    }
-        private fun onSignupFailed() {
-            btn_otp_send!!.isEnabled = true
-        }
-
-        private fun validate(): Boolean {
-            var valid = true
-            mobileNumber = mobile_number!!.text.toString().trim { it <= ' ' }
-            if (mobileNumber!!.isEmpty()) {
-                mobile_layout!!.error = "Enter mobile number"
-                valid = false
-            } else if (mobileNumber!!.length < 10) {
-                mobile_layout!!.error = "Enter Valid mobile number"
-                valid = false
-            } else {
-                mobile_layout!!.error = null
-                valid = true
-            }
-            return valid
-
-
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (FirebaseAuth.getInstance().currentUser != null) { //verification successful we will start the profile activity
-            val intent = Intent(this@Login_Page, Navigation_Drawer_Blogs::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intent)
-        }
+//        var call = builder.getloginResponse(mobileNumber)
+//
+//
+//        (call as Call<List<SignupResponse>>?)?.enqueue(object : Callback<List<SignupResponse>> {
+//            override fun onFailure(response: Call<List<SignupResponse>>, error: Throwable) {
+////                navigateToActivity(Intent(applicationContext, Login_Page::class.java))
+//                showLongToast("Check your internet connection")
+//                Log.d("Errormessage", error.message + "error")
+//
+//            }
+//
+//            override fun onResponse(response: Call<List<SignupResponse>>, resp: retrofit2.Response<List<SignupResponse>>) {
+//                if (resp.isSuccessful && resp.body() != null) {
+//                    var id = resp.body()!!.size
+//                    if (id.equals(0)) {
+//                        val alertDialogBuilder = AlertDialog.Builder(this@Login_Page)
+//                        alertDialogBuilder.setMessage("This number " + mobileNumber + " is not being registered. Do you want to register it?")
+//                        alertDialogBuilder.setPositiveButton("Yes") { dialogInterface, which ->
+//                            navigateToActivity(Intent(applicationContext, SignUp_Page::class.java))
+//                        }
+//                        alertDialogBuilder.setNegativeButton("No") { dialogInterface, which ->
+//                        }
+//                        alertDialogBuilder.show()
+//                    } else {
+//
+//                        //Passing value through bundle
+//                        var intent = Intent(this@Login_Page,Otp_Page::class.java)
+//                        var bundle:Bundle = Bundle()
+//                        bundle.putString("mobile_no",mobileNumber)
+//                        intent.putExtras(bundle)
+////                         intent.putExtra("mobile_no",mobileNumber)
+//                        startActivity(intent)
+////                        navigateToActivity(Intent(applicationContext, Otp_Page::class.java))
+//
+//                    }
+//                }
+//            }
+//
+//        });
+//    }
+//        private fun onSignupFailed() {
+//            btn_otp_send!!.isEnabled = true
+//        }
+//
+//        private fun validate(): Boolean {
+//            var valid = true
+//            mobileNumber = mobile_number!!.text.toString().trim { it <= ' ' }
+//            if (mobileNumber!!.isEmpty()) {
+//                mobile_layout!!.error = "Enter mobile number"
+//                valid = false
+//            } else if (mobileNumber!!.length < 10) {
+//                mobile_layout!!.error = "Enter Valid mobile number"
+//                valid = false
+//            } else {
+//                mobile_layout!!.error = null
+//                valid = true
+//            }
+//            return valid
+//
+//
+//        }
+//    }
+//
+//    override fun onStart() {
+//        super.onStart()
+//        if (FirebaseAuth.getInstance().currentUser != null) { //verification successful we will start the profile activity
+//            val intent = Intent(this@Login_Page, Navigation_Drawer_Blogs::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+//            startActivity(intent)
+//        }
     }
 }

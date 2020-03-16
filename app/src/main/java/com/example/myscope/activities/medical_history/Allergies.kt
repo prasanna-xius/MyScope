@@ -106,7 +106,7 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
                     newAllergy.notes = etnotes!!.text.toString().trim()
                     newAllergy.date = textview_date?.text.toString().trim()
                     newAllergy.spnrdata =spnritem!!
-                    newAllergy.mobile_no="8103421999"
+                    newAllergy.mobile_no="8142529582"
                     // newAllergy.id=1
 
 
