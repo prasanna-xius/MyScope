@@ -296,7 +296,7 @@
                 android:layout_weight="1"
                 android:text="@string/is_prescribed"
                 android:textColor="@color/bg_screen2"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
             <Spinner
                 android:id="@+id/spinner_is_prescribed"
                 android:layout_width="0dp"
@@ -346,6 +346,6 @@
             android:background="@color/bg_screen2"
             android:textColor="@color/colorWhite"
             android:layout_marginBottom="8dp"
-            android:textSize="16sp" />
+            android:textSize="16sp"/>
     </LinearLayout>
 </ScrollView>
