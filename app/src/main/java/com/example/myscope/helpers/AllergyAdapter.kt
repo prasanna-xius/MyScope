@@ -16,7 +16,7 @@ class AllergyAdapter(private val medicalHistoryModelActivityList: List<MedicalHi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_allergy, parent, false)
         return ViewHolder(view)
     }
 
