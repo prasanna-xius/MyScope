@@ -28,7 +28,7 @@ data class Diseases(var  known_condition : String? =null,
                     var  family_condition : String? =null,
                     var relationship : String? =null,
                     var family_note:String? =null,
-                    var family_id:Int?=0
+                    var family_id:Int?=0,
 
                     var diet:String?=null
 

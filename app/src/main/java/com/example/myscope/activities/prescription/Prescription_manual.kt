@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import java.text.DateFormat
 import java.util.*
 
-master:app/src/main/java/com/example/myscope/activities/prescription/Prescription_manual.kt
 
 
 class Prescription_manual : BaseActivity() {

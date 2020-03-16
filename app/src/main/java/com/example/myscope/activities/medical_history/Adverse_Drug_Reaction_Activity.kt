@@ -23,7 +23,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adverse_drug)
-        showToolbar()
+        activitiesToolbar()
         header!!.text = "Adverse Drug Reaction"
 
         myCalendar = Calendar.getInstance()

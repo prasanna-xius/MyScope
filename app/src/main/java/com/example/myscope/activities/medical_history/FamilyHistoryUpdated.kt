@@ -30,7 +30,7 @@ class FamilyHistoryUpdated : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_family_history_updated)
 
-        showToolbar()
+        activitiesToolbar()
         header!!.text = "Family History"
 
         val relationshipSpinnerUpdated = findViewById<Spinner>(R.id.spinner_familyUpdated)

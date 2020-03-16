@@ -31,7 +31,7 @@ class View_UserDetails_Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_userdetails_main)
-        showToolbar()
+        activitiesToolbar()
         header!!.text = "User Profile"
 
         spinnergender=findViewById(R.id.spinner_gender)
