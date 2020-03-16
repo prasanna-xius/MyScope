@@ -18,12 +18,10 @@ import com.google.gson.reflect.TypeToken
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.example.myscope.fragments.ExpandableListDataPump.data
+import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-
-
-
-
+import java.util.Collections.replaceAll
 
 
 class SignUp_Page : BaseActivity(), View.OnClickListener {
@@ -55,10 +53,16 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
 private fun signup() {
     Log.d(TAG, "SignUp_Page")
 
-    if (validate() == false) {
-        onSignupFailed()
-        return
-    }
+
+        if (validate() == false) {
+            onSignupFailed()
+            return
+        }
+
+
+        navigateToActivity(Intent(applicationContext, Login_Page::class.java))
+        showLongToast("Registration Successfully Completed")
+
 
 }
 
@@ -116,23 +120,23 @@ private fun validate(): Boolean {
     private fun registerRetrofit2Api(firstname: String, lastname: String, mobileno: String, email: String) {
         var login = SignupResponse(firstname, lastname, mobileno, email)
         request = APIClient.getClient().create(PrescriptionInterface::class.java)
+
         try {
             var resp: SignupResponse = login
+
             registerCall = request?.createPatient(resp)
 
             (registerCall as Call<SignupResponse>?)?.enqueue(object : Callback<SignupResponse> {
                 override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
-                    navigateToActivity(Intent(applicationContext, Login_Page::class.java))
-                    showLongToast("Registration Successfully Completed")
+                    showLongToast("Recheck and save again")
                     Log.d("Errormessage", t.message + "error")
                 }
 
                 override fun onResponse(call: Call<SignupResponse>, resp: Response<SignupResponse>) {
                     if (resp.isSuccessful && !resp.equals("")) {
                         showShortToast("Api call is working")
-                        Log.d("Responsemessage", resp.message())
+                        navigateToActivity(Intent(applicationContext, Login_Page::class.java))
                     }
-                    Log.d("Responsemessage", resp.message())
                 }
             });
         } catch (e: JSONException) {
@@ -146,4 +150,3 @@ private fun validate(): Boolean {
 
 
 }
-
