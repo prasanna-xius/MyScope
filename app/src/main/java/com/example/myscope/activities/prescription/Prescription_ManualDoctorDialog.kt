@@ -2,7 +2,6 @@ package com.example.myscope.activities.prescription
 
 import android.app.Dialog
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -147,9 +146,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             newPrescription.doctor_name = d.et_doctor_name1!!.text.toString().trim()
             newPrescription.hospital_name = d.et_hosp_name1!!.text.toString().trim()
             newPrescription.medical_condition = d.et_medical_condition1!!.text.toString().trim()
-
             newPrescription.prescription_note = d.et_precsription_note1!!.text.toString().trim()
-
             newPrescription.mobile_no = mobile_no
 
 

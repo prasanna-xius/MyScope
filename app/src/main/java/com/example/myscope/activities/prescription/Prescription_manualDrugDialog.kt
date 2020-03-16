@@ -114,10 +114,12 @@ class Prescription_manualDrugDialog : BaseActivity() {
                                 // Use it or ignore it
                                 doctor_name_Txt!!.setText(prescriptiondoctor!!.doctor_name)
                                 hospital_name_Txt!!.setText(prescriptiondoctor.hospital_name)
-                                val prescribedname = isprescribedadapter.getPosition(prescriptiondoctor.is_prescribed);
-                                is_prescribed.setSelection(prescribedname);
                                 medical_condition_Txt!!.setText(prescriptiondoctor.medical_condition)
                                 precsription_note_Txt!!.setText(prescriptiondoctor.prescription_note)
+
+                                val prescribedname = isprescribedadapter.getPosition(prescriptiondoctor.is_prescribed);
+                                is_prescribed.setSelection(prescribedname);
+
                                 if (prescribedname == 2) {
                                     layout!!.toggleVisibility()
                                     hosp_layout.toggleVisibility()

@@ -69,10 +69,12 @@
 
         <activity android:name=".ImageUpload" />
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
+        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
 
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
 
         <activity android:name=".activities.labReports.Lab_Reports_Homepage"/>
+
     </application>
 
 </manifest>

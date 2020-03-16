@@ -1,6 +1,7 @@
 package com.example.myscope.activities.prescription
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -55,14 +57,14 @@ class Prescriptions_HomePage : BaseActivity() {
                 // TODO Auto-generated method stub
                 if (position == 0) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialog()
+                    addPrescriptionListDialog()
                 } else if (position == 1) {
 //                    navigateToActivity(Intent(applicationContext, Family_History::class.java))
-                    showPictureDialog()
+                    addPrescriptionListDialog()
 
                 } else if (position == 2) {
 //                    navigateToActivity(Intent(applicationContext, Social_History::class.java))
-                    showPictureDialog()
+                    addPrescriptionListDialog()
                 }
             }
             return rowView
@@ -70,6 +72,38 @@ class Prescriptions_HomePage : BaseActivity() {
         init { // TODO Auto-generated constructor stub
             inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         }
+    }
+
+    private fun addPrescriptionListDialog() {
+
+        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
+        pictureDialog.setTitle("Select Action")
+
+        val pictureDialogItems = arrayOf(
+                "Add Images /PDF Files",
+                "Manual Entry")
+        pictureDialog.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+
+                0-> showAddImage()
+                1 -> showAddFilemanual()
+
+            }
+        }
+        pictureDialog.show()
+    }
+
+    private fun showAddFilemanual() {
+
+        navigateToActivity(Intent(applicationContext, Prescription_ManualDoctorDialog::class.java))
+
+    }
+
+    private fun showAddImage() {
+
+        navigateToActivity(Intent(applicationContext, Prescription_AddImage_PDF::class.java))
+
     }
 
 }
