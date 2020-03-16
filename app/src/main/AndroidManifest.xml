@@ -33,9 +33,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
 
-        </activity> <!-- <activity android:name=".activities.Prescription_manual" /> -->
-      
+<!--        <activity-->
+<!--            android:name=".activities.prescription.DetailActivity"-->
+
+<!--      ></activity>-->
+
+        <!--         <activity android:name=".activities.Prescription_manualDrugDialog" />-->
         <activity
             android:name=".activities.SignUp_Page"
             android:windowSoftInputMode="stateAlwaysHidden"
