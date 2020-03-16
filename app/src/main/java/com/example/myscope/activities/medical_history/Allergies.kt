@@ -6,6 +6,7 @@ import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
@@ -15,8 +16,14 @@ import com.basgeekball.awesomevalidation.ValidationStyle
 
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
+import com.example.myscope.helpers.ServiceBuilder
+import com.example.myscope.models.Allergy
+import com.example.myscope.services.AllergyService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.allergies.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -27,15 +34,15 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
     var button_date: Button? = null
     var textview_date: TextView? = null
     var cal = Calendar.getInstance()
-    var spritem: String? = null
+    var spnritem: String? = null
     private var isSpinnerInitial = true
     var spinnerAllergies: Spinner? = null
-    var name: String? = null;
-    var reaction: String? = null;
-    var treatment: String? = null;
-    var notes: String? = null
+    //var name: String? = null;
+    //var reaction: String? = null;
+    //var treatment: String? = null;
+    //var notes: String? = null
 
-    var date: String? = null
+    //var date: String? = null
     var tv:Any?=null
     //var pattern :Pattern?=null
     var etname: EditText? = null;
@@ -68,21 +75,21 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
 
 
         awesomeValidation!!.addValidation(this, R.id.et_name,
-                "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$",R.string.nameerror);
+                "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
 
         awesomeValidation!!.addValidation(this, R.id.et_reaction,
-                "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$" ,R.string.nameerror);
+                "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$" , R.string.nameerror);
 
 
         awesomeValidation!!.addValidation(this, R.id.et_reaction,
-                "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$" ,R.string.nameerror);
+                "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$" , R.string.nameerror);
 
         val myptr  = """^\d{1,2}/\d{1,2}/\d{4}${'$'}""".toRegex()
 
-        2
+
         var allergydata = resources.getStringArray(R.array.allergy_arrays)
 
-        textview_date!!.text = " "
+        //textview_date!!.text = ","
 
         spinnerAllergies = findViewById<Spinner>(R.id.spinnerAllergy)
 
@@ -91,24 +98,73 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
 
 
 
-                name = etname!!.getText().toString()
+                /*name = etname!!.getText().toString()
                 reaction = etreaction!!.getText().toString()
                 treatment = ettreatments!!.getText().toString()
                 notes = etnotes!!.getText().toString()
-                date = textview_date?.getText().toString()
+               date = textview_date?.getText().toString()*/
 
 
 
-                if (awesomeValidation!!.validate() && spritem != null && date!!.matches(myptr) ) {
-
-                    //if (date!!.matches(myptr)) {
-
-                    Toast.makeText(getApplicationContext(), "data:" + name + " " + reaction + " " + treatment + " " + " " + notes + " " +
-                            spritem + " " + date, Toast.LENGTH_LONG).show()
 
 
+                if ( spnritem!=null) {
 
-                    // Toast.makeText(getApplicationContext(), "data:" + date, Toast.LENGTH_LONG).show()
+                    //var newAllergy: Any? =null
+
+                    val newAllergy  = Allergy()
+                    newAllergy.name = etname!!.text.toString().trim()
+                    newAllergy.reaction = etreaction!!.text.toString().trim()
+                    newAllergy.treatment = ettreatments!!.text.toString().trim()
+                    newAllergy.notes = etnotes!!.text.toString().trim()
+                    newAllergy.date = textview_date?.text.toString().trim()
+                    newAllergy.spnrdata =spnritem!!
+
+
+
+
+
+                    val allergyService = ServiceBuilder.buildService(AllergyService::class.java)
+
+                    //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
+
+
+                    val requestCall =allergyService.addAllergy(newAllergy)
+                    requestCall.enqueue(object: Callback<Allergy> {
+
+                        override fun onResponse(call: Call<Allergy>, resp: Response<Allergy>) {
+
+
+
+
+
+
+                            if (resp.isSuccessful) {
+
+                                var newbody = resp.body() // Use it or ignore it
+                                Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+                                finish()
+                            }
+                            else
+                            {
+
+                                Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<Allergy>, t: Throwable) {
+                            //finish()
+                            Log.d("errormsgfailure ::",t.message)
+
+                            Log.e("errorunderfailure:",t.message)
+                            Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+
+
+                    // Toast.makeText(getApplicationContext(), "data:" + name + " " + reaction + " " + treatment + " " + " " + notes + " " +
+                    // spritem + " " + date, Toast.LENGTH_LONG).show()
+
                 } else {
 
 
@@ -157,22 +213,19 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
 
 
 
-
-
-
-
     @RequiresApi(Build.VERSION_CODES.O)
     private fun updateDateInView() {
-        val myFormat = "dd/MM/yyyy" // mention the format you need
+        val myFormat = "dd-MM-yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         textview_date!!.text = sdf.format(cal.getTime())
-
 
 
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+
 
         (view as TextView).setTextColor(Color.parseColor("#ffffff"))
 
@@ -189,7 +242,7 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
             // Toast.makeText(this,"selected item"+parent?.getItemAtPosition(position),Toast.LENGTH_LONG).show()
 
 
-            spritem = parent?.getItemAtPosition(position) as String?
+            spnritem= parent?.getItemAtPosition(position) as String?
             //Toast.makeText(this, "selected item" + spritem, Toast.LENGTH_LONG).show()
         }
 
@@ -204,3 +257,5 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
 
 
 }
+
+

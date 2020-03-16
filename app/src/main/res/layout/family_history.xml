@@ -96,7 +96,6 @@
             <EditText
 
                 android:id="@+id/relationship_notes"
-
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_75"
                 android:layout_weight="1"
