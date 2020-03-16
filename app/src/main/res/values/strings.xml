@@ -51,6 +51,7 @@
     <!--Immunization History-->
     <string name="immunization_history">Immunization History</string>
     <string name="hepatitis_b">Hepatitis B</string>
+    <string name="immun_name">Name<font color='#a4c639'>*</font></string>
     <string name="when_given">When given<font color='#a4c639'>*</font></string>
     <string name="adverse_event">Adverse event<font color='#a4c639'>*</font></string>
     <string name="brand">Brand</string>
@@ -64,6 +65,7 @@
     <!--Surgery History-->
     <string name="surgery_history">Surgery History</string>
     <string name="eg_Surgery">E.g. Endoscopy</string>
+    <string name="surg_name">Name<font color='#a4c639'>*</font></string>
     <string name="when_performed">When performed<font color='#a4c639'>*</font></string>
     <string name="body_location">Body Location<font color='#a4c639'>*</font></string>
     <string name="eg_body_location">E.g. Stomach</string>
@@ -275,5 +277,6 @@
         <item>A.M</item>
         <item>P.M</item>
     </string-array>
+
 
 </resources>

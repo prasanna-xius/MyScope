@@ -1,33 +1,35 @@
-package com.example.myscope.activities.medical_history
+package com.example.curvepicture.activities
 
-import android.annotation.TargetApi
-import android.app.Activity
 import android.app.DatePickerDialog
-import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
-
 import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
+import com.example.myscope.models.MedicalHistoryModelActivity
+import com.example.myscope.services.MedicalHistoryService
+import com.example.myscope.services.ServiceBuilder
+
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.immunizationhistory.*
 import kotlinx.android.synthetic.main.surgeryhistory.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.Calendar.getInstance
 
-@TargetApi(Build.VERSION_CODES.N)
 class SurgeryHistory : AppCompatActivity() {
 
 
 
     var button_date_surg: Button? = null;var button_surg: Button? = null;
     var textview_date_surg: TextView? = null
-    var cal_surg = getInstance()
+    var cal_surg = Calendar.getInstance()
 
 
     var namesurg:String?=null;var whensurg:String?=null;var bodysurg:String?=null;var notessurg:String?=null;
@@ -49,7 +51,7 @@ class SurgeryHistory : AppCompatActivity() {
         textview_date_surg = this.textviewdate_surg
         button_date_surg = this.buttondate_surg
 
-        //  button_date_surg= findViewById(R.id.)
+      //  button_date_surg= findViewById(R.id.)
 
         et_namesurg = findViewById(R.id.et_name_surgery_history)
         et_bodylocation = findViewById(R.id.et_body_location)
@@ -69,29 +71,61 @@ class SurgeryHistory : AppCompatActivity() {
         awesomeValidation!!.addValidation(this, R.id.et_name_surgery_history,
                 "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
 
-        awesomeValidation!!.addValidation(this, R.id.et_body_location,
-                "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
+        //awesomeValidation!!.addValidation(this, R.id.et_body_location,
+                //"^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
 
-        val myptr  = """^\d{1,2}/\d{1,2}/\d{4}${'$'}""".toRegex()
-
+        //val myptr  = """^\d{1,2}/\d{1,2}/\d{4}${'$'}""".toRegex()
+        //datetextsurg!!.matches(myptr)
 
         button_surg!!.setOnClickListener(View.OnClickListener {
 
-            namesurg = et_namesurg!!.getText().toString()
-            bodysurg = et_bodylocation!!.getText().toString()
-            hospitalsurg = et_hospitalurg!!.getText().toString()
-            notessurg = et_notessurg!!.getText().toString()
-            providarsurg = et_providarsurg!!.getText().toString()
-            datetextsurg= textview_date_surg?.text.toString().trim()
-
-            if (awesomeValidation!!.validate() && datetextsurg!!.matches(myptr)) {
 
 
+            if (awesomeValidation!!.validate()) {
+
+                val newMedicalHistoryModelActivity  = MedicalHistoryModelActivity()
+                newMedicalHistoryModelActivity.surgeryname = et_name_surgery_history!!.text.toString().trim()
+                newMedicalHistoryModelActivity.surgerylocation = et_body_location!!.text.toString().trim()
+                newMedicalHistoryModelActivity.surgeryhospital = et_hospital_name!!.text.toString().trim()
+                newMedicalHistoryModelActivity.surgerynotes = et_notes_surgery_history!!.text.toString().trim()
+                newMedicalHistoryModelActivity.surgeryprovider = et_provider!!.text.toString().trim()
+                newMedicalHistoryModelActivity.surgerydate = textview_date_surg?.text.toString().trim()
+                newMedicalHistoryModelActivity.mobile_no="8103421999"
+
+                //newMedicalHistoryModelActivity.spnrdata =spnritem!!
 
 
-                Toast.makeText(getApplicationContext(), "data:" + namesurg + " " + bodysurg + " "  + hospitalsurg +
-                        " " + notessurg + " " + providarsurg+ " " + datetextsurg , Toast.LENGTH_LONG).show()
+                val surgeryService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
 
+
+                val requestCall =surgeryService.addSurgery(newMedicalHistoryModelActivity)
+                requestCall.enqueue(object: Callback<MedicalHistoryModelActivity> {
+
+                    override fun onResponse(call: Call<MedicalHistoryModelActivity>, resp: Response<MedicalHistoryModelActivity>) {
+
+
+                        if (resp.isSuccessful) {
+
+                            var newbody = resp.body() // Use it or ignore it
+
+                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
+                        else
+                        {
+
+                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
+                        //finish()
+                        Log.d("errormsgfailure ::",t.message)
+
+                        Log.e("errorunderfailure:",t.message)
+                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                    }
+                })
 
 
 
@@ -109,8 +143,6 @@ class SurgeryHistory : AppCompatActivity() {
 
         // create an OnDateSetListener
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
-            @TargetApi(Build.VERSION_CODES.N)
-            @RequiresApi(Build.VERSION_CODES.N)
             override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int,
                                    dayOfMonth: Int) {
                 cal_surg.set(Calendar.YEAR, year)
@@ -122,7 +154,6 @@ class SurgeryHistory : AppCompatActivity() {
 
         // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
         button_date_surg!!.setOnClickListener(object : View.OnClickListener {
-            @RequiresApi(Build.VERSION_CODES.N)
             override fun onClick(view: View) {
                 DatePickerDialog(this@SurgeryHistory,
                         dateSetListener,
@@ -135,12 +166,12 @@ class SurgeryHistory : AppCompatActivity() {
         })
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
     private fun updateDateInView() {
-        val myFormat = "MM/dd/yyyy" // mention the format you need
+        val myFormat = "dd-MM-yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
         textview_date_surg!!.text = sdf.format(cal_surg.getTime())
     }
 
 }
+
 

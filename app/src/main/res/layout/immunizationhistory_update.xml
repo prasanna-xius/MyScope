@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-   >
+    android:background="@color/colorWhite">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,11 +29,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/immun_name"
+        android:text="@string/name"
         android:textColor="@color/bg_screen2"
         android:textSize="16sp" />
     <EditText
-        android:id="@+id/et_name"
+        android:id="@+id/et_name_immuupdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -78,22 +77,22 @@
             android:textColor="#fff"
             android:padding="5dp"
             android:textSize="14sp"
-            android:id="@+id/buttondate_immu"
+            android:id="@+id/buttondate_immuupdate"
             android:background="@color/bg_screen2"
             android:text="choose date"
 
             />
 
         <TextView
+            android:id="@+id/textviewdate_immuupdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:gravity="center"
-            android:textColor="@color/bg_screen2"
-            android:id="@+id/textviewdate_immu"
-
             android:padding="2dp"
-            android:text="" />
+
+            android:text=""
+            android:textColor="@color/bg_screen2" />
     </LinearLayout>
 
 </LinearLayout>
@@ -113,14 +112,14 @@
         android:textColor="@color/bg_screen2"
         android:textSize="16sp" />
     <EditText
-        android:id="@+id/et_adverse_event_immun"
+        android:id="@+id/et_adverse_eventupdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="5dp"
         android:background="@drawable/border_bg"
         android:textSize="16sp"
-        android:hint="Enter Event"
+        android:hint=""
         android:textColor="@color/bg_screen2"
         android:textColorHint="@color/bg_screen2"/>
 </LinearLayout>
@@ -142,14 +141,14 @@
 
     <EditText
 
-        android:id="@+id/et_brand_immun"
+        android:id="@+id/et_brandupdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="5dp"
         android:background="@drawable/border_bg"
         android:textSize="16sp"
-        android:hint="Brand Name"
+        android:hint=""
         android:textColor="@color/bg_screen2"
         android:textColorHint="@color/bg_screen2"/>
 </LinearLayout>
@@ -158,25 +157,24 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:layout_margin="10dp"
-    android:weightSum="2.0">
+    android:weightSum="2">
 
     <TextView
         android:id="@+id/notes_allergies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.0"
+        android:layout_weight="1"
         android:text="@string/notes"
         android:textColor="@color/bg_screen2"
         android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/et_notes_immun"
+        android:id="@+id/et_notes_immunupdate"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_weight="1.0"
         android:padding="5dp"
         android:background="@drawable/border_bg"
-        android:hint="@string/notes"
         android:textSize="16sp"
         android:textColor="@color/bg_screen2" />
 </LinearLayout>
@@ -190,13 +188,13 @@
         android:layout_marginRight="20dp"
         android:gravity="center">
 <Button
-    android:id="@+id/btn_immunization"
+    android:id="@+id/btn_immunizationupdate"
     android:layout_width="0dp"
-    android:layout_weight="1.0"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:text="@string/save"
-    android:textColor="@color/colorWhite"
+    android:layout_weight="1.0"
+    android:text="update"
+    android:textColor="@color/white"
     android:background="@drawable/shape_btn"
     android:textSize="16sp" />
     </LinearLayout>
