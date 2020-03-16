@@ -43,11 +43,11 @@ class Prescription_manual : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prescription_manual)
-
-        header.setText("Prescription Manual")
-        back_btn.setOnClickListener(){
-            navigateToActivity(Intent(applicationContext,Prescriptionmanual_recyclerview::class.java))
-        }
+//
+//        header.setText("Prescription Manual")
+//        back_btn.setOnClickListener(){
+//            navigateToActivity(Intent(applicationContext,Prescriptionmanual_recyclerview::class.java))
+//        }
 //        editbutton.setOnClickListener() {
 //            showShortToast("edit button is clicked")
 ////            if (!parentview.equals(null)) {

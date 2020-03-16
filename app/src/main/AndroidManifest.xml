@@ -25,7 +25,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".activities.SliderActivity">
+        <activity android:name=".activities.medical_history.AllergyItemListActivity">
 
 
             <intent-filter>
@@ -87,6 +87,8 @@
         <activity android:name=".ImageUpload"
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.prescription.Prescription_manual"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.medical_history.AllergyUpdate_Activity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.Medical_Documents_HomePage"
             android:screenOrientation="portrait"/>

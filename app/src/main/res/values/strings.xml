@@ -69,7 +69,7 @@
     <string name="diet_title">DIET</string>
     <string name="diet">DIET<font color='#ff0000'>*</font></string>
     <!--Diet-->
-    <!--Allergy-->
+    <!--MedicalHistoryModelActivity-->
     <string name="allergy">Allergy</string>
     <string name="add_allergy">Add Allergy<font color='#a4c639'>*</font></string>
     <string name="name">Name<font color='#a4c639'>*</font></string>
@@ -80,10 +80,11 @@
     <string name="eg_treatment">Anti Allergic drugs</string>
     <string name="first_observed">First observed</string>
     <string name="calender">Calender</string>
-    <!--Allergy-->
+    <!--MedicalHistoryModelActivity-->
     <!--Immunization History-->
     <string name="immunization_history">Immunization History</string>
     <string name="hepatitis_b">Hepatitis B</string>
+    <string name="immun_name">Name<font color='#a4c639'>*</font></string>
     <string name="when_given">When given<font color='#a4c639'>*</font></string>
     <string name="adverse_event">Adverse event<font color='#a4c639'>*</font></string>
     <string name="brand">Brand</string>
@@ -97,6 +98,7 @@
     <!--Surgery History-->
     <string name="surgery_history">Surgery History</string>
     <string name="eg_Surgery">E.g. Endoscopy</string>
+    <string name="surg_name">Name<font color='#a4c639'>*</font></string>
     <string name="when_performed">When performed<font color='#a4c639'>*</font></string>
     <string name="body_location">Body Location<font color='#a4c639'>*</font></string>
     <string name="eg_body_location">E.g. Stomach</string>
@@ -379,7 +381,6 @@
         <item>P.M</item>
     </string-array>
 
-
     <string-array name="languagesKnown_array">
         <item>None</item>
         <item>Telugu</item>
@@ -430,5 +431,6 @@
         <item>5-10 lakhs</item>
         <item>More than 10 lakhs</item>
     </string-array>
+
 
 </resources>

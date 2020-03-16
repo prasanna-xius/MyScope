@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-
+    tools:context=".activities.SurgeryHistory"
     tools:ignore="MissingDefaultResource">
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
             <EditText
-                android:id="@+id/et_name_surgery_history"
+                android:id="@+id/et_name_surgery_history_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -80,7 +80,7 @@
                     android:textColor="#fff"
                     android:padding="5dp"
                     android:textSize="14sp"
-                    android:id="@+id/buttondate_surg"
+                    android:id="@+id/buttondate_surg_update"
                     android:background="@color/bg_screen2"
                     android:text="choose date"
 
@@ -92,7 +92,7 @@
                     android:layout_weight="1.0"
                     android:gravity="center"
                     android:textColor="@color/bg_screen2"
-                    android:id="@+id/textviewdate_surg"
+                    android:id="@+id/textviewdate_surgery_update"
                     android:padding="2dp"
                     android:text=" " />
             </LinearLayout>
@@ -114,7 +114,7 @@
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
             <EditText
-                android:id="@+id/et_body_location"
+                android:id="@+id/et_body_location_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -142,7 +142,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_provider"
+                android:id="@+id/et_provider_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -170,14 +170,14 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_hospital_name"
+                android:id="@+id/et_hospital_name_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:background="@drawable/border_bg"
                 android:textSize="16sp"
-                android:hint="Enter Hospital Name"
+                android:hint=""
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"/>
         </LinearLayout>
@@ -199,12 +199,11 @@
 
             <EditText
 
-                android:id="@+id/et_notes_surgery_history"
+                android:id="@+id/et_notes_surgery_history_update"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:hint="@string/notes"
                 android:background="@drawable/border_bg"
                 android:textSize="16sp"
                 android:textColor="@color/bg_screen2"/>
@@ -218,17 +217,19 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center">
+
         <Button
-            android:id="@+id/button_surgery"
+            android:id="@+id/button_surgery_update"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/save"
-           android:layout_weight="1.0"
+            android:text="update"
+            android:layout_weight="1.0"
+
             android:background="@drawable/shape_btn"
             android:textColor="@color/colorWhite"
             android:textSize="16sp"/>
-
     </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

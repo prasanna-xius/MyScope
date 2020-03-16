@@ -37,10 +37,10 @@ class Login_Page : BaseActivity(), View.OnClickListener {
             R.id.btn_otp_send -> {
                  mobileNumber = mobile_number.getText().toString().trim { it <= ' ' }
 
-                if (validate() == false) {
-                    onSignupFailed()
-                    return
-                }
+//                if (validate() == false) {
+//                    onSignupFailed()
+//                    return
+//                }
 
 //                navigateToActivity(Intent(applicationContext,Otp_Page::class.java))
 

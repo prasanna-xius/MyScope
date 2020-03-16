@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.example.curvepicture.activities
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
@@ -6,70 +6,102 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
-import android.widget.*
+import android.view.View
+import android.widget.Button
+import android.widget.DatePicker
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myscope.R
-import com.example.myscope.services.ServiceBuilder
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
+import com.example.myscope.services.ServiceBuilder
+
+
 import kotlinx.android.synthetic.main.allergies_update.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item_allergy.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item_allergy.view.*
+import kotlinx.android.synthetic.main.immunizationhistory_update.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.*
+import kotlinx.android.synthetic.main.surgeryhistory_update.*
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AllergyUpdate_Activity : AppCompatActivity() {
 
-    var spnrAllergy_Update : Spinner?=null
+class SurgeryUpdateActivity : AppCompatActivity() {
+
+    var spnrAllergy_Update :Spinner?=null
+    //var nameUpdate:String ?=null
+    //var notesUpdate:String?=null
+    //var eventUpdate:String?=null
+    //var brandUpdate:String?=null
+    var dateUpdate:String?=null
     var position: Int= 1;
-    var allergyid:Int=0
     var cal = Calendar.getInstance()
-    var allergySpinner: Spinner? = null
-    var buttondate_update: Button?=null
+    var buttondate_surg_update:Button?=null
+    var surgeryid:Int=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.allergies_update)
+        setContentView(R.layout.surgeryhistory_update)
 
         //setSupportActionBar(detail_toolbar as Toolbar?)
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        buttondate_update=findViewById(R.id.buttondate_update)
 
-        buttondate_update!!.setOnClickListener {
-            DatePickerDialog(this@AllergyUpdate_Activity,
+        //spnrAllergy_Update = findViewById(R.id.spinnerAllergy_update)
+
+        //dateUpdate = findViewById<View>(R.id.textviewdate_immuupdate).toString()
+
+        buttondate_surg_update=findViewById(R.id.buttondate_surg_update)
+
+
+        buttondate_surg_update!!.setOnClickListener(View.OnClickListener {
+
+            DatePickerDialog(this@SurgeryUpdateActivity,
                     dateSetListener,
                     // set DatePickerDialog to point to today's date when it loads up
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
                     cal.get(Calendar.DAY_OF_MONTH)).show()
 
-        }
-        allergySpinner = findViewById<Spinner>(R.id.spinnerAllergy_update)
-        val adapter2 = ArrayAdapter(this, R.layout.spinner_dropdown_item_allergy,
-                resources.getStringArray(R.array.allergy_arrays))
-        allergySpinner!!.adapter = adapter2
+
+
+        })
+
 
         val bundle: Bundle? = intent.extras
 
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
-            val id = intent.getStringExtra(ARG_ITEM_ID)
+
+            Toast.makeText(this,"data"+ARG_ITEM_ID.toString(),Toast.LENGTH_LONG).show()
+
+            //val id = intent.getIntExtra(ARG_ITEM_ID, 0)
+
+            val id : String = intent.getStringExtra(ARG_ITEM_ID)
             position = intent.getIntExtra("position" , 0)
 
-            loadDetails(id,position!!)
+            loadDetails(id,position)
 
             initUpdateButton(id)
 
             //initDeleteButton(id)
         }
-    }
 
+
+
+
+
+
+
+
+    }
 
     val dateSetListener = object : DatePickerDialog.OnDateSetListener {
         @SuppressLint("NewApi")
@@ -83,60 +115,61 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         }
     }
 
+
     private fun updateDateInView() {
         val myFormat = "dd-MM-yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        textviewdate_update!!.text = sdf.format(cal.getTime())
+        textviewdate_surgery_update!!.text = sdf.format(cal.getTime())
     }
 
     private fun loadDetails(id: String , position : Int) {
 
-        val allergyService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
-        val requestCall = allergyService.getAllergyByid(id)
+        val immuService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
+        val requestCall = immuService.getSurgeryByid(id)
 
-        Toast.makeText(applicationContext,"data id ::"+" "+id,Toast.LENGTH_LONG).show()
+
+        Toast.makeText(this,"test msg "+ id,Toast.LENGTH_LONG).show()
 
         requestCall.enqueue(object : retrofit2.Callback<List<MedicalHistoryModelActivity>> {
 
 
+
+
             override fun onResponse(call: Call<List<MedicalHistoryModelActivity>>, response: Response<List<MedicalHistoryModelActivity>>) {
-
-
-
 
                 if (response.isSuccessful) {
 
-                    val alleryRes = response.body()
 
-                    val destination = alleryRes?.get(position)
 
-                    allergyid  =  destination?.allergy_id!!
-                    destination?.let {
-                        et_name_update?.setText(destination.name)
-                        et_reaction_update?.setText(destination.reaction)
-                        et_treatment_update?.setText(destination.treatment)
-                        et_notes_allergies_update?.setText(destination.notes)
-                        textviewdate_update?.setText(destination.date)
-                        tv_allergy?.setText(destination.spnrdata)
+
+                    val surgeryRes = response.body()
+
+                    val surgerydestination = surgeryRes?.get(position)
+                    surgeryid = surgerydestination?.surgery_id!!
+
+
+                    surgerydestination?.let {
+                        et_name_surgery_history_update.setText(surgerydestination.surgeryname)
+                        et_body_location_update.setText(surgerydestination.surgerylocation)
+                        et_hospital_name_update.setText(surgerydestination.surgeryhospital)
+                        et_notes_surgery_history_update.setText(surgerydestination.surgerynotes)
+                        et_provider_update.setText(surgerydestination.surgeryprovider)
+                        textviewdate_surgery_update.setText(surgerydestination.surgerydate)
+                        //text1.setText(destination.spnrdata)
 
 
 
                         //collapsing_toolbar.title = destination.city
                     }!!
-
-
-                    Toast.makeText(applicationContext,"sucess::"+" "+destination.toString(),Toast.LENGTH_LONG).show()
-
-
                 } else {
-                    Toast.makeText(this@AllergyUpdate_Activity, "Failed to retrieve details under else", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@SurgeryUpdateActivity, "Failed to retrieve details under else", Toast.LENGTH_SHORT)
                             .show()
                 }
             }
 
             override fun onFailure(call: Call<List<MedicalHistoryModelActivity>>, t: Throwable) {
                 Toast.makeText(
-                        this@AllergyUpdate_Activity,
+                        this@SurgeryUpdateActivity,
                         "Failed to retrieve details " + t.toString(),
                         Toast.LENGTH_SHORT
                 ).show()
@@ -144,54 +177,52 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         })
     }
 
-
     private fun initUpdateButton(id: String) {
 
-        btn_update.setOnClickListener {
-            val item = spinnerAllergy_update.tv_allergy.text.toString()
+        button_surgery_update.setOnClickListener {
 
-            val newAllergyupdate = MedicalHistoryModelActivity()
+            val newsurgery = MedicalHistoryModelActivity()
 
-
-
-            if (!item.equals(null)) {
-                newAllergyupdate.spnrdata = item
-            } else {
-                newAllergyupdate.spnrdata = spinnerAllergy_update?.getSelectedItem().toString()
-                tv_allergy.setText(newAllergyupdate.spnrdata)
-
-            }
-
-            newAllergyupdate.name = et_name_update.text.toString().trim()
-            newAllergyupdate.reaction = et_reaction_update.text.toString().trim()
-            newAllergyupdate.treatment = et_treatment_update.text.toString().trim()
-            newAllergyupdate.notes = et_notes_allergies_update.text.toString().trim()
-            newAllergyupdate.date = textviewdate_update.text.toString().trim()
-            //newAllergyupdate.date = textviewdate_update.text.toString().trim()
-            newAllergyupdate.mobile_no = "8142529582"
-            newAllergyupdate.allergy_id = allergyid
-            // newAllergy.spnrdata =spnritem!
+            newsurgery.surgeryname = et_name_surgery_history_update!!.text.toString().trim()
+            newsurgery.surgerynotes = et_notes_surgery_history_update!!.text.toString().trim()
+            newsurgery.surgerylocation = et_body_location_update!!.text.toString().trim()
+            newsurgery.surgeryprovider = et_provider_update!!.text.toString().trim()
+            newsurgery.surgeryhospital = et_hospital_name_update!!.text.toString().trim()
+            newsurgery.surgerydate= textviewdate_surgery_update!!.text.toString().trim()
+            //newsurgery.immudate = dateUpdate.toString().trim()
+            newsurgery.mobile_no = "8142529582"
+            newsurgery.surgery_id= surgeryid
 
 
             val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
-            val requestCall = destinationService.updateAllergy(newAllergyupdate)
 
-            requestCall.enqueue(object : Callback<MedicalHistoryModelActivity> {
+
+            val requestCall = destinationService.updateSurgery(newsurgery)
+
+            requestCall.enqueue(object: Callback<MedicalHistoryModelActivity> {
+
+
+
 
                 override fun onResponse(call: Call<MedicalHistoryModelActivity>, response: Response<MedicalHistoryModelActivity>) {
+
+                    Log.d("tag:::::",response.toString())
+                    Log.d("tag:::::",response.message())
+
+                    var updatedDestination = response.body()
                     if (response.isSuccessful) {
                         finish() // Move back to DestinationListActivity
                         var updatedDestination = response.body() // Use it or ignore It
-                        Toast.makeText(this@AllergyUpdate_Activity,
+                        Toast.makeText(this@SurgeryUpdateActivity,
                                 "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this@AllergyUpdate_Activity,
-                                "Failed to update item", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@SurgeryUpdateActivity,
+                                "Failed to update item under else", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
-                    Toast.makeText(this@AllergyUpdate_Activity,
+                    Toast.makeText(this@SurgeryUpdateActivity,
                             "Failed to update item", Toast.LENGTH_SHORT).show()
                 }
             })
@@ -228,7 +259,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == android.R.id.home) {
-            navigateUpTo(Intent(this, AllergyItemListActivity::class.java))
+            navigateUpTo(Intent(this, SurgeryItemListActivity::class.java))
             return true
         }
         return super.onOptionsItemSelected(item)
@@ -239,8 +270,3 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         const val ARG_ITEM_ID = "item_id"
     }
 }
-
-
-
-
-

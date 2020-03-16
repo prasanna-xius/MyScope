@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
 import com.example.myscope.activities.medical_history.AllergyUpdate_Activity
-import com.example.myscope.models.Allergy
+import com.example.myscope.models.MedicalHistoryModelActivity
 
-class AllergyAdapter(private val allergyList: List<Allergy>) : RecyclerView.Adapter<AllergyAdapter.ViewHolder>() {
+class AllergyAdapter(private val medicalHistoryModelActivityList: List<MedicalHistoryModelActivity>) : RecyclerView.Adapter<AllergyAdapter.ViewHolder>() {
 
 
 
@@ -22,29 +22,40 @@ class AllergyAdapter(private val allergyList: List<Allergy>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.destination = allergyList[position]
-        holder.txvDestination.text = allergyList[position].name
+        holder.destination = medicalHistoryModelActivityList[position]
+        holder.txvDestination.text = medicalHistoryModelActivityList[position].name
 
         holder.itemView.setOnClickListener { v ->
             val context = v.context
             val intent = Intent(context, AllergyUpdate_Activity::class.java)
-            intent.putExtra(AllergyUpdate_Activity.ARG_ITEM_ID, holder.destination!!.id)
+            intent.putExtra(AllergyUpdate_Activity.ARG_ITEM_ID, holder.destination!!.mobile_no)
+            intent.putExtra("position" , position)
+            //notifyItemRangeRemoved()
+            //notifyDataSetChanged()
+            //notifyItemChanged(holder.adapterPosition)
+            //holder.getAdapterPosition()
+            context?.startActivity(intent)
 
-            context.startActivity(intent)
+
         }
     }
 
     override fun getItemCount(): Int {
-        return allergyList.size
+        return medicalHistoryModelActivityList.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val txvDestination: TextView = itemView.findViewById(R.id.txv_destination)  //item_list tv_id
-        var destination: Allergy? = null
+        var destination: MedicalHistoryModelActivity? = null
 
         override fun toString(): String {
             return """${super.toString()} '${txvDestination.text}'"""
         }
     }
+
+    /* fun update(modelList:List<MedicalHistoryModelActivity>){
+         myList = modelList
+         medicalHistoryModelActivityList!!.notifyDataSetChanged()
+     }*/
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    tools:context=".activities.MedicationHistory">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +33,7 @@
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
             <EditText
-                android:id="@+id/et_name"
+                android:id="@+id/et_name_medication_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -52,7 +53,7 @@
             android:weightSum="2.0">
 
             <TextView
-                android:id="@+id/how_often_taken"
+                android:id="@+id/how_often_taken_"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
@@ -63,7 +64,7 @@
 
 
                 <com.example.curvepicture.activities.MultiSelectionSpinner
-                    android:id="@+id/spinner_how_often_taken"
+                    android:id="@+id/spinner_how_often_taken_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
@@ -92,7 +93,7 @@
 
             <EditText
 
-                android:id="@+id/et_dose_strength"
+                android:id="@+id/et_dose_strength_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -121,7 +122,7 @@
                 android:textSize="16sp" />
 
             <Spinner
-                android:id="@+id/spinner_formulation"
+                android:id="@+id/spinner_formulation_update"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -146,7 +147,7 @@
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
             <Spinner
-                android:id="@+id/spinner_dose_unit"
+                android:id="@+id/spinner_dose_unit_update"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -173,7 +174,7 @@
 
             <EditText
 
-                android:id="@+id/et_reason"
+                android:id="@+id/et_reason_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -216,7 +217,7 @@
                     android:textColor="#fff"
                     android:padding="3dp"
                     android:textSize="14sp"
-                    android:id="@+id/buttonStartdate_medicalHistory"
+                    android:id="@+id/buttonStartdate_medicalHistory_update"
                     android:background="@color/bg_screen2"
                     android:text="choose date"
 
@@ -228,7 +229,7 @@
                     android:layout_weight="1.0"
                     android:gravity="center"
                     android:textColor="@color/bg_screen2"
-                    android:id="@+id/textviewStartdate_medicalHistory"
+                    android:id="@+id/textviewStartdate_medicalHistory_update"
                     android:padding="2dp"
                     android:text=" " />
             </LinearLayout>
@@ -265,7 +266,7 @@
                     android:textColor="#fff"
                     android:padding="3dp"
                     android:textSize="14sp"
-                    android:id="@+id/buttonEnddate_MH"
+                    android:id="@+id/buttonEnddate_MH_update"
                     android:background="@color/bg_screen2"
                     android:text="choose date"
 
@@ -277,7 +278,7 @@
                     android:layout_weight="1.0"
                     android:gravity="center"
                     android:textColor="@color/bg_screen2"
-                    android:id="@+id/textviewEnddate_MH"
+                    android:id="@+id/textviewEnddate_MH_update"
                     android:padding="2dp"
                     android:text=" " />
             </LinearLayout>
@@ -296,9 +297,9 @@
                 android:layout_weight="1"
                 android:text="@string/is_prescribed"
                 android:textColor="@color/bg_screen2"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
             <Spinner
-                android:id="@+id/spinner_is_prescribed"
+                android:id="@+id/spinner_is_prescribed_update"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
@@ -325,7 +326,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_notes_med"
+                android:id="@+id/et_notes_medication_update"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_weight="1"
@@ -347,23 +348,18 @@
         android:layout_marginRight="20dp"
         android:gravity="center">
 
-
         <Button
-            android:id="@+id/btn_medication"
+            android:id="@+id/btn_medication_update"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:layout_weight="1.0"
-            android:text="@string/save"
+            android:text="update"
             android:background="@drawable/shape_btn"
             android:textColor="@color/colorWhite"
-<<<<<<< Updated upstream
-            android:layout_marginBottom="8dp"
-            android:textSize="16sp"/>
-=======
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
+
+
     </LinearLayout>
-
-
     </LinearLayout>
 </ScrollView>

@@ -1,7 +1,6 @@
 package com.example.myscope.activities.medical_history
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Build
@@ -15,10 +14,9 @@ import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 
 import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.helpers.ServiceBuilder
-import com.example.myscope.models.Allergy
-import com.example.myscope.services.AllergyService
+import com.example.myscope.services.ServiceBuilder
+import com.example.myscope.models.MedicalHistoryModelActivity
+import com.example.myscope.services.MedicalHistoryService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.allergies.*
 import retrofit2.Call
@@ -84,7 +82,7 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
         awesomeValidation!!.addValidation(this, R.id.et_reaction,
                 "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$" , R.string.nameerror);
 
-        val myptr  = """^\d{1,2}/\d{1,2}/\d{4}${'$'}""".toRegex()
+        //val myptr  = """^\d{1,2}/\d{1,2}/\d{4}${'$'}""".toRegex()
 
 
         var allergydata = resources.getStringArray(R.array.allergy_arrays)
@@ -97,51 +95,38 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
             override fun onClick(v: View?) {
 
 
-
-                /*name = etname!!.getText().toString()
-                reaction = etreaction!!.getText().toString()
-                treatment = ettreatments!!.getText().toString()
-                notes = etnotes!!.getText().toString()
-               date = textview_date?.getText().toString()*/
-
-
-
-
-
                 if ( spnritem!=null) {
 
                     //var newAllergy: Any? =null
 
-                    val newAllergy  = Allergy()
+                    val newAllergy  = MedicalHistoryModelActivity()
                     newAllergy.name = etname!!.text.toString().trim()
                     newAllergy.reaction = etreaction!!.text.toString().trim()
                     newAllergy.treatment = ettreatments!!.text.toString().trim()
                     newAllergy.notes = etnotes!!.text.toString().trim()
                     newAllergy.date = textview_date?.text.toString().trim()
                     newAllergy.spnrdata =spnritem!!
+                    newAllergy.mobile_no="8142529582"
+                    // newAllergy.id=1
 
 
 
 
 
-                    val allergyService = ServiceBuilder.buildService(AllergyService::class.java)
+                    val allergyService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
 
                     //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
 
 
                     val requestCall =allergyService.addAllergy(newAllergy)
-                    requestCall.enqueue(object: Callback<Allergy> {
+                    requestCall.enqueue(object: Callback<MedicalHistoryModelActivity> {
 
-                        override fun onResponse(call: Call<Allergy>, resp: Response<Allergy>) {
-
-
-
-
+                        override fun onResponse(call: Call<MedicalHistoryModelActivity>, resp: Response<MedicalHistoryModelActivity>) {
 
 
                             if (resp.isSuccessful) {
 
-                                var newbody = resp.body() // Use it or ignore it
+                                // var newbody = resp.body() // Use it or ignore it
                                 Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                                 finish()
                             }
@@ -152,11 +137,9 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
                             }
                         }
 
-                        override fun onFailure(call: Call<Allergy>, t: Throwable) {
+                        override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
                             //finish()
-                            Log.d("errormsgfailure ::",t.message)
 
-                            Log.e("errorunderfailure:",t.message)
                             Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                         }
                     })
@@ -227,7 +210,7 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
 
 
 
-        (view as TextView).setTextColor(Color.parseColor("#ffffff"))
+        (view as TextView).setTextColor(Color.parseColor("#FF2196F3"))
 
         val pos = spinnerAllergies!!.getSelectedItemPosition()
 

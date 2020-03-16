@@ -1,28 +1,37 @@
-package com.example.myscope.activities.medical_history
+package com.example.curvepicture.activities
 
-import android.annotation.TargetApi
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
-import android.graphics.Color
-import android.icu.util.Calendar
-import android.os.Build
-import android.os.Bundle
-import android.view.View
-import android.widget.*
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+
+import android.graphics.Color
+import android.os.Bundle
+import android.util.Log
+
+
+import android.view.View
+import android.view.View.OnClickListener
+import android.widget.*
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
-
 import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
+import com.example.myscope.models.MedicalHistoryModelActivity
+import com.example.myscope.services.MedicalHistoryService
+import com.example.myscope.services.ServiceBuilder
+
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.medicationhistory.*
+import kotlinx.android.synthetic.main.medicationhistory_update.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.view.*
+import kotlinx.android.synthetic.main.surgeryhistory.*
+import kotlinx.android.synthetic.main.surgeryhistory_update.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-@TargetApi(Build.VERSION_CODES.N)
 class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListener {
-
 
 
     var namemed: String? = null;
@@ -64,10 +73,11 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
     private var awesomeValidation: AwesomeValidation? = null
 
 
+    @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medicationhistory)
-        spinnerMedication1 = findViewById<View>(R.id.spinner_how_often_taken) as Spinner
+        //spinnerMedication1 = findViewById<View>(R.id.spinner_how_often_taken) as Spinner
         spinnerMedication2 = findViewById<View>(R.id.spinner_formulation) as Spinner
         spinnerMedication3 = findViewById<View>(R.id.spinner_dose_unit) as Spinner
         spinnerMedication4 = findViewById<View>(R.id.spinner_is_prescribed) as Spinner
@@ -94,7 +104,7 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                 "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
 
 
-        var howoftentakendata = resources.getStringArray(R.array.how_often_taken_arrays)
+        var how_oftenspinner = findViewById<MultiSelectionSpinner>(R.id.spinner_how_often_taken)
 
         var formulationdata = resources.getStringArray(R.array.formulation_arrays)
 
@@ -103,10 +113,13 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
         var prescribeddata = resources.getStringArray(R.array.is_prescribed_arrays)
 
 
-        val aa1 = ArrayAdapter(this, android.R.layout.simple_spinner_item, howoftentakendata)
-        aa1.setDropDownViewResource(R.layout.spinner_item_layout)
-        spinnerMedication1!!.setAdapter(aa1)
-        spinnerMedication1!!.setOnItemSelectedListener(this)
+        how_oftenspinner.setItems(resources.getStringArray(R.array.how_often_taken_arrays))
+
+        val adapter1 = ArrayAdapter(this, R.layout.spinner_dropdown_item_how_often,
+                resources.getStringArray(R.array.how_often_taken_arrays))
+        how_oftenspinner!!.adapter = adapter1
+        //spinnerMedication1!!.setAdapter(aa1)
+        //spinnerMedication1!!.setOnItemSelectedListener(this)
 
 
         val aa2 = ArrayAdapter(this, android.R.layout.simple_spinner_item, formulationdata)
@@ -136,27 +149,67 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
             notesmed = etnotes_med!!.getText().toString()
             datestartmed = textview_Startdate?.getText().toString()
             dateendmed = textview_Enddate?.getText().toString()
+       validateDate(textview_Startdate!!, textview_Enddate!!,true)
+//                   && sprOneItem != null
+
+            if (awesomeValidation!!.validate()&& validateDate(textview_Startdate!!, textview_Enddate!!,true)) {
 
 
-            if (awesomeValidation!!.validate() && sprOneItem != null && dateendmed!!.compareTo(datestartmed!!)>=0) {
+                val newmedication = MedicalHistoryModelActivity()
+                newmedication.medicationname = et_name!!.text.toString().trim()
+                newmedication.medicationnotes = et_notes_med!!.text.toString().trim()
+                //newmedication. = et_body_location_update!!.text.toString().trim()
+                newmedication.reason = et_reason!!.text.toString().trim()
+                newmedication.strength = et_dose_strength!!.text.toString().trim()
+                newmedication.startdate = textviewStartdate_medicalHistory!!.text.toString().trim()
+                newmedication.enddate = textviewEnddate_MH!!.text.toString().trim()
+                newmedication.how_often_taken = spinner_how_often_taken.selectedStrings.toString()
+                newmedication.formulation = sprTwoItem.toString().trim()
+                newmedication.isprescribed = sprFourItem.toString().trim()
+                newmedication.doseunit = sprThreeItem.toString().trim()
+                newmedication.mobile_no = "8103421999"
+                Toast.makeText(applicationContext,newmedication.how_often_taken,Toast.LENGTH_LONG).show()
+
+                //newMedicalHistoryModelActivity.spnrdata =spnritem!!
 
 
-                Toast.makeText(getApplicationContext(), "data:" + namemed + " " + dose + " " + reason + " " + " " + notesmed + " " +
-                        sprOneItem + " " + sprTwoItem + " " + sprThreeItem + " " + sprFourItem + " " + datestartmed + " " + dateendmed, Toast.LENGTH_LONG).show()
+                val surgeryService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
 
 
-                // Toast.makeText(getApplicationContext(), "data:" + date, Toast.LENGTH_LONG).show()
-            } else {
+                val requestCall = surgeryService.addMedication(newmedication)
+                requestCall.enqueue(object : Callback<MedicalHistoryModelActivity> {
 
-                if(dateendmed!!.compareTo(datestartmed!!)<0) {
-                    textview_Startdate!!.setText("")
-                    textview_Enddate!!.setText("")
-                    textview_Enddate!!.setError("")
+                    override fun onResponse(call: Call<MedicalHistoryModelActivity>, resp: Response<MedicalHistoryModelActivity>) {
 
-                    val snack = Snackbar.make(it!!, "Wrong Date selected.", Snackbar.LENGTH_LONG)
-                    snack.show()
-                }
 
+                        if (resp.isSuccessful) {
+
+                            var newbody = resp.body() // Use it or ignore it
+
+                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+                            finish()
+                        } else {
+
+                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
+                        //finish()
+                        Log.d("errormsgfailure ::", t.message)
+
+                        Log.e("errorunderfailure:", t.message)
+                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                    }
+                })
+
+
+            }else if(validateDate(textview_Startdate!!, textview_Enddate!!,true)==false) {
+                val snack = Snackbar.make(it!!, "Wrong Date Selected.", Snackbar.LENGTH_LONG)
+                snack.show()
+            }
+
+            else {
                 val snack = Snackbar.make(it!!, "Mandatory field cannot be left blank.", Snackbar.LENGTH_LONG)
                 snack.show()
             }
@@ -187,7 +240,7 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
         }
 
 
-        button_date_StartMh!!.setOnClickListener(object : View.OnClickListener {
+        button_date_StartMh!!.setOnClickListener(object : OnClickListener {
             override fun onClick(view: View) {
                 DatePickerDialog(this@MedicationHistory,
                         dateSetListenerSatar,
@@ -200,7 +253,7 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
         })
 
 
-        button_date_EndMh!!.setOnClickListener(object : View.OnClickListener {
+        button_date_EndMh!!.setOnClickListener(object : OnClickListener {
             override fun onClick(view: View) {
                 DatePickerDialog(this@MedicationHistory,
                         dateSetListenerEnd,
@@ -213,15 +266,37 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
         })
     }
 
+    private fun validateDate(textviewStartdate: TextView, textviewEnddate: TextView, b: Boolean): Boolean {
+        if (!textviewStartdate.text.toString().equals("") && !textviewEnddate.text.toString().equals("")) {
+            textviewStartdate.setCompoundDrawables(null, null, null, null)
+            textviewEnddate.setCompoundDrawables(null, null, null, null)
+            val startDate0 = SimpleDateFormat("dd-MMM-yyyy").format(Date(textviewStartdate.text.toString()))
+            val endDate0 = SimpleDateFormat("dd-MMM-yyyy").format(Date(textviewEnddate.text.toString()))
+            if (startDate0 > endDate0) {
+                // date in text view is current date
+                textviewEnddate.setText("")
+                //showLongSnackBar("Start date cannot be after end date")
+                textview_Enddate!!.setError("Wrong Date Selected")
+                return false;
+            }
+        } else {
+            //errorDisplayTextview(startDate)
+            // errorDisplayTextview(stopDate)
+            return false
+        }
+        return true
+    }
+
+
     private fun updateDateInViewStart() {
 
-        val myFormat = "MM/dd/yyyy" // mention the format you need
+        val myFormat = "dd-MMM-yyyy" // mention the format you need
         sdf1 = SimpleDateFormat(myFormat, Locale.US)
         textview_Startdate!!.text = sdf1?.format(cal_StartMh.getTime())
     }
 
     private fun updateDateInViewEnd() {
-        val myFormat = "MM/dd/yyyy" // mention the format you need
+        val myFormat = "dd-MMM-yyyy" // mention the format you need
         sdf2 = SimpleDateFormat(myFormat, Locale.US)
 
         textview_Enddate!!.text = sdf2?.format(cal_EndMh.getTime())
@@ -236,14 +311,14 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-        //sprOneItem = parent?.getItemAtPosition(position) as String?
+        //sprOneItem = parent?.getItemAtPosition(view) as String?
 
-        val posSpnrOne = spinnerMedication1!!.getSelectedItemPosition()
+        //val posSpnrOne = spinnerMedication1!!.getSelectedItemPosition()
         val posSpnrtwo = spinnerMedication2!!.getSelectedItemPosition()
         val posSpnrthree = spinnerMedication3!!.getSelectedItemPosition()
         val posSpnrfour = spinnerMedication4!!.getSelectedItemPosition()
 
-        (view as TextView).setTextColor(Color.parseColor("#ffffff"))
+        (view as TextView).setTextColor(Color.parseColor("#2196F3"))
 
         when (parent?.id) {
             R.id.spinner_how_often_taken -> {
@@ -253,11 +328,12 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                     isSpinnerOneInitial = false;
                     //Toast.makeText(this, "select item", Toast.LENGTH_LONG).show()
                 }
-                if (!isSpinnerOneInitial && posSpnrOne != 0) {
+                if (!isSpinnerOneInitial) {
 
                     // Toast.makeText(this,"selected item"+parent?.getItemAtPosition(position),Toast.LENGTH_LONG).show()
 
-                    sprOneItem = parent?.getItemAtPosition(position) as String?
+//                    sprOneItem = parent?.getItemAtPosition(position) as String?
+                    sprOneItem = spinner_how_often_taken.tv_how_often.text.toString()
                     //Toast.makeText(this, "selected item" + sprOneItem, Toast.LENGTH_LONG).show()
                 }
             }
@@ -311,27 +387,29 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                 }
 
             }
-
         }
 
+
+//            fun validateDate(datestartmed: TextView, dateendmed: TextView, boolean: Any): Boolean {
+//                if (!datestartmed.text.toString().equals("") && !dateendmed.text.toString().equals("")) {
+//                    datestartmed.setCompoundDrawables(null, null, null, null)
+//                    dateendmed.setCompoundDrawables(null, null, null, null)
+//                    val startDate0 = SimpleDateFormat("dd-MMM-yyyy").format(Date(datestartmed.text.toString()))
+//                    val endDate0 = SimpleDateFormat("dd-MMM-yyyy").format(Date(dateendmed.text.toString()))
+//                    if (startDate0 > endDate1) {
+//                        // date in text view is current date
+//                        dateendmed.setText("")
+//                        //showLongSnackBar("Start date cannot be after end date")
+//                        textview_Enddate!!.setError("Wrong Date Selected")
+//                        return false;
+//                    }
+//                } else {
+//                    //errorDisplayTextview(startDate)
+//                    // errorDisplayTextview(stopDate)
+//                    return false
+//                }
+//                return true
+//            }
+        }
     }
 
-    /*fun  dateCheck():Boolean {
-        if (dateendmed!!.compareTo(datestartmed!!)>=0) {
-
-
-
-
-            return true
-        }
-        if (cal_EndMh.time!! >= cal_StartMh.time!!) {
-
-
-
-
-            return false
-        }
-
-
-    }*/
-}

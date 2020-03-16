@@ -1,40 +1,43 @@
-package com.example.myscope.activities.medical_history
+package com.example.curvepicture.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.curvepicture.helpers.SurgeryAdapter
 import com.example.myscope.R
-import com.example.myscope.helpers.AllergyAdapter
-import com.example.myscope.services.ServiceBuilder
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
+import com.example.myscope.services.ServiceBuilder
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_allergy_list.*
+import kotlinx.android.synthetic.main.activity_immunization_list.*
+import kotlinx.android.synthetic.main.activity_surgery_list.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AllergyItemListActivity:AppCompatActivity() {
+class SurgeryItemListActivity : AppCompatActivity() {
 
-    //lateinit var adapter: AllergyAdapter
 
-    var fab :FloatingActionButton?=null
+
+    var fab : FloatingActionButton?=null
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_allergy_list)
+        setContentView(R.layout.activity_surgery_list)
 
-        fab= findViewById(R.id.fab)
+        fab= findViewById(R.id.fab_surgery)
         //fab?.setBackgroundColor(Color.parseColor("#2196F3"));
         //setSupportActionBar(toolbar as Toolbar?)
         //toolbar.title = title
 
         fab?.setOnClickListener {
 
-            val intent = Intent(this@AllergyItemListActivity, Allergies::class.java)
+            val intent = Intent(this@SurgeryItemListActivity, SurgeryHistory::class.java)
             startActivity(intent)
         }
     }
@@ -43,18 +46,24 @@ class AllergyItemListActivity:AppCompatActivity() {
         super.onResume()
 
         loadDestinations()
-
     }
 
     private fun loadDestinations() {
 
-        val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
+        val surgeryService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
 
         val filter = HashMap<String, String>()
 //        filter["country"] = "India"
 //        filter["count"] = "1"
 
-        val requestCall = destinationService.getAllergyList(filter)          ///service file method called (binding)
+       // Toast.makeText(this, "select item"+filter, Toast.LENGTH_LONG).show()
+
+
+        val requestCall = surgeryService.getSurgeryList(filter)
+
+        //Toast.makeText(this, "select item"+requestCall, Toast.LENGTH_LONG).show()
+
+        ///service file method called (binding)
 
         //val requestCall = destinationService.getAllergy(filter)
 
@@ -65,24 +74,32 @@ class AllergyItemListActivity:AppCompatActivity() {
             override fun onResponse(call: Call<List<MedicalHistoryModelActivity>>, response: Response<List<MedicalHistoryModelActivity>>) {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
-                    val allergyList = response.body()!!
+                    val surgeryList = response.body()!!
                     //linearLayoutManager = LinearLayoutManager(this@AllergyItemListActivity,
                     // LinearLayoutManager.VERTICAL, false)
                     //destiny_recycler_view.adapter = AllergyAdapter(allergyList)
 
+                     //Toast.makeText(applicationContext,"select item"+immunList,Toast.LENGTH_LONG).show()
+
+
+
+
+
                     val llm = LinearLayoutManager(applicationContext)
                     llm.orientation = LinearLayoutManager.VERTICAL
-                    destiny_recycler_view.setLayoutManager(llm)
-                    destiny_recycler_view.adapter = AllergyAdapter(allergyList)
-                    destiny_recycler_view.adapter?.notifyDataSetChanged()
+                    surgery_recycler_view.setLayoutManager(llm)
 
+                                                                                        // it works second time and later
+
+                        surgery_recycler_view.adapter = SurgeryAdapter(surgeryList)
+                    surgery_recycler_view.adapter?.notifyDataSetChanged();
 
                 } else if(response.code() == 401) {
-                    Toast.makeText(this@AllergyItemListActivity,
+                    Toast.makeText(this@SurgeryItemListActivity,
                             "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure
                     // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@AllergyItemListActivity, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@SurgeryItemListActivity, "Failed to retrieve items", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -90,7 +107,7 @@ class AllergyItemListActivity:AppCompatActivity() {
             // or Error Creating Http Request or Error Processing Http Response
             override fun onFailure(call: Call<List<MedicalHistoryModelActivity>>, t: Throwable) {
 
-                Toast.makeText(this@AllergyItemListActivity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(this@SurgeryItemListActivity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }
