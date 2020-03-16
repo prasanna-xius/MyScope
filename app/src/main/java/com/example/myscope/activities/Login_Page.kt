@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import com.example.myscope.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login_page_main.*
@@ -34,7 +35,7 @@ class Login_Page : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btn_otp_send -> {
-                val Phonenumber = mobile_number.getText().toString().trim { it <= ' ' }
+                 mobileNumber = mobile_number.getText().toString().trim { it <= ' ' }
 
                 if (validate() == false) {
                     onSignupFailed()
@@ -44,7 +45,7 @@ class Login_Page : BaseActivity(), View.OnClickListener {
 //                navigateToActivity(Intent(applicationContext,Otp_Page::class.java))
 
                 val intent = Intent(this@Login_Page, Otp_Page::class.java)
-                intent.putExtra("Phonenumber", Phonenumber)
+                intent.putExtra("Phonenumber", mobileNumber)
                 startActivity(intent)
             }
             R.id.btn_register -> {
@@ -63,7 +64,7 @@ class Login_Page : BaseActivity(), View.OnClickListener {
 //        val filter = HashMap<String, String>()
         val retrofit = APIClient.getClient()
         var builder = retrofit.create(PrescriptionInterface::class.java)
-        var call = builder.getloginResponse(mobileNumber)
+        var call = builder.loginPatient(mobileNumber!!)
 
 
         (call as Call<List<SignupResponse>>?)?.enqueue(object : Callback<List<SignupResponse>> {
@@ -124,7 +125,6 @@ class Login_Page : BaseActivity(), View.OnClickListener {
 
 
         }
-    }
 
     override fun onStart() {
         super.onStart()
