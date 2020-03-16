@@ -14,18 +14,12 @@ import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
-import com.example.myscope.activities.*
+import com.example.myscope.activities.BaseActivity
+import com.example.myscope.activities.MultiSelectionSpinner
+import com.example.myscope.activities.MultiSpinnerTime
+import com.example.myscope.activities.PrescriptionInterface
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.prescribed_main.*
-import kotlinx.android.synthetic.main.prescribed_main.brand_name
-import kotlinx.android.synthetic.main.prescribed_main.dose_strength
-import kotlinx.android.synthetic.main.prescribed_main.drug_name
-import kotlinx.android.synthetic.main.prescribed_main.prescription_save_dialog
-import kotlinx.android.synthetic.main.prescribed_main.start_date
-import kotlinx.android.synthetic.main.prescribed_main.stop_date
-import kotlinx.android.synthetic.main.prescribed_main_view.*
-import kotlinx.android.synthetic.main.prescription_multi_item.view.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,6 +40,8 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
     var doctor_name_Txt: EditText? = null
     var hospital_name_Txt: EditText? = null
+    var medical_condition_Txt: EditText? = null
+    var precsription_note_Txt: EditText? = null
 
     var isprescribed: Spinner? = null
     var datecheck: Boolean? = true
@@ -75,6 +71,9 @@ class Prescription_manualDrugDialog : BaseActivity() {
         setContentView(R.layout.activity_prescription_manual)
         doctor_name_Txt = findViewById<View>(R.id.et_doctor_name) as EditText
         hospital_name_Txt = findViewById<View>(R.id.et_hosp_name) as EditText
+        medical_condition_Txt = findViewById<View>(R.id.et_medical_condition) as EditText
+        precsription_note_Txt = findViewById<View>(R.id.et_precsription_note) as EditText
+
         isPrescribed = findViewById(R.id.is_prescribed)as Spinner
         layout = findViewById(R.id.doctor_layout)as LinearLayout
 
@@ -85,6 +84,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         prescription_id = sharedpreferences.getInt("prescription_id",0)
+
 
 
 
@@ -116,6 +116,8 @@ class Prescription_manualDrugDialog : BaseActivity() {
                                 hospital_name_Txt!!.setText(prescriptiondoctor.hospital_name)
                                 val prescribedname = isprescribedadapter.getPosition(prescriptiondoctor.is_prescribed);
                                 is_prescribed.setSelection(prescribedname);
+                                medical_condition_Txt!!.setText(prescriptiondoctor.medical_condition)
+                                precsription_note_Txt!!.setText(prescriptiondoctor.prescription_note)
                                 if (prescribedname == 2) {
                                     layout!!.toggleVisibility()
                                     hosp_layout.toggleVisibility()
@@ -234,7 +236,6 @@ class Prescription_manualDrugDialog : BaseActivity() {
             validateInput(d.brand_name, brandname!!)
             validateInput(d.dose_strength, doseStrength!!)
             validateInput(d.drug_name, drugname!!)
-
             validateSpinner(d.formulation_id!!, formulationId!!)
             validateSpinner(d.dose_unit!!, doseunit!!)
             validateSpinner(d.how_often_taken!!, howoftenvalue!!)
@@ -388,8 +389,8 @@ class Prescription_manualDrugDialog : BaseActivity() {
 }
 
 private fun LinearLayout.toggleVisibility() {
-    if (visibility == View.VISIBLE) {
-        visibility = View.GONE
+    if (visibility == View.GONE) {
+        visibility = View.VISIBLE
     } else {
         visibility = View.VISIBLE
     }
