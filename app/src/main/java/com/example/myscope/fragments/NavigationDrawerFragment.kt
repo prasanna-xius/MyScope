@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment
 import com.example.myscope.R
 import com.example.myscope.activities.Dash_Board_Activity
 import com.example.myscope.activities.Medical_Documents_HomePage
-import com.example.myscope.activities.prescription.Prescription_manual
+import com.example.myscope.activities.prescription.Prescription_manualDrugDialog
 import com.example.myscope.activities.medical_history.*
 import com.example.myscope.adapters.ExpandableListAdapter
 import java.util.*
@@ -91,7 +91,7 @@ class NavigationDrawerFragment : Fragment() {
         mDrawerListView!!.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
             if (groupPosition == ExpandableListAdapter.Medical_History) {
                 if (childPosition == ExpandableListAdapter.Medical_History1) { // call activity here
-                    val intent = Intent(activity, Medical_History::class.java)
+                    val intent = Intent(activity, Disease_History::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Family_History) { // call activity here
@@ -129,15 +129,15 @@ class NavigationDrawerFragment : Fragment() {
                 }
             } else if (groupPosition == ExpandableListAdapter.Presccriptions) {
                 if (childPosition == ExpandableListAdapter.Prescription) { // call activity here
-                    val intent = Intent(activity, Prescription_manual::class.java)
+                    val intent = Intent(activity, Prescription_manualDrugDialog::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Antibiotic) { // call activity here
-                    val intent = Intent(activity, Prescription_manual::class.java)
+                    val intent = Intent(activity, Prescription_manualDrugDialog::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Ayurveda) { // call activity here
-                    val intent = Intent(activity, Prescription_manual::class.java)
+                    val intent = Intent(activity, Prescription_manualDrugDialog::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    android:layout_marginBottom="@dimen/dimen_10"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="5dp"
+
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorWhite"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerImage"
+            android:padding="10dp"
+            android:src="@drawable/home" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Drug Name"
+            android:id="@+id/drug_nametxt"
+            android:textColor="@color/bg_screen2"
+            android:padding="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/playerImage" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="dose"
+            android:id="@+id/time_txt"
+            android:padding="10dp"
+            android:textColor="@color/bg_screen2"
+            android:layout_alignBottom="@+id/playerImage"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

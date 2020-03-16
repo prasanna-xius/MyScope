@@ -41,6 +41,10 @@
 
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <dimen name="_14ssp">14sp</dimen>
     <color name="bluegray700">#455A64</color>
     <color name="bluegray300">#90A4AE</color>

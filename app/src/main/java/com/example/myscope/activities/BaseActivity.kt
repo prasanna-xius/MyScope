@@ -1,6 +1,9 @@
 package com.example.myscope.activities
+import android.annotation.SuppressLint
+
 import android.app.Activity
 import android.app.ActivityOptions
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -15,12 +18,12 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
-import com.example.myscope.activities.prescription.Prescription_manual
-import com.example.myscope.activities.prescription.Prescriptionmanual_recyclerview
+import com.example.myscope.activities.prescription.Prescription_ManualDoctorDialog
+import com.example.myscope.activities.prescription.ServiceBuilder1
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.ByteArrayOutputStream
@@ -28,7 +31,21 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import org.json.JSONException
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.text.SimpleDateFormat
+import java.time.Duration
+import java.time.Month
+import java.time.Year
+import java.time.YearMonth
 import java.util.*
 
 open class BaseActivity : AppCompatActivity() {
@@ -149,7 +166,6 @@ open class BaseActivity : AppCompatActivity() {
         {
 
             errorDisplay(editText)
-            showLongSnackBar("Please fill the required fields")
 
         } else {
             editText.setCompoundDrawables(null, null, null, null)
@@ -176,25 +192,166 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
+    fun showPictureDialogReports() {
+        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
+        pictureDialog.setTitle("Select Action")
 
+        val pictureDialogItems = arrayOf(
+                "Select photo from gallery",
+                "Capture photo from camera",
+                "Select pdf file from folder")
+        pictureDialog.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> choosePhotoFromGallary()
+                1 -> takePhotoFromCamera()
+                2 -> showFileChooser()
+
+            }
+        }
+        pictureDialog.show()
+    }
     fun validateDate(startDate: TextView, stopDate: TextView, boolean: Any): Boolean {
+
+    fun bmicalculator(weight: EditText,height: EditText,bmi: TextView)
+    {
+        if(!height.text.toString().equals("") && !weight.text.toString().equals("")) {
+            val height= (height.text.toString()).toFloat()
+
+            val square = height * height
+            val weight = (weight.text.toString()).toFloat()
+
+            val bmivalue = weight / square
+            bmi.text = bmivalue.toString()
+
+            if (bmivalue < 16) {
+                showLongToast("Severely underweight")
+            } else if (bmivalue < 18.5) {
+                showLongToast("Severely underweight")
+            } else if (bmivalue < 25) {
+                showLongToast("Normal")
+            } else if (bmivalue < 30) {
+                showLongToast("Obese")
+            }
+        } else {
+            errorDisplay(weight)
+            errorDisplay(height)
+            errorDisplayTextview(bmi)
+        }
+
+    }
+
+
+
+    fun validateDate1( dob: TextView, today :TextView){
+        if(!dob.text.toString().equals("") ){
+            dob.setCompoundDrawables(null,null,null,null)
+            val dob1 = SimpleDateFormat("yyyy").format(Date(dob.text.toString()))
+//            val dob2 =  dob1.get(Calendar.YEAR)
+            showLongToast(dob1.toString())
+            val today1: Int = Calendar.getInstance().get(Calendar.YEAR)
+            var age = today1 - dob1.toInt()
+                today.text = age.toString()
+
+
+            if (dob1.toInt() > today1)
+            {
+                showLongSnackBar("Date of birth should be less than today")
+            }
+        }
+        else
+        {
+            errorDisplayTextview(dob)
+            errorDisplayTextview(today)
+
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun duration(startdate: TextView, stopdate :TextView, years : TextView){
+        if(!startdate.text.toString().equals("") && !stopdate.text.toString().equals("")) {
+            val dob1 = SimpleDateFormat("MM").format(Date(startdate.text.toString()))
+            val dob2 = SimpleDateFormat("MM").format(Date(stopdate.text.toString()))
+            val dob3 = SimpleDateFormat("YYYY").format(Date(startdate.text.toString()))
+            val dob4 = SimpleDateFormat("YYYY").format(Date(stopdate.text.toString()))
+            val dob5 = SimpleDateFormat("dd").format(Date(startdate.text.toString()))
+            val dob6 = SimpleDateFormat("dd").format(Date(stopdate.text.toString()))
+
+            if (dob3.toInt() < dob4.toInt()){
+
+                  if (dob1.toInt() < dob2.toInt()){
+                      val month = dob2.toInt() - dob1.toInt()
+                      val year = dob4.toInt() - dob3.toInt()
+                      years.text = month.toString() + "month  " + year + "Years"
+                  }
+                else if (dob1.toInt() == dob2.toInt()){
+                      val month = dob4.toInt() - dob3.toInt()
+                      years.text = month.toString() + "Years"
+                  }
+                  else if (dob1.toInt() > dob2.toInt()){
+
+                      val x = 12 - dob1.toInt()
+                      val month = x + dob2.toInt()
+                      val year = dob4.toInt() - dob3.toInt() -1
+                      years.text = month.toString() + "month  " + year + "Years"
+                  }
+            }
+            else if (dob3.toInt() == dob4.toInt()){
+
+                if (dob1.toInt() < dob2.toInt()){
+                    val month = dob2.toInt() - dob1.toInt()
+                    years.text = month.toString() + "months"
+                }
+                else if (dob1.toInt() == dob2.toInt()){
+                    if (dob6.toInt() > dob5.toInt()) {
+                        val days = dob6.toInt() - dob5.toInt()
+                        years.text = days.toString() + "Days"
+                    }
+                    else{
+                        years.setText("")
+                        errorDisplayTextview(years)
+                        showLongSnackBar("Start date cannot be after end date")
+
+                    }
+
+                }
+                else if (dob1.toInt() > dob2.toInt()){
+                    years.setText("")
+                   errorDisplayTextview(years)
+                    showLongSnackBar("Start date cannot be after end date")
+                }
+            }
+            else if (dob3.toInt() > dob4.toInt()){
+                years.setText("")
+                errorDisplayTextview(years)
+                showLongSnackBar("Start date cannot be after end date")
+            }
+        }
+        }
+
+
+   
+    fun validateDate(startDate: TextView, stopDate: TextView, boolean: Any ): Boolean {
         if (!startDate.text.toString().equals("") && !stopDate.text.toString().equals("")) {
             startDate.setCompoundDrawables(null, null, null, null)
             stopDate.setCompoundDrawables(null, null, null, null)
-            val startDate1 = SimpleDateFormat("dd-MMM-yyyy").format(Date(startDate.text.toString()))
-            val endDate1 = SimpleDateFormat("dd-MMM-yyyy").format(Date(stopDate.text.toString()))
+            val startDate1 = SimpleDateFormat("MM-yyyy").format(Date(startDate.text.toString()))
+            val endDate1 = SimpleDateFormat("MM-yyyy").format(Date(stopDate.text.toString()))
             if (startDate1 > endDate1) {
                 // date in text view is current date
                 stopDate.setText("")
                 showLongSnackBar("Start date cannot be after end date")
                 errorDisplayTextview(startDate)
-                return false;
-           }
+                return false
+            }
         } else {
             errorDisplayTextview(startDate)
             errorDisplayTextview(stopDate)
-          return false
-        }
+            return false
+
+                return false;
+           }
+        
         return true
     }
     fun showPictureDialog() {
@@ -240,7 +397,7 @@ open class BaseActivity : AppCompatActivity() {
     }
     private fun showFilemanual() {
 
-        navigateToActivity(Intent(applicationContext, Prescriptionmanual_recyclerview::class.java))
+        navigateToActivity(Intent(applicationContext, Prescription_ManualDoctorDialog::class.java))
     }
 
     private fun showFileChooser() {
@@ -278,6 +435,7 @@ open class BaseActivity : AppCompatActivity() {
                     val path = saveImage(bitmap)
                     Toast.makeText(this@BaseActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
 //                    iv!!.setImageBitmap(bitmap)
+                    uploadImage(path)
                 } catch (e: IOException) {
                     e.printStackTrace()
                     Toast.makeText(this@BaseActivity, "Failed!", Toast.LENGTH_SHORT).show()
@@ -291,6 +449,51 @@ open class BaseActivity : AppCompatActivity() {
         } else if (requestCode == PICK_PDF_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             filePath = data.data
         }
+    }
+
+    private fun uploadImage(path: String) {
+
+        val imgname = Calendar.getInstance().timeInMillis.toString()
+        val retrofit = Retrofit.Builder()
+                .baseUrl(ServiceBuilder1.URL)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build()
+        //Create a file object using file path
+        val file = File(path)
+        // Parsing any Media type file
+        val requestBody = RequestBody.create(MediaType.parse("*/*"), file)
+        val fileToUpload = MultipartBody.Part.createFormData("filename", file.name, requestBody)
+        val filename = RequestBody.create(MediaType.parse("text/plain"), imgname)
+
+        val getResponse = retrofit.create(PrescriptionInterface::class.java)
+
+        val call = getResponse.uploadImage(fileToUpload, filename)
+        Log.d("assss", "asss")
+        call.enqueue(object : Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.d("mullllll", response.body().toString())
+                try {
+                    val jsonObject = JSONObject(response.body().toString())
+                    Toast.makeText(applicationContext, jsonObject.getString("message"), Toast.LENGTH_SHORT).show()
+                    jsonObject.toString().replace("\\\\", "")
+                    if (jsonObject.getString("status") == "true") {
+                        val dataArray = jsonObject.getJSONArray("data")
+//                        var url = ""
+                        for (i in 0 until dataArray.length()) {
+                            val dataobj = dataArray.getJSONObject(i)
+//                            url = dataobj.optString("pathToFile")
+                        }
+//                        Picasso.get().load(url).into(imageView)
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.d("gttt", call.toString())
+            }
+        })
     }
 
     private fun saveImage(myBitmap: Bitmap?): String {
@@ -318,11 +521,13 @@ open class BaseActivity : AppCompatActivity() {
     }
 
 
+
     companion object {
         private val TAG = BaseActivity::class.java.name
         private const val IMAGE_DIRECTORY = "/myfiles"
 
 
     }
+
 
 }
