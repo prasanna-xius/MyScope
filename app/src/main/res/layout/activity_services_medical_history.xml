@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <include layout="@layout/background_image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:text="Patient counseling"
+                    android:textColor="#997CF4" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right">
+
+                    <ImageButton
+                        android:id="@+id/plus"
+                        android:layout_marginTop="15sp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/description_text"
+                        android:background="@drawable/ic_expand_more_black_40dp"
+                        android:clickable="true" />
+
+
+                    <ImageButton
+
+                        android:id="@+id/minus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/description_text"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="15sp"
+                        android:background="@drawable/ic_expand_less_black_24dp"
+                        android:clickable="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/description_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="0"
+                android:padding="0dp"
+                android:background="#ffffff"
+                android:text="@string/text"
+                android:textColor="#997CF4" />
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:text="Drug Interaction"
+                    android:textColor="#997CF4" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_marginRight="20sp"
+                    android:gravity="right">
+
+
+                    <ImageButton
+                        android:id="@+id/plus1"
+                        android:layout_marginTop="15sp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp" android:background="@drawable/ic_expand_more_black_40dp"
+                        android:clickable="true" />
+
+
+                    <ImageButton
+                        android:id="@+id/minus1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/description_text"
+                        android:background="@drawable/ic_expand_less_black_24dp"
+                        android:clickable="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/description_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="0"
+                android:padding="0dp"
+                android:background="#ffffff"
+                android:text="@string/text1"
+                android:textColor="#997CF4" />
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:text="Prescription Audit"
+                    android:textColor="#997CF4" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right">
+
+                    <ImageButton
+                        android:id="@+id/plus2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="40sp"
+                        android:layout_below="@+id/description_text"
+                        android:layout_marginTop="15sp"
+                        android:background="@drawable/ic_expand_more_black_40dp"
+                        android:clickable="true" />
+
+
+                    <ImageButton
+                        android:id="@+id/minus2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/description_text"
+                        android:background="@drawable/ic_expand_less_black_24dp"
+                        android:clickable="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="0"
+                android:padding="0dp"
+                android:background="#ffffff"
+                android:text="@string/text2"
+                android:textColor="#997CF4" />
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:text="Adverse Drug Event Monitoring"
+                    android:textColor="#997CF4" />
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right">
+
+
+                    <ImageButton
+                        android:id="@+id/plus3"
+                        android:layout_marginTop="15sp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/description_text"
+                        android:background="@drawable/ic_expand_more_black_40dp"
+                        android:clickable="true" />
+
+
+                    <ImageButton
+                        android:id="@+id/minus3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/description_text"
+                        android:background="@drawable/ic_expand_less_black_24dp"
+                        android:clickable="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description_text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="0"
+                android:padding="0dp"
+                android:background="#ffffff"
+                android:text="@string/text3"
+                android:textColor="#997CF4" />
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:background="#ffffff"
+                    android:textSize="20sp"
+                    android:text="Post-discharge Care Packag"
+                    android:textColor="#997CF4" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right">
+
+                    <ImageButton
+                        android:id="@+id/plus4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="20sp"
+                        android:layout_below="@+id/description_text"
+                        android:layout_marginTop="15sp"
+                        android:background="@drawable/ic_expand_more_black_40dp"
+                        android:clickable="true" />
+
+                    <ImageButton
+                        android:id="@+id/minus4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/description_text"
+                        android:background="@drawable/ic_expand_less_black_24dp"
+                        android:clickable="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/description_text4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="0"
+                android:padding="0dp"
+                android:background="#ffffff"
+                android:text="@string/text4"
+                android:textColor="#997CF4" />
+
+
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/checkbox_services"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Agree to the Services"
+            android:layout_marginStart="120sp"
+            android:textColor="#997CF4"
+            />
+
+    </LinearLayout>
+
+</ScrollView>
