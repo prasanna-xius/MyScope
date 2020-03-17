@@ -40,7 +40,7 @@ class Otp_Page : BaseActivity(), View.OnClickListener {
         mAuth = FirebaseAuth.getInstance()
 
         val intent = intent
-        val Phonenumber = intent.getStringExtra("Phonenumber")
+        val Phonenumber = intent.getStringExtra("mobile_no")
         sendVerificationCode(Phonenumber)
 
         btn_verify_otp!!.setOnClickListener(this)

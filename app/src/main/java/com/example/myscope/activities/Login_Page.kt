@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import com.example.myscope.R
+import com.example.myscope.activities.prescription.ServiceBuilder1
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login_page_main.*
 import kotlinx.android.synthetic.main.login_page_main.mobile_layout
@@ -37,16 +38,17 @@ class Login_Page : BaseActivity(), View.OnClickListener {
             R.id.btn_otp_send -> {
                  mobileNumber = mobile_number.getText().toString().trim { it <= ' ' }
 
-//                if (validate() == false) {
-//                    onSignupFailed()
-//                    return
-//                }
+
+                if (validate() == false) {
+                    onSignupFailed()
+                    return
+                }
 
 //                navigateToActivity(Intent(applicationContext,Otp_Page::class.java))
 
-                val intent = Intent(this@Login_Page, Otp_Page::class.java)
-                intent.putExtra("Phonenumber", mobileNumber)
-                startActivity(intent)
+//                val intent = Intent(this@Login_Page, Otp_Page::class.java)
+//                intent.putExtra("Phonenumber", mobileNumber)
+//                startActivity(intent)
             }
             R.id.btn_register -> {
                 navigateToActivity(Intent(applicationContext, SignUp_Page::class.java))
@@ -62,23 +64,22 @@ class Login_Page : BaseActivity(), View.OnClickListener {
 
     private fun loginApiCall() {
 //        val filter = HashMap<String, String>()
-        val retrofit = APIClient.getClient()
-        var builder = retrofit.create(PrescriptionInterface::class.java)
-        var call = builder.loginPatient(mobileNumber!!)
+        val diseaseService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+        var call: Call<SignupResponse> = diseaseService.loginPatient(mobileNumber!!)
 
 
-        (call as Call<List<SignupResponse>>?)?.enqueue(object : Callback<List<SignupResponse>> {
-            override fun onFailure(response: Call<List<SignupResponse>>, error: Throwable) {
+        (call as  Call<SignupResponse>?)?.enqueue(object : Callback<SignupResponse>{
+            override fun onFailure(response:  Call<SignupResponse>, error: Throwable) {
 //                navigateToActivity(Intent(applicationContext, Login_Page::class.java))
                 showLongToast("Check your internet connection")
                 Log.d("Errormessage", error.message + "error")
 
             }
 
-            override fun onResponse(response: Call<List<SignupResponse>>, resp: retrofit2.Response<List<SignupResponse>>) {
-                if (resp.isSuccessful && resp.body() != null) {
-                    var id = resp.body()!!.size
-                    if (id.equals(0)) {
+            override fun onResponse(response: Call<SignupResponse>, resp: retrofit2.Response<SignupResponse>) {
+                if (resp.isSuccessful) {
+                    var id = resp.body()!!
+                    if (id.first_name.equals(null) || id.last_name.equals(null)||id.email.equals(null) || id.mobile_no.equals(null)) {
                         val alertDialogBuilder = AlertDialog.Builder(this@Login_Page)
                         alertDialogBuilder.setMessage("This number " + mobileNumber + " is not being registered. Do you want to register it?")
                         alertDialogBuilder.setPositiveButton("Yes") { dialogInterface, which ->
@@ -120,6 +121,7 @@ class Login_Page : BaseActivity(), View.OnClickListener {
             } else {
                 mobile_layout!!.error = null
                 valid = true
+                loginApiCall()
             }
             return valid
 
