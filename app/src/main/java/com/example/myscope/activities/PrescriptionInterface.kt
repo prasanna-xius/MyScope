@@ -14,7 +14,7 @@ interface PrescriptionInterface {
     fun createPatient(@Body body: SignupResponse?): Call<SignupResponse>?
 
     @GET("Patientslist/{mobile_no}")
-    fun loginPatient(@Path("mobile_no") mobile_no:String): Call<SignupResponse>
+    fun loginPatient(@Path("mobile_no") mobile_no:String): Call<List<SignupResponse>>
 
     //end point of webservice
     @Headers("Content-Type:application/json")

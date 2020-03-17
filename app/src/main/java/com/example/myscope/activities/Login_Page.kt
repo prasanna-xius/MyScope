@@ -65,21 +65,21 @@ class Login_Page : BaseActivity(), View.OnClickListener {
     private fun loginApiCall() {
 //        val filter = HashMap<String, String>()
         val diseaseService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
-        var call: Call<SignupResponse> = diseaseService.loginPatient(mobileNumber!!)
+        var call: Call<List<SignupResponse>> = diseaseService.loginPatient(mobileNumber!!)
 
 
-        (call as  Call<SignupResponse>?)?.enqueue(object : Callback<SignupResponse>{
-            override fun onFailure(response:  Call<SignupResponse>, error: Throwable) {
+        (call as  Call<List<SignupResponse>>?)?.enqueue(object : Callback<List<SignupResponse>>{
+            override fun onFailure(response:  Call<List<SignupResponse>>, error: Throwable) {
 //                navigateToActivity(Intent(applicationContext, Login_Page::class.java))
                 showLongToast("Check your internet connection")
                 Log.d("Errormessage", error.message + "error")
 
             }
 
-            override fun onResponse(response: Call<SignupResponse>, resp: retrofit2.Response<SignupResponse>) {
+            override fun onResponse(response: Call<List<SignupResponse>>, resp: retrofit2.Response<List<SignupResponse>>) {
                 if (resp.isSuccessful) {
-                    var id = resp.body()!!
-                    if (id.first_name.equals(null) || id.last_name.equals(null)||id.email.equals(null) || id.mobile_no.equals(null)) {
+                    var id = resp.body()!!.size
+                    if (id.equals(0)) {
                         val alertDialogBuilder = AlertDialog.Builder(this@Login_Page)
                         alertDialogBuilder.setMessage("This number " + mobileNumber + " is not being registered. Do you want to register it?")
                         alertDialogBuilder.setPositiveButton("Yes") { dialogInterface, which ->
