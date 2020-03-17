@@ -58,6 +58,6 @@ interface PrescriptionInterface {
     @Multipart
     @POST("preupload")
     fun uploadImage(
-            @Part file: MultipartBody.Part?, @Part("filename") name: RequestBody?
+            @Part ("file") file : MultipartBody.Part?, @Query("mobile_no") mobile_no: String?
     ): Call<String>
 }

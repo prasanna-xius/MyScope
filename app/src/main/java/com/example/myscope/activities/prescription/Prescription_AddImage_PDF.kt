@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.PrescriptionInterface
+import com.example.myscope.fragments.ExpandableListDataPump.data
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -34,6 +35,7 @@ import java.io.IOException
 import java.util.*
 
 class Prescription_AddImage_PDF :BaseActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,7 +91,9 @@ class Prescription_AddImage_PDF :BaseActivity() {
     private fun choosephotofromgallery() {
         val galleryIntent = Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(galleryIntent, GALLERY)
+        intent.setType("image/*");
+        intent.putExtra("data",data)
+        startActivityForResult(galleryIntent,GALLERY)
 
     }
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -104,9 +108,9 @@ class Prescription_AddImage_PDF :BaseActivity() {
                 try {
                     val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
                     val path = saveImage(bitmap)
-                    Toast.makeText(this@Prescription_AddImage_PDF, "Image Saved!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Prescription_AddImage_PDF, "Image Saved!"+path, Toast.LENGTH_SHORT).show()
 //                    iv!!.setImageBitmap(bitmap)
-                    uploadImage(path)
+                    uploadImage(bitmap.toString())
                 } catch (e: IOException) {
                     e.printStackTrace()
                     Toast.makeText(this@Prescription_AddImage_PDF, "Failed!", Toast.LENGTH_SHORT).show()
@@ -131,33 +135,40 @@ class Prescription_AddImage_PDF :BaseActivity() {
         //Create a file object using file path
         val file = File(path)
         // Parsing any Media type file
+
+
         val requestBody = RequestBody.create(MediaType.parse("*/*"), file)
         val fileToUpload = MultipartBody.Part.createFormData("filename", file.name, requestBody)
         val filename = RequestBody.create(MediaType.parse("text/plain"), imgname)
+        val mobile_no  = "8142529582"
 
         val getResponse = retrofit.create(PrescriptionInterface::class.java)
 
-        val call = getResponse.uploadImage(fileToUpload, filename)
+        val call = getResponse.uploadImage(fileToUpload,mobile_no)
         Log.d("assss", "asss")
         call.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 Log.d("mullllll", response.body().toString())
-                try {
-                    val jsonObject = JSONObject(response.body().toString())
-                    Toast.makeText(applicationContext, jsonObject.getString("message"), Toast.LENGTH_SHORT).show()
-                    jsonObject.toString().replace("\\\\", "")
-                    if (jsonObject.getString("status") == "true") {
-                        val dataArray = jsonObject.getJSONArray("data")
-//                        var url = ""
-                        for (i in 0 until dataArray.length()) {
-                            val dataobj = dataArray.getJSONObject(i)
-//                            url = dataobj.optString("pathToFile")
-                        }
-//                        Picasso.get().load(url).into(imageView)
-                    }
-                } catch (e: JSONException) {
-                    e.printStackTrace()
+
+                if(response.isSuccessful){
+                    showLongToast("Image saved")
                 }
+//                try {
+//                    val jsonObject = JSONObject(response.body().toString())
+//                    Toast.makeText(applicationContext, jsonObject.getString("message"), Toast.LENGTH_SHORT).show()
+//                    jsonObject.toString().replace("\\\\", "")
+//                    if (jsonObject.getString("status") == "true") {
+//                        val dataArray = jsonObject.getJSONArray("data")
+////                        var url = ""
+//                        for (i in 0 until dataArray.length()) {
+//                            val dataobj = dataArray.getJSONObject(i)
+////                            url = dataobj.optString("pathToFile")
+//                        }
+////                        Picasso.get().load(url).into(imageView)
+//                    }
+//                } catch (e: JSONException) {
+//                    e.printStackTrace()
+//                }
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {

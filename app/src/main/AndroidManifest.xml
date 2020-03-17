@@ -24,7 +24,7 @@
 
 <!--        <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"-->
 <!--            android:screenOrientation="portrait"></activity>-->
-        <activity android:name=".activities.medical_history.AllergyItemListActivity">
+        <activity android:name=".activities.prescription.Prescriptions_HomePage">
 
 
             <intent-filter>
@@ -78,6 +78,8 @@
 
 <!--        <activity android:name=".ImageUpload" />-->
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
+        <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog" />
+
         <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
 
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
@@ -99,8 +101,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.medical_history.Diet"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activities.prescription.Prescriptions_HomePage"
-            android:screenOrientation="portrait"/>
+<!--        <activity android:name=".activities.prescription.Prescriptions_HomePage"-->
+<!--            android:screenOrientation="portrait"/>-->
         <activity android:name=".activities.medical_history.Allergies"
             android:screenOrientation="portrait"/>
 <!--        <activity android:name=".activities.medical_history.ImmunizationHistory"-->
