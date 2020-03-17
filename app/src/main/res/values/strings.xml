@@ -220,7 +220,6 @@
     <string name="radio_female">Female</string>
     <string name="formulation">Formulation <font color='#ff0000'>*</font></string>
     <string name="brand_name">Brand name <font color='#ff0000'>*</font></string>
-    <string name="drug_name">Drug name <font color='#ff0000'>*</font></string>
     <string name="dose_strength">Dose Strength <font color='#ff0000'>*</font></string>
     <string name="dose_unit">Dose Unit <font color='#ff0000'>*</font></string>
     <string name="how_often_taken">How often taken? <font color='#ff0000'>*</font></string>
