@@ -27,7 +27,6 @@ import javax.net.ssl.SSLContext
 
 class Prescription_ManualDoctorDialog : BaseActivity() {
 
-    var position: Int = 0
     var mobile_no: String? = null
     var prescription: Int = 0
 
@@ -62,9 +61,9 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
 
         isprescribed = d.findViewById<Spinner>(R.id.is_prescribed1)
 
-        val bundle: Bundle? = intent.extras
+//        val bundle: Bundle? = intent.extras
 
-        position = intent.getIntExtra("position", 0)
+//        position = intent.getIntExtra("position", 0)
 
         // prescribed spinner
         val isprescribedadapter = ArrayAdapter(this,
@@ -168,7 +167,6 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
 
                         var newbody = resp.body()
                         // Use it or ignore it
-                        loadDetails()
                         navigateToActivity(Intent(applicationContext, Prescription_manualDrugDialog::class.java))
                     } else {
                         Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
@@ -193,10 +191,12 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             override fun onResponse(call: Call<List<PrescriptionDataClass>>, response: Response<List<PrescriptionDataClass>>) {
                 if (response.isSuccessful) {
                     val destination = response.body()
-                    val prescriptionId = destination?.get(position)
-                    prescriptionId?.let {
-                        prescription = prescriptionId.prescription_id!!
-                        showLongToast(prescriptionId.prescription_id.toString())
+                    val size = destination!!.size
+                    val prescription = destination?.get(size)
+
+                    prescription?.let {
+                       val prescriptionid = prescription.prescription_id
+                        showLongToast(prescriptionid.toString())
 
                     }!!
                 } else {

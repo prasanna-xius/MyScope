@@ -82,8 +82,7 @@ open class BaseActivity : AppCompatActivity() {
     fun navigateToActivity(intent: Intent?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             intent!!.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intent,
-                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
 
         } else {
             startActivity(intent)

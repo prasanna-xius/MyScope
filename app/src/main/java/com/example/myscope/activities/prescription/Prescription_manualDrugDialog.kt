@@ -85,17 +85,15 @@ class Prescription_manualDrugDialog : BaseActivity() {
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         prescription_id = sharedpreferences.getInt("prescription_id",0)
 
-
-
-
 //        val bundle = intent.extras
 //            if(!bundle!!.equals(null)) {
 //                prescription_id = bundle!!.getInt("prescription_id")
 //
 //
 //            }
-                val diseaseService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
-                val requestCall = diseaseService.getDoctorlistbyPID(prescription_id)
+        showLongToast("doctor list is working")
+                val adddoctorService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+                val requestCall = adddoctorService.getDoctorlistbyPID(prescription_id)
 
                 requestCall.enqueue(object : Callback<List<PrescriptionDataClass>> {
                     /**
@@ -332,7 +330,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
     private fun loadValues() {
 
         val destinationService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
-        rv = findViewById<View>(R.id.recyclerview_doctorlist) as RecyclerView
+        rv = findViewById<View>(R.id.recyclerview_druglist) as RecyclerView
 
         val filter = HashMap<String, String>()
 //        filter["country"] = "India"
