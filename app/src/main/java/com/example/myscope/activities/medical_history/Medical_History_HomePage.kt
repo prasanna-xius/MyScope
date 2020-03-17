@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.example.curvepicture.activities.ImmunizationHistory
+import com.example.curvepicture.activities.MedicationHistory
+import com.example.curvepicture.activities.SurgeryHistory
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MobileChange_Activity
@@ -62,11 +65,11 @@ class Medical_History_HomePage : BaseActivity() {
                 } else if (position == 4) {
                     navigateToActivity(Intent(applicationContext,Allergies::class.java))
                 } else if (position == 5) {
-                    navigateToActivity(Intent(applicationContext,ImmunizationHistory::class.java))
+                    navigateToActivity(Intent(applicationContext, ImmunizationHistory::class.java))
                 } else if (position == 6) {
-                    navigateToActivity(Intent(applicationContext,MedicationHistory::class.java))
+                    navigateToActivity(Intent(applicationContext, MedicationHistory::class.java))
                 } else if (position == 7) {
-                    navigateToActivity(Intent(applicationContext,SurgeryHistory::class.java))
+                    navigateToActivity(Intent(applicationContext, SurgeryHistory::class.java))
                 } else if (position == 8) {
                     navigateToActivity(Intent(applicationContext, MobileChange_Activity::class.java))
                 }

@@ -15,6 +15,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.example.curvepicture.activities.ImmunizationHistory
+import com.example.curvepicture.activities.MedicationHistory
+import com.example.curvepicture.activities.SurgeryHistory
 import com.example.myscope.R
 import com.example.myscope.activities.Dash_Board_Activity
 import com.example.myscope.activities.Medical_Documents_HomePage

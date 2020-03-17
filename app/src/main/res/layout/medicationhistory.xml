@@ -357,10 +357,8 @@
             android:text="@string/save"
             android:background="@drawable/shape_btn"
             android:textColor="@color/colorWhite"
-<<<<<<< Updated upstream
             android:layout_marginBottom="8dp"
             android:textSize="16sp"/>
-=======
             android:textSize="16sp"/>
     </LinearLayout>
 

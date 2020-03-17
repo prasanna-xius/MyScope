@@ -113,8 +113,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".ImageUpload"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activities.prescription.Prescription_manual"
-            android:screenOrientation="portrait"/>
+<!--        <activity android:name=".activities.prescription.Prescription_manual"-->
+<!--            android:screenOrientation="portrait"/>-->
         <activity android:name=".activities.medical_history.AllergyUpdate_Activity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.Medical_Documents_HomePage"

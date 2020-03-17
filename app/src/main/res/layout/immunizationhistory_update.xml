@@ -194,7 +194,7 @@
     android:layout_gravity="center"
     android:layout_weight="1.0"
     android:text="update"
-    android:textColor="@color/white"
+    android:textColor="@color/colorWhite"
     android:background="@drawable/shape_btn"
     android:textSize="16sp" />
     </LinearLayout>

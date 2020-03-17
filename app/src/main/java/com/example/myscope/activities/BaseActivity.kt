@@ -192,7 +192,7 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun showPictureDialogReports() {
+    fun showPictureDialogReports1() {
         val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
         pictureDialog.setTitle("Select Action")
 
@@ -211,7 +211,6 @@ open class BaseActivity : AppCompatActivity() {
         }
         pictureDialog.show()
     }
-    fun validateDate(startDate: TextView, stopDate: TextView, boolean: Any): Boolean {
 
     fun bmicalculator(weight: EditText,height: EditText,bmi: TextView)
     {
@@ -268,8 +267,8 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    fun duration(startdate: TextView, stopdate :TextView, years : TextView){
-        if(!startdate.text.toString().equals("") && !stopdate.text.toString().equals("")) {
+    fun duration(startdate: TextView, stopdate :TextView, years : TextView) {
+        if (!startdate.text.toString().equals("") && !stopdate.text.toString().equals("")) {
             val dob1 = SimpleDateFormat("MM").format(Date(startdate.text.toString()))
             val dob2 = SimpleDateFormat("MM").format(Date(stopdate.text.toString()))
             val dob3 = SimpleDateFormat("YYYY").format(Date(startdate.text.toString()))
@@ -277,57 +276,50 @@ open class BaseActivity : AppCompatActivity() {
             val dob5 = SimpleDateFormat("dd").format(Date(startdate.text.toString()))
             val dob6 = SimpleDateFormat("dd").format(Date(stopdate.text.toString()))
 
-            if (dob3.toInt() < dob4.toInt()){
+            if (dob3.toInt() < dob4.toInt()) {
 
-                  if (dob1.toInt() < dob2.toInt()){
-                      val month = dob2.toInt() - dob1.toInt()
-                      val year = dob4.toInt() - dob3.toInt()
-                      years.text = month.toString() + "month  " + year + "Years"
-                  }
-                else if (dob1.toInt() == dob2.toInt()){
-                      val month = dob4.toInt() - dob3.toInt()
-                      years.text = month.toString() + "Years"
-                  }
-                  else if (dob1.toInt() > dob2.toInt()){
+                if (dob1.toInt() < dob2.toInt()) {
+                    val month = dob2.toInt() - dob1.toInt()
+                    val year = dob4.toInt() - dob3.toInt()
+                    years.text = month.toString() + "month  " + year + "Years"
+                } else if (dob1.toInt() == dob2.toInt()) {
+                    val month = dob4.toInt() - dob3.toInt()
+                    years.text = month.toString() + "Years"
+                } else if (dob1.toInt() > dob2.toInt()) {
 
-                      val x = 12 - dob1.toInt()
-                      val month = x + dob2.toInt()
-                      val year = dob4.toInt() - dob3.toInt() -1
-                      years.text = month.toString() + "month  " + year + "Years"
-                  }
-            }
-            else if (dob3.toInt() == dob4.toInt()){
+                    val x = 12 - dob1.toInt()
+                    val month = x + dob2.toInt()
+                    val year = dob4.toInt() - dob3.toInt() - 1
+                    years.text = month.toString() + "month  " + year + "Years"
+                }
+            } else if (dob3.toInt() == dob4.toInt()) {
 
-                if (dob1.toInt() < dob2.toInt()){
+                if (dob1.toInt() < dob2.toInt()) {
                     val month = dob2.toInt() - dob1.toInt()
                     years.text = month.toString() + "months"
-                }
-                else if (dob1.toInt() == dob2.toInt()){
+                } else if (dob1.toInt() == dob2.toInt()) {
                     if (dob6.toInt() > dob5.toInt()) {
                         val days = dob6.toInt() - dob5.toInt()
                         years.text = days.toString() + "Days"
-                    }
-                    else{
+                    } else {
                         years.setText("")
                         errorDisplayTextview(years)
                         showLongSnackBar("Start date cannot be after end date")
 
                     }
 
-                }
-                else if (dob1.toInt() > dob2.toInt()){
+                } else if (dob1.toInt() > dob2.toInt()) {
                     years.setText("")
-                   errorDisplayTextview(years)
+                    errorDisplayTextview(years)
                     showLongSnackBar("Start date cannot be after end date")
                 }
-            }
-            else if (dob3.toInt() > dob4.toInt()){
+            } else if (dob3.toInt() > dob4.toInt()) {
                 years.setText("")
                 errorDisplayTextview(years)
                 showLongSnackBar("Start date cannot be after end date")
             }
         }
-        }
+    }
 
 
    

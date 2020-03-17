@@ -75,7 +75,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
         precsription_note_Txt = findViewById<View>(R.id.et_precsription_note) as EditText
 
         isPrescribed = findViewById(R.id.is_prescribed)as Spinner
-        layout = findViewById(R.id.doctor_layout)as LinearLayout
+        layout = findViewById(R.id.doctor_layout1)as LinearLayout
 
 
         val isprescribedadapter = ArrayAdapter(this,
@@ -122,11 +122,11 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
                                 if (prescribedname == 2) {
                                     layout!!.toggleVisibility()
-                                    hosp_layout.toggleVisibility()
+                                    hosp_layout1.toggleVisibility()
 
                                 } else {
                                     layout!!.toggleVisibility()
-                                    hosp_layout.toggleVisibility()
+                                    hosp_layout1.toggleVisibility()
                                 }
                             }
                         } else {
