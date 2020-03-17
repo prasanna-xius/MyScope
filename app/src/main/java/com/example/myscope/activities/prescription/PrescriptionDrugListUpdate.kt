@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
@@ -48,6 +49,7 @@ class PrescriptionDrugListUpdate : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.prescribed_main_view)
+
 
         formulationid = findViewById(R.id.formulation_id_update)
         howoftentext = findViewById(R.id.prescription_multi)
