@@ -177,5 +177,6 @@
                 android:layout_gravity="right"
                 />
         </LinearLayout>
+        <include layout="@layout/content_main" />
     </LinearLayout>
 </LinearLayout>

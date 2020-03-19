@@ -9,6 +9,7 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var medical_condition: String? = null,
                                  var mobile_no: String? = null,
                                  var prescription_id: Int? = 0,
+                                 var model_name :String ?=null,
 
 
                                  var formulation: String? = null,

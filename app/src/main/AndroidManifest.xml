@@ -24,7 +24,7 @@
 
 <!--        <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"-->
 <!--            android:screenOrientation="portrait"></activity>-->
-        <activity android:name=".activities.Login_Page">
+        <activity android:name=".activities.prescription.Prescriptions_HomePage">
 
 
             <intent-filter>

@@ -84,6 +84,8 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         prescription_id = sharedpreferences.getInt("prescription_id",0)
+        var model_name:String = sharedpreferences.getString("model_name",null)!!
+
 
 
 
