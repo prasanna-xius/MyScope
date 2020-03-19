@@ -18,11 +18,6 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.TextView
 
 
-
-
-
-
-
 @SuppressLint("AppCompatCustomView")
 class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListener {
     internal var _items: Array<String>? = null

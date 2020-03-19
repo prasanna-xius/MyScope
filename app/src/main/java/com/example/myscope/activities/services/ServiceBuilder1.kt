@@ -1,4 +1,4 @@
-package com.example.myscope.activities.prescription
+package com.example.myscope.activities.services
 
 import android.os.Build
 import com.google.gson.GsonBuilder

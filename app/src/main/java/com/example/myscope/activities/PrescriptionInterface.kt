@@ -13,8 +13,8 @@ interface PrescriptionInterface {
     @POST("addRecord")
     fun createPatient(@Body body: SignupResponse?): Call<SignupResponse>?
 
-    @POST("list/{mobile_no}")
-    fun loginPatient(@Body body: String): Call<SignupResponse>?
+    @GET("Patientslist/{mobile_no}")
+    fun loginPatient(@Path("mobile_no") mobile_no:String): Call<List<SignupResponse>>
 
     //end point of webservice
     @Headers("Content-Type:application/json")
@@ -60,4 +60,6 @@ interface PrescriptionInterface {
     fun uploadImage(
             @Part file: MultipartBody.Part?, @Part("filename") name: RequestBody?
     ): Call<String>
+
+
 }

@@ -218,15 +218,15 @@
 
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
-    <string name="formulation">Formulation <font color='#ff0000'>*</font></string>
+    <string name="formulation">Formulation </string>
     <string name="brand_name">Brand name <font color='#ff0000'>*</font></string>
-    <string name="dose_strength">Dose Strength <font color='#ff0000'>*</font></string>
-    <string name="dose_unit">Dose Unit <font color='#ff0000'>*</font></string>
-    <string name="how_often_taken">How often taken? <font color='#ff0000'>*</font></string>
-    <string name="start_date">Start Date <font color='#ff0000'>*</font></string>
-    <string name="stop_date">Stop Date <font color='#ff0000'>*</font></string>
+    <string name="dose_strength">Dose Strength </string>
+    <string name="dose_unit">Dose Unit</string>
+    <string name="how_often_taken">How often taken?</string>
+    <string name="start_date">Start Date</string>
+    <string name="stop_date">Stop Date</string>
     <string name="medical_condition">Medical Condition</string>
-    <string name="is_prescribed">Is prescribed? <font color='#ff0000'>*</font></string>
+    <string name="is_prescribed">Is prescribed?</string>
     <string name="prescription_note">Note</string>
 
     <string name="title_activity_welcome">Home Screen</string>
@@ -250,14 +250,14 @@
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
-    <string name="hospital_name">Hospital Name <font color='#ff0000'>*</font></string>
-    <string name="doctor_name">Doctor Name <font color='#ff0000'>*</font></string>
+    <string name="hospital_name">Hospital Name </string>
+    <string name="doctor_name">Doctor Name </string>
     <string name="prescription_manual">Prescription</string>
 
 
     <string name="mobile">0123456789</string>
 
-    <string name="time">Time <font color='#ff0000'>*</font></string>
+    <string name="time">Time </string>
     <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
     <string name="dialog_message">This number is not being registered.Please register here...</string>
     <string name="dialog_title">Login Alert !</string>

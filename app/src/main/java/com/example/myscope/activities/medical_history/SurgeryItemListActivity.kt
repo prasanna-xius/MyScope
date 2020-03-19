@@ -1,19 +1,17 @@
-package com.example.curvepicture.activities
+package com.example.myscope.activities.medical_history
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.curvepicture.helpers.SurgeryAdapter
 import com.example.myscope.R
+import com.example.myscope.helpers.SurgeryAdapter
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_allergy_list.*
-import kotlinx.android.synthetic.main.activity_immunization_list.*
 import kotlinx.android.synthetic.main.activity_surgery_list.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,6 +28,8 @@ class SurgeryItemListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_surgery_list)
 
+
+
         fab= findViewById(R.id.fab_surgery)
         //fab?.setBackgroundColor(Color.parseColor("#2196F3"));
         //setSupportActionBar(toolbar as Toolbar?)
@@ -37,7 +37,7 @@ class SurgeryItemListActivity : AppCompatActivity() {
 
         fab?.setOnClickListener {
 
-            val intent = Intent(this@SurgeryItemListActivity, SurgeryHistory::class.java)
+            val intent = Intent(this@SurgeryItemListActivity, SurgeryHistory_Activity::class.java)
             startActivity(intent)
         }
     }

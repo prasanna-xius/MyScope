@@ -55,9 +55,9 @@ private fun signup() {
 
 
         if (validate() == false) {
-            onSignupFailed()
-            return
-        }
+        onSignupFailed()
+        return
+    }
 
 
         navigateToActivity(Intent(applicationContext, Login_Page::class.java))

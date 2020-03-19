@@ -63,7 +63,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
             newDrug.adverse_reaction = reaction_effect!!.text.toString().trim()
             newDrug.adverse_date_of_start = et_date_of_start!!.text.toString().trim()
             newDrug.adverse_treatment_taken = et_treatment_taken!!.text.toString().trim()
-            newDrug.mobile_no = "8142529582"
+            newDrug.mobile_no = "9505505093"
 
             val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
 

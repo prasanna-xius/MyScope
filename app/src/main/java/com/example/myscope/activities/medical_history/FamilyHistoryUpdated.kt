@@ -1,7 +1,9 @@
 package com.example.myscope.activities.medical_history
 
 import android.annotation.TargetApi
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
@@ -26,6 +28,10 @@ class FamilyHistoryUpdated : BaseActivity() {
     var relationshipSpinner: Spinner? = null
     var familyid: Int = 0
     var familyCondition: Diseases? = null
+
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_family_history_updated)
@@ -34,6 +40,8 @@ class FamilyHistoryUpdated : BaseActivity() {
         header!!.text = "Family History"
 
         val relationshipSpinnerUpdated = findViewById<Spinner>(R.id.spinner_familyUpdated)
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         val adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.Relationship_arrays))
@@ -130,7 +138,7 @@ class FamilyHistoryUpdated : BaseActivity() {
                 text1.setText(newFamily.relationship)
             }
             newFamily.family_note = relationship_notesUpdated.text.toString()
-            newFamily.mobile_no = "8142529582"
+            newFamily.mobile_no = mobile_no!!
             newFamily.family_id = familyid
 
 

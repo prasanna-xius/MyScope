@@ -1,9 +1,11 @@
-package com.example.curvepicture.activities
+package com.example.myscope.activities.medical_history
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -16,18 +18,13 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
-
-
 import com.example.myscope.R
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
-import com.google.android.material.snackbar.Snackbar
 
 
-import kotlinx.android.synthetic.main.allergies_update.*
 import kotlinx.android.synthetic.main.immunizationhistory_update.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.*
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -47,7 +44,10 @@ class ImmunizationUpdateActivity : AppCompatActivity() {
     var position: Int= 1;
     var cal = Calendar.getInstance()
     var buttondate_immuupdate:Button?=null
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
     var immunid:Int=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.immunizationhistory_update)
@@ -59,6 +59,8 @@ class ImmunizationUpdateActivity : AppCompatActivity() {
 
         //spnrAllergy_Update = findViewById(R.id.spinnerAllergy_update)
 
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         nameUpdate = findViewById<View>(R.id.et_name_immuupdate).toString()
 
@@ -191,7 +193,7 @@ class ImmunizationUpdateActivity : AppCompatActivity() {
                 newImmunization.immubrand = et_brandupdate!!.text.toString().trim()
                 newImmunization.immudate = textviewdate_immuupdate?.text.toString().trim()
                 //newImmunization.immudate = dateUpdate.toString().trim()
-                newImmunization.mobile_no = "8142529582"
+                newImmunization.mobile_no = mobile_no!!
                 newImmunization.immun_id = immunid
 
 

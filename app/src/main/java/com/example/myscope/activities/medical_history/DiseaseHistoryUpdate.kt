@@ -2,7 +2,9 @@ package com.example.myscope.activities.medical_history
 
 import android.annotation.TargetApi
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -33,12 +35,15 @@ class DiseaseHistoryUpdate : BaseActivity() {
     private var startDateOrEndDAte = true
     var spinner_disease: Spinner? = null
     var diseaseid:Int=0
-
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_disease_history_update)
 
 
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         val spinner_disease = findViewById<Spinner>(R.id.spinner_disease_updated)
 
@@ -143,7 +148,7 @@ class DiseaseHistoryUpdate : BaseActivity() {
             newDisease.when_started = et_startDate_updated!!.text.toString().trim()
             newDisease.when_ended = et_stopDate_updated!!.text.toString().trim()
             newDisease.disease_note = notes_diseaseHistory_updated!!.text.toString().trim()
-            newDisease.mobile_no = "8142529582"
+            newDisease.mobile_no = mobile_no!!
             newDisease.disease_id = diseaseid
 
             val destinationService = ServiceBuilder.buildService(Disease_service::class.java)

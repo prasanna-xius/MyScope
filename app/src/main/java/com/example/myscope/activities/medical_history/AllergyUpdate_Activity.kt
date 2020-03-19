@@ -3,7 +3,9 @@ package com.example.myscope.activities.medical_history
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
@@ -31,9 +33,15 @@ class AllergyUpdate_Activity : AppCompatActivity() {
     var cal = Calendar.getInstance()
     var allergySpinner: Spinner? = null
     var buttondate_update: Button?=null
+
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.allergies_update)
+
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         //setSupportActionBar(detail_toolbar as Toolbar?)
         // Show the Up button in the action bar.
@@ -168,7 +176,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
             newAllergyupdate.notes = et_notes_allergies_update.text.toString().trim()
             newAllergyupdate.date = textviewdate_update.text.toString().trim()
             //newAllergyupdate.date = textviewdate_update.text.toString().trim()
-            newAllergyupdate.mobile_no = "8142529582"
+            newAllergyupdate.mobile_no = mobile_no!!
             newAllergyupdate.allergy_id = allergyid
             // newAllergy.spnrdata =spnritem!
 

@@ -84,7 +84,7 @@
                         android:textSize="@dimen/dimen_15" />
 
                     <EditText
-                        android:id="@+id/brand_name"
+                        android:id="@+id/brand_name_update"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -113,7 +113,7 @@
                         android:textSize="@dimen/dimen_15" />
 
                     <AutoCompleteTextView
-                        android:id="@+id/drug_name"
+                        android:id="@+id/drug_name_update"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

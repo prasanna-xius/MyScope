@@ -1,5 +1,7 @@
 package com.example.myscope.activities.medical_history
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -21,6 +23,8 @@ class Social_History : BaseActivity() {
 
     var spinnersmoking: Spinner? = null
     var spinnerdrinking: Spinner? = null
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +33,9 @@ class Social_History : BaseActivity() {
         activitiesToolbar()
 
         header!!.text = "Social History"
+
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         spinnersmoking= findViewById(R.id.spinner_smoking)
         spinnerdrinking= findViewById(R.id.spinner_drinking)
@@ -71,7 +78,7 @@ class Social_History : BaseActivity() {
             newSocialHabits.tobacco = tobacco_usage!!.getSelectedItem().toString()
             newSocialHabits.alcohol = spinner_drinking!!.getSelectedItem().toString()
             newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
-            newSocialHabits.mobile_no = "8142529582"
+            newSocialHabits.mobile_no =mobile_no!!
 
             val socialService = ServiceBuilder.buildService(Disease_service::class.java)
 
