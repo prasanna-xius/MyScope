@@ -1,5 +1,6 @@
-package com.example.myscope.activities
+package com.example.myscope.services
 
+import com.example.myscope.activities.SignupResponse
 import com.example.myscope.activities.prescription.PrescriptionDataClass
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

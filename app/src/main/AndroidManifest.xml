@@ -40,10 +40,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <activity
-            android:name=".activities.prescription.Prescriptions_HomePage"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+<!--        <activity-->
+<!--            android:name=".activities.prescription.Prescriptions_HomePage"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:windowSoftInputMode="stateAlwaysHidden" />-->
         <activity
             android:name=".activities.Otp_Page"
             android:screenOrientation="portrait"
@@ -76,12 +76,58 @@
             android:name=".activities.medical_history.Disease_History"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".activities.medical_history.DiseaseHistoryUpdate" />
+
+        <activity
+            android:name=".activities.medical_history.FamilyHistoryRecyclerView"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.medical_history.Family_History"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".activities.medical_history.FamilyHistoryUpdated" />
+
         <activity
             android:name=".activities.medical_history.Social_History"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.medical_history.Diet"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".activities.medical_history.AllergyItemListActivity" />
+
+        <activity
+            android:name=".activities.medical_history.Allergies"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.medical_history.AllergyUpdate_Activity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".activities.medical_history.ImmunizationItemListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.medical_history.ImmunizationHistory"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.medical_history.ImmunizationUpdateActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.medical_history.MedicationItemListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.medical_history.MedicationHistory"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.medical_history.MedicationUpdateActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.medical_history.SurgeryHistory_Activity"
             android:screenOrientation="portrait" />
@@ -89,42 +135,19 @@
         <activity
             android:name=".activities.medical_history.SurgeryItemListActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.medical_history.SurgeryUpdateActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.medical_history.Diet"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.medical_history.AllergyUpdate_Activity"
-            android:screenOrientation="portrait" />
 
-        <activity android:name=".activities.medical_history.FamilyHistoryUpdated" />
-
-        <activity android:name=".activities.medical_history.DiseaseHistoryUpdate" />
-
-        <activity android:name=".activities.medical_history.AllergyItemListActivity" />
-
-        <activity android:name=".activities.ComingSoon_Activity" />
-
-
-
-
-        <activity
-            android:name=".activities.medical_history.Allergies"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity"
             android:screenOrientation="portrait" />
 
 
-        <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
-
-        <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
-
-<!--        <activity-->
-<!--            android:name=".activities.prescription.Prescriptions_HomePage"-->
-<!--            android:screenOrientation="portrait" />-->
+        <activity
+            android:name=".activities.prescription.Prescriptions_HomePage"
+            android:screenOrientation="portrait" />
 
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
 
@@ -134,6 +157,11 @@
 
         <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
 
+        <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
+
+        <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
+
+        <activity android:name=".activities.ComingSoon_Activity" />
 
     </application>
 

@@ -2,24 +2,20 @@ package com.example.myscope.activities
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import com.example.myscope.R
-import com.example.myscope.activities.services.Disease_service
 import com.example.myscope.activities.services.ServiceBuilder
+import com.example.myscope.services.PrescriptionInterface
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.login_page_main.*
 import kotlinx.android.synthetic.main.login_page_main.mobile_layout
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
-import java.lang.System.exit
 
 class Login_Page : BaseActivity(), View.OnClickListener {
 

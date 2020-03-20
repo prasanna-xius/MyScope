@@ -17,11 +17,10 @@ import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MultiSelectionSpinner
 import com.example.myscope.activities.MultiSpinnerTime
-import com.example.myscope.activities.PrescriptionInterface
+import com.example.myscope.services.PrescriptionInterface
 import com.example.myscope.activities.services.ServiceBuilder1
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.prescribed_main.*
-import kotlinx.android.synthetic.main.signuppage_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

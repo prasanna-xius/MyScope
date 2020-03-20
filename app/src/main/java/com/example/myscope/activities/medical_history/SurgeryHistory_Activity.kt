@@ -142,10 +142,7 @@ class SurgeryHistory_Activity : BaseActivity() {
                 snack.show()
             }
 
-
         })
-
-
 
 
         // create an OnDateSetListener
