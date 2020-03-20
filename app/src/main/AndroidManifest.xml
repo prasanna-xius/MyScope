@@ -24,7 +24,7 @@
 
 <!--        <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"-->
 <!--            android:screenOrientation="portrait"></activity>-->
-        <activity android:name=".activities.prescription.Prescriptions_HomePage">
+        <activity android:name=".activities.Navigation_Drawer_Blogs">
 
 
             <intent-filter>
@@ -73,7 +73,7 @@
 <!--        <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />-->
 
 
-<!--        <activity android:name=".activities.prescription.Prescriptions_HomePage" />-->
+        <activity android:name=".activities.prescription.Prescriptions_HomePage" />
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
 
 <!--        <activity android:name=".ImageUpload" />-->
@@ -86,8 +86,8 @@
 
         <activity android:name=".activities.labReports.Lab_Reports_Homepage"/>
 
-        <activity android:name=".activities.Navigation_Drawer_Blogs"
-            android:screenOrientation="portrait"/>
+<!--        <activity android:name=".activities.Navigation_Drawer_Blogs"-->
+<!--            android:screenOrientation="portrait"/>-->
         <activity android:name=".activities.View_UserDetails_Activity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.Dash_Board_Activity"

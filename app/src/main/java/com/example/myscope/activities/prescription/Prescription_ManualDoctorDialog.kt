@@ -203,8 +203,14 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
                     val destination = response.body()
                     val prescriptionId = destination?.get(position)
                     prescriptionId?.let {
-                        prescription = prescriptionId.prescription_id!!
-                        showLongToast(prescriptionId.prescription_id.toString())
+
+                        val pref = applicationContext!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
+                        val editor: SharedPreferences.Editor = pref.edit()
+                        editor.putInt("prescription_id", prescriptionId.prescription_id!!)
+                        editor.commit()
+
+//                        prescription = prescriptionId.prescription_id!!
+//                        showLongToast(prescriptionId.prescription_id.toString())
 
                     }!!
                 } else {
