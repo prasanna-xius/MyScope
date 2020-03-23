@@ -141,6 +141,7 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
     }
 
     private fun registerRetrofit2Api(firstname: String, lastname: String, mobileno: String, email: String) {
+
         var login = SignupResponse(firstname, lastname, mobileno, email)
         request = APIClient.getClient().create(PrescriptionInterface::class.java)
 
@@ -149,7 +150,7 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
 
             registerCall = request?.createPatient(resp)
 
-            (registerCall as Call<SignupResponse>?)?.enqueue(object : Callback<SignupResponse> {
+            (registerCall as Call<SignupResponse>).enqueue(object : Callback<SignupResponse> {
                 override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
                     showLongToast("Recheck and save again")
                     Log.d("Errormessage", t.message + "error")

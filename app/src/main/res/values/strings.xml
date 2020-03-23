@@ -295,6 +295,10 @@
     <string name="paragraph_nine">All health-related information (Health Tips) contained within website is intended to be general in nature and should not be used as a substitute for medical treatment by a health care professional.</string>
     <string name="heading_eight">IMPORTANT INFORMATION ABOUT SPECIFIC SERVICES:</string>
     <string name="paragraph_ten">MySCOPE enables you to store your health related information in one place. It can help you keep track of this information in a convenient way and more easily share it with your health care providers. The accuracy, integrity and completeness of the health information you enter? Or that  you allow others such as your doctor to enter for opinion? Into your \"Record Database\" is your responsibility and we assume no liability for it. We also are not liable for any use or misuse of information transmitted or received by a third party you have authorized to access.</string>
+    <string name="email">Enter Email</string>
+    <string name="email_text">Email</string>
+    <string name="mobile_number">Mobile No</string>
+    <string name="mobile_hint">Enter Mobile</string>
 
 
     <string-array name="formulation_array">

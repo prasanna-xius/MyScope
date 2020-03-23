@@ -13,6 +13,9 @@ interface PrescriptionInterface {
 //    Call<List<PrescriptionManualDataClass>> getData();
     @POST("addRecord")
     fun createPatient(@Body body: SignupResponse?): Call<SignupResponse>?
+//
+//    @POST("addpatientprofile")
+//    fun createPatientprofile(@Body body: SignupResponse?): Call<SignupResponse>?
 
     @GET("Patientslist/{mobile_no}")
     fun loginPatient(@Path("mobile_no") mobile_no:String): Call<List<SignupResponse>>
@@ -55,6 +58,9 @@ interface PrescriptionInterface {
     @POST("addDruglist")
     fun addDrug(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
 
+    @Headers("Content-Type: application/json")
+    @POST("addpatientprofile")
+    fun addUserProfile(@Body newUserProfile: SignupResponse): Call<SignupResponse>
 
     @Multipart
     @POST("preupload")
