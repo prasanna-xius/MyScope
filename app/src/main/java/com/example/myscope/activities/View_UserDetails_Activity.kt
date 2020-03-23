@@ -80,15 +80,33 @@ class View_UserDetails_Activity : BaseActivity() {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show()
             }
 
+
+
+
+et_bmi.setOnClickListener {
+
+                bmi()
+
+               // bmicalculator(et_weight,et_height,et_bmi)
+}
+
+
+
         btn_userProfile.setOnClickListener{
 
             assignValuestoVariable()
            validate(spinnergender!!)
             validate(spinner_bloodGroup!!)
-            bmicalculator(et_weight,et_height,et_bmi)
+         //   bmicalculator(et_weight,et_height,et_bmi)
         }
 
     }
+
+    private fun bmi() {
+
+        bmicalculator(et_weight,et_height,et_bmi)
+    }
+
 
     private fun assignValuestoVariable() {
 

@@ -25,19 +25,6 @@ interface Disease_service {
     @POST("updateDiseaseRecord")
     fun updateDisease(@Body newDisease: Diseases): Call<Diseases>
 
-    //Adverse_Drug
-
-    @Headers("Content-Type:application/json")
-    @GET("Druglist")
-    fun getDrugList(@QueryMap filter: HashMap<String, String>): Call<List<Diseases>>
-
-    @GET("druglist/{id}")
-    fun getDrug(@Path("id") id: String): Call<List<Diseases>>
-
-    //end point of webservice
-    @Headers("Content-Type: application/json")
-    @POST("addDrug")
-    fun addDrugList(@Body newDrug: Diseases): Call<Diseases>
 
     //Social_History
 
@@ -45,7 +32,7 @@ interface Disease_service {
     @GET("Sociallist")
     fun getSocialList(@QueryMap filter: HashMap<String, String>): Call<List<Diseases>>
 
-    @GET("Sociallist/{id}")
+    @GET("habitlist/{id}")
     fun getSocialHabits(@Path("id") id: String): Call<List<Diseases>>
 
     //end point of webservice
@@ -54,8 +41,8 @@ interface Disease_service {
     fun addHabit(@Body newSocialHabits: Diseases): Call<Diseases>
 
     @Headers("Content-Type: application/json")
-    @POST("updateSocialRecord")
-    fun updateSocialHabits(@Body newSocial : String): Call<Diseases>
+    @POST("updateHabit")
+    fun updateHabit(@Body newSocialHabits: Diseases): Call<Diseases>
 
     //Family_History
 
@@ -79,7 +66,33 @@ interface Disease_service {
 
     @Headers("Content-Type: application/json")
     @POST("adddiet")
-    fun addDietList(@Body newDisease: Diseases): Call<Diseases>
+    fun addDietList(@Body newDiet: Diseases): Call<Diseases>
+
+    @GET("dietlist/{id}")
+    fun getDiet(@Path("id") id: String): Call<List<Diseases>>
+
+    @Headers("Content-Type: application/json")
+    @POST("updateDiet")
+    fun updateDiet(@Body newDiet: Diseases): Call<Diseases>
+
+//
+
+    //Adverse_Drug
+
+
+
+    @GET("addadverse_drug/{id}")
+    fun getDrug(@Path("id") id: String): Call<List<Diseases>>
+
+    //end point of webservice
+    @Headers("Content-Type: application/json")
+    @POST("addDrug")
+    fun addDrugList(@Body newDrug: Diseases): Call<Diseases>
+
+    @Headers("Content-Type: application/json")
+    @POST("updateadverse_drug")
+    fun updateAdverse_drug(@Body newDrug: Diseases): Call<Diseases>
+
 
 }
 

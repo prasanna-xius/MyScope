@@ -2,6 +2,7 @@ package com.example.myscope.activities.medical_history
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
@@ -45,6 +46,9 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
 
         btn_adverse_drug.setOnClickListener {
             assignValuestoVariable()
+
+
+            loadDetails()
 
 
             try {
@@ -91,6 +95,99 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
             })
         }
     }
+
+
+    private fun loadDetails() {
+
+
+        btn_adverse_drug_updated.visibility = View.VISIBLE
+        btn_adverse_drug.visibility = View.GONE
+
+
+
+        val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
+        val requestCall = diseaseService.getDrug("8142529582")
+
+
+        requestCall.enqueue(object : retrofit2.Callback<List<Diseases>> {
+
+            override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>> ) {
+
+                val destination = response.body()
+
+                val adverse_drug = destination?.first()
+//                Log.d("resp:", response.toString())
+//                Log.e("resp:", response.toString())
+
+
+                adverse_drug?.let {
+
+
+                    et_drug_Name.setText(adverse_drug.drugname)
+
+                    reaction_effect.setText(adverse_drug.reaction)
+                    et_date_of_start.setText(adverse_drug.date_of_start)
+
+                    et_treatment_taken.setText(adverse_drug.treatment_taken)
+
+                    initUpdateButton()
+
+                }
+
+            }
+            override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
+                Toast.makeText(this@Adverse_Drug_Reaction_Activity , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
+    private fun initUpdateButton() {
+
+        btn_adverse_drug_updated.setOnClickListener {
+
+            val newDrug = Diseases()
+
+
+
+            newDrug.smoking_duration = et_drug_Name!!.text.toString().trim()
+            newDrug.alcohol_duration = reaction_effect!!.text.toString().trim()
+            newDrug.smoking_duration = et_date_of_start!!.text.toString().trim()
+            newDrug.alcohol_duration = et_treatment_taken!!.text.toString().trim()
+
+            newDrug.mobile_no = "8142529582"
+
+
+            val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
+            val requestCall = destinationService.updateAdverse_drug(newDrug)
+
+            requestCall.enqueue(object: Callback<Diseases> {
+
+                override fun onResponse(call: Call<Diseases>, response: Response<Diseases>) {
+                    val resp = response
+                    if (response.isSuccessful)
+                    {
+
+                        Toast.makeText(this@Adverse_Drug_Reaction_Activity, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+
+                    }
+                    else {
+
+                        Toast.makeText(this@Adverse_Drug_Reaction_Activity  , "Failed to update item1", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                    Toast.makeText(this@Adverse_Drug_Reaction_Activity, "Failed to update item", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+        }
+
+
+    }
+
+
 
     private fun assignValuestoVariable() {
         val drugName = et_drug_Name.text.toString()

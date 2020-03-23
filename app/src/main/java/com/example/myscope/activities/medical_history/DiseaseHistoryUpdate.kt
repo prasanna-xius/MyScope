@@ -74,6 +74,8 @@ class DiseaseHistoryUpdate : BaseActivity() {
         }
 
 
+
+
         val bundle: Bundle? = intent.extras
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
@@ -100,8 +102,8 @@ class DiseaseHistoryUpdate : BaseActivity() {
             override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>> ) {
 
                 val destination = response.body()
-                Log.d("resp:", response.toString())
-                Log.e("resp:", response.toString())
+//                Log.d("resp:", response.toString())
+//                Log.e("resp:", response.toString())
                 val disease = destination?.get(position)
                 diseaseid = disease?.disease_id!!
 

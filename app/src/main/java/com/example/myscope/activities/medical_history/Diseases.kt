@@ -30,7 +30,13 @@ data class Diseases(var  known_condition : String? =null,
                     var family_note:String? =null,
                     var family_id:Int?=0,
 
-                    var diet:String?=null
+                    var diet:String?=null,
+
+                    var  drugname : String? =null,
+                    var reaction : String? =null,
+                    var date_of_start:String? =null,
+                    var treatment_taken:String?=null
+
 
 )
 
