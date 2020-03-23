@@ -6,12 +6,21 @@ import android.os.Build
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import com.example.myscope.ProfileDataClass
 
 import com.example.myscope.R
+import com.example.myscope.activities.services.ServiceBuilder1
+import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.disease_history.*
 import kotlinx.android.synthetic.main.view_userdetails_main.*
+import kotlinx.android.synthetic.main.view_userdetails_main.et_doctor_name
+import kotlinx.android.synthetic.main.view_userdetails_main.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.DateFormat
 import java.time.Year
 import java.util.*
@@ -60,8 +69,10 @@ class View_UserDetails_Activity : BaseActivity() {
         val familyIncomeAdaptor = ArrayAdapter(this,R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.familyIncome_array))
         spinnerfamilyIncome!!.adapter = familyIncomeAdaptor
-
-
+        if(!et_height.text.equals(null) && !et_weight.text.equals(null)) {
+            bmicalculator(et_height,et_weight,et_bmi)
+            showLongToast(et_bmi.text.toString())
+        }
         myCalendar = Calendar.getInstance()
 
 
@@ -72,6 +83,7 @@ class View_UserDetails_Activity : BaseActivity() {
         myCalendar.set(Calendar.DAY_OF_MONTH, dayofmonth)
         val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
             et_dob.setText(date1)
+
             validateDate1(et_dob,et_age)
 
         }
@@ -80,13 +92,63 @@ class View_UserDetails_Activity : BaseActivity() {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show()
             }
 
+
+
+
+
+
+
+
         btn_userProfile.setOnClickListener{
 
             assignValuestoVariable()
            validate(spinnergender!!)
             validate(spinner_bloodGroup!!)
-            bmicalculator(et_weight,et_height,et_bmi)
+            profileapi();
         }
+
+    }
+
+    private fun profileapi() {
+        val addPatient = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+        val profileclass = ProfileDataClass();
+        profileclass.first_name = et_first_name.text.toString()
+        profileclass.last_name = et_last_name.text.toString()
+        profileclass.gender = spinner_gender.selectedItem.toString()
+        profileclass.age = et_age.text.toString()
+        profileclass.blood_group = spinner_bloodGroup!!.selectedItem.toString()
+        profileclass.bmi = et_bmi.text.toString()
+        profileclass.doctor_name = et_doctor_name.text.toString()
+        profileclass.pharmacist_name = et_pharmacist_name.text.toString()
+        profileclass.weight = et_weight.text.toString()
+        profileclass.height = et_height.text.toString()
+        profileclass.dob = et_dob.text.toString()
+        profileclass.language = languagesKnown.selectedItemsAsString.toString()
+        profileclass.education = spinnereducationLevel!!.selectedItem.toString()
+        profileclass.family_income = spinnerfamilyIncome!!.selectedItem.toString()
+        profileclass.marrital_status = spinnermarriageStatus!!.selectedItem.toString()
+        profileclass.mobile_no = "8142529582"
+        profileclass.email = "pb@gmail.com"
+
+        val requestCall = addPatient.addProfile(profileclass)
+
+        requestCall.enqueue(object : Callback<ProfileDataClass> {
+            /**
+             * Invoked when a network exception occurred talking to the server or when an unexpected
+             * exception occurred creating the request or processing the response.
+             */
+            override fun onResponse(call: Call<ProfileDataClass>, resp: Response<ProfileDataClass>) {
+
+                if (resp.isSuccessful) {
+                    Toast.makeText(applicationContext, "Data added", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ProfileDataClass>, t: Throwable) {
+
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+            }
+        })
 
     }
 
@@ -110,6 +172,7 @@ class View_UserDetails_Activity : BaseActivity() {
         validateInput(et_pharmacist_name,pharmacistName)
         validateInput(et_weight,weight)
         validateInput(et_height,height)
+
 
 
         if((firstName!="")&&

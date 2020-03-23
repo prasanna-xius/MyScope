@@ -24,7 +24,7 @@
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".activities.Login_Page"
+            android:name=".activities.View_UserDetails_Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
 
@@ -40,10 +40,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <activity
-            android:name=".activities.prescription.Prescriptions_HomePage"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+<!--        <activity-->
+<!--            android:name=".activities.prescription.Prescriptions_HomePage"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:windowSoftInputMode="stateAlwaysHidden" />-->
         <activity
             android:name=".activities.Otp_Page"
             android:screenOrientation="portrait"
@@ -57,9 +57,9 @@
             android:name=".activities.Navigation_Drawer_Blogs"
             android:screenOrientation="portrait" />
 
-        <activity
-            android:name=".activities.View_UserDetails_Activity"
-            android:screenOrientation="portrait" />
+<!--        <activity-->
+<!--            android:name=".activities.View_UserDetails_Activity"-->
+<!--            android:screenOrientation="portrait" />-->
 
         <activity
             android:name=".activities.Dash_Board_Activity"

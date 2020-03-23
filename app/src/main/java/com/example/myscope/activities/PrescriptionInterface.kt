@@ -1,5 +1,6 @@
 package com.example.myscope.activities
 
+import com.example.myscope.ProfileDataClass
 import com.example.myscope.activities.prescription.PrescriptionDataClass
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -53,6 +54,10 @@ interface PrescriptionInterface {
     @Headers("Content-Type: application/json")
     @POST("addDruglist")
     fun addDrug(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
+
+    @Headers("Content-Type: application/json")
+    @POST("addpatientprofile")
+    fun addProfile(@Body newProfileDataClass: ProfileDataClass): Call<ProfileDataClass>
 
 
     @Multipart
