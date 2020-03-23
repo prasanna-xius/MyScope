@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.PrescriptionInterface
+import com.example.myscope.services.PrescriptionInterface
 import com.example.myscope.activities.services.ServiceBuilder1
 import com.google.android.gms.security.ProviderInstaller
 import com.google.android.material.floatingactionbutton.FloatingActionButton

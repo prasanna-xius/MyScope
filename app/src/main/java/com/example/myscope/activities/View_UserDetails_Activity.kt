@@ -2,8 +2,10 @@ package com.example.myscope.activities
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -13,11 +15,16 @@ import com.example.myscope.ProfileDataClass
 import com.example.myscope.R
 import com.example.myscope.activities.services.ServiceBuilder1
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
+import com.example.myscope.activities.prescription.PrescriptionDataClass
+import com.example.myscope.activities.services.ServiceBuilder1
+import com.example.myscope.services.PrescriptionInterface
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.disease_history.*
+import kotlinx.android.synthetic.main.prescribed_main.*
 import kotlinx.android.synthetic.main.view_userdetails_main.*
 import kotlinx.android.synthetic.main.view_userdetails_main.et_doctor_name
 import kotlinx.android.synthetic.main.view_userdetails_main.view.*
+import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,10 +37,14 @@ class View_UserDetails_Activity : BaseActivity() {
     internal lateinit var myCalendar: Calendar
 //    private var dateOfBirth = false
     var spinnergender: Spinner? = null
-    var spinner_bloodGroup: Spinner? = null
+    var spinner_bloodGroup1: Spinner? = null
     private var spinnereducationLevel: Spinner? = null
     var spinnermarriageStatus: Spinner? = null
     var spinnerfamilyIncome: Spinner? = null
+    private var registerCall: Call<SignupResponse>? = null
+
+    private var request: PrescriptionInterface? = null
+
 
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.N)
@@ -44,7 +55,7 @@ class View_UserDetails_Activity : BaseActivity() {
         header!!.text = "User Profile"
 
         spinnergender=findViewById(R.id.spinner_gender)
-        spinner_bloodGroup=findViewById(R.id.spinner_bloodGroup)
+        spinner_bloodGroup1=findViewById(R.id.spinner_bloodGroup)
         spinnereducationLevel=findViewById(R.id.spinner_educationLevel)
         spinnermarriageStatus=findViewById(R.id.spinner_maritalStatus)
         spinnerfamilyIncome=findViewById(R.id.spinner_familyIncome)
@@ -105,6 +116,7 @@ class View_UserDetails_Activity : BaseActivity() {
            validate(spinnergender!!)
             validate(spinner_bloodGroup!!)
             profileapi();
+
         }
 
     }
@@ -172,6 +184,7 @@ class View_UserDetails_Activity : BaseActivity() {
         validateInput(et_pharmacist_name,pharmacistName)
         validateInput(et_weight,weight)
         validateInput(et_height,height)
+        bmicalculator(et_weight,et_height,et_bmi)
 
 
 
@@ -185,7 +198,62 @@ class View_UserDetails_Activity : BaseActivity() {
            (!bloodGroup.equals("None"))&&
            (dob!= ""))
         {
-            showLongToast("save all details")
+            val newUserProfile = SignupResponse()
+
+            newUserProfile.first_name = et_first_name!!.text.toString().trim()
+            newUserProfile.last_name = et_last_name!!.text.toString().trim()
+            newUserProfile.mobile_no = et_mobile_no.text.toString().trim()
+
+            newUserProfile.email = et_email!!.text.toString().trim()
+            newUserProfile.gender = spinner_gender!!.getSelectedItem().toString()
+            newUserProfile.dob = et_dob!!.text.toString().trim()
+            newUserProfile.age = et_age!!.text.toString().trim()
+            newUserProfile.weight = et_weight!!.text.toString().trim()
+            newUserProfile.height = et_height!!.text.toString().trim()
+            newUserProfile.bmi = et_bmi!!.text.toString().trim()
+            newUserProfile.blood_group = spinner_bloodGroup!!.getSelectedItem().toString()
+            newUserProfile.doctor_name = et_doctor_name!!.text.toString().trim()
+            newUserProfile.pharmacist_name = et_pharmacist_name!!.text.toString().trim()
+            newUserProfile.languages_known = languagesKnown!!.selectedItemsAsString
+            newUserProfile.education = spinner_educationLevel!!.getSelectedItem().toString()
+            newUserProfile.marrital_status = spinner_maritalStatus!!.getSelectedItem().toString()
+            newUserProfile.family_income = spinner_familyIncome!!.getSelectedItem().toString()
+
+//            newPrescriptionDrug.prescription_id = prescription_id
+
+            val userprofileservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+
+            //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
+
+            val requestCall = userprofileservice.addUserProfile(newUserProfile)
+
+            requestCall.enqueue(object : Callback<SignupResponse> {
+                /**
+                 * Invoked when a network exception occurred talking to the server or when an unexpected
+                 * exception occurred creating the request or processing the response.
+                 */
+                override fun onResponse(call: Call<SignupResponse>, resp: Response<SignupResponse>) {
+
+                    if (resp.isSuccessful) {
+                        var newbody = resp.body() // Use it or ignore it
+                        Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
+                        val intent = intent
+                        finish()
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
+                    //finish()
+//                    Log.d("errormsgfailure ::", t.message)
+//                    Log.e("errorunderfailure:", t.message)
+                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
     }
+
+
 }

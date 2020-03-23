@@ -1,6 +1,7 @@
-package com.example.myscope.activities
+package com.example.myscope.services
 
 import com.example.myscope.ProfileDataClass
+import com.example.myscope.activities.SignupResponse
 import com.example.myscope.activities.prescription.PrescriptionDataClass
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -13,6 +14,9 @@ interface PrescriptionInterface {
 //    Call<List<PrescriptionManualDataClass>> getData();
     @POST("addRecord")
     fun createPatient(@Body body: SignupResponse?): Call<SignupResponse>?
+//
+//    @POST("addpatientprofile")
+//    fun createPatientprofile(@Body body: SignupResponse?): Call<SignupResponse>?
 
     @GET("Patientslist/{mobile_no}")
     fun loginPatient(@Path("mobile_no") mobile_no:String): Call<List<SignupResponse>>
@@ -58,7 +62,6 @@ interface PrescriptionInterface {
     @Headers("Content-Type: application/json")
     @POST("addpatientprofile")
     fun addProfile(@Body newProfileDataClass: ProfileDataClass): Call<ProfileDataClass>
-
 
     @Multipart
     @POST("preupload")
