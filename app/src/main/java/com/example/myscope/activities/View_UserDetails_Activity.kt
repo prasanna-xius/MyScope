@@ -15,8 +15,6 @@ import com.example.myscope.ProfileDataClass
 import com.example.myscope.R
 import com.example.myscope.activities.services.ServiceBuilder1
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
-import com.example.myscope.activities.prescription.PrescriptionDataClass
-import com.example.myscope.activities.services.ServiceBuilder1
 import com.example.myscope.services.PrescriptionInterface
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.disease_history.*
@@ -198,60 +196,60 @@ class View_UserDetails_Activity : BaseActivity() {
            (!bloodGroup.equals("None"))&&
            (dob!= ""))
         {
-            val newUserProfile = SignupResponse()
-
-            newUserProfile.first_name = et_first_name!!.text.toString().trim()
-            newUserProfile.last_name = et_last_name!!.text.toString().trim()
-            newUserProfile.mobile_no = et_mobile_no.text.toString().trim()
-
-            newUserProfile.email = et_email!!.text.toString().trim()
-            newUserProfile.gender = spinner_gender!!.getSelectedItem().toString()
-            newUserProfile.dob = et_dob!!.text.toString().trim()
-            newUserProfile.age = et_age!!.text.toString().trim()
-            newUserProfile.weight = et_weight!!.text.toString().trim()
-            newUserProfile.height = et_height!!.text.toString().trim()
-            newUserProfile.bmi = et_bmi!!.text.toString().trim()
-            newUserProfile.blood_group = spinner_bloodGroup!!.getSelectedItem().toString()
-            newUserProfile.doctor_name = et_doctor_name!!.text.toString().trim()
-            newUserProfile.pharmacist_name = et_pharmacist_name!!.text.toString().trim()
-            newUserProfile.languages_known = languagesKnown!!.selectedItemsAsString
-            newUserProfile.education = spinner_educationLevel!!.getSelectedItem().toString()
-            newUserProfile.marrital_status = spinner_maritalStatus!!.getSelectedItem().toString()
-            newUserProfile.family_income = spinner_familyIncome!!.getSelectedItem().toString()
-
-//            newPrescriptionDrug.prescription_id = prescription_id
-
-            val userprofileservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
-
-            //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
-
-            val requestCall = userprofileservice.addUserProfile(newUserProfile)
-
-            requestCall.enqueue(object : Callback<SignupResponse> {
-                /**
-                 * Invoked when a network exception occurred talking to the server or when an unexpected
-                 * exception occurred creating the request or processing the response.
-                 */
-                override fun onResponse(call: Call<SignupResponse>, resp: Response<SignupResponse>) {
-
-                    if (resp.isSuccessful) {
-                        var newbody = resp.body() // Use it or ignore it
-                        Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
-                        val intent = intent
-                        finish()
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
-                    //finish()
-//                    Log.d("errormsgfailure ::", t.message)
-//                    Log.e("errorunderfailure:", t.message)
-                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
-                }
-            })
+//            val newUserProfile = SignupResponse()
+//
+//            newUserProfile.first_name = et_first_name!!.text.toString().trim()
+//            newUserProfile.last_name = et_last_name!!.text.toString().trim()
+//            newUserProfile.mobile_no = et_mobile_no.text.toString().trim()
+//
+//            newUserProfile.email = et_email!!.text.toString().trim()
+//            newUserProfile.gender = spinner_gender!!.getSelectedItem().toString()
+//            newUserProfile.dob = et_dob!!.text.toString().trim()
+//            newUserProfile.age = et_age!!.text.toString().trim()
+//            newUserProfile.weight = et_weight!!.text.toString().trim()
+//            newUserProfile.height = et_height!!.text.toString().trim()
+//            newUserProfile.bmi = et_bmi!!.text.toString().trim()
+//            newUserProfile.blood_group = spinner_bloodGroup!!.getSelectedItem().toString()
+//            newUserProfile.doctor_name = et_doctor_name!!.text.toString().trim()
+//            newUserProfile.pharmacist_name = et_pharmacist_name!!.text.toString().trim()
+//            newUserProfile.languages_known = languagesKnown!!.selectedItemsAsString
+//            newUserProfile.education = spinner_educationLevel!!.getSelectedItem().toString()
+//            newUserProfile.marrital_status = spinner_maritalStatus!!.getSelectedItem().toString()
+//            newUserProfile.family_income = spinner_familyIncome!!.getSelectedItem().toString()
+//
+////            newPrescriptionDrug.prescription_id = prescription_id
+//
+//            val userprofileservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+//
+//            //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
+//
+//            val requestCall = userprofileservice.addUserProfile(newUserProfile)
+//
+//            requestCall.enqueue(object : Callback<SignupResponse> {
+//                /**
+//                 * Invoked when a network exception occurred talking to the server or when an unexpected
+//                 * exception occurred creating the request or processing the response.
+//                 */
+//                override fun onResponse(call: Call<SignupResponse>, resp: Response<SignupResponse>) {
+//
+//                    if (resp.isSuccessful) {
+//                        var newbody = resp.body() // Use it or ignore it
+//                        Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
+//                        val intent = intent
+//                        finish()
+//                        startActivity(intent)
+//                    } else {
+//                        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
+//                    //finish()
+////                    Log.d("errormsgfailure ::", t.message)
+////                    Log.e("errorunderfailure:", t.message)
+//                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+//                }
+//            })
         }
     }
 
