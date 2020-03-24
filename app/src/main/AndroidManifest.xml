@@ -62,7 +62,7 @@
 
 <!--        <activity android:name=".activities.medical_history.Medical_History_HomePage" />-->
 
-<!--        <activity android:name=".activities.medical_history.Medical_History"/>-->
+        <activity android:name=".activities.medical_history.Disease_History"/>
 <!--        <activity android:name=".activities.medical_history.Family_History"/>-->
 <!--        <activity android:name=".activities.medical_history.Social_History"/>-->
 <!--        <activity android:name=".activities.medical_history.Diet"/>-->
