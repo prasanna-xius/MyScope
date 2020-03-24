@@ -24,7 +24,7 @@
 
 <!--        <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"-->
 <!--            android:screenOrientation="portrait"></activity>-->
-        <activity android:name=".activities.medical_history.AllergyItemListActivity">
+        <activity android:name=".activities.medical_history.Social_History">
 
 
             <intent-filter>
@@ -95,8 +95,8 @@
 
         <activity android:name=".activities.medical_history.Family_History"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activities.medical_history.Social_History"
-            android:screenOrientation="portrait"/>
+<!--        <activity android:name=".activities.medical_history.Social_History"-->
+<!--            android:screenOrientation="portrait"/>-->
         <activity android:name=".activities.medical_history.Diet"
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.prescription.Prescriptions_HomePage"

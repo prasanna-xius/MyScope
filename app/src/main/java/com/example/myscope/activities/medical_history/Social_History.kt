@@ -118,7 +118,7 @@ class Social_History : BaseActivity() {
             newSocialHabits.tobacco = tobacco_usage!!.selectedStrings.toString()
             newSocialHabits.alcohol = spinner_drinking!!.getSelectedItem().toString()
             newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
-            newSocialHabits.mobile_no = "7075426603"
+            newSocialHabits.mobile_no = "8142529582"
 
             val socialService = ServiceBuilder.buildService(Disease_service::class.java)
 
@@ -155,8 +155,7 @@ class Social_History : BaseActivity() {
     private fun loadDetails() {
 
 
-        btn_social_updated.visibility = View.VISIBLE
-        btn_social.visibility = View.GONE
+
 
 //        val alcoholtaken = tobaccoUsage!!.social_multi.text.toString()
 
@@ -170,6 +169,12 @@ class Social_History : BaseActivity() {
 
                 val destination = response.body()
 
+                if(destination!!.isEmpty()){
+                    btn_social_updated.visibility = View.GONE
+                    btn_social.visibility = View.VISIBLE
+
+                } else{
+
                 val social = destination?.first()
 //                Log.d("resp:", response.toString())
 //                Log.e("resp:", response.toString())
@@ -177,12 +182,12 @@ class Social_History : BaseActivity() {
 
                 social?.let {
 
-                 //   val timeitem = tobaccoUsage!!.social_multi.text.toString()
+                    //   val timeitem = tobaccoUsage!!.social_multi.text.toString()
                     spinnersmoking?.text1?.setText(social.smoking)
 
                     et_smoking_yrs.setText(social.smoking_duration)
 
-                    spinner_drinking.text1.setText(social.alcohol)
+                    spinner_drinking?.text1?.setText(social.alcohol)
 
                     tobaccoUsage!!.social_multi?.setText(social.tobacco)
 
@@ -192,7 +197,10 @@ class Social_History : BaseActivity() {
                     et_YrsOfDrinking.setText(social.alcohol_duration)
 
                     initUpdateButton()
+                    btn_social_updated.visibility = View.VISIBLE
+                    btn_social.visibility = View.GONE
 
+                }
                 }
 
             }
@@ -240,7 +248,7 @@ class Social_History : BaseActivity() {
             newSocialHabits.smoking_duration = et_smoking_yrs!!.text.toString().trim()
             newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
 
-            newSocialHabits.mobile_no = "7075426603"
+            newSocialHabits.mobile_no = "8142529582"
 
 
             val destinationService = ServiceBuilder.buildService(Disease_service::class.java)

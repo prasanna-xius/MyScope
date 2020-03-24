@@ -104,14 +104,21 @@ class Diet : BaseActivity() {
             override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>> ) {
 
                 val destination = response.body()
+                if(destination!!.isEmpty()){
+                    btn_diet_updated.visibility = View.GONE
+                    btn_diet.visibility = View.VISIBLE
+                }
 
                 val diet = destination?.first()
 //                Log.d("resp:", response.toString())
 //                Log.e("resp:", response.toString())
 
+
                 diet?.let {
 
                     spinner_diet?.text1?.setText(diet.diet)
+                    btn_diet_updated.visibility = View.VISIBLE
+                    btn_diet.visibility = View.GONE
 
                     initUpdateButton()
                 }
