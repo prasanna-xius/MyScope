@@ -253,8 +253,6 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
             else {
 
-
-
                 val newPrescriptionDrug = PrescriptionDataClass()
 
                 newPrescriptionDrug.formulation = d.formulation_id?.getSelectedItem().toString()

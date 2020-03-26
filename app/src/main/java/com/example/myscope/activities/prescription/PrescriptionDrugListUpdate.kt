@@ -49,7 +49,6 @@ class PrescriptionDrugListUpdate : BaseActivity() {
 //        time_of_taken_select =  findViewById(R.id.time_of_taken_update)
         dose_unit_select = findViewById(R.id.dose_unit_update)
 //        how_often_taken_select =findViewById(R.id.how_often_taken_update)
-
         brandname = findViewById<View>(R.id.brand_name_update) as EditText
         drugname = findViewById<View>(R.id.drug_name_update) as AutoCompleteTextView
         dosestrength = findViewById<View>(R.id.dose_strength) as EditText

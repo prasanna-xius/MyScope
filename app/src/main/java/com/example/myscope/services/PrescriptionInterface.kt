@@ -21,6 +21,15 @@ interface PrescriptionInterface {
     @GET("Patientslist/{mobile_no}")
     fun loginPatient(@Path("mobile_no") mobile_no:String): Call<List<SignupResponse>>
 
+//    @GET("Patientslist")
+//    fun userprofileget(@Path("mobile") mobile:String?): Call<List<SignupResponse>>
+
+
+    @Headers("Content-Type:application/json")
+    @GET("Patientslist/{mobile_no}")
+    fun userprofileget(@Path("mobile_no") mobile_no:String): Call<List<SignupResponse>>
+
+
     //end point of webservice
     @Headers("Content-Type:application/json")
     @GET("doctorlist")
@@ -62,6 +71,11 @@ interface PrescriptionInterface {
     @Headers("Content-Type: application/json")
     @POST("addpatientprofile")
     fun addProfile(@Body newProfileDataClass: ProfileDataClass): Call<ProfileDataClass>
+
+    @Headers("Content-Type:application/json")
+    @GET("Patientsprofile/{mobile_no}")
+    fun getAllprofiledata(@Path("mobile_no") mobile_no:String?): Call<List<ProfileDataClass>>
+
 
     @Multipart
     @POST("preupload")
