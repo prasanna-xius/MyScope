@@ -273,15 +273,15 @@ class View_UserDetails_Activity : BaseActivity() {
 
         val newuserProfile = ProfileDataClass()
 
-        newuserProfile.gender = spinnergender_get?.getSelectedItem().toString()
+        newuserProfile.gender = spinnergender_get!!.getSelectedItem().toString()
 
-        newuserProfile.education = spinnereducationLevel_get?.getSelectedItem().toString()
+        newuserProfile.education = spinnereducationLevel_get!!.getSelectedItem().toString()
 
-        newuserProfile.marrital_status = spinnermarriageStatus_get?.getSelectedItem().toString()
+        newuserProfile.marrital_status = spinnermarriageStatus_get!!.getSelectedItem().toString()
 
-        newuserProfile.family_income = spinnerfamilyIncome_get?.getSelectedItem().toString()
+        newuserProfile.family_income = spinnerfamilyIncome_get!!.getSelectedItem().toString()
 
-        newuserProfile.blood_group = spinner_bloodGroup_get?.getSelectedItem().toString()
+        newuserProfile.blood_group = spinner_bloodGroup_get!!.getSelectedItem().toString()
         newuserProfile.language = languagesKnown_get!!.selectedItemsAsString
 
 
