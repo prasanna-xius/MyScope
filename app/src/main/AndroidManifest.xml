@@ -22,8 +22,12 @@
         <!-- <activity android:name=".activities.medical_history.FamilyHistoryRecyclerView"></activity> -->
         <activity android:name=".activities.medical_history.FamilyHistoryUpdated" />
         <activity android:name=".activities.medical_history.DiseaseHistoryUpdate" />
+        <activity android:name=".activities.medical_history.DiseaseHistoryUpdate" /> <!-- <activity android:name=".activities.medical_history."></activity> -->
 
-<!--          <activity android:name=".activities.medical_history."></activity>-->
+<!--        <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"-->
+<!--            android:screenOrientation="portrait"></activity>-->
+        <activity android:name=".activities.medical_history.Social_History">
+
 
         <activity android:name=".activities.medical_history.Services_medical_history">
             <intent-filter>
@@ -67,6 +71,7 @@
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
         <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
+
         <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
         <activity
             android:name=".activities.Navigation_Drawer_Blogs"
@@ -97,6 +102,7 @@
             android:screenOrientation="portrait" />
 <!--        <activity-->
 <!--            android:name=".activities.medical_history.ImmunizationHistory"-->
+
 <!--            android:screenOrientation="portrait"/>-->
 <!--        <activity android:name=".activities.medical_history.MedicationHistory"-->
 <!--        android:screenOrientation="portrait"/>-->
