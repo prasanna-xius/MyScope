@@ -18,6 +18,7 @@ import com.example.myscope.ProfileDataClass
 
 import com.example.myscope.R
 import com.example.myscope.activities.prescription.PrescriptionDataClass
+import com.example.myscope.activities.prescription.Prescription_manualDrugDialog
 import com.example.myscope.activities.services.ServiceBuilder1
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import com.example.myscope.services.PrescriptionInterface
@@ -247,9 +248,9 @@ class View_UserDetails_Activity : BaseActivity() {
 
         btn_update_userProfile.setOnClickListener {
 
-            assignValuestoVariable()
-            validate(spinnergender_get!!)
-            validate(spinner_bloodGroup!!)
+//            assignValuestoVariable()
+//            validate(spinnergender_get!!)
+//            validate(spinner_bloodGroup!!)
             profileupdateapi();
 
         }
@@ -268,6 +269,66 @@ class View_UserDetails_Activity : BaseActivity() {
     }
 
     private fun profileupdateapi() {
+
+
+        val newuserProfile = ProfileDataClass()
+
+        newuserProfile.gender = spinnergender_get?.getSelectedItem().toString()
+
+        newuserProfile.education = spinnereducationLevel_get?.getSelectedItem().toString()
+
+        newuserProfile.marrital_status = spinnermarriageStatus_get?.getSelectedItem().toString()
+
+        newuserProfile.family_income = spinnerfamilyIncome_get?.getSelectedItem().toString()
+
+        newuserProfile.blood_group = spinner_bloodGroup_get?.getSelectedItem().toString()
+        newuserProfile.language = languagesKnown_get!!.selectedItemsAsString
+
+
+        newuserProfile.email = email_get!!.text.toString().trim()
+        newuserProfile.mobile_no = mobile_number_get!!.text.toString().trim()
+        newuserProfile.first_name = first_name_get!!.text.toString().trim()
+        newuserProfile.last_name = last_name_get!!.text.toString().trim()
+        newuserProfile.dob = dob_get!!.text.toString().trim()
+        newuserProfile.age = age_get!!.text.toString().trim()
+        newuserProfile.bmi = bmi_get!!.text.toString().trim()
+        newuserProfile.doctor_name = doctorname_get!!.text.toString().trim()
+        newuserProfile.pharmacist_name = pharmacist_name_get!!.text.toString().trim()
+        newuserProfile.height = height_get!!.text.toString().trim()
+        newuserProfile.weight = weight_get!!.text.toString().trim()
+
+
+        val profileUserservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+
+        //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
+
+        val requestCall = profileUserservice.updateUser(newuserProfile)
+
+        requestCall.enqueue(object : Callback<ProfileDataClass> {
+            /**
+             * Invoked when a network exception occurred talking to the server or when an unexpected
+             * exception occurred creating the request or processing the response.
+             */
+            override fun onResponse(call: Call<ProfileDataClass>, resp: Response<ProfileDataClass>) {
+
+                if (resp.isSuccessful) {
+                    var newbody = resp.body() // Use it or ignore it
+                    Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(applicationContext, Prescription_manualDrugDialog::class.java)
+//                    val bundle = Bundle()
+//                    bundle.putInt("prescription_id", prescription_idupdate)
+//                    intent.putExtras(bundle)
+//                    startActivity(intent)
+                } else {
+                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ProfileDataClass>, t: Throwable) {
+
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+            }
+        })
 
 
     }
