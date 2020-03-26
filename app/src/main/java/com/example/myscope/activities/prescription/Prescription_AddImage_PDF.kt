@@ -67,10 +67,21 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
             when (which) {
                 0 -> choosephotofromgallery()
                 1 -> choosephotofromcamera()
-                //2 -> selectfilechooser()
+                2 -> selectfilechooser()
             }
         }
         pictureDialog.show()
+    }
+
+    private fun selectfilechooser() {
+
+        val intent = Intent( Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("application/pdf");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Pdf"), 102);
+
+
     }
 
     /*private fun selectfilechooser() {
@@ -85,9 +96,10 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         startActivityForResult(intent, 101)
 
     }
+
     private fun choosephotofromgallery() {
         //val intent = Intent(Intent.ACTION_GET_CONTENT)
-        val Intent  = Intent(
+        val Intent = Intent(
                 Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         intent.type = "image/jpeg"
@@ -98,6 +110,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         /*fun workingORnot(){
     }*/
     }
+
     @SuppressLint("MissingSuperCall")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -116,7 +129,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                 try {
 
                     val thumbnail = data!!.extras!!.get("data") as Bitmap
-                    val stream: ByteArrayOutputStream =  ByteArrayOutputStream();
+                    val stream: ByteArrayOutputStream = ByteArrayOutputStream();
                     thumbnail.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     uploadImage(stream.toByteArray())
                 } catch (e: IOException) {
@@ -124,7 +137,19 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                 }
             }
         }
+        if (requestCode == 102) {
+            if (resultCode == RESULT_OK) {
+
+                val `is` = contentResolver.openInputStream(data?.data!!)
+                uploadImage(getBytes(`is`!!))
+//              val file = data!!.extras!!.get("data") as File
+//      val fis: FileInputStream = FileInputStream(file);
+//      val bos : ByteArrayOutputStream = ByteArrayOutputStream();
+//                uploadImage(fis.readBytes())
+            }
+        }
     }
+
     @Throws(IOException::class)
     fun getBytes(`is`: InputStream): ByteArray {
         val byteBuff = ByteArrayOutputStream()
@@ -138,6 +163,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         }
         return byteBuff.toByteArray()
     }
+
     private fun uploadImage(imageBytes: ByteArray) {
         val retrofit = Retrofit.Builder()
                 .baseUrl(URL)
@@ -167,12 +193,14 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                     }
                 }
             }
+
             override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
                 //mProgressBar!!.visibility = View.GONE
                 //Log.d(TAG, "onFailure: " + t.localizedMessage)
             }
         })
     }
+
     companion object {
         val TAG = Prescription_AddImage_PDF::class.java!!.getSimpleName()
         private val INTENT_REQUEST_CODE = 100
