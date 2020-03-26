@@ -17,108 +17,105 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-<!--        <activity android:name=".activities.medical_history.FamilyHistoryRecyclerView"></activity>-->
+<!--        <activity android:name=".activities.medical_history.Social_History_Updated"></activity>-->
+        <!-- <activity android:name=".activities.medical_history.Services_medical_history"></activity> -->
+        <!-- <activity android:name=".activities.medical_history.FamilyHistoryRecyclerView"></activity> -->
         <activity android:name=".activities.medical_history.FamilyHistoryUpdated" />
+        <activity android:name=".activities.medical_history.DiseaseHistoryUpdate" />
 
-        <activity android:name=".activities.medical_history.DiseaseHistoryUpdate" /> <!-- <activity android:name=".activities.medical_history."></activity> -->
+<!--          <activity android:name=".activities.medical_history."></activity>-->
 
-<!--        <activity android:name=".activities.prescription.Prescriptionmanual_recyclerview"-->
-<!--            android:screenOrientation="portrait"></activity>-->
-        <activity android:name=".activities.medical_history.AllergyItemListActivity">
-
-
+        <activity android:name=".activities.medical_history.Services_medical_history">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-<!--        <activity-->
-<!--            android:name=".activities.prescription.DetailActivity"-->
-
-<!--      ></activity>-->
-
-        <!--         <activity android:name=".activities.Prescription_manualDrugDialog" />-->
+        </activity> <!-- <activity -->
+        <!-- android:name=".activities.prescription.DetailActivity" -->
+        <!-- ></activity> -->
+        <!-- <activity android:name=".activities.Prescription_manualDrugDialog" /> -->
         <activity
             android:name=".activities.SignUp_Page"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activities.Login_Page"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activities.Otp_Page"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activities.MobileChange_Activity"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-<!--        <activity android:name=".activities.Navigation_Drawer_Blogs" />-->
-<!--        <activity android:name=".activities.View_UserDetails_Activity" />-->
-<!--        <activity android:name=".activities.Dash_Board_Activity" />-->
-
-
-<!--        <activity android:name=".activities.medical_history.Medical_History_HomePage" />-->
-
-<!--        <activity android:name=".activities.medical_history.Medical_History"/>-->
-<!--        <activity android:name=".activities.medical_history.Family_History"/>-->
-<!--        <activity android:name=".activities.medical_history.Social_History"/>-->
-<!--        <activity android:name=".activities.medical_history.Diet"/>-->
-<!--        <activity android:name=".activities.medical_history.Allergies"/>-->
-<!--        <activity android:name=".activities.medical_history.ImmunizationHistory" />-->
-<!--        <activity android:name=".activities.medical_history.MedicationHistory" />-->
-<!--        <activity android:name=".activities.medical_history.SurgeryHistory" />-->
-<!--        <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" />-->
-
-
-<!--        <activity android:name=".activities.prescription.Prescriptions_HomePage" />-->
-        <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
-
-<!--        <activity android:name=".ImageUpload" />-->
+            android:windowSoftInputMode="stateAlwaysHidden" /> <!-- <activity android:name=".activities.Navigation_Drawer_Blogs" /> -->
+        <!-- <activity android:name=".activities.View_UserDetails_Activity" /> -->
+        <!-- <activity android:name=".activities.Dash_Board_Activity" /> -->
+        <!-- <activity android:name=".activities.medical_history.Medical_History_HomePage" /> -->
+        <!-- <activity android:name=".activities.medical_history.Medical_History"/> -->
+        <!-- <activity android:name=".activities.medical_history.Family_History"/> -->
+        <!-- <activity android:name=".activities.medical_history.Social_History"/> -->
+        <!-- <activity android:name=".activities.medical_history.Diet"/> -->
+        <!-- <activity android:name=".activities.medical_history.Allergies"/> -->
+        <!-- <activity android:name=".activities.medical_history.ImmunizationHistory" /> -->
+        <!-- <activity android:name=".activities.medical_history.MedicationHistory" /> -->
+        <!-- <activity android:name=".activities.medical_history.SurgeryHistory" /> -->
+        <!-- <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity" /> -->
+        <!-- <activity android:name=".activities.prescription.Prescriptions_HomePage" /> -->
+        <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" /> <!-- <activity android:name=".ImageUpload" /> -->
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
         <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
-
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
-
-        <activity android:name=".activities.labReports.Lab_Reports_Homepage"/>
-
-        <activity android:name=".activities.Navigation_Drawer_Blogs"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.View_UserDetails_Activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.Dash_Board_Activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.medical_history.Medical_History_HomePage"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".activities.medical_history.Family_History"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.medical_history.Social_History"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.medical_history.Diet"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.prescription.Prescriptions_HomePage"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.medical_history.Allergies"
-            android:screenOrientation="portrait"/>
-<!--        <activity android:name=".activities.medical_history.ImmunizationHistory"-->
+        <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
+        <activity
+            android:name=".activities.Navigation_Drawer_Blogs"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.View_UserDetails_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Dash_Board_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.medical_history.Medical_History_HomePage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.medical_history.Family_History"
+            android:screenOrientation="portrait" />
+        <activity
+        android:name=".activities.medical_history.Social_History"
+        android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.medical_history.Diet"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.prescription.Prescriptions_HomePage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.medical_history.Allergies"
+            android:screenOrientation="portrait" />
+<!--        <activity-->
+<!--            android:name=".activities.medical_history.ImmunizationHistory"-->
 <!--            android:screenOrientation="portrait"/>-->
 <!--        <activity android:name=".activities.medical_history.MedicationHistory"-->
-<!--            android:screenOrientation="portrait"/>-->
+<!--        android:screenOrientation="portrait"/>-->
 <!--        <activity android:name=".activities.medical_history.SurgeryHistory"-->
-<!--            android:screenOrientation="portrait"/>-->
-        <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ImageUpload"
-            android:screenOrientation="portrait"/>
-<!--        <activity android:name=".activities.prescription.Prescription_manual"-->
-<!--            android:screenOrientation="portrait"/>-->
-        <activity android:name=".activities.medical_history.AllergyUpdate_Activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.Medical_Documents_HomePage"
-            android:screenOrientation="portrait"/>
+<!--         android:screenOrientation="portrait"/>-->
+         <activity
+           android:name=".activities.medical_history.Adverse_Drug_Reaction_Activity"
+           android:screenOrientation="portrait" />
+        <activity
+
+            android:name=".ImageUpload"
+            android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.prescription.Prescription_manual" -->
+        <!-- android:screenOrientation="portrait"/> -->
+        <activity
+            android:name=".activities.medical_history.AllergyUpdate_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Medical_Documents_HomePage"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

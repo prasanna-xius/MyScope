@@ -35,8 +35,16 @@ data class Diseases(var  known_condition : String? =null,
                     var  drugname : String? =null,
                     var reaction : String? =null,
                     var date_of_start:String? =null,
-                    var treatment_taken:String?=null
+                    var treatment_taken:String?=null,
 
+
+
+
+                    var  patient_counselling : Boolean? =null,
+                    var drug_interaction : Boolean? =null,
+                    var prescription_adult:Boolean? =null,
+                    var adverse_drug_monitering:Boolean?=null,
+                    var post_dicharge_package:Boolean?=null
 
 )
 
