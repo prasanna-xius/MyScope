@@ -27,9 +27,9 @@ import kotlinx.android.synthetic.main.login_page_main.*
 import kotlinx.android.synthetic.main.prescribed_main.*
 import kotlinx.android.synthetic.main.prescribed_main_view.*
 import kotlinx.android.synthetic.main.prescription_multi_item.view.*
+import kotlinx.android.synthetic.main.profile_user_language.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import kotlinx.android.synthetic.main.view_userdetails_main.*
-import kotlinx.android.synthetic.main.view_userdetails_main.et_doctor_name
 import kotlinx.android.synthetic.main.view_userdetails_main.view.*
 import org.json.JSONException
 import retrofit2.Call
@@ -44,18 +44,28 @@ class View_UserDetails_Activity : BaseActivity() {
     internal lateinit var myCalendar: Calendar
 
     //    private var dateOfBirth = false
-    var spinnergender: Spinner? = null
-    var spinner_bloodGroup1: Spinner? = null
-    private var spinnereducationLevel: Spinner? = null
-    var spinnermarriageStatus: Spinner? = null
-    var spinnerfamilyIncome: Spinner? = null
+    var spinnergender_get: Spinner? = null
+    var spinner_bloodGroup_get: Spinner? = null
+    var languagesKnown_get: MultiSelectionlanuageSpinner? = null
+    private var spinnereducationLevel_get: Spinner? = null
+    var spinnermarriageStatus_get: Spinner? = null
+    var spinnerfamilyIncome_get: Spinner? = null
     private var registerCall: Call<SignupResponse>? = null
     private var request: PrescriptionInterface? = null
-    var b: Button? = null
+
     var first_name_get: EditText? = null
     var last_name_get: EditText? = null
     var mobile_number_get: EditText? = null
     var email_get: EditText? = null
+
+    var dob_get: TextView? = null
+    var age_get: TextView? = null
+    var doctorname_get: EditText? = null
+    var pharmacist_name_get: EditText? = null
+    var height_get: EditText? = null
+    var weight_get: EditText? = null
+    var bmi_get: TextView? = null
+
 
 
     var mobile_no: String? = null
@@ -80,24 +90,32 @@ class View_UserDetails_Activity : BaseActivity() {
 //        showLongToast(mobile_no.toString())
 
 
-        spinnergender = findViewById(R.id.spinner_gender)
-        spinner_bloodGroup1 = findViewById(R.id.spinner_bloodGroup)
-        spinnereducationLevel = findViewById(R.id.spinner_educationLevel)
-        spinnermarriageStatus = findViewById(R.id.spinner_maritalStatus)
-        spinnerfamilyIncome = findViewById(R.id.spinner_familyIncome)
+        spinnergender_get = findViewById(R.id.spinner_gender)
+        spinner_bloodGroup_get = findViewById<View>(R.id.spinner_bloodGroup) as Spinner
+        spinnereducationLevel_get = findViewById(R.id.spinner_educationLevel)
+        spinnermarriageStatus_get = findViewById(R.id.spinner_maritalStatus)
+        spinnerfamilyIncome_get = findViewById(R.id.spinner_familyIncome)
 
         first_name_get = findViewById<View>(R.id.et_first_name) as EditText
         last_name_get = findViewById<View>(R.id.et_last_name) as EditText
         mobile_number_get = findViewById<View>(R.id.et_mobile_no) as EditText
         email_get = findViewById<View>(R.id.et_email) as EditText
 
-        val languagesKnown = findViewById<MultiSelectionSpinner>(R.id.languagesKnown)
+        age_get = findViewById<View>(R.id.et_age) as TextView
+        bmi_get = findViewById<View>(R.id.et_bmi) as TextView
+        doctorname_get = findViewById<View>(R.id.et_doctor_name_user) as EditText
+        height_get = findViewById<View>(R.id.et_height) as EditText
+        weight_get = findViewById<View>(R.id.et_weight) as EditText
+        pharmacist_name_get = findViewById<View>(R.id.et_pharmacist_name) as EditText
+        dob_get = findViewById<View>(R.id.et_dob) as TextView
 
-        languagesKnown.setItems(resources.getStringArray(R.array.languagesKnown_array))
+         languagesKnown_get = findViewById<MultiSelectionlanuageSpinner>(R.id.languagesKnown)
+
+        languagesKnown_get!!.setItems(resources.getStringArray(R.array.languagesKnown_array))
 
         val genderAdapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.gender_array))
-        spinnergender!!.adapter = genderAdapter
+        spinnergender_get!!.adapter = genderAdapter
 
         val bloodGroupAdapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.bloodGroup_array))
@@ -105,14 +123,14 @@ class View_UserDetails_Activity : BaseActivity() {
 
         val educationLevelAdaptor = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.educationLevel_array))
-        spinnereducationLevel!!.adapter = educationLevelAdaptor
+        spinnereducationLevel_get!!.adapter = educationLevelAdaptor
 
         val marriageStatusAdaptor = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.marriageStatus_array))
-        spinnermarriageStatus!!.adapter = marriageStatusAdaptor
+         spinnermarriageStatus_get!!.adapter = marriageStatusAdaptor
         val familyIncomeAdaptor = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.familyIncome_array))
-        spinnerfamilyIncome!!.adapter = familyIncomeAdaptor
+        spinnerfamilyIncome_get!!.adapter = familyIncomeAdaptor
         if (!et_height.text.equals(null) && !et_weight.text.equals(null)) {
             bmicalculator(et_height, et_weight, et_bmi)
             showLongToast(et_bmi.text.toString())
@@ -135,15 +153,6 @@ class View_UserDetails_Activity : BaseActivity() {
             DatePickerDialog(this, R.style.MyDatePicker, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show()
         }
-
-//        if(TextUtils.isEmpty(et_first_name.toString()))
-//        {
-//            btn_save_userProfile.setVisibility(View.GONE);
-//        }
-//        else
-//        {
-//            btn_save_userProfile.setVisibility(View.VISIBLE);
-//        }
 
 
         val userProfileService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
@@ -179,19 +188,76 @@ class View_UserDetails_Activity : BaseActivity() {
             }
         })
 
+        val userGetProfileService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+        val requestGetValuesCall = userGetProfileService.userprofilegetAllValues(mobile_no!!)
+
+        requestGetValuesCall.enqueue(object : Callback<List<ProfileDataClass>> {
+            /**
+             * Invoked when a network exception occurred talking to the server or when an unexpected
+             * exception occurred creating the request or processing the response.
+             */
+            override fun onResponse(call: Call<List<ProfileDataClass>>, resp: Response<List<ProfileDataClass>>) {
+
+                if (resp.isSuccessful) {
+                    var newbody = resp.body()
+                    val userprofileallvaluesget = newbody?.first()
+
+                    first_name_get!!.setText(userprofileallvaluesget!!.first_name)
+                    last_name_get!!.setText(userprofileallvaluesget.last_name)
+                    mobile_number_get!!.setText(userprofileallvaluesget.mobile_no)
+                    email_get!!.setText(userprofileallvaluesget.email)
+
+                    age_get!!.setText(userprofileallvaluesget.age)
+                    bmi_get!!.setText(userprofileallvaluesget.bmi)
+                    height_get!!.setText(userprofileallvaluesget.height)
+                    weight_get!!.setText(userprofileallvaluesget.weight)
+                    dob_get!!.setText(userprofileallvaluesget.dob)
+                    doctorname_get!!.setText(userprofileallvaluesget.doctor_name)
+                    pharmacist_name_get!!.setText(userprofileallvaluesget.pharmacist_name)
+
+                    val spinner_bloodGroup_get = bloodGroupAdapter.getPosition(userprofileallvaluesget.blood_group);
+                    spinner_bloodGroup.setSelection(spinner_bloodGroup_get);
+                    val spinnereducationLevel_get = educationLevelAdaptor.getPosition(userprofileallvaluesget.education);
+                    spinner_gender.setSelection(spinnereducationLevel_get);
+                    val spinnergender_get = genderAdapter.getPosition(userprofileallvaluesget.gender);
+                    spinner_educationLevel.setSelection(spinnergender_get);
+                    val spinnerfamilyIncome_get = familyIncomeAdaptor.getPosition(userprofileallvaluesget.family_income);
+                    spinner_maritalStatus.setSelection(spinnerfamilyIncome_get);
+                    val spinnermarriageStatus_get = marriageStatusAdaptor.getPosition(userprofileallvaluesget.marrital_status);
+                    spinner_familyIncome.setSelection(spinnermarriageStatus_get);
+
+
+
+                    languagesKnown_get!!.lanuages_multi?.setText(userprofileallvaluesget.language)
+
+
+
+                    Toast.makeText(applicationContext, "API success" , Toast.LENGTH_SHORT).show()
+
+                } else {
+                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<ProfileDataClass>>, t: Throwable) {
+
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         btn_update_userProfile.setOnClickListener {
 
             assignValuestoVariable()
-            validate(spinnergender!!)
+            validate(spinnergender_get!!)
             validate(spinner_bloodGroup!!)
-            profilepostapi();
+            profileupdateapi();
 
         }
 
         btn_save_userProfile.setOnClickListener {
 
             assignValuestoVariable()
-            validate(spinnergender!!)
+            validate(spinnergender_get!!)
             validate(spinner_bloodGroup!!)
             profilepostapi();
 
@@ -201,27 +267,32 @@ class View_UserDetails_Activity : BaseActivity() {
 
     }
 
+    private fun profileupdateapi() {
+
+
+    }
+
     private fun checkFieldsForEmptyValues() {
 
-
-        if(first_name_get!!.equals("first_name") && last_name_get!!.equals("last_name"))
-        {
-            btn_save_userProfile.setEnabled(false);
-        }
-
-//        else if(!first_name_get!!.equals("")&&!last_name_get!!.equals("")){
-//            btn_save_userProfile.setEnabled(false);
-//        }
 //
-//        else if(!first_name_get!!.equals("")&&!last_name_get!!.equals(""))
+//        if(first_name_get!!.equals("first_name") && last_name_get!!.equals("last_name"))
 //        {
-//            btn_save_userProfile.setEnabled(false);
+//            btn_save_userProfile.setVisibility(View.INVISIBLE)        }
+//
+////        else if(!first_name_get!!.equals("")&&!last_name_get!!.equals("")){
+////            btn_save_userProfile.setEnabled(false);
+////        }
+////
+////        else if(!first_name_get!!.equals("")&&!last_name_get!!.equals(""))
+////        {
+////            btn_save_userProfile.setEnabled(false);
+////        }
+//
+//        else
+//        {
+//            btn_save_userProfile.setEnabled(true);
 //        }
 
-        else
-        {
-            btn_save_userProfile.setEnabled(true);
-        }
     }
 
     private fun profilepostapi() {
@@ -240,10 +311,10 @@ class View_UserDetails_Activity : BaseActivity() {
         profileclass.weight = et_weight.text.toString()
         profileclass.height = et_height.text.toString()
         profileclass.dob = et_dob.text.toString()
-        profileclass.language = languagesKnown.selectedItemsAsString
-        profileclass.education = spinnereducationLevel!!.selectedItem.toString()
-        profileclass.family_income = spinnerfamilyIncome!!.selectedItem.toString()
-        profileclass.marrital_status = spinnermarriageStatus!!.selectedItem.toString()
+        profileclass.language = languagesKnown_get!!.selectedItemsAsString
+        profileclass.education = spinnereducationLevel_get!!.selectedItem.toString()
+        profileclass.family_income = spinnerfamilyIncome_get!!.selectedItem.toString()
+        profileclass.marrital_status = spinnermarriageStatus_get!!.selectedItem.toString()
         profileclass.mobile_no = et_mobile_no.text.toString()
         profileclass.email = et_email.text.toString()
 
