@@ -42,7 +42,7 @@ data class Diseases(var  known_condition : String? =null,
 
                     var  patient_counselling : Boolean? =null,
                     var drug_interaction : Boolean? =null,
-                    var prescription_adult:Boolean? =null,
+                    var prescription_aduit:Boolean? =null,
                     var adverse_drug_monitering:Boolean?=null,
                     var post_dicharge_package:Boolean?=null
 

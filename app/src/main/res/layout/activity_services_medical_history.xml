@@ -351,7 +351,7 @@
                     android:textColor="@color/bg_screen2" />
 
                 <CheckBox
-                    android:id="@+id/checkbox_Post-discharge_Care_Package"
+                    android:id="@+id/checkbox_Post_discharge_Care_Package"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -411,6 +411,7 @@
             android:background="@color/bg_screen2"
             android:textColor="@color/colorWhite"
             />
+
 
 
     </LinearLayout>

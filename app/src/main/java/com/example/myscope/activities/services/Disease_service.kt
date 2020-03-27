@@ -100,7 +100,7 @@ interface Disease_service {
     //end point of webservice
     @Headers("Content-Type: application/json")
     @POST("addservices")
-    fun addServiceList(@Body newDrug: Diseases): Call<Diseases>
+    fun addServicesList(@Body newDrug: Diseases): Call<Diseases>
 
     @Headers("Content-Type: application/json")
     @POST("updateservices")

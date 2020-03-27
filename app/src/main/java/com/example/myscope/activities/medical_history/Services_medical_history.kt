@@ -153,12 +153,12 @@ class Services_medical_history : BaseActivity() {
             descText4.maxLines = 0
         }
 
-//        loadDetails()
+        loadDetails()
 
         btn_services.setOnClickListener{
             CheckBoxDiseasevalues()
 
-       //     CheckBoxPrescriptionsvalues()
+            CheckBoxPrescriptionsvalues()
 
             val builder = AlertDialog.Builder(this)
 
@@ -195,11 +195,13 @@ class Services_medical_history : BaseActivity() {
             }
 
             val newServices = Diseases()
-            newServices.patient_counselling = checkbox_patient_counseling!!.toString().toBoolean()
-            newServices.drug_interaction = checkbox_Drug_Interaction?.text.toString().toBoolean()
-            newServices.prescription_adult = checkbox_Prescription_Audit!!.toString().toBoolean()
-            newServices.adverse_drug_monitering = checkbox_Adverse_Drug_Event_Monitoring!!.toString().toBoolean()
-            newServices.post_dicharge_package = checkbox_Post_discharge_Care_Package!!.toString().toBoolean()
+            newServices.patient_counselling = checkbox_patient_counseling!!.isChecked().toString().toBoolean()
+            newServices.drug_interaction = checkbox_Drug_Interaction!!.isChecked().toString().toBoolean()
+            newServices.prescription_aduit = checkbox_Prescription_Audit!!.isChecked().toString().toBoolean()
+            newServices.adverse_drug_monitering = checkbox_Adverse_Drug_Event_Monitoring!!.isChecked().toString().toBoolean()
+            newServices.post_dicharge_package = checkbox_Post_discharge_Care_Package!!.isChecked().toString().toBoolean()
+            newServices.mobile_no = "8142529582"
+
 
 
 
@@ -207,7 +209,7 @@ class Services_medical_history : BaseActivity() {
 
             val servicesService = ServiceBuilder.buildService(Disease_service::class.java)
 
-            val requestCall = servicesService.addServiceList(newServices)
+            val requestCall = servicesService.addServicesList(newServices)
 
             requestCall.enqueue(object : Callback<Diseases> {
 
@@ -234,13 +236,12 @@ class Services_medical_history : BaseActivity() {
 
             })
 
-
         }
 
     }
 
 
-    /*private fun loadDetails() {
+    private fun loadDetails() {
 
 
 
@@ -261,15 +262,16 @@ class Services_medical_history : BaseActivity() {
                 services?.let {
 
 
-                    checkbox_patient_counseling?.setBoolean(services.patient_counselling)
+                    services.patient_counselling?.let { it1 -> checkbox_patient_counseling?.setChecked(it1) }
 
-                    checkbox_Drug_Interaction.setText(services.drug_interaction)
+                    services.drug_interaction?.let { it1 -> checkbox_Drug_Interaction?.setChecked(it1) }
 
-                    checkbox_Prescription_Audit.setBoolean(services.prescription_adult)
+                    services.prescription_aduit?.let { it1 -> checkbox_Prescription_Audit?.setChecked(it1) }
 
-                    checkbox_Adverse_Drug_Event_Monitoring!!.setText(services.adverse_drug_monitering)
+                    services.adverse_drug_monitering?.let { it1 -> checkbox_Adverse_Drug_Event_Monitoring?.setChecked(it1) }
 
-                    checkbox_Post_discharge_Care_Package.setText(services.post_dicharge_package)
+                    services.patient_counselling?.let { it1 -> checkbox_Post_discharge_Care_Package?.setChecked(it1) }
+
 
                     initUpdateButton()
 
@@ -280,45 +282,29 @@ class Services_medical_history : BaseActivity() {
                 Toast.makeText(this@Services_medical_history , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
-    }*/
+    }
 
-  /*  private fun initUpdateButton() {
+   private fun initUpdateButton() {
+
+
 
         btn_services.setOnClickListener {
 
 
-            //newSocialHabits.tobacco = tobacco_usage!!.selectedStrings.toString()
-//
-//
-//            val item = spinner_smoking.text1.text.toString()
-//            val item1 = tobacco_usage.social_multi.text.toString()
-//            val item2 = spinner_drinking.text1.text.toString()
-//
+
 //
            val newServices = Diseases()
 //
-//            if(!item.equals(null)) {
-//                newSocialHabits.smoking = item
-//            } else {
-//                newSocialHabits.smoking = spinner_smoking?.getSelectedItem().toString()
-//                text1.setText(newSocialHabits.smoking)
-//            }
 //
-//            if(!item1.equals(null)) {
-//                newSocialHabits.tobacco = item1
-//            } else {
-//                newSocialHabits.tobacco = tobacco_usage!!.selectedStrings.toString()
-//                text1.setText(newSocialHabits.tobacco)
-//            }
-//            if(!item2.equals(null)) {
-//                newSocialHabits.alcohol = item2
-//            } else {
-//                newSocialHabits.alcohol = spinner_smoking?.getSelectedItem().toString()
-//                text1.setText(newSocialHabits.alcohol)
-//            }
-//
-//            newSocialHabits.smoking_duration = et_smoking_yrs!!.text.toString().trim()
-//            newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
+
+            newServices.patient_counselling = checkbox_patient_counseling!!.isChecked().toString().toBoolean()
+            newServices.drug_interaction = checkbox_Drug_Interaction!!.isChecked().toString().toBoolean()
+            newServices.prescription_aduit = checkbox_Prescription_Audit!!.isChecked().toString().toBoolean()
+            newServices.adverse_drug_monitering = checkbox_Adverse_Drug_Event_Monitoring!!.isChecked().toString().toBoolean()
+            newServices.post_dicharge_package = checkbox_Post_discharge_Care_Package!!.isChecked().toString().toBoolean()
+
+
+
 
             newServices.mobile_no = "7075426603"
 
@@ -332,7 +318,6 @@ class Services_medical_history : BaseActivity() {
                     val resp = response
                     if (response.isSuccessful)
                     {
-
                         Toast.makeText(this@Services_medical_history, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
 
                     }
@@ -350,7 +335,7 @@ class Services_medical_history : BaseActivity() {
 
         }
 
-    }*/
+    }
 
     private fun CheckBoxPrescriptionsvalues() {
 
