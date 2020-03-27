@@ -70,6 +70,8 @@ class View_UserDetails_Activity : BaseActivity() {
     var bmi_get: TextView? = null
     lateinit var profileclass:ProfileDataClass
 
+    lateinit var signupclass:SignupResponse
+
 
 
     var mobile_no: String? = null
@@ -177,6 +179,8 @@ class View_UserDetails_Activity : BaseActivity() {
 //            validate(spinner_bloodGroup!!)
             profileupdateapi();
 
+            signupUpdateapi();
+
         }
 
         btn_save_userProfile.setOnClickListener {
@@ -188,6 +192,36 @@ class View_UserDetails_Activity : BaseActivity() {
 
         }
 
+
+    }
+
+    private fun signupUpdateapi() {
+        updatevaluestosignupclass()
+
+        val updateSignup = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+
+        val requestCallSignup = updateSignup.updateSignUp(signupclass)
+
+
+        requestCallSignup!!.enqueue(object : Callback<SignupResponse?> {
+            /**
+             * Invoked when a network exception occurred talking to the server or when an unexpected
+             * exception occurred creating the request or processing the response.
+             */
+            override fun onResponse(call: Call<SignupResponse?>, resp: Response<SignupResponse?>) {
+
+                if (resp.isSuccessful) {
+                    Toast.makeText(applicationContext, "Updated Successfully" , Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<SignupResponse?>, t: Throwable) {
+
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+            }
+        })
 
     }
 
@@ -332,8 +366,6 @@ class View_UserDetails_Activity : BaseActivity() {
 
         val requestCall = addPatient.addProfile(profileclass)
 
-        Toast.makeText(applicationContext, "Data added 123", Toast.LENGTH_SHORT).show()
-
         requestCall.enqueue(object : Callback<ProfileDataClass> {
             /**
              * Invoked when a network exception occurred talking to the server or when an unexpected
@@ -351,6 +383,39 @@ class View_UserDetails_Activity : BaseActivity() {
                 Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
+
+
+    }
+
+    private fun updatevaluestosignupclass() {
+
+        val first_name = et_first_name!!.text.toString()
+        val last_name = et_last_name.text.toString()
+        val mobile_no = et_mobile_no.text.toString()
+        val email = et_email.text.toString()
+
+        signupclass = SignupResponse()
+        if(!first_name.equals(null)) {
+            signupclass.first_name = first_name
+        } else {
+            signupclass.first_name = et_first_name.text.toString()
+        }
+
+        if(!last_name.equals(null)) {
+            signupclass.last_name = last_name
+        } else {
+            signupclass.last_name = et_last_name.text.toString()
+        }
+        if(!mobile_no.equals(null)) {
+            signupclass.mobile_no = mobile_no
+        } else {
+            signupclass.mobile_no = et_mobile_no.text.toString()
+        }
+        if(!email.equals(null)) {
+            signupclass.email = email
+        } else {
+            signupclass.email = et_email.text.toString()
+        }
 
     }
 

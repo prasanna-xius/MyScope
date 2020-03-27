@@ -14,6 +14,11 @@ interface PrescriptionInterface {
 //    Call<List<PrescriptionManualDataClass>> getData();
     @POST("addRecord")
     fun createPatient(@Body body: SignupResponse?): Call<SignupResponse>?
+
+    @Headers("Content-Type: application/json")
+    @POST("updateRecord")
+    fun updateSignUp(@Body updatePatient: SignupResponse?): Call<SignupResponse>?
+
 //
 //    @POST("addpatientprofile")
 //    fun createPatientprofile(@Body body: SignupResponse?): Call<SignupResponse>?
