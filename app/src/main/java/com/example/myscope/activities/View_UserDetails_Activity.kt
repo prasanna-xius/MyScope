@@ -179,7 +179,6 @@ class View_UserDetails_Activity : BaseActivity() {
 //            validate(spinner_bloodGroup!!)
             profileupdateapi();
 
-            signupUpdateapi();
 
         }
 
@@ -211,7 +210,7 @@ class View_UserDetails_Activity : BaseActivity() {
             override fun onResponse(call: Call<SignupResponse?>, resp: Response<SignupResponse?>) {
 
                 if (resp.isSuccessful) {
-                    Toast.makeText(applicationContext, "Updated Successfully" , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Updated Profile" , Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
@@ -259,6 +258,7 @@ class View_UserDetails_Activity : BaseActivity() {
                         bmi_get!!.setText(userprofilevalues.bmi)
                         height_get!!.setText(userprofilevalues.height)
                         weight_get!!.setText(userprofilevalues.weight)
+
                         dob_get!!.setText(userprofilevalues.dob)
                         doctorname_get!!.setText(userprofilevalues.doctor_name)
                         pharmacist_name_get!!.setText(userprofilevalues.pharmacist_name)
@@ -343,6 +343,8 @@ class View_UserDetails_Activity : BaseActivity() {
 
                 if (resp.isSuccessful) {
                     Toast.makeText(applicationContext, "Updated Successfully" , Toast.LENGTH_SHORT).show()
+                    signupUpdateapi();
+
                 } else {
                     Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
