@@ -79,17 +79,17 @@ interface Disease_service {
 
     //Adverse_Drug
 
-    @GET("addadverse_drug/{id}")
+    @GET("addadverse_druglist/{id}")
     fun getDrug(@Path("id") id: String): Call<List<Diseases>>
 
     //end point of webservice
     @Headers("Content-Type: application/json")
     @POST("addDrug")
-    fun addDrugList(@Body newDrug: Diseases): Call<Diseases>
+    fun addDrug(@Body newDrug: Diseases): Call<Diseases>
 
-    @Headers("Content-Type: application/json")
-    @POST("updateadverse_drug")
-    fun updateAdverse_drug(@Body newDrug: Diseases): Call<Diseases>
+//    @Headers("Content-Type: application/json")
+//    @POST("updateadverse_drug")
+//    fun updateAdverse_drug(@Body newDrug: Diseases): Call<Diseases>
 
 
     //Services

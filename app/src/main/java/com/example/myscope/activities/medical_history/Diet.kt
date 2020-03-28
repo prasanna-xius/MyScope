@@ -1,5 +1,6 @@
 package com.example.myscope.activities.medical_history
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -47,16 +48,43 @@ class Diet : BaseActivity() {
 
 
 
-        loadDetails()
+       // loadDetails()
 
 
-        btn_diet.setOnClickListener {
+        val checkboxvalue = ServiceBuilder.buildService(Disease_service::class.java)
 
-            assignValuestoVariable()
-            validate(spinner_diet!!)
-            apicall()
+        val requestCall = checkboxvalue.getDiet("8142529582" )
 
-        }
+        requestCall.enqueue(object : retrofit2.Callback<List<Diseases>>{
+
+            override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>>) {
+
+                val length = response.body()?.size
+
+                if (length!! > 0){
+
+//                    showLongToast("successful")
+
+                    loadDetails()
+
+                }
+                else{
+                    btn_diet.setOnClickListener {
+
+                        assignValuestoVariable()
+                        validate(spinner_diet!!)
+                        apicall()
+
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
+
+                showLongToast("failureee")
+            }
+        })
+
     }
 
     private fun apicall() {
@@ -89,6 +117,7 @@ class Diet : BaseActivity() {
     }
 
     private fun loadDetails() {
+
 
 
         btn_diet_updated.visibility = View.VISIBLE
@@ -134,8 +163,6 @@ class Diet : BaseActivity() {
 
         btn_diet_updated.setOnClickListener {
 
-
-            //newSocialHabits.tobacco = tobacco_usage!!.selectedStrings.toString()
 
 
             val item = spinner_diet.text1.text.toString()
@@ -187,4 +214,5 @@ class Diet : BaseActivity() {
             showLongSnackBar("Please fill the required fields")
         }
     }
+
 }

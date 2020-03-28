@@ -107,7 +107,6 @@ et_bmi.setOnClickListener {
         bmicalculator(et_weight,et_height,et_bmi)
     }
 
-
     private fun assignValuestoVariable() {
 
         val gender = spinner_gender.selectedItem.toString()

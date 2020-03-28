@@ -1,5 +1,6 @@
 package com.example.myscope.activities.medical_history
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -55,70 +56,106 @@ class Social_History : BaseActivity() {
                 resources.getStringArray(R.array.drinking_arrays))
         spinnerdrinking!!.adapter = drinkingAdapter
 
-        loadDetails()
+      //  loadDetails()
+
+
+        val checkbox = ServiceBuilder.buildService(Disease_service::class.java)
+
+        val requestCall = checkbox.getSocialHabits("8142529582" )
+
+        requestCall.enqueue(object : retrofit2.Callback<List<Diseases>>{
+
+
+            override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>>) {
+
+                val length = response.body()?.size
 
 
 
+                if (length!! == 1){
 
 
-        btn_social.setOnClickListener{
-
-            assignValuestoVariable()
-            validate(spinnersmoking!!)
-            validate(spinnerdrinking!!)
-
-
-
-            try {
-
-                ProviderInstaller.installIfNeeded(getApplicationContext());
-                var sslContext: SSLContext
-                sslContext = SSLContext.getInstance("TLSv1.2");
-                sslContext.init(null, null, null);
-                sslContext.createSSLEngine()
-
-            }
-            catch (e: Exception) {
-                e.printStackTrace();
-            }
-
-            val newSocialHabits = Diseases()
-            newSocialHabits.smoking = spinner_smoking!!.getSelectedItem().toString()
-            newSocialHabits.smoking_duration = et_smoking_yrs?.text.toString().trim()
-            newSocialHabits.tobacco = tobacco_usage!!.selectedStrings.toString()
-            newSocialHabits.alcohol = spinner_drinking!!.getSelectedItem().toString()
-            newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
-            newSocialHabits.mobile_no = "8142529582"
-
-            val socialService = ServiceBuilder.buildService(Disease_service::class.java)
-
-            val requestCall = socialService.addHabit(newSocialHabits)
-
-            requestCall.enqueue(object : Callback<Diseases> {
-
-                override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
-
-                    if (resp.isSuccessful) {
-                        var newbody = resp.body() // Use it or ignore it
-
-                        Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
-                        //finish()
-                    }
-                    else {
-                        Toast.makeText(applicationContext, "Failed at posting data.", Toast.LENGTH_SHORT).show()
-                    }
+                    loadDetails()
                 }
-                override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                    //finish()
+                else{
+                  //  showLongToast("else part")
+
+                    btn_social.setOnClickListener{
+
+                        assignValuestoVariable()
+                        validate(spinnersmoking!!)
+                        validate(spinnerdrinking!!)
+
+
+
+                        try {
+
+                            ProviderInstaller.installIfNeeded(getApplicationContext());
+                            var sslContext: SSLContext
+                            sslContext = SSLContext.getInstance("TLSv1.2");
+                            sslContext.init(null, null, null);
+                            sslContext.createSSLEngine()
+
+                        }
+                        catch (e: Exception) {
+                            e.printStackTrace();
+                        }
+
+                        val newSocialHabits = Diseases()
+                        newSocialHabits.smoking = spinner_smoking!!.getSelectedItem().toString()
+                        newSocialHabits.smoking_duration = et_smoking_yrs?.text.toString().trim()
+                        newSocialHabits.tobacco = tobacco_usage!!.selectedStrings.toString()
+                        newSocialHabits.alcohol = spinner_drinking!!.getSelectedItem().toString()
+                        newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
+                        newSocialHabits.mobile_no = "8142529582"
+
+                        val socialService = ServiceBuilder.buildService(Disease_service::class.java)
+
+                        val requestCall = socialService.addHabit(newSocialHabits)
+
+                        requestCall.enqueue(object : Callback<Diseases> {
+
+                            override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
+
+                                if (resp.isSuccessful) {
+                                    var newbody = resp.body() // Use it or ignore it
+
+                                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+                                    //finish()
+                                }
+                                else {
+                                    Toast.makeText(applicationContext, "Failed at posting data.", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                            override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                                //finish()
 //                    Log.d("errormsgfailure ::", t.message)
 //                    Log.e("errorunderfailure:", t.message)
-                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                            }
+
+
+
+                        })
+                    }
+
+
+
                 }
+            }
+
+            override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
+
+                showLongToast("failure part")
+            }
+        })
 
 
 
-            })
-        }
+
+
+
+
     }
 
 
@@ -217,6 +254,8 @@ class Social_History : BaseActivity() {
 
             newSocialHabits.smoking_duration = et_smoking_yrs!!.text.toString().trim()
             newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
+
+
 
             newSocialHabits.mobile_no = "8142529582"
 
