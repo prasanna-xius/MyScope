@@ -1,7 +1,9 @@
-package com.example.curvepicture.activities
+package com.example.myscope.activities.medical_history
 
 import android.annotation.TargetApi
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
@@ -9,46 +11,35 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
-
-import kotlinx.android.synthetic.main.allergies_update.*
-import kotlinx.android.synthetic.main.medicationhistory.*
-
-
 import kotlinx.android.synthetic.main.medicationhistory_update.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item_allergy.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item_allergy.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_dose.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item_dose.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_formulation.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item_formulation.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_prescribed.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item_prescribed.view.*
-import kotlinx.android.synthetic.main.surgeryhistory_update.*
 
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.*
 
 
-class MedicationUpdateActivity : AppCompatActivity() {
+class MedicationUpdateActivity : BaseActivity() {
 
     var spinner_how_often_taken: MultiSelectionSpinner? = null
+
     var formulation: Spinner? = null
     var isprescribed: Spinner? = null
     var doseunit: Spinner? = null
     var tv_how_often_taken :TextView?=null
     var dateUpdate: String? = null
     var position: Int = 1;
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
     internal lateinit var myCalendar: Calendar
     var buttondate_immuupdate: Button? = null
     var medicationid: Int = 0
@@ -64,6 +55,8 @@ class MedicationUpdateActivity : AppCompatActivity() {
         spinner_how_often_taken = findViewById<MultiSelectionSpinner>(R.id.spinner_how_often_taken_update)
 
 
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         spinner_how_often_taken!!.setItems(resources.getStringArray(R.array.how_often_taken_arrays))
 
@@ -188,7 +181,7 @@ class MedicationUpdateActivity : AppCompatActivity() {
 
 
 
-            newmedication.how_often_taken = spinner_how_often_taken_update!!.selectedStrings.toString()
+            newmedication.how_often_taken = spinner_how_often_taken_update!!.selectedItemsAsString
             newmedication.medicationname = et_name_medication_update!!.text.toString().trim()
             newmedication.medicationnotes = et_notes_medication_update!!.text.toString().trim()
             newmedication.reason = et_reason_update!!.text.toString().trim()
@@ -198,7 +191,7 @@ class MedicationUpdateActivity : AppCompatActivity() {
             newmedication.formulation=spinner_formulation_update?.getSelectedItem().toString()
             newmedication.startdate = textviewStartdate_medicalHistory_update!!.text.toString().trim()
             newmedication.enddate = textviewEnddate_MH_update!!.text.toString().trim()
-            newmedication.mobile_no = "8142529582"
+            newmedication.mobile_no = "9505505093"
             newmedication.medication_id= medicationid
 
 
@@ -288,7 +281,7 @@ class MedicationUpdateActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == android.R.id.home) {
-            navigateUpTo(Intent(this, SurgeryItemListActivity::class.java))
+            navigateUpTo(Intent(this, MedicationItemListActivity::class.java))
             return true
         }
         return super.onOptionsItemSelected(item)

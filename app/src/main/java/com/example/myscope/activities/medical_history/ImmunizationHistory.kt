@@ -1,6 +1,8 @@
-package com.example.curvepicture.activities
+package com.example.myscope.activities.medical_history
 
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Build
@@ -30,6 +32,8 @@ class ImmunizationHistory : AppCompatActivity() {
     var textview_date_immun: TextView? = null
     var cal_immun = Calendar.getInstance()
 
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
 
     var nameimmu:String?=null;var brand:String?=null;var event:String?=null;var notesimmu:String?=null;
 
@@ -44,6 +48,8 @@ class ImmunizationHistory : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.immunizationhistory)
 
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         etname_immu = findViewById(R.id.et_name)
         etevent = findViewById(R.id.et_adverse_event_immun)
@@ -96,7 +102,7 @@ class ImmunizationHistory : AppCompatActivity() {
                     newMedicalHistoryModelActivity.immubrand = et_brand_immun!!.text.toString().trim()
                     newMedicalHistoryModelActivity.immunotes = et_notes_immun!!.text.toString().trim()
                     newMedicalHistoryModelActivity.immudate = textview_date_immun?.text.toString().trim()
-                    newMedicalHistoryModelActivity.mobile_no="8103421999"
+                    newMedicalHistoryModelActivity.mobile_no=mobile_no!!
 
                     //newMedicalHistoryModelActivity.spnrdata =spnritem!!
 

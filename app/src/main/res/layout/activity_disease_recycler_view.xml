@@ -4,43 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorWhite"
+    android:orientation="vertical"
     tools:context=".activities.medical_history.Disease_recyclerView">
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@drawable/background_new">
-    </LinearLayout>
-
-
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
+    
     android:orientation="vertical">
+        android:background="@drawable/background_new"></LinearLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/disease_recycler_view"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        tools:listitem="@layout/list_item"/>
+        android:orientation="vertical">
 
 
-</LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/disease_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            tools:listitem="@layout/list_item" />
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/dimen_40"
-        android:gravity="center_horizontal"
-        android:layout_height="wrap_content">
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_btn"
             android:layout_width="wrap_content"
@@ -48,10 +37,13 @@
             android:layout_gravity="right|bottom"
             android:layout_margin="@dimen/fab_margin"
             android:clickable="true"
+            android:layout_alignEnd="@+id/disease_recycler_view"
+            android:layout_alignBottom="@+id/disease_recycler_view"
             android:focusable="true"
             android:src="@android:drawable/ic_input_add"
             android:tint="@android:color/white"
             app:backgroundTint="#2196F3" />
-    </LinearLayout>
+    </RelativeLayout>
+
 
 </LinearLayout>

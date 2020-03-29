@@ -69,6 +69,8 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
             newDrug.treatment_taken = et_treatment_taken!!.text.toString().trim()
             newDrug.mobile_no = "8142529582"
 
+          
+
             val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
 
             val requestCall = diseaseService.addDrug(newDrug)

@@ -22,19 +22,18 @@
 
         <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
-            android:layout_width="200dp"
+            android:layout_width="@dimen/dimen_275"
             android:layout_height="@dimen/dimen_106"
             android:layout_gravity="center"
-            android:src="@drawable/myscopelogo"
-           />
+            android:src="@drawable/myscope_logo_white" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_20"
+            android:layout_marginTop="@dimen/dimen_10"
             android:gravity="center"
             android:text="Login Page"
-            android:textColor="@color/colorText"
+            android:textColor="@color/colorBackground"
             android:textSize="@dimen/dimen_24"
             android:textStyle="bold" />
 

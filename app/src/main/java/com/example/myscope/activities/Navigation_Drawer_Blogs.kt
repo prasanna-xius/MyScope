@@ -13,6 +13,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myscope.R
+import com.example.myscope.activities.labReports.Lab_Reports_Homepage
+import com.example.myscope.activities.medical_documents.Medical_Documents_HomePage
 import com.example.myscope.activities.medical_history.Medical_History_HomePage
 import com.example.myscope.activities.prescription.Prescriptions_HomePage
 import com.example.myscope.fragments.NavigationDrawerFragment
@@ -108,22 +110,22 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
                 navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
             }
             R.id.card_LabReports -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
+                navigateToActivity(Intent(applicationContext,Lab_Reports_Homepage::class.java))
             }
             R.id.card_selfMont -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
+                navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
             }
             R.id.card_HealthServices-> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
+                navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
             }
             R.id.card_EducationalBlog -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
+                navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
             }
             R.id.card_Appoint -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
+                navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
             }
             R.id.card_ContactUs -> {
-                navigateToActivity(Intent(applicationContext,Medical_Documents_HomePage::class.java))
+                navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
             }
         }
     }

@@ -5,27 +5,18 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.util.AttributeSet
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.SpinnerAdapter
 import com.example.myscope.R
+import java.util.*
 
-import java.util.Arrays
-import java.util.LinkedList
-import android.view.LayoutInflater
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-import android.widget.TextView
-
-
-@SuppressLint("AppCompatCustomView")
-class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListener {
+class MultiSelectionlanuageSpinner : Spinner, DialogInterface.OnMultiChoiceClickListener {
     internal var _items: Array<String>? = null
     internal var mSelection: BooleanArray? = null
-    var allTitle: TextView ?= null
 
-
-    internal var simple_adapter: ArrayAdapter<String>
+    internal var simple_adapter1: ArrayAdapter<String>
 
     val selectedStrings: List<String>
         get() {
@@ -69,36 +60,33 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
     @SuppressLint("ResourceType")
     constructor(context: Context) : super(context) {
 
-        simple_adapter = ArrayAdapter(context,
-                R.layout.spinner_dropdown_item,R.style.MyDialogTheme)
-        super.setAdapter(simple_adapter)
+        simple_adapter1 = ArrayAdapter(context,
+                R.layout.profile_user_language, R.style.MyDialogTheme)
+        super.setAdapter(simple_adapter1)
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        simple_adapter = ArrayAdapter(context,
-               R.layout.spinner_dropdown_item)
-        super.setAdapter(simple_adapter)
+        simple_adapter1 = ArrayAdapter(context,
+                R.layout.profile_user_language)
+        super.setAdapter(simple_adapter1)
     }
 
     override fun onClick(dialog: DialogInterface, which: Int, isChecked: Boolean) {
-        if (mSelection != null && which < mSelection!!.size && which>=1) {
+        if (mSelection != null && which < mSelection!!.size && which >= 1) {
             mSelection!![which] = isChecked
 
-            simple_adapter.clear()
-            simple_adapter.add(buildSelectedItemString())
+            simple_adapter1.clear()
+            simple_adapter1.add(buildSelectedItemString())
         } else {
-            if(which.equals(0)) {
-            mSelection!![0] = false
+            if (which.equals(0)) {
+                mSelection!![0] = false
             }
 
         }
     }
 
     override fun performClick(): Boolean {
-        val builder = AlertDialog.Builder(context,R.style.MyDialogTheme)
-        val titleView = LayoutInflater.from(context).inflate(R.layout.spinner_dropdown_item, null)
-        allTitle = titleView.findViewById(R.id.text1) as TextView
-
+        val builder = AlertDialog.Builder(context, R.style.MyDialogTheme)
         builder.setMultiChoiceItems(_items, mSelection, this)
 
         builder.setPositiveButton("Ok") { arg0, arg1 -> }
@@ -115,16 +103,16 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
     fun setItems(items: Array<String>) {
         _items = items
         mSelection = BooleanArray(_items!!.size)
-        simple_adapter.clear()
-        simple_adapter.add(_items!![0])
+        simple_adapter1.clear()
+        simple_adapter1.add(_items!![0])
         Arrays.fill(mSelection!!, false)
     }
 
     fun setItems(items: List<String>) {
         _items = items.toTypedArray()
         mSelection = BooleanArray(_items!!.size)
-        simple_adapter.clear()
-        simple_adapter.add(_items!![0])
+        simple_adapter1.clear()
+        simple_adapter1.add(_items!![0])
         Arrays.fill(mSelection!!, false)
     }
 
@@ -149,8 +137,8 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
                 }
             }
         }
-        simple_adapter.clear()
-        simple_adapter.add(buildSelectedItemString())
+        simple_adapter1.clear()
+        simple_adapter1.add(buildSelectedItemString())
     }
 
     override fun setSelection(index: Int) {
@@ -163,8 +151,8 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
             throw IllegalArgumentException("Index " + index
                     + " is out of bounds.")
         }
-        simple_adapter.clear()
-        simple_adapter.add(buildSelectedItemString())
+        simple_adapter1.clear()
+        simple_adapter1.add(buildSelectedItemString())
     }
 
     fun setSelection(selectedIndicies: IntArray) {
@@ -179,8 +167,8 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
                         + " is out of bounds.")
             }
         }
-        simple_adapter.clear()
-        simple_adapter.add(buildSelectedItemString())
+        simple_adapter1.clear()
+        simple_adapter1.add(buildSelectedItemString())
     }
 
     private fun buildSelectedItemString(): String {
@@ -199,5 +187,5 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
         }
         return sb.toString()
     }
-
 }
+

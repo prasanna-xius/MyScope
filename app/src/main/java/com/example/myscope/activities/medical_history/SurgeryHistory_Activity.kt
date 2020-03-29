@@ -1,6 +1,8 @@
-package com.example.curvepicture.activities
+package com.example.myscope.activities.medical_history
 
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
@@ -10,12 +12,12 @@ import android.widget.*
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.immunizationhistory.*
 import kotlinx.android.synthetic.main.surgeryhistory.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,7 +25,7 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class SurgeryHistory : AppCompatActivity() {
+class SurgeryHistory_Activity : BaseActivity() {
 
 
 
@@ -31,6 +33,8 @@ class SurgeryHistory : AppCompatActivity() {
     var textview_date_surg: TextView? = null
     var cal_surg = Calendar.getInstance()
 
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
 
     var namesurg:String?=null;var whensurg:String?=null;var bodysurg:String?=null;var notessurg:String?=null;
 
@@ -51,6 +55,9 @@ class SurgeryHistory : AppCompatActivity() {
         textview_date_surg = this.textviewdate_surg
         button_date_surg = this.buttondate_surg
 
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
+        showLongToast(mobile_no.toString())
       //  button_date_surg= findViewById(R.id.)
 
         et_namesurg = findViewById(R.id.et_name_surgery_history)
@@ -90,7 +97,7 @@ class SurgeryHistory : AppCompatActivity() {
                 newMedicalHistoryModelActivity.surgerynotes = et_notes_surgery_history!!.text.toString().trim()
                 newMedicalHistoryModelActivity.surgeryprovider = et_provider!!.text.toString().trim()
                 newMedicalHistoryModelActivity.surgerydate = textview_date_surg?.text.toString().trim()
-                newMedicalHistoryModelActivity.mobile_no="8103421999"
+                newMedicalHistoryModelActivity.mobile_no=mobile_no!!
 
                 //newMedicalHistoryModelActivity.spnrdata =spnritem!!
 
@@ -135,10 +142,7 @@ class SurgeryHistory : AppCompatActivity() {
                 snack.show()
             }
 
-
         })
-
-
 
 
         // create an OnDateSetListener
@@ -155,7 +159,7 @@ class SurgeryHistory : AppCompatActivity() {
         // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
         button_date_surg!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
-                DatePickerDialog(this@SurgeryHistory,
+                DatePickerDialog(this@SurgeryHistory_Activity,
                         dateSetListener,
                         // set DatePickerDialog to point to today's date when it loads up
                         cal_surg.get(Calendar.YEAR),

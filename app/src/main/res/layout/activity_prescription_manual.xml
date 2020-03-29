@@ -48,7 +48,7 @@
                 android:background="@drawable/edittext_border"/>
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/doctor_layout1"
+            android:id="@+id/doctor_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -74,7 +74,7 @@
                 />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/hosp_layout1"
+            android:id="@+id/hosp_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -177,5 +177,6 @@
                 android:layout_gravity="right"
                 />
         </LinearLayout>
+        <include layout="@layout/content_main_drig_recyclerview"/>
     </LinearLayout>
 </LinearLayout>

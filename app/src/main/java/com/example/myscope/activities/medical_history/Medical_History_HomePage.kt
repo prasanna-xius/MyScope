@@ -7,9 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.example.curvepicture.activities.ImmunizationHistory
-import com.example.curvepicture.activities.MedicationHistory
-import com.example.curvepicture.activities.SurgeryHistory
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MobileChange_Activity
@@ -19,14 +16,14 @@ import kotlinx.android.synthetic.main.medical_history_main.*
 class Medical_History_HomePage : BaseActivity() {
 
     var images = intArrayOf(R.drawable.medical_history_navigation, R.drawable.family_history_logo, R.drawable.social_history_logo, R.drawable.diet_logo, R.drawable.allergies_logo, R.drawable.immunization_history_logo, R.drawable.medication_history_logo, R.drawable.surgery_history_logo, R.drawable.adverse_drug_reaction_logo)
-    var names = arrayOf("Medical Histroy", "Family History", "Social History", "Diet", "Allergies", "Immuzination History", "Medication History", "Surgery History", "Adverse Drug Reaction")
+    var names = arrayOf("Disease Histroy", "Family History", "Social History", "Diet", "Allergies", "Immuzination History", "Medication History", "Surgery History", "Adverse Drug Reaction")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history_main)
         home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
         activitiesToolbar()
-        header!!.text = "Medical History"
+        header!!.text = "Disease History"
 
     }
     private inner class CustomAdapter(var context: Context, var result: Array<String>, var imageId: IntArray) : BaseAdapter() {
@@ -55,23 +52,23 @@ class Medical_History_HomePage : BaseActivity() {
             rowView.setOnClickListener {
                 // TODO Auto-generated method stub
                 if (position == 0) {
-                    navigateToActivity(Intent(applicationContext, Disease_History::class.java))
+                    navigateToActivity(Intent(applicationContext, Disease_recyclerView::class.java))
                 } else if (position == 1) {
-                    navigateToActivity(Intent(applicationContext, Family_History::class.java))
+                    navigateToActivity(Intent(applicationContext, FamilyHistoryRecyclerView::class.java))
                 } else if (position == 2) {
                     navigateToActivity(Intent(applicationContext, Social_History::class.java))
                 } else if (position == 3) {
                     navigateToActivity(Intent(applicationContext, Diet::class.java))
                 } else if (position == 4) {
-                    navigateToActivity(Intent(applicationContext,Allergies::class.java))
+                    navigateToActivity(Intent(applicationContext,AllergyItemListActivity::class.java))
                 } else if (position == 5) {
-                    navigateToActivity(Intent(applicationContext, ImmunizationHistory::class.java))
+                    navigateToActivity(Intent(applicationContext, ImmunizationItemListActivity::class.java))
                 } else if (position == 6) {
-                    navigateToActivity(Intent(applicationContext, MedicationHistory::class.java))
+                    navigateToActivity(Intent(applicationContext, MedicationItemListActivity::class.java))
                 } else if (position == 7) {
-                    navigateToActivity(Intent(applicationContext, SurgeryHistory::class.java))
+                    navigateToActivity(Intent(applicationContext, SurgeryItemListActivity::class.java))
                 } else if (position == 8) {
-                    navigateToActivity(Intent(applicationContext, MobileChange_Activity::class.java))
+                    navigateToActivity(Intent(applicationContext, Adverse_Drug_Reaction_Activity::class.java))
                 }
             }
             return rowView

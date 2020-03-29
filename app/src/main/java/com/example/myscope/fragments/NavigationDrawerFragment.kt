@@ -15,12 +15,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.example.curvepicture.activities.ImmunizationHistory
-import com.example.curvepicture.activities.MedicationHistory
-import com.example.curvepicture.activities.SurgeryHistory
 import com.example.myscope.R
 import com.example.myscope.activities.Dash_Board_Activity
-import com.example.myscope.activities.Medical_Documents_HomePage
+import com.example.myscope.activities.medical_documents.Medical_Documents_HomePage
 import com.example.myscope.activities.prescription.Prescription_manualDrugDialog
 import com.example.myscope.activities.medical_history.*
 import com.example.myscope.adapters.ExpandableListAdapter
@@ -122,7 +119,7 @@ class NavigationDrawerFragment : Fragment() {
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Surgery_History) { // call activity here
-                    val intent = Intent(activity, SurgeryHistory::class.java)
+                    val intent = Intent(activity, SurgeryHistory_Activity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Adverse_Drug_Reaction) { // call activity here

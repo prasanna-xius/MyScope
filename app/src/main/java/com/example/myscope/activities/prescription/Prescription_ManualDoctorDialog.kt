@@ -1,7 +1,9 @@
 package com.example.myscope.activities.prescription
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,7 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.PrescriptionInterface
+import com.example.myscope.services.PrescriptionInterface
+import com.example.myscope.activities.services.ServiceBuilder1
 import com.google.android.gms.security.ProviderInstaller
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.isprescribed_main.*
@@ -27,12 +30,11 @@ import javax.net.ssl.SSLContext
 
 class Prescription_ManualDoctorDialog : BaseActivity() {
 
-    var position: Int = 0
     var mobile_no: String? = null
     var prescription: Int = 0
 
     var isprescribed: Spinner? = null
-
+    var sharedpreferences: SharedPreferences? = null
     var doctorname: String? = null
     var prescribed_is: String? = null
     var hospitalname: String? = null
@@ -46,7 +48,12 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
         val fab = findViewById<View>(R.id.fab_addprescribed) as FloatingActionButton
-        mobile_no = "8142529582"
+
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
+        showLongToast(mobile_no.toString())
+
+//        mobile_no = "9505505093"
         fab.setOnClickListener {
             showDialog()
         }
@@ -62,9 +69,9 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
 
         isprescribed = d.findViewById<Spinner>(R.id.is_prescribed1)
 
-        val bundle: Bundle? = intent.extras
+//        val bundle: Bundle? = intent.extras
 
-        position = intent.getIntExtra("position", 0)
+//        position = intent.getIntExtra("position", 0)
 
         // prescribed spinner
         val isprescribedadapter = ArrayAdapter(this,
@@ -108,15 +115,15 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
         d.presDoctor_save_dialog.setOnClickListener {
 
             doctorname = d.et_doctor_name1.text.toString()
-             prescribed_is = d.is_prescribed1!!.selectedItem.toString()
-             hospitalname =d.et_hosp_name1.text.toString()
-             medicalcondition = d.et_medical_condition1.text.toString()
+            prescribed_is = d.is_prescribed1!!.selectedItem.toString()
+            hospitalname = d.et_hosp_name1.text.toString()
+            medicalcondition = d.et_medical_condition1.text.toString()
 
-            validateInput(d.et_doctor_name1, doctorname!!)
-            validateInput(d.et_hosp_name1, hospitalname!!)
-            validateInput(d.et_medical_condition1, medicalcondition!!)
+//            validateInput(d.et_doctor_name1, doctorname!!)
+//            validateInput(d.et_hosp_name1, hospitalname!!)
+//            validateInput(d.et_medical_condition1, medicalcondition!!)
 
-            validateSpinner(d.is_prescribed1!!, prescribed_is!!)
+//            validateSpinner(d.is_prescribed1!!, prescribed_is!!)
 
             if ((doctorname != "") &&
                     (prescribed_is != "None")
@@ -147,9 +154,8 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             newPrescription.hospital_name = d.et_hosp_name1!!.text.toString().trim()
             newPrescription.medical_condition = d.et_medical_condition1!!.text.toString().trim()
             newPrescription.prescription_note = d.et_precsription_note1!!.text.toString().trim()
+
             newPrescription.mobile_no = mobile_no
-
-
 
 
             val diseaseService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
@@ -166,9 +172,9 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
 
                     if (resp.isSuccessful) {
 
-                        var newbody = resp.body()
-                        // Use it or ignore it
+//                        var newbody = resp.body()
                         loadDetails()
+                        // Use it or ignore it
                         navigateToActivity(Intent(applicationContext, Prescription_manualDrugDialog::class.java))
                     } else {
                         Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
@@ -193,10 +199,18 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             override fun onResponse(call: Call<List<PrescriptionDataClass>>, response: Response<List<PrescriptionDataClass>>) {
                 if (response.isSuccessful) {
                     val destination = response.body()
-                    val prescriptionId = destination?.get(position)
-                    prescriptionId?.let {
-                        prescription = prescriptionId.prescription_id!!
-                        showLongToast(prescriptionId.prescription_id.toString())
+
+                    val prescription = destination?.get(destination!!.size - 1)
+
+                    prescription?.let {
+
+                        val pref = applicationContext!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
+
+                        val editor: SharedPreferences.Editor = pref.edit()
+                        editor.putInt("prescription_id", prescription.prescription_id!!)
+                        editor.commit()
+//                       val prescriptionid = prescription.prescription_id
+//                        showLongToast(prescriptionid.toString())
 
                     }!!
                 } else {
@@ -204,7 +218,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             }
 
             override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
-                
+
             }
         })
     }
