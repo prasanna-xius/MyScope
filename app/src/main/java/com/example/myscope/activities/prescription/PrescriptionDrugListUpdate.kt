@@ -4,23 +4,16 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MultiSelectionSpinner
 import com.example.myscope.activities.MultiSpinnerTime
-import com.example.myscope.activities.PrescriptionInterface
-import kotlinx.android.synthetic.main.activity_prescription_manual.*
-import kotlinx.android.synthetic.main.medicationhistory.*
-import kotlinx.android.synthetic.main.medicationhistory.is_prescribed
-import kotlinx.android.synthetic.main.prescribed_main.*
+import com.example.myscope.services.PrescriptionInterface
+import com.example.myscope.activities.services.ServiceBuilder1
 import kotlinx.android.synthetic.main.prescribed_main_view.*
-import kotlinx.android.synthetic.main.prescription_multi_item.*
 import kotlinx.android.synthetic.main.prescription_multi_item.view.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
-import kotlinx.android.synthetic.main.spinner_item.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -56,9 +49,8 @@ class PrescriptionDrugListUpdate : BaseActivity() {
 //        time_of_taken_select =  findViewById(R.id.time_of_taken_update)
         dose_unit_select = findViewById(R.id.dose_unit_update)
 //        how_often_taken_select =findViewById(R.id.how_often_taken_update)
-
-        brandname = findViewById<View>(R.id.brand_name) as EditText
-        drugname = findViewById<View>(R.id.drug_name) as AutoCompleteTextView
+        brandname = findViewById<View>(R.id.brand_name_update) as EditText
+        drugname = findViewById<View>(R.id.drug_name_update) as AutoCompleteTextView
         dosestrength = findViewById<View>(R.id.dose_strength) as EditText
         startdate = findViewById<View>(R.id.start_date) as TextView
         stopdate = findViewById<View>(R.id.stop_date) as TextView
@@ -115,8 +107,10 @@ class PrescriptionDrugListUpdate : BaseActivity() {
                     dosestrength!!.setText(prescriptiondrug.dose_strength)
                     startdate!!.setText(prescriptiondrug.start_date)
                     stopdate!!.setText(prescriptiondrug.stop_date)
+
                     val dose_unit_take = doseunitadapter.getPosition(prescriptiondrug.dose_unit);
                     dose_unit_update.setSelection(dose_unit_take);
+
                     Toast.makeText(applicationContext, "API success" + prescriptiondrug!!.formulation, Toast.LENGTH_SHORT).show()
                     how_often_taken_select!!.text1?.setText(prescriptiondrug.how_often_taken)
                     time_of_taken_select!!.prescription_multi?.setText(prescriptiondrug!!.time)
@@ -170,6 +164,7 @@ class PrescriptionDrugListUpdate : BaseActivity() {
                     how_often_taken_select!!.text1?.setText(newPrescriptionDrug.how_often_taken)
                 }
 //            how_often_taken_select!!.text1?.setText(newPrescriptionDrug.how_often_taken)
+
                 newPrescriptionDrug.drug_name = drugname!!.text.toString().trim()
                 newPrescriptionDrug.brand_name = brandname!!.text.toString().trim()
                 newPrescriptionDrug.dose_strength = dosestrength!!.text.toString().trim()

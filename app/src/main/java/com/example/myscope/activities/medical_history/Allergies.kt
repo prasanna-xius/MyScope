@@ -2,6 +2,8 @@ package com.example.myscope.activities.medical_history
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -48,6 +50,8 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
     var ettreatments: EditText? = null
     var etnotes: EditText? = null;
 
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
 
     private var awesomeValidation: AwesomeValidation? = null
     //var allergydata:Any?=null
@@ -55,6 +59,8 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.allergies)
 
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
         awesomeValidation = AwesomeValidation(ValidationStyle.BASIC);
 
 
@@ -106,7 +112,7 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
                     newAllergy.notes = etnotes!!.text.toString().trim()
                     newAllergy.date = textview_date?.text.toString().trim()
                     newAllergy.spnrdata =spnritem!!
-                    newAllergy.mobile_no="8142529582"
+                    newAllergy.mobile_no=mobile_no!!
                     // newAllergy.id=1
 
 

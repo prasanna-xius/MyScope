@@ -1,6 +1,8 @@
 package com.example.myscope.activities.medical_history
 
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -21,7 +23,8 @@ class Family_History : BaseActivity() {
 
 
     var relationshipSpinner: Spinner? = null
-
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,10 @@ class Family_History : BaseActivity() {
         activitiesToolbar()
 
         header!!.text = "Family History"
+
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
+
         relationshipSpinner = findViewById<Spinner>(R.id.spinner_family)
 
         val adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
@@ -57,7 +64,7 @@ class Family_History : BaseActivity() {
            newFamilyCondition.family_condition = et_family_condition!!.text.toString().trim()
            newFamilyCondition.relationship = spinner_family?.getSelectedItem().toString()
            newFamilyCondition.family_note = relationship_notes!!.text.toString().trim()
-           newFamilyCondition.mobile_no = "8142529582"
+           newFamilyCondition.mobile_no = mobile_no!!
 
            val familyService = ServiceBuilder.buildService(Disease_service::class.java)
 

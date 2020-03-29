@@ -31,16 +31,16 @@ class Otp_Page : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.otppage_main)
 
         // Getting data through bundle
-        val bundle = intent.extras
-        val number = bundle!!.getString("mobile_no")
-        showLongToast(number.toString())
+//        val bundle = intent.extras
+//        val number = bundle!!.getString("mobile_no")
+//        showLongToast(number.toString())
 
         progressBar = findViewById(R.id.progressBar)
         //initializing objects
         mAuth = FirebaseAuth.getInstance()
 
         val intent = intent
-        val Phonenumber = intent.getStringExtra("Phonenumber")
+        val Phonenumber = intent.getStringExtra("mobile_no")
         sendVerificationCode(Phonenumber)
 
         btn_verify_otp!!.setOnClickListener(this)

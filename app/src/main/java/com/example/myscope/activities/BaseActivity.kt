@@ -23,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.example.myscope.activities.prescription.Prescription_ManualDoctorDialog
-import com.example.myscope.activities.prescription.ServiceBuilder1
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.ByteArrayOutputStream
@@ -31,21 +30,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import org.json.JSONException
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.text.SimpleDateFormat
-import java.time.Duration
-import java.time.Month
-import java.time.Year
-import java.time.YearMonth
 import java.util.*
 
 open class BaseActivity : AppCompatActivity() {
@@ -82,8 +67,7 @@ open class BaseActivity : AppCompatActivity() {
     fun navigateToActivity(intent: Intent?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             intent!!.flags=Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intent,
-                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
 
         } else {
             startActivity(intent)

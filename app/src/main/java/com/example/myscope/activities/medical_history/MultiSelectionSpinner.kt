@@ -1,11 +1,10 @@
-package com.example.curvepicture.activities
+package com.example.myscope.activities.medical_history
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.widget.SpinnerAdapter
 import android.content.DialogInterface
-import android.graphics.Color
 import android.widget.ArrayAdapter
 import android.util.AttributeSet
 import android.widget.Spinner

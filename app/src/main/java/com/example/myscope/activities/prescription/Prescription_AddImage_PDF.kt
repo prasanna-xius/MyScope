@@ -15,7 +15,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.PrescriptionInterface
+import com.example.myscope.services.PrescriptionInterface
+import com.example.myscope.activities.services.ServiceBuilder1
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import okhttp3.MediaType
 import okhttp3.MultipartBody

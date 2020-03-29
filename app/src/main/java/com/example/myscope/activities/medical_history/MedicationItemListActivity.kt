@@ -1,12 +1,13 @@
-package com.example.curvepicture.activities
+package com.example.myscope.activities.medical_history
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.curvepicture.helpers.MedicationAdapter
 import com.example.myscope.R
+import com.example.myscope.activities.helpers.MedicationAdapter
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
@@ -35,6 +36,7 @@ class MedicationItemListActivity : AppCompatActivity() {
         //fab?.setBackgroundColor(Color.parseColor("#2196F3"));
         //setSupportActionBar(toolbar as Toolbar?)
         //toolbar.title = title
+
 
         fab?.setOnClickListener {
 

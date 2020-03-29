@@ -1,4 +1,4 @@
-package com.example.curvepicture.helpers
+package com.example.myscope.helpers
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.curvepicture.activities.SurgeryUpdateActivity
 import com.example.myscope.R
+import com.example.myscope.activities.medical_history.SurgeryUpdateActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
 
 import kotlinx.android.synthetic.main.activity_surgery_list.*

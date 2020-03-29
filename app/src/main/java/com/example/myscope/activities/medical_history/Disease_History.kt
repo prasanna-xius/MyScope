@@ -2,7 +2,9 @@ package com.example.myscope.activities.medical_history
 
 import android.annotation.TargetApi
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
@@ -29,6 +31,8 @@ class Disease_History : BaseActivity() {
     private var startDateOrEndDAte = true
     var spinner_disease: Spinner? = null
     var boolean: Boolean? = true
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,10 @@ class Disease_History : BaseActivity() {
         activitiesToolbar()
         header!!.text = "Disease History"
         spinner_disease = findViewById<Spinner>(R.id.spinner_disease)
+
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
+        showLongToast(mobile_no.toString())
 
         val adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.disease_arrays))
@@ -101,7 +109,7 @@ class Disease_History : BaseActivity() {
             newDisease.when_started = et_startDate!!.text.toString().trim()
             newDisease.when_ended = et_stopDate!!.text.toString().trim()
             newDisease.disease_note = notes_diseaseHistory!!.text.toString().trim()
-            newDisease.mobile_no = "8142529582"
+            newDisease.mobile_no = mobile_no!!
 
 
 

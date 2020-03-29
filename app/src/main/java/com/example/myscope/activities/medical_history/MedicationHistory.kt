@@ -1,7 +1,8 @@
-package com.example.curvepicture.activities
-
+package com.example.myscope.activities.medical_history
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 
 import android.graphics.Color
@@ -21,10 +22,7 @@ import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.medicationhistory.*
-import kotlinx.android.synthetic.main.medicationhistory_update.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.view.*
-import kotlinx.android.synthetic.main.surgeryhistory.*
-import kotlinx.android.synthetic.main.surgeryhistory_update.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -68,7 +66,8 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
     internal var spinnerMedication4: Spinner? = null
     //internal var spinnerMedication: Spinner? = null
     var btn_medication: Button? = null
-
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
 
     private var awesomeValidation: AwesomeValidation? = null
 
@@ -77,6 +76,10 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medicationhistory)
+
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
+
         //spinnerMedication1 = findViewById<View>(R.id.spinner_how_often_taken) as Spinner
         spinnerMedication2 = findViewById<View>(R.id.spinner_formulation) as Spinner
         spinnerMedication3 = findViewById<View>(R.id.spinner_dose_unit) as Spinner
@@ -163,11 +166,11 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                 newmedication.strength = et_dose_strength!!.text.toString().trim()
                 newmedication.startdate = textviewStartdate_medicalHistory!!.text.toString().trim()
                 newmedication.enddate = textviewEnddate_MH!!.text.toString().trim()
-                newmedication.how_often_taken = spinner_how_often_taken.selectedStrings.toString()
+                newmedication.how_often_taken = spinner_how_often_taken!!.selectedStrings.toString()
                 newmedication.formulation = sprTwoItem.toString().trim()
                 newmedication.isprescribed = sprFourItem.toString().trim()
                 newmedication.doseunit = sprThreeItem.toString().trim()
-                newmedication.mobile_no = "8103421999"
+                newmedication.mobile_no = mobile_no!!
                 Toast.makeText(applicationContext,newmedication.how_often_taken,Toast.LENGTH_LONG).show()
 
                 //newMedicalHistoryModelActivity.spnrdata =spnritem!!

@@ -218,15 +218,15 @@
 
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
-    <string name="formulation">Formulation <font color='#ff0000'>*</font></string>
+    <string name="formulation">Formulation </string>
     <string name="brand_name">Brand name <font color='#ff0000'>*</font></string>
-    <string name="dose_strength">Dose Strength <font color='#ff0000'>*</font></string>
-    <string name="dose_unit">Dose Unit <font color='#ff0000'>*</font></string>
-    <string name="how_often_taken">How often taken? <font color='#ff0000'>*</font></string>
-    <string name="start_date">Start Date <font color='#ff0000'>*</font></string>
-    <string name="stop_date">Stop Date <font color='#ff0000'>*</font></string>
+    <string name="dose_strength">Dose Strength </string>
+    <string name="dose_unit">Dose Unit</string>
+    <string name="how_often_taken">How often taken?</string>
+    <string name="start_date">Start Date</string>
+    <string name="stop_date">Stop Date</string>
     <string name="medical_condition">Medical Condition</string>
-    <string name="is_prescribed">Is prescribed? <font color='#ff0000'>*</font></string>
+    <string name="is_prescribed">Is prescribed?</string>
     <string name="prescription_note">Note</string>
 
     <string name="title_activity_welcome">Home Screen</string>
@@ -250,14 +250,14 @@
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
-    <string name="hospital_name">Hospital Name <font color='#ff0000'>*</font></string>
-    <string name="doctor_name">Doctor Name <font color='#ff0000'>*</font></string>
+    <string name="hospital_name">Hospital Name </string>
+    <string name="doctor_name">Doctor Name </string>
     <string name="prescription_manual">Prescription</string>
 
 
     <string name="mobile">0123456789</string>
 
-    <string name="time">Time <font color='#ff0000'>*</font></string>
+    <string name="time">Time </string>
     <string name="alphabets">ABCDEFGHIJKALMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</string>
     <string name="dialog_message">This number is not being registered.Please register here...</string>
     <string name="dialog_title">Login Alert !</string>
@@ -266,6 +266,40 @@
     <string name="drug_name">Drug Name</string>
     <string name="adddrug">Add Drug</string>
     <string name="strength">Strength</string>
+    <string name="title_termsconditions">Scope Medics®</string>
+    <string name="subtitle_termsconditions">Terms and Conditions</string>
+    <string name="paragraph_one">MySCOPE is an internet based utility setup by Soarg Technologies Ltd for the individuals to create and manage their health information.</string>
+    <string name="paragraph_two">Please read these Terms and Condition carefully. By clicking \"I agree\" to these Terms of Agreement, you are indicating that you have read, and you agree to be bound by, these Terms of Agreement.</string>
+    <string name="heading_one">INFORMATION WE COLLECT/HOW WE USE YOUR INFORMATION:</string>
+    <string name="paragraph_three">In order to register you as a user of MySCOPE, we collect certain personal information, Health Information or Contact information from you at the time of registration. We will use your information to register, manage and run your account. No one else can have an access to your health records without your permission. Your entered information/health records at MySCOPE are absolutely safe and secure.</string>
+    <string name="heading_two">TO WHOM THIS INFORMATION IS DISCLOSED:</string>
+    <string name="paragraph_four"><![CDATA[When you become a user of MySCOPE, you are allowed to enter your personal information or the personal information of family members in your Personal Health Record (PHR). Information is stored on secured web servers. Only Friends & Family, Health Care Provider, third parties working on our behalf have access to this information if you specifically authorize access to them.]]></string>
+    <string name="heading_three">LIMITATION ON USE:</string>
+    <string name="paragraph_five">This website is used solely for user’s personal use .Unauthorized use of this website, including but not limited to, unauthorized entry into systems, misuse of passwords, or misuse of any other information is strictly prohibited. Health Care Providers cannot modify, copy, paste, and distribute the information sent by user except that you may view the shared information in its present form for opinion/advice. The content which is for informational purposes is not meant for emergencies.</string>
+    <string name="heading_four">POLICY WITH REGARD TO YOUR CONTENT:</string>
+    <string name="paragraph_six"><![CDATA[You are the only one who controls the data contained in your account and your health information would remain stored in MySCOPE for 2 years, from the date of upload and further extension will be based on subscription bases. Your information will not be sold to outside vendors and will be used only for the purpose you intend. As such, you may add, update, delete or change the information in those records at any time. Your family & friends, Health Care Provider can view your health records stored at MySCOPE only if you provide an access to  them. You can also fix the duration for which your family & friends, Health Care Provider can view your health records.]]></string>
+    <string name="paragraph_seven">Free Storage space of 1GB data for 2 year for active Users. For Inactive user who had not login or used MySCOPE App for a period of 1 year the stored data/upload Files/Images will not be available post inactivation. Only personal Information will remain</string>
+    <string name="heading_five">USER RESPONSIBILITY:</string>
+    <string name="sub_heading_one">You must:</string>
+
+    <string name="list_one">· Ensure your details (personal….etc) are accurate.</string>
+    <string name="list_two"> · Agree that you are responsible for maintaining the confidentiality and security of username and passwords associated with your account. You are responsible for any consequences arising from or relating to the sharing of, or your accidental disclosure of, your user username or password to access your account.</string>
+    <string name="list_three"> · Please do not self-medicate and In case of emergency you should consult your physician or other qualified health care provider.</string>
+    <string name="list_four"> · You may choose to disclose information through website to a family member, friend, health care provider, researcher, marketer, or other person or entity. You should consider such a disclosure carefully before allowing it. Once you disclose or grant access to your information to any third party, these Terms of Agreement and Privacy Statement will not apply to the third party\'s uses and disclosures of your information.</string>
+    <string name="list_five"> · Report the Support team immediately if you suspect that the security of your account may have been compromised.</string>
+    <string name="list_six"> · To create an individual personal account into MySCOPE, you must be 18 years of age or older.</string>
+    <string name="list_seven"> · Seek explicit consent from dependent, family members etc. before creating his/her profile.</string>
+    <string name="heading_six">THIRD PARTY CONTENT:</string>
+    <string name="paragraph_eight">This website contains information which is provided by third parties. It does not warrant the accuracy or reliability of any information provided by a third party for display on this website.</string>
+    <string name="heading_seven">HEALTH INFORMATION:</string>
+    <string name="paragraph_nine">All health-related information (Health Tips) contained within website is intended to be general in nature and should not be used as a substitute for medical treatment by a health care professional.</string>
+    <string name="heading_eight">IMPORTANT INFORMATION ABOUT SPECIFIC SERVICES:</string>
+    <string name="paragraph_ten">MySCOPE enables you to store your health related information in one place. It can help you keep track of this information in a convenient way and more easily share it with your health care providers. The accuracy, integrity and completeness of the health information you enter? Or that  you allow others such as your doctor to enter for opinion? Into your \"Record Database\" is your responsibility and we assume no liability for it. We also are not liable for any use or misuse of information transmitted or received by a third party you have authorized to access.</string>
+    <string name="email">Enter Email</string>
+    <string name="email_text">Email</string>
+    <string name="mobile_number">Mobile No</string>
+    <string name="mobile_hint">Enter Mobile</string>
+
 
     <string-array name="formulation_array">
         <item>None</item>
@@ -306,46 +340,46 @@
     </string-array>
 
     <string-array name="drugs_list">
-     <item> Acetaminophen</item>
-     <item> Adderall</item>
-     <item> Alprazolam</item>
-     <item> Amitriptyline</item>
-     <item> Amlodipine</item>
-     <item> Amoxicillin</item>
-     <item> Ativan</item>
-     <item> Atorvastatin</item>
-     <item> Azithromycin</item>
-     <item> Ciprofloxacin</item>
-     <item> Citalopram</item>
-     <item> Clindamycin</item>
-     <item> Clonazepam</item>
-     <item> Codeine</item>
-     <item> Cyclobenzaprine</item>
-     <item> Cymbalta</item>
-     <item> Doxycycline</item>
-     <item> Gabapentin</item>
-     <item> Hydrochlorothiazide</item>
-     <item> Ibuprofen</item>
-     <item> Lexapro</item>
-     <item> Lisinopril</item>
-     <item> Loratadine</item>
-     <item> Lorazepam</item>
-     <item> Losartan</item>
-     <item> Lyrica</item>
-     <item> Meloxicam</item>
-     <item> Metformin</item>
-     <item> Metoprolol</item>
-     <item> Naproxen</item>
-     <item> Omeprazole</item>
-     <item> Oxycodone</item>
-     <item> Pantoprazole</item>
-     <item> Prednisone</item>
-     <item> Tramadol</item>
-     <item> Trazodone</item>
-     <item> Viagra</item>
-     <item> Wellbutrin</item>
-     <item> Xanax</item>
-     <item> Zoloft</item>
+        <item> Acetaminophen</item>
+        <item> Adderall</item>
+        <item> Alprazolam</item>
+        <item> Amitriptyline</item>
+        <item> Amlodipine</item>
+        <item> Amoxicillin</item>
+        <item> Ativan</item>
+        <item> Atorvastatin</item>
+        <item> Azithromycin</item>
+        <item> Ciprofloxacin</item>
+        <item> Citalopram</item>
+        <item> Clindamycin</item>
+        <item> Clonazepam</item>
+        <item> Codeine</item>
+        <item> Cyclobenzaprine</item>
+        <item> Cymbalta</item>
+        <item> Doxycycline</item>
+        <item> Gabapentin</item>
+        <item> Hydrochlorothiazide</item>
+        <item> Ibuprofen</item>
+        <item> Lexapro</item>
+        <item> Lisinopril</item>
+        <item> Loratadine</item>
+        <item> Lorazepam</item>
+        <item> Losartan</item>
+        <item> Lyrica</item>
+        <item> Meloxicam</item>
+        <item> Metformin</item>
+        <item> Metoprolol</item>
+        <item> Naproxen</item>
+        <item> Omeprazole</item>
+        <item> Oxycodone</item>
+        <item> Pantoprazole</item>
+        <item> Prednisone</item>
+        <item> Tramadol</item>
+        <item> Trazodone</item>
+        <item> Viagra</item>
+        <item> Wellbutrin</item>
+        <item> Xanax</item>
+        <item> Zoloft</item>
     </string-array>
     <string-array name="timings">
         <item>Select time</item>

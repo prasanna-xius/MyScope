@@ -1,5 +1,7 @@
 package com.example.myscope.activities.medical_history
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
@@ -23,6 +25,10 @@ import retrofit2.Response
 
 
 class Diet : BaseActivity() {
+
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         var spinner_diet: Spinner? = null
@@ -36,6 +42,8 @@ class Diet : BaseActivity() {
 
         spinner_diet = findViewById(R.id.spinner_diet)
 
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         val dietAdapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.diet_arrays))
@@ -54,7 +62,7 @@ class Diet : BaseActivity() {
     private fun apicall() {
         val newDiet = Diseases()
         newDiet.diet = spinner_diet!!.selectedItem.toString()
-        newDiet.mobile_no = "8142529582"
+        newDiet.mobile_no = mobile_no!!
         val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
         val requestCall = diseaseService.addDietList(newDiet)
         requestCall.enqueue(object : Callback<Diseases> {

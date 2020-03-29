@@ -1,9 +1,11 @@
-package com.example.curvepicture.activities
+package com.example.myscope.activities.medical_history
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -20,10 +22,6 @@ import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
-
-import kotlinx.android.synthetic.main.allergies_update.*
-import kotlinx.android.synthetic.main.immunizationhistory_update.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.*
 import kotlinx.android.synthetic.main.surgeryhistory_update.*
 
 import retrofit2.Call
@@ -45,6 +43,10 @@ class SurgeryUpdateActivity : AppCompatActivity() {
     var cal = Calendar.getInstance()
     var buttondate_surg_update:Button?=null
     var surgeryid:Int=0
+
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.surgeryhistory_update)
@@ -53,6 +55,8 @@ class SurgeryUpdateActivity : AppCompatActivity() {
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         //spnrAllergy_Update = findViewById(R.id.spinnerAllergy_update)
 
@@ -190,7 +194,7 @@ class SurgeryUpdateActivity : AppCompatActivity() {
             newsurgery.surgeryhospital = et_hospital_name_update!!.text.toString().trim()
             newsurgery.surgerydate= textviewdate_surgery_update!!.text.toString().trim()
             //newsurgery.immudate = dateUpdate.toString().trim()
-            newsurgery.mobile_no = "8142529582"
+            newsurgery.mobile_no = mobile_no!!
             newsurgery.surgery_id= surgeryid
 
 
