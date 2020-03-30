@@ -344,6 +344,8 @@ class View_UserDetails_Activity : BaseActivity() {
                 if (resp.isSuccessful) {
                     Toast.makeText(applicationContext, "Updated Successfully" , Toast.LENGTH_SHORT).show()
                     signupUpdateapi();
+                    val intent = Intent(this@View_UserDetails_Activity,Navigation_Drawer_Blogs::class.java)
+                    startActivity(intent)
 
                 } else {
                     Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
@@ -433,7 +435,7 @@ class View_UserDetails_Activity : BaseActivity() {
         val weight = et_weight.text.toString()
         val height = et_height.text.toString()
         val dob = et_dob.text.toString()
-        val language = languagesKnown!!.selectedItemsAsString
+        val language = languagesKnown!!.languages_multi.text.toString()
         val education = spinnereducationLevel_get!!.selectedItem.toString()
         val family_income = spinnerfamilyIncome_get!!.selectedItem.toString()
         val marrital_status = spinnermarriageStatus_get!!.selectedItem.toString()
