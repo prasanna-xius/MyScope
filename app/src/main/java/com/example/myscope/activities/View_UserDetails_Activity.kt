@@ -200,15 +200,15 @@ class View_UserDetails_Activity : BaseActivity() {
 
         val updateSignup = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
 
-        val requestCallSignup = updateSignup.updateSignUp(signupclass)
+        val requestCallSignup = updateSignup.updateSignUppage(signupclass)
 
 
-        requestCallSignup!!.enqueue(object : Callback<SignupResponse?> {
+        requestCallSignup!!.enqueue(object : Callback<SignupResponse> {
             /**
              * Invoked when a network exception occurred talking to the server or when an unexpected
              * exception occurred creating the request or processing the response.
              */
-            override fun onResponse(call: Call<SignupResponse?>, resp: Response<SignupResponse?>) {
+            override fun onResponse(call: Call<SignupResponse>, resp: Response<SignupResponse>) {
 
                 if (resp.isSuccessful) {
                     Toast.makeText(applicationContext, "Updated Successfully" , Toast.LENGTH_SHORT).show()
@@ -217,7 +217,7 @@ class View_UserDetails_Activity : BaseActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<SignupResponse?>, t: Throwable) {
+            override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
 
                 Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
