@@ -212,15 +212,15 @@ et_bmi.setOnClickListener {
 
         val updateSignup = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
 
-        val requestCallSignup = updateSignup.updateSignUp(signupclass)
+        val requestCallSignup = updateSignup.updateSignUppage(signupclass)
 
 
-        requestCallSignup!!.enqueue(object : Callback<SignupResponse?> {
+        requestCallSignup!!.enqueue(object : Callback<SignupResponse> {
             /**
              * Invoked when a network exception occurred talking to the server or when an unexpected
              * exception occurred creating the request or processing the response.
              */
-            override fun onResponse(call: Call<SignupResponse?>, resp: Response<SignupResponse?>) {
+            override fun onResponse(call: Call<SignupResponse>, resp: Response<SignupResponse>) {
 
                 if (resp.isSuccessful) {
                     Toast.makeText(applicationContext, "Updated Profile" , Toast.LENGTH_SHORT).show()
@@ -229,7 +229,7 @@ et_bmi.setOnClickListener {
                 }
             }
 
-            override fun onFailure(call: Call<SignupResponse?>, t: Throwable) {
+            override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
 
                 Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
@@ -357,6 +357,8 @@ et_bmi.setOnClickListener {
                 if (resp.isSuccessful) {
                     Toast.makeText(applicationContext, "Updated Successfully" , Toast.LENGTH_SHORT).show()
                     signupUpdateapi();
+                    val intent = Intent(this@View_UserDetails_Activity,Navigation_Drawer_Blogs::class.java)
+                    startActivity(intent)
 
                 } else {
                     Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
@@ -449,7 +451,7 @@ et_bmi.setOnClickListener {
         val weight = et_weight.text.toString()
         val height = et_height.text.toString()
         val dob = et_dob.text.toString()
-        val language = languagesKnown!!.selectedItemsAsString
+        val language = languagesKnown!!.languages_multi.text.toString()
         val education = spinnereducationLevel_get!!.selectedItem.toString()
         val family_income = spinnerfamilyIncome_get!!.selectedItem.toString()
         val marrital_status = spinnermarriageStatus_get!!.selectedItem.toString()

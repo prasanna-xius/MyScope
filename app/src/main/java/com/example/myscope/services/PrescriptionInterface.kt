@@ -17,7 +17,7 @@ interface PrescriptionInterface {
 
     @Headers("Content-Type: application/json")
     @POST("updateRecord")
-    fun updateSignUp(@Body updatePatient: SignupResponse?): Call<SignupResponse>?
+    fun updateSignUppage(@Body updatePatient: SignupResponse): Call<SignupResponse>
 
 //
 //    @POST("addpatientprofile")
