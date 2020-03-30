@@ -13,11 +13,11 @@ import android.widget.Toast
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.Dash_Board_Activity
-import com.example.myscope.activities.PrescriptionInterface
 import com.example.myscope.activities.prescription.PrescriptionDataClass
 import com.example.myscope.activities.prescription.Prescriptions_HomePage
 import com.example.myscope.activities.services.Disease_service
 import com.example.myscope.activities.services.ServiceBuilder
+import com.example.myscope.services.PrescriptionInterface
 import com.google.android.gms.security.ProviderInstaller
 import kotlinx.android.synthetic.main.activity_services_medical_history.*
 import retrofit2.Call

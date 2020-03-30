@@ -122,11 +122,11 @@ class View_UserDetails_Activity : BaseActivity() {
         dob_get = findViewById<View>(R.id.et_dob) as TextView
 
 
-         languagesKnown_get = findViewById<MultiSelectionlanuageSpinner>(R.id.languagesKnown)
+        languagesKnown_get = findViewById<MultiSelectionlanuageSpinner>(R.id.languagesKnown)
 
         languagesKnown_get!!.setItems(resources.getStringArray(R.array.languagesKnown_array))
 
-         genderAdapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
+        genderAdapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.gender_array))
         spinnergender_get!!.adapter = genderAdapter
 
@@ -138,10 +138,10 @@ class View_UserDetails_Activity : BaseActivity() {
                 resources.getStringArray(R.array.educationLevel_array))
         spinnereducationLevel_get!!.adapter = educationLevelAdaptor
 
-         marriageStatusAdaptor = ArrayAdapter(this, R.layout.spinner_dropdown_item,
+        marriageStatusAdaptor = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.marriageStatus_array))
-         spinnermarriageStatus_get!!.adapter = marriageStatusAdaptor
-       familyIncomeAdaptor = ArrayAdapter(this, R.layout.spinner_dropdown_item,
+        spinnermarriageStatus_get!!.adapter = marriageStatusAdaptor
+        familyIncomeAdaptor = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.familyIncome_array))
         spinnerfamilyIncome_get!!.adapter = familyIncomeAdaptor
         if (!et_height.text.equals(null) && !et_weight.text.equals(null)) {
@@ -174,18 +174,7 @@ class View_UserDetails_Activity : BaseActivity() {
 
         btn_update_userProfile.setOnClickListener {
 
-
-et_bmi.setOnClickListener {
-
-                bmi()
-
-               // bmicalculator(et_weight,et_height,et_bmi)
-}
-
-
-
-        btn_userProfile.setOnClickListener{
-//            assignValuestoVariable()
+            //            assignValuestoVariable()
 //            validate(spinnergender_get!!)
 //            validate(spinner_bloodGroup!!)
             profileupdateapi();
@@ -198,8 +187,6 @@ et_bmi.setOnClickListener {
             assignValuestoVariable()
             validate(spinnergender_get!!)
             validate(spinner_bloodGroup!!)
-
-         //   bmicalculator(et_weight,et_height,et_bmi)
             profilepostapi();
 
         }
@@ -436,9 +423,6 @@ et_bmi.setOnClickListener {
 
     }
 
-    private fun bmi() {
-
-        bmicalculator(et_weight,et_height,et_bmi)
     private fun savingvaluestoprofileclass() {
         val first_name = first_name_get!!.text.toString()
         val last_name = et_last_name.text.toString()
@@ -556,6 +540,7 @@ et_bmi.setOnClickListener {
         } else {
             profileclass.email = et_email.text.toString()
         }
+
 
     }
 
