@@ -2,6 +2,7 @@ package com.example.myscope.activities.medical_history
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
@@ -43,9 +44,11 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
         }
 
 
-        btn_adverse_drug.setOnClickListener {
-            assignValuestoVariable()
 
+
+        btn_adverse_drug.setOnClickListener {
+
+            assignValuestoVariable()
 
             try {
                 // Google Play will install latest OpenSSL
@@ -54,20 +57,23 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
                 sslContext = SSLContext.getInstance("TLSv1.2");
                 sslContext.init(null, null, null);
                 sslContext.createSSLEngine();
-            } catch (e: Exception) {
+            }
+            catch (e: Exception) {
                 e.printStackTrace();
             }
             
             val newDrug = Diseases()
-            newDrug.adverse_drugname = et_drug_Name!!.text.toString().trim()
-            newDrug.adverse_reaction = reaction_effect!!.text.toString().trim()
-            newDrug.adverse_date_of_start = et_date_of_start!!.text.toString().trim()
-            newDrug.adverse_treatment_taken = et_treatment_taken!!.text.toString().trim()
-            newDrug.mobile_no = "9505505093"
+            newDrug.drugname = et_drug_Name!!.text.toString().trim()
+            newDrug.reaction = reaction_effect!!.text.toString().trim()
+            newDrug.date_of_start = et_date_of_start!!.text.toString().trim()
+            newDrug.treatment_taken = et_treatment_taken!!.text.toString().trim()
+            newDrug.mobile_no = "8142529582"
+
+          
 
             val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
 
-            val requestCall = diseaseService.addDrugList(newDrug)
+            val requestCall = diseaseService.addDrug(newDrug)
 
             requestCall.enqueue(object : Callback<Diseases> {
                 /**
@@ -91,6 +97,9 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
             })
         }
     }
+
+
+
 
     private fun assignValuestoVariable() {
         val drugName = et_drug_Name.text.toString()

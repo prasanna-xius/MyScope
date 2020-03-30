@@ -105,7 +105,7 @@
     <string name="provider">Provider</string>
     <string name="eg_provider">E.g. Doctor Name</string>
     <!--Surgery History-->
-    <!--Drug Rea ction-->
+    <!--Drug Reaction-->
     <string name="drug_title">Adverse Drug Reaction</string>
     <string name="drug_Name">Drug Name<font color='#a4c639'>*</font></string>
     <string name="reaction_effect">Reaction/Effect</string>
@@ -113,9 +113,16 @@
     <string name="treatment_taken">Treatment taken</string>
     <string name="drug_Name_hint">E.g. Paracetamol</string>
     <string name="reaction_hint">Itching, Giddiness etc</string>
+
+    <!--Drug Reaction-->
+    <string name="services_title">Services</string>
+    <string name="patient_counseling">Patient counseling</string>
+    <string name="drug_interaction">Drug Interaction</string>
+    <string name="prescription_audit">Prescription Audit</string>
+    <string name="adverse_drug_event_monitoring">Adverse Drug Event Monitoring</string>
+    <string name="post_discharge_care_package">Post-discharge Care Package</string>
+
     <!--Medication History-->
-
-
     <string-array name="how_often_taken_arrays">
         <item>Select time</item>
         <item>Morning </item>
@@ -465,5 +472,220 @@
         <item>More than 10 lakhs</item>
     </string-array>
 
+
+    <string name="text">
+
+      <br>
+          <font size="15"> <b>What is this?</b> \n\n </font>
+      </br>
+<br> <font size="12">
+Patient counseling is the process of providing crucial information, advice, and assistance to help patients take
+    their medications appropriately. It also covers the information about your disease condition and lifestyle
+    changes needed to reduce the poor health outcomes.\n
+    \n</font>
+</br>
+    <br>
+        <font size="15"> <b>Why you need this? </b>\n\n </font>
+    </br>
+<br> <font size="12">
+Patient knowledge about his/her illness is very important to manage the condition, especially in the
+    case of chronic diseases like diabetes, heart diseases, and cancer, etc. Patient counseling makes the
+    patient aware of the medications, and drug-related problems and necessary lifestyle changes need to cure
+    the condition and enhance compliance.\n
+    \n</font>
+</br>
+        <br>
+            <font size="15">   <b>How will SCOPE help? </b>\n\n</font>
+        </br>
+<br>
+    <font size="12">
+About his / hrug-related Counseling [Patient shall be made aware aer drugs prescribed by physician/specialist, directions about how to take a medication, precautions like adverse effects, interactions, drug monitoring and managing missed doses and other drug-related problems]\n
+
+Disease-related Counseling [Counseling related to disease, risk factors, symptoms, diagnostic tests, complications, preventive measures and understanding the disease-related emergencies to monitor]\n
+
+Lifestyle-related Counseling [Counseling about food to be taken, food to be avoided, exercise advice, stress management, Counseling for alcohol and smoking behavior]\n
+
+Caregiver Instructions [Patient\'s attendee (s) will be informed about the proper preventive and monitoring measures to be taken at home related to disease, medications, food, and lifestyle, etc.]\n
+
+Counseling about self-monitoring [In some unusual conditions, Patient need to know the self-monitoring tools and techniques like weight management, fluid and salt intake management, etc.]\n
+
+Special aids assistance [like Insulin pens, eye drops, ear drops, inhalers, Rota haler, etc.]\n
+
+Patient compliance counseling [How to adjust to the medications prescribed to the Patient? timings and alert system about the medicine for the right dose and right time, about prescription filling, etc.]\n
+ \n
+    </font>
+</br>
+        <br>
+        <font size="15"> <b>The Scenario where we help? </b>\n\n </font>
+         </br>
+<br> <font size="12">
+Drug-related issues, Disease information, self-monitoring, attendee\'s issues about patient\'s condition, special assistance, lifestyle-related issues, food, and drug information, etc\n
+    \n   </font>  </br>
+
+    </string>
+
+    <string name="text1">
+
+      <br>
+          <font size="15"> <b>What is this?</b> \n\n </font>
+      </br>
+<br>
+    <font size="12">
+A drug interaction is a change in the effect of the drug by other drug or food administered along with or by an existing disease.
+    In most of the cases, it worsens the condition and causes unexpected discomfort to patient and attendee.    \n</font>
+
+</br>
+    <br>
+        <font size="15"> <b>Why you need this? </b>\n\n </font>
+    </br>
+<br>
+    <font size="12">
+     A drug-interaction check will help you to understand the possible interactions of your prescribed drugs with other concomitant administered medicines and food.
+    If your prescription contains more than three medications or you are on the pills for more than one disease,
+    you may need a quick drug-interaction check to avoid unwanted discomfort.\n
+    \n</font>
+</br>
+        <br>
+            <font size="15">   <b>How will SCOPE help? </b>\n\n</font>
+        </br>
+<br>
+    <font size="12">
+We will check your prescription for possible drug-drug interactions, drug-food interactions, drug-disease interactions, which will help you and your doctor to understand the nature of onset and severity of drug interaction effect, probable mechanism, and suggested clinical management.\n
+ \n
+    </font>
+</br>
+        <br>
+        <font size="15"> <b>The Scenario where we help? </b>\n\n </font>
+         </br>
+<br>
+    <font size="12">
+Drug-food interactions: Waferin and food containing vitamin k (green leafy vegetables); Insulin or diabetic drugs and alcohol; Statins and grapefruit etc \n
+
+Drug-drug-interactions: Warfarin and clopidogrel; Phenytoin and omeprazole, etc. \n
+
+Drug-disease interactions: Cancer medicines increase the risk of heart problems, etc. \n
+
+Disease-disease interactions: Kidney failure increase the risk of heart attack, etc.   \n   </font>  </br>
+
+    </string>
+
+    <string name="text2">
+
+      <br>
+          <font size="15"> <b>What is this?</b> \n\n </font>
+      </br>
+<br> <font size="12">
+A prescription audit is a multilevel approach that is necessary to improve patient care.
+    It is a full check of your prescription for the drug and disease-related issues.   \n</font>
+</br>
+    <br>
+        <font size="15"> <b>Why you need this? </b>\n\n </font>
+    </br>
+<br> <font size="12">
+     The prescription audit is a must for all the patients after receiving a prescription and before taking medications.
+    You need a prescription inspection to identify and avoid or manage the medication errors, interactions,
+    and contraindication issues that usually occur if you are on multiple drugs.\n
+    \n</font>
+</br>
+        <br>
+            <font size="15">   <b>How will SCOPE help? </b>\n\n</font>
+        </br>
+<br>
+    <font size="12">
+We will check your prescription for medication errors, contraindications,
+        drug-interaction, incomplete or inadequate prescription, drug duplication issues, and other drug-related problems. \n
+    </font>
+</br>
+        <br>
+        <font size="15"> <b>The Scenario where we help? </b>\n\n </font>
+         </br>
+<br> <font size="12">
+Missed doses, missed units, drug interactions with other drugs, food to be avoided, adverse effects,
+    duplicate drugs, and other drug-related issues \n   </font>  </br>
+
+    </string>
+
+    <string name="text3">
+
+      <br>
+          <font size="15"> <b>What is this?</b> \n\n </font>
+      </br>
+<br> <font size="12">
+An adverse drug event is an injury or problem that occurred to the patient because of administered medicine.
+    It could be because of medication errors, drug reactions, allergic reactions, and/or overdoses.
+    It can happen during hospitalization, out-patient setting, or post-discharge at home.   \n</font>
+</br>
+    <br>
+        <font size="15"> <b>Why you need this? </b>\n\n </font>
+    </br>
+<br> <font size="12">
+    You need an adverse drug event monitoring assessment to identify the possible side effects associated with your medications.
+    It will help in avoiding or preventing future risk of adverse events.
+    It will help you to understand emergencies if they occur because of the adverse effects of the drug.\n
+    \n</font>
+</br>
+        <br>
+            <font size="15">   <b>How will SCOPE help? </b>\n\n</font>
+        </br>
+<br>
+    <font size="12">
+We will check your drugs for side effects and allergies and counsel you
+        about monitoring of side effects, preventive measures to be taken, and specific advice related to drugs, etc. \n
+    </font>
+</br>
+        <br>
+        <font size="15"> <b>The Scenario where we help? </b>\n\n </font>
+         </br>
+<br> <font size="12">
+Allergies, giddiness, vomiting, headache, hypotension, hypoglycemia and low electrolyte levels, etc \n   </font>  </br>
+
+    </string>
+
+    <string name="text4">
+
+      <br>
+          <font size="15"> <b>What is this?</b> \n\n </font>
+      </br>
+<br> <font size="12">
+Post-discharge care includes the short-term and long-term services required by the patient
+    for better recovery and to improve clinical outcomes and health-related quality of life. It includes
+    all the services like prescription audit,
+    patient counseling, patient compliance assessment, medication adherence, and prescription refill alerts   \n</font>
+</br>
+    <br>
+        <font size="15"> <b>Why you need this? </b>\n\n </font>
+    </br>
+<br> <font size="12">
+     When your doctor is not around, SCOPE is there to help you, and the services are required at home after
+    hospital discharge. Post-discharge care keeps you alert about the medications, interactions, compliance, self-monitoring,
+    emergency management of adverse
+    events or other drug-related problems, food, prescription refiling, and lifestyle modifications, doctors appointments, etc.\n
+    \n</font>
+</br>
+        <br>
+            <font size="15">   <b>How will SCOPE help? </b>\n\n</font>
+        </br>
+<br>
+    <font size="12">
+The SCOPE healthcare team will help to deliver patient-centered post-discharge care management, which
+        will cover patient counseling, prescription audit, drug interactions,
+        and side effect monitoring, drug and refill alerts, outcome assessment, query-check, and other Patient-related questions. \n
+    </font>
+</br>
+        <br>
+        <font size="15"> <b>The Scenario where we help? </b>\n\n </font>
+         </br>
+<br> <font size="12">
+Single-living status, medication complexity, multiple medications, multiple disease condition, busy schedules, self-monitoring,
+    home-care, drug-related queries, medication adherence, outcome assessment, prescription refill updates, etc \n   </font>  </br>
+
+    </string>
+
+
+    <string name="dialogTitle">Alert Dailog</string>
+
+
+    <string name="dialogMessage">My Scope technical team will get back to you soon.
+        In case of emergency you can mail to info@scopemedics.com </string>
 
 </resources>

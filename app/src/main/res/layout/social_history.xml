@@ -89,7 +89,7 @@
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
-        <com.example.myscope.activities.MultiSelectionSpinner
+        <com.example.myscope.activities.MultiSpinnerAlcohol
             android:id="@+id/tobacco_usage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -170,6 +170,26 @@
         android:textSize="16sp"
         android:layout_marginLeft="@dimen/dimen_10"
         android:layout_marginRight="@dimen/dimen_10"/>
-</LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_social_updated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:visibility="gone"
+            android:text="@string/update"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/background_button"
+            android:textSize="16sp"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"/>
+
+    </LinearLayout>
+
+
+
 
 </ScrollView>

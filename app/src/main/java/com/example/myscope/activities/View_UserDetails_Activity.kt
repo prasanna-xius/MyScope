@@ -174,6 +174,17 @@ class View_UserDetails_Activity : BaseActivity() {
 
         btn_update_userProfile.setOnClickListener {
 
+
+et_bmi.setOnClickListener {
+
+                bmi()
+
+               // bmicalculator(et_weight,et_height,et_bmi)
+}
+
+
+
+        btn_userProfile.setOnClickListener{
 //            assignValuestoVariable()
 //            validate(spinnergender_get!!)
 //            validate(spinner_bloodGroup!!)
@@ -187,6 +198,8 @@ class View_UserDetails_Activity : BaseActivity() {
             assignValuestoVariable()
             validate(spinnergender_get!!)
             validate(spinner_bloodGroup!!)
+
+         //   bmicalculator(et_weight,et_height,et_bmi)
             profilepostapi();
 
         }
@@ -421,6 +434,9 @@ class View_UserDetails_Activity : BaseActivity() {
 
     }
 
+    private fun bmi() {
+
+        bmicalculator(et_weight,et_height,et_bmi)
     private fun savingvaluestoprofileclass() {
         val first_name = first_name_get!!.text.toString()
         val last_name = et_last_name.text.toString()
@@ -538,7 +554,6 @@ class View_UserDetails_Activity : BaseActivity() {
         } else {
             profileclass.email = et_email.text.toString()
         }
-
 
     }
 

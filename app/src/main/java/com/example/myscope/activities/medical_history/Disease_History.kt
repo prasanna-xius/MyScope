@@ -120,10 +120,7 @@ class Disease_History : BaseActivity() {
             val requestCall = diseaseService.addDisease(newDisease)
 
             requestCall.enqueue(object : Callback<Diseases> {
-                /**
-                 * Invoked when a network exception occurred talking to the server or when an unexpected
-                 * exception occurred creating the request or processing the response.
-                 */
+
                 override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
 
                     if (resp.isSuccessful) {
@@ -146,102 +143,8 @@ class Disease_History : BaseActivity() {
 
         }
 
-//          editbtn_disease.setOnClickListener {
-//
-//
-//
-//            btn_medicalHistory.setText("UPDATE")
-//
-//            val bundle: Bundle? = intent.extras
-//
-//            if (bundle?.containsKey(ARG_ITEM_ID)!!) {
-//
-//                val id = intent.getIntExtra(ARG_ITEM_ID, 0)
-//
-////                loadDetails(id)
-//
-//                initUpdateButton(id)
-//
-//                //initDeleteButton(id)
-//            }
-//
-//
-//        }
-
 
     }
-
-    /*private fun loadDetails(id: Int) {
-
-
-   //val filter = HashMap<String , String>()()
-           val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
-           val requestCall = diseaseService.getdisease("null")
-           requestCall.enqueue(object : retrofit2.Callback<Diseases>{
-
-               override fun onResponse(call: Call<Diseases>, response: Response<Diseases>) {
-
-                   if (response.isSuccessful) {
-                       val destination = response.body()
-                       destination?.let {
-                           et_condition.setText(destination.known_condition)
-   //                       spinner_disease?.setText(destination.disease_status)
-                           et_noOfYrs.setText(destination.disease_duration)
-                           et_startDate.setText(destination.when_started)
-                           et_stopDate.setText(destination.when_ended)
-                           notes_diseaseHistory.setText(destination.disease_note)
-
-                           //spinnerAllergy_update.getString(destination.spinerdata)
-
-                           //collapsing_toolbar.title = destination.city
-                       }!!
-                   } else {
-                       Toast.makeText(this@Disease_History, "Failed to retrieve details", Toast.LENGTH_SHORT).show()
-                   }
-               }
-
-               override fun onFailure(call: Call<Diseases>, t: Throwable) {
-               Toast.makeText(this@Disease_History, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
-               }
-           })
-
-       }*/
-
-//    private fun initUpdateButton(id: Int) {
-//        btn_medicalHistory.setOnClickListener {
-//
-//            val known_conditionUpdate = et_condition.text.toString()
-//            val disease_statusUpdate = et_noOfYrs.text.toString()
-//            val disease_durationUpdate = et_condition.text.toString()
-//            val when_startedUpdate = et_noOfYrs.text.toString()
-//            val when_endedUpdate = et_condition.text.toString()
-//            val disease_noteUpdate = et_noOfYrs.text.toString()
-//            val number:String = "8142529582"
-//
-//
-//            val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
-//            val requestCall = destinationService.updateDisease(number.toInt(), known_conditionUpdate,disease_statusUpdate,disease_durationUpdate,when_startedUpdate,
-//                    when_endedUpdate,disease_noteUpdate  )
-//
-//            requestCall.enqueue(object: Callback<Diseases> {
-//
-//                override fun onResponse(call: Call<Diseases>, response: Response<Diseases>) {
-//                    if (response.isSuccessful) {
-//                        finish() // Move back to DestinationListActivity
-//                        var updatedDestination = response.body() // Use it or ignore It
-//                        Toast.makeText(this@Disease_History  , "Item Updated Successfully", Toast.LENGTH_SHORT).show()
-//                    } else {
-//                        Toast.makeText(this@Disease_History  , "Failed to update item1", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<Diseases>, t: Throwable) {
-//                    Toast.makeText(this@Disease_History  , "Failed to update item", Toast.LENGTH_SHORT).show()
-//                }
-//            })
-//        }
-//    }
-
 
 
     private fun assignValuestoVariable() {
@@ -265,23 +168,6 @@ class Disease_History : BaseActivity() {
     }
 
 
-//    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-//    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val id = item.itemId
-//        if (id == android.R.id.home) {
-//            navigateUpTo(Intent(this, Disease_recyclerView::class.java))
-//            return true
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
-//
-//
-//
-//    companion object {
-//
-//        const val ARG_ITEM_ID = "item_id"
-//    }
 }
 
 
