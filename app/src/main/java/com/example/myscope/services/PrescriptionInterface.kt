@@ -57,7 +57,7 @@ interface PrescriptionInterface {
 
     @Headers("Content-Type:application/json")
     @GET("doctorlist/{mobile_no}/{model_name}")
-    fun getDoctorListbyId(@Path("mobile_no") mobile_no:String,@Path("model_name") model_name:String): Call<List<PrescriptionDataClass>>
+    fun getDoctorListbyId(@Path("mobile_no") mobile_no:String, @Path("model_name") model_name: String?): Call<List<PrescriptionDataClass>>
 
 
     @Headers("Content-Type:application/json")

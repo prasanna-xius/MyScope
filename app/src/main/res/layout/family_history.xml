@@ -13,14 +13,15 @@
 
         <include layout="@layout/app_bar_main" />
 
-        <include layout="@layout/background_image"/>
-   <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/family_history"
-    android:textSize="30sp"
-    android:gravity="center"
-    android:textColor="@color/bg_screen2" />
+        <include layout="@layout/background_image" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/family_history"
+            android:textColor="@color/bg_screen2"
+            android:textSize="30sp" />
 
 
         <LinearLayout
@@ -99,9 +100,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_75"
                 android:layout_weight="1"
+                android:background="@drawable/border_bg"
                 android:gravity="start"
                 android:inputType="textMultiLine"
-                android:background="@drawable/border_bg"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
         </LinearLayout>

@@ -36,6 +36,7 @@ class Family_History : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
+        showLongToast(mobile_no.toString())
 
         relationshipSpinner = findViewById<Spinner>(R.id.spinner_family)
 

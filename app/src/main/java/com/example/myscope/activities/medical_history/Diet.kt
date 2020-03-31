@@ -61,7 +61,7 @@ class Diet : BaseActivity() {
 
         val checkboxvalue = ServiceBuilder.buildService(Disease_service::class.java)
 
-        val requestCall = checkboxvalue.getDiet("8142529582" )
+        val requestCall = checkboxvalue.getDiet(mobile_no!! )
 
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>>{
 
@@ -101,7 +101,7 @@ class Diet : BaseActivity() {
 
         newDiet.diet = spinner_diet!!.selectedItem.toString()
 
-        newDiet.mobile_no = "8142529582"
+        newDiet.mobile_no = mobile_no!!
 
         val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
         val requestCall = diseaseService.addDietList(newDiet)
@@ -133,7 +133,7 @@ class Diet : BaseActivity() {
 
 
         val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
-        val requestCall = diseaseService.getDiet("8142529582")
+        val requestCall = diseaseService.getDiet(mobile_no!!)
 
 
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>> {
@@ -184,7 +184,7 @@ class Diet : BaseActivity() {
                 newDiet.diet = spinner_diet?.getSelectedItem().toString()
                 text1.setText(newDiet.diet)
             }
-            newDiet.mobile_no = "8142529582"
+            newDiet.mobile_no = mobile_no
 
 
             val destinationService = ServiceBuilder.buildService(Disease_service::class.java)

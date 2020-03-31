@@ -50,7 +50,8 @@ private fun loadValues() {
 //        filter["country"] = "India"
 //        filter["count"] = "1"
 
-    val requestCall = destinationService.getDiseaseList(filter)          ///service file method called (binding)
+    val requestCall = destinationService.getDiseaseList(filter)
+    ///service file method called (binding)
 
     //val requestCall = destinationService.getAllergy(filter)
 
