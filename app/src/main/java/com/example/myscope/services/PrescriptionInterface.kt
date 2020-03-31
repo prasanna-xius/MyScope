@@ -51,9 +51,9 @@ interface PrescriptionInterface {
     @GET("doctorlist")
     fun getDoctorList(@QueryMap filter: HashMap<String, String>): Call<List<PrescriptionDataClass>>
 
-//    @Headers("Content-Type:application/json")
-//    @GET("doctorlist/{mobile_no}")
-//    fun getDoctorListbyId(@Path("mobile_no") mobile_no: String): Call<List<PrescriptionDataClass>>
+    @Headers("Content-Type:application/json")
+    @GET("doctorlist/{mobile_no}")
+    fun getDoctorListbymobileno(@Path("mobile_no") mobile_no: String): Call<List<PrescriptionDataClass>>
 
     @Headers("Content-Type:application/json")
     @GET("doctorlist/{mobile_no}/{model_name}")
