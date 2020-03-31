@@ -371,7 +371,7 @@ class Services_medical_history : BaseActivity() {
 
         val checkBoxPrescriptionsvalue = ServiceBuilder.buildService(PrescriptionInterface::class.java)
 
-        val requestCall = checkBoxPrescriptionsvalue.getDoctorListbyId("8142529582" )
+        val requestCall = checkBoxPrescriptionsvalue.getDoctorListbymobileno("8142529582" )
 
         requestCall.enqueue(object : retrofit2.Callback<List<PrescriptionDataClass>>{
 
