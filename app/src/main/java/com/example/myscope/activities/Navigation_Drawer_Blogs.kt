@@ -16,6 +16,7 @@ import com.example.myscope.R
 import com.example.myscope.activities.labReports.Lab_Reports_Homepage
 import com.example.myscope.activities.medical_documents.Medical_Documents_HomePage
 import com.example.myscope.activities.medical_history.Medical_History_HomePage
+import com.example.myscope.activities.medical_history.Services_medical_history
 import com.example.myscope.activities.prescription.Prescriptions_HomePage
 import com.example.myscope.fragments.NavigationDrawerFragment
 import com.example.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks
@@ -116,7 +117,7 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
                 navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
             }
             R.id.card_HealthServices-> {
-                navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Services_medical_history::class.java))
             }
             R.id.card_EducationalBlog -> {
                 navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))

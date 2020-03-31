@@ -47,7 +47,7 @@ interface Disease_service {
     //Family_History
 
     @Headers("Content-Type:application/json")
-    @GET("Familylist")
+    @GET("familylist")
     fun getFamilyList(@QueryMap filter: HashMap<String, String>): Call<List<Diseases>>
 
     @GET("familylist/{id}")
@@ -55,7 +55,7 @@ interface Disease_service {
 
     //end point of webservice
     @Headers("Content-Type: application/json")
-    @POST("/addFamily")
+    @POST("addFamily")
     fun addFamilyList(@Body newFamilyCondition: Diseases): Call<Diseases>
 
     @Headers("Content-Type: application/json")
@@ -79,17 +79,17 @@ interface Disease_service {
 
     //Adverse_Drug
 
-    @GET("addadverse_druglist/{id}")
-    fun getDrug(@Path("id") id: String): Call<List<Diseases>>
+    @GET("adverselist/{mobile_no}")
+    fun getDrug(@Path("mobile_no") mobile_no: String): Call<List<Diseases>>
 
     //end point of webservice
     @Headers("Content-Type: application/json")
     @POST("addDrug")
     fun addDrug(@Body newDrug: Diseases): Call<Diseases>
 
-//    @Headers("Content-Type: application/json")
-//    @POST("updateadverse_drug")
-//    fun updateAdverse_drug(@Body newDrug: Diseases): Call<Diseases>
+    @Headers("Content-Type: application/json")
+    @POST("updateadversedrug")
+    fun updateadversedrug(@Body newDrug: Diseases): Call<Diseases>
 
 
     //Services

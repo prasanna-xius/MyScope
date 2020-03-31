@@ -1,6 +1,8 @@
 package com.example.myscope.activities.medical_history
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -16,10 +18,17 @@ import retrofit2.Response
 
 class FamilyHistoryRecyclerView : BaseActivity() {
 
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_family_history_recycler_view)
 
+
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
+        showLongToast(mobile_no.toString())
 
         fab_btn_familyHistory.setOnClickListener {
 
@@ -43,7 +52,8 @@ class FamilyHistoryRecyclerView : BaseActivity() {
 //        filter["country"] = "India"
 //        filter["count"] = "1"
 
-        val requestCall = destinationService.getFamilyList(filter)          ///service file method called (binding)
+        val requestCall = destinationService.getFamilyList(filter)
+        ///service file method called (binding)
 
 
 

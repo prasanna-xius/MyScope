@@ -68,7 +68,7 @@ class Social_History : BaseActivity() {
 
         val checkbox = ServiceBuilder.buildService(Disease_service::class.java)
 
-        val requestCall = checkbox.getSocialHabits("8142529582" )
+        val requestCall = checkbox.getSocialHabits(mobile_no!! )
 
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>>{
 
@@ -114,7 +114,7 @@ class Social_History : BaseActivity() {
                         newSocialHabits.tobacco = tobacco_usage!!.selectedStrings.toString()
                         newSocialHabits.alcohol = spinner_drinking!!.getSelectedItem().toString()
                         newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
-                        newSocialHabits.mobile_no = "8142529582"
+                        newSocialHabits.mobile_no = mobile_no
 
                         val socialService = ServiceBuilder.buildService(Disease_service::class.java)
 
@@ -174,7 +174,7 @@ class Social_History : BaseActivity() {
 //        val alcoholtaken = tobaccoUsage!!.social_multi.text.toString()
 
         val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
-        val requestCall = diseaseService.getSocialHabits("8142529582")
+        val requestCall = diseaseService.getSocialHabits(mobile_no!!)
 //        var timeitem = tobaccoUsage!!.social_multi.text.toString()
 
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>> {

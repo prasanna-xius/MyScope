@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
@@ -28,6 +29,9 @@ import javax.net.ssl.SSLContext
 
 class Services_medical_history : BaseActivity() {
 
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
+
 
     val length = null;
     lateinit var descText: TextView
@@ -47,6 +51,8 @@ class Services_medical_history : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services_medical_history)
 
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         descText = findViewById(R.id.description_text)
         minus = findViewById(R.id.minus)
@@ -159,7 +165,7 @@ class Services_medical_history : BaseActivity() {
 
         val checkboxvalue = ServiceBuilder.buildService(Disease_service::class.java)
 
-        val requestCall = checkboxvalue.getService("8142529582" )
+        val requestCall = checkboxvalue.getService(mobile_no!! )
 
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>>{
 
@@ -222,7 +228,7 @@ class Services_medical_history : BaseActivity() {
                         newServices.prescription_aduit = checkbox_Prescription_Audit!!.isChecked().toString().toBoolean()
                         newServices.adverse_drug_monitering = checkbox_Adverse_Drug_Event_Monitoring!!.isChecked().toString().toBoolean()
                         newServices.post_dicharge_package = checkbox_Post_discharge_Care_Package!!.isChecked().toString().toBoolean()
-                        newServices.mobile_no = "8142529582"
+                        newServices.mobile_no = mobile_no
 
                         val servicesService = ServiceBuilder.buildService(Disease_service::class.java)
 
@@ -276,7 +282,7 @@ class Services_medical_history : BaseActivity() {
 
 
         val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
-        val requestCall = diseaseService.getService("8142529582")
+        val requestCall = diseaseService.getService(mobile_no!!)
 
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>> {
 
@@ -336,7 +342,7 @@ class Services_medical_history : BaseActivity() {
 
 
 
-            newServices.mobile_no = "8142529582"
+            newServices.mobile_no = mobile_no
 
 
             val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
@@ -371,7 +377,7 @@ class Services_medical_history : BaseActivity() {
 
         val checkBoxPrescriptionsvalue = ServiceBuilder.buildService(PrescriptionInterface::class.java)
 
-        val requestCall = checkBoxPrescriptionsvalue.getDoctorListbyId("8142529582" )
+        val requestCall = checkBoxPrescriptionsvalue.getDoctorListbyId(mobile_no!!, model_name = null)
 
         requestCall.enqueue(object : retrofit2.Callback<List<PrescriptionDataClass>>{
 
@@ -412,7 +418,7 @@ class Services_medical_history : BaseActivity() {
 
         val checkboxvalue = ServiceBuilder.buildService(Disease_service::class.java)
 
-        val requestCall = checkboxvalue.getdisease("8142529582" )
+        val requestCall = checkboxvalue.getdisease(mobile_no!! )
 
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>>{
 
