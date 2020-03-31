@@ -39,6 +39,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
     var prescribed_is: String? = null
     var hospitalname: String? = null
     var medicalcondition: String? = null
+    var model_name: String? = null
 
     var rv: RecyclerView? = null
 
@@ -51,6 +52,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
+        model_name = sharedpreferences!!.getString("model_name",null)!!
         showLongToast(mobile_no.toString())
 
 //        mobile_no = "9505505093"
@@ -154,6 +156,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             newPrescription.hospital_name = d.et_hosp_name1!!.text.toString().trim()
             newPrescription.medical_condition = d.et_medical_condition1!!.text.toString().trim()
             newPrescription.prescription_note = d.et_precsription_note1!!.text.toString().trim()
+            newPrescription.model_name = model_name
 
             newPrescription.mobile_no = mobile_no
 
@@ -268,9 +271,6 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
 
                 } else if (response.code() == 401) {
                     Toast.makeText(this@Prescription_ManualDoctorDialog, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
-                } else { // Application-level failure
-                    // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@Prescription_ManualDoctorDialog, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
                 }
             }
 
