@@ -1,63 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:weightSum="3.0"
+    android:background="@color/colorWhite"
     android:orientation="vertical"
-    android:background="#fff">
+    tools:context=".activities.medical_history.Disease_recyclerView">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_weight="1.0"
-    android:gravity="center_horizontal">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@drawable/background_new">
-    </ImageView>
-
-</LinearLayout>
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1.0"
-        android:gravity="center_horizontal">
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorBackground"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/background_new"
+        android:orientation="vertical"></LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/surgery_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
-            tools:listitem="@layout/list_item_surgery"/>
+            tools:listitem="@layout/list_item" />
 
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1.0"
-            android:gravity="center_horizontal"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_surgery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|bottom"
-                android:layout_margin="@dimen/fab_margin"
-                android:clickable="true"
-                android:src="@android:drawable/ic_input_add"
-                android:tint="@android:color/white"
-                app:backgroundTint="#2196F3" />
-
-        </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_surgery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/surgery_recycler_view"
+            android:layout_alignBottom="@+id/surgery_recycler_view"
+            android:layout_gravity="right|bottom"
+            android:layout_margin="@dimen/fab_margin"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@android:drawable/ic_input_add"
+            android:tint="@android:color/white"
+            app:backgroundTint="#2196F3" />
+    </RelativeLayout>
 
 
 </LinearLayout>
