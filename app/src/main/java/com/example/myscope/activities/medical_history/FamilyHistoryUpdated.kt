@@ -88,8 +88,10 @@ class FamilyHistoryUpdated : BaseActivity() {
                     showLongToast(familyid.toString())
 
                     familyCondition?.let {
-                        apiResponse()
-
+                        var familyid = familyCondition!!.family_id!!
+                        et_family_conditionUpdated.setText(familyCondition!!.family_condition)
+                        text1.setText(familyCondition!!.relationship)
+                        relationship_notesUpdated.setText(familyCondition!!.family_note)
 
                     }!!
 
@@ -107,17 +109,7 @@ class FamilyHistoryUpdated : BaseActivity() {
         })
 
     }
-
-    private fun apiResponse(): Diseases {
-        var familyid = familyCondition!!.family_id!!
-        et_family_conditionUpdated.setText(familyCondition!!.family_condition)
-        text1.setText(familyCondition!!.relationship)
-//                            text1.setText(familyCondition!!.relationship)
-
-        relationship_notesUpdated.setText(familyCondition!!.family_note)
-        return familyCondition as Diseases
-    }
-
+    
     private fun initUpdateButton(id: String) {
 
         btn_familyUpdated.setOnClickListener {
@@ -188,9 +180,9 @@ class FamilyHistoryUpdated : BaseActivity() {
     private fun assignValuestoVariable() {
 
         var familyCondition = et_family_conditionUpdated.text.toString()
-        var relationship = relationshipSpinner!!.selectedItem.toString()
+        var relationship = spinner_familyUpdated!!.selectedItem.toString()
         validateInput(et_family_conditionUpdated,familyCondition)
-        validateSpinner(relationshipSpinner!!,relationship)
+        validateSpinner(spinner_familyUpdated!!,relationship)
 
         if ((familyCondition != "")&&
                 (relationship != "None"))
