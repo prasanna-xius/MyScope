@@ -196,7 +196,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
 
     private fun loadDetails() {
         val prescription_data = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
-        val requestCall = prescription_data.getDoctorListbyId(mobile_no.toString())
+        val requestCall = prescription_data.getDoctorListbyId(mobile_no.toString(),model_name.toString())
         showLongToast(requestCall.toString())
         requestCall.enqueue(object : retrofit2.Callback<List<PrescriptionDataClass>> {
             override fun onResponse(call: Call<List<PrescriptionDataClass>>, response: Response<List<PrescriptionDataClass>>) {
@@ -239,7 +239,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
         val destinationService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
         rv = findViewById<View>(R.id.recyclerview_doctorlist) as RecyclerView
 
-        val requestCall = destinationService.getDoctorListbyId(mobile_no!!)
+        val requestCall = destinationService.getDoctorListbyId(mobile_no!!,model_name!!)
 
         requestCall.enqueue(object : Callback<List<PrescriptionDataClass>> {
             /**
