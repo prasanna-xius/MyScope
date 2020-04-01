@@ -2,6 +2,7 @@ package com.example.myscope.activities.medical_history
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -24,14 +25,16 @@ import retrofit2.Response
 class MedicationItemListActivity : AppCompatActivity() {
 
 
-
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
     var fab : FloatingActionButton?=null
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medication_list)
-
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
         fab= findViewById(R.id.fab_medication)
         //fab?.setBackgroundColor(Color.parseColor("#2196F3"));
         //setSupportActionBar(toolbar as Toolbar?)
@@ -55,14 +58,14 @@ class MedicationItemListActivity : AppCompatActivity() {
 
         val medicationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
 
-        val filter = HashMap<String, String>()
+//        val filter = HashMap<String, String>()
 //        filter["country"] = "India"
 //        filter["count"] = "1"
 
        // Toast.makeText(this, "select item"+filter, Toast.LENGTH_LONG).show()
 
 
-        val requestCall = medicationService.getMedicationList(filter)
+        val requestCall = medicationService.getMedicationByid(mobile_no.toString())
 
         //Toast.makeText(this, "select item"+requestCall, Toast.LENGTH_LONG).show()
 

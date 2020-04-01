@@ -96,12 +96,12 @@ class ImmunizationUpdateActivity : AppCompatActivity() {
 
             //val id = intent.getIntExtra(ARG_ITEM_ID, 0)
 
-            val id : String = intent.getStringExtra(ARG_ITEM_ID)
+//            val id : String = intent.getStringExtra(ARG_ITEM_ID)
             position = intent.getIntExtra("position" , 0)
 
-            loadDetails(id,position)
+            loadDetails(mobile_no.toString(),position)
 
-            initUpdateButton(id)
+            initUpdateButton(mobile_no.toString())
 
             //initDeleteButton(id)
         }

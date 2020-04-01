@@ -1,6 +1,8 @@
 package com.example.myscope.activities.medical_history
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,13 +24,15 @@ class SurgeryItemListActivity : AppCompatActivity() {
 
 
     var fab : FloatingActionButton?=null
-
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_surgery_list)
 
-
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
         fab= findViewById(R.id.fab_surgery)
         //fab?.setBackgroundColor(Color.parseColor("#2196F3"));
@@ -59,7 +63,7 @@ class SurgeryItemListActivity : AppCompatActivity() {
        // Toast.makeText(this, "select item"+filter, Toast.LENGTH_LONG).show()
 
 
-        val requestCall = surgeryService.getSurgeryList(filter)
+        val requestCall = surgeryService.getSurgeryByid(mobile_no.toString())
 
         //Toast.makeText(this, "select item"+requestCall, Toast.LENGTH_LONG).show()
 
