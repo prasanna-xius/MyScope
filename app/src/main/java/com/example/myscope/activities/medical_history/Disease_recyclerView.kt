@@ -1,7 +1,9 @@
 package com.example.myscope.activities.medical_history
 
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -21,12 +23,16 @@ import retrofit2.Response
 
 
 class Disease_recyclerView : AppCompatActivity() {
+    var sharedpreferences: SharedPreferences? = null
+    var mobile_no: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_disease_recycler_view)
 
-
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
         fab_btn.setOnClickListener {
 
             val intent = Intent(this, Disease_History::class.java)
@@ -46,11 +52,7 @@ private fun loadValues() {
 
     val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
 
-    val filter = HashMap<String, String>()
-//        filter["country"] = "India"
-//        filter["count"] = "1"
-
-    val requestCall = destinationService.getDiseaseList(filter)
+    val requestCall = destinationService.getdisease(mobile_no.toString())
     ///service file method called (binding)
 
     //val requestCall = destinationService.getAllergy(filter)
