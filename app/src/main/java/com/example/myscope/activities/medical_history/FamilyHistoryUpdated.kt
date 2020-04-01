@@ -83,7 +83,7 @@ class FamilyHistoryUpdated : BaseActivity() {
 
                 if (response.isSuccessful) {
                     val destination = response.body()
-                    familyCondition = destination?.get(position-1)
+                    familyCondition = destination?.get(position)
                     familyid = familyCondition?.family_id!!
                     showLongToast(familyid.toString())
 

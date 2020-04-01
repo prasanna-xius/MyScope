@@ -1,6 +1,8 @@
 package com.example.myscope.activities.medical_history
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,11 +23,15 @@ class AllergyItemListActivity:AppCompatActivity() {
     //lateinit var adapter: AllergyAdapter
 
     var fab :FloatingActionButton?=null
-
+    lateinit var sharedpreferences:SharedPreferences
+var mobile_no:String ?= null
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_allergy_list)
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
+        Toast.makeText(applicationContext,mobile_no,Toast.LENGTH_LONG).show()
 
         fab= findViewById(R.id.fab)
         //fab?.setBackgroundColor(Color.parseColor("#2196F3"));
@@ -54,7 +60,7 @@ class AllergyItemListActivity:AppCompatActivity() {
 //        filter["country"] = "India"
 //        filter["count"] = "1"
 
-        val requestCall = destinationService.getAllergyList(filter)          ///service file method called (binding)
+        val requestCall = destinationService.getAllergyByid(mobile_no.toString())          ///service file method called (binding)
 
         //val requestCall = destinationService.getAllergy(filter)
 
