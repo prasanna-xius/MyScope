@@ -83,12 +83,12 @@ class FamilyHistoryUpdated : BaseActivity() {
 
                 if (response.isSuccessful) {
                     val destination = response.body()
-                    familyCondition = destination?.get(position)
+                    familyCondition = destination?.get(position-1)
                     familyid = familyCondition?.family_id!!
                     showLongToast(familyid.toString())
 
                     familyCondition?.let {
-                        var familyid = familyCondition!!.family_id!!
+                         familyid = familyCondition!!.family_id!!
                         et_family_conditionUpdated.setText(familyCondition!!.family_condition)
                         text1.setText(familyCondition!!.relationship)
                         relationship_notesUpdated.setText(familyCondition!!.family_note)
@@ -109,7 +109,7 @@ class FamilyHistoryUpdated : BaseActivity() {
         })
 
     }
-    
+
     private fun initUpdateButton(id: String) {
 
         btn_familyUpdated.setOnClickListener {
