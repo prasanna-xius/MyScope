@@ -48,11 +48,10 @@ class FamilyHistoryRecyclerView : BaseActivity() {
 
         val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
 
-        val filter = HashMap<String, String>()
 //        filter["country"] = "India"
 //        filter["count"] = "1"
 
-        val requestCall = destinationService.getFamilyList(filter)
+        val requestCall = destinationService.getFamily(mobile_no.toString())
         ///service file method called (binding)
 
 

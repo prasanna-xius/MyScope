@@ -50,8 +50,8 @@ interface Disease_service {
     @GET("familylist")
     fun getFamilyList(@QueryMap filter: HashMap<String, String>): Call<List<Diseases>>
 
-    @GET("familylist/{id}")
-    fun getFamily(@Path("id") id: String): Call<List<Diseases>>
+    @GET("familylist/{mobile_no}")
+    fun getFamily(@Path("mobile_no") mobile_no: String): Call<List<Diseases>>
 
     //end point of webservice
     @Headers("Content-Type: application/json")

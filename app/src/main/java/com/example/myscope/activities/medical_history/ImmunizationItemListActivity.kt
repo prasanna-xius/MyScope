@@ -1,6 +1,8 @@
 package com.example.myscope.activities.medical_history
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,12 +24,17 @@ class ImmunizationItemListActivity : AppCompatActivity() {
 
 
     var fab : FloatingActionButton?=null
-    var mobile_no:String ?= null
+
+    var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
+
+
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_immunization_list)
-
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", null)
         fab= findViewById(R.id.fab_immun)
         //fab?.setBackgroundColor(Color.parseColor("#2196F3"));
         //setSupportActionBar(toolbar as Toolbar?)
@@ -49,10 +56,10 @@ class ImmunizationItemListActivity : AppCompatActivity() {
     private fun loadDestinations() {
 
         val immunizationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
-
-        val filter = HashMap<String, String>()
-//        filter["country"] = "India"
-//        filter["count"] = "1"
+//
+//        val filter = HashMap<String, String>()
+////        filter["country"] = "India"
+////        filter["count"] = "1"
 
        // Toast.makeText(this, "select item"+filter, Toast.LENGTH_LONG).show()
 

@@ -27,7 +27,7 @@ class FamilyHistoryUpdated : BaseActivity() {
 
     var relationshipSpinner: Spinner? = null
     var familyid: Int = 0
-    var familyCondition: Diseases? = null
+    var family: Diseases? = null
 
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
@@ -52,14 +52,14 @@ class FamilyHistoryUpdated : BaseActivity() {
 
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
-            val id: String = intent.getStringExtra(ARG_ITEM_ID)
+//            val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
             val position: Int? = intent.getIntExtra("position", 0)
             showLongToast(position.toString())
 
-            loadDetails(id, position!!)
+            loadDetails(mobile_no.toString(), position!!)
 
-            initUpdateButton(id)
+            initUpdateButton(mobile_no.toString())
 
 
         }
@@ -83,24 +83,26 @@ class FamilyHistoryUpdated : BaseActivity() {
 
                 if (response.isSuccessful) {
                     val destination = response.body()
-                    familyCondition = destination?.get(position)
-                    familyid = familyCondition?.family_id!!
-                    showLongToast(familyid.toString())
+                    if (destination!!.equals(null)) {
 
-                    familyCondition?.let {
-                         familyid = familyCondition!!.family_id!!
-                        et_family_conditionUpdated.setText(familyCondition!!.family_condition)
-                        text1.setText(familyCondition!!.relationship)
-                        relationship_notesUpdated.setText(familyCondition!!.family_note)
+                    } else {
+                        family = destination?.get(position)
+                        familyid = family?.family_id!!
+                        showLongToast(familyid.toString())
 
-                    }!!
+                        family?.let {
+                            et_family_conditionUpdated.setText(family!!.family_condition)
+                            text1.setText(family!!.relationship)
+                            relationship_notesUpdated.setText(family!!.family_note)
 
-                } else {
-                    Toast.makeText(this@FamilyHistoryUpdated, "Failed to retrieve details", Toast.LENGTH_SHORT)
-                            .show()
+                        }!!
+
+                    }
+                }else {
+                        Toast.makeText(this@FamilyHistoryUpdated, "Failed to retrieve details", Toast.LENGTH_SHORT)
+                                .show()
+                    }
                 }
-            }
-
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
                 Toast.makeText(
                         this@FamilyHistoryUpdated, "Failed to retrieve details1 " + t.toString(),

@@ -115,7 +115,7 @@ class DiseaseHistoryUpdate : BaseActivity() {
                 disease?.let {
                     et_condition_updated.setText(disease.known_condition)
 
-                    text1.setText(disease.disease_status)
+                    spinner_disease_updated!!.text1.setText(disease.disease_status)
                     et_noOfYrs_updated.setText(disease.disease_duration)
                     et_startDate_updated.setText(disease.when_started)
                     et_stopDate_updated.setText(disease.when_ended)
