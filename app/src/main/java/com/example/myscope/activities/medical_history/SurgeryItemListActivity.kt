@@ -20,7 +20,7 @@ import retrofit2.Response
 class SurgeryItemListActivity : AppCompatActivity() {
 
 
-
+    var mobile_no:String ?= null
     var fab : FloatingActionButton?=null
 
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -59,7 +59,7 @@ class SurgeryItemListActivity : AppCompatActivity() {
        // Toast.makeText(this, "select item"+filter, Toast.LENGTH_LONG).show()
 
 
-        val requestCall = surgeryService.getSurgeryList(filter)
+        val requestCall = surgeryService.getSurgeryByid(mobile_no.toString())
 
         //Toast.makeText(this, "select item"+requestCall, Toast.LENGTH_LONG).show()
 

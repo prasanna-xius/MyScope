@@ -22,7 +22,7 @@ class ImmunizationItemListActivity : AppCompatActivity() {
 
 
     var fab : FloatingActionButton?=null
-
+    var mobile_no:String ?= null
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +57,7 @@ class ImmunizationItemListActivity : AppCompatActivity() {
        // Toast.makeText(this, "select item"+filter, Toast.LENGTH_LONG).show()
 
 
-        val requestCall = immunizationService.getImmunizationList(filter)
+        val requestCall = immunizationService.getImmunization(mobile_no.toString())
 
         //Toast.makeText(this, "select item"+requestCall, Toast.LENGTH_LONG).show()
 
