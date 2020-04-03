@@ -16,9 +16,13 @@ import com.example.myscope.R
 import com.example.myscope.services.ServiceBuilder
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_disease_history_update.*
+import kotlinx.android.synthetic.main.allergies.*
 import kotlinx.android.synthetic.main.allergies_update.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_allergy.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_allergy.view.*
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,12 +31,13 @@ import java.util.*
 
 class AllergyUpdate_Activity : AppCompatActivity() {
 
-    var spnrAllergy_Update : Spinner?=null
-    var position: Int= 1;
-    var allergyid:Int=0
+    var tv: TextView? = null
+    var spnrAllergy_Update: Spinner? = null
+    var position: Int = 1;
+    var allergyid: Int = 0
     var cal = Calendar.getInstance()
     var allergySpinner: Spinner? = null
-    var buttondate_update: Button?=null
+    var buttondate_update: Button? = null
 
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
@@ -47,7 +52,8 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        buttondate_update=findViewById(R.id.buttondate_update)
+        // tv = findViewById(R.id.tv_allergy)
+        buttondate_update = findViewById(R.id.buttondate_update)
 
         buttondate_update!!.setOnClickListener {
             DatePickerDialog(this@AllergyUpdate_Activity,
@@ -68,9 +74,9 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
             val id = intent.getStringExtra(ARG_ITEM_ID)
-            position = intent.getIntExtra("position" , 0)
+            position = intent.getIntExtra("position", 0)
 
-            loadDetails(id,position!!)
+            loadDetails(id, position!!)
 
             initUpdateButton(id)
 
@@ -97,12 +103,12 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         textviewdate_update!!.text = sdf.format(cal.getTime())
     }
 
-    private fun loadDetails(id: String , position : Int) {
+    private fun loadDetails(id: String, position: Int) {
 
         val allergyService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
         val requestCall = allergyService.getAllergyByid(id)
 
-        Toast.makeText(applicationContext,"data id ::"+" "+id,Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, "data id ::" + " " + id, Toast.LENGTH_LONG).show()
 
         requestCall.enqueue(object : retrofit2.Callback<List<MedicalHistoryModelActivity>> {
 
@@ -110,31 +116,32 @@ class AllergyUpdate_Activity : AppCompatActivity() {
             override fun onResponse(call: Call<List<MedicalHistoryModelActivity>>, response: Response<List<MedicalHistoryModelActivity>>) {
 
 
-
-
                 if (response.isSuccessful) {
 
                     val alleryRes = response.body()
 
-                    val destination = alleryRes?.get(position)
+                    if (alleryRes!!.equals(null)) {
 
-                    allergyid  =  destination?.allergy_id!!
-                    destination?.let {
-                        et_name_update?.setText(destination.name)
-                        et_reaction_update?.setText(destination.reaction)
-                        et_treatment_update?.setText(destination.treatment)
-                        et_notes_allergies_update?.setText(destination.notes)
-                        textviewdate_update?.setText(destination.date)
-                        tv_allergy?.setText(destination.spnrdata)
+                    } else {
+
+                        val destination = alleryRes?.get(position)
+
+                        allergyid = destination?.allergy_id!!
+                        destination!!.let {
+                            et_name_update?.setText(destination!!.name)
+                            et_reaction_update?.setText(destination!!.reaction)
+                            et_treatment_update?.setText(destination!!.treatment)
+                            et_notes_allergies_update?.setText(destination!!.notes)
+                            textviewdate_update?.setText(destination!!.date)
+                            tv_allergy?.setText(destination!!.spnrdata)
 
 
+                            //collapsing_toolbar.title = destination.city
+                        }!!
 
-                        //collapsing_toolbar.title = destination.city
-                    }!!
 
-
-                    Toast.makeText(applicationContext,"sucess::"+" "+destination.toString(),Toast.LENGTH_LONG).show()
-
+                        Toast.makeText(applicationContext, "sucess::" + " " + destination.toString(), Toast.LENGTH_LONG).show()
+                    }
 
                 } else {
                     Toast.makeText(this@AllergyUpdate_Activity, "Failed to retrieve details under else", Toast.LENGTH_SHORT)
@@ -156,7 +163,10 @@ class AllergyUpdate_Activity : AppCompatActivity() {
     private fun initUpdateButton(id: String) {
 
         btn_update.setOnClickListener {
+
             val item = spinnerAllergy_update.tv_allergy.text.toString()
+            //val et_name = et_name_update.text.toString()
+
 
             val newAllergyupdate = MedicalHistoryModelActivity()
 
@@ -169,6 +179,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
                 tv_allergy.setText(newAllergyupdate.spnrdata)
 
             }
+
 
             newAllergyupdate.name = et_name_update.text.toString().trim()
             newAllergyupdate.reaction = et_reaction_update.text.toString().trim()
@@ -203,8 +214,13 @@ class AllergyUpdate_Activity : AppCompatActivity() {
                             "Failed to update item", Toast.LENGTH_SHORT).show()
                 }
             })
+
+
         }
+
+
     }
+
 
     private fun initDeleteButton(id: Int) {
 
@@ -247,6 +263,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         const val ARG_ITEM_ID = "item_id"
     }
 }
+
 
 
 
