@@ -25,8 +25,10 @@ import retrofit2.Response
 class MedicationItemListActivity : AppCompatActivity() {
 
 
+
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
+
     var fab : FloatingActionButton?=null
 
     private lateinit var linearLayoutManager: LinearLayoutManager

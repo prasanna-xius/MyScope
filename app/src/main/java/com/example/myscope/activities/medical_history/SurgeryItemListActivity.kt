@@ -22,7 +22,7 @@ import retrofit2.Response
 class SurgeryItemListActivity : AppCompatActivity() {
 
 
-
+    var mobile_no:String ?= null
     var fab : FloatingActionButton?=null
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
