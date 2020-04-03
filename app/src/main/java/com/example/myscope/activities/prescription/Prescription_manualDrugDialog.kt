@@ -121,6 +121,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
                                 if (prescribedname == 2) {
                                     layout!!.toggleVisibility()
+
                                     hosp_layout.toggleVisibility()
 
                                 } else {
