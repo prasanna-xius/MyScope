@@ -60,12 +60,6 @@ class FamilyHistoryRecyclerView : BaseActivity() {
 
             override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>>) {
 
-
-                //Log.e("errpr msg resp",response.message())
-
-                //Log.d("errpr msg resp",response.message())
-
-
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val familyConditionList = response.body()!!
