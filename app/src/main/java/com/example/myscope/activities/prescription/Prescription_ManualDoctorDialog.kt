@@ -87,21 +87,25 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
 
                 if (selectedItem.equals("None")) {
                     d.doctor_layout1!!.setVisibility(View.GONE);
+                    d.doctor_layout2!!.setVisibility(View.GONE);
                     d.hosp_layout1!!.setVisibility(View.GONE);
                     // do your stuff
                 } else if (selectedItem.equals("Over the counter (OTC)")) {
                     d.doctor_layout1!!.setVisibility(View.GONE);
+                    d.doctor_layout2!!.setVisibility(View.VISIBLE);
                     d.hosp_layout1!!.setVisibility(View.GONE);
                     // do your stuff
                 } else if (selectedItem.equals("Prescribed")) {
 
                     d.doctor_layout1!!.setVisibility(View.VISIBLE);
+                    d.doctor_layout2!!.setVisibility(View.GONE);
                     d.hosp_layout1!!.setVisibility(View.VISIBLE);
 
                     // do your stuff
                 } else if (selectedItem.equals("Prescribed OTC")) {
                     d.doctor_layout1!!.setVisibility(View.GONE);
                     d.hosp_layout1!!.setVisibility(View.GONE);
+                    d.doctor_layout2!!.setVisibility(View.GONE);
                     // do your stuff
                 }
 
@@ -117,6 +121,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
         d.presDoctor_save_dialog.setOnClickListener {
 
             doctorname = d.et_doctor_name1.text.toString()
+            doctorname = d.et_doctor_name2.text.toString()
             prescribed_is = d.is_prescribed1!!.selectedItem.toString()
             hospitalname = d.et_hosp_name1.text.toString()
             medicalcondition = d.et_medical_condition1.text.toString()
@@ -153,6 +158,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             val newPrescription = PrescriptionDataClass()
             newPrescription.is_prescribed = d.is_prescribed1?.getSelectedItem().toString()
             newPrescription.doctor_name = d.et_doctor_name1!!.text.toString().trim()
+            newPrescription.doctor_name = d.et_doctor_name2!!.text.toString().trim()
             newPrescription.hospital_name = d.et_hosp_name1!!.text.toString().trim()
             newPrescription.medical_condition = d.et_medical_condition1!!.text.toString().trim()
             newPrescription.prescription_note = d.et_precsription_note1!!.text.toString().trim()
