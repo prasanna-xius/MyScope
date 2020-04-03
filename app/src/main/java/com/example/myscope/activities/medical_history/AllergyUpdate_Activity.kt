@@ -71,17 +71,17 @@ class AllergyUpdate_Activity : AppCompatActivity() {
 
         val bundle: Bundle? = intent.extras
 
-        if (bundle?.containsKey(ARG_ITEM_ID)!!) {
+//        if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
-            val id = intent.getStringExtra(ARG_ITEM_ID)
+//            val id = intent.getStringExtra(ARG_ITEM_ID)
             position = intent.getIntExtra("position", 0)
 
-            loadDetails(id, position!!)
+            loadDetails(mobile_no.toString(), position!!)
 
-            initUpdateButton(id)
+            initUpdateButton(mobile_no.toString())
 
             //initDeleteButton(id)
-        }
+//        }
     }
 
 
@@ -106,7 +106,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
     private fun loadDetails(id: String, position: Int) {
 
         val allergyService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
-        val requestCall = allergyService.getAllergyByid(id)
+        val requestCall = allergyService.getAllergyByid(mobile_no.toString())
 
         Toast.makeText(applicationContext, "data id ::" + " " + id, Toast.LENGTH_LONG).show()
 
