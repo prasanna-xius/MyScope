@@ -197,7 +197,7 @@ class MedicationUpdateActivity : BaseActivity() {
             newmedication.formulation=spinner_formulation_update?.getSelectedItem().toString()
             newmedication.startdate = textviewStartdate_medicalHistory_update!!.text.toString().trim()
             newmedication.enddate = textviewEnddate_MH_update!!.text.toString().trim()
-            newmedication.mobile_no = "9505505093"
+            newmedication.mobile_no = mobile_no.toString()
             newmedication.medication_id= medicationid
 
 

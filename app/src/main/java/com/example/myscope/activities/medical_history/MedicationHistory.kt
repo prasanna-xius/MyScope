@@ -170,7 +170,7 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                 newmedication.formulation = sprTwoItem.toString().trim()
                 newmedication.isprescribed = sprFourItem.toString().trim()
                 newmedication.doseunit = sprThreeItem.toString().trim()
-                newmedication.mobile_no = mobile_no!!
+                newmedication.mobile_no = mobile_no.toString()
                 Toast.makeText(applicationContext,newmedication.how_often_taken,Toast.LENGTH_LONG).show()
 
                 //newMedicalHistoryModelActivity.spnrdata =spnritem!!

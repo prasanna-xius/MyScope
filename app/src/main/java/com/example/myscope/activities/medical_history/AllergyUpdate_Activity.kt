@@ -133,7 +133,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
                             et_treatment_update?.setText(destination!!.treatment)
                             et_notes_allergies_update?.setText(destination!!.notes)
                             textviewdate_update?.setText(destination!!.date)
-                            tv_allergy?.setText(destination!!.spnrdata)
+                            allergySpinner!!.tv_allergy!!.setText(destination!!.spnrdata)
 
 
                             //collapsing_toolbar.title = destination.city
