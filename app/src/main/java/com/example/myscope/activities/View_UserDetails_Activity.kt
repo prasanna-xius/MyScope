@@ -94,10 +94,10 @@ class View_UserDetails_Activity : BaseActivity() {
         activitiesToolbar()
         header!!.text = "User Profile"
 
-        mobile_no = "9505505093"
+//        mobile_no = mobile_no
 
-//        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-//        get_mobile = sharedpreferences!!.getString("mobile_no", "9505505093")
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", mobile_no)
 //        email=sharedpreferences!!.getString("email",null)
 //        showLongToast(mobile_no.toString())
 

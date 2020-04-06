@@ -46,7 +46,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
     var isprescribed: Spinner? = null
     var datecheck: Boolean? = true
-    var layout:LinearLayout ?= null
+    var doctorlayout:LinearLayout ?= null
 
     var drugname: String? = null
     var brandname: String? = null
@@ -76,9 +76,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
         precsription_note_Txt = findViewById<View>(R.id.et_precsription_note) as EditText
 
         isPrescribed = findViewById(R.id.is_prescribed)as Spinner
-        layout = findViewById(R.id.doctor_layout)as LinearLayout
-
-
+        doctorlayout = findViewById(R.id.doctor_layout)as LinearLayout
         val isprescribedadapter = ArrayAdapter(this,
                 R.layout.spinner_dropdown_item, resources.getStringArray(R.array.is_prescribed))
         isPrescribed!!.adapter = isprescribedadapter
@@ -120,12 +118,12 @@ class Prescription_manualDrugDialog : BaseActivity() {
                                 is_prescribed.setSelection(prescribedname);
 
                                 if (prescribedname == 2) {
-                                    layout!!.toggleVisibility()
+                                    doctorlayout!!.toggleVisibility()
 
                                     hosp_layout.toggleVisibility()
 
                                 } else {
-                                    layout!!.toggleVisibility()
+                                    doctorlayout!!.toggleVisibility()
                                     hosp_layout.toggleVisibility()
                                 }
                             }
@@ -227,7 +225,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
             brandname = d.brand_name.text.toString()
 //            doseStrength = d.dose_strength.text.toString()
-            drugname = d.drug_name!!.text.toString()
+//            drugname = d.drug_name!!.text.toString()
 //            formulationId = d.formulation_id!!.selectedItem.toString()
 //            doseunit = d.dose_unit!!.selectedItem.toString()
 //            howoftenvalue = howoftenvalue_taken!!.selectedStrings.toString()
@@ -237,8 +235,8 @@ class Prescription_manualDrugDialog : BaseActivity() {
             if (brandname!!.isEmpty()&& drugname!!.isEmpty()) {
 
                 validateInput(d.brand_name, brandname!!)
-                validateInput(d.drug_name, drugname!!)
-                validateInput(d.brand_name, brandname!!)
+//                validateInput(d.drug_name, drugname!!)
+//                validateInput(d.brand_name, brandname!!)
 
 //            validateInput(d.dose_strength, doseStrength!!)
 //            validateInput(d.drug_name, drugname!!)

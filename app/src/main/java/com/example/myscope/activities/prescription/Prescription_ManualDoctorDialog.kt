@@ -158,6 +158,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             val newPrescription = PrescriptionDataClass()
             newPrescription.is_prescribed = d.is_prescribed1?.getSelectedItem().toString()
             newPrescription.doctor_name = d.et_doctor_name1!!.text.toString().trim()
+
             newPrescription.doctor_name = d.et_doctor_name2!!.text.toString().trim()
             newPrescription.hospital_name = d.et_hosp_name1!!.text.toString().trim()
             newPrescription.medical_condition = d.et_medical_condition1!!.text.toString().trim()
