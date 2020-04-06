@@ -31,7 +31,7 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
 
     var btnAllergies: Button? = null
 
-    var button_date: Button? = null
+    var button_date: ImageView? = null
     var textview_date: TextView? = null
     var cal = Calendar.getInstance()
     var spnritem: String? = null

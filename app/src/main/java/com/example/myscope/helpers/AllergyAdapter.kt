@@ -28,7 +28,7 @@ class AllergyAdapter(private val medicalHistoryModelActivityList: List<MedicalHi
         holder.itemView.setOnClickListener { v ->
             val context = v.context
             val intent = Intent(context, AllergyUpdate_Activity::class.java)
-            intent.putExtra(AllergyUpdate_Activity.ARG_ITEM_ID, holder.destination!!.mobile_no)
+//            intent.putExtra(AllergyUpdate_Activity.ARG_ITEM_ID, holder.destination!!.mobile_no)
             intent.putExtra("position" , position)
             //notifyItemRangeRemoved()
             //notifyDataSetChanged()

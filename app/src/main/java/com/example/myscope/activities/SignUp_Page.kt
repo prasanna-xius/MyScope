@@ -132,7 +132,7 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
             email_layout!!.error = null
         }
 
-        if (!terms_conditions!!.isChecked()) {
+        if (terms_conditions!!.isChecked()) {
             showLongToast("please agree Terms&Condtions and Continue")
         } else {
         }

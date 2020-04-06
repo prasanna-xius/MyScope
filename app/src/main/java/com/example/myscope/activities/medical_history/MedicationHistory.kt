@@ -142,7 +142,7 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
         spinnerMedication4!!.setAdapter(aa4)
         spinnerMedication4!!.setOnItemSelectedListener(this)
 
-
+        //validateDate(textview_Startdate!!, textview_Enddate!!,true)
 
         btn_medication?.setOnClickListener {
 
@@ -152,10 +152,10 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
             notesmed = etnotes_med!!.getText().toString()
             datestartmed = textview_Startdate?.getText().toString()
             dateendmed = textview_Enddate?.getText().toString()
-       validateDate(textview_Startdate!!, textview_Enddate!!,true)
+            //validateDate(textview_Startdate!!, textview_Enddate!!,true)
 //                   && sprOneItem != null
 
-            if (awesomeValidation!!.validate()&& validateDate(textview_Startdate!!, textview_Enddate!!,true)) {
+            if (awesomeValidation!!.validate()) {
 
 
                 val newmedication = MedicalHistoryModelActivity()
@@ -207,9 +207,9 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                 })
 
 
-            }else if(validateDate(textview_Startdate!!, textview_Enddate!!,true)==false) {
-                val snack = Snackbar.make(it!!, "Wrong Date Selected.", Snackbar.LENGTH_LONG)
-                snack.show()
+                //}else if(validateDate(textview_Startdate!!, textview_Enddate!!,true)==false) {
+                //  val snack = Snackbar.make(it!!, "Wrong Date Selected.", Snackbar.LENGTH_LONG)
+                // snack.show()
             }
 
             else {
@@ -239,6 +239,9 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                 cal_EndMh.set(Calendar.DAY_OF_MONTH, dayOfMonth_end)
 
                 updateDateInViewEnd()
+
+
+                validateDate(textview_Startdate!!, textview_Enddate!!, true)
             }
         }
 
@@ -264,6 +267,15 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                         cal_EndMh.get(Calendar.YEAR),
                         cal_EndMh.get(Calendar.MONTH),
                         cal_EndMh.get(Calendar.DAY_OF_MONTH)).show()
+                try {
+                    validateDate(textview_Startdate!!, textview_Enddate!!,true)
+                }catch (e: Exception) {
+                    e.printStackTrace()
+                }
+
+                //validateDate(textview_Startdate!!, textview_Enddate!!,true)
+
+                //Toast.makeText(this,"date value::::${textview_EndDate}",Toast.LENGTH_LONG).show()
             }
 
         })
@@ -273,8 +285,8 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
         if (!textviewStartdate.text.toString().equals("") && !textviewEnddate.text.toString().equals("")) {
             textviewStartdate.setCompoundDrawables(null, null, null, null)
             textviewEnddate.setCompoundDrawables(null, null, null, null)
-            val startDate0 = SimpleDateFormat("dd-MMM-yyyy").format(Date(textviewStartdate.text.toString()))
-            val endDate0 = SimpleDateFormat("dd-MMM-yyyy").format(Date(textviewEnddate.text.toString()))
+            val startDate0 = SimpleDateFormat("dd/MM/yyyy").format(Date(textviewStartdate.text.toString()))
+            val endDate0 = SimpleDateFormat("dd/MM/yyyy").format(Date(textviewEnddate.text.toString()))
             if (startDate0 > endDate0) {
                 // date in text view is current date
                 textviewEnddate.setText("")
@@ -283,8 +295,8 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                 return false;
             }
         } else {
-            //errorDisplayTextview(startDate)
-            // errorDisplayTextview(stopDate)
+            //val snack = Snackbar.make(textviewEnddate, "Wrong Date Selected.", Snackbar.LENGTH_LONG)
+            //snack.show()
             return false
         }
         return true
@@ -293,13 +305,13 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
 
     private fun updateDateInViewStart() {
 
-        val myFormat = "dd-MMM-yyyy" // mention the format you need
+        val myFormat = "dd/MM/yyyy" // mention the format you need
         sdf1 = SimpleDateFormat(myFormat, Locale.US)
         textview_Startdate!!.text = sdf1?.format(cal_StartMh.getTime())
     }
 
     private fun updateDateInViewEnd() {
-        val myFormat = "dd-MMM-yyyy" // mention the format you need
+        val myFormat = "dd/MM/yyyy" // mention the format you need
         sdf2 = SimpleDateFormat(myFormat, Locale.US)
 
         textview_Enddate!!.text = sdf2?.format(cal_EndMh.getTime())
@@ -413,6 +425,6 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
 //                }
 //                return true
 //            }
-        }
     }
+}
 

@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.helpers.SurgeryAdapter
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
@@ -19,17 +20,18 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SurgeryItemListActivity : AppCompatActivity() {
+class SurgeryItemListActivity : BaseActivity() {
 
 
-
+    var mobile_no:String ?= null
     var fab : FloatingActionButton?=null
-    var mobile_no: String? = null
+
     var sharedpreferences: SharedPreferences? = null
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_surgery_list)
+        activitiesToolbar()
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)

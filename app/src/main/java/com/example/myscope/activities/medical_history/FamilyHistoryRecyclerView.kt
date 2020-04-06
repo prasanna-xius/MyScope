@@ -12,6 +12,7 @@ import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.services.Disease_service
 import com.example.myscope.activities.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_family_history_recycler_view.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,7 +25,9 @@ class FamilyHistoryRecyclerView : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_family_history_recycler_view)
+        activitiesToolbar()
 
+        header!!.text = "Family History"
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
@@ -59,12 +62,6 @@ class FamilyHistoryRecyclerView : BaseActivity() {
         requestCall.enqueue(object: Callback<List<Diseases>> {
 
             override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>>) {
-
-
-                //Log.e("errpr msg resp",response.message())
-
-                //Log.d("errpr msg resp",response.message())
-
 
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's

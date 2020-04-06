@@ -84,7 +84,8 @@ class DiseaseHistoryUpdate : BaseActivity() {
         val bundle: Bundle? = intent.extras
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
-          //  val id : String = intent.getStringExtra(ARG_ITEM_ID)
+
+            val id : String = intent.getStringExtra(ARG_ITEM_ID)
 
              position = intent.getIntExtra("position" , 0)
             showLongToast(position.toString())
@@ -94,13 +95,13 @@ class DiseaseHistoryUpdate : BaseActivity() {
             initUpdateButton(mobile_no.toString())
 
             //initDeleteButton(id)
-        }
+//        }
 
     }
 
     private fun loadDetails(id: String , position : Int) {
        val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
-       val requestCall = diseaseService.getdisease(id)
+       val requestCall = diseaseService.getdisease(mobile_no.toString())
 
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>> {
 

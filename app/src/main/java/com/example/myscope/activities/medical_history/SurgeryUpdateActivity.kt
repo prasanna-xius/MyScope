@@ -11,16 +11,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myscope.R
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
+
+import com.google.android.material.snackbar.Snackbar
+
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 import kotlinx.android.synthetic.main.surgeryhistory_update.*
 
@@ -41,7 +42,7 @@ class SurgeryUpdateActivity : AppCompatActivity() {
     var dateUpdate:String?=null
     var position: Int= 1;
     var cal = Calendar.getInstance()
-    var buttondate_surg_update:Button?=null
+    var buttondate_surg_update:ImageView?=null
     var surgeryid:Int=0
 
     var mobile_no: String? = null
@@ -50,6 +51,7 @@ class SurgeryUpdateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.surgeryhistory_update)
+        header!!.text = "surgery History"
 
         //setSupportActionBar(detail_toolbar as Toolbar?)
         // Show the Up button in the action bar.
@@ -91,17 +93,12 @@ class SurgeryUpdateActivity : AppCompatActivity() {
             val id : String = intent.getStringExtra(ARG_ITEM_ID)
             position = intent.getIntExtra("position" , 0)
 
-            loadDetails(id,position)
+            loadDetails(mobile_no.toString(),position)
 
-            initUpdateButton(id)
+            initUpdateButton(mobile_no.toString())
 
             //initDeleteButton(id)
         }
-
-
-
-
-
 
 
 
@@ -185,53 +182,68 @@ class SurgeryUpdateActivity : AppCompatActivity() {
 
         button_surgery_update.setOnClickListener {
 
-            val newsurgery = MedicalHistoryModelActivity()
 
-            newsurgery.surgeryname = et_name_surgery_history_update!!.text.toString().trim()
-            newsurgery.surgerynotes = et_notes_surgery_history_update!!.text.toString().trim()
-            newsurgery.surgerylocation = et_body_location_update!!.text.toString().trim()
-            newsurgery.surgeryprovider = et_provider_update!!.text.toString().trim()
-            newsurgery.surgeryhospital = et_hospital_name_update!!.text.toString().trim()
-            newsurgery.surgerydate= textviewdate_surgery_update!!.text.toString().trim()
-            //newsurgery.immudate = dateUpdate.toString().trim()
-            newsurgery.mobile_no = mobile_no!!
-            newsurgery.surgery_id= surgeryid
+            if (validate(et_name_surgery_history_update,true)) {
 
 
-            val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
+                val newsurgery = MedicalHistoryModelActivity()
+
+                newsurgery.surgeryname = et_name_surgery_history_update!!.text.toString().trim()
+                newsurgery.surgerynotes = et_notes_surgery_history_update!!.text.toString().trim()
+                newsurgery.surgerylocation = et_body_location_update!!.text.toString().trim()
+                newsurgery.surgeryprovider = et_provider_update!!.text.toString().trim()
+                newsurgery.surgeryhospital = et_hospital_name_update!!.text.toString().trim()
+                newsurgery.surgerydate = textviewdate_surgery_update!!.text.toString().trim()
+                //newsurgery.immudate = dateUpdate.toString().trim()
+                newsurgery.mobile_no = mobile_no!!
+                newsurgery.surgery_id = surgeryid
 
 
-            val requestCall = destinationService.updateSurgery(newsurgery)
-
-            requestCall.enqueue(object: Callback<MedicalHistoryModelActivity> {
+                val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
 
 
+                val requestCall = destinationService.updateSurgery(newsurgery)
+
+                requestCall.enqueue(object : Callback<MedicalHistoryModelActivity> {
 
 
-                override fun onResponse(call: Call<MedicalHistoryModelActivity>, response: Response<MedicalHistoryModelActivity>) {
+                    override fun onResponse(call: Call<MedicalHistoryModelActivity>, response: Response<MedicalHistoryModelActivity>) {
 
-                    Log.d("tag:::::",response.toString())
-                    Log.d("tag:::::",response.message())
+                        Log.d("tag:::::", response.toString())
+                        Log.d("tag:::::", response.message())
 
-                    var updatedDestination = response.body()
-                    if (response.isSuccessful) {
-                        finish() // Move back to DestinationListActivity
-                        var updatedDestination = response.body() // Use it or ignore It
-                        Toast.makeText(this@SurgeryUpdateActivity,
-                                "Item Updated Successfully", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this@SurgeryUpdateActivity,
-                                "Failed to update item under else", Toast.LENGTH_SHORT).show()
+                        var updatedDestination = response.body()
+                        if (response.isSuccessful) {
+                            finish() // Move back to DestinationListActivity
+                            var updatedDestination = response.body() // Use it or ignore It
+                            Toast.makeText(this@SurgeryUpdateActivity,
+                                    "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@SurgeryUpdateActivity,
+                                    "Failed to update item under else", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
-                    Toast.makeText(this@SurgeryUpdateActivity,
-                            "Failed to update item", Toast.LENGTH_SHORT).show()
-                }
-            })
+                    override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
+                        Toast.makeText(this@SurgeryUpdateActivity,
+                                "Failed to update item", Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
         }
     }
+
+    private fun validate(et_name_surgery_history_update: EditText, b:Boolean):Boolean {
+        if(et_name_surgery_history_update.text.toString().isEmpty()){
+            //et_name_immuupdate.setError("")
+            val snack = Snackbar.make(findViewById(R.id.svSurgery)!!, "Mandatory field cannot be left blank.", Snackbar.LENGTH_LONG)
+            snack.show()
+            return false
+
+        }
+        return true
+    }
+
 
     private fun initDeleteButton(id: Int) {
 

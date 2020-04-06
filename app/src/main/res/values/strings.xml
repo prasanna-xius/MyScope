@@ -131,6 +131,7 @@
         <item>other</item>
     </string-array>
     <string-array name="formulation_arrays">
+        <item>None</item>
         <item>Tablet</item>
         <item>Capsule</item>
         <item>Injection</item>
@@ -211,12 +212,12 @@
     </string-array>
     <string-array name="allergy_arrays">
         <item>None</item>
-        <item>1. Drug</item>
-        <item>2. Food</item>
-        <item>3. Plant</item>
-        <item>4. Environment</item>
-        <item>5. Others</item>
-        <item>6. None</item>
+        <item>Drug</item>
+        <item>Food</item>
+        <item>Plant</item>
+        <item>Environment</item>
+        <item>Others</item>
+        <item>None</item>
     </string-array>
 
     <string name="action_settings">Settings</string>
@@ -269,7 +270,7 @@
     <string name="dialog_message">This number is not being registered.Please register here...</string>
     <string name="dialog_title">Login Alert !</string>
     <string name="action_logout">Logout</string>
-    <string name="generic_name">Generic Name<font color='#ff0000'>*</font></string>
+    <string name="generic_name">Generic Name</string>
     <string name="drug_name">Drug Name</string>
     <string name="adddrug">Add Drug</string>
     <string name="strength">Strength</string>
