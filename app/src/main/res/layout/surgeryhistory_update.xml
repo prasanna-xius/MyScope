@@ -14,7 +14,9 @@
         android:orientation="vertical">
 
     <include layout="@layout/side_activity"/>
-    <TextView
+        <include layout="@layout/app_bar_main"/>
+
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/surgery_history"

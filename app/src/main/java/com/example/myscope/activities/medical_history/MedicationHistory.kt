@@ -107,7 +107,7 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                 "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
 
 
-        var how_oftenspinner = findViewById<MultiSelectionSpinner>(R.id.spinner_how_often_taken)
+        var how_oftenspinner = findViewById<MultiSelectionSpinnerdata>(R.id.spinner_how_often_taken)
 
         var formulationdata = resources.getStringArray(R.array.formulation_arrays)
 

@@ -15,6 +15,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
@@ -32,7 +33,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class SurgeryUpdateActivity : AppCompatActivity() {
+class SurgeryUpdateActivity : BaseActivity() {
 
     var spnrAllergy_Update :Spinner?=null
     //var nameUpdate:String ?=null
@@ -51,6 +52,7 @@ class SurgeryUpdateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.surgeryhistory_update)
+        activitiesToolbar()
         header!!.text = "surgery History"
 
         //setSupportActionBar(detail_toolbar as Toolbar?)

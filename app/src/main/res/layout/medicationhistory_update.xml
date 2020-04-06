@@ -63,7 +63,7 @@
 
 
 
-                <com.example.myscope.activities.medical_history.MultiSelectionSpinner
+                <com.example.myscope.activities.medical_history.MultiSelectionSpinnerdata
                     android:id="@+id/spinner_how_often_taken_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                     android:background="@drawable/border_bg"
                     android:entries="@array/how_often_taken_arrays"
                     android:padding="2dp">
-                </com.example.myscope.activities.medical_history.MultiSelectionSpinner>
+                </com.example.myscope.activities.medical_history.MultiSelectionSpinnerdata>
 
         </LinearLayout>
         <LinearLayout

@@ -34,7 +34,7 @@ import retrofit2.Response
 
 class MedicationUpdateActivity : BaseActivity() {
 
-    var spinner_how_often_taken: MultiSelectionSpinner? = null
+    var spinner_how_often_taken: MultiSelectionSpinnerdata? = null
 
     var formulation: Spinner? = null
     var isprescribed: Spinner? = null
@@ -56,7 +56,7 @@ class MedicationUpdateActivity : BaseActivity() {
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        spinner_how_often_taken = findViewById<MultiSelectionSpinner>(R.id.spinner_how_often_taken_update)
+        spinner_how_often_taken = findViewById<MultiSelectionSpinnerdata>(R.id.spinner_how_often_taken_update)
 
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
@@ -138,9 +138,9 @@ class MedicationUpdateActivity : BaseActivity() {
                             //tv_how_often?.setText()
 
                             spinner_how_often_taken!!.tv_how_often!!.setText(medicationdestination.how_often_taken)
-                            formulation!!.tv_formulation!!.setText(medicationdestination.formulation)
-                            isprescribed!!.tv_precsribed!!.setText(medicationdestination.isprescribed)
-                            doseunit!!.tv_dose!!.setText(medicationdestination.doseunit)
+                            spinner_formulation_update!!.tv_formulation!!.setText(medicationdestination.formulation)
+                            spinner_is_prescribed_update!!.tv_precsribed!!.setText(medicationdestination.isprescribed)
+                            spinner_dose_unit_update!!.tv_dose!!.setText(medicationdestination.doseunit)
                             et_name_medication_update.setText(medicationdestination.medicationname)
                             et_notes_medication_update.setText(medicationdestination.medicationnotes)
                             et_reason_update.setText(medicationdestination.reason)
