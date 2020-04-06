@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.helpers.MedicationAdapter
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
@@ -23,7 +24,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MedicationItemListActivity : AppCompatActivity() {
+class MedicationItemListActivity : BaseActivity() {
 
 
 
@@ -36,6 +37,7 @@ class MedicationItemListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medication_list)
+        activitiesToolbar()
 
         header!!.text = "Medication History"
 

@@ -25,6 +25,7 @@ class FamilyHistoryRecyclerView : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_family_history_recycler_view)
+        activitiesToolbar()
 
         header!!.text = "Family History"
 

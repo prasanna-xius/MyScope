@@ -23,7 +23,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class Disease_recyclerView : AppCompatActivity() {
+class Disease_recyclerView : BaseActivity() {
     var sharedpreferences: SharedPreferences? = null
     var mobile_no: String? = null
 
@@ -31,6 +31,7 @@ class Disease_recyclerView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_disease_recycler_view)
+        activitiesToolbar()
 
         header!!.text = "Disease History"
 

@@ -49,6 +49,8 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
         setContentView(R.layout.activity_prescriptionmanual_recyclerview)
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
+        activitiesToolbar()
+
         header!!.text = "Prescription"
 
         val fab = findViewById<View>(R.id.fab_addprescribed) as FloatingActionButton

@@ -19,6 +19,8 @@ class Medical_Documents_HomePage : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medicaldocuments_homepage_main)
         medical_documents_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
+        activitiesToolbar()
+
         header!!.text = "Medical Documents"
     }
 
