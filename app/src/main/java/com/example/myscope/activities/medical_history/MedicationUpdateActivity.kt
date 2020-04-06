@@ -19,9 +19,13 @@ import com.example.myscope.services.ServiceBuilder
 
 import kotlinx.android.synthetic.main.medicationhistory_update.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_dose.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item_dose.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_formulation.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item_formulation.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_prescribed.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item_prescribed.view.*
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -92,9 +96,9 @@ class MedicationUpdateActivity : BaseActivity() {
             val id : String = intent.getStringExtra(ARG_ITEM_ID)
             position = intent.getIntExtra("position" , 0)
 
-            loadDetails(id,position)
+            loadDetails(mobile_no.toString(),position)
 
-            initUpdateButton(id)
+            initUpdateButton(mobile_no.toString())
 
 
             //initDeleteButton(id)
@@ -119,36 +123,38 @@ class MedicationUpdateActivity : BaseActivity() {
                 if (response.isSuccessful) {
 
 
-
-
                     val medRes = response.body()
 
-                    val medicationdestination = medRes?.get(position)
-                    medicationid = medicationdestination?.medication_id!!
+                    if (medRes!!.equals(null)) {
+
+                    } else {
+
+                        val medicationdestination = medRes?.get(position)
+                        medicationid = medicationdestination?.medication_id!!
 
 
-                    medicationdestination?.let {
+                        medicationdestination?.let {
 
-                        //tv_how_often?.setText()
+                            //tv_how_often?.setText()
 
-                        tv_how_often?.setText(medicationdestination.how_often_taken)
-                        tv_formulation?.setText(medicationdestination.formulation)
-                        tv_precsribed?.setText(medicationdestination.isprescribed)
-                       tv_dose?.setText(medicationdestination.doseunit)
-                        et_name_medication_update.setText(medicationdestination.medicationname)
-                        et_notes_medication_update.setText(medicationdestination.medicationnotes)
-                        et_reason_update.setText(medicationdestination.reason)
-                        et_dose_strength_update.setText(medicationdestination.strength)
-                        textviewEnddate_MH_update.setText(medicationdestination.enddate)
-                        textviewStartdate_medicalHistory_update.setText(medicationdestination.startdate)
+                            spinner_how_often_taken!!.tv_how_often!!.setText(medicationdestination.how_often_taken)
+                            formulation!!.tv_formulation!!.setText(medicationdestination.formulation)
+                            isprescribed!!.tv_precsribed!!.setText(medicationdestination.isprescribed)
+                            doseunit!!.tv_dose!!.setText(medicationdestination.doseunit)
+                            et_name_medication_update.setText(medicationdestination.medicationname)
+                            et_notes_medication_update.setText(medicationdestination.medicationnotes)
+                            et_reason_update.setText(medicationdestination.reason)
+                            et_dose_strength_update.setText(medicationdestination.strength)
+                            textviewEnddate_MH_update.setText(medicationdestination.enddate)
+                            textviewStartdate_medicalHistory_update.setText(medicationdestination.startdate)
 
-                        //text1.setText(destination.spnrdata)
+                            //text1.setText(destination.spnrdata)
 
 
-
-                        //collapsing_toolbar.title = destination.city
-                    }!!
-                } else {
+                            //collapsing_toolbar.title = destination.city
+                        }!!
+                    }
+                }else {
                     Toast.makeText(this@MedicationUpdateActivity, "Failed to retrieve details under else", Toast.LENGTH_SHORT)
                             .show()
                 }
