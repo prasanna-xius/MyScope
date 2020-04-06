@@ -18,9 +18,7 @@ class Medical_Documents_HomePage : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medicaldocuments_homepage_main)
-        activitiesToolbar()
         medical_documents_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
-        activitiesToolbar()
         header!!.text = "Medical Documents"
     }
 

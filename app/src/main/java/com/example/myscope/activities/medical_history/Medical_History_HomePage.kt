@@ -23,7 +23,7 @@ class Medical_History_HomePage : BaseActivity() {
         setContentView(R.layout.medical_history_main)
         home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
         activitiesToolbar()
-        header!!.text = "Disease History"
+        header!!.text = "Medical History"
 
     }
     private inner class CustomAdapter(var context: Context, var result: Array<String>, var imageId: IntArray) : BaseAdapter() {

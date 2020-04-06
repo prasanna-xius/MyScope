@@ -17,6 +17,7 @@ import com.example.myscope.activities.services.ServiceBuilder
 //import com.example.myscope.activities.Service.DiseaseService
 //import com.example.myscope.activities.Service.Disease_serviceBuilder
 import kotlinx.android.synthetic.main.activity_disease_recycler_view.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,6 +31,8 @@ class Disease_recyclerView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_disease_recycler_view)
+
+        header!!.text = "Disease History"
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
