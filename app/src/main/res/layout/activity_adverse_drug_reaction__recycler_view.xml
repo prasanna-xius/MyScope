@@ -6,10 +6,21 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".activities.medical_history.Disease_recyclerView">
+    tools:context=".activities.medical_history.AdverseDrugReaction_RecyclerView">
 
-    <include layout="@layout/app_bar_main"/>
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorBackground"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     <LinearLayout
@@ -24,20 +35,20 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/family_recycler_view"
+            android:id="@+id/adverseDrug_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             tools:listitem="@layout/list_item" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_btn_familyHistory"
+            android:id="@+id/fab_btn_adverseDrug"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|bottom"
             android:layout_margin="@dimen/fab_margin"
-            android:layout_alignEnd="@+id/family_recycler_view"
-            android:layout_alignBottom="@+id/family_recycler_view"
+            android:layout_alignEnd="@+id/adverseDrug_recycler_view"
+            android:layout_alignBottom="@+id/adverseDrug_recycler_view"
             android:clickable="true"
             android:focusable="true"
             android:src="@android:drawable/ic_input_add"
