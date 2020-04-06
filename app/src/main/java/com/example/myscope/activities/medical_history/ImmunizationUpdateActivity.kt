@@ -11,10 +11,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
@@ -22,6 +19,7 @@ import com.example.myscope.R
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
+import com.google.android.material.snackbar.Snackbar
 
 
 import kotlinx.android.synthetic.main.immunizationhistory_update.*
@@ -43,7 +41,7 @@ class ImmunizationUpdateActivity : AppCompatActivity() {
     var dateUpdate:String?=null
     var position: Int= 1;
     var cal = Calendar.getInstance()
-    var buttondate_immuupdate:Button?=null
+    var buttondate_immuupdate:ImageView?=null
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
     var immunid:Int=0
@@ -182,8 +180,12 @@ class ImmunizationUpdateActivity : AppCompatActivity() {
 
         btn_immunizationupdate.setOnClickListener {
 
+            //var name = et_name_immuupdate.text.toString()
 
-            val newImmunization = MedicalHistoryModelActivity()
+
+            if (validate(et_name_immuupdate, true)) {
+
+                val newImmunization = MedicalHistoryModelActivity()
 
 
 
@@ -227,10 +229,23 @@ class ImmunizationUpdateActivity : AppCompatActivity() {
                                 "Failed to update item", Toast.LENGTH_SHORT).show()
                     }
                 })
-
+            }
+        }
 
         }
+
+    private fun validate(et_name_immuupdate:EditText,b:Boolean):Boolean {
+       if(et_name_immuupdate.text.toString().isEmpty()){
+           //et_name_immuupdate.setError("")
+           val snack = Snackbar.make(findViewById(R.id.sv)!!, "Mandatory field cannot be left blank.", Snackbar.LENGTH_LONG)
+           snack.show()
+           return false
+
+       }
+           return true
     }
+
+
     private fun initDeleteButton(id: Int) {
 
         /* btn_delete.setOnClickListener {

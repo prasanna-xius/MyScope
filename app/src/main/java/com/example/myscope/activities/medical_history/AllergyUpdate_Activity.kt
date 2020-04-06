@@ -37,7 +37,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
     var allergyid: Int = 0
     var cal = Calendar.getInstance()
     var allergySpinner: Spinner? = null
-    var buttondate_update: Button? = null
+    var buttondate_update: ImageView? = null
 
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null

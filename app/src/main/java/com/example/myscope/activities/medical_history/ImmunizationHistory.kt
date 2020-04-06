@@ -28,7 +28,7 @@ import java.util.*
 
 class ImmunizationHistory : AppCompatActivity() {
     var btn_immunization: Button?=null
-    var button_date_immun: Button? = null
+    var button_date_immun: ImageView? = null
     var textview_date_immun: TextView? = null
     var cal_immun = Calendar.getInstance()
 

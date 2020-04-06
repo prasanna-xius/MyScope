@@ -29,7 +29,8 @@ class SurgeryHistory_Activity : BaseActivity() {
 
 
 
-    var button_date_surg: Button? = null;var button_surg: Button? = null;
+    var button_date_surg: ImageView? = null
+    var button_surg: Button? = null;
     var textview_date_surg: TextView? = null
     var cal_surg = Calendar.getInstance()
 
