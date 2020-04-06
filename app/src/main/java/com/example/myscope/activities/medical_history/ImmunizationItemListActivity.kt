@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.myscope.helpers.ImmunizationAdapter
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
@@ -15,11 +16,12 @@ import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_immunization_list.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ImmunizationItemListActivity : AppCompatActivity() {
+class ImmunizationItemListActivity : BaseActivity() {
 
 
 
@@ -33,6 +35,10 @@ class ImmunizationItemListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_immunization_list)
+        activitiesToolbar()
+
+        header!!.text = "Immunization History"
+
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
         fab= findViewById(R.id.fab_immun)
