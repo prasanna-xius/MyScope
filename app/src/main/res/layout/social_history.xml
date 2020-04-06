@@ -92,14 +92,17 @@
         <com.example.myscope.activities.MultiSpinnerAlcohol
             android:id="@+id/tobacco_usage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:background="@drawable/edittext_border"
             android:entries="@array/tobacco_array"
-            android:padding="@dimen/dimen_4"
+            android:layout_weight="1"
+            android:padding="@dimen/dimen_2"
             android:popupBackground="@color/colorWhite"
             android:textSize="15sp" />
+
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

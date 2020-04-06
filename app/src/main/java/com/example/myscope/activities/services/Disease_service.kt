@@ -84,7 +84,7 @@ interface Disease_service {
 
     //end point of webservice
     @Headers("Content-Type: application/json")
-    @POST("addDrug")
+    @POST("addadverse")
     fun addDrug(@Body newDrug: Diseases): Call<Diseases>
 
     @Headers("Content-Type: application/json")
