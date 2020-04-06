@@ -84,14 +84,14 @@ class DiseaseHistoryUpdate : BaseActivity() {
         val bundle: Bundle? = intent.extras
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
-            val id : String = intent.getStringExtra(ARG_ITEM_ID)
+          //  val id : String = intent.getStringExtra(ARG_ITEM_ID)
 
              position = intent.getIntExtra("position" , 0)
             showLongToast(position.toString())
 
-             loadDetails(id , position!!)
+             loadDetails(mobile_no.toString() , position!!)
 
-            initUpdateButton(id)
+            initUpdateButton(mobile_no.toString())
 
             //initDeleteButton(id)
         }
@@ -115,7 +115,7 @@ class DiseaseHistoryUpdate : BaseActivity() {
                 disease?.let {
                     et_condition_updated.setText(disease.known_condition)
 
-                    spinner_disease_updated!!.text1.setText(disease.disease_status)
+                    text1.setText(disease.disease_status)
                     et_noOfYrs_updated.setText(disease.disease_duration)
                     et_startDate_updated.setText(disease.when_started)
                     et_stopDate_updated.setText(disease.when_ended)

@@ -68,7 +68,7 @@ class Medical_History_HomePage : BaseActivity() {
                 } else if (position == 7) {
                     navigateToActivity(Intent(applicationContext, SurgeryItemListActivity::class.java))
                 } else if (position == 8) {
-                    navigateToActivity(Intent(applicationContext, Adverse_Drug_Reaction_Activity::class.java))
+                    navigateToActivity(Intent(applicationContext, AdverseDrugReaction_RecyclerView::class.java))
                 }
             }
             return rowView
