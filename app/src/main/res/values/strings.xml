@@ -269,7 +269,7 @@
     <string name="dialog_message">This number is not being registered.Please register here...</string>
     <string name="dialog_title">Login Alert !</string>
     <string name="action_logout">Logout</string>
-    <string name="generic_name">Generic Name<font color='#ff0000'>*</font></string>
+    <string name="generic_name">Generic Name</string>
     <string name="drug_name">Drug Name</string>
     <string name="adddrug">Add Drug</string>
     <string name="strength">Strength</string>
