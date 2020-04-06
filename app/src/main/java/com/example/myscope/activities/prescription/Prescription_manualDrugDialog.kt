@@ -109,6 +109,15 @@ class Prescription_manualDrugDialog : BaseActivity() {
                             } else {
                                 val prescriptiondoctor = newbody?.first()
                                 // Use it or ignore it
+
+                                if (prescriptiondoctor.is_prescribed.equals("Prescribed")) {
+                                    doctorlayout!!.visibility = View.VISIBLE
+                                    hosp_layout.visibility = View.VISIBLE
+
+                                } else {
+                                    doctorlayout!!.visibility = View.GONE
+                                    hosp_layout.visibility = View.GONE
+                                }
                                 doctor_name_Txt!!.setText(prescriptiondoctor!!.doctor_name)
                                 hospital_name_Txt!!.setText(prescriptiondoctor.hospital_name)
                                 medical_condition_Txt!!.setText(prescriptiondoctor.medical_condition)
@@ -117,15 +126,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
                                 val prescribedname = isprescribedadapter.getPosition(prescriptiondoctor.is_prescribed);
                                 is_prescribed.setSelection(prescribedname);
 
-                                if (prescribedname == 2) {
-                                    doctorlayout!!.toggleVisibility()
 
-                                    hosp_layout.toggleVisibility()
-
-                                } else {
-                                    doctorlayout!!.toggleVisibility()
-                                    hosp_layout.toggleVisibility()
-                                }
                             }
                         } else {
                             Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
@@ -373,11 +374,6 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
 }
 
-private fun LinearLayout.toggleVisibility() {
-    if (visibility == View.GONE) {
-        visibility = View.VISIBLE
-    } else {
-        visibility = View.VISIBLE
-    }
-}
+
+
 
