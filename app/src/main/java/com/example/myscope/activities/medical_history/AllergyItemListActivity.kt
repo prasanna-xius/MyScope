@@ -8,32 +8,38 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.helpers.AllergyAdapter
 import com.example.myscope.services.ServiceBuilder
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_allergy_list.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AllergyItemListActivity:AppCompatActivity() {
+class AllergyItemListActivity : BaseActivity() {
 
     //lateinit var adapter: AllergyAdapter
 
-    var fab :FloatingActionButton?=null
-    lateinit var sharedpreferences:SharedPreferences
-var mobile_no:String ?= null
+    var fab: FloatingActionButton? = null
+    lateinit var sharedpreferences: SharedPreferences
+    var mobile_no: String? = null
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_allergy_list)
+        activitiesToolbar()
+
+        header!!.text = "Allergies"
+
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-        Toast.makeText(applicationContext,mobile_no,Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, mobile_no, Toast.LENGTH_LONG).show()
 
-        fab= findViewById(R.id.fab)
+        fab = findViewById(R.id.fab)
         //fab?.setBackgroundColor(Color.parseColor("#2196F3"));
         //setSupportActionBar(toolbar as Toolbar?)
         //toolbar.title = title
@@ -64,7 +70,7 @@ var mobile_no:String ?= null
 
         //val requestCall = destinationService.getAllergy(filter)
 
-        requestCall.enqueue(object: Callback<List<MedicalHistoryModelActivity>> {
+        requestCall.enqueue(object : Callback<List<MedicalHistoryModelActivity>> {
 
             // If you receive a HTTP Response, then this method is executed
             // Your STATUS Code will decide if your Http Response is a Success or Error
@@ -83,7 +89,7 @@ var mobile_no:String ?= null
                     destiny_recycler_view.adapter?.notifyDataSetChanged()
 
 
-                } else if(response.code() == 401) {
+                } else if (response.code() == 401) {
                     Toast.makeText(this@AllergyItemListActivity,
                             "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure

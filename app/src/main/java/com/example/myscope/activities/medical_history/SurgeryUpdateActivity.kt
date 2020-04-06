@@ -21,6 +21,7 @@ import com.example.myscope.R
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 import kotlinx.android.synthetic.main.surgeryhistory_update.*
 
@@ -50,6 +51,7 @@ class SurgeryUpdateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.surgeryhistory_update)
+        header!!.text = "surgery History"
 
         //setSupportActionBar(detail_toolbar as Toolbar?)
         // Show the Up button in the action bar.
