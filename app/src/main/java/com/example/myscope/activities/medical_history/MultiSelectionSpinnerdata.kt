@@ -14,7 +14,7 @@ import java.util.*
 
 
 @SuppressLint("AppCompatCustomView")
-class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListener {
+class MultiSelectionSpinnerdata : Spinner, DialogInterface.OnMultiChoiceClickListener {
     internal var _items: Array<String>? = null
     internal var mSelection: BooleanArray? = null
     internal var simple_adapter: ArrayAdapter<String>

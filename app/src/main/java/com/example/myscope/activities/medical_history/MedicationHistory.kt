@@ -112,7 +112,7 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
                 "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
 
 
-        var how_oftenspinner = findViewById<MultiSelectionSpinner>(R.id.spinner_how_often_taken)
+        var how_oftenspinner = findViewById<MultiSelectionSpinnerdata>(R.id.spinner_how_often_taken)
 
         var formulationdata = resources.getStringArray(R.array.formulation_arrays)
 
@@ -175,7 +175,7 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
                 newmedication.formulation = sprTwoItem.toString().trim()
                 newmedication.isprescribed = sprFourItem.toString().trim()
                 newmedication.doseunit = sprThreeItem.toString().trim()
-                newmedication.mobile_no = mobile_no!!
+                newmedication.mobile_no = mobile_no.toString()
                 Toast.makeText(applicationContext,newmedication.how_often_taken,Toast.LENGTH_LONG).show()
 
                 //newMedicalHistoryModelActivity.spnrdata =spnritem!!

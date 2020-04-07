@@ -53,9 +53,9 @@
         <activity
             android:name=".activities.Dash_Board_Activity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.Navigation_Drawer_Blogs"
-            android:screenOrientation="portrait" />
+<!--        <activity-->
+<!--            android:name=".activities.Navigation_Drawer_Blogs"-->
+<!--            android:screenOrientation="portrait" />-->
         <activity
             android:name=".activities.medical_history.Medical_History_HomePage"
             android:screenOrientation="portrait" />
