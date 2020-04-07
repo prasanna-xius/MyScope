@@ -17,12 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity>
+        <activity android:name=".activities.Contact_Us"></activity>
+        <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
         <activity
             android:name=".activities.SliderActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView">
+        <activity android:name=".activities.Login_Page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
