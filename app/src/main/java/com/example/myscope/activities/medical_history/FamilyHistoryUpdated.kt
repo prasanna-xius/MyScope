@@ -118,45 +118,6 @@ class FamilyHistoryUpdated : BaseActivity() {
 
             assignValuestoVariable()
 
-
-
-            val item = spinner_familyUpdated.text1.text.toString()
-
-            val newFamily = Diseases()
-            newFamily.family_condition = et_family_conditionUpdated.text.toString()
-
-            if(!item.equals(null)) {
-                newFamily.relationship = item
-            } else {
-                newFamily.relationship = spinner_familyUpdated?.getSelectedItem().toString()
-                text1.setText(newFamily.relationship)
-            }
-            newFamily.family_note = relationship_notesUpdated.text.toString()
-            newFamily.mobile_no = mobile_no!!
-            newFamily.family_id = familyid
-
-
-            val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
-            val requestCall = destinationService.updateFamily(newFamily)
-
-            requestCall.enqueue(object: Callback<Diseases> {
-
-                override fun onResponse(call: Call<Diseases>, response: Response<Diseases>) {
-                    if (response.isSuccessful) {
-
-                        var updatedDestination = response.body() // Use it or ignore It
-                        Toast.makeText(this@FamilyHistoryUpdated, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
-                        finish() // Move back to DestinationListActivity
-                    } else {
-                        Toast.makeText(this@FamilyHistoryUpdated, "Failed to update item1", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                    Toast.makeText(this@FamilyHistoryUpdated, "Failed to update item", Toast.LENGTH_SHORT).show()
-                }
-            })
-
         }
 
     }
@@ -182,24 +143,61 @@ class FamilyHistoryUpdated : BaseActivity() {
     private fun assignValuestoVariable() {
 
         var familyCondition = et_family_conditionUpdated.text.toString()
-        var relationship = spinner_familyUpdated!!.selectedItem.toString()
+      //  var relationship = spinner_familyUpdated!!.selectedItem.toString()
         validateInput(et_family_conditionUpdated,familyCondition)
-        validateSpinner(spinner_familyUpdated!!,relationship)
+        //validateSpinner(spinner_familyUpdated!!,relationship)
 
-        if ((familyCondition != "")&&
-                (relationship != "None"))
+        if ((familyCondition != ""))
         {
 
             showLongToast("save the details")
+            sucess()
 
         }
         else{
 
-
-
         }
 
+            }
 
+    private fun sucess() {
+
+        val item = spinner_familyUpdated.text1.text.toString()
+
+        val newFamily = Diseases()
+        newFamily.family_condition = et_family_conditionUpdated.text.toString()
+
+        if(!item.equals(null)) {
+            newFamily.relationship = item
+        } else {
+            newFamily.relationship = spinner_familyUpdated?.getSelectedItem().toString()
+            text1.setText(newFamily.relationship)
+        }
+        newFamily.family_note = relationship_notesUpdated.text.toString()
+        newFamily.mobile_no = mobile_no!!
+        newFamily.family_id = familyid
+
+
+        val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
+        val requestCall = destinationService.updateFamily(newFamily)
+
+        requestCall.enqueue(object: Callback<Diseases> {
+
+            override fun onResponse(call: Call<Diseases>, response: Response<Diseases>) {
+                if (response.isSuccessful) {
+
+                    var updatedDestination = response.body() // Use it or ignore It
+                    Toast.makeText(this@FamilyHistoryUpdated, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+                    finish() // Move back to DestinationListActivity
+                } else {
+                    Toast.makeText(this@FamilyHistoryUpdated, "Failed to update item1", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                Toast.makeText(this@FamilyHistoryUpdated, "Failed to update item", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
 }

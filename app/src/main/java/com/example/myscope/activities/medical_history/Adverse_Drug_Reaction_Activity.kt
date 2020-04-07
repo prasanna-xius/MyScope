@@ -52,42 +52,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
         btn_adverse_drug.setOnClickListener{
             assignValuestoVariable()
 
-            try {
-                // Google Play will install latest OpenSSL
-                ProviderInstaller.installIfNeeded(getApplicationContext());
-                var sslContext: SSLContext
-                sslContext = SSLContext.getInstance("TLSv1.2");
-                sslContext.init(null, null, null);
-                sslContext.createSSLEngine();
-            }
 
-            catch (e: Exception) {
-                e.printStackTrace();
-            }
-
-            val newDrug = Diseases()
-            newDrug.drugname = et_drug_Name!!.text.toString().trim()
-            newDrug.reaction = reaction_effect!!.text.toString().trim()
-            newDrug.date_of_start = et_date_of_start!!.text.toString().trim()
-            newDrug.treatment_taken = et_treatment_taken!!.text.toString().trim()
-            newDrug.mobile_no = mobile_no!!
-            val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
-            val requestCall = diseaseService.addDrug(newDrug)
-            requestCall.enqueue(object : Callback<Diseases> {
-
-                override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
-                    if (resp.isSuccessful) {
-                        var newbody = resp.body() // Use it or ignore it
-                        Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
-                          finish()
-                    } else {
-                        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
-                }
-            })
         }
     }
 
@@ -99,9 +64,54 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
         validateInput(et_drug_Name, drugName)
         if ((drugName != "") ) {
             showLongToast("save the details")
+
+            sucess()
         }
         else {
             showLongSnackBar("Please fill the required fields")
         }
     }
+
+    private fun sucess() {
+
+
+        try {
+            // Google Play will install latest OpenSSL
+            ProviderInstaller.installIfNeeded(getApplicationContext());
+            var sslContext: SSLContext
+            sslContext = SSLContext.getInstance("TLSv1.2");
+            sslContext.init(null, null, null);
+            sslContext.createSSLEngine();
+        }
+
+        catch (e: Exception) {
+            e.printStackTrace();
+        }
+
+        val newDrug = Diseases()
+        newDrug.drugname = et_drug_Name!!.text.toString().trim()
+        newDrug.reaction = reaction_effect!!.text.toString().trim()
+        newDrug.date_of_start = et_date_of_start!!.text.toString().trim()
+        newDrug.treatment_taken = et_treatment_taken!!.text.toString().trim()
+        newDrug.mobile_no = mobile_no!!
+        val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
+        val requestCall = diseaseService.addDrug(newDrug)
+        requestCall.enqueue(object : Callback<Diseases> {
+
+            override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
+                if (resp.isSuccessful) {
+                    var newbody = resp.body() // Use it or ignore it
+                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+    }
+
 }

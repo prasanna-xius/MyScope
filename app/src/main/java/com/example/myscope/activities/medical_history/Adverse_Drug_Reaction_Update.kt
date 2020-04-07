@@ -112,33 +112,12 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
 
 
 
-        private fun initUpdateButton(id: String)
-        {
+        private fun initUpdateButton(id: String) {
             btn_adverse_drug_updated.setOnClickListener {
-                val newDrug = Diseases()
-                newDrug.drugname = et_drug_Name_updated!!.text.toString().trim()
-                newDrug.reaction = reaction_effect_updated!!.text.toString().trim()
-                newDrug.date_of_start = et_date_of_start_updated!!.text.toString().trim()
-                newDrug.treatment_taken = et_treatment_taken_updated!!.text.toString().trim()
-                newDrug.mobile_no = mobile_no!!
-                newDrug.adverseDrug_id = adverseDrugid!!
-                val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
-                val requestCall = destinationService.updateadversedrug(newDrug)
-                requestCall.enqueue(object: Callback<Diseases> {
-                    override fun onResponse(call: Call<Diseases>, response: Response<Diseases>) {
-                        if (response.isSuccessful)
-                        {
-                            Toast.makeText(this@Adverse_Drug_Reaction_Update, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
-                        finish()
-                        }
-                        else {
-                            Toast.makeText(this@Adverse_Drug_Reaction_Update  , "Failed at else part in update", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                    override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                        Toast.makeText(this@Adverse_Drug_Reaction_Update, "Failed to update item", Toast.LENGTH_SHORT).show()
-                    }
-                })
+
+                assignValuestoVariable()
+
+
             }
         }
 
@@ -160,5 +139,49 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
         val ARG_ITEM_ID:String = "item_id"
     }
 
+    private fun assignValuestoVariable() {
+        val drugName = et_drug_Name_updated.text.toString()
+        validateInput(et_drug_Name_updated, drugName)
+        if ((drugName != "") ) {
+            showLongToast("save the details")
+
+            sucess()
+        }
+        else {
+            showLongSnackBar("Please fill the required fields")
+        }
     }
+
+    private fun sucess() {
+
+
+        val newDrug = Diseases()
+        newDrug.drugname = et_drug_Name_updated!!.text.toString().trim()
+        newDrug.reaction = reaction_effect_updated!!.text.toString().trim()
+        newDrug.date_of_start = et_date_of_start_updated!!.text.toString().trim()
+        newDrug.treatment_taken = et_treatment_taken_updated!!.text.toString().trim()
+        newDrug.mobile_no = mobile_no!!
+        newDrug.adverseDrug_id = adverseDrugid!!
+        val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
+        val requestCall = destinationService.updateadversedrug(newDrug)
+        requestCall.enqueue(object: Callback<Diseases> {
+            override fun onResponse(call: Call<Diseases>, response: Response<Diseases>) {
+                if (response.isSuccessful)
+                {
+                    Toast.makeText(this@Adverse_Drug_Reaction_Update, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                else {
+                    Toast.makeText(this@Adverse_Drug_Reaction_Update  , "Failed at else part in update", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                Toast.makeText(this@Adverse_Drug_Reaction_Update, "Failed to update item", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+    }
+
+
+}
 
