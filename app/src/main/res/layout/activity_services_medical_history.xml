@@ -1,422 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
 
+    <include layout="@layout/app_bar_main" />
 
-<ScrollView
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
-
-    <LinearLayout
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="128sp"
-            android:background="#fff"
-            android:src="@drawable/wave_scaled" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/services_title"
-            android:textColor="@color/bg_screen2"
-            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:background="@color/colorWhite"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="2"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/patient_counseling"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:background="#ffffff"
-                    android:textSize="20sp"
-                    android:clickable="true"
-                    android:text="@string/patient_counseling"
-                    android:textColor="@color/bg_screen2" />
-
-                <CheckBox
-                    android:id="@+id/checkbox_patient_counseling"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginStart="130sp"
-                    android:buttonTint="#997CF4"
-                    />
-
-
-
-            </LinearLayout>
-
+                android:layout_height="128sp"
+                android:background="#fff"
+                android:src="@drawable/wave_scaled" />
 
             <TextView
-                android:id="@+id/description_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLines="0"
-                android:padding="0dp"
-                android:background="#ffffff"
-                android:text="@string/text"
-                android:textColor="#997CF4" />
+                android:gravity="center"
+                android:text="@string/services_title"
+                android:textColor="@color/bg_screen2"
+                android:textSize="30sp" />
+
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#ffffff"
-                android:layout_marginRight="30sp"
-                android:gravity="right">
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/patient_counseling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:clickable="true"
+                        android:padding="5dp"
+                        android:text="@string/patient_counseling"
+                        android:textColor="@color/bg_screen2"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_patient_counseling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="130sp"
+                        android:layout_weight="1"
+                        android:buttonTint="#997CF4" />
 
 
+                </LinearLayout>
 
-                <ImageButton
-
-                    android:id="@+id/minus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/description_text"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="15sp"
-                    android:background="@drawable/ic_expand_less_black_24dp"
-                    android:clickable="true"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:orientation="vertical"
-            android:padding="15dp">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="2"
-                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/Drug_Interaction"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/description_text"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
                     android:background="#ffffff"
-                    android:textSize="20sp"
-                    android:clickable="true"
-                    android:text="@string/drug_interaction"
+                    android:maxLines="0"
+                    android:padding="0dp"
+                    android:text="@string/text"
                     android:textColor="#997CF4" />
 
-                <CheckBox
-                    android:id="@+id/checkbox_Drug_Interaction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginStart="150sp"
-                    android:buttonTint="#997CF4"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30sp"
+                    android:background="#ffffff"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+
+                    <ImageButton
+
+                        android:id="@+id/minus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/description_text"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="15sp"
+                        android:background="@drawable/ic_expand_less_black_24dp"
+                        android:clickable="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
 
 
             </LinearLayout>
-
-
-            <TextView
-                android:id="@+id/description_text1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="0"
-                android:padding="0dp"
-                android:background="#ffffff"
-                android:text="@string/text1"
-                android:textColor="#997CF4" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#ffffff"
-                android:layout_marginRight="20sp"
-                android:gravity="right">
-
-                <ImageButton
-                    android:id="@+id/minus1"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/description_text"
-                    android:background="@drawable/ic_expand_less_black_24dp"
-                    android:clickable="true"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:orientation="vertical"
-            android:padding="15dp">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="2"
-                android:orientation="horizontal">
+                android:background="#ffffff"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/Drug_Interaction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:clickable="true"
+                        android:padding="5dp"
+                        android:text="@string/drug_interaction"
+                        android:textColor="#997CF4"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_Drug_Interaction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="150sp"
+                        android:layout_weight="1"
+                        android:buttonTint="#997CF4" />
+
+
+                </LinearLayout>
+
 
                 <TextView
-                    android:id="@+id/Prescription_Audit"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/description_text1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
                     android:background="#ffffff"
-                    android:textSize="20sp"
-                    android:clickable="true"
-                    android:text="@string/prescription_audit"
+                    android:maxLines="0"
+                    android:padding="0dp"
+                    android:text="@string/text1"
                     android:textColor="#997CF4" />
 
-                <CheckBox
-                    android:id="@+id/checkbox_Prescription_Audit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginStart="130sp"
-                    android:buttonTint="#997CF4"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20sp"
+                    android:background="#ffffff"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/minus1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/description_text"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/ic_expand_less_black_24dp"
+                        android:clickable="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/description_text2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="0"
-                android:padding="0dp"
-                android:background="#ffffff"
-                android:text="@string/text2"
-                android:textColor="#997CF4" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#ffffff"
-                android:layout_marginRight="30sp"
-                android:gravity="right">
-
-                <ImageButton
-                    android:id="@+id/minus2"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/description_text"
-                    android:background="@drawable/ic_expand_less_black_24dp"
-                    android:clickable="true"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:orientation="vertical"
-            android:padding="15dp">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="2"
-                android:orientation="horizontal">
+                android:background="#ffffff"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/Prescription_Audit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:clickable="true"
+                        android:padding="5dp"
+                        android:text="@string/prescription_audit"
+                        android:textColor="#997CF4"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_Prescription_Audit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="130sp"
+                        android:layout_weight="1"
+                        android:buttonTint="#997CF4" />
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/Adverse_Drug_Event_Monitoring"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/description_text2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
                     android:background="#ffffff"
-                    android:clickable="true"
-                    android:textSize="20sp"
-                    android:text="@string/adverse_drug_event_monitoring"
+                    android:maxLines="0"
+                    android:padding="0dp"
+                    android:text="@string/text2"
                     android:textColor="#997CF4" />
 
-                <CheckBox
-                    android:id="@+id/checkbox_Adverse_Drug_Event_Monitoring"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginStart="15sp"
-                    android:buttonTint="#997CF4"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30sp"
+                    android:background="#ffffff"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/minus2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/description_text"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/ic_expand_less_black_24dp"
+                        android:clickable="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
 
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/description_text3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="0"
-                android:padding="0dp"
-                android:background="#ffffff"
-                android:text="@string/text3"
-                android:textColor="#997CF4" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#ffffff"
-                android:layout_marginRight="30sp"
-                android:gravity="right">
-
-
-                <ImageButton
-                    android:id="@+id/minus3"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/description_text"
-                    android:background="@drawable/ic_expand_less_black_24dp"
-                    android:clickable="true"
-                    android:visibility="gone" />
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:orientation="vertical"
-            android:padding="15dp">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="2"
-                android:orientation="horizontal">
+                android:background="#ffffff"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/Adverse_Drug_Event_Monitoring"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:clickable="true"
+                        android:padding="5dp"
+                        android:text="@string/adverse_drug_event_monitoring"
+                        android:textColor="#997CF4"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_Adverse_Drug_Event_Monitoring"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="15sp"
+                        android:layout_weight="1"
+                        android:buttonTint="#997CF4" />
+
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/Post_discharge_Care_Package"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/description_text3"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
                     android:background="#ffffff"
-                    android:textSize="20sp"
-                    android:clickable="true"
-                    android:text="@string/post_discharge_care_package"
-                    android:textColor="@color/bg_screen2" />
+                    android:maxLines="0"
+                    android:padding="0dp"
+                    android:text="@string/text3"
+                    android:textColor="#997CF4" />
 
-                <CheckBox
-                    android:id="@+id/checkbox_Post_discharge_Care_Package"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginStart="40sp"
-                    android:buttonTint="#997CF4"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30sp"
+                    android:background="#ffffff"
+                    android:gravity="right"
+                    android:orientation="vertical">
 
 
+                    <ImageButton
+                        android:id="@+id/minus3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/description_text"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/ic_expand_less_black_24dp"
+                        android:clickable="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
 
 
             </LinearLayout>
-
-
-
-            <TextView
-                android:id="@+id/description_text4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="0"
-                android:padding="0dp"
-                android:background="#ffffff"
-                android:text="@string/text4"
-                android:textColor="#997CF4" />
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="#ffffff"
-                android:layout_marginRight="30sp"
-                android:gravity="right">
+                android:orientation="vertical"
+                android:padding="15dp">
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                <ImageButton
-                    android:id="@+id/minus4"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/description_text"
-                    android:background="@drawable/ic_expand_less_black_24dp"
-                    android:clickable="true"
-                    android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/Post_discharge_Care_Package"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:clickable="true"
+                        android:padding="5dp"
+                        android:text="@string/post_discharge_care_package"
+                        android:textColor="@color/bg_screen2"
+                        android:textSize="20sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox_Post_discharge_Care_Package"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="40sp"
+                        android:layout_weight="1"
+                        android:buttonTint="#997CF4" />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/description_text4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:maxLines="0"
+                    android:padding="0dp"
+                    android:text="@string/text4"
+                    android:textColor="#997CF4" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30sp"
+                    android:background="#ffffff"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+
+                    <ImageButton
+                        android:id="@+id/minus4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/description_text"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/ic_expand_less_black_24dp"
+                        android:clickable="true"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_services"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@color/bg_screen2"
+                android:text="AGREE"
+                android:textColor="@color/colorWhite" />
 
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_services"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10sp"
-            android:text="AGREE"
-            android:background="@color/bg_screen2"
-            android:textColor="@color/colorWhite"
-            />
-
-
-
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
 
 
 </LinearLayout>

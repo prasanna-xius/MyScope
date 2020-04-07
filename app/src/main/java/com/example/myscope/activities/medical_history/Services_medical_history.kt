@@ -21,6 +21,7 @@ import com.example.myscope.activities.services.ServiceBuilder
 import com.example.myscope.services.PrescriptionInterface
 import com.google.android.gms.security.ProviderInstaller
 import kotlinx.android.synthetic.main.activity_services_medical_history.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,6 +51,9 @@ class Services_medical_history : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services_medical_history)
+
+        activitiesToolbar()
+        header!!.text = "Services"
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)

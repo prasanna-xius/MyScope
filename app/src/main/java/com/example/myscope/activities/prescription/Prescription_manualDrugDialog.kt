@@ -20,6 +20,7 @@ import com.example.myscope.activities.MultiSpinnerTime
 import com.example.myscope.services.PrescriptionInterface
 import com.example.myscope.activities.services.ServiceBuilder1
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.prescribed_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -65,11 +66,16 @@ class Prescription_manualDrugDialog : BaseActivity() {
     var rv: RecyclerView? = null
     var prescription_id:Int =0
     var position:Int = 0
+    var model_name: String? = null
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prescription_manual)
+
+        activitiesToolbar()
+
+
         doctor_name_Txt = findViewById<View>(R.id.et_doctor_name) as EditText
         hospital_name_Txt = findViewById<View>(R.id.et_hosp_name) as EditText
         medical_condition_Txt = findViewById<View>(R.id.et_medical_condition) as EditText
@@ -82,7 +88,10 @@ class Prescription_manualDrugDialog : BaseActivity() {
         isPrescribed!!.adapter = isprescribedadapter
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        model_name = sharedpreferences!!.getString("model_name",null)!!
+        header1!!.text = "Prescription-" + model_name
         prescription_id = sharedpreferences.getInt("prescription_id",prescription)
+
 
 //        val bundle = intent.extras
 //            if(!bundle!!.equals(null)) {

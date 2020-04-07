@@ -1,7 +1,9 @@
 package com.example.myscope.activities.prescription
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.media.MediaScannerConnection
 import android.net.Uri
@@ -18,6 +20,8 @@ import com.example.myscope.activities.BaseActivity
 import com.example.myscope.services.PrescriptionInterface
 import com.example.myscope.activities.services.ServiceBuilder1
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_prescription_addimages_recyclerview.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -36,12 +40,18 @@ import java.util.*
 
 class Prescription_AddImage_PDF :BaseActivity() {
 
+    var model_name: String? = null
+    var sharedpreferences: SharedPreferences? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prescription_addimages_recyclerview)
-        val toolbar = findViewById<View>(R.id.toolbar_imageuploader) as Toolbar
-        setSupportActionBar(toolbar)
 
+        activitiesToolbar()
+
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        model_name = sharedpreferences!!.getString("model_name",null)!!
+        header1!!.text = "Prescription-" + model_name
         val fab = findViewById<View>(R.id.fab_addimages) as FloatingActionButton
         fab.setOnClickListener {
             showUploadDialog()
