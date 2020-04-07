@@ -52,9 +52,9 @@ class SurgeryUpdateActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.surgeryhistory_update)
-        activitiesToolbar()
-        header!!.text = "surgery History"
 
+        activitiesToolbar()
+        header!!.text = "Surgery History"
         //setSupportActionBar(detail_toolbar as Toolbar?)
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)

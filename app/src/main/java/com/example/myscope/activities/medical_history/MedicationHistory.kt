@@ -16,11 +16,13 @@ import android.widget.*
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.medicationhistory.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.view.*
 import retrofit2.Call
@@ -29,7 +31,7 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
 
 
     var namemed: String? = null;
@@ -76,6 +78,9 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medicationhistory)
+
+        activitiesToolbar()
+        header!!.text = "Medication History"
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)

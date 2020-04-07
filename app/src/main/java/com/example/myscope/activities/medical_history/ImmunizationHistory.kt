@@ -14,11 +14,13 @@ import androidx.annotation.RequiresApi
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.immunizationhistory.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,7 +28,7 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ImmunizationHistory : AppCompatActivity() {
+class ImmunizationHistory : BaseActivity() {
     var btn_immunization: Button?=null
     var button_date_immun: ImageView? = null
     var textview_date_immun: TextView? = null
@@ -47,6 +49,9 @@ class ImmunizationHistory : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.immunizationhistory)
+
+        activitiesToolbar()
+        header!!.text = "Immunization History"
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)

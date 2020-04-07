@@ -18,6 +18,7 @@ import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.surgeryhistory.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -52,6 +53,9 @@ class SurgeryHistory_Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.surgeryhistory)
+
+        activitiesToolbar()
+        header!!.text = "Surgery History"
 
         textview_date_surg = this.textviewdate_surg
         button_date_surg = this.buttondate_surg

@@ -16,10 +16,12 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 
 import kotlinx.android.synthetic.main.immunizationhistory_update.*
@@ -31,7 +33,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class ImmunizationUpdateActivity : AppCompatActivity() {
+class ImmunizationUpdateActivity : BaseActivity() {
 
     var spnrAllergy_Update :Spinner?=null
     var nameUpdate:String ?=null
@@ -50,6 +52,8 @@ class ImmunizationUpdateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.immunizationhistory_update)
 
+        activitiesToolbar()
+        header!!.text = "Immunization History"
         //setSupportActionBar(detail_toolbar as Toolbar?)
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)

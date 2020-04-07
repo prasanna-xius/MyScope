@@ -7,25 +7,29 @@
     android:background="@color/colorWhite"
 
     tools:ignore="MissingDefaultResource">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <include layout="@layout/side_activity"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/surgery_history"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:textColor="@color/bg_screen2"/>
+        <include layout="@layout/app_bar_main" />
+
+        <include layout="@layout/side_activity" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/surgery_history"
+            android:textColor="@color/bg_screen2"
+            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="10dp"
+            android:orientation="horizontal"
             android:weightSum="2">
 
             <TextView
@@ -36,24 +40,26 @@
                 android:text="@string/surg_name"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
+
             <EditText
                 android:id="@+id/et_name_surgery_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="5dp"
                 android:background="@drawable/border_bg"
-                android:textSize="16sp"
                 android:hint="@string/eg_Surgery"
+                android:padding="5dp"
                 android:textColor="@color/bg_screen2"
-                android:textColorHint="@color/bg_screen2"/>
+                android:textColorHint="@color/bg_screen2"
+                android:textSize="16sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="10dp"
+            android:orientation="horizontal"
             android:weightSum="2">
 
             <TextView
@@ -64,42 +70,42 @@
                 android:text="@string/when_performed"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2.0"
                 android:layout_weight="1.0"
                 android:orientation="horizontal"
-                >
+                android:weightSum="2.0">
 
                 <ImageView
+                    android:id="@+id/buttondate_surg"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_gravity="start"
                     android:layout_weight=".05"
-                    android:src="@drawable/calendar_36"
                     android:padding="5dp"
-                    android:textSize="14sp"
-                    android:id="@+id/buttondate_surg"
-                    />
+                    android:src="@drawable/calendar_36"
+                    android:textSize="14sp" />
 
                 <TextView
+                    android:id="@+id/textviewdate_surg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:gravity="center"
-                    android:textColor="@color/bg_screen2"
-                    android:id="@+id/textviewdate_surg"
                     android:padding="2dp"
-                    android:text=" " />
+                    android:text=" "
+                    android:textColor="@color/bg_screen2" />
             </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="10dp"
+            android:orientation="horizontal"
             android:weightSum="2">
 
             <TextView
@@ -110,23 +116,25 @@
                 android:text="@string/body_location"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
+
             <EditText
                 android:id="@+id/et_body_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="5dp"
                 android:background="@drawable/border_bg"
-                android:textSize="16sp"
                 android:hint="@string/eg_body_location"
+                android:padding="5dp"
                 android:textColor="@color/bg_screen2"
-                android:textColorHint="@color/bg_screen2"/>
+                android:textColorHint="@color/bg_screen2"
+                android:textSize="16sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="10dp"
+            android:orientation="horizontal"
             android:weightSum="2">
 
             <TextView
@@ -143,18 +151,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="5dp"
                 android:background="@drawable/border_bg"
-                android:textSize="16sp"
                 android:hint="@string/eg_provider"
+                android:padding="5dp"
                 android:textColor="@color/bg_screen2"
-                android:textColorHint="@color/bg_screen2"/>
+                android:textColorHint="@color/bg_screen2"
+                android:textSize="16sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="10dp"
+            android:orientation="horizontal"
             android:weightSum="2">
 
             <TextView
@@ -171,18 +180,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="5dp"
                 android:background="@drawable/border_bg"
-                android:textSize="16sp"
                 android:hint="Enter Hospital Name"
+                android:padding="5dp"
                 android:textColor="@color/bg_screen2"
-                android:textColorHint="@color/bg_screen2"/>
+                android:textColorHint="@color/bg_screen2"
+                android:textSize="16sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="10dp"
+            android:orientation="horizontal"
             android:weightSum="2">
 
             <TextView
@@ -200,32 +210,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:layout_weight="1"
-                android:padding="5dp"
-                android:hint="@string/notes"
                 android:background="@drawable/border_bg"
-                android:textSize="16sp"
-                android:textColor="@color/bg_screen2"/>
+                android:hint="@string/notes"
+                android:padding="5dp"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1.0"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center">
-        <Button
-            android:id="@+id/button_surgery"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/save"
-           android:layout_weight="1.0"
-            android:background="@drawable/shape_btn"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:weightSum="1.0">
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/button_surgery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@drawable/shape_btn"
+                android:text="@string/save"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

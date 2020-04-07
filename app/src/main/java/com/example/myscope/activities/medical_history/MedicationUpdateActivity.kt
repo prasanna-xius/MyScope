@@ -16,6 +16,7 @@ import com.example.myscope.activities.BaseActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 import kotlinx.android.synthetic.main.medicationhistory_update.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_dose.*
@@ -55,6 +56,8 @@ class MedicationUpdateActivity : BaseActivity() {
         //setSupportActionBar(detail_toolbar as Toolbar?)
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        activitiesToolbar()
+        header!!.text = "Medication History"
 
         spinner_how_often_taken = findViewById<MultiSelectionSpinnerdata>(R.id.spinner_how_often_taken_update)
 
