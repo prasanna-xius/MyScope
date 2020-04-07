@@ -94,8 +94,8 @@ interface Disease_service {
 
     //Services
 
-    @GET("servicelist/{id}")
-    fun getService(@Path("id") id: String): Call<List<Diseases>>
+    @GET("servicelist/{mobile_no}")
+    fun getService(@Path("mobile_no") mobile_no: String): Call<List<Diseases>>
 
     //end point of webservice
     @Headers("Content-Type: application/json")
