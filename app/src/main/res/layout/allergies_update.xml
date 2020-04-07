@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:id="@+id/llupdate">
+        <include layout="@layout/app_bar_main"/>
+
         <include layout="@layout/side_activity" />
 
         <TextView

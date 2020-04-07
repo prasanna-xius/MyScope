@@ -16,11 +16,13 @@ import android.widget.*
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.medicationhistory.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.view.*
 import retrofit2.Call
@@ -29,7 +31,7 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
 
 
     var namemed: String? = null;
@@ -77,6 +79,9 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medicationhistory)
 
+        activitiesToolbar()
+        header!!.text = "Medication History"
+
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
@@ -107,7 +112,7 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                 "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
 
 
-        var how_oftenspinner = findViewById<MultiSelectionSpinner>(R.id.spinner_how_often_taken)
+        var how_oftenspinner = findViewById<MultiSelectionSpinnerdata>(R.id.spinner_how_often_taken)
 
         var formulationdata = resources.getStringArray(R.array.formulation_arrays)
 
@@ -170,7 +175,7 @@ class MedicationHistory : AppCompatActivity(), AdapterView.OnItemSelectedListene
                 newmedication.formulation = sprTwoItem.toString().trim()
                 newmedication.isprescribed = sprFourItem.toString().trim()
                 newmedication.doseunit = sprThreeItem.toString().trim()
-                newmedication.mobile_no = mobile_no!!
+                newmedication.mobile_no = mobile_no.toString()
                 Toast.makeText(applicationContext,newmedication.how_often_taken,Toast.LENGTH_LONG).show()
 
                 //newMedicalHistoryModelActivity.spnrdata =spnritem!!

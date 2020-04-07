@@ -38,6 +38,7 @@ class Disease_History : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.disease_history)
         activitiesToolbar()
+
         header!!.text = "Disease History"
         spinner_disease = findViewById<Spinner>(R.id.spinner_disease)
 

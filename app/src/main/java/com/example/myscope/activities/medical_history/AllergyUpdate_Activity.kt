@@ -13,6 +13,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 import com.example.myscope.services.ServiceBuilder
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
@@ -20,6 +21,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_disease_history_update.*
 import kotlinx.android.synthetic.main.allergies.*
 import kotlinx.android.synthetic.main.allergies_update.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_allergy.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_allergy.view.*
 import org.w3c.dom.Text
@@ -29,7 +31,7 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AllergyUpdate_Activity : AppCompatActivity() {
+class AllergyUpdate_Activity : BaseActivity() {
 
     var tv: TextView? = null
     var spnrAllergy_Update: Spinner? = null
@@ -45,6 +47,8 @@ class AllergyUpdate_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.allergies_update)
 
+        activitiesToolbar()
+        header!!.text = "Allergies"
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
@@ -74,13 +78,13 @@ class AllergyUpdate_Activity : AppCompatActivity() {
 //        if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
 //            val id = intent.getStringExtra(ARG_ITEM_ID)
-            position = intent.getIntExtra("position", 0)
+        position = intent.getIntExtra("position", 0)
 
-            loadDetails(mobile_no.toString(), position!!)
+        loadDetails(mobile_no.toString(), position!!)
 
-            initUpdateButton(mobile_no.toString())
+        initUpdateButton(mobile_no.toString())
 
-            //initDeleteButton(id)
+        //initDeleteButton(id)
 //        }
     }
 
@@ -133,7 +137,7 @@ class AllergyUpdate_Activity : AppCompatActivity() {
                             et_treatment_update?.setText(destination!!.treatment)
                             et_notes_allergies_update?.setText(destination!!.notes)
                             textviewdate_update?.setText(destination!!.date)
-                            tv_allergy?.setText(destination!!.spnrdata)
+                            allergySpinner!!.tv_allergy!!.setText(destination!!.spnrdata)
 
 
                             //collapsing_toolbar.title = destination.city

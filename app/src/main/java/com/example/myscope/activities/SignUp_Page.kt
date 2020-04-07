@@ -72,15 +72,14 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
         Log.d(TAG, "SignUp_Page")
 
 
-        if (validate() == false) {
+        if (validate().equals(true)) {
+            registerRetrofit2Api(firstName, lastName, mobileNumber, emailId);
+
+        } else {
+
             onSignupFailed()
             return
         }
-
-
-        navigateToActivity(Intent(applicationContext, Login_Page::class.java))
-        showLongToast("Registration Successfully Completed")
-
 
     }
 
@@ -125,18 +124,18 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
             mobile_layout!!.error = "Enter Valid mobile number"
             valid = false
         }
-        if (emailId.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailId).matches()) {
+        if (emailId.isEmpty() ) {
             email_layout!!.error = "Enter Register Email Address"
             valid = false
-        } else {
-            email_layout!!.error = null
+        } else if(!Patterns.EMAIL_ADDRESS.matcher(emailId).matches()){
+            email_layout!!.error = "Enter correct Email Address"
+            valid = false
         }
 
-        if (terms_conditions!!.isChecked()) {
-            showLongToast("please agree Terms&Condtions and Continue")
-        } else {
+        if (!terms_conditions!!.isChecked()) {
+            valid = false
+            showLongSnackBar("Please agree Terms&Condtions and Continue")
         }
-        registerRetrofit2Api(firstName, lastName, mobileNumber, emailId);
         return valid
     }
 

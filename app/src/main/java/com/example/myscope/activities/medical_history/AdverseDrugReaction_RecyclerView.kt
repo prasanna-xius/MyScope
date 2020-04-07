@@ -12,6 +12,7 @@ import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.services.Disease_service
 import com.example.myscope.activities.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_adverse_drug_reaction__recycler_view.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +26,8 @@ class AdverseDrugReaction_RecyclerView : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adverse_drug_reaction__recycler_view)
 
+        activitiesToolbar()
+        header!!.text = "AdverseDrug Reaction"
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)

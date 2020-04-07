@@ -21,6 +21,7 @@ import com.example.myscope.services.PrescriptionInterface
 import com.example.myscope.activities.services.ServiceBuilder1
 import com.google.android.gms.security.ProviderInstaller
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.isprescribed_main.*
 import retrofit2.Call
@@ -49,15 +50,16 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
         setContentView(R.layout.activity_prescriptionmanual_recyclerview)
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        activitiesToolbar()
 
-        header!!.text = "Prescription"
+        activitiesToolbar()
 
         val fab = findViewById<View>(R.id.fab_addprescribed) as FloatingActionButton
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
         model_name = sharedpreferences!!.getString("model_name",null)!!
+        header!!.text = "Prescription-" + model_name
+
         showLongToast(mobile_no.toString())
 
 //        mobile_no = "9505505093"

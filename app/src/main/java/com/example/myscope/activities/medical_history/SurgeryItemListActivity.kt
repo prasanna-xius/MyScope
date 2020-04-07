@@ -16,6 +16,7 @@ import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_surgery_list.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,8 +32,9 @@ class SurgeryItemListActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_surgery_list)
-        activitiesToolbar()
 
+        activitiesToolbar()
+        header!!.text = "Surgery History"
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
 

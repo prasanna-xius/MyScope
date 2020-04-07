@@ -16,6 +16,7 @@ import com.example.myscope.activities.BaseActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 import kotlinx.android.synthetic.main.medicationhistory_update.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_dose.*
@@ -34,7 +35,7 @@ import retrofit2.Response
 
 class MedicationUpdateActivity : BaseActivity() {
 
-    var spinner_how_often_taken: MultiSelectionSpinner? = null
+    var spinner_how_often_taken: MultiSelectionSpinnerdata? = null
 
     var formulation: Spinner? = null
     var isprescribed: Spinner? = null
@@ -55,8 +56,10 @@ class MedicationUpdateActivity : BaseActivity() {
         //setSupportActionBar(detail_toolbar as Toolbar?)
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        activitiesToolbar()
+        header!!.text = "Medication History"
 
-        spinner_how_often_taken = findViewById<MultiSelectionSpinner>(R.id.spinner_how_often_taken_update)
+        spinner_how_often_taken = findViewById<MultiSelectionSpinnerdata>(R.id.spinner_how_often_taken_update)
 
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
@@ -138,9 +141,9 @@ class MedicationUpdateActivity : BaseActivity() {
                             //tv_how_often?.setText()
 
                             spinner_how_often_taken!!.tv_how_often!!.setText(medicationdestination.how_often_taken)
-                            formulation!!.tv_formulation!!.setText(medicationdestination.formulation)
-                            isprescribed!!.tv_precsribed!!.setText(medicationdestination.isprescribed)
-                            doseunit!!.tv_dose!!.setText(medicationdestination.doseunit)
+                            spinner_formulation_update!!.tv_formulation!!.setText(medicationdestination.formulation)
+                            spinner_is_prescribed_update!!.tv_precsribed!!.setText(medicationdestination.isprescribed)
+                            spinner_dose_unit_update!!.tv_dose!!.setText(medicationdestination.doseunit)
                             et_name_medication_update.setText(medicationdestination.medicationname)
                             et_notes_medication_update.setText(medicationdestination.medicationnotes)
                             et_reason_update.setText(medicationdestination.reason)
@@ -197,7 +200,7 @@ class MedicationUpdateActivity : BaseActivity() {
             newmedication.formulation=spinner_formulation_update?.getSelectedItem().toString()
             newmedication.startdate = textviewStartdate_medicalHistory_update!!.text.toString().trim()
             newmedication.enddate = textviewEnddate_MH_update!!.text.toString().trim()
-            newmedication.mobile_no = "9505505093"
+            newmedication.mobile_no = mobile_no.toString()
             newmedication.medication_id= medicationid
 
 

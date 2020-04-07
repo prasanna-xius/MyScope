@@ -22,6 +22,7 @@ class Medical_History_HomePage : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medical_history_main)
         home_grid_view!!.adapter = CustomAdapter(applicationContext, names, images)
+
         activitiesToolbar()
         header!!.text = "Medical History"
 
