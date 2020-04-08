@@ -86,11 +86,11 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
                     val destination = response.body()
                  //   val newDrug = destination?.first()
                     adverseDrug = destination?.get(position)
-                    adverseDrugid = adverseDrug?.adverseDrug_id!!
+                    adverseDrugid = adverseDrug?.adverse_id!!
 
 
                     adverseDrug?.let {
-                        et_drug_Name_updated?.setText(adverseDrug!!.drugname)
+                        et_drug_Name_updated?.setText(adverseDrug!!.drugname) 
                         reaction_effect_updated?.setText(adverseDrug!!.reaction)
                         et_date_of_start_updated?.setText(adverseDrug!!.date_of_start)
                         et_treatment_taken_updated?.setText(adverseDrug!!.treatment_taken)
@@ -121,7 +121,7 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
                 newDrug.date_of_start = et_date_of_start_updated!!.text.toString().trim()
                 newDrug.treatment_taken = et_treatment_taken_updated!!.text.toString().trim()
                 newDrug.mobile_no = mobile_no!!
-                newDrug.adverseDrug_id = adverseDrugid!!
+                newDrug.adverse_id = adverseDrugid!!
                 val destinationService = ServiceBuilder.buildService(Disease_service::class.java)
                 val requestCall = destinationService.updateadversedrug(newDrug)
                 requestCall.enqueue(object: Callback<Diseases> {

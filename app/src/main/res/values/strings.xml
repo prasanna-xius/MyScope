@@ -100,7 +100,7 @@
     <string name="eg_Surgery">E.g. Endoscopy</string>
     <string name="surg_name">Name<font color='#a4c639'>*</font></string>
     <string name="when_performed">When performed<font color='#a4c639'>*</font></string>
-    <string name="body_location">Body Location<font color='#a4c639'>*</font></string>
+    <string name="body_location">Organ/System<font color='#a4c639'>*</font></string>
     <string name="eg_body_location">E.g. Stomach</string>
     <string name="provider">Provider</string>
     <string name="eg_provider">E.g. Doctor Name</string>
