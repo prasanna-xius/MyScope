@@ -7,7 +7,7 @@
     android:background="@color/colorWhite"
     android:orientation="vertical">
 
-    <!--    <include layout="@layout/app_bar_main" />-->
+        <include layout="@layout/app_bar_main" />
 
     <ScrollView
         android:layout_width="match_parent"
