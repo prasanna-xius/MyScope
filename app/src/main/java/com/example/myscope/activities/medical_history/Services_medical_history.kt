@@ -229,7 +229,7 @@ class Services_medical_history : BaseActivity() {
                         val newServices = Diseases()
                         newServices.patient_counselling = checkbox_patient_counseling!!.isChecked().toString().toBoolean()
                         newServices.drug_interaction = checkbox_Drug_Interaction!!.isChecked().toString().toBoolean()
-                        newServices.prescription_aduit = checkbox_Prescription_Audit!!.isChecked().toString().toBoolean()
+                        newServices.prescription_audit = checkbox_Prescription_Audit!!.isChecked().toString().toBoolean()
                         newServices.adverse_drug_monitering = checkbox_Adverse_Drug_Event_Monitoring!!.isChecked().toString().toBoolean()
                         newServices.post_dicharge_package = checkbox_Post_discharge_Care_Package!!.isChecked().toString().toBoolean()
                         newServices.mobile_no = mobile_no
@@ -301,16 +301,30 @@ class Services_medical_history : BaseActivity() {
 
                 services?.let {
 
+                    if(services.patient_counselling!!.equals(true)){
+                        checkbox_patient_counseling?.setChecked(true)
+                    }
 
-                    services.patient_counselling?.let { it1 -> checkbox_patient_counseling?.setChecked(it1) }
 
-                    services.drug_interaction?.let { it1 -> checkbox_Drug_Interaction?.setChecked(it1) }
 
-                    services.prescription_aduit?.let { it1 -> checkbox_Prescription_Audit?.setChecked(it1) }
+                    if(services.drug_interaction!!.equals(true)){
+                        checkbox_Drug_Interaction?.setChecked(true)
+                    }
+                    if(services.prescription_audit!!.equals(true)){
+                        checkbox_Prescription_Audit?.setChecked(true)
+                    }
 
-                    services.adverse_drug_monitering?.let { it1 -> checkbox_Adverse_Drug_Event_Monitoring?.setChecked(it1) }
+                    if(services.adverse_drug_monitering!!.equals(true)){
+                        checkbox_Adverse_Drug_Event_Monitoring?.setChecked(true)
+                    }
+                    if(services.post_dicharge_package!!.equals(true)){
+                        checkbox_Post_discharge_Care_Package?.setChecked(true)
+                    }
+//                    services.prescription_aduit?.let { it1 -> checkbox_Prescription_Audit?.setChecked(it1) }
 
-                    services.patient_counselling?.let { it1 -> checkbox_Post_discharge_Care_Package?.setChecked(it1) }
+//                    services.adverse_drug_monitering?.let { it1 -> checkbox_Adverse_Drug_Event_Monitoring?.setChecked(it1) }
+
+//                    services.patient_counselling?.let { it1 -> checkbox_Post_discharge_Care_Package?.setChecked(it1) }
 
 
                     initUpdateButton()
@@ -339,7 +353,7 @@ class Services_medical_history : BaseActivity() {
 
             newServices.patient_counselling = checkbox_patient_counseling!!.isChecked().toString().toBoolean()
             newServices.drug_interaction = checkbox_Drug_Interaction!!.isChecked().toString().toBoolean()
-            newServices.prescription_aduit = checkbox_Prescription_Audit!!.isChecked().toString().toBoolean()
+            newServices.prescription_audit = checkbox_Prescription_Audit!!.isChecked().toString().toBoolean()
             newServices.adverse_drug_monitering = checkbox_Adverse_Drug_Event_Monitoring!!.isChecked().toString().toBoolean()
             newServices.post_dicharge_package = checkbox_Post_discharge_Care_Package!!.isChecked().toString().toBoolean()
 
@@ -396,7 +410,7 @@ class Services_medical_history : BaseActivity() {
 
 
 
-                if (length!!.equals(null)){
+                if (length == 0){
 
 
                     showLongToast("add Prescription")
