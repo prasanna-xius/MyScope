@@ -14,12 +14,16 @@
         android:background="@color/colorWhite"
         android:layout_height="match_parent">
 
-        <ImageView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/playerImage"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="1"
+            android:id="@+id/drug_id_text"
+            android:textColor="@color/bg_screen2"
             android:padding="10dp"
-            android:src="@drawable/home" />
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/playerImage" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,15 +33,15 @@
             android:id="@+id/drug_nametxt"
             android:textColor="@color/bg_screen2"
             android:padding="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/playerImage" />
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/drug_id_text" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="dose"
-            android:id="@+id/time_txt"
+            android:id="@+id/start_date_txt"
             android:padding="10dp"
             android:textColor="@color/bg_screen2"
             android:layout_alignBottom="@+id/playerImage"

@@ -121,10 +121,13 @@
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
         <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog" />
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
-        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
+<!--        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />-->
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
         <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
         <activity android:name=".activities.medical_history.Services_medical_history" />
+
+        <activity android:name=".activities.Educational_Blog_Activity" />
+
     </application>
 
 </manifest>
