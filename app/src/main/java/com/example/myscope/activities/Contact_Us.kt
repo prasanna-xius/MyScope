@@ -35,7 +35,7 @@ class Contact_Us : BaseActivity() {
 
         activitiesToolbar()
 
-        header!!.text = "Family History"
+        header!!.text = "Contact Us"
 
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
