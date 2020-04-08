@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.Toast
 import com.example.myscope.R
 import com.example.myscope.activities.medical_history.Diseases
@@ -43,6 +44,7 @@ class Contact_Us : BaseActivity() {
 
 
 
+
         btn_contact_us.setOnClickListener {
 
             assignValuestoVariable()
@@ -53,23 +55,29 @@ class Contact_Us : BaseActivity() {
     }
 
     private fun assignValuestoVariable() {
-        var name = name.text.toString().trim()
-        var email = email.text.toString().trim()
+        val name1 = name.text.toString().trim()
+        val email = email.text.toString().trim()
+        val subject1 = subject.text.toString().trim()
 
-        var message = message.text.toString().trim()
+        val message1 = message.text.toString().trim()
 
-        if ((name != "") && (email != "") && (message != ""))
+        validateInput(name, name1)
+        validateInput(message, message1)
+        validateInput(subject, subject1)
+
+
+        if ((name1 != "") && (message1 != "") && (subject1 != ""))
         {
 
             showLongToast("save the details")
 
 
-            apicall(email , message)
+            apicall(email , subject1 , message1)
         }
 
     }
 
-    private fun apicall(email: String, message: String) {
+    private fun apicall(email: String, subject1 : String , message: String) {
 
 
         val mIntent = Intent(Intent.ACTION_SEND)
@@ -78,7 +86,9 @@ class Contact_Us : BaseActivity() {
 
         mIntent.type = "Text/Plain"
 
-        mIntent.putExtra(Intent.EXTRA_EMAIL, email )
+        mIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email) )
+
+        mIntent.putExtra(Intent.EXTRA_SUBJECT , subject1)
 
         mIntent.putExtra(Intent.EXTRA_TEXT, message)
 

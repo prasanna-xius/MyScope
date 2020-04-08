@@ -127,6 +127,7 @@
     <string name="contact_us_title">Contact Us</string>
     <string name="email_id">Email to us at  <font color='#a4c639'>*</font></string>
     <string name="message">Message <font color='#a4c639'>*</font></string>
+    <string name="subject">Subject<font color='#a4c639'>*</font></string>
 
     <!--Medication History-->
     <string-array name="how_often_taken_arrays">
