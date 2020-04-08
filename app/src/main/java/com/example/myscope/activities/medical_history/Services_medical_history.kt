@@ -45,7 +45,7 @@ class Services_medical_history : BaseActivity() {
     lateinit  var minus2: ImageButton
     lateinit  var minus3: ImageButton
     lateinit  var minus4: ImageButton
-
+    var bool:Boolean = true
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -189,81 +189,58 @@ class Services_medical_history : BaseActivity() {
 //                    showLongToast("else part")
 
                     btn_services.setOnClickListener {
-                        CheckBoxDiseasevalues()
+                        if (validate().equals(true)) {
 
-                        CheckBoxPrescriptionsvalues()
+                            try {
 
-                        val builder = AlertDialog.Builder(this@Services_medical_history)
+                                ProviderInstaller.installIfNeeded(getApplicationContext());
+                                var sslContext: SSLContext
+                                sslContext = SSLContext.getInstance("TLSv1.2");
+                                sslContext.init(null, null, null);
+                                sslContext.createSSLEngine()
 
-                        builder.setTitle(R.string.dialogTitle)
-
-
-                        builder.setMessage(R.string.dialogMessage)
-
-                        builder.setPositiveButton("OK") { dialogInterface, which ->
-
-                            val intent = Intent(this@Services_medical_history, Dash_Board_Activity::class.java)
-                            startActivity(intent)
-                        }
-                        val alertDialog: AlertDialog = builder.create()
-                        // Set other dialog properties
-                        alertDialog.setCancelable(false)
-                        alertDialog.show()
-
-                        alertDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(R.color.colorBackground));
-
-
-
-                        try {
-
-                            ProviderInstaller.installIfNeeded(getApplicationContext());
-                            var sslContext: SSLContext
-                            sslContext = SSLContext.getInstance("TLSv1.2");
-                            sslContext.init(null, null, null);
-                            sslContext.createSSLEngine()
-
-                        } catch (e: Exception) {
-                            e.printStackTrace();
-                        }
-
-                        val newServices = Diseases()
-                        newServices.patient_counselling = checkbox_patient_counseling!!.isChecked().toString().toBoolean()
-                        newServices.drug_interaction = checkbox_Drug_Interaction!!.isChecked().toString().toBoolean()
-                        newServices.prescription_audit = checkbox_Prescription_Audit!!.isChecked().toString().toBoolean()
-                        newServices.adverse_drug_monitering = checkbox_Adverse_Drug_Event_Monitoring!!.isChecked().toString().toBoolean()
-                        newServices.post_dicharge_package = checkbox_Post_discharge_Care_Package!!.isChecked().toString().toBoolean()
-                        newServices.mobile_no = mobile_no
-
-                        val servicesService = ServiceBuilder.buildService(Disease_service::class.java)
-
-                        val requestCall = servicesService.addServicesList(newServices)
-
-                        requestCall.enqueue(object : Callback<Diseases> {
-
-                            override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
-
-                                if (resp.isSuccessful) {
-                                    var newbody = resp.body() // Use it or ignore it
-
-                                    Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
-                                    //finish()
-                                } else {
-                                    Toast.makeText(applicationContext, "Failed at posting data.", Toast.LENGTH_SHORT).show()
-                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace();
                             }
 
-                            override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                                //finish()
+                            val newServices = Diseases()
+                            newServices.patient_counselling = checkbox_patient_counseling!!.isChecked().toString().toBoolean()
+                            newServices.drug_interaction = checkbox_Drug_Interaction!!.isChecked().toString().toBoolean()
+                            newServices.prescription_audit = checkbox_Prescription_Audit!!.isChecked().toString().toBoolean()
+                            newServices.adverse_drug_monitering = checkbox_Adverse_Drug_Event_Monitoring!!.isChecked().toString().toBoolean()
+                            newServices.post_dicharge_package = checkbox_Post_discharge_Care_Package!!.isChecked().toString().toBoolean()
+                            newServices.mobile_no = mobile_no
+
+                            val servicesService = ServiceBuilder.buildService(Disease_service::class.java)
+
+                            val requestCall = servicesService.addServicesList(newServices)
+
+                            requestCall.enqueue(object : Callback<Diseases> {
+
+                                override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
+
+                                    if (resp.isSuccessful) {
+                                        var newbody = resp.body() // Use it or ignore it
+
+                                        Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
+                                        //finish()
+                                    } else {
+                                        Toast.makeText(applicationContext, "Failed at posting data.", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+
+                                override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                                    //finish()
 //                    Log.d("errormsgfailure ::", t.message)
 //                    Log.e("errorunderfailure:", t.message)
-                                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
-                            }
+                                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                                }
 
 
-                        })
+                            })
 
+                        }
                     }
-
                 }
             }
 
@@ -278,6 +255,7 @@ class Services_medical_history : BaseActivity() {
 
 
     }
+
 
 
 
@@ -357,9 +335,6 @@ class Services_medical_history : BaseActivity() {
             newServices.adverse_drug_monitering = checkbox_Adverse_Drug_Event_Monitoring!!.isChecked().toString().toBoolean()
             newServices.post_dicharge_package = checkbox_Post_discharge_Care_Package!!.isChecked().toString().toBoolean()
 
-
-
-
             newServices.mobile_no = mobile_no
 
 
@@ -390,37 +365,116 @@ class Services_medical_history : BaseActivity() {
         }
 
     }
+    private fun validate() :Boolean{
 
-    private fun CheckBoxPrescriptionsvalues() {
+
+
+
+
+        val checkboxvalue = ServiceBuilder.buildService(Disease_service::class.java)
+
+        val requestCall1 = checkboxvalue.getdisease(mobile_no!!)
+
+        requestCall1.enqueue(object : retrofit2.Callback<List<Diseases>> {
+
+
+            override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>>) {
+
+                val length = response.body()?.size
+
+                showLongToast("No of lists in DiseaseHistory:" + length.toString())
+
+
+
+                    if (length == 0) {
+
+                        bool =  false
+                        val builder = AlertDialog.Builder(this@Services_medical_history)
+
+                        builder.setTitle(R.string.dialogTitle)
+
+
+                        builder.setMessage("We found that Disease History data is empty. Please fill it before you proceed to our services. Do you want to fill now?")
+
+                        builder.setPositiveButton("OK") { dialogInterface, which ->
+
+                            val intent = Intent(this@Services_medical_history, Disease_recyclerView::class.java)
+                            startActivity(intent)
+                        }
+                        val alertDialog: AlertDialog = builder.create()
+                        // Set other dialog properties
+                        alertDialog.setCancelable(false)
+                        alertDialog.show()
+
+                        //                    alertDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(R.color.colorBackground));
+
+
+                    } else {
+
+
+                        showLongToast("successful")
+                        prescriptiondata()
+                        if(prescriptiondata().equals(true)){
+                            bool = true
+                        }
+
+        //                    val intent = Intent(this@Services_medical_history, Disease_recyclerView::class.java)
+        //                    startActivity(intent)
+                    }
+
+            }
+
+            override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
+
+                showLongToast("add Disease History")
+            }
+        })
+
+return false
+    }
+
+    private fun prescriptiondata() :Boolean {
 
         val checkBoxPrescriptionsvalue = ServiceBuilder.buildService(PrescriptionInterface::class.java)
 
-        val requestCall = checkBoxPrescriptionsvalue.getDoctorListbymobileno("8142529582" )
+        val requestCall = checkBoxPrescriptionsvalue.getDoctorListbymobileno(mobile_no.toString())
 
-        requestCall.enqueue(object : retrofit2.Callback<List<PrescriptionDataClass>>{
+        requestCall.enqueue(object : retrofit2.Callback<List<PrescriptionDataClass>> {
 
 
             override fun onResponse(call: Call<List<PrescriptionDataClass>>, response: Response<List<PrescriptionDataClass>>) {
 
                 val length = response.body()?.size
 
-              showLongToast("No of lists in Prescription:"+length.toString())
+                showLongToast("No of lists in Prescription:" + length.toString())
+
+                if (length == 0) {
 
 
+                    val builder = AlertDialog.Builder(this@Services_medical_history)
+
+                    builder.setTitle(R.string.dialogTitle)
 
 
+                    builder.setMessage("We found that Prescription data is empty. Please fill it before you proceed to our services. Do you want to fill now?")
 
-                if (length == 0){
+                    builder.setPositiveButton("OK") { dialogInterface, which ->
 
+                        val intent = Intent(this@Services_medical_history, Prescriptions_HomePage::class.java)
+                        startActivity(intent)
+                    }
+                    val alertDialog: AlertDialog = builder.create()
+                    // Set other dialog properties
+                    alertDialog.setCancelable(false)
+                    alertDialog.show()
 
-                    showLongToast("add Prescription")
+                    bool = false
+//                    val  intent = Intent(this@Services_medical_history, Prescriptions_HomePage::class.java)
+//                    startActivity(intent)
 
-                    val  intent = Intent(this@Services_medical_history, Prescriptions_HomePage::class.java)
-                    startActivity(intent)
-
-                }
-                else{
+                } else {
                     showLongToast("successful")
+                    bool = true
                 }
             }
 
@@ -430,45 +484,7 @@ class Services_medical_history : BaseActivity() {
             }
         })
 
-    }
-
-    private fun CheckBoxDiseasevalues() {
-
-        val checkboxvalue = ServiceBuilder.buildService(Disease_service::class.java)
-
-        val requestCall = checkboxvalue.getdisease(mobile_no!! )
-
-        requestCall.enqueue(object : retrofit2.Callback<List<Diseases>>{
-
-
-            override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>>) {
-
-                val length = response.body()?.size
-
-                showLongToast("No of lists in DiseaseHistory:"+length.toString())
-
-
-
-                if (length!! > 0){
-
-                    showLongToast("successful")
-
-                }
-                else{
-                    showLongToast("add Disease History")
-
-                    val  intent = Intent(this@Services_medical_history,Disease_recyclerView::class.java)
-                    startActivity(intent)
-                }
-            }
-
-            override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
-
-                showLongToast("add Disease History")
-            }
-        })
-
-
+    return false
     }
 }
 

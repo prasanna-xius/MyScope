@@ -126,7 +126,7 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
                 navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
             }
             R.id.card_ContactUs -> {
-                navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Contact_Us::class.java))
             }
         }
     }
