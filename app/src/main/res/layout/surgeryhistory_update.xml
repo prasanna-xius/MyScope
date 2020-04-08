@@ -14,19 +14,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-<<<<<<< HEAD
-        <include layout="@layout/app_bar_main" />
-
-        <include layout="@layout/side_activity" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/surgery_history"
-            android:textColor="@color/bg_screen2"
-            android:textSize="30sp" />
-=======
     <include layout="@layout/side_activity"/>
         <include layout="@layout/app_bar_main"/>
 
@@ -37,7 +24,6 @@
         android:textSize="30sp"
         android:gravity="center"
         android:textColor="@color/bg_screen2"/>
->>>>>>> 6ee932d118e5f06f3c140f627a90026cfa8581e1
 
         <LinearLayout
             android:layout_width="match_parent"
