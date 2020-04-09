@@ -46,6 +46,7 @@ class Prescriptions_HomePage : BaseActivity() {
             var os_text: TextView? = null
             var os_image: ImageView? = null
         }
+
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View { // TODO Auto-generated method stub
             val holder = Holder()
             val rowView: View

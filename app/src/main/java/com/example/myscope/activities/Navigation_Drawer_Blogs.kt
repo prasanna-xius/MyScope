@@ -120,7 +120,7 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
                 navigateToActivity(Intent(applicationContext,Services_medical_history::class.java))
             }
             R.id.card_EducationalBlog -> {
-                navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
+                navigateToActivity(Intent(applicationContext,Educational_Blog_Activity ::class.java))
             }
             R.id.card_Appoint -> {
                 navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
