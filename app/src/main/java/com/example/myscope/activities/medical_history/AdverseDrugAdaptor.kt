@@ -32,7 +32,8 @@ class AdverseDrugAdaptor (private val adverseDrugList: List<Diseases>) : Recycle
         holder.adverseDrugConditiondestination = adverseDrugList[position]
 
         holder.adverseDrug.text = adverseDrugList[position].drugname
-
+        holder.adversedate.text = adverseDrugList[position].adverse_save_on
+        holder.adversesno.text = adverseDrugList[position].adverse_id.toString()
 
 
         // Toast.makeText(this ,"place"+ position , Toast.LENGTH_LONG).show()
@@ -61,7 +62,9 @@ class AdverseDrugAdaptor (private val adverseDrugList: List<Diseases>) : Recycle
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val adverseDrug: TextView = itemView.findViewById(R.id.adversedrugTitle)  //item_list tv_id
+        val adverseDrug: TextView = itemView.findViewById(R.id.adversedrugTitle)
+        val adversesno: TextView = itemView.findViewById(R.id.adverse_sno)
+        val adversedate: TextView = itemView.findViewById(R.id.adverse_date)//item_list tv_id
         var adverseDrugConditiondestination: Diseases? = null
 
 

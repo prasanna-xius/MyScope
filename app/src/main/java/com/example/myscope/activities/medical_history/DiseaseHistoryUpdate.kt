@@ -100,7 +100,7 @@ class DiseaseHistoryUpdate : BaseActivity() {
             //initDeleteButton(id)
         }
 
-        }
+
 
     }
 
