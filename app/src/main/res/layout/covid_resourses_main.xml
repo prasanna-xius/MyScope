@@ -51,24 +51,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!--    <include layout="@layout/app_bar_main" />-->
     <include layout="@layout/background_image" />
 
-
-
-            <GridView
-                android:id="@+id/educational_grid_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:horizontalSpacing="10dp"
-                android:numColumns="2"
-                android:scrollbars="none"
-                android:verticalSpacing="10dp">
-
-            </GridView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
 
 
 </LinearLayout>
