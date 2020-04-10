@@ -53,62 +53,8 @@
 
     <!--    <include layout="@layout/app_bar_main" />-->
     <include layout="@layout/background_image" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_images"
+    <WebView
+        android:id="@+id/webView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_pdf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:orientation="horizontal" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/dimen_18sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorBackground"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:layout_marginLeft="@dimen/dimen_10"
-        android:text="Covid-19 Tracker"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/dimen_18sp"
-        android:textStyle="bold"
-        android:textColor="@color/lightBlue"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:id="@+id/covid19_tracker"
-        android:layout_marginLeft="@dimen/dimen_10"
-        android:text="https://www.covid19india.org/"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/dimen_18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:textColor="@color/colorBackground"
-        android:layout_marginLeft="@dimen/dimen_10"
-        android:text="Coronavirus COVID-19 Global Cases "
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/dimen_18sp"
-        android:id="@+id/map_covid19"
-        android:textStyle="bold"
-        android:textColor="@color/lightBlue"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:layout_marginLeft="@dimen/dimen_10"
-        android:text="https://coronavirus.jhu.edu/map.html"
-        />
+        android:layout_height="match_parent" />
 </LinearLayout>
