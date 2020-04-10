@@ -16,9 +16,20 @@
             android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@color/colorWhite"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/adverse_sno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg_screen2"
+                android:padding="4dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:hint="SNO"
+                android:layout_weight="0.25"
+                android:layout_gravity="left"/>
 
             <TextView
                 android:id="@+id/adversedrugTitle"
@@ -27,7 +38,19 @@
                 android:textColor="@color/bg_screen2"
                 android:padding="4dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:hint="tablet name"/>
+                android:hint="tablet name"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/adverse_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bg_screen2"
+                android:padding="4dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:hint="SavedDate"
+                android:layout_weight="0.75"
+                android:layout_gravity="right"/>
 
             <!--            <TextView-->
             <!--                android:id="@+id/date"-->

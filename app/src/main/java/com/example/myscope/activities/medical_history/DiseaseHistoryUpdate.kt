@@ -100,6 +100,7 @@ class DiseaseHistoryUpdate : BaseActivity() {
             //initDeleteButton(id)
         }
 
+
     }
 
     private fun loadDetails(id: String, position: Int) {

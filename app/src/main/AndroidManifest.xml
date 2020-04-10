@@ -20,7 +20,6 @@
         <activity android:name=".activities.Contact_Us"></activity>
         <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
-        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
 
         <activity android:name=".activities.ComingSoon_Activity" />
         <activity
@@ -53,6 +52,9 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activities.Dash_Board_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.Navigation_Drawer_Blogs"
