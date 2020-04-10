@@ -28,7 +28,7 @@ class Prscription_DrugList_Adapter(private val prescriptionDrugList: List<Prescr
 
         holder.drug_id.text = prescriptionDrugList[position].drug_id.toString()
         holder.brandname.text = prescriptionDrugList[position].brand_name
-        holder.startdate.text = prescriptionDrugList[position].start_date
+        holder.startdate.text = prescriptionDrugList[position].drug_saved_on
 
         // Toast.makeText(this ,"place"+ position , Toast.LENGTH_LONG).show()
 
@@ -53,9 +53,9 @@ class Prscription_DrugList_Adapter(private val prescriptionDrugList: List<Prescr
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val brandname: TextView = itemView.findViewById(R.id.drug_nametxt)  //item_list tv_id
-        val startdate: TextView = itemView.findViewById(R.id.start_date_txt)  //item_list tv_id
-        val drug_id: TextView = itemView.findViewById(R.id.drug_id_text)  //item_list tv_id
+        val brandname: TextView = itemView.findViewById(R.id.drugTitle)  //item_list tv_id
+        val startdate: TextView = itemView.findViewById(R.id.drug_date)  //item_list tv_id
+        val drug_id: TextView = itemView.findViewById(R.id.drug_sno)  //item_list tv_id
 
 
         var prescriptiondestination: PrescriptionDataClass? = null

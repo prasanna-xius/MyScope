@@ -75,7 +75,6 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
         activitiesToolbar()
 
-
         doctor_name_Txt = findViewById<View>(R.id.et_doctor_name) as EditText
         hospital_name_Txt = findViewById<View>(R.id.et_hosp_name) as EditText
         medical_condition_Txt = findViewById<View>(R.id.et_medical_condition) as EditText
@@ -276,7 +275,9 @@ class Prescription_manualDrugDialog : BaseActivity() {
                 newPrescriptionDrug.time = d.time_of_taken!!.selectedItemsAsString
 
 
-                newPrescriptionDrug.prescription_id = prescription_id
+//                newPrescriptionDrug.prescription_id = prescription_id
+                newPrescriptionDrug.drug_saved_on = datesetvalue()
+
 
                 val prescriptionDrugservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
 

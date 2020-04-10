@@ -30,7 +30,8 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
         holder.prescriptiondestination = prescriptionList[position]
 
         holder.doctor_name.text = prescriptionList[position].doctor_name
-        holder.hospital_name.text = prescriptionList[position].hospital_name
+        holder.doctor_sno.text = prescriptionList[position].prescription_id.toString()
+        holder.doctor_date.text = prescriptionList[position].manual_saved_on
 
 
         // Toast.makeText(this ,"place"+ position , Toast.LENGTH_LONG).show()
@@ -76,14 +77,15 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val doctor_name: TextView = itemView.findViewById(R.id.doctor_nametxt)  //item_list tv_id
-        val hospital_name: TextView = itemView.findViewById(R.id.hospital_nametxt)  //item_list tv_id
+        val doctor_sno: TextView = itemView.findViewById(R.id.doctor_sno)
+        val doctor_name: TextView = itemView.findViewById(R.id.doctorTitle)  //item_list tv_id
+        val doctor_date: TextView = itemView.findViewById(R.id.doctor_date)  //item_list tv_id
 
         var prescriptiondestination: PrescriptionDataClass? = null
 
 
         override fun toString(): String {
-            return """${super.toString()} '${doctor_name.text}''${hospital_name.text}'"""
+            return """${super.toString()} '${doctor_name.text}''${doctor_sno.text}'"""
         }
     }
 

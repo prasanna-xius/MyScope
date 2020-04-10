@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.isprescribed_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 import javax.net.ssl.SSLContext
 
 
@@ -50,7 +51,11 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
         setContentView(R.layout.activity_prescriptionmanual_recyclerview)
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-
+//        val c = Calendar.getInstance()
+//        val day = c.get(Calendar.DAY_OF_MONTH)
+//        val month = c.get(Calendar.MONTH)
+//        val year = c.get(Calendar.YEAR)
+//        date1 = day.toString() + "/" + (month + 1) + "/" + year
         activitiesToolbar()
 
         val fab = findViewById<View>(R.id.fab_addprescribed) as FloatingActionButton
@@ -165,6 +170,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             newPrescription.medical_condition = d.et_medical_condition1!!.text.toString().trim()
             newPrescription.prescription_note = d.et_precsription_note1!!.text.toString().trim()
             newPrescription.model_name = model_name
+            newPrescription.manual_saved_on = datesetvalue()
 
             newPrescription.mobile_no = mobile_no
 
