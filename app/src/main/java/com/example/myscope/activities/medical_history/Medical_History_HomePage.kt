@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.medical_history_main.*
 
 class Medical_History_HomePage : BaseActivity() {
 
+
     var images = intArrayOf(R.drawable.medical_history_navigation, R.drawable.family_history_logo, R.drawable.social_history_logo, R.drawable.diet_logo, R.drawable.allergies_logo, R.drawable.immunization_history_logo, R.drawable.medication_history_logo, R.drawable.surgery_history_logo, R.drawable.adverse_drug_reaction_logo)
     var names = arrayOf("Disease Histroy", "Family History", "Social History", "Diet", "Allergies", "Immuzination History", "Medication History", "Surgery History", "Adverse Drug Reaction")
 
@@ -27,21 +28,26 @@ class Medical_History_HomePage : BaseActivity() {
         header!!.text = "Medical History"
 
     }
+
     private inner class CustomAdapter(var context: Context, var result: Array<String>, var imageId: IntArray) : BaseAdapter() {
         private var inflater: LayoutInflater? = null
         override fun getCount(): Int { // TODO Auto-generated method stub
             return result.size
         }
+
         override fun getItem(position: Int): Any { // TODO Auto-generated method stub
             return position
         }
+
         override fun getItemId(position: Int): Long { // TODO Auto-generated method stub
             return position.toLong()
         }
+
         inner class Holder {
             var os_text: TextView? = null
             var os_image: ImageView? = null
         }
+
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View { // TODO Auto-generated method stub
             val holder = Holder()
             val rowView: View
@@ -61,7 +67,7 @@ class Medical_History_HomePage : BaseActivity() {
                 } else if (position == 3) {
                     navigateToActivity(Intent(applicationContext, Diet::class.java))
                 } else if (position == 4) {
-                    navigateToActivity(Intent(applicationContext,AllergyItemListActivity::class.java))
+                    navigateToActivity(Intent(applicationContext, AllergyItemListActivity::class.java))
                 } else if (position == 5) {
                     navigateToActivity(Intent(applicationContext, ImmunizationItemListActivity::class.java))
                 } else if (position == 6) {
@@ -74,6 +80,7 @@ class Medical_History_HomePage : BaseActivity() {
             }
             return rowView
         }
+
         init { // TODO Auto-generated constructor stub
             inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         }

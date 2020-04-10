@@ -130,7 +130,7 @@
         <activity android:name=".activities.medical_history.Services_medical_history" />
 
         <activity android:name=".activities.Educational_Blog_Activity" />
-        <activity android:name=".activities.Image_Activity" />
+        <activity android:name=".activities.Covid_19_Resourses_Activity" />
 
 
     </application>

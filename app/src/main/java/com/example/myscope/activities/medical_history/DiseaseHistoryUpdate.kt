@@ -101,7 +101,6 @@ class DiseaseHistoryUpdate : BaseActivity() {
         }
 
 
-
     }
 
     private fun loadDetails(id: String, position: Int) {
