@@ -3,21 +3,30 @@ package com.example.myscope.activities.medical_history
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
-import android.widget.SpinnerAdapter
 import android.content.DialogInterface
-import android.widget.ArrayAdapter
 import android.util.AttributeSet
+import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.SpinnerAdapter
 import com.example.myscope.R
 
-import java.util.*
+import java.util.Arrays
+import java.util.LinkedList
+import android.view.LayoutInflater
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+import android.widget.TextView
 
 
 @SuppressLint("AppCompatCustomView")
-class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListener {
+class MultiSelectionSpinnerMedication : Spinner, DialogInterface.OnMultiChoiceClickListener {
     internal var _items: Array<String>? = null
     internal var mSelection: BooleanArray? = null
+    var allTitle: TextView ?= null
+
+
     internal var simple_adapter: ArrayAdapter<String>
+
     val selectedStrings: List<String>
         get() {
             val selection = LinkedList<String>()
@@ -28,6 +37,7 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
             }
             return selection
         }
+
     val selectedIndicies: List<Int>
         get() {
             val selection = LinkedList<Int>()
@@ -38,10 +48,12 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
             }
             return selection
         }
+
     val selectedItemsAsString: String
         get() {
             val sb = StringBuilder()
             var foundOne = false
+
             for (i in _items!!.indices) {
                 if (mSelection!![i]) {
                     if (foundOne) {
@@ -53,39 +65,53 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
             }
             return sb.toString()
         }
+
     @SuppressLint("ResourceType")
     constructor(context: Context) : super(context) {
+
         simple_adapter = ArrayAdapter(context,
-                R.layout.spinner_dropdown_item_how_often,R.style.AppTheme)
+                R.layout.spinner_dropdown_item,R.style.MyDialogTheme)
         super.setAdapter(simple_adapter)
     }
+
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         simple_adapter = ArrayAdapter(context,
-                R.layout.spinner_dropdown_item_how_often)
+               R.layout.spinner_dropdown_item)
         super.setAdapter(simple_adapter)
     }
+
     override fun onClick(dialog: DialogInterface, which: Int, isChecked: Boolean) {
         if (mSelection != null && which < mSelection!!.size && which>=1) {
             mSelection!![which] = isChecked
+
             simple_adapter.clear()
             simple_adapter.add(buildSelectedItemString())
         } else {
             if(which.equals(0)) {
-                mSelection!![0] = false
+            mSelection!![0] = false
             }
+
         }
     }
+
     override fun performClick(): Boolean {
-        val builder = AlertDialog.Builder(context,R.style.AppTheme)
+        val builder = AlertDialog.Builder(context,R.style.MyDialogTheme)
+        val titleView = LayoutInflater.from(context).inflate(R.layout.spinner_dropdown_item, null)
+        allTitle = titleView.findViewById(R.id.text1) as TextView
+
         builder.setMultiChoiceItems(_items, mSelection, this)
+
         builder.setPositiveButton("Ok") { arg0, arg1 -> }
+
+
         builder.show()
         return true
     }
+
     override fun setAdapter(adapter: SpinnerAdapter) {
-//        throw RuntimeException(
-//                "setAdapter is not supported by MultiSelectionSpinner.")
+
     }
+
     fun setItems(items: Array<String>) {
         _items = items
         mSelection = BooleanArray(_items!!.size)
@@ -93,6 +119,7 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
         simple_adapter.add(_items!![0])
         Arrays.fill(mSelection!!, false)
     }
+
     fun setItems(items: List<String>) {
         _items = items.toTypedArray()
         mSelection = BooleanArray(_items!!.size)
@@ -100,6 +127,7 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
         simple_adapter.add(_items!![0])
         Arrays.fill(mSelection!!, false)
     }
+
     fun setSelection(selection: Array<String>) {
         for (cell in selection) {
             for (j in _items!!.indices) {
@@ -109,6 +137,7 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
             }
         }
     }
+
     fun setSelection(selection: List<String>) {
         for (i in mSelection!!.indices) {
             mSelection!![i] = false
@@ -123,6 +152,7 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
         simple_adapter.clear()
         simple_adapter.add(buildSelectedItemString())
     }
+
     override fun setSelection(index: Int) {
         for (i in mSelection!!.indices) {
             mSelection!![i] = false
@@ -136,6 +166,7 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
         simple_adapter.clear()
         simple_adapter.add(buildSelectedItemString())
     }
+
     fun setSelection(selectedIndicies: IntArray) {
         for (i in mSelection!!.indices) {
             mSelection!![i] = false
@@ -151,18 +182,22 @@ class MultiSelectionSpinner : Spinner, DialogInterface.OnMultiChoiceClickListene
         simple_adapter.clear()
         simple_adapter.add(buildSelectedItemString())
     }
+
     private fun buildSelectedItemString(): String {
         val sb = StringBuilder()
         var foundOne = false
+
         for (i in _items!!.indices) {
             if (mSelection!![i]) {
                 if (foundOne) {
                     sb.append(", ")
                 }
                 foundOne = true
+
                 sb.append(_items!![i])
             }
         }
         return sb.toString()
     }
+
 }
