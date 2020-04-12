@@ -38,6 +38,7 @@ class Disease_History : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.disease_history)
         activitiesToolbar()
+
         header!!.text = "Disease History"
         spinner_disease = findViewById<Spinner>(R.id.spinner_disease)
 
@@ -79,70 +80,9 @@ class Disease_History : BaseActivity() {
         btn_medicalHistory.setOnClickListener {
             assignValuestoVariable()
             validate(spinner_disease!!)
-//            validateDate(et_startDate,et_stopDate,false)
-
-            /*name = etname!!.getText().toString()
-            reaction = etreaction!!.getText().toString()
-            treatment = ettreatments!!.getText().toString()
-            notes = etnotes!!.getText().toString()
-            date = textview_date?.getText().toString()*/
-
-            //var newAllergy: Any? =null
-
-            try {
-                // Google Play will install latest OpenSSL
-                ProviderInstaller.installIfNeeded(getApplicationContext());
-                var sslContext: SSLContext
-                sslContext = SSLContext.getInstance("TLSv1.2");
-                sslContext.init(null, null, null);
-                sslContext.createSSLEngine();
-            } catch (e: Exception) {
-                e.printStackTrace();
-            }
-
-
-
-            val newDisease = Diseases()
-            newDisease.known_condition = et_condition!!.text.toString().trim()
-            newDisease.disease_status = spinner_disease?.getSelectedItem().toString()
-            newDisease.disease_duration = et_noOfYrs!!.text.toString().trim()
-            newDisease.when_started = et_startDate!!.text.toString().trim()
-            newDisease.when_ended = et_stopDate!!.text.toString().trim()
-            newDisease.disease_note = notes_diseaseHistory!!.text.toString().trim()
-            newDisease.mobile_no = mobile_no!!
-
-
-
-            val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
-
-            //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
-
-            val requestCall = diseaseService.addDisease(newDisease)
-
-            requestCall.enqueue(object : Callback<Diseases> {
-
-                override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
-
-                    if (resp.isSuccessful) {
-                        var newbody = resp.body() // Use it or ignore it
-                        Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
-                        finish()
-                    } else {
-                        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                    //finish()
-//                    Log.d("errormsgfailure ::", t.message)
-//                    Log.e("errorunderfailure:", t.message)
-                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
-                }
-            })
-            // Toast.makeText(getApplicationContext(), "data:" + name + " " + reaction + " " + treatment + " " + " " + notes + " " +
-            // spritem + " " + date, Toast.LENGTH_LONG).show()
+//
 
         }
-
 
     }
 
@@ -160,11 +100,71 @@ class Disease_History : BaseActivity() {
                 (diseases != "None")
                 && (disease_duration != "")) {
             showLongToast("save the details")
-        } else {
+            sucess()
+
+        }
+
+        else {
 
             showLongSnackBar("Please fill the required fields")
 
         }
+    }
+
+    private fun sucess() {
+
+
+
+        try {
+            // Google Play will install latest OpenSSL
+            ProviderInstaller.installIfNeeded(getApplicationContext());
+            var sslContext: SSLContext
+            sslContext = SSLContext.getInstance("TLSv1.2");
+            sslContext.init(null, null, null);
+            sslContext.createSSLEngine();
+        } catch (e: Exception) {
+            e.printStackTrace();
+        }
+
+
+
+        val newDisease = Diseases()
+        newDisease.known_condition = et_condition!!.text.toString().trim()
+        newDisease.disease_status = spinner_disease?.getSelectedItem().toString()
+        newDisease.disease_duration = et_noOfYrs!!.text.toString().trim()
+        newDisease.when_started = et_startDate!!.text.toString().trim()
+        newDisease.when_ended = et_stopDate!!.text.toString().trim()
+        newDisease.disease_note = notes_diseaseHistory!!.text.toString().trim()
+        newDisease.mobile_no = mobile_no!!
+
+
+
+        val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
+
+        //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
+
+        val requestCall = diseaseService.addDisease(newDisease)
+
+        requestCall.enqueue(object : Callback<Diseases> {
+
+            override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
+
+                if (resp.isSuccessful) {
+                    var newbody = resp.body() // Use it or ignore it
+                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                //finish()
+//                    Log.d("errormsgfailure ::", t.message)
+//                    Log.e("errorunderfailure:", t.message)
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+            }
+        })
+
     }
 
 

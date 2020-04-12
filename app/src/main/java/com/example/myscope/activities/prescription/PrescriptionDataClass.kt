@@ -8,6 +8,8 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var mobile_no: String? = null,
                                  var prescription_id: Int? = 0,
                                  var model_name:String?=null,
+                                 var manual_saved_on:String ?=null,
+                                 var manual_updated_on:String ?=null,
 
 
                                  var formulation: String? = null,
@@ -19,7 +21,10 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var how_often_taken: String? = null,
                                  var start_date: String? = null,
                                  var stop_date: String? = null,
+                                var drug_saved_on:String?=null,
+                                 var drug_updated_on:String?=null,
                                  var drug_id: Int =0
+
 
 
 )

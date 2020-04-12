@@ -48,6 +48,7 @@
     <string name="edit">EDIT</string>
     <string name="update">UPDATE</string>
     <string name="delete">DELETE</string>
+    <string name="send">SEND</string>
 
     <!--end-->
     <string name="disease">e.g Diabetes</string>
@@ -100,7 +101,7 @@
     <string name="eg_Surgery">E.g. Endoscopy</string>
     <string name="surg_name">Name<font color='#a4c639'>*</font></string>
     <string name="when_performed">When performed<font color='#a4c639'>*</font></string>
-    <string name="body_location">Body Location<font color='#a4c639'>*</font></string>
+    <string name="body_location">Organ/System<font color='#a4c639'>*</font></string>
     <string name="eg_body_location">E.g. Stomach</string>
     <string name="provider">Provider</string>
     <string name="eg_provider">E.g. Doctor Name</string>
@@ -121,6 +122,12 @@
     <string name="prescription_audit">Prescription Audit</string>
     <string name="adverse_drug_event_monitoring">Adverse Drug Event Monitoring</string>
     <string name="post_discharge_care_package">Post-discharge Care Package</string>
+
+    <!--Contact Us-->
+    <string name="contact_us_title">Contact Us</string>
+    <string name="email_id">Email to us at  <font color='#a4c639'>*</font></string>
+    <string name="message">Message <font color='#a4c639'>*</font></string>
+    <string name="subject">Subject<font color='#a4c639'>*</font></string>
 
     <!--Medication History-->
     <string-array name="how_often_taken_arrays">

@@ -21,11 +21,13 @@ import com.example.myscope.services.PrescriptionInterface
 import com.example.myscope.activities.services.ServiceBuilder1
 import com.google.android.gms.security.ProviderInstaller
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.isprescribed_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 import javax.net.ssl.SSLContext
 
 
@@ -49,15 +51,20 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
         setContentView(R.layout.activity_prescriptionmanual_recyclerview)
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
+//        val c = Calendar.getInstance()
+//        val day = c.get(Calendar.DAY_OF_MONTH)
+//        val month = c.get(Calendar.MONTH)
+//        val year = c.get(Calendar.YEAR)
+//        date1 = day.toString() + "/" + (month + 1) + "/" + year
         activitiesToolbar()
-
-        header!!.text = "Prescription"
 
         val fab = findViewById<View>(R.id.fab_addprescribed) as FloatingActionButton
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
         model_name = sharedpreferences!!.getString("model_name",null)!!
+        header!!.text = "Prescription-" + model_name
+
         showLongToast(mobile_no.toString())
 
 //        mobile_no = "9505505093"
@@ -163,6 +170,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             newPrescription.medical_condition = d.et_medical_condition1!!.text.toString().trim()
             newPrescription.prescription_note = d.et_precsription_note1!!.text.toString().trim()
             newPrescription.model_name = model_name
+            newPrescription.manual_saved_on = datesetvalue()
 
             newPrescription.mobile_no = mobile_no
 

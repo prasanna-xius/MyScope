@@ -11,6 +11,7 @@ import com.example.myscope.activities.MultiSelectionSpinner
 import com.example.myscope.activities.MultiSpinnerTime
 import com.example.myscope.services.PrescriptionInterface
 import com.example.myscope.activities.services.ServiceBuilder1
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.prescribed_main_view.*
 import kotlinx.android.synthetic.main.prescription_multi_item.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
@@ -43,6 +44,8 @@ class PrescriptionDrugListUpdate : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.prescribed_main_view)
 
+        activitiesToolbar()
+        header!!.text = "Prescription"
 
         formulationid = findViewById(R.id.formulation_id_update)
         howoftentext = findViewById(R.id.prescription_multi)
@@ -171,6 +174,7 @@ class PrescriptionDrugListUpdate : BaseActivity() {
                 newPrescriptionDrug.start_date = startdate!!.text.toString().trim()
                 newPrescriptionDrug.stop_date = stopdate!!.text.toString().trim()
                 newPrescriptionDrug.drug_id = drug_id
+            newPrescriptionDrug.drug_updated_on = datesetvalue()
 
                 val prescriptionDrugservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
 

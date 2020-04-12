@@ -16,19 +16,24 @@ import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 
 import com.example.myscope.R
+
 import com.example.myscope.models.AllergyDataClass
+
+import com.example.myscope.activities.BaseActivity
+
 import com.example.myscope.services.ServiceBuilder
-import com.example.myscope.models.MedicalHistoryModelActivity
+
 import com.example.myscope.services.MedicalHistoryService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.allergies.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
+class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
 
     var btnAllergies: Button? = null
 
@@ -59,6 +64,9 @@ class Allergies : AppCompatActivity(),  AdapterView.OnItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.allergies)
+
+        activitiesToolbar()
+        header!!.text = "Allergies"
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)

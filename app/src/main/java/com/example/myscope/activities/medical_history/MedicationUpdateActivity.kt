@@ -20,8 +20,11 @@ import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.models.MedicationDataClass
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
-import kotlinx.android.synthetic.main.activity_disease_history_update.*
+
 import kotlinx.android.synthetic.main.medicationhistory.*
+
+import kotlinx.android.synthetic.main.app_bar_main.*
+
 
 import kotlinx.android.synthetic.main.medicationhistory_update.*
 import kotlinx.android.synthetic.main.prescribed_main_view.*
@@ -55,6 +58,7 @@ class MedicationUpdateActivity : BaseActivity() {
     var cal_StartMh = java.util.Calendar.getInstance()
     var cal_EndMh = java.util.Calendar.getInstance()
 
+
     var formulation: Spinner? = null
     var isprescribed: Spinner? = null
     var doseunit: Spinner? = null
@@ -81,8 +85,11 @@ class MedicationUpdateActivity : BaseActivity() {
         //setSupportActionBar(detail_toolbar as Toolbar?)
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        activitiesToolbar()
+        header!!.text = "Medication History"
 
         spinner_how_often_taken = findViewById<MultiSelectionSpinnerMedication>(R.id.spinner_how_often_taken_update)
+
 
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
@@ -261,6 +268,7 @@ class MedicationUpdateActivity : BaseActivity() {
                         textviewEnddate_MH_update.setText(medicationdestination.enddate)
                         textviewStartdate_medicalHistory_update.setText(medicationdestination.startdate)
 
+
                         //text1.setText(destination.spnrdata)
 
 
@@ -341,7 +349,9 @@ class MedicationUpdateActivity : BaseActivity() {
             newmedication.startdate = textviewStartdate_medicalHistory_update!!.text.toString().trim()
             newmedication.enddate = textviewEnddate_MH_update!!.text.toString().trim()
             newmedication.mobile_no = mobile_no.toString()
+
             newmedication.medication_id = medicationid
+
 
 
             val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)

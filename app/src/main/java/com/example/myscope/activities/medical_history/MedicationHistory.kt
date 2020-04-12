@@ -16,13 +16,15 @@ import android.widget.*
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import com.example.myscope.R
-import com.example.myscope.activities.MultiSelectionSpinner
+
+
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.models.MedicationDataClass
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.medicationhistory.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.view.*
@@ -32,7 +34,9 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class MedicationHistory : AppCompatActivity() {
+
 
 
     var namemed: String? = null;
@@ -80,6 +84,9 @@ class MedicationHistory : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.medicationhistory)
+
+        activitiesToolbar()
+        header!!.text = "Medication History"
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
@@ -148,6 +155,7 @@ class MedicationHistory : AppCompatActivity() {
                 newmedication.medicationname = et_name.text.toString().trim()
                 newmedication.medicationnotes = et_notes_med.text.toString().trim()
                 //newmedication. = et_body_location_update!!.text.toString().trim()
+
                 newmedication.reason = et_reason.text.toString().trim()
                 newmedication.strength = et_dose_strength.text.toString().trim()
                 newmedication.startdate = textviewStartdate_medicalHistory.text.toString().trim()
@@ -160,6 +168,8 @@ class MedicationHistory : AppCompatActivity() {
 
                 Toast.makeText(applicationContext, newmedication.how_often_taken + " " + newmedication.formulation
                         + " " + newmedication.isprescribed + " " + newmedication.doseunit, Toast.LENGTH_LONG).show()
+
+               
 
                 //newMedicalHistoryModelActivity.spnrdata =spnritem!!
 

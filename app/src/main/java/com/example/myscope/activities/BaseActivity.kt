@@ -98,6 +98,14 @@ open class BaseActivity : AppCompatActivity() {
         getBackButton().setOnClickListener {
             finish()
         }
+    }
+    fun datesetvalue():String {
+    val c = Calendar.getInstance()
+    val day = c.get(Calendar.DAY_OF_MONTH)
+    val month = c.get(Calendar.MONTH)
+    val year = c.get(Calendar.YEAR)
+    var date1 = day.toString() + "/" + (month + 1) + "/" + year
+        return date1
 
 
     }

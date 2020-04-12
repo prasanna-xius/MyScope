@@ -26,8 +26,9 @@ class Prscription_DrugList_Adapter(private val prescriptionDrugList: List<Prescr
 
         holder.prescriptiondestination = prescriptionDrugList[position]
 
-        holder.drug_name.text = prescriptionDrugList[position].drug_name
-        holder.timings_text.text = prescriptionDrugList[position].how_often_taken
+        holder.drug_id.text = prescriptionDrugList[position].drug_id.toString()
+        holder.brandname.text = prescriptionDrugList[position].brand_name
+        holder.startdate.text = prescriptionDrugList[position].drug_saved_on
 
         // Toast.makeText(this ,"place"+ position , Toast.LENGTH_LONG).show()
 
@@ -52,14 +53,16 @@ class Prscription_DrugList_Adapter(private val prescriptionDrugList: List<Prescr
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val drug_name: TextView = itemView.findViewById(R.id.drug_nametxt)  //item_list tv_id
-        val timings_text: TextView = itemView.findViewById(R.id.time_txt)  //item_list tv_id
+        val brandname: TextView = itemView.findViewById(R.id.drugTitle)  //item_list tv_id
+        val startdate: TextView = itemView.findViewById(R.id.drug_date)  //item_list tv_id
+        val drug_id: TextView = itemView.findViewById(R.id.drug_sno)  //item_list tv_id
+
 
         var prescriptiondestination: PrescriptionDataClass? = null
 
 
         override fun toString(): String {
-            return """${super.toString()} '${drug_name.text}''${timings_text.text}'"""
+            return """${super.toString()} '${brandname.text}''${startdate.text}''${drug_id.text}'"""
         }
     }
 }

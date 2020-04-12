@@ -161,20 +161,9 @@
             android:text="@string/save"
             android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/btn_adverse_drug_updated"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/background_button"
-            android:backgroundTint="#1F78D3"
-            android:layout_marginTop="@dimen/dimen_10"
-            android:layout_marginLeft="@dimen/dimen_10"
-            android:layout_marginRight="@dimen/dimen_10"
-            android:visibility="gone"
-            android:text="@string/update"
-            android:textSize="16sp" />
+
 
     </LinearLayout>
 
 </ScrollView>
+

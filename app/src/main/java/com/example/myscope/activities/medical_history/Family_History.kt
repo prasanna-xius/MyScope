@@ -50,48 +50,8 @@ class Family_History : BaseActivity() {
             assignValuestoVariable()
             validate(relationshipSpinner!!)
 
- try {
-               ProviderInstaller.installIfNeeded(getApplicationContext());
-               var sslContext: SSLContext
-               sslContext = SSLContext.getInstance("TLSv1.2");
-               sslContext.init(null, null, null);
-               sslContext.createSSLEngine();
-           }
-           catch (e: Exception) {
-               e.printStackTrace();
-           }
 
-           val newFamilyCondition = Diseases()
-           newFamilyCondition.family_condition = et_family_condition!!.text.toString().trim()
-           newFamilyCondition.relationship = spinner_family?.getSelectedItem().toString()
-           newFamilyCondition.family_note = relationship_notes!!.text.toString().trim()
-           newFamilyCondition.mobile_no = mobile_no!!
-
-           val familyService = ServiceBuilder.buildService(Disease_service::class.java)
-
-           val requestCall = familyService.addFamilyList(newFamilyCondition)
-
-           requestCall.enqueue(object : Callback<Diseases> {
-
-               override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
-
-                   if (resp.isSuccessful) {
-                       var newbody = resp.body() // Use it or ignore it
-
-                       Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
-                       finish()
-                   } else {
-                       Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
-                   }
-               }
-               override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                   //finish()
-//                    Log.d("errormsgfailure ::", t.message)
-//                    Log.e("errorunderfailure:", t.message)
-                   Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
-               }
-           })
-       }
+        }
     }
 
         private fun assignValuestoVariable() {
@@ -106,9 +66,59 @@ class Family_History : BaseActivity() {
 
                 showLongToast("save the details")
 
+                sucess()
 
         }
 
         }
+
+    private fun sucess() {
+
+
+        try {
+            ProviderInstaller.installIfNeeded(getApplicationContext());
+            var sslContext: SSLContext
+            sslContext = SSLContext.getInstance("TLSv1.2");
+            sslContext.init(null, null, null);
+            sslContext.createSSLEngine();
+        }
+
+        catch (e: Exception) {
+            e.printStackTrace();
+        }
+
+        val newFamilyCondition = Diseases()
+        newFamilyCondition.family_condition = et_family_condition!!.text.toString().trim()
+        newFamilyCondition.relationship = spinner_family?.getSelectedItem().toString()
+        newFamilyCondition.family_note = relationship_notes!!.text.toString().trim()
+        newFamilyCondition.mobile_no = mobile_no!!
+
+        val familyService = ServiceBuilder.buildService(Disease_service::class.java)
+
+        val requestCall = familyService.addFamilyList(newFamilyCondition)
+
+        requestCall.enqueue(object : Callback<Diseases> {
+
+            override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
+
+                if (resp.isSuccessful) {
+                    var newbody = resp.body() // Use it or ignore it
+
+                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                //finish()
+//                    Log.d("errormsgfailure ::", t.message)
+//                    Log.e("errorunderfailure:", t.message)
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
     }
+}
 
