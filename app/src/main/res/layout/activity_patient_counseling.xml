@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_bar_main" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="128sp"
+        android:background="#fff"
+        android:src="@drawable/wave_scaled" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/patient_counseling"
+        android:textColor="@color/bg_screen2"
+        android:textSize="30sp" />
+
+
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:padding="@dimen/dimen_4"
+            android:text="@string/text"
+            android:textColor="#997CF4" />
+
+        <Button
+            android:id="@+id/btn_patient_counseling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10sp"
+            android:background="@color/bg_screen2"
+            android:text="AGREE"
+            android:textColor="@color/colorWhite" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
 import com.example.myscope.activities.medical_history.MedicationUpdateActivity
 import com.example.myscope.models.MedicalHistoryModelActivity
+import com.example.myscope.models.MedicationDataClass
 
 
-class MedicationAdapter (private val medicalHistoryModelActivityList: List<MedicalHistoryModelActivity>) : RecyclerView.Adapter<MedicationAdapter.ViewHolder>() {
+class MedicationAdapter (private val medicationList: List<MedicationDataClass>) : RecyclerView.Adapter<MedicationAdapter.ViewHolder>() {
 
 
 
@@ -23,8 +24,8 @@ class MedicationAdapter (private val medicalHistoryModelActivityList: List<Medic
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.medicationdestination = medicalHistoryModelActivityList[position]
-        holder.txvDestination_medication.text = medicalHistoryModelActivityList[position].medicationname
+        holder.medicationdestination = medicationList[position]
+        holder.txvDestination_medication.text = medicationList[position].medicationname
 
         holder.itemView.setOnClickListener { v ->
             val context = v.context
@@ -39,13 +40,13 @@ class MedicationAdapter (private val medicalHistoryModelActivityList: List<Medic
     }
 
     override fun getItemCount(): Int {
-        return medicalHistoryModelActivityList.size
+        return medicationList.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val txvDestination_medication: TextView = itemView.findViewById(R.id.txv_destination_medication)  //item_list tv_id
-        var medicationdestination: MedicalHistoryModelActivity? = null
+        var medicationdestination: MedicationDataClass? = null
 
         override fun toString(): String {
             return """${super.toString()} '${txvDestination_medication.text}'"""

@@ -127,7 +127,12 @@
         <!--        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />-->
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
         <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
-        <activity android:name=".activities.medical_history.Services_medical_history" />
+        <activity android:name=".activities.medical_history.health_services.Services_medical_history" />
+        <activity android:name=".activities.medical_history.health_services.Adverse_Drug_Event_Monitoring" />
+        <activity android:name=".activities.medical_history.health_services.Patient_counseling" />
+        <activity android:name=".activities.medical_history.health_services.Post_discharge_Care_Package" />
+        <activity android:name=".activities.medical_history.health_services.Prescription_Audit" />
+        <activity android:name=".activities.medical_history.health_services.Drug_interaction" />
 
         <!--        <activity android:name=".activities.Educational_Blog_Activity" />-->
         <activity android:name=".activities.Covid_19_Resourses_Activity" />

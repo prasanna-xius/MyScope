@@ -13,9 +13,13 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myscope.R
+
+import com.example.myscope.models.AllergyDataClass
+
 import com.example.myscope.activities.BaseActivity
+
 import com.example.myscope.services.ServiceBuilder
-import com.example.myscope.models.MedicalHistoryModelActivity
+
 import com.example.myscope.services.MedicalHistoryService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_disease_history_update.*
@@ -80,13 +84,22 @@ class AllergyUpdate_Activity : BaseActivity() {
 //            val id = intent.getStringExtra(ARG_ITEM_ID)
         position = intent.getIntExtra("position", 0)
 
+
+
+    }
+    override fun onResume() {
+            super.onResume()
+
+           // loadDestinations()
+
+
         loadDetails(mobile_no.toString(), position!!)
 
         initUpdateButton(mobile_no.toString())
 
         //initDeleteButton(id)
 //        }
-    }
+        }
 
 
     val dateSetListener = object : DatePickerDialog.OnDateSetListener {
@@ -114,10 +127,10 @@ class AllergyUpdate_Activity : BaseActivity() {
 
         Toast.makeText(applicationContext, "data id ::" + " " + id, Toast.LENGTH_LONG).show()
 
-        requestCall.enqueue(object : retrofit2.Callback<List<MedicalHistoryModelActivity>> {
+        requestCall.enqueue(object : retrofit2.Callback<List<AllergyDataClass>> {
 
 
-            override fun onResponse(call: Call<List<MedicalHistoryModelActivity>>, response: Response<List<MedicalHistoryModelActivity>>) {
+            override fun onResponse(call: Call<List<AllergyDataClass>>, response: Response<List<AllergyDataClass>>) {
 
 
                 if (response.isSuccessful) {
@@ -131,13 +144,16 @@ class AllergyUpdate_Activity : BaseActivity() {
                         val destination = alleryRes?.get(position)
 
                         allergyid = destination?.allergy_id!!
-                        destination!!.let {
+                        destination.let {
                             et_name_update?.setText(destination!!.name)
                             et_reaction_update?.setText(destination!!.reaction)
                             et_treatment_update?.setText(destination!!.treatment)
                             et_notes_allergies_update?.setText(destination!!.notes)
                             textviewdate_update?.setText(destination!!.date)
-                            allergySpinner!!.tv_allergy!!.setText(destination!!.spnrdata)
+
+                            spinnerAllergy_update.tv_allergy?.setText(destination!!.spnrdata)
+
+  
 
 
                             //collapsing_toolbar.title = destination.city
@@ -153,7 +169,7 @@ class AllergyUpdate_Activity : BaseActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<List<MedicalHistoryModelActivity>>, t: Throwable) {
+            override fun onFailure(call: Call<List<AllergyDataClass>>, t: Throwable) {
                 Toast.makeText(
                         this@AllergyUpdate_Activity,
                         "Failed to retrieve details " + t.toString(),
@@ -172,7 +188,7 @@ class AllergyUpdate_Activity : BaseActivity() {
             //val et_name = et_name_update.text.toString()
 
 
-            val newAllergyupdate = MedicalHistoryModelActivity()
+            val newAllergyupdate = AllergyDataClass()
 
 
 
@@ -199,9 +215,9 @@ class AllergyUpdate_Activity : BaseActivity() {
             val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
             val requestCall = destinationService.updateAllergy(newAllergyupdate)
 
-            requestCall.enqueue(object : Callback<MedicalHistoryModelActivity> {
+            requestCall.enqueue(object : Callback<AllergyDataClass> {
 
-                override fun onResponse(call: Call<MedicalHistoryModelActivity>, response: Response<MedicalHistoryModelActivity>) {
+                override fun onResponse(call: Call<AllergyDataClass>, response: Response<AllergyDataClass>) {
                     if (response.isSuccessful) {
                         finish() // Move back to DestinationListActivity
                         var updatedDestination = response.body() // Use it or ignore It
@@ -213,7 +229,7 @@ class AllergyUpdate_Activity : BaseActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
+                override fun onFailure(call: Call<AllergyDataClass>, t: Throwable) {
                     Toast.makeText(this@AllergyUpdate_Activity,
                             "Failed to update item", Toast.LENGTH_SHORT).show()
                 }
