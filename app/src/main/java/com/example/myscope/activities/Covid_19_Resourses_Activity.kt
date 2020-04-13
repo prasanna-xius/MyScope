@@ -43,16 +43,17 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
         recyclerView_image.adapter = customAdapter_image // set the Adapter to RecyclerView
 
 //
-        val recyclerView_pdf = findViewById(R.id.recycler_view_images) as RecyclerView
-        // set a GridLayoutManager with default vertical orientation and 2 number of columns
-        // set a GridLayoutManager with default vertical orientation and 2 number of columns
-//        val gridLayoutManager = GridLayoutManager(applicationContext, 2)
-        recyclerView_pdf.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false) // set LayoutManager to RecyclerView
 
-        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        val customAdapter_pdf = CustomAdapter_Pdf(this@Covid_19_Resourses_Activity, covidpdf)
-        recyclerView_pdf.adapter = customAdapter_pdf // set the Adapter to RecyclerView
+//        val recyclerView_pdf = findViewById(R.id.recycler_view_images) as RecyclerView
+//        // set a GridLayoutManager with default vertical orientation and 2 number of columns
+//        // set a GridLayoutManager with default vertical orientation and 2 number of columns
+////        val gridLayoutManager = GridLayoutManager(applicationContext, 2)
+//        recyclerView_pdf.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false) // set LayoutManager to RecyclerView
+//
+//        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+//        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+//        val customAdapter_pdf = CustomAdapter_Pdf(this@Covid_19_Resourses_Activity, covidpdf)
+//        recyclerView_pdf.adapter = customAdapter_pdf // set the Adapter to RecyclerView
 
 
     }
