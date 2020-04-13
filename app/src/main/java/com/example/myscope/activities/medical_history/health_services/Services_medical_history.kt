@@ -84,59 +84,13 @@ class Services_medical_history : BaseActivity() {
 
                     btn_Services.setOnClickListener {
 
-                        if (validate().equals(true)) {
-
-                            try {
-
-                                ProviderInstaller.installIfNeeded(getApplicationContext());
-                                var sslContext: SSLContext
-                                sslContext = SSLContext.getInstance("TLSv1.2");
-                                sslContext.init(null, null, null);
-                                sslContext.createSSLEngine()
-
-                            }
-                            catch (e: Exception) {
-                                e.printStackTrace();
-                            }
-
-                            val newServices = Diseases()
-                            newServices.patient_counselling = checkbox_patient_counselling!!.isChecked().toString().toBoolean()
-                            newServices.drug_interaction = checkbox_drug_interaction!!.isChecked().toString().toBoolean()
-                            newServices.prescription_audit = checkbox_prescription_audit!!.isChecked().toString().toBoolean()
-                            newServices.adverse_drug_monitering = checkbox_adverse_drug_event!!.isChecked().toString().toBoolean()
-                            newServices.post_dicharge_package = checkbox_Post_discharge_care_package!!.isChecked().toString().toBoolean()
-                            newServices.services_saved_on = datesetvalue()
-                            newServices.mobile_no = mobile_no
-
-                            val servicesService = ServiceBuilder.buildService(Disease_service::class.java)
-
-                            val requestCall = servicesService.addServicesList(newServices)
-
-                            requestCall.enqueue(object : Callback<Diseases> {
-
-                                override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
-
-                                    if (resp.isSuccessful) {
-                                        var newbody = resp.body() // Use it or ignore it
-
-                                        Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
-                                        //finish()
-                                    } else {
-                                        Toast.makeText(applicationContext, "Failed at posting data.", Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-
-                                override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                                    //finish()
-//                    Log.d("errormsgfailure ::", t.message)
-//                    Log.e("errorunderfailure:", t.message)
-                                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
-                                }
 
 
-                            })
+                        validate()
 
-                        }
+
+
+
 
                     }
 
@@ -331,7 +285,8 @@ class Services_medical_history : BaseActivity() {
                         //                    alertDialog.getWindow()?.setBackgroundDrawable(ColorDrawable(R.color.colorBackground));
 
 
-                    } else {
+                    }
+                    else {
 
 
                         showLongToast("successful")
@@ -339,6 +294,11 @@ class Services_medical_history : BaseActivity() {
 
                         if(prescriptiondata().equals(true)){
                             bool = true
+                        }
+
+                        else{
+
+                            //apicall()
                         }
 
         //                    val intent = Intent(this@Services_medical_history, Disease_recyclerView::class.java)
@@ -354,6 +314,60 @@ class Services_medical_history : BaseActivity() {
         })
 
 return false
+    }
+
+    private fun apicall() {
+        showLongToast("entered")
+
+        try {
+
+            ProviderInstaller.installIfNeeded(getApplicationContext());
+            var sslContext: SSLContext
+            sslContext = SSLContext.getInstance("TLSv1.2");
+            sslContext.init(null, null, null);
+            sslContext.createSSLEngine()
+
+        }
+        catch (e: Exception) {
+            e.printStackTrace();
+        }
+
+        val newServices = Diseases()
+        newServices.patient_counselling = checkbox_patient_counselling!!.isChecked().toString().toBoolean()
+        newServices.drug_interaction = checkbox_drug_interaction!!.isChecked().toString().toBoolean()
+        newServices.prescription_audit = checkbox_prescription_audit!!.isChecked().toString().toBoolean()
+        newServices.adverse_drug_monitering = checkbox_adverse_drug_event!!.isChecked().toString().toBoolean()
+        newServices.post_dicharge_package = checkbox_Post_discharge_care_package!!.isChecked().toString().toBoolean()
+        newServices.services_saved_on = datesetvalue()
+        newServices.mobile_no = mobile_no
+
+        val servicesService = ServiceBuilder.buildService(Disease_service::class.java)
+
+        val requestCall = servicesService.addServicesList(newServices)
+
+        requestCall.enqueue(object : Callback<Diseases> {
+
+            override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
+
+                if (resp.isSuccessful) {
+                    var newbody = resp.body() // Use it or ignore it
+
+                    Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
+                    //finish()
+                } else {
+                    Toast.makeText(applicationContext, "Failed at posting data.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Diseases>, t: Throwable) {
+                //finish()
+//                    Log.d("errormsgfailure ::", t.message)
+//                    Log.e("errorunderfailure:", t.message)
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+            }
+
+
+        })
     }
 
     private fun prescriptiondata() :Boolean {
@@ -397,6 +411,7 @@ return false
 
                 } else {
                     showLongToast("successful")
+                    apicall()
                     bool = true
                 }
             }
