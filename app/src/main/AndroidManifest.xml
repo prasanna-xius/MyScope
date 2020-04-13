@@ -134,6 +134,9 @@
         <activity android:name=".activities.Covid19_Tracker_WebActivity" />
         <activity android:name=".activities.Map_Covid19_WebActivity" />
         <activity android:name=".activities.Full_Image_Activity" />
+        <activity android:name=".activities.Guidelines_Activity" />
+        <activity android:name=".activities.Courses_Training_Activity" />
+        <activity android:name=".activities.News_Updates_Activity" />
 
     </application>
 

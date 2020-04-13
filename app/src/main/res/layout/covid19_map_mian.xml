@@ -53,6 +53,14 @@
 
     <!--    <include layout="@layout/app_bar_main" />-->
     <include layout="@layout/background_image" />
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="0dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        />
+
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"

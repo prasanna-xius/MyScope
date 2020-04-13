@@ -16,6 +16,12 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
     //    var personNames: ArrayList<*> = ArrayList(Arrays.asList("Person 1"))
     var covidImages: ArrayList<*> = ArrayList(Arrays.asList(R.drawable.carona_image, R.drawable.carona_image, R.drawable.carona_image))
 
+    var covidpdf: ArrayList<*> = ArrayList(Arrays.asList(R.drawable.carona_image, R.drawable.carona_image, R.drawable.carona_image))
+
+    val pageUrl_Covidtracker = "https://www.covid19india.org/"
+
+    val pageUrl_CovidMap = "https://coronavirus.jhu.edu/map.html"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.covid_resourses_main)
@@ -37,16 +43,16 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
         recyclerView_image.adapter = customAdapter_image // set the Adapter to RecyclerView
 
 //
-//        val recyclerView_pdf = findViewById(R.id.recycler_view_images) as RecyclerView
-//        // set a GridLayoutManager with default vertical orientation and 2 number of columns
-//        // set a GridLayoutManager with default vertical orientation and 2 number of columns
-////        val gridLayoutManager = GridLayoutManager(applicationContext, 2)
-//        recyclerView_pdf.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false) // set LayoutManager to RecyclerView
-//
-//        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-//        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-//        val customAdapter_pdf = CustomAdapter_Pdf(this@Covid_19_Resourses_Activity, covidImages)
-//        recyclerView_pdf.adapter = customAdapter_pdf // set the Adapter to RecyclerView
+        val recyclerView_pdf = findViewById(R.id.recycler_view_images) as RecyclerView
+        // set a GridLayoutManager with default vertical orientation and 2 number of columns
+        // set a GridLayoutManager with default vertical orientation and 2 number of columns
+//        val gridLayoutManager = GridLayoutManager(applicationContext, 2)
+        recyclerView_pdf.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false) // set LayoutManager to RecyclerView
+
+        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+        val customAdapter_pdf = CustomAdapter_Pdf(this@Covid_19_Resourses_Activity, covidpdf)
+        recyclerView_pdf.adapter = customAdapter_pdf // set the Adapter to RecyclerView
 
 
     }
@@ -54,11 +60,14 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.covid19_tracker -> {
-                navigateToActivity(Intent(applicationContext, Covid19_Tracker_WebActivity::class.java))
+                val intent = Covid19_Tracker_WebActivity.newIntent(this, pageUrl_Covidtracker)
+
+                startActivity(intent)
             }
             R.id.map_covid19 -> {
-                navigateToActivity(Intent(applicationContext, Map_Covid19_WebActivity::class.java))
-            }
+                val intent = Map_Covid19_WebActivity.newIntent1(this, pageUrl_CovidMap)
+
+                startActivity(intent)            }
 
         }
     }

@@ -17,11 +17,11 @@ import kotlinx.android.synthetic.main.medical_history_main.*
 
 class Educational_Blog_Activity : BaseActivity() {
 
-    var images = intArrayOf(R.drawable.medical_history_navigation,
-            R.drawable.family_history_logo,
-            R.drawable.social_history_logo,
-            R.drawable.diet_logo)
-    var names = arrayOf("Courses & Training", "GuideLines", "COVID-19 Resourses", "News & Updates")
+    var images = intArrayOf(R.drawable.course_training,
+            R.drawable.guidelines,
+            R.drawable.corona_virus,
+            R.drawable.news_updates)
+    var names = arrayOf("Courses & Training", "Guidelines", "COVID-19 Resourses", "News & Updates")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,13 +64,13 @@ class Educational_Blog_Activity : BaseActivity() {
             rowView.setOnClickListener {
                 // TODO Auto-generated method stub
                 if (position == 0) {
-                    navigateToActivity(Intent(applicationContext, ComingSoon_Activity::class.java))
+                    navigateToActivity(Intent(applicationContext, Courses_Training_Activity::class.java))
                 } else if (position == 1) {
-                    navigateToActivity(Intent(applicationContext, ComingSoon_Activity::class.java))
+                    navigateToActivity(Intent(applicationContext, Guidelines_Activity::class.java))
                 } else if (position == 2) {
                     navigateToActivity(Intent(applicationContext, Covid_19_Resourses_Activity::class.java))
                 } else if (position == 3) {
-                    navigateToActivity(Intent(applicationContext, ComingSoon_Activity::class.java))
+                    navigateToActivity(Intent(applicationContext, News_Updates_Activity::class.java))
                 }
             }
             return rowView
