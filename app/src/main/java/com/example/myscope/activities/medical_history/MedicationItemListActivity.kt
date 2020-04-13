@@ -11,6 +11,7 @@ import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.helpers.MedicationAdapter
 import com.example.myscope.models.MedicalHistoryModelActivity
+import com.example.myscope.models.MedicationDataClass
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
@@ -33,7 +34,7 @@ class MedicationItemListActivity : BaseActivity() {
 
     var fab : FloatingActionButton?=null
 
-    private lateinit var linearLayoutManager: LinearLayoutManager
+     lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medication_list)
@@ -62,7 +63,7 @@ class MedicationItemListActivity : BaseActivity() {
         loadDestinations()
     }
 
-    private fun loadDestinations() {
+    public fun loadDestinations() {
 
         val medicationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
 
@@ -81,11 +82,11 @@ class MedicationItemListActivity : BaseActivity() {
 
         //val requestCall = destinationService.getAllergy(filter)
 
-        requestCall.enqueue(object: Callback<List<MedicalHistoryModelActivity>> {
+        requestCall.enqueue(object: Callback<List<MedicationDataClass>> {
 
             // If you receive a HTTP Response, then this method is executed
             // Your STATUS Code will decide if your Http Response is a Success or Error
-            override fun onResponse(call: Call<List<MedicalHistoryModelActivity>>, response: Response<List<MedicalHistoryModelActivity>>) {
+            override fun onResponse(call: Call<List<MedicationDataClass>>, response: Response<List<MedicationDataClass>>) {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val medicationList = response.body()!!
@@ -99,7 +100,7 @@ class MedicationItemListActivity : BaseActivity() {
                     llm.orientation = LinearLayoutManager.VERTICAL
                     medication_recycler_view.setLayoutManager(llm)
                     medication_recycler_view.adapter = MedicationAdapter(medicationList)
-
+                    medication_recycler_view.adapter?.notifyDataSetChanged()
 
 
                 } else if(response.code() == 401) {
@@ -113,7 +114,7 @@ class MedicationItemListActivity : BaseActivity() {
 
             // Invoked in case of Network Error or Establishing connection with Server
             // or Error Creating Http Request or Error Processing Http Response
-            override fun onFailure(call: Call<List<MedicalHistoryModelActivity>>, t: Throwable) {
+            override fun onFailure(call: Call<List<MedicationDataClass>>, t: Throwable) {
 
                 Toast.makeText(this@MedicationItemListActivity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }

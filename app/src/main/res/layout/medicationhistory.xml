@@ -76,15 +76,18 @@
                     android:textSize="16sp" />
 
 
-                <com.example.myscope.activities.medical_history.MultiSelectionSpinnerdata
+
+                <com.example.myscope.activities.medical_history.MultiSelectionSpinnerMedication
+
                     android:id="@+id/spinner_how_often_taken"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:background="@drawable/border_bg"
                     android:entries="@array/how_often_taken_arrays"
-                    android:padding="2dp"
-                    android:popupBackground="#fff"></com.example.myscope.activities.medical_history.MultiSelectionSpinnerdata>
+
+                    android:padding="2dp">
+                </com.example.myscope.activities.medical_history.MultiSelectionSpinnerMedication>
 
             </LinearLayout>
 
@@ -180,6 +183,8 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
+
+
                 <TextView
                     android:id="@+id/reason"
                     android:layout_width="match_parent"
@@ -190,6 +195,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+
 
                     android:id="@+id/et_reason"
                     android:layout_width="match_parent"
@@ -226,19 +232,17 @@
                     android:orientation="horizontal"
                     android:weightSum="2.0">
 
-                    <Button
-                        android:id="@+id/buttonStartdate_medicalHistory"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1.0"
-                        android:background="@color/bg_screen2"
-                        android:padding="3dp"
-                        android:text="choose date"
-                        android:textColor="#fff"
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="start"
+                        android:layout_weight=".05"
+                        android:src="@drawable/calendar_36"
+                        android:padding="5dp"
                         android:textSize="14sp"
-
+                        android:id="@+id/buttonStartdate_medicalHistory"
                         />
+
 
                     <TextView
                         android:id="@+id/textviewStartdate_medicalHistory"
@@ -259,6 +263,8 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
+
+
                 <TextView
                     android:id="@+id/stop_date"
                     android:layout_width="match_parent"
@@ -275,18 +281,15 @@
                     android:orientation="horizontal"
                     android:weightSum="2.0">
 
-                    <Button
-                        android:id="@+id/buttonEnddate_MH"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1.0"
-                        android:background="@color/bg_screen2"
-                        android:padding="3dp"
-                        android:text="choose date"
-                        android:textColor="#fff"
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="start"
+                        android:layout_weight=".05"
+                        android:src="@drawable/calendar_36"
+                        android:padding="5dp"
                         android:textSize="14sp"
-
+                        android:id="@+id/buttonEnddate_MH"
                         />
 
                     <TextView
@@ -307,6 +310,7 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
 
                 <TextView
                     android:id="@+id/is_prescribed"

@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
 import com.example.myscope.activities.medical_history.AllergyUpdate_Activity
+import com.example.myscope.models.AllergyDataClass
 import com.example.myscope.models.MedicalHistoryModelActivity
 
-class AllergyAdapter(private val medicalHistoryModelActivityList: List<MedicalHistoryModelActivity>) : RecyclerView.Adapter<AllergyAdapter.ViewHolder>() {
+class AllergyAdapter(private val allergylist: List<AllergyDataClass>) : RecyclerView.Adapter<AllergyAdapter.ViewHolder>() {
 
 
 
@@ -22,8 +23,8 @@ class AllergyAdapter(private val medicalHistoryModelActivityList: List<MedicalHi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.destination = medicalHistoryModelActivityList[position]
-        holder.txvDestination.text = medicalHistoryModelActivityList[position].name
+        holder.destination = allergylist[position]
+        holder.txvDestination.text = allergylist[position].name
 
         holder.itemView.setOnClickListener { v ->
             val context = v.context
@@ -41,13 +42,13 @@ class AllergyAdapter(private val medicalHistoryModelActivityList: List<MedicalHi
     }
 
     override fun getItemCount(): Int {
-        return medicalHistoryModelActivityList.size
+        return allergylist.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val txvDestination: TextView = itemView.findViewById(R.id.txv_destination)  //item_list tv_id
-        var destination: MedicalHistoryModelActivity? = null
+        var destination: AllergyDataClass? = null
 
         override fun toString(): String {
             return """${super.toString()} '${txvDestination.text}'"""
