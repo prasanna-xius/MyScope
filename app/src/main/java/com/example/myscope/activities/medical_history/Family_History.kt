@@ -1,6 +1,7 @@
 package com.example.myscope.activities.medical_history
 
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -17,6 +18,8 @@ import kotlinx.android.synthetic.main.family_history.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DateFormat
+import java.util.*
 import javax.net.ssl.SSLContext
 
 class Family_History : BaseActivity() {
@@ -24,6 +27,8 @@ class Family_History : BaseActivity() {
 
     var relationshipSpinner: Spinner? = null
     var mobile_no: String? = null
+    var date1: String? = null
+
     var sharedpreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +42,16 @@ class Family_History : BaseActivity() {
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
         showLongToast(mobile_no.toString())
+
+        val c = Calendar.getInstance()
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        val month = c.get(Calendar.MONTH)
+        val year = c.get(Calendar.YEAR)
+        date1 = day.toString() + "/" + (month + 1) + "/" + year
+
+        showLongToast(date1.toString())
+
+
 
         relationshipSpinner = findViewById<Spinner>(R.id.spinner_family)
 
@@ -91,6 +106,7 @@ class Family_History : BaseActivity() {
         newFamilyCondition.family_condition = et_family_condition!!.text.toString().trim()
         newFamilyCondition.relationship = spinner_family?.getSelectedItem().toString()
         newFamilyCondition.family_note = relationship_notes!!.text.toString().trim()
+        newFamilyCondition.family_save_on = date1.toString()
         newFamilyCondition.mobile_no = mobile_no!!
 
         val familyService = ServiceBuilder.buildService(Disease_service::class.java)
