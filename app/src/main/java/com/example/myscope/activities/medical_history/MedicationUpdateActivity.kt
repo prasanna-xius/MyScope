@@ -28,6 +28,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 import kotlinx.android.synthetic.main.medicationhistory_update.*
 import kotlinx.android.synthetic.main.prescribed_main_view.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_dose.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_dose.view.*
@@ -85,8 +86,8 @@ class MedicationUpdateActivity : BaseActivity() {
         //setSupportActionBar(detail_toolbar as Toolbar?)
         // Show the Up button in the action bar.
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        activitiesToolbar()
-        header!!.text = "Medication History"
+        //activitiesToolbar()
+        //header!!.text = "Medication History"
 
         spinner_how_often_taken = findViewById<MultiSelectionSpinnerMedication>(R.id.spinner_how_often_taken_update)
 
@@ -351,6 +352,8 @@ class MedicationUpdateActivity : BaseActivity() {
             newmedication.mobile_no = mobile_no.toString()
 
             newmedication.medication_id = medicationid
+
+            newmedication.medication_updated_on=datesetvalue()
 
 
 

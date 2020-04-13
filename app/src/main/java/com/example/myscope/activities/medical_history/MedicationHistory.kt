@@ -16,6 +16,7 @@ import android.widget.*
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 
 
 import com.example.myscope.models.MedicalHistoryModelActivity
@@ -35,7 +36,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class MedicationHistory : AppCompatActivity() {
+class MedicationHistory : BaseActivity() {
 
 
 
@@ -165,6 +166,7 @@ class MedicationHistory : AppCompatActivity() {
                 newmedication.isprescribed = spinnerMedication4!!.selectedItem.toString().trim()
                 newmedication.doseunit = spinnerMedication3!!.selectedItem.toString().trim()
                 newmedication.mobile_no = mobile_no!!
+                newmedication.medication_saved_on=datesetvalue()
 
                 Toast.makeText(applicationContext, newmedication.how_often_taken + " " + newmedication.formulation
                         + " " + newmedication.isprescribed + " " + newmedication.doseunit, Toast.LENGTH_LONG).show()

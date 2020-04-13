@@ -209,6 +209,7 @@ class AllergyUpdate_Activity : BaseActivity() {
             //newAllergyupdate.date = textviewdate_update.text.toString().trim()
             newAllergyupdate.mobile_no = mobile_no!!
             newAllergyupdate.allergy_id = allergyid
+            newAllergyupdate.allergy_updated_on=datesetvalue()
             // newAllergy.spnrdata =spnritem!
 
 

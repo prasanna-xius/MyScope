@@ -1,6 +1,8 @@
 package com.example.myscope.helpers
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,12 +29,21 @@ class SurgeryAdapter (private val medicalHistoryModelActivityList: List<MedicalH
 
         holder.surgerydestination = medicalHistoryModelActivityList[position]           ///show text/name on recyclerview
         holder.txvDestination_surgery.text = medicalHistoryModelActivityList[position].surgeryname
+        holder.savedDateSurgery.text =medicalHistoryModelActivityList[position].surgery_saved_on
+        holder.serialNoSurgery.text = medicalHistoryModelActivityList[position].surgery_id.toString()
 
         holder.itemView.setOnClickListener { v ->
             val context = v.context                         // add/bind update activity
             val intent = Intent(context, SurgeryUpdateActivity::class.java)                              ///bind id/mobile_no on the base to retrive data
             intent.putExtra(SurgeryUpdateActivity.ARG_ITEM_ID, holder.surgerydestination!!.mobile_no)
             intent.putExtra("position" , position)
+
+            val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
+
+            val editor: SharedPreferences.Editor = pref.edit()
+            editor.putInt("surgery_id",medicalHistoryModelActivityList[position].surgery_id!!)
+            editor.commit()
+
 
            // Toast.makeText(context,"tag"+holder.toString(),Toast.LENGTH_LONG).show()
 
@@ -49,7 +60,12 @@ class SurgeryAdapter (private val medicalHistoryModelActivityList: List<MedicalH
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val txvDestination_surgery: TextView = itemView.findViewById(R.id.txv_destination_surgery)  //item_list tv_id
+        val txvDestination_surgery: TextView = itemView.findViewById(R.id.txv_destination_surgery)
+        val savedDateSurgery: TextView = itemView.findViewById(R.id.saveddate_surgery)
+        val serialNoSurgery: TextView = itemView.findViewById(R.id.sn_surgery)
+
+
+        //item_list tv_id
         var surgerydestination: MedicalHistoryModelActivity? = null
 
 

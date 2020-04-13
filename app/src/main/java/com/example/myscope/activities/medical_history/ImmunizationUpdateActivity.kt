@@ -141,6 +141,8 @@ class ImmunizationUpdateActivity : BaseActivity() {
                         et_adverse_eventupdate.setText(immundestination.immuevent)
                         et_notes_immunupdate.setText(immundestination.immunotes)
                         textviewdate_immuupdate.setText(immundestination.immudate)
+
+
                         //text1.setText(destination.spnrdata)
 
 
@@ -201,6 +203,7 @@ class ImmunizationUpdateActivity : BaseActivity() {
                 //newImmunization.immudate = dateUpdate.toString().trim()
                 newImmunization.mobile_no = mobile_no!!
                 newImmunization.immun_id = immunid
+                newImmunization.immun_updated_on=datesetvalue()
 
 
                 val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)

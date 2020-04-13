@@ -103,6 +103,8 @@ class SurgeryHistory_Activity : BaseActivity() {
                 newMedicalHistoryModelActivity.surgeryprovider = et_provider!!.text.toString().trim()
                 newMedicalHistoryModelActivity.surgerydate = textview_date_surg?.text.toString().trim()
                 newMedicalHistoryModelActivity.mobile_no=mobile_no!!
+                newMedicalHistoryModelActivity.surgery_saved_on=datesetvalue()
+
 
                 //newMedicalHistoryModelActivity.spnrdata =spnritem!!
 
