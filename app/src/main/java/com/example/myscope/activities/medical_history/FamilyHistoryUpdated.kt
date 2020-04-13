@@ -174,6 +174,7 @@ class FamilyHistoryUpdated : BaseActivity() {
             text1.setText(newFamily.relationship)
         }
         newFamily.family_note = relationship_notesUpdated.text.toString()
+        newFamily.family_updated_on = datesetvalue()
         newFamily.mobile_no = mobile_no!!
         newFamily.family_id = familyid
 

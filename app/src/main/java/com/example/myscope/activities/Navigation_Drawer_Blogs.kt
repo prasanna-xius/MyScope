@@ -16,7 +16,7 @@ import com.example.myscope.R
 import com.example.myscope.activities.labReports.Lab_Reports_Homepage
 import com.example.myscope.activities.medical_documents.Medical_Documents_HomePage
 import com.example.myscope.activities.medical_history.Medical_History_HomePage
-import com.example.myscope.activities.medical_history.Services_medical_history
+import com.example.myscope.activities.medical_history.health_services.Services_medical_history
 import com.example.myscope.activities.prescription.Prescriptions_HomePage
 import com.example.myscope.fragments.NavigationDrawerFragment
 import com.example.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks

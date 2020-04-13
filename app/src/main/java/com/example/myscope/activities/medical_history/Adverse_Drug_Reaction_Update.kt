@@ -124,6 +124,7 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
                 newDrug.reaction = reaction_effect_updated!!.text.toString().trim()
                 newDrug.date_of_start = et_date_of_start_updated!!.text.toString().trim()
                 newDrug.treatment_taken = et_treatment_taken_updated!!.text.toString().trim()
+                newDrug.adverse_updated_on = datesetvalue()
                 newDrug.mobile_no = mobile_no!!
                 newDrug.adverse_id = adverseDrugid!!
                 val destinationService = ServiceBuilder.buildService(Disease_service::class.java)

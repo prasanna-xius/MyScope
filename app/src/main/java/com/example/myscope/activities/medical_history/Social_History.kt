@@ -114,6 +114,7 @@ class Social_History : BaseActivity() {
                         newSocialHabits.tobacco = tobacco_usage!!.selectedStrings.toString()
                         newSocialHabits.alcohol = spinner_drinking!!.getSelectedItem().toString()
                         newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
+                        newSocialHabits.social_saved_on = datesetvalue()
                         newSocialHabits.mobile_no = mobile_no
 
                         val socialService = ServiceBuilder.buildService(Disease_service::class.java)
@@ -261,6 +262,7 @@ class Social_History : BaseActivity() {
 
             newSocialHabits.smoking_duration = et_smoking_yrs!!.text.toString().trim()
             newSocialHabits.alcohol_duration = et_YrsOfDrinking!!.text.toString().trim()
+            newSocialHabits.social_updated_on = datesetvalue()
             newSocialHabits.mobile_no =mobile_no!!
 
 

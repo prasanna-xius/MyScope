@@ -1,3 +1,4 @@
+
 package com.example.myscope.activities.medical_history
 
 import android.annotation.SuppressLint
@@ -19,11 +20,8 @@ import android.widget.TextView
 
 
 //@SuppressLint("AppCompatCustomView")
-/*<<<<<<< HEAD:app/src/main/java/com/example/myscope/activities/medical_history/MultiSelectionSpinnerMedication.kt
-class MultiSelectionSpinnerMedication : Spinner, DialogInterface.OnMultiChoiceClickListener {
-=======
-class MultiSelectionSpinnerdata : Spinner, DialogInterface.OnMultiChoiceClickListener {
->>>>>>> b6af64ace4d8441f802b4fb4ccf5a90e4b34602b:app/src/main/java/com/example/myscope/activities/medical_history/MultiSelectionSpinnerdata.kt
+/*class MultiSelectionSpinnerMedication : Spinner, DialogInterface.OnMultiChoiceClickListener {
+
     internal var _items: Array<String>? = null
     internal var mSelection: BooleanArray? = null
     var allTitle: TextView ?= null

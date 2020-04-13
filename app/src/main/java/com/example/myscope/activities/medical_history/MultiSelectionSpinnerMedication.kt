@@ -19,9 +19,8 @@ import android.widget.TextView
 
 
 @SuppressLint("AppCompatCustomView")
-
 class MultiSelectionSpinnerMedication : Spinner, DialogInterface.OnMultiChoiceClickListener {
-
+//class MultiSelectionSpinnerdata : Spinner, DialogInterface.OnMultiChoiceClickListener {
 
     internal var _items: Array<String>? = null
     internal var mSelection: BooleanArray? = null
