@@ -1,4 +1,3 @@
-
 package com.example.myscope.activities.medical_history
 
 import android.annotation.SuppressLint
@@ -19,8 +18,9 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.TextView
 
 
-//@SuppressLint("AppCompatCustomView")
-/*class MultiSelectionSpinnerMedication : Spinner, DialogInterface.OnMultiChoiceClickListener {
+@SuppressLint("AppCompatCustomView")
+class MultiSelectionSpinnerMedication : Spinner, DialogInterface.OnMultiChoiceClickListener {
+//class MultiSelectionSpinnerdata : Spinner, DialogInterface.OnMultiChoiceClickListener {
 
     internal var _items: Array<String>? = null
     internal var mSelection: BooleanArray? = null
@@ -202,4 +202,4 @@ import android.widget.TextView
         return sb.toString()
     }
 
-}*/
+}

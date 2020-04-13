@@ -16,9 +16,13 @@ import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 
 import com.example.myscope.R
+
+import com.example.myscope.models.AllergyDataClass
+
 import com.example.myscope.activities.BaseActivity
+
 import com.example.myscope.services.ServiceBuilder
-import com.example.myscope.models.MedicalHistoryModelActivity
+
 import com.example.myscope.services.MedicalHistoryService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.allergies.*
@@ -110,7 +114,7 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
 
                     //var newAllergy: Any? =null
 
-                    val newAllergy  = MedicalHistoryModelActivity()
+                    val newAllergy  = AllergyDataClass()
                     newAllergy.name = etname!!.text.toString().trim()
                     newAllergy.reaction = etreaction!!.text.toString().trim()
                     newAllergy.treatment = ettreatments!!.text.toString().trim()
@@ -118,6 +122,7 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
                     newAllergy.date = textview_date?.text.toString().trim()
                     newAllergy.spnrdata =spnritem!!
                     newAllergy.mobile_no=mobile_no!!
+                    newAllergy.allergy_saved_on=datesetvalue()
                     // newAllergy.id=1
 
 
@@ -130,9 +135,9 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
 
 
                     val requestCall =allergyService.addAllergy(newAllergy)
-                    requestCall.enqueue(object: Callback<MedicalHistoryModelActivity> {
+                    requestCall.enqueue(object: Callback<AllergyDataClass> {
 
-                        override fun onResponse(call: Call<MedicalHistoryModelActivity>, resp: Response<MedicalHistoryModelActivity>) {
+                        override fun onResponse(call: Call<AllergyDataClass>, resp: Response<AllergyDataClass>) {
 
 
                             if (resp.isSuccessful) {
@@ -148,7 +153,7 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
                             }
                         }
 
-                        override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
+                        override fun onFailure(call: Call<AllergyDataClass>, t: Throwable) {
                             //finish()
 
                             Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()

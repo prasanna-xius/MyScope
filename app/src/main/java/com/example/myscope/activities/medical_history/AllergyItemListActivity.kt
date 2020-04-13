@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.helpers.AllergyAdapter
+import com.example.myscope.models.AllergyDataClass
 import com.example.myscope.services.ServiceBuilder
 import com.example.myscope.models.MedicalHistoryModelActivity
 import com.example.myscope.services.MedicalHistoryService
@@ -27,6 +28,7 @@ class AllergyItemListActivity : BaseActivity() {
     var fab: FloatingActionButton? = null
     lateinit var sharedpreferences: SharedPreferences
     var mobile_no: String? = null
+    //var adapterAllergy :AllergyAdapter?=null
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,11 +72,11 @@ class AllergyItemListActivity : BaseActivity() {
 
         //val requestCall = destinationService.getAllergy(filter)
 
-        requestCall.enqueue(object : Callback<List<MedicalHistoryModelActivity>> {
+        requestCall.enqueue(object : Callback<List<AllergyDataClass>> {
 
             // If you receive a HTTP Response, then this method is executed
             // Your STATUS Code will decide if your Http Response is a Success or Error
-            override fun onResponse(call: Call<List<MedicalHistoryModelActivity>>, response: Response<List<MedicalHistoryModelActivity>>) {
+            override fun onResponse(call: Call<List<AllergyDataClass>>, response: Response<List<AllergyDataClass>>) {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val allergyList = response.body()!!
@@ -85,7 +87,7 @@ class AllergyItemListActivity : BaseActivity() {
                     val llm = LinearLayoutManager(applicationContext)
                     llm.orientation = LinearLayoutManager.VERTICAL
                     destiny_recycler_view.setLayoutManager(llm)
-                    destiny_recycler_view.adapter = AllergyAdapter(allergyList)
+                    destiny_recycler_view.adapter= AllergyAdapter(allergyList)
                     destiny_recycler_view.adapter?.notifyDataSetChanged()
 
 
@@ -100,7 +102,7 @@ class AllergyItemListActivity : BaseActivity() {
 
             // Invoked in case of Network Error or Establishing connection with Server
             // or Error Creating Http Request or Error Processing Http Response
-            override fun onFailure(call: Call<List<MedicalHistoryModelActivity>>, t: Throwable) {
+            override fun onFailure(call: Call<List<AllergyDataClass>>, t: Throwable) {
 
                 Toast.makeText(this@AllergyItemListActivity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }

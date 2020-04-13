@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".activities.medical_history.Allergies">
+    tools:context=".activities.medical_history.MedicationUpdateActivity"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
 
-    <include layout="@layout/app_bar_main" />
+    android:orientation="vertical"
+    >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
+
+
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,15 +86,19 @@
                     android:textSize="16sp" />
 
 
-                <com.example.myscope.activities.medical_history.MultiSelectionSpinnerdata
+    <com.example.myscope.activities.medical_history.MultiSelectionSpinnerMedication
+
                     android:id="@+id/spinner_how_often_taken_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:background="@drawable/border_bg"
                     android:entries="@array/how_often_taken_arrays"
-                    android:padding="2dp"
-                    android:popupBackground="#fff"></com.example.myscope.activities.medical_history.MultiSelectionSpinnerdata>
+
+                    android:padding="2dp">
+                </com.example.myscope.activities.medical_history.MultiSelectionSpinnerMedication>
+
+
 
             </LinearLayout>
 
@@ -123,9 +136,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="horizontal"
-                android:weightSum="2.0">
+
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:popupBackground="#fff"
+                android:entries="@array/formulation_arrays"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:weightSum="2">
+
 
                 <TextView
                     android:id="@+id/formulation"
@@ -135,6 +158,7 @@
                     android:text="@string/formulation"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
+
 
                 <Spinner
                     android:id="@+id/spinner_formulation_update"
@@ -181,6 +205,10 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
+
+
+
+
                 <TextView
                     android:id="@+id/reason"
                     android:layout_width="match_parent"
@@ -191,6 +219,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+
 
                     android:id="@+id/et_reason_update"
                     android:layout_width="match_parent"
@@ -227,18 +256,15 @@
                     android:orientation="horizontal"
                     android:weightSum="2.0">
 
-                    <Button
-                        android:id="@+id/buttonStartdate_medicalHistory_update"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1.0"
-                        android:background="@color/bg_screen2"
-                        android:padding="3dp"
-                        android:text="choose date"
-                        android:textColor="#fff"
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="start"
+                        android:layout_weight=".05"
+                        android:src="@drawable/calendar_36"
+                        android:padding="5dp"
                         android:textSize="14sp"
-
+                        android:id="@+id/buttonStartdate_medicalHistory_update"
                         />
 
                     <TextView
@@ -260,6 +286,9 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
+
+
+
                 <TextView
                     android:id="@+id/stop_date"
                     android:layout_width="match_parent"
@@ -276,18 +305,15 @@
                     android:orientation="horizontal"
                     android:weightSum="2.0">
 
-                    <Button
-                        android:id="@+id/buttonEnddate_MH_update"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1.0"
-                        android:background="@color/bg_screen2"
-                        android:padding="3dp"
-                        android:text="choose date"
-                        android:textColor="#fff"
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="start"
+                        android:layout_weight=".05"
+                        android:src="@drawable/calendar_36"
+                        android:padding="5dp"
                         android:textSize="14sp"
-
+                        android:id="@+id/buttonEnddate_MH_update"
                         />
 
                     <TextView
@@ -308,6 +334,7 @@
                 android:layout_margin="10dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
 
                 <TextView
                     android:id="@+id/is_prescribed"
@@ -383,5 +410,6 @@
 
             </LinearLayout>
         </LinearLayout>
+
+
     </ScrollView>
-</LinearLayout>

@@ -1,6 +1,8 @@
 package com.example.myscope.services
 
+import com.example.myscope.models.AllergyDataClass
 import com.example.myscope.models.MedicalHistoryModelActivity
+import com.example.myscope.models.MedicationDataClass
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -13,16 +15,16 @@ interface MedicalHistoryService {
     //end point of webservice///create item function//allergies
     @Headers("Content-Type: application/json")
     @POST("addallergyRecords")
-    fun addAllergy(@Body newMedicalHistoryModelActivity: MedicalHistoryModelActivity): Call<MedicalHistoryModelActivity>
+    fun addAllergy(@Body newAllergy: AllergyDataClass): Call<AllergyDataClass>
 
     ///get item by id
     @GET("listallergyid/{mobile_no}")
-    fun getAllergyByid(@Path("mobile_no") mobile_no: String): Call<List<MedicalHistoryModelActivity>>
+    fun getAllergyByid(@Path("mobile_no") mobile_no: String): Call<List<AllergyDataClass>>
 
     //update item
     @Headers("Content-Type: application/json")
     @POST("allergyupdate")
-    fun updateAllergy(@Body newAllergy: MedicalHistoryModelActivity): Call<MedicalHistoryModelActivity>
+    fun updateAllergy(@Body newAllergy: AllergyDataClass): Call<AllergyDataClass>
 
     ///Immunization history
 
@@ -72,17 +74,17 @@ interface MedicalHistoryService {
 
 
     @GET("listmedicationid/{mobile_no}")
-    fun getMedicationByid(@Path("mobile_no") mobile_no: String): Call<List<MedicalHistoryModelActivity>>
+    fun getMedicationByid(@Path("mobile_no") mobile_no: String): Call<List<MedicationDataClass>>
 
 
     //end point of webservice
     @Headers("Content-Type: application/json")
     @POST("addmedicationRecords")
-    fun addMedication(@Body newMedicalHistoryModelActivity: MedicalHistoryModelActivity): Call<MedicalHistoryModelActivity>
+    fun addMedication(@Body newMedicalHistoryModelActivity: MedicationDataClass): Call<MedicationDataClass>
 
     @Headers("Content-Type: application/json")
     @POST("medicationupdate")
-    fun updateMedication(@Body newmedication: MedicalHistoryModelActivity): Call<MedicalHistoryModelActivity>
+    fun updateMedication(@Body newmedication: MedicationDataClass): Call<MedicationDataClass>
 
 
 

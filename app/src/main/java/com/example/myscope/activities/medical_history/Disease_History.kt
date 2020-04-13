@@ -135,6 +135,7 @@ class Disease_History : BaseActivity() {
         newDisease.when_started = et_startDate!!.text.toString().trim()
         newDisease.when_ended = et_stopDate!!.text.toString().trim()
         newDisease.disease_note = notes_diseaseHistory!!.text.toString().trim()
+        newDisease.disease_save_on=datesetvalue()
         newDisease.mobile_no = mobile_no!!
 
 

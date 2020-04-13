@@ -20,8 +20,6 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.custom_spinner.*
 import kotlinx.android.synthetic.main.custom_spinner.text1
 import kotlinx.android.synthetic.main.diet.*
-import kotlinx.android.synthetic.main.disease_history.*
-import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import retrofit2.Call
@@ -69,6 +67,8 @@ class Diet : BaseActivity() {
 
                 val length = response.body()?.size
 
+                showLongToast(length.toString())
+
                 if (length!! > 0){
 
 //                    showLongToast("successful")
@@ -100,6 +100,7 @@ class Diet : BaseActivity() {
         val newDiet = Diseases()
 
         newDiet.diet = spinner_diet!!.selectedItem.toString()
+        newDiet.diet_saved_on = datesetvalue()
 
         newDiet.mobile_no = mobile_no!!
 
@@ -184,6 +185,8 @@ class Diet : BaseActivity() {
                 newDiet.diet = spinner_diet?.getSelectedItem().toString()
                 text1.setText(newDiet.diet)
             }
+
+            newDiet.diet_updated_on = datesetvalue()
             newDiet.mobile_no = mobile_no
 
 

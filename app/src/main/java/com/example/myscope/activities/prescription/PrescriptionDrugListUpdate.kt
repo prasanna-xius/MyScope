@@ -174,6 +174,7 @@ class PrescriptionDrugListUpdate : BaseActivity() {
                 newPrescriptionDrug.start_date = startdate!!.text.toString().trim()
                 newPrescriptionDrug.stop_date = stopdate!!.text.toString().trim()
                 newPrescriptionDrug.drug_id = drug_id
+            newPrescriptionDrug.drug_updated_on = datesetvalue()
 
                 val prescriptionDrugservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
 

@@ -29,8 +29,10 @@ class Disease_Adaptor(private val diseaseList: List<Diseases>) : RecyclerView.Ad
        // diseaseList.add(position,holder)
 
         holder.diseasedestination = diseaseList[position]
-
+        holder.disease_sno.text = diseaseList[position].disease_id.toString()
         holder.known_condition.text = diseaseList[position].known_condition
+        holder.disease_date.text = diseaseList[position].disease_save_on
+
 
        // Toast.makeText(this ,"place"+ position , Toast.LENGTH_LONG).show()
 
@@ -63,12 +65,14 @@ class Disease_Adaptor(private val diseaseList: List<Diseases>) : RecyclerView.Ad
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        val disease_sno: TextView = itemView.findViewById(R.id.disease_sno)
         val known_condition: TextView = itemView.findViewById(R.id.name_tablet)  //item_list tv_id
+        val disease_date: TextView = itemView.findViewById(R.id.disease_date)  //item_list tv_id
         var diseasedestination: Diseases? = null
 
 
         override fun toString(): String {
-            return """${super.toString()} '${known_condition.text}'"""
+            return """${super.toString()} '${known_condition.text}''${disease_sno.text}'"""
         }
     }
 }

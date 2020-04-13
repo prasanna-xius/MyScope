@@ -24,8 +24,9 @@ class FamilyAdaptor(private val familyList: List<Diseases>) : RecyclerView.Adapt
 
 
         holder.familyConditiondestination = familyList[position]
-
+        holder.familySno.text = familyList[position].family_id.toString()
         holder.familyHistory.text = familyList[position].family_condition
+        holder.familyDate.text = familyList[position].family_save_on
 
 
 
@@ -62,12 +63,14 @@ class FamilyAdaptor(private val familyList: List<Diseases>) : RecyclerView.Adapt
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        val familySno: TextView = itemView.findViewById(R.id.family_sno)
         val familyHistory: TextView = itemView.findViewById(R.id.familyHistoryTitle)  //item_list tv_id
+        val familyDate: TextView = itemView.findViewById(R.id.family_date)
         var familyConditiondestination: Diseases? = null
 
 
         override fun toString(): String {
-            return """${super.toString()} '${familyHistory.text}'"""
+            return """${super.toString()} '${familyHistory.text}' '${familySno.text}"""
         }
     }
 

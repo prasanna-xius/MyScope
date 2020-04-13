@@ -206,6 +206,8 @@ class DiseaseHistoryUpdate : BaseActivity() {
         newDisease.when_started = et_startDate_updated!!.text.toString().trim()
         newDisease.when_ended = et_stopDate_updated!!.text.toString().trim()
         newDisease.disease_note = notes_diseaseHistory_updated!!.text.toString().trim()
+        newDisease.disease_updated_on = datesetvalue()
+
         newDisease.mobile_no = mobile_no!!
         newDisease.disease_id = diseaseid
 

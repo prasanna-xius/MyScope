@@ -17,13 +17,17 @@ import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
+
+
 import com.example.myscope.models.MedicalHistoryModelActivity
+import com.example.myscope.models.MedicationDataClass
 import com.example.myscope.services.MedicalHistoryService
 import com.example.myscope.services.ServiceBuilder
 
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.medicationhistory.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_how_often.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,7 +35,9 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
+
+class MedicationHistory : BaseActivity() {
+
 
 
     var namemed: String? = null;
@@ -50,14 +56,14 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
     var etreason_med: EditText? = null
     var etnotes_med: EditText? = null
     var flag: Boolean? = true
-    var sprOneItem: String? = null
-    var sprThreeItem: String? = null;
-    var sprFourItem: String? = null
-    var sprTwoItem: String? = null
+    //var sprOneItem: String? = null
+    //var sprThreeItem: String? = null;
+    //var sprFourItem: String? = null
+    //var sprTwoItem: String? = null
     var sdf1: SimpleDateFormat? = null
     var sdf2: SimpleDateFormat? = null
-    var button_date_StartMh: Button? = null
-    var button_date_EndMh: Button? = null
+    var button_date_StartMh: ImageView? = null
+    var button_date_EndMh: ImageView? = null
     var textview_Startdate: TextView? = null
     var textview_Enddate: TextView? = null
     var cal_StartMh = Calendar.getInstance()
@@ -69,6 +75,7 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
     //internal var spinnerMedication: Spinner? = null
     var btn_medication: Button? = null
     var mobile_no: String? = null
+    var how_oftenspinner: MultiSelectionSpinnerMedication? = null
     var sharedpreferences: SharedPreferences? = null
 
     private var awesomeValidation: AwesomeValidation? = null
@@ -106,22 +113,13 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
         textview_Startdate!!.text = " "
         textview_Enddate!!.text = " "
 
-        awesomeValidation = AwesomeValidation(ValidationStyle.BASIC);
-
-        awesomeValidation!!.addValidation(this, R.id.et_name,
-                "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.nameerror);
 
 
-        var how_oftenspinner = findViewById<MultiSelectionSpinnerdata>(R.id.spinner_how_often_taken)
-
-        var formulationdata = resources.getStringArray(R.array.formulation_arrays)
-
-        var dosedata = resources.getStringArray(R.array.dose_unit_arrays)
-
-        var prescribeddata = resources.getStringArray(R.array.is_prescribed_arrays)
+        how_oftenspinner = findViewById<MultiSelectionSpinnerMedication>(R.id.spinner_how_often_taken)
 
 
-        how_oftenspinner.setItems(resources.getStringArray(R.array.how_often_taken_arrays))
+
+        how_oftenspinner?.setItems(resources.getStringArray(R.array.how_often_taken_arrays))
 
         val adapter1 = ArrayAdapter(this, R.layout.spinner_dropdown_item_how_often,
                 resources.getStringArray(R.array.how_often_taken_arrays))
@@ -130,53 +128,50 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
         //spinnerMedication1!!.setOnItemSelectedListener(this)
 
 
-        val aa2 = ArrayAdapter(this, android.R.layout.simple_spinner_item, formulationdata)
-        aa2.setDropDownViewResource(R.layout.spinner_item_layout)
-        spinnerMedication2!!.setAdapter(aa2)
-        spinnerMedication2!!.setOnItemSelectedListener(this)
 
 
-        val aa3 = ArrayAdapter(this, android.R.layout.simple_spinner_item, dosedata)
-        aa3.setDropDownViewResource(R.layout.spinner_item_layout)
-        spinnerMedication3!!.setAdapter(aa3)
-        spinnerMedication3!!.setOnItemSelectedListener(this)
+        val aa2 = ArrayAdapter(this, R.layout.spinner_dropdown_item_formulation,
+                resources.getStringArray(R.array.formulation_array))
+        spinnerMedication2!!.adapter = aa2
 
+        val aa3 = ArrayAdapter(this, R.layout.spinner_dropdown_item_dose,
+                resources.getStringArray(R.array.dose_unit_arrays))
+        spinnerMedication3!!.adapter = aa3
 
-        val aa4 = ArrayAdapter(this, android.R.layout.simple_spinner_item, prescribeddata)
-        aa4.setDropDownViewResource(R.layout.spinner_item_layout)
-        spinnerMedication4!!.setAdapter(aa4)
-        spinnerMedication4!!.setOnItemSelectedListener(this)
+        val aa4 = ArrayAdapter(this, R.layout.spinner_dropdown_item_prescribed,
+                resources.getStringArray(R.array.is_prescribed_arrays))
+        spinnerMedication4!!.adapter = aa4
+
 
         //validateDate(textview_Startdate!!, textview_Enddate!!,true)
 
         btn_medication?.setOnClickListener {
 
-            namemed = etname_med!!.getText().toString()
-            dose = etdose_med!!.getText().toString()
-            reason = etreason_med!!.getText().toString()
-            notesmed = etnotes_med!!.getText().toString()
-            datestartmed = textview_Startdate?.getText().toString()
-            dateendmed = textview_Enddate?.getText().toString()
-            //validateDate(textview_Startdate!!, textview_Enddate!!,true)
-//                   && sprOneItem != null
 
-            if (awesomeValidation!!.validate()) {
+            if (validateName(et_name, true)) {
 
 
-                val newmedication = MedicalHistoryModelActivity()
-                newmedication.medicationname = et_name!!.text.toString().trim()
-                newmedication.medicationnotes = et_notes_med!!.text.toString().trim()
+
+                val newmedication = MedicationDataClass()
+                newmedication.medicationname = et_name.text.toString().trim()
+                newmedication.medicationnotes = et_notes_med.text.toString().trim()
                 //newmedication. = et_body_location_update!!.text.toString().trim()
-                newmedication.reason = et_reason!!.text.toString().trim()
-                newmedication.strength = et_dose_strength!!.text.toString().trim()
-                newmedication.startdate = textviewStartdate_medicalHistory!!.text.toString().trim()
-                newmedication.enddate = textviewEnddate_MH!!.text.toString().trim()
-                newmedication.how_often_taken = spinner_how_often_taken!!.selectedStrings.toString()
-                newmedication.formulation = sprTwoItem.toString().trim()
-                newmedication.isprescribed = sprFourItem.toString().trim()
-                newmedication.doseunit = sprThreeItem.toString().trim()
-                newmedication.mobile_no = mobile_no.toString()
-                Toast.makeText(applicationContext,newmedication.how_often_taken,Toast.LENGTH_LONG).show()
+
+                newmedication.reason = et_reason.text.toString().trim()
+                newmedication.strength = et_dose_strength.text.toString().trim()
+                newmedication.startdate = textviewStartdate_medicalHistory.text.toString().trim()
+                newmedication.enddate = textviewEnddate_MH.text.toString().trim()
+                newmedication.how_often_taken = spinner_how_often_taken.selectedItemsAsString
+                newmedication.formulation =spinnerMedication2!!.selectedItem.toString()
+                newmedication.isprescribed = spinnerMedication4!!.selectedItem.toString().trim()
+                newmedication.doseunit = spinnerMedication3!!.selectedItem.toString().trim()
+                newmedication.mobile_no = mobile_no!!
+                newmedication.medication_saved_on=datesetvalue()
+
+                Toast.makeText(applicationContext, newmedication.how_often_taken + " " + newmedication.formulation
+                        + " " + newmedication.isprescribed + " " + newmedication.doseunit, Toast.LENGTH_LONG).show()
+
+               
 
                 //newMedicalHistoryModelActivity.spnrdata =spnritem!!
 
@@ -185,9 +180,9 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
 
 
                 val requestCall = surgeryService.addMedication(newmedication)
-                requestCall.enqueue(object : Callback<MedicalHistoryModelActivity> {
+                requestCall.enqueue(object : Callback<MedicationDataClass> {
 
-                    override fun onResponse(call: Call<MedicalHistoryModelActivity>, resp: Response<MedicalHistoryModelActivity>) {
+                    override fun onResponse(call: Call<MedicationDataClass>, resp: Response<MedicationDataClass>) {
 
 
                         if (resp.isSuccessful) {
@@ -202,7 +197,7 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
                         }
                     }
 
-                    override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
+                    override fun onFailure(call: Call<MedicationDataClass>, t: Throwable) {
                         //finish()
                         Log.d("errormsgfailure ::", t.message)
 
@@ -215,9 +210,7 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
                 //}else if(validateDate(textview_Startdate!!, textview_Enddate!!,true)==false) {
                 //  val snack = Snackbar.make(it!!, "Wrong Date Selected.", Snackbar.LENGTH_LONG)
                 // snack.show()
-            }
-
-            else {
+            } else {
                 val snack = Snackbar.make(it!!, "Mandatory field cannot be left blank.", Snackbar.LENGTH_LONG)
                 snack.show()
             }
@@ -273,17 +266,26 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
                         cal_EndMh.get(Calendar.MONTH),
                         cal_EndMh.get(Calendar.DAY_OF_MONTH)).show()
                 try {
-                    validateDate(textview_Startdate!!, textview_Enddate!!,true)
-                }catch (e: Exception) {
+                    validateDate(textview_Startdate!!, textview_Enddate!!, true)
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
 
-                //validateDate(textview_Startdate!!, textview_Enddate!!,true)
+
 
                 //Toast.makeText(this,"date value::::${textview_EndDate}",Toast.LENGTH_LONG).show()
             }
 
         })
+    }
+
+    fun validateName(et_name: EditText, b: Boolean): Boolean {
+        if (et_name.text.toString().isEmpty()) {
+
+            et_name.setError("Name Required")
+            return false
+        }
+        return true
     }
 
     private fun validateDate(textviewStartdate: TextView, textviewEnddate: TextView, b: Boolean): Boolean {
@@ -324,12 +326,10 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
 
     }
 
-    override fun onNothingSelected(parent: AdapterView<*>?) {
+}
 
 
-    }
-
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+    /*override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
         //sprOneItem = parent?.getItemAtPosition(view) as String?
 
@@ -353,7 +353,7 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
                     // Toast.makeText(this,"selected item"+parent?.getItemAtPosition(position),Toast.LENGTH_LONG).show()
 
 //                    sprOneItem = parent?.getItemAtPosition(position) as String?
-                    sprOneItem = spinner_how_often_taken.tv_how_often.text.toString()
+                    sprOneItem = spinner_how_often_taken.text1.text.toString()
                     //Toast.makeText(this, "selected item" + sprOneItem, Toast.LENGTH_LONG).show()
                 }
             }
@@ -407,29 +407,6 @@ class MedicationHistory : BaseActivity(), AdapterView.OnItemSelectedListener {
                 }
 
             }
-        }
+        }*/
 
-
-//            fun validateDate(datestartmed: TextView, dateendmed: TextView, boolean: Any): Boolean {
-//                if (!datestartmed.text.toString().equals("") && !dateendmed.text.toString().equals("")) {
-//                    datestartmed.setCompoundDrawables(null, null, null, null)
-//                    dateendmed.setCompoundDrawables(null, null, null, null)
-//                    val startDate0 = SimpleDateFormat("dd-MMM-yyyy").format(Date(datestartmed.text.toString()))
-//                    val endDate0 = SimpleDateFormat("dd-MMM-yyyy").format(Date(dateendmed.text.toString()))
-//                    if (startDate0 > endDate1) {
-//                        // date in text view is current date
-//                        dateendmed.setText("")
-//                        //showLongSnackBar("Start date cannot be after end date")
-//                        textview_Enddate!!.setError("Wrong Date Selected")
-//                        return false;
-//                    }
-//                } else {
-//                    //errorDisplayTextview(startDate)
-//                    // errorDisplayTextview(stopDate)
-//                    return false
-//                }
-//                return true
-//            }
-    }
-}
 
