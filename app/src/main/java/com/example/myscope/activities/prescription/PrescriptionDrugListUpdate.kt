@@ -11,6 +11,7 @@ import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.MultiSelectionSpinner
 import com.example.myscope.activities.MultiSpinnerTime
 import com.example.myscope.activities.PrescriptionInterface
+import com.example.myscope.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
 import kotlinx.android.synthetic.main.medicationhistory.*
 import kotlinx.android.synthetic.main.medicationhistory.is_prescribed
@@ -92,7 +93,7 @@ class PrescriptionDrugListUpdate : BaseActivity() {
             }
         }
 
-        val diseaseService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+        val diseaseService = ServiceBuilder.buildService(PrescriptionInterface::class.java)
         val requestCall = diseaseService.getDrugListbyId(drug_id)
 
         requestCall.enqueue(object : Callback<List<PrescriptionDataClass>> {
@@ -177,7 +178,7 @@ class PrescriptionDrugListUpdate : BaseActivity() {
                 newPrescriptionDrug.stop_date = stopdate!!.text.toString().trim()
                 newPrescriptionDrug.drug_id = drug_id
 
-                val prescriptionDrugservice = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+                val prescriptionDrugservice = ServiceBuilder.buildService(PrescriptionInterface::class.java)
 
                 //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
 

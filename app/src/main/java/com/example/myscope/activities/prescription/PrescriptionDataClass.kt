@@ -23,8 +23,11 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var stop_date: String? = null,
                                  var drug_id: Int =0,
 
-                                 var uploadfile:Multipart? = null,
-                                 var upload_id:Int = 0
+                                 var downloadfile:String? = null,
+                                 var p_uploadid:Int = 0,
+                                 var upload_saved_on:String ?= null,
+                                var p_upload:Multipart ?= null
+
 
 
 
