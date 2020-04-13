@@ -18,8 +18,8 @@ import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.widget.TextView
 
 
-@SuppressLint("AppCompatCustomView")
-<<<<<<< HEAD:app/src/main/java/com/example/myscope/activities/medical_history/MultiSelectionSpinnerMedication.kt
+//@SuppressLint("AppCompatCustomView")
+/*<<<<<<< HEAD:app/src/main/java/com/example/myscope/activities/medical_history/MultiSelectionSpinnerMedication.kt
 class MultiSelectionSpinnerMedication : Spinner, DialogInterface.OnMultiChoiceClickListener {
 =======
 class MultiSelectionSpinnerdata : Spinner, DialogInterface.OnMultiChoiceClickListener {
@@ -204,4 +204,4 @@ class MultiSelectionSpinnerdata : Spinner, DialogInterface.OnMultiChoiceClickLis
         return sb.toString()
     }
 
-}
+}*/

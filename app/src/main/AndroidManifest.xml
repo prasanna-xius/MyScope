@@ -25,7 +25,7 @@
         <activity
             android:name=".activities.SliderActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.Educational_Blog_Activity">
+        <activity android:name=".activities.medical_history.Medical_History_HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -59,9 +59,9 @@
         <activity
             android:name=".activities.Navigation_Drawer_Blogs"
             android:screenOrientation="portrait" />
-        <activity
+        <!--<activity
             android:name=".activities.medical_history.Medical_History_HomePage"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" />-->
         <activity
             android:name=".activities.medical_history.Disease_recyclerView"
             android:screenOrientation="portrait" />

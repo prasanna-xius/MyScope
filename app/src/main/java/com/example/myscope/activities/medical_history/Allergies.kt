@@ -122,6 +122,7 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
                     newAllergy.date = textview_date?.text.toString().trim()
                     newAllergy.spnrdata =spnritem!!
                     newAllergy.mobile_no=mobile_no!!
+                    newAllergy.allergy_saved_on=datesetvalue()
                     // newAllergy.id=1
 
 

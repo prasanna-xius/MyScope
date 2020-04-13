@@ -159,7 +159,7 @@
 
                 <TextView
                     android:id="@+id/first_observed"
-                    android:layout_width="0dp"
+                    android:layout_width="50sp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:text="@string/first_observed"
@@ -219,7 +219,7 @@
 
                     android:id="@+id/et_notes_allergies"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="75dp"
                     android:layout_weight="1"
 
                     android:background="@drawable/border_bg"
@@ -230,16 +230,31 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_allergies"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/bg_screen2"
-                android:padding="5dp"
-                android:text="@string/save"
-                android:textColor="@color/colorWhite"
-                android:textSize="14sp" />
+                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="1.0">
+
+                <Button
+                    android:id="@+id/btn_allergies"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/shape_btn"
+                    android:padding="5dp"
+                    android:text="SAVE"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

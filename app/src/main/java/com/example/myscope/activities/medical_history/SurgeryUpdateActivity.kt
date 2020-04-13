@@ -199,6 +199,7 @@ class SurgeryUpdateActivity : BaseActivity() {
                 //newsurgery.immudate = dateUpdate.toString().trim()
                 newsurgery.mobile_no = mobile_no!!
                 newsurgery.surgery_id = surgeryid
+                newsurgery.surgery_updated_on=datesetvalue()
 
 
                 val destinationService = ServiceBuilder.buildService(MedicalHistoryService::class.java)

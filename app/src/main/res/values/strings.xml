@@ -75,7 +75,7 @@
     <string name="add_allergy">Add Allergy<font color='#a4c639'>*</font></string>
     <string name="name">Name<font color='#a4c639'>*</font></string>
     <string name="eg_allergy">Aspirin,sea food,dust</string>
-    <string name="reaction">Reaction<font color='#a4c639'>*</font></string>
+    <string name="reaction">Reaction</string>
     <string name="eg_reaction">sneezing,itching</string>
     <string name="treatment">Treatment</string>
     <string name="eg_treatment">Anti Allergic drugs</string>
@@ -86,8 +86,8 @@
     <string name="immunization_history">Immunization History</string>
     <string name="hepatitis_b">Hepatitis B</string>
     <string name="immun_name">Name<font color='#a4c639'>*</font></string>
-    <string name="when_given">When given<font color='#a4c639'>*</font></string>
-    <string name="adverse_event">Adverse event<font color='#a4c639'>*</font></string>
+    <string name="when_given">When given</string>
+    <string name="adverse_event">Adverse event</string>
     <string name="brand">Brand</string>
     <!--Immunization History-->
     <!--Medication History-->
@@ -100,8 +100,8 @@
     <string name="surgery_history">Surgery History</string>
     <string name="eg_Surgery">E.g. Endoscopy</string>
     <string name="surg_name">Name<font color='#a4c639'>*</font></string>
-    <string name="when_performed">When performed<font color='#a4c639'>*</font></string>
-    <string name="body_location">Organ/System<font color='#a4c639'>*</font></string>
+    <string name="when_performed">When performed</string>
+    <string name="body_location">Body Location</string>
     <string name="eg_body_location">E.g. Stomach</string>
     <string name="provider">Provider</string>
     <string name="eg_provider">E.g. Doctor Name</string>

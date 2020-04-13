@@ -12,5 +12,7 @@ data class MedicationDataClass (
         var how_often_taken:String=",",
         var isprescribed:String=",",
         var strength:String=",",
-        var mobile_no:String=","
+        var mobile_no:String=",",
+        var medication_saved_on:String ?=null,
+        var medication_updated_on:String ?=null
 )

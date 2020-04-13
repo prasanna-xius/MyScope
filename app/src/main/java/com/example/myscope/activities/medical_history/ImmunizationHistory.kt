@@ -108,6 +108,7 @@ class ImmunizationHistory : BaseActivity() {
                     newMedicalHistoryModelActivity.immunotes = et_notes_immun!!.text.toString().trim()
                     newMedicalHistoryModelActivity.immudate = textview_date_immun?.text.toString().trim()
                     newMedicalHistoryModelActivity.mobile_no=mobile_no!!
+                    newMedicalHistoryModelActivity.immun_saved_on=datesetvalue()
 
                     //newMedicalHistoryModelActivity.spnrdata =spnritem!!
 
