@@ -28,6 +28,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 import kotlinx.android.synthetic.main.medicationhistory_update.*
 import kotlinx.android.synthetic.main.prescribed_main_view.*
+import kotlinx.android.synthetic.main.spinner_dropdown_item.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.view.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_dose.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item_dose.view.*

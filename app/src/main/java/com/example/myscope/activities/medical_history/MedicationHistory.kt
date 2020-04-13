@@ -16,6 +16,7 @@ import android.widget.*
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import com.example.myscope.R
+import com.example.myscope.activities.BaseActivity
 
 
 import com.example.myscope.models.MedicalHistoryModelActivity
@@ -35,7 +36,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class MedicationHistory : AppCompatActivity() {
+class MedicationHistory : BaseActivity() {
 
 
 
