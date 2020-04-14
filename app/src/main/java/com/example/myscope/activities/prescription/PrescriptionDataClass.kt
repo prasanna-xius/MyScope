@@ -1,5 +1,6 @@
 package com.example.myscope.activities.prescription
 
+import okhttp3.MultipartBody
 import retrofit2.http.Multipart
 
 data class PrescriptionDataClass(var is_prescribed: String? = null,
@@ -23,7 +24,8 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var stop_date: String? = null,
                                  var drug_id: Int =0,
 
-                                 var uploadfile:Multipart? = null,
+                                 var p_upload:MultipartBody?=null,
+                                 var downloadfile:String? = null,
                                  var upload_id:Int = 0
 
 

@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Bundle
@@ -17,12 +18,21 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat.startActivityForResult
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myscope.R
 import com.example.myscope.activities.BaseActivity
 import com.example.myscope.activities.PrescriptionInterface
 import com.example.myscope.fragments.ExpandableListDataPump.data
+import com.example.myscope.helpers.AllergyAdapter
+import com.example.myscope.models.MedicalHistoryModelActivity
+import com.example.myscope.services.ImageApiService
+import com.example.myscope.services.MedicalHistoryService
+import com.example.myscope.services.ServiceBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_allergy_list.*
+import kotlinx.android.synthetic.main.activity_prescription_image_list.*
+import kotlinx.android.synthetic.main.list_item_prescription_image.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -34,6 +44,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.http.Multipart
 import java.io.*
 import java.util.*
 
@@ -41,18 +52,78 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
     var file: File? = null
     var uri: Uri? = null
     private var mImageUrl = ""
+    var p_upload:MultipartBody.Part?=null
+    //var byte:byte[]?= null
     internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_prescription_addimages_recyclerview)
-        val toolbar = findViewById<View>(R.id.toolbar_imageuploader) as Toolbar
-        setSupportActionBar(toolbar)
+        setContentView(R.layout.activity_prescription_image_list)
+        //val toolbar = findViewById<View>(R.id.toolbar_imageuploader) as Toolbar
+        //setSupportActionBar(toolbar)
         val fab = findViewById<View>(R.id.fab_addimages) as FloatingActionButton
         fab.setOnClickListener {
             //showUploadDialog()
             initViews()
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        loadDestinations()
+
+    }
+
+    private fun loadDestinations() {
+
+        val service = ServiceBuilder.buildService(ImageApiService::class.java)
+
+
+                val requestCall = service.getImageDetails()
+
+        requestCall.enqueue(object: Callback<List<PrescriptionDataClass>> {
+        //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
+
+            // If you receive a HTTP Response, then this method is executed
+            // Your STATUS Code will decide if your Http Response is a Success or Error
+            override fun onResponse(call: Call<List<PrescriptionDataClass>>, response: Response<List<PrescriptionDataClass>>) {
+                if (response.isSuccessful()) {
+                    // Your status code is in the range of 200's
+                    val imageList = response.body()!!
+
+
+                    val llm = LinearLayoutManager(applicationContext)
+                    llm.orientation = LinearLayoutManager.VERTICAL
+                    pres_recycler_view.setLayoutManager(llm)
+                    pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
+                    pres_recycler_view.adapter?.notifyDataSetChanged()
+
+
+                    /// var  bytes :ByteArray = imageList.bytes()
+                     //var bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                    //iv_pres.setImageBitmap(bitmap)
+
+                } else if(response.code() == 401) {
+                    Toast.makeText(this@Prescription_AddImage_PDF,
+                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+                } else { // Application-level failure
+                    // Your status code is in the range of 300's, 400's and 500's
+                    Toast.makeText(this@Prescription_AddImage_PDF, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            // Invoked in case of Network Error or Establishing connection with Server
+            // or Error Creating Http Request or Error Processing Http Response
+            override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
+
+                Toast.makeText(this@Prescription_AddImage_PDF, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+
+
+
 
     private fun initViews() {
         val pictureDialog = AlertDialog.Builder(this, R.style.Alert_Dialogue_Background)
