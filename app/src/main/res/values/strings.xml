@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="facebook_app_id">226578928549339</string>
+    <string name="fb_login_protocol_scheme">fb226578928549339</string>
 
     <string name="app_name">My Scope</string>
     <string name="home">Home</string>

@@ -128,7 +128,7 @@
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
 
         <!--        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />-->
-<activity android:name=".activities.Educational_Blog_Activity"/>
+        <activity android:name=".activities.Educational_Blog_Activity" />
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
         <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
         <activity android:name=".activities.medical_history.health_services.Services_medical_history" />
@@ -146,6 +146,29 @@
         <activity android:name=".activities.Guidelines_Activity" />
         <activity android:name=".activities.Courses_Training_Activity" />
         <activity android:name=".activities.News_Updates_Activity" />
+        <activity android:name=".activities.Covid_19_Update_Activity" />
+        <activity android:name=".activities.Covid_19_Guidelines_HomeQuarantine" />
+        <activity android:name=".activities.Covid_19_IFMSA_Library_Overview_Converted" />
+        <activity android:name=".activities.Covid_19_Who_China_Joint_Mission_Final_Reported_Activity" />
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
 
     </application>
 
