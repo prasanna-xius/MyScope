@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import java.sql.RowId
 import java.sql.RowIdLifetime

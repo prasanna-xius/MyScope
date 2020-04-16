@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myscope.R
-import com.example.myscope.activities.medical_history.Adverse_Drug_Reaction_Update.Companion.ARG_ITEM_ID
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.medical_history.Adverse_Drug_Reaction_Update.Companion.ARG_ITEM_ID
 
 class AdverseDrugAdaptor (private val adverseDrugList: List<Diseases>) : RecyclerView.Adapter<AdverseDrugAdaptor.ViewHolder>(){
 

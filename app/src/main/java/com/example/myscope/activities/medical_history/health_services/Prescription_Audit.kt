@@ -1,8 +1,8 @@
-package com.example.myscope.activities.medical_history.health_services
+package com.soargtechnologies.myscope.activities.medical_history.health_services
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 import kotlinx.android.synthetic.main.activity_main2.*
 import kotlinx.android.synthetic.main.services_updated.*
 

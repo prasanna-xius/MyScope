@@ -44,7 +44,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:layout_marginTop="@dimen/dimen_145"
-        class="com.example.myscope.fragments.NavigationDrawerFragment"
+        class="com.soargtechnologies.myscope.fragments.NavigationDrawerFragment"
         tools:layout="@layout/drawer_drawer" />
     </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

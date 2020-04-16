@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import android.content.Context
 import android.content.Intent
@@ -7,12 +7,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.myscope.helpers.ImmunizationAdapter
-import com.example.myscope.models.MedicalHistoryModelActivity
-import com.example.myscope.services.MedicalHistoryService
-import com.example.myscope.services.ServiceBuilder
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.myscope.helpers.ImmunizationAdapter
+import com.soargtechnologies.myscope.models.MedicalHistoryModelActivity
+import com.soargtechnologies.myscope.services.MedicalHistoryService
+import com.soargtechnologies.myscope.services.ServiceBuilder
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_immunization_list.*

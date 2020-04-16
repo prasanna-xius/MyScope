@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -11,14 +11,14 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.Dash_Board_Activity
-import com.example.myscope.activities.prescription.PrescriptionDataClass
-import com.example.myscope.activities.prescription.Prescriptions_HomePage
-import com.example.myscope.activities.services.Disease_service
-import com.example.myscope.activities.services.ServiceBuilder
-import com.example.myscope.services.PrescriptionInterface
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.Dash_Board_Activity
+import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.activities.prescription.Prescriptions_HomePage
+import com.soargtechnologies.myscope.activities.services.Disease_service
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder
+import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.google.android.gms.security.ProviderInstaller
 import kotlinx.android.synthetic.main.activity_services_medical_history.*
 import kotlinx.android.synthetic.main.app_bar_main.*

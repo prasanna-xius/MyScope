@@ -142,7 +142,7 @@
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_15" />
 
-                    <com.example.myscope.activities.MultiSpinnerTime
+                    <com.soargtechnologies.myscope.activities.MultiSpinnerTime
                         android:id="@+id/time_of_taken"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
                         android:padding="@dimen/dimen_4"
                         android:popupBackground="@color/colorWhite"
                         android:textSize="15sp" >
-                    </com.example.myscope.activities.MultiSpinnerTime>
+                    </com.soargtechnologies.myscope.activities.MultiSpinnerTime>
                 </LinearLayout>
 
                 <LinearLayout
@@ -226,7 +226,7 @@
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_15" />
 
-                    <com.example.myscope.activities.MultiSelectionSpinner
+                    <com.soargtechnologies.myscope.activities.MultiSelectionSpinner
                         android:id="@+id/how_often_taken"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -236,7 +236,7 @@
                         android:padding="@dimen/dimen_4"
                         android:popupBackground="@color/colorWhite"
                         android:textSize="15sp">
-             </com.example.myscope.activities.MultiSelectionSpinner>
+             </com.soargtechnologies.myscope.activities.MultiSelectionSpinner>
 
                 </LinearLayout>
 

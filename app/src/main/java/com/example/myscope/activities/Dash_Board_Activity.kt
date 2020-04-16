@@ -1,10 +1,10 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
 
 class Dash_Board_Activity : BaseActivity() {
     var headerTextView: TextView? = null

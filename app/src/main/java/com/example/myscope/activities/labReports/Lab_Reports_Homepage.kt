@@ -1,4 +1,4 @@
-package com.example.myscope.activities.labReports
+package com.soargtechnologies.myscope.activities.labReports
 
 import android.content.Context
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.labreports_homepage_main.*
 import kotlinx.android.synthetic.main.medicaldocuments_homepage_main.*

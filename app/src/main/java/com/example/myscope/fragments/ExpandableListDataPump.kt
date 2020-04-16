@@ -1,4 +1,4 @@
-package com.example.myscope.fragments
+package com.soargtechnologies.myscope.fragments
 
 import java.util.*
 

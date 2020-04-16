@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -6,10 +6,10 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.services.Disease_service
-import com.example.myscope.activities.services.ServiceBuilder
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.services.Disease_service
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder
 import com.google.android.gms.security.ProviderInstaller
 import kotlinx.android.synthetic.main.activity_adverse_drug.*
 import kotlinx.android.synthetic.main.app_bar_main.*

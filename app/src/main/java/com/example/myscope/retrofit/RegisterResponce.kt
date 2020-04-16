@@ -1,4 +1,4 @@
-package com.example.myscope.retrofit
+package com.soargtechnologies.myscope.retrofit
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

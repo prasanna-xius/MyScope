@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 import java.util.ArrayList
 
 class CustomAdapter_Pdf(private val eventList: List<covid_pdflist>) : RecyclerView.Adapter<CustomAdapter_Pdf.MyViewHolder>() {

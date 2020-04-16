@@ -1,4 +1,4 @@
-package com.example.myscope.activities.myscope.helpers
+package com.soargtechnologies.myscope.activities.myscope.helpers
 
 import android.content.Context
 import android.content.Intent
@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myscope.R
-import com.example.myscope.activities.medical_history.ImmunizationUpdateActivity
-import com.example.myscope.models.MedicalHistoryModelActivity
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.medical_history.ImmunizationUpdateActivity
+import com.soargtechnologies.myscope.models.MedicalHistoryModelActivity
 
 
 class ImmunizationAdapter (private val medicalHistoryModelActivityList: List<MedicalHistoryModelActivity>) : RecyclerView.Adapter<ImmunizationAdapter.ViewHolder>() {

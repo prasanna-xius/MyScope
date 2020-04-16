@@ -1,4 +1,4 @@
-package com.example.myscope.activities.prescription
+package com.soargtechnologies.myscope.activities.prescription
 
 data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var doctor_name: String? = null,

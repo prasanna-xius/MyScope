@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.content.Context
 import android.view.GestureDetector

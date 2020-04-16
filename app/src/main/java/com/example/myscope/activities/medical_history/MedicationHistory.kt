@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
@@ -15,14 +15,14 @@ import android.view.View.OnClickListener
 import android.widget.*
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
 
 
-import com.example.myscope.models.MedicalHistoryModelActivity
-import com.example.myscope.models.MedicationDataClass
-import com.example.myscope.services.MedicalHistoryService
-import com.example.myscope.services.ServiceBuilder
+import com.soargtechnologies.myscope.models.MedicalHistoryModelActivity
+import com.soargtechnologies.myscope.models.MedicationDataClass
+import com.soargtechnologies.myscope.services.MedicalHistoryService
+import com.soargtechnologies.myscope.services.ServiceBuilder
 
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_main.*

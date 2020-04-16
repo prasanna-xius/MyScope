@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.content.Context
 import android.content.Intent
@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.myscope.R
-import com.example.myscope.activities.medical_history.*
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.medical_history.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.educational_blog_main.*
 import kotlinx.android.synthetic.main.medical_history_main.*

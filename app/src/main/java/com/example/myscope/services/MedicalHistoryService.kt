@@ -1,8 +1,8 @@
-package com.example.myscope.services
+package com.soargtechnologies.myscope.services
 
-import com.example.myscope.models.AllergyDataClass
-import com.example.myscope.models.MedicalHistoryModelActivity
-import com.example.myscope.models.MedicationDataClass
+import com.soargtechnologies.myscope.models.AllergyDataClass
+import com.soargtechnologies.myscope.models.MedicalHistoryModelActivity
+import com.soargtechnologies.myscope.models.MedicationDataClass
 import retrofit2.Call
 import retrofit2.http.*
 

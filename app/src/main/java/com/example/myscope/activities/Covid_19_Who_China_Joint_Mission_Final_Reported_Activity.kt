@@ -1,7 +1,7 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.os.Bundle
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 import kotlinx.android.synthetic.main.pdf_view_main.*
 
 class Covid_19_Who_China_Joint_Mission_Final_Reported_Activity :BaseActivity() {

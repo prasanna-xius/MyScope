@@ -1,7 +1,7 @@
-package com.example.myscope.activities.services
+package com.soargtechnologies.myscope.activities.services
 
 
-import com.example.myscope.activities.medical_history.Diseases
+import com.soargtechnologies.myscope.activities.medical_history.Diseases
 import retrofit2.Call
 import retrofit2.http.*
 

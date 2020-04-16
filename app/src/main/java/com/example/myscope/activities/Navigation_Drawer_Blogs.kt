@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.content.Intent
 import android.graphics.Color
@@ -12,15 +12,15 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.example.myscope.R
-import com.example.myscope.activities.labReports.Lab_Reports_Homepage
-import com.example.myscope.activities.medical_documents.Medical_Documents_HomePage
-import com.example.myscope.activities.medical_history.Medical_History_HomePage
-import com.example.myscope.activities.medical_history.health_services.Services_medical_history
-import com.example.myscope.activities.prescription.Prescriptions_HomePage
-import com.example.myscope.fragments.NavigationDrawerFragment
-import com.example.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks
 import com.google.firebase.auth.FirebaseAuth
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.labReports.Lab_Reports_Homepage
+import com.soargtechnologies.myscope.activities.medical_documents.Medical_Documents_HomePage
+import com.soargtechnologies.myscope.activities.medical_history.Medical_History_HomePage
+import com.soargtechnologies.myscope.activities.medical_history.health_services.Services_medical_history
+import com.soargtechnologies.myscope.activities.prescription.Prescriptions_HomePage
+import com.soargtechnologies.myscope.fragments.NavigationDrawerFragment
+import com.soargtechnologies.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_navigation_blogs.*
 import kotlinx.android.synthetic.main.dashboard_screen_main.*

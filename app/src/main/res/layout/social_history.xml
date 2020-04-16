@@ -95,7 +95,7 @@
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
-            <com.example.myscope.activities.MultiSpinnerAlcohol
+            <com.soargtechnologies.myscope.activities.MultiSpinnerAlcohol
                 android:id="@+id/tobacco_usage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

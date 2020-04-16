@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import android.annotation.TargetApi
 import android.app.DatePickerDialog
@@ -13,13 +13,13 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.MultiSelectionSpinner
-import com.example.myscope.models.MedicalHistoryModelActivity
-import com.example.myscope.models.MedicationDataClass
-import com.example.myscope.services.MedicalHistoryService
-import com.example.myscope.services.ServiceBuilder
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.MultiSelectionSpinner
+import com.soargtechnologies.myscope.models.MedicalHistoryModelActivity
+import com.soargtechnologies.myscope.models.MedicationDataClass
+import com.soargtechnologies.myscope.services.MedicalHistoryService
+import com.soargtechnologies.myscope.services.ServiceBuilder
 
 import kotlinx.android.synthetic.main.medicationhistory.*
 

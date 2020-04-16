@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import android.content.Context
 import android.content.Intent
@@ -7,13 +7,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.helpers.AllergyAdapter
-import com.example.myscope.models.AllergyDataClass
-import com.example.myscope.services.ServiceBuilder
-import com.example.myscope.models.MedicalHistoryModelActivity
-import com.example.myscope.services.MedicalHistoryService
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.helpers.AllergyAdapter
+import com.soargtechnologies.myscope.models.AllergyDataClass
+import com.soargtechnologies.myscope.services.ServiceBuilder
+import com.soargtechnologies.myscope.models.MedicalHistoryModelActivity
+import com.soargtechnologies.myscope.services.MedicalHistoryService
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_allergy_list.*
 import kotlinx.android.synthetic.main.app_bar_main.*

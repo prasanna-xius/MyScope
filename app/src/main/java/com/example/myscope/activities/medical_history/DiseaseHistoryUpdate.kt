@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import android.annotation.TargetApi
 import android.app.DatePickerDialog
@@ -14,11 +14,11 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.medical_history.Adverse_Drug_Reaction_Update.Companion.ARG_ITEM_ID
-import com.example.myscope.activities.services.Disease_service
-import com.example.myscope.activities.services.ServiceBuilder
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.medical_history.Adverse_Drug_Reaction_Update.Companion.ARG_ITEM_ID
+import com.soargtechnologies.myscope.activities.services.Disease_service
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_disease_history_update.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.spinner_dropdown_item.*

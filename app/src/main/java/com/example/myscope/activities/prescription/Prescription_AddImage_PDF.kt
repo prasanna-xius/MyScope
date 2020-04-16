@@ -1,4 +1,4 @@
-package com.example.myscope.activities.prescription
+package com.soargtechnologies.myscope.activities.prescription
 
 import android.app.Activity
 import android.content.Context
@@ -15,10 +15,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.services.PrescriptionInterface
-import com.example.myscope.activities.services.ServiceBuilder1
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.services.PrescriptionInterface
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder1
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_prescription_addimages_recyclerview.*
 import kotlinx.android.synthetic.main.app_bar_main.*

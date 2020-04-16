@@ -1,4 +1,4 @@
-package com.example.myscope.activities.services
+package com.soargtechnologies.myscope.activities.services
 
 import android.os.Build
 import com.google.gson.GsonBuilder

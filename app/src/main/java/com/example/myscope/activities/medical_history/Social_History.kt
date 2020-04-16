@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import android.content.Intent
 import android.content.Context
@@ -8,13 +8,13 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.MultiSelectionSpinner
-import com.example.myscope.activities.MultiSpinnerAlcohol
-import com.example.myscope.activities.MultiSpinnerTime
-import com.example.myscope.activities.services.Disease_service
-import com.example.myscope.activities.services.ServiceBuilder
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.MultiSelectionSpinner
+import com.soargtechnologies.myscope.activities.MultiSpinnerAlcohol
+import com.soargtechnologies.myscope.activities.MultiSpinnerTime
+import com.soargtechnologies.myscope.activities.services.Disease_service
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder
 import com.google.android.gms.security.ProviderInstaller
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.prescribed_main_view.*

@@ -1,4 +1,4 @@
-package com.example.myscope.services
+package com.soargtechnologies.myscope.services
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

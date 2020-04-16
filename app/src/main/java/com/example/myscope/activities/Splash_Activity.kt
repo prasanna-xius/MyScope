@@ -1,9 +1,9 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 
 class Splash_Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

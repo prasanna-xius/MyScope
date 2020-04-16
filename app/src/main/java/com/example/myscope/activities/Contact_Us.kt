@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.content.Context
 import android.content.Intent
@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
-import com.example.myscope.R
-import com.example.myscope.activities.medical_history.Diseases
-import com.example.myscope.activities.services.Disease_service
-import com.example.myscope.activities.services.ServiceBuilder
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.medical_history.Diseases
+import com.soargtechnologies.myscope.activities.services.Disease_service
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder
 import com.google.android.gms.security.ProviderInstaller
 import kotlinx.android.synthetic.main.activity_contact__us.*
 import kotlinx.android.synthetic.main.app_bar_main.*

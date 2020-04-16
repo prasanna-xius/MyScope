@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.content.Context
 import android.content.Intent
@@ -19,9 +19,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 
-import com.example.myscope.MainActivity
-import com.example.myscope.PrefManager
-import com.example.myscope.R
+import com.soargtechnologies.myscope.MainActivity
+import com.soargtechnologies.myscope.PrefManager
+import com.soargtechnologies.myscope.R
 
 class SliderActivity : AppCompatActivity() {
 

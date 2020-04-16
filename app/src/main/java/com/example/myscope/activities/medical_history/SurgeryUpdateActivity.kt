@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
@@ -14,11 +14,11 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.models.MedicalHistoryModelActivity
-import com.example.myscope.services.MedicalHistoryService
-import com.example.myscope.services.ServiceBuilder
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.models.MedicalHistoryModelActivity
+import com.soargtechnologies.myscope.services.MedicalHistoryService
+import com.soargtechnologies.myscope.services.ServiceBuilder
 
 import com.google.android.material.snackbar.Snackbar
 

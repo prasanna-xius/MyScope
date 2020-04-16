@@ -1,4 +1,4 @@
-package com.example.myscope.helpers
+package com.soargtechnologies.myscope.helpers
 
 import android.content.Context
 import android.content.Intent
@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myscope.R
-import com.example.myscope.activities.medical_history.AllergyUpdate_Activity
-import com.example.myscope.models.AllergyDataClass
-import com.example.myscope.models.MedicalHistoryModelActivity
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.medical_history.AllergyUpdate_Activity
+import com.soargtechnologies.myscope.models.AllergyDataClass
+import com.soargtechnologies.myscope.models.MedicalHistoryModelActivity
 
 class AllergyAdapter(private val allergylist: List<AllergyDataClass>) : RecyclerView.Adapter<AllergyAdapter.ViewHolder>() {
 

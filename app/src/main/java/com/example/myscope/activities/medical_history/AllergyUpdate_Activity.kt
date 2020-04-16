@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
@@ -12,15 +12,15 @@ import android.view.MenuItem
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 
-import com.example.myscope.models.AllergyDataClass
+import com.soargtechnologies.myscope.models.AllergyDataClass
 
-import com.example.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.BaseActivity
 
-import com.example.myscope.services.ServiceBuilder
+import com.soargtechnologies.myscope.services.ServiceBuilder
 
-import com.example.myscope.services.MedicalHistoryService
+import com.soargtechnologies.myscope.services.MedicalHistoryService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_disease_history_update.*
 import kotlinx.android.synthetic.main.allergies.*

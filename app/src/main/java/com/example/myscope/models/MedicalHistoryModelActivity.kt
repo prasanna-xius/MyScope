@@ -1,4 +1,4 @@
-package com.example.myscope.models
+package com.soargtechnologies.myscope.models
 
 data class MedicalHistoryModelActivity (
 

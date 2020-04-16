@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 import android.annotation.SuppressLint
 
 import android.app.Activity
@@ -21,8 +21,8 @@ import android.widget.*
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.myscope.R
-import com.example.myscope.activities.prescription.Prescription_ManualDoctorDialog
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.prescription.Prescription_ManualDoctorDialog
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.ByteArrayOutputStream

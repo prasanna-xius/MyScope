@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 import kotlinx.android.synthetic.main.covid_resourses_main.*
 import kotlinx.android.synthetic.main.educational_blog_main.header1
 import java.util.*

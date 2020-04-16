@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.app.Dialog
 import android.content.Intent
@@ -8,8 +8,8 @@ import android.util.Patterns
 import android.view.View
 import android.view.Window
 import android.widget.CheckBox
-import com.example.myscope.R
-import com.example.myscope.services.PrescriptionInterface
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.signuppage_main.*
 import kotlinx.android.synthetic.main.terms_conditions_main.*
@@ -142,7 +142,7 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
     private fun registerRetrofit2Api(firstname: String, lastname: String, mobileno: String, email: String) {
 
         var login = SignupResponse(firstname, lastname, mobileno, email)
-        request = APIClient.getClient().create(PrescriptionInterface::class.java)
+        request = APIClient.getClient!!.create(PrescriptionInterface::class.java)
 
         try {
             var resp: SignupResponse = login

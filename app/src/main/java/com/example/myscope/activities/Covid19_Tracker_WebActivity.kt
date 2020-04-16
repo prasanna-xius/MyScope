@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,7 +11,7 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 import kotlinx.android.synthetic.main.covid_tracker_main.*
 import kotlinx.android.synthetic.main.educational_blog_main.*
 import kotlinx.android.synthetic.main.educational_blog_main.header1

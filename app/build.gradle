@@ -13,7 +13,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.example.myscope"
+        applicationId "com.soargtechnologies.myscope"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -78,5 +78,6 @@ dependencies {
 
     implementation 'com.facebook.android:facebook-login:[5,6)'
 
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
 
 }

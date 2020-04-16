@@ -1,4 +1,4 @@
-package com.example.myscope.activities.helpers
+package com.soargtechnologies.myscope.activities.helpers
 
 import android.content.Context
 import android.content.Intent
@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myscope.R
-import com.example.myscope.activities.medical_history.MedicationUpdateActivity
-import com.example.myscope.models.MedicalHistoryModelActivity
-import com.example.myscope.models.MedicationDataClass
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.medical_history.MedicationUpdateActivity
+import com.soargtechnologies.myscope.models.MedicalHistoryModelActivity
+import com.soargtechnologies.myscope.models.MedicationDataClass
 
 
 class MedicationAdapter (private val medicationList: List<MedicationDataClass>) : RecyclerView.Adapter<MedicationAdapter.ViewHolder>() {

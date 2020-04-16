@@ -1,4 +1,4 @@
-package com.example.myscope.fragments
+package com.soargtechnologies.myscope.fragments
 
 import android.app.Activity
 import android.content.Intent
@@ -15,12 +15,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.example.myscope.R
-import com.example.myscope.activities.Dash_Board_Activity
-import com.example.myscope.activities.medical_documents.Medical_Documents_HomePage
-import com.example.myscope.activities.prescription.Prescription_manualDrugDialog
-import com.example.myscope.activities.medical_history.*
-import com.example.myscope.adapters.ExpandableListAdapter
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.Dash_Board_Activity
+import com.soargtechnologies.myscope.activities.medical_documents.Medical_Documents_HomePage
+import com.soargtechnologies.myscope.activities.prescription.Prescription_manualDrugDialog
+import com.soargtechnologies.myscope.activities.medical_history.*
+import com.soargtechnologies.myscope.adapters.ExpandableListAdapter
 import java.util.*
 
 class NavigationDrawerFragment : Fragment() {

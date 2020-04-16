@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.SpinnerAdapter
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 
 import java.util.Arrays
 import java.util.LinkedList

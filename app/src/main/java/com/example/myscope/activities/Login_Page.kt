@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.app.AlertDialog
 import android.content.Context
@@ -8,10 +8,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import com.example.myscope.R
-import com.example.myscope.activities.services.ServiceBuilder
-import com.example.myscope.services.PrescriptionInterface
 import com.google.firebase.auth.FirebaseAuth
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder
+import com.soargtechnologies.myscope.services.PrescriptionInterface
 import kotlinx.android.synthetic.main.login_page_main.*
 import kotlinx.android.synthetic.main.login_page_main.mobile_layout
 import retrofit2.Call

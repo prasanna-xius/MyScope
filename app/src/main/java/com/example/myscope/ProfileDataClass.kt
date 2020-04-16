@@ -1,4 +1,4 @@
-package com.example.myscope
+package com.soargtechnologies.myscope
 
 data class ProfileDataClass(var first_name: String? = null,
                             var last_name: String? = null,

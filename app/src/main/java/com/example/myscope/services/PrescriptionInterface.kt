@@ -1,8 +1,8 @@
-package com.example.myscope.services
+package com.soargtechnologies.myscope.services
 
-import com.example.myscope.ProfileDataClass
-import com.example.myscope.activities.SignupResponse
-import com.example.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.ProfileDataClass
+import com.soargtechnologies.myscope.activities.SignupResponse
+import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call

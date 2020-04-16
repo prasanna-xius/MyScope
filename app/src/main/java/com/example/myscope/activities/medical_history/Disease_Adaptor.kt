@@ -1,4 +1,4 @@
-package com.example.myscope.activities.medical_history
+package com.soargtechnologies.myscope.activities.medical_history
 
 
 import android.content.Context
@@ -10,9 +10,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 
-//import com.example.myscope.activities.medical_history.Disease_History
+//import com.soargtechnologies.myscope.activities.medical_history.Disease_History
 
 class Disease_Adaptor(private val diseaseList: List<Diseases>) : RecyclerView.Adapter<Disease_Adaptor.ViewHolder>()  {
 

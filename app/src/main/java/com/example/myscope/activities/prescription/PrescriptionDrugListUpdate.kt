@@ -1,16 +1,16 @@
-package com.example.myscope.activities.prescription
+package com.soargtechnologies.myscope.activities.prescription
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import com.example.myscope.R
-import com.example.myscope.activities.BaseActivity
-import com.example.myscope.activities.MultiSelectionSpinner
-import com.example.myscope.activities.MultiSpinnerTime
-import com.example.myscope.services.PrescriptionInterface
-import com.example.myscope.activities.services.ServiceBuilder1
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.MultiSelectionSpinner
+import com.soargtechnologies.myscope.activities.MultiSpinnerTime
+import com.soargtechnologies.myscope.services.PrescriptionInterface
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder1
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.prescribed_main_view.*
 import kotlinx.android.synthetic.main.prescription_multi_item.view.*

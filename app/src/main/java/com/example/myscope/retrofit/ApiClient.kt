@@ -1,4 +1,4 @@
-package com.example.myscope.retrofit
+package com.soargtechnologies.myscope.retrofit
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

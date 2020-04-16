@@ -1,7 +1,7 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.os.Bundle
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 import kotlinx.android.synthetic.main.educational_blog_main.*
 import kotlinx.android.synthetic.main.pdf_view_main.*
 import kotlinx.android.synthetic.main.pdf_view_main.header1

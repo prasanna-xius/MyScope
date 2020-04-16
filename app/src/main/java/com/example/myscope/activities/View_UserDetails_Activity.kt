@@ -1,4 +1,4 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -14,14 +14,14 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
-import com.example.myscope.ProfileDataClass
+import com.soargtechnologies.myscope.ProfileDataClass
 
-import com.example.myscope.R
-import com.example.myscope.activities.prescription.PrescriptionDataClass
-import com.example.myscope.activities.prescription.Prescription_manualDrugDialog
-import com.example.myscope.activities.services.ServiceBuilder1
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.activities.prescription.Prescription_manualDrugDialog
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder1
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
-import com.example.myscope.services.PrescriptionInterface
+import com.soargtechnologies.myscope.services.PrescriptionInterface
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.disease_history.*
 import kotlinx.android.synthetic.main.login_page_main.*

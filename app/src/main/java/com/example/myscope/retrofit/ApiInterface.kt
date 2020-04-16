@@ -1,4 +1,4 @@
-package com.example.myscope.retrofit
+package com.soargtechnologies.myscope.retrofit
 
 import retrofit2.Call
 import retrofit2.http.Field

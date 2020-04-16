@@ -1,11 +1,11 @@
-package com.example.myscope.activities
+package com.soargtechnologies.myscope.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 import com.google.android.gms.tasks.TaskExecutors
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException

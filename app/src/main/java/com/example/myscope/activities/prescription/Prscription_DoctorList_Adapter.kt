@@ -1,4 +1,4 @@
-package com.example.myscope.activities.prescription
+package com.soargtechnologies.myscope.activities.prescription
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 
 
 class Prscription_DoctorList_Adapter(private val prescriptionList: List<PrescriptionDataClass>) : RecyclerView.Adapter<Prscription_DoctorList_Adapter.ViewHolder>()  {
