@@ -86,7 +86,7 @@
                     android:textSize="16sp" />
 
 
-    <com.example.myscope.activities.medical_history.MultiSelectionSpinnerMedication
+    <com.soargtechnologies.myscope.activities.medical_history.MultiSelectionSpinnerMedication
 
                     android:id="@+id/spinner_how_often_taken_update"
                     android:layout_width="match_parent"
@@ -96,7 +96,7 @@
                     android:entries="@array/how_often_taken_arrays"
 
                     android:padding="2dp">
-                </com.example.myscope.activities.medical_history.MultiSelectionSpinnerMedication>
+                </com.soargtechnologies.myscope.activities.medical_history.MultiSelectionSpinnerMedication>
 
 
 
