@@ -131,6 +131,60 @@
     <string name="message">Message <font color='#a4c639'>*</font></string>
     <string name="subject">Subject<font color='#a4c639'>*</font></string>
 
+    <!--Blood glucose -->
+    <string name="blood_glucose"> Blood Glucose</string>
+    <string name="date">Date</string>
+    <string name="test">Test </string>
+    <string name="date_of_test">(dd/mm/yyyy) </string>
+    <string name="test_result">Test Result</string>
+    <string name="test_units">(mg/dl)</string>
+
+
+    <!--Blood pressure -->
+    <string name="blood_pressure">Blood Pressure</string>
+    <string name="systolic">Systolic (Upper)</string>
+    <string name="diastolic">Diastolic (Lower) </string>
+    <string name="systolic_units">mmHg </string>
+    <string name="Pulse">Pulse/min</string>
+    <string name="heart">Heart rate</string>
+    <string name="heart_unit">(bpm)</string>
+    <string name="irregular_heartbeats">Irregular heartbeats?</string>
+
+
+    <!-- cholestrol -->
+    <string name="cholesterol">Cholesterol</string>
+    <string name="lDL"> LDL </string>
+    <string name="hDL"> HDL  </string>
+    <string name="triglycerides_units"> (mmol/L) </string>
+    <string name="triglycerides"> Triglycerides</string>
+    <string name="others_test">Heart rate</string>
+    <string name="total_cholesterol"> Total Cholesterol</string>
+
+    <!-- bmi -->
+    <string name="bmi1">BMI</string>
+
+
+    Others Test
+    <string-array name="blood_glucose_dropdown">
+        <item>None</item>
+        <item>Fasting (early morning before food)</item>
+        <item>Before breakfast</item>
+        <item>After breakfast</item>
+        <item>Before lunch</item>
+        <item>After lunch</item>
+        <item>Before dinner</item>
+        <item>After dinner</item>
+        <item>Post Prandial (within 2 Hrs of food)</item>
+        <item>Random Blood sugar (Any other Time)</item>
+    </string-array>
+
+
+    <string-array name="blood_pressure_dropdown">
+        <item>None</item>
+        <item>Fasting (early morning before food)</item>
+        <item>Before breakfast</item>
+    </string-array>
+
     <!--Medication History-->
     <string-array name="how_often_taken_arrays">
         <item>Select time</item>
