@@ -1,8 +1,8 @@
-package com.example.myscope.activities.self_monitering
+package com.soargtechnologies.myscope.activities.self_monitering
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myscope.R
+import com.soargtechnologies.myscope.R
 
 class Blood_pressure : AppCompatActivity() {
 

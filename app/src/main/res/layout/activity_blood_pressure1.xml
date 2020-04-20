@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.self_monitering.Exercise_tracker1">
+    tools:context=".activities.self_monitering.BloodPressureActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
