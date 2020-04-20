@@ -98,7 +98,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
 //
 //
 //            }
-        showLongToast("doctor list is working")
+//        showLongToast("doctor list is working")
                 val adddoctorService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
                 val requestCall = adddoctorService.getDoctorlistbyPID(prescription_id)
 
@@ -294,7 +294,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
                         if (resp.isSuccessful) {
                             var newbody = resp.body() // Use it or ignore it
-                            Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                             val intent = intent
                             finish()
                             startActivity(intent)

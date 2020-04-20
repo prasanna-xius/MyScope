@@ -272,7 +272,7 @@ android:weightSum="2">
 <!--    android:textColorHint="@color/bg_screen1"-->
 <!--    android:textSize="15sp" />-->
 
-<!--<com.example.myscope.activities.MultiSelectionSpinner-->
+<!--<soargtechnologieschnologies.myscope.activities.MultiSelectionSpinner-->
 <!--    android:id="@+id/time_of_taken"-->
 <!--    android:layout_width="match_parent"-->
 <!--    android:layout_height="wrap_content"-->
@@ -356,7 +356,7 @@ android:weightSum="2">
 <!--    android:textColor="@color/bg_screen2"-->
 <!--    android:textSize="@dimen/dimen_15" />-->
 
-<!--<com.example.myscope.activities.MultiSelectionSpinner-->
+<!--<soargtechnologieschnologies.myscope.activities.MultiSelectionSpinner-->
 <!--    android:id="@+id/how_often_taken"-->
 <!--    android:layout_width="match_parent"-->
 <!--    android:layout_height="wrap_content"-->

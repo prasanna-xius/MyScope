@@ -1,4 +1,4 @@
-package com.example.myscope;
+package com.soargtechnologies.myscope;
 
 import org.junit.Test;
 

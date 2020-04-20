@@ -1,4 +1,4 @@
-package com.example.myscope;
+package com.soargtechnologies.myscope;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.myscope", appContext.getPackageName());
+        assertEquals("com.soargtechnologies.myscope", appContext.getPackageName());
     }
 }
