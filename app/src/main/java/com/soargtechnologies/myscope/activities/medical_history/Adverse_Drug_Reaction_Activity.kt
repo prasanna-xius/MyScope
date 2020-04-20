@@ -34,6 +34,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adverse_drug)
+
         activitiesToolbar()
         header!!.text = "Adverse Drug Reaction"
 
@@ -76,7 +77,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
         val drugName = et_drug_Name.text.toString()
         validateInput(et_drug_Name, drugName)
         if ((drugName != "") ) {
-            showLongToast("save the details")
+         //   showLongToast("save the details")
 
             sucess()
         }
@@ -115,14 +116,14 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
             override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
                 if (resp.isSuccessful) {
                     var newbody = resp.body() // Use it or ignore it
-                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+               //     Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+               //     Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
 

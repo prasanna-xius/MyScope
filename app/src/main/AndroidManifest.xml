@@ -17,17 +17,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.Contact_Us"></activity>
-        <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
+        <activity android:name=".activities.self_monitering.Bmi_recyclerView"></activity>
+        <activity android:name=".activities.self_monitering.BmiUpdate" />
+        <activity android:name=".activities.self_monitering.Cholestrol_recyclerView" />
+        <activity android:name=".activities.self_monitering.CholestrolUpdate" />
+        <activity android:name=".activities.self_monitering.Blood_pressureUpdate" />
+        <activity android:name=".activities.self_monitering.Blood_Pressure_recyclerView" />
+        <activity android:name=".activities.self_monitering.Blood_GlucoseUpdate" />
+        <activity android:name=".activities.self_monitering.Blood_Glucose_recyclerView" />
+<!--        <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" />-->
+        <activity android:name=".activities.Contact_Us" /> <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
-
         <activity android:name=".activities.ComingSoon_Activity" />
         <activity
             android:name=".activities.SliderActivity"
             android:screenOrientation="portrait" />
-
         <activity android:name=".activities.Login_Page">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -125,9 +130,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
         <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog" />
-        <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
-
-        <!--        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />-->
+        <activity android:name=".activities.prescription.Prescription_manualDrugDialog" /> <!-- <activity android:name=".activities.prescription.Prescription_AddImage_PDF" /> -->
         <activity android:name=".activities.Educational_Blog_Activity" />
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
         <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
@@ -137,8 +140,12 @@
         <activity android:name=".activities.medical_history.health_services.Post_discharge_Care_Package" />
         <activity android:name=".activities.medical_history.health_services.Prescription_Audit" />
         <activity android:name=".activities.medical_history.health_services.Drug_interaction" />
-
-        <!--        <activity android:name=".activities.Educational_Blog_Activity" />-->
+        <activity android:name=".activities.self_monitering.Blood_glucose_Monitoring" />
+        <activity android:name=".activities.self_monitering.Blood_pressure" />
+        <activity android:name=".activities.self_monitering.Bmi_self" />
+        <activity android:name=".activities.self_monitering.Cholestrol" />
+        <activity android:name=".activities.self_monitering.Emotional_state" />
+        <activity android:name=".activities.self_monitering.Exercise_tracker" /> <!-- <activity android:name=".activities.Educational_Blog_Activity" /> -->
         <activity android:name=".activities.Covid_19_Resourses_Activity" />
         <activity android:name=".activities.Covid19_Tracker_WebActivity" />
         <activity android:name=".activities.Map_Covid19_WebActivity" />
@@ -151,25 +158,26 @@
         <activity android:name=".activities.Covid_19_IFMSA_Library_Overview_Converted" />
         <activity android:name=".activities.Covid_19_Who_China_Joint_Mission_Final_Reported_Activity" />
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
 
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
-
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

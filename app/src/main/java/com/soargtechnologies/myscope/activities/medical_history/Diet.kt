@@ -67,7 +67,7 @@ class Diet : BaseActivity() {
 
                 val length = response.body()?.size
 
-                showLongToast(length.toString())
+            //    showLongToast(length.toString())
 
                 if (length!! > 0){
 
@@ -89,7 +89,7 @@ class Diet : BaseActivity() {
 
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
 
-                showLongToast("failureee")
+          //      showLongToast("failureee")
             }
         })
 
@@ -112,14 +112,15 @@ class Diet : BaseActivity() {
 
                 if (resp.isSuccessful) {
                    // Use it or ignore it
-                    Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+               //     Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
 
+                    finish()
                 } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+               //     Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+             //   Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -163,7 +164,7 @@ class Diet : BaseActivity() {
 
             }
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
-                Toast.makeText(this@Diet , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+         //       Toast.makeText(this@Diet , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -175,7 +176,7 @@ class Diet : BaseActivity() {
 
 
             val item = spinner_diet.text1.text.toString()
-            showLongToast(item)
+         //   showLongToast(item)
 
             val newDiet = Diseases()
 
@@ -199,14 +200,16 @@ class Diet : BaseActivity() {
 
                     if (response.isSuccessful)
                     {
-                        Toast.makeText(this@Diet, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+                      finish()
+                    //    Toast.makeText(this@Diet, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+
                     }
                     else {
-                        Toast.makeText(this@Diet  , "Failed at else part in update", Toast.LENGTH_SHORT).show()
+                 //       Toast.makeText(this@Diet  , "Failed at else part in update", Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                    Toast.makeText(this@Diet, "Failed to update item", Toast.LENGTH_SHORT).show()
+            //        Toast.makeText(this@Diet, "Failed to update item", Toast.LENGTH_SHORT).show()
                 }
             })
 
@@ -220,7 +223,7 @@ class Diet : BaseActivity() {
 
 
         if ((!dietS.equals("None"))) {
-            showLongToast("save details")
+     //       showLongToast("save details")
         } else {
             showLongSnackBar("Please fill the required fields")
         }

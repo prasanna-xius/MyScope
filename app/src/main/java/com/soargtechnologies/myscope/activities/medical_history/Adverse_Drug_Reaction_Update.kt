@@ -42,7 +42,7 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-        showLongToast(mobile_no.toString())
+       // showLongToast(mobile_no.toString())
 
         myCalendar = Calendar.getInstance()
         val date= DatePickerDialog.OnDateSetListener{ view, year, monthofyear, dayofmonth ->
@@ -98,14 +98,15 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
                     }
                     if (response.isSuccessful)
                     {
-                        Toast.makeText(this@Adverse_Drug_Reaction_Update, "Item  Successfully", Toast.LENGTH_SHORT).show()
+
+                    //    Toast.makeText(this@Adverse_Drug_Reaction_Update, "Item  Successfully", Toast.LENGTH_SHORT).show()
                     }
                     else {
-                        Toast.makeText(this@Adverse_Drug_Reaction_Update  , "Failed at else part in load details", Toast.LENGTH_SHORT).show()
+                    //    Toast.makeText(this@Adverse_Drug_Reaction_Update  , "Failed at else part in load details", Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
-                    Toast.makeText(this@Adverse_Drug_Reaction_Update , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+                 //   Toast.makeText(this@Adverse_Drug_Reaction_Update , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
                 }
             })
         }
@@ -133,15 +134,15 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
                     override fun onResponse(call: Call<Diseases>, response: Response<Diseases>) {
                         if (response.isSuccessful)
                         {
-                            Toast.makeText(this@Adverse_Drug_Reaction_Update, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+                           // Toast.makeText(this@Adverse_Drug_Reaction_Update, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                         finish()
                         }
                         else {
-                            Toast.makeText(this@Adverse_Drug_Reaction_Update  , "Failed at else part in update", Toast.LENGTH_SHORT).show()
+                        //    Toast.makeText(this@Adverse_Drug_Reaction_Update  , "Failed at else part in update", Toast.LENGTH_SHORT).show()
                         }
                     }
                     override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                        Toast.makeText(this@Adverse_Drug_Reaction_Update, "Failed to update item", Toast.LENGTH_SHORT).show()
+                    //    Toast.makeText(this@Adverse_Drug_Reaction_Update, "Failed to update item", Toast.LENGTH_SHORT).show()
                     }
                 })
             }
@@ -169,7 +170,7 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
         val drugName = et_drug_Name_updated.text.toString()
         validateInput(et_drug_Name_updated, drugName)
         if ((drugName != "") ) {
-            showLongToast("save the details")
+           // showLongToast("save the details")
 
           
         }

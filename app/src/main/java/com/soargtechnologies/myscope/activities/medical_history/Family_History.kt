@@ -41,7 +41,7 @@ class Family_History : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-        showLongToast(mobile_no.toString())
+    //    showLongToast(mobile_no.toString())
 
         val c = Calendar.getInstance()
         val day = c.get(Calendar.DAY_OF_MONTH)
@@ -49,7 +49,7 @@ class Family_History : BaseActivity() {
         val year = c.get(Calendar.YEAR)
         date1 = day.toString() + "/" + (month + 1) + "/" + year
 
-        showLongToast(date1.toString())
+    //    showLongToast(date1.toString())
 
 
 
@@ -79,7 +79,7 @@ class Family_History : BaseActivity() {
             if ((familyCondition != "") &&
                     (relationship != "None")) {
 
-                showLongToast("save the details")
+          //      showLongToast("save the details")
 
                 sucess()
 
@@ -120,17 +120,17 @@ class Family_History : BaseActivity() {
                 if (resp.isSuccessful) {
                     var newbody = resp.body() // Use it or ignore it
 
-                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+            //        Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+            //        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<Diseases>, t: Throwable) {
                 //finish()
 //                    Log.d("errormsgfailure ::", t.message)
 //                    Log.e("errorunderfailure:", t.message)
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+         //       Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
 
