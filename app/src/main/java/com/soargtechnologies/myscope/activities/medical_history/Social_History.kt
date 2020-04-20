@@ -128,18 +128,18 @@ class Social_History : BaseActivity() {
                                 if (resp.isSuccessful) {
                                     var newbody = resp.body() // Use it or ignore it
 
-                                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
-                                    //finish()
+                            //        Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+                                    finish()
                                 }
                                 else {
-                                    Toast.makeText(applicationContext, "Failed at posting data.", Toast.LENGTH_SHORT).show()
+                           //         Toast.makeText(applicationContext, "Failed at posting data.", Toast.LENGTH_SHORT).show()
                                 }
                             }
                             override fun onFailure(call: Call<Diseases>, t: Throwable) {
                                 //finish()
 //                    Log.d("errormsgfailure ::", t.message)
 //                    Log.e("errorunderfailure:", t.message)
-                                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                          //      Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                             }
 
 
@@ -154,22 +154,15 @@ class Social_History : BaseActivity() {
 
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
 
-                showLongToast("failure part")
+             //   showLongToast("failure part")
             }
         })
-
-
-
-
-
 
 
     }
 
 
     private fun loadDetails() {
-
-
 
 
 //        val alcoholtaken = tobaccoUsage!!.social_multi.text.toString()
@@ -220,7 +213,7 @@ class Social_History : BaseActivity() {
 
             }
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
-                Toast.makeText(this@Social_History , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+            //    Toast.makeText(this@Social_History , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -276,18 +269,18 @@ class Social_History : BaseActivity() {
                     if (response.isSuccessful)
                     {
 
-                        Toast.makeText(this@Social_History, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+                        finish()
+                 //       Toast.makeText(this@Social_History, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
 
                     }
                     else {
 
-                        Toast.makeText(this@Social_History  , "Failed to update item1", Toast.LENGTH_SHORT).show()
+                //        Toast.makeText(this@Social_History  , "Failed to update item1", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                    Toast.makeText(this@Social_History,
-                            "Failed to update item", Toast.LENGTH_SHORT).show()
+            //        Toast.makeText(this@Social_History,"Failed to update item", Toast.LENGTH_SHORT).show()
                 }
             })
 
@@ -312,7 +305,7 @@ class Social_History : BaseActivity() {
                    !drinking.equals("None") &&
                    !tobaccoUsage.equals("None"))
            {
-               showLongToast("save the details")
+           //    showLongToast("save the details")
            }
         else{
                showLongSnackBar("Please fill the required fields")
