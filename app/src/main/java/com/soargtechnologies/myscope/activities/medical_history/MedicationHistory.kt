@@ -168,8 +168,8 @@ class MedicationHistory : BaseActivity() {
                 newmedication.mobile_no = mobile_no!!
                 newmedication.medication_saved_on=datesetvalue()
 
-                Toast.makeText(applicationContext, newmedication.how_often_taken + " " + newmedication.formulation
-                        + " " + newmedication.isprescribed + " " + newmedication.doseunit, Toast.LENGTH_LONG).show()
+//                Toast.makeText(applicationContext, newmedication.how_often_taken + " " + newmedication.formulation
+//                        + " " + newmedication.isprescribed + " " + newmedication.doseunit, Toast.LENGTH_LONG).show()
 
                
 

@@ -64,7 +64,7 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
 //            val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
             val position: Int? = intent.getIntExtra("position", 0)
-            showLongToast(position.toString())
+//            showLongToast(position.toString())
 
             loadDetails(mobile_no.toString(), position!!)
 

@@ -125,7 +125,7 @@ class AllergyUpdate_Activity : BaseActivity() {
         val allergyService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
         val requestCall = allergyService.getAllergyByid(mobile_no.toString())
 
-        Toast.makeText(applicationContext, "data id ::" + " " + id, Toast.LENGTH_LONG).show()
+//        Toast.makeText(applicationContext, "data id ::" + " " + id, Toast.LENGTH_LONG).show()
 
         requestCall.enqueue(object : retrofit2.Callback<List<AllergyDataClass>> {
 
@@ -160,7 +160,7 @@ class AllergyUpdate_Activity : BaseActivity() {
                         }!!
 
 
-                        Toast.makeText(applicationContext, "sucess::" + " " + destination.toString(), Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "sucess::", Toast.LENGTH_LONG).show()
                     }
 
                 } else {
