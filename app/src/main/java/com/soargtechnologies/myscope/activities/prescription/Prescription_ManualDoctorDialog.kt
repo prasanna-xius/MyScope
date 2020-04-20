@@ -65,7 +65,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
         model_name = sharedpreferences!!.getString("model_name",null)!!
         header!!.text = "Prescription-" + model_name
 
-        showLongToast(mobile_no.toString())
+//        showLongToast(mobile_no.toString())
 
 //        mobile_no = "9505505093"
         fab.setOnClickListener {
@@ -135,10 +135,10 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
                     (prescribed_is != "None")
                     && (hospitalname != "")
                     && (medicalcondition != "")) {
-                showLongToast("save the details")
+//                showLongToast("save the details")
             } else {
 
-                showLongSnackBar("Please fill the required fields")
+//                showLongSnackBar("Please fill the required fields")
 
             }
             validate(isprescribed!!)

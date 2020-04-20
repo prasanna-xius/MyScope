@@ -157,7 +157,7 @@ class SignUp_Page : BaseActivity(), View.OnClickListener {
 
                 override fun onResponse(call: Call<SignupResponse>, resp: Response<SignupResponse>) {
                     if (resp.isSuccessful && !resp.equals("")) {
-                        showShortToast("Api call is working")
+//                        showShortToast("Api call is working")
                         navigateToActivity(Intent(applicationContext, Login_Page::class.java))
                     }
                 }

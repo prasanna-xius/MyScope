@@ -25,10 +25,12 @@
         <activity android:name=".activities.self_monitering.Blood_Pressure_recyclerView" />
         <activity android:name=".activities.self_monitering.Blood_GlucoseUpdate" />
         <activity android:name=".activities.self_monitering.Blood_Glucose_recyclerView" />
-<!--        <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" />-->
+        <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" />
         <activity android:name=".activities.Contact_Us" /> <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
         <activity android:name=".activities.ComingSoon_Activity" />
+<!--        <activity android:name=".activities.Facebook_Activity" />-->
+
         <activity
             android:name=".activities.SliderActivity"
             android:screenOrientation="portrait" />
@@ -158,6 +160,7 @@
         <activity android:name=".activities.Covid_19_IFMSA_Library_Overview_Converted" />
         <activity android:name=".activities.Covid_19_Who_China_Joint_Mission_Final_Reported_Activity" />
 
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -178,6 +181,7 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
