@@ -95,11 +95,15 @@ interface PrescriptionInterface {
     fun getAllprofiledata(@Path("mobile_no") mobile_no: String?): Call<List<ProfileDataClass>>
 
 
+
     @Multipart
     @POST("preupload")
-    fun uploadImage(
-            @Part file: MultipartBody.Part?, @Part("filename") name: RequestBody?
-    ): Call<String>
+    fun uploadImage(@Part p_upload: MultipartBody.Part,
+                    @Part("mobile_no") mobile_no: RequestBody,
+                    @Part("upload_saved_on") upload_saved_on:RequestBody
+    ):
+            Call<PrescriptionDataClass>
 
-
+    @GET("uploadedlist")
+    fun getImageDetails(): Call<List<PrescriptionDataClass>>
 }
