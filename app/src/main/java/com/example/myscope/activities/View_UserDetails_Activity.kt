@@ -310,7 +310,7 @@ class View_UserDetails_Activity : BaseActivity() {
                     last_name_get!!.setText(userprofileget.last_name)
                     mobile_number_get!!.setText(userprofileget.mobile_no)
                     email_get!!.setText(userprofileget.email)
-                    Toast.makeText(applicationContext, "API success" + userprofileget!!.first_name, Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(applicationContext, "API success" + userprofileget!!.first_name, Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
@@ -342,7 +342,7 @@ class View_UserDetails_Activity : BaseActivity() {
             override fun onResponse(call: Call<ProfileDataClass>, resp: Response<ProfileDataClass>) {
 
                 if (resp.isSuccessful) {
-                    Toast.makeText(applicationContext, "Updated Successfully" , Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(applicationContext, "Updated Successfully" , Toast.LENGTH_SHORT).show()
                     signupUpdateapi();
                     val intent = Intent(this@View_UserDetails_Activity,Navigation_Drawer_Blogs::class.java)
                     startActivity(intent)
@@ -378,7 +378,7 @@ class View_UserDetails_Activity : BaseActivity() {
             override fun onResponse(call: Call<ProfileDataClass>, resp: Response<ProfileDataClass>) {
 
                 if (resp.isSuccessful) {
-                    Toast.makeText(applicationContext, "Data added", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(applicationContext, "Data added", Toast.LENGTH_SHORT).show()
                 }
             }
 

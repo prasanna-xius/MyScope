@@ -159,8 +159,8 @@
                     android:orientation="horizontal">
 
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/btn_facebook1"
+                    <com.facebook.login.widget.LoginButton
+                        android:id="@+id/btn_facebook"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_45"
                         android:layout_marginLeft="@dimen/dimen_8"

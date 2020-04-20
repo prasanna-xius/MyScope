@@ -26,7 +26,7 @@ class MobileChange_Activity : BaseActivity(), View.OnClickListener {
                     onSignupFailed()
                     return
                 }
-                showLongToast("Please check your Email and change Mobile Number")
+//                showLongToast("Please check your Email and change Mobile Number")
                 navigateToActivity(Intent(applicationContext,Login_Page::class.java))
             }
         }

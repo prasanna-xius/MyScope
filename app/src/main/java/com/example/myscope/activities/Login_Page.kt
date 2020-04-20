@@ -8,29 +8,89 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
 import com.google.firebase.auth.FirebaseAuth
 import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.services.ServiceBuilder
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import kotlinx.android.synthetic.main.login_page_main.*
-import kotlinx.android.synthetic.main.login_page_main.mobile_layout
 import retrofit2.Call
 import retrofit2.Callback
+import java.util.*
+
 
 class Login_Page : BaseActivity(), View.OnClickListener {
+    var loginButton: LoginButton? = null
 
-    var btn_facebook: TextView? = null
     var btn_google: TextView? = null
     var mobileNumber: String? = null
     var alertdialog: AlertDialog? = null
 
+    private var callbackManager: CallbackManager? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_page_main)
+
         btn_otp_send!!.setOnClickListener(this)
         change_mobile_btn!!.setOnClickListener(this)
         btn_register!!.setOnClickListener(this)
+        btn_facebook!!.setOnClickListener(this)
+
+        loginButton = findViewById<View>(R.id.btn_facebook) as LoginButton
+        callbackManager = CallbackManager.Factory.create()
+//        loginButton!!.setReadPermissions(Arrays.asList("email", "public_profile"))
+
+//        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+        loginButton!!.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
+            override fun onSuccess(loginResult: LoginResult?) {
+                navigateToActivity(Intent(applicationContext,Navigation_Drawer_Blogs::class.java))
+            }
+            override fun onCancel() {}
+            override fun onError(error: FacebookException) {}
+        })
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        callbackManager!!.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+
+
+//    var tokenTracker: AccessTokenTracker = object : AccessTokenTracker() {
+//        override fun onCurrentAccessTokenChanged(oldAccessToken: AccessToken, currentAccessToken: AccessToken) {
+//            if (currentAccessToken == null) {
+////                Toast.makeText(this@Login_Page, "User Loout", Toast.LENGTH_SHORT).show()
+//                navigateToActivity(Intent(applicationContext,Navigation_Drawer_Blogs::class.java))
+//
+//            } else {
+//                loaduserprofile(currentAccessToken)
+//            }
+//        }
+//    }
+//
+//    private fun loaduserprofile(newAccesToken: AccessToken) {
+//        val request = GraphRequest.newMeRequest(newAccesToken) { `object`, response ->
+//            try {
+//                val first_name = `object`.getString("first_name")
+//                val last_name = `object`.getString("last_name")
+//                val email = `object`.getString("email")
+//                val id = `object`.getString("id")
+//            } catch (e: JSONException) {
+//                e.printStackTrace()
+//            }
+//        }
+//        val parameters = Bundle()
+//        parameters.putString("fileds", "first_name,last_name,email,id")
+//        request.parameters = parameters
+//        request.executeAsync()
+//    }
 
     override fun onClick(v: View) {
         when (v.id) {
@@ -54,6 +114,11 @@ class Login_Page : BaseActivity(), View.OnClickListener {
 
                 navigateToActivity(Intent(applicationContext, MobileChange_Activity::class.java))
             }
+//            R.id.btn_facebook -> {
+//
+//
+////                navigateToActivity(Intent(applicationContext,Facebook_Activity::class.java))
+//            }
         }
     }
 
