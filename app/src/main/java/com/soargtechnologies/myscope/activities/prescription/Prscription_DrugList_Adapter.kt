@@ -37,7 +37,7 @@ class Prscription_DrugList_Adapter(private val prescriptionDrugList: List<Prescr
 
                 val  context = v?.context
                 val intent = Intent(context, PrescriptionDrugListUpdate::class.java)
-                Toast.makeText(context,"holder data"+v,Toast.LENGTH_LONG).show()
+//                Toast.makeText(context,"holder data"+v,Toast.LENGTH_LONG).show()
                 var bundle = Bundle()
                 bundle.putInt("position" , position)
                 bundle.putInt("drug_id" , prescriptionDrugList[position].drug_id)

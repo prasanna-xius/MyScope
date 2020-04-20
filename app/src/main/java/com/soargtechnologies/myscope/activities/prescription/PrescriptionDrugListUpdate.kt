@@ -114,11 +114,11 @@ class PrescriptionDrugListUpdate : BaseActivity() {
                     val dose_unit_take = doseunitadapter.getPosition(prescriptiondrug.dose_unit);
                     dose_unit_update.setSelection(dose_unit_take);
 
-                    Toast.makeText(applicationContext, "API success" + prescriptiondrug!!.formulation, Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(applicationContext, "API success" + prescriptiondrug!!.formulation, Toast.LENGTH_SHORT).show()
                     how_often_taken_select!!.text1?.setText(prescriptiondrug.how_often_taken)
                     time_of_taken_select!!.prescription_multi?.setText(prescriptiondrug!!.time)
                 } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -131,11 +131,11 @@ class PrescriptionDrugListUpdate : BaseActivity() {
 
 
             val item = formulationid!!.text1.text.toString()
-            showLongToast((item))
+//            showLongToast((item))
             val timeitem = time_of_taken_select!!.prescription_multi.text.toString()
-            showLongToast((timeitem))
+//            showLongToast((timeitem))
             val howoftenitem = how_often_taken_select!!.text1.text.toString()
-            showLongToast((howoftenitem))
+//            showLongToast((howoftenitem))
             val newPrescriptionDrug = PrescriptionDataClass()
             if (!item.equals(null)) {
                 newPrescriptionDrug.formulation = item
@@ -143,7 +143,7 @@ class PrescriptionDrugListUpdate : BaseActivity() {
                 formulation_id_update.setSelection(formulation_name);
             } else {
                 newPrescriptionDrug.formulation = formulationid?.selectedItem.toString()
-                showLongToast(newPrescriptionDrug.formulation!!)
+//                showLongToast(newPrescriptionDrug.formulation!!)
 
 //                val formulation_name = formulationadapter.getPosition(newPrescriptionDrug!!.formulation);
 //                formulation_id_update.setSelection(formulation_name);
@@ -191,7 +191,7 @@ class PrescriptionDrugListUpdate : BaseActivity() {
 
                         if (resp.isSuccessful) {
                             var newbody = resp.body() // Use it or ignore it
-                            Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                             val intent = Intent(applicationContext, Prescription_manualDrugDialog::class.java)
                             val bundle = Bundle()
                             bundle.putInt("prescription_id", prescription_idupdate)

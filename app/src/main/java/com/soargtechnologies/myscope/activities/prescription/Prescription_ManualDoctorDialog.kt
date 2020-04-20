@@ -65,7 +65,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
         model_name = sharedpreferences!!.getString("model_name",null)!!
         header!!.text = "Prescription-" + model_name
 
-        showLongToast(mobile_no.toString())
+//        showLongToast(mobile_no.toString())
 
 //        mobile_no = "9505505093"
         fab.setOnClickListener {
