@@ -25,6 +25,28 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
 
     val pageUrl_CovidMap = "https://coronavirus.jhu.edu/map.html"
 
+    val pageUrl_Wiley_Library = "https://novel-coronavirus.onlinelibrary.wiley.com/"
+
+    val pageUrl_Centers_Cdc = "https://www.cdc.gov/mmwr/Novel_Coronavirus_Reports.html"
+
+    val pageUrl_NewEngland_Journal_Medicine = "https://www.nejm.org/coronavirus"
+
+    val pageUrl_CovidJama_Network = "https://jamanetwork.com/journals/jama/pages/coronavirus-alert"
+
+    val pageUrl_Covid_Lancet = "https://www.thelancet.com/coronavirus"
+
+    val pageUrl_Covid_Cell = "https://www.cell.com/2019-nCOV"
+
+    val pageUrl_Covid_British_Medical = "https://www.bmj.com/coronavirus"
+
+    val pageUrl_Covid_Sciencemag = "https://www.sciencemag.org/collections/coronavirus"
+
+    val pageUrl_Elsevier = "https://www.elsevier.com/connect/coronavirus-information-center"
+
+    val pageUrl_Covid_Oxward_Acadamic = "https://academic.oup.com/journals/pages/coronavirus"
+
+    val pageUrl_Covid_Nature = "https://www.nature.com/collections/hajgidghjb"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.covid_resourses_main)
@@ -34,6 +56,19 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
 
         covid19_tracker.setOnClickListener(this)
         map_covid19.setOnClickListener(this)
+
+        wiley_library_covid19.setOnClickListener(this)
+        cdc_centers_covid19.setOnClickListener(this)
+        newengland_medicine_covid19.setOnClickListener(this)
+        jama_network_covid19.setOnClickListener(this)
+        lancet_covid19.setOnClickListener(this)
+        cell_covid19.setOnClickListener(this)
+        medical_journey_covid19.setOnClickListener(this)
+        science_covid19.setOnClickListener(this)
+        elsevier_network_covid19.setOnClickListener(this)
+        oxward_acadamics_covid19.setOnClickListener(this)
+        nature_covid19.setOnClickListener(this)
+
         val recyclerView_image = findViewById(R.id.recycler_view_images) as RecyclerView
         // set a GridLayoutManager with default vertical orientation and 2 number of columns
         // set a GridLayoutManager with default vertical orientation and 2 number of columns
@@ -102,14 +137,55 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
         when (v.id) {
             R.id.covid19_tracker -> {
                 val intent = Covid19_Tracker_WebActivity.newIntent(this, pageUrl_Covidtracker)
-
                 startActivity(intent)
             }
             R.id.map_covid19 -> {
                 val intent = Map_Covid19_WebActivity.newIntent1(this, pageUrl_CovidMap)
-
                 startActivity(intent)
             }
+            R.id.wiley_library_covid19 -> {
+                val intent = Willey_Library_Covid19_WebActivity.newIntent1(this, pageUrl_Wiley_Library)
+                startActivity(intent)
+            }
+            R.id.cdc_centers_covid19 -> {
+                val intent = CDC_Centers_Covid19_WebActivity.newIntent1(this, pageUrl_Centers_Cdc)
+                startActivity(intent)
+            }
+            R.id.newengland_medicine_covid19 -> {
+                val intent = Newzeland_Medicine_Covid19_WebActivity.newIntent1(this, pageUrl_NewEngland_Journal_Medicine)
+                startActivity(intent)
+            }
+            R.id.jama_network_covid19 -> {
+                val intent = Jama_Network_Covid19_WebActivity.newIntent1(this, pageUrl_CovidJama_Network)
+                startActivity(intent)
+            }
+            R.id.lancet_covid19 -> {
+                val intent = Lancet_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Lancet)
+                startActivity(intent)
+            }
+            R.id.cell_covid19 -> {
+                val intent = Cell_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Cell)
+                startActivity(intent)
+            }
+            R.id.medical_journey_covid19 -> {
+                val intent = Medical_Journey_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_British_Medical)
+                startActivity(intent)
+            }
+            R.id.science_covid19 -> {
+                val intent = Science_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Sciencemag)
+                startActivity(intent)
+            }
+            R.id.elsevier_network_covid19 -> {
+                val intent = Elsevier_Network_Covid19_WebActivity.newIntent1(this, pageUrl_Elsevier)
+                startActivity(intent)
+            }
+            R.id.oxward_acadamics_covid19 -> {
+                val intent = Oxward_Acadamic_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Oxward_Acadamic)
+                startActivity(intent)
+            }R.id.nature_covid19 -> {
+            val intent = Nature_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Nature)
+            startActivity(intent)
+        }
 
         }
     }

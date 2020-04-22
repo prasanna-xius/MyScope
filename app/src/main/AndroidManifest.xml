@@ -22,7 +22,7 @@
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
 
         <activity android:name=".activities.ComingSoon_Activity" />
-<!--        <activity android:name=".activities.Facebook_Activity" />-->
+        <!--        <activity android:name=".activities.Facebook_Activity" />-->
 
         <activity
             android:name=".activities.SliderActivity"
@@ -144,28 +144,48 @@
         <activity android:name=".activities.Covid_19_Resourses_Activity" />
         <activity android:name=".activities.Covid19_Tracker_WebActivity" />
         <activity android:name=".activities.Map_Covid19_WebActivity" />
+
+        <activity android:name=".activities.Willey_Library_Covid19_WebActivity" />
+        <activity android:name=".activities.CDC_Centers_Covid19_WebActivity" />
+        <activity android:name=".activities.Newzeland_Medicine_Covid19_WebActivity" />
+        <activity android:name=".activities.Jama_Network_Covid19_WebActivity" />
+        <activity android:name=".activities.Lancet_Covid19_WebActivity" />
+        <activity android:name=".activities.Cell_Covid19_WebActivity" />
+        <activity android:name=".activities.Medical_Journey_Covid19_WebActivity" />
+        <activity android:name=".activities.Science_Covid19_WebActivity" />
+        <activity android:name=".activities.Elsevier_Network_Covid19_WebActivity" />
+        <activity android:name=".activities.Oxward_Acadamic_Covid19_WebActivity" />
+        <activity android:name=".activities.Nature_Covid19_WebActivity" />
+
+
         <activity android:name=".activities.Full_Image_Activity" />
         <activity android:name=".activities.Guidelines_Activity" />
         <activity android:name=".activities.Courses_Training_Activity" />
+
         <activity android:name=".activities.News_Updates_Activity" />
         <activity android:name=".activities.Covid_19_Update_Activity" />
         <activity android:name=".activities.Covid_19_Guidelines_HomeQuarantine" />
         <activity android:name=".activities.Covid_19_IFMSA_Library_Overview_Converted" />
         <activity android:name=".activities.Covid_19_Who_China_Joint_Mission_Final_Reported_Activity" />
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+        <activity android:name=".activities.Facebook_Activity" />
 
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>

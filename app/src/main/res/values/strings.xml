@@ -243,7 +243,7 @@
     <string name="start_date">Start Date</string>
     <string name="stop_date">Stop Date</string>
     <string name="medical_condition">Medical Condition</string>
-    <string name="is_prescribed">Is prescribed?</string>
+    <string name="is_prescribed">Is prescribed? <font color='#ff0000'>*</font></string>
     <string name="prescription_note">Note</string>
 
     <string name="title_activity_welcome">Home Screen</string>
@@ -268,7 +268,7 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
     <string name="hospital_name">Hospital Name </string>
-    <string name="doctor_name">Doctor Name </string>
+    <string name="doctor_name">Doctor Name<font color='#ff0000'>*</font> </string>
     <string name="prescription_manual">Prescription</string>
 
 
