@@ -35,6 +35,13 @@ import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
+
+
 
 class MedicationHistory : BaseActivity() {
 
@@ -68,6 +75,10 @@ class MedicationHistory : BaseActivity() {
     var textview_Enddate: TextView? = null
     var cal_StartMh = Calendar.getInstance()
     var cal_EndMh = Calendar.getInstance()
+
+    var datestart = Calendar.getInstance()
+    var dateend = Calendar.getInstance()
+
     internal var spinnerMedication1: Spinner? = null
     internal var spinnerMedication2: Spinner? = null
     internal var spinnerMedication3: Spinner? = null
@@ -84,7 +95,7 @@ class MedicationHistory : BaseActivity() {
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.medicationhistory)
+        setContentView(com.soargtechnologies.myscope.R.layout.medicationhistory)
 
         activitiesToolbar()
         header!!.text = "Medication History"
@@ -160,7 +171,7 @@ class MedicationHistory : BaseActivity() {
                 newmedication.reason = et_reason.text.toString().trim()
                 newmedication.strength = et_dose_strength.text.toString().trim()
                 newmedication.startdate = textviewStartdate_medicalHistory.text.toString().trim()
-                newmedication.enddate = textviewEnddate_MH.text.toString().trim()
+               newmedication.enddate = textviewEnddate_MH.text.toString().trim()
                 newmedication.how_often_taken = spinner_how_often_taken.selectedItemsAsString
                 newmedication.formulation =spinnerMedication2!!.selectedItem.toString()
                 newmedication.isprescribed = spinnerMedication4!!.selectedItem.toString().trim()
@@ -290,22 +301,41 @@ class MedicationHistory : BaseActivity() {
 
     private fun validateDate(textviewStartdate: TextView, textviewEnddate: TextView, b: Boolean): Boolean {
         if (!textviewStartdate.text.toString().equals("") && !textviewEnddate.text.toString().equals("")) {
-            textviewStartdate.setCompoundDrawables(null, null, null, null)
-            textviewEnddate.setCompoundDrawables(null, null, null, null)
-            val startDate0 = SimpleDateFormat("dd/MM/yyyy").format(Date(textviewStartdate.text.toString()))
-            val endDate0 = SimpleDateFormat("dd/MM/yyyy").format(Date(textviewEnddate.text.toString()))
-            if (startDate0 > endDate0) {
+            //textviewStartdate.setCompoundDrawables(null, null, null, null)
+            //textviewEnddate.setCompoundDrawables(null, null, null, null)
+            val startDatefrmt = SimpleDateFormat("dd/MM/yyyy",Locale.US)
+            var startdate1 =startDatefrmt?.format(cal_StartMh.getTime())
+            val endDatefrmt = SimpleDateFormat("dd/MM/yyyy",Locale.US)
+            var enddate1 =  endDatefrmt?.format(cal_EndMh.getTime())
+
+
+            if (startdate1.compareTo(enddate1)>0) {
                 // date in text view is current date
                 textviewEnddate.setText("")
                 //showLongSnackBar("Start date cannot be after end date")
                 textview_Enddate!!.setError("Wrong Date Selected")
                 return false;
             }
-        } else {
-            //val snack = Snackbar.make(textviewEnddate, "Wrong Date Selected.", Snackbar.LENGTH_LONG)
-            //snack.show()
-            return false
+            if (startdate1.compareTo(enddate1)<0) {
+                // date in text view is current date
+                //textviewEnddate.setText("")
+                //showLongSnackBar("Start date cannot be after end date")
+                textview_Enddate!!.setError(null)
+                return true;
+            }
+            if (startdate1.compareTo(enddate1)==0) {
+                // date in text view is current date
+                //textviewEnddate.setText("")
+                //showLongSnackBar("Start date cannot be after end date")
+                textview_Enddate!!.setError(null)
+                return true;
+            }
+            else{
+                textview_Enddate!!.setError(null)
+                return true;
+            }
         }
+
         return true
     }
 
@@ -328,85 +358,5 @@ class MedicationHistory : BaseActivity() {
 
 }
 
-
-    /*override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
-        //sprOneItem = parent?.getItemAtPosition(view) as String?
-
-        //val posSpnrOne = spinnerMedication1!!.getSelectedItemPosition()
-        val posSpnrtwo = spinnerMedication2!!.getSelectedItemPosition()
-        val posSpnrthree = spinnerMedication3!!.getSelectedItemPosition()
-        val posSpnrfour = spinnerMedication4!!.getSelectedItemPosition()
-
-        (view as TextView).setTextColor(Color.parseColor("#2196F3"))
-
-        when (parent?.id) {
-            R.id.spinner_how_often_taken -> {
-
-
-                if (isSpinnerOneInitial) {
-                    isSpinnerOneInitial = false;
-                    //Toast.makeText(this, "select item", Toast.LENGTH_LONG).show()
-                }
-                if (!isSpinnerOneInitial) {
-
-                    // Toast.makeText(this,"selected item"+parent?.getItemAtPosition(position),Toast.LENGTH_LONG).show()
-
-//                    sprOneItem = parent?.getItemAtPosition(position) as String?
-                    sprOneItem = spinner_how_often_taken.text1.text.toString()
-                    //Toast.makeText(this, "selected item" + sprOneItem, Toast.LENGTH_LONG).show()
-                }
-            }
-            R.id.spinner_formulation -> {
-
-
-                if (isSpinnertwoInitial) {
-                    isSpinnertwoInitial = false;
-                    //Toast.makeText(this, "select item", Toast.LENGTH_LONG).show()
-                }
-                if (!isSpinnertwoInitial && posSpnrtwo != 0) {
-
-                    // Toast.makeText(this,"selected item"+parent?.getItemAtPosition(position),Toast.LENGTH_LONG).show()
-
-                    sprTwoItem = parent?.getItemAtPosition(position) as String?
-                    // Toast.makeText(this, "selected item" + sprTwoItem, Toast.LENGTH_LONG).show()
-                }
-
-            }
-
-            R.id.spinner_dose_unit -> {
-
-
-                if (isSpinnerThreeInitial) {
-                    isSpinnerThreeInitial = false;
-                    //Toast.makeText(this, "select item", Toast.LENGTH_LONG).show()
-                }
-                if (!isSpinnerThreeInitial && posSpnrthree != 0) {
-
-                    // Toast.makeText(this,"selected item"+parent?.getItemAtPosition(position),Toast.LENGTH_LONG).show()
-
-                    sprThreeItem = parent?.getItemAtPosition(position) as String?
-                    //Toast.makeText(this, "selected item" + sprThreeItem, Toast.LENGTH_LONG).show()
-                }
-
-            }
-
-            R.id.spinner_is_prescribed -> {
-
-
-                if (isSpinnerFourInitial) {
-                    isSpinnerFourInitial = false;
-                    //Toast.makeText(this, "select item", Toast.LENGTH_LONG).show()
-                }
-                if (!isSpinnerFourInitial && posSpnrfour != 0) {
-
-                    // Toast.makeText(this,"selected item"+parent?.getItemAtPosition(position),Toast.LENGTH_LONG).show()
-
-                    sprFourItem = parent?.getItemAtPosition(position) as String?
-                    //Toast.makeText(this, "selected item" + sprFourItem, Toast.LENGTH_LONG).show()
-                }
-
-            }
-        }*/
 
 
