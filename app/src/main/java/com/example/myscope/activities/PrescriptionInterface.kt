@@ -61,9 +61,10 @@ interface PrescriptionInterface {
     fun addDrug(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
 
     @Multipart
+//    @Headers("Content-Type: application/json")
     @POST("preupload")
     fun uploadImage(@Part file: MultipartBody.Part,
-                    @Part("mobile_no") mobile_no: RequestBody):
+                    @Part("mobile_no") mobile_no: RequestBody,@Part ("upload_saved_on") upload_saved_on:String):
             Call<PrescriptionDataClass>
 
     ///*@Multipart
