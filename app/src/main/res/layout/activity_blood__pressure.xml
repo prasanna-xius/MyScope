@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:anroid="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/colorWhite"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -15,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/bmi1"
+        android:text="@string/blood_pressure"
         android:textColor="@color/bg_screen2"
         android:textSize="30sp" />
 
@@ -35,7 +34,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/date_of_bmi_update"
+            android:id="@+id/date_of_bp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -59,16 +58,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/weight"
+            android:text="@string/systolic"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/weight_bmi_update"
+            android:id="@+id/et_systolic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/kgs"
+            android:hint="@string/systolic_units"
             android:background="@drawable/border_bg"
             android:padding="@dimen/dimen_4"
             android:inputType="number"
@@ -88,16 +87,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/height"
+            android:text="@string/diastolic"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/height_bmi_update"
+            android:id="@+id/et_diastolic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/height_et"
+            android:hint="@string/systolic_units"
             android:background="@drawable/border_bg"
             android:padding="@dimen/dimen_4"
             android:inputType="number"
@@ -116,16 +115,44 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/bmi1"
+            android:text="@string/Pulse"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/bmi1_update"
+        <EditText
+            android:id="@+id/et_pulse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/bmi_attr"
+            android:hint="@string/heart_unit"
+            android:background="@drawable/border_bg"
+            android:padding="@dimen/dimen_4"
+            android:inputType="number"
+            android:textColor="@color/bg_screen2"
+            android:textColorHint="@color/bg_screen2"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/heart"
+            android:textColor="@color/bg_screen2"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_heart_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/heart_unit"
             android:background="@drawable/border_bg"
             android:padding="@dimen/dimen_4"
             android:inputType="number"
@@ -134,6 +161,31 @@
             android:textSize="16sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/irregular_heartbeats"
+            android:textColor="@color/bg_screen2"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinner_irregular_heartbeats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:popupBackground="@color/colorWhite"
+            android:background="@drawable/edittext_border"
+            android:padding="@dimen/dimen_4"/>
+
+    </LinearLayout>
 
 
 
@@ -152,7 +204,7 @@
             android:textColor="@color/bg_screen2"
             android:textSize="16dp" />
         <EditText
-            android:id="@+id/notes_bmi_update"
+            android:id="@+id/notes_blood_pressure"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_75"
             android:layout_weight="1"
@@ -166,7 +218,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_bmi_update"
+        android:id="@+id/btn_blood_pressure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -175,6 +227,6 @@
         android:layout_marginTop="@dimen/dimen_10"
         android:layout_marginLeft="@dimen/dimen_10"
         android:layout_marginRight="@dimen/dimen_10"
-        android:text="@string/update"
+        android:text="@string/save"
         android:textSize="16sp" />
 </LinearLayout>

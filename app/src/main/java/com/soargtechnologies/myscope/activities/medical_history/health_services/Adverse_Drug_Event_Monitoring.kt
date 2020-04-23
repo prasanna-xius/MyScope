@@ -12,10 +12,6 @@ class Adverse_Drug_Event_Monitoring : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adverse__drug__event__monitoring)
 
-        btn_adverse_drug_event_monitoring.setOnClickListener {
 
-            checkbox_adverse_drug_event.setChecked(true)
-            finish()
-        }
     }
 }

@@ -71,7 +71,7 @@ class Diet : BaseActivity() {
 
                 if (length!! > 0){
 
-//                    showLongToast("successful")
+                    showLongToast("successful")
 
                     loadDetails()
 
@@ -89,7 +89,7 @@ class Diet : BaseActivity() {
 
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
 
-          //      showLongToast("failureee")
+              showLongToast("failureee")
             }
         })
 
@@ -100,6 +100,7 @@ class Diet : BaseActivity() {
         val newDiet = Diseases()
 
         newDiet.diet = spinner_diet!!.selectedItem.toString()
+        newDiet.spl_diet_notes = notes_diet!!.text.toString().trim()
         newDiet.diet_saved_on = datesetvalue()
 
         newDiet.mobile_no = mobile_no!!
@@ -144,8 +145,6 @@ class Diet : BaseActivity() {
 
                 val destination = response.body()
                 if(destination!!.isEmpty()){
-                    btn_diet_updated.visibility = View.GONE
-                    btn_diet.visibility = View.VISIBLE
                 }
 
                 val diet = destination?.first()
@@ -156,15 +155,15 @@ class Diet : BaseActivity() {
                 diet?.let {
 
                     spinner_diet?.text1?.setText(diet.diet)
-                    btn_diet_updated.visibility = View.VISIBLE
-                    btn_diet.visibility = View.GONE
+                    notes_diet.setText(diet.spl_diet_notes)
+
 
                     initUpdateButton()
                 }
 
             }
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
-         //       Toast.makeText(this@Diet , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+              Toast.makeText(this@Diet , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -188,6 +187,7 @@ class Diet : BaseActivity() {
             }
 
             newDiet.diet_updated_on = datesetvalue()
+            newDiet.spl_diet_notes = notes_diet!!.text.toString().trim()
             newDiet.mobile_no = mobile_no
 
 
@@ -201,15 +201,15 @@ class Diet : BaseActivity() {
                     if (response.isSuccessful)
                     {
                       finish()
-                    //    Toast.makeText(this@Diet, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+                      Toast.makeText(this@Diet, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
 
                     }
                     else {
-                 //       Toast.makeText(this@Diet  , "Failed at else part in update", Toast.LENGTH_SHORT).show()
+                       Toast.makeText(this@Diet  , "Failed at else part in update", Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<Diseases>, t: Throwable) {
-            //        Toast.makeText(this@Diet, "Failed to update item", Toast.LENGTH_SHORT).show()
+                  Toast.makeText(this@Diet, "Failed to update item", Toast.LENGTH_SHORT).show()
                 }
             })
 

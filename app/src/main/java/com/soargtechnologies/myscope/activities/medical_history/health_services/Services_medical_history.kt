@@ -19,6 +19,7 @@ import com.soargtechnologies.myscope.activities.services.Disease_service
 import com.soargtechnologies.myscope.activities.services.ServiceBuilder
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.google.android.gms.security.ProviderInstaller
+import com.soargtechnologies.myscope.activities.Navigation_Drawer_Blogs
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.services_updated.*
 import retrofit2.Call
@@ -347,6 +348,22 @@ return false
                 if (resp.isSuccessful) {
                     var newbody = resp.body() // Use it or ignore it
 
+                    val builder = AlertDialog.Builder(this@Services_medical_history)
+
+                    builder.setTitle(R.string.dialogTitle)
+
+
+                    builder.setMessage("These Services are successfully placed")
+
+                    builder.setPositiveButton("OK") { dialogInterface, which ->
+
+                        val intent = Intent(this@Services_medical_history, Navigation_Drawer_Blogs::class.java)
+                        startActivity(intent)
+                    }
+                    val alertDialog: AlertDialog = builder.create()
+                    // Set other dialog properties
+                    alertDialog.setCancelable(false)
+                    alertDialog.show()
             //        Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
                     //finish()
                 } else {

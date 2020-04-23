@@ -71,6 +71,7 @@
     <!--Diet-->
     <string name="diet_title">DIET</string>
     <string name="diet">DIET<font color='#ff0000'>*</font></string>
+    <string name="diet_notes">Special Diet Notes</string>
     <!--Diet-->
     <!--MedicalHistoryModelActivity-->
     <string name="allergy">Allergy</string>
@@ -132,39 +133,48 @@
     <string name="subject">Subject<font color='#a4c639'>*</font></string>
 
     <!--Blood glucose -->
-    <string name="blood_glucose"> Blood Glucose</string>
-    <string name="date">Date</string>
-    <string name="test">Test </string>
+    <string name="blood_glucose"> Blood Glucose </string>
+    <string name="date">Date  <font color='#a4c639'>*</font></string>
+    <string name="test">Test  <font color='#a4c639'>*</font> </string>
     <string name="date_of_test">(dd/mm/yyyy) </string>
-    <string name="test_result">Test Result</string>
+    <string name="test_result">Test Result <font color='#a4c639'>*</font></string>
     <string name="test_units">(mg/dl)</string>
 
 
     <!--Blood pressure -->
     <string name="blood_pressure">Blood Pressure</string>
-    <string name="systolic">Systolic (Upper)</string>
-    <string name="diastolic">Diastolic (Lower) </string>
+    <string name="systolic">Systolic (Upper) <font color='#a4c639'>*</font></string>
+    <string name="diastolic">Diastolic (Lower)  <font color='#a4c639'>*</font> </string>
     <string name="systolic_units">mmHg </string>
-    <string name="Pulse">Pulse/min</string>
-    <string name="heart">Heart rate</string>
+    <string name="Pulse">Pulse/min  <font color='#a4c639'>*</font></string>
+    <string name="heart">Heart rate  <font color='#a4c639'>*</font></string>
     <string name="heart_unit">(bpm)</string>
-    <string name="irregular_heartbeats">Irregular heartbeats?</string>
+    <string name="irregular_heartbeats">Irregular heartbeats?  <font color='#a4c639'>*</font></string>
 
 
     <!-- cholestrol -->
     <string name="cholesterol">Cholesterol</string>
-    <string name="lDL"> LDL </string>
-    <string name="hDL"> HDL  </string>
+    <string name="lDL"> LDL  <font color='#a4c639'>*</font></string>
+    <string name="hDL"> HDL  <font color='#a4c639'>*</font> </string>
     <string name="triglycerides_units"> (mmol/L) </string>
-    <string name="triglycerides"> Triglycerides</string>
-    <string name="others_test">Heart rate</string>
-    <string name="total_cholesterol"> Total Cholesterol</string>
+    <string name="triglycerides"> Triglycerides  <font color='#a4c639'>*</font></string>
+    <string name="others_test">Other Test  <font color='#a4c639'>*</font></string>
+    <string name="total_cholesterol"> Total Cholesterol  <font color='#a4c639'>*</font></string>
 
     <!-- bmi -->
     <string name="bmi1">BMI</string>
 
+    <!-- emotional_state -->
+    <string name="emotionalState">Emotional State</string>
+    <string name="score_of_wellness"> Score Of Wellness  <font color='#a4c639'>*</font> </string>
+    <string name="percentage_hint"> eg : 1-100 %  </string>
+    <string name="emotional_status"> Emotional Status  <font color='#a4c639'>*</font></string>
+    <string name="emotional_duration"> Emotional Duration  <font color='#a4c639'>*</font></string>
+    <string name="trauma_status">Trauma Status <font color='#a4c639'>*</font></string>
+    <string name="reason_of_trauma"> Reason Of Trauma  <font color='#a4c639'>*</font></string>
+    <string name="trauma_hint">eg:death,accident,failure </string>
 
-    Others Test
+
     <string-array name="blood_glucose_dropdown">
         <item>None</item>
         <item>Fasting (early morning before food)</item>
@@ -183,6 +193,19 @@
         <item>None</item>
         <item>Fasting (early morning before food)</item>
         <item>Before breakfast</item>
+    </string-array>
+
+    <string-array name="emotional_status_dropdown">
+        <item>None</item>
+        <item>Depression</item>
+        <item>Anxiety</item>
+        <item>Suicidal Feeling</item>
+    </string-array>
+
+    <string-array name="reason_trauma_dropdown">
+        <item>None</item>
+        <item>Yes</item>
+        <item>No</item>
     </string-array>
 
     <!--Medication History-->

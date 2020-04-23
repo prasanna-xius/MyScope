@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorWhite"
-    tools:context=".activities.medical_history.Disease_History">
+    android:background="@color/colorWhite">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +41,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_score_of_wellness"
+                android:id="@+id/et_score_of_wellness_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -71,7 +70,7 @@
                 android:textSize="16sp" />
 
             <Spinner
-                android:id="@+id/spinner_emotional"
+                android:id="@+id/spinner_emotional_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -97,7 +96,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_duration"
+                android:id="@+id/et_duration_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -126,7 +125,7 @@
                 android:textSize="16sp" />
 
             <Spinner
-                android:id="@+id/spinner_trauma"
+                android:id="@+id/spinner_trauma_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -153,7 +152,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/et_reason_of_trauma"
+                android:id="@+id/et_reason_of_trauma_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -166,7 +165,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_emotionalState"
+            android:id="@+id/btn_emotionalState_update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

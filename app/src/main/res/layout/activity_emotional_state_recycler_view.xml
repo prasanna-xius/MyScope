@@ -24,18 +24,18 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/glucose_recycler_view"
+            android:id="@+id/emotional_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             tools:listitem="@layout/list_item" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_btn_glucose"
+            android:id="@+id/fab_btn_emotional"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/glucose_recycler_view"
-            android:layout_alignBottom="@+id/glucose_recycler_view"
+            android:layout_alignEnd="@+id/emotional_recycler_view"
+            android:layout_alignBottom="@+id/emotional_recycler_view"
             android:layout_gravity="right|bottom"
             android:layout_margin="@dimen/fab_margin"
             android:clickable="true"
