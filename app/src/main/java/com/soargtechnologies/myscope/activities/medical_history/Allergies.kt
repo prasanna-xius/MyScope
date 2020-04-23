@@ -27,6 +27,7 @@ import com.soargtechnologies.myscope.services.MedicalHistoryService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.allergies.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.surgeryhistory_update.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -77,7 +78,7 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
         textview_date = this.textviewdate
         button_date = this.buttondate
 
-        etname = findViewById(R.id.et_name)
+        etname = findViewById(R.id.et_name_allergy)
 
         btnAllergies = findViewById(R.id.btn_allergies)
 
@@ -109,68 +110,66 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
         btnAllergies!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 
+                ///val name =etname?.text.toString().trim()
 
-                if ( spnritem!=null) {
+                if (validate(et_name_allergy, true))
 
-                    //var newAllergy: Any? =null
-
-                    val newAllergy  = AllergyDataClass()
-                    newAllergy.name = etname!!.text.toString().trim()
-                    newAllergy.reaction = etreaction!!.text.toString().trim()
-                    newAllergy.treatment = ettreatments!!.text.toString().trim()
-                    newAllergy.notes = etnotes!!.text.toString().trim()
-                    newAllergy.date = textview_date?.text.toString().trim()
-                    newAllergy.spnrdata =spnritem!!
-                    newAllergy.mobile_no=mobile_no!!
-                    newAllergy.allergy_saved_on=datesetvalue()
-                    // newAllergy.id=1
+                    if (spnritem != null) {
 
 
+                        val newAllergy = AllergyDataClass()
+                        newAllergy.name = et_name_allergy!!.text.toString().trim()
+                        newAllergy.reaction = etreaction!!.text.toString().trim()
+                        newAllergy.treatment = ettreatments!!.text.toString().trim()
+                        newAllergy.notes = etnotes!!.text.toString().trim()
+                        newAllergy.date = textview_date?.text.toString().trim()
+                        newAllergy.spnrdata = spnritem!!
+                        newAllergy.mobile_no = mobile_no!!
+                        newAllergy.allergy_saved_on = datesetvalue()
+                        // newAllergy.id=1
 
 
+                        val allergyService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
 
-                    val allergyService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
-
-                    //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
-
-
-                    val requestCall =allergyService.addAllergy(newAllergy)
-                    requestCall.enqueue(object: Callback<AllergyDataClass> {
-
-                        override fun onResponse(call: Call<AllergyDataClass>, resp: Response<AllergyDataClass>) {
+                        //val requestCall =allergyService.addAllergy(name!!,reaction!!,treatment!!,notes!!,date!!,sprdata!!)
 
 
-                            if (resp.isSuccessful) {
+                        val requestCall = allergyService.addAllergy(newAllergy)
+                        requestCall.enqueue(object : Callback<AllergyDataClass> {
 
-                                // var newbody = resp.body() // Use it or ignore it
-                                Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
-                                finish()
+                            override fun onResponse(call: Call<AllergyDataClass>, resp: Response<AllergyDataClass>) {
+
+
+                                if (resp.isSuccessful) {
+
+                                    // var newbody = resp.body() // Use it or ignore it
+                                    Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+                                    finish()
+                                } else {
+
+                                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                                }
                             }
-                            else
-                            {
 
-                                Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                            override fun onFailure(call: Call<AllergyDataClass>, t: Throwable) {
+                                //finish()
+
+                                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                             }
-                        }
-
-                        override fun onFailure(call: Call<AllergyDataClass>, t: Throwable) {
-                            //finish()
-
-                            Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
-                        }
-                    })
+                        })
 
 
-                    // Toast.makeText(getApplicationContext(), "data:" + name + " " + reaction + " " + treatment + " " + " " + notes + " " +
-                    // spritem + " " + date, Toast.LENGTH_LONG).show()
+                        // Toast.makeText(getApplicationContext(), "data:" + name + " " + reaction + " " + treatment + " " + " " + notes + " " +
+                        // spritem + " " + date, Toast.LENGTH_LONG).show()
 
-                } else {
+                    } else {
 
 
-                    val snack = Snackbar.make(ll!!, "Mandatory field cannot be left blank.", Snackbar.LENGTH_LONG)
-                    snack.show()
-                }
+                        val snack = Snackbar.make(ll!!, "Mandatory field cannot be left blank.", Snackbar.LENGTH_LONG)
+                        snack.show()
+                    }
             }
+
         })
         // create an OnDateSetListener
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
@@ -208,8 +207,19 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
 
 
         spinnerAllergies!!.setOnItemSelectedListener(this)
-    }
 
+
+    }
+    private fun validate(et_name_allergy: EditText, b:Boolean):Boolean {
+        if(et_name_allergy.text.toString().isEmpty()){
+            //et_name_immuupdate.setError("")
+            val snack = Snackbar.make(findViewById(R.id.llallergy)!!, "Mandatory field cannot be left blank.", Snackbar.LENGTH_LONG)
+            snack.show()
+            return false
+
+        }
+        return true
+    }
 
 
     @RequiresApi(Build.VERSION_CODES.O)

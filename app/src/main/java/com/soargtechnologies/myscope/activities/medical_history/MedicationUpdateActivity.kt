@@ -401,22 +401,42 @@ class MedicationUpdateActivity : BaseActivity() {
 
     private fun validateDate(textviewStartdate_medicalHistory_update: TextView, textviewEnddate_MH_update: TextView, b: Boolean): Boolean {
         if (!textviewStartdate_medicalHistory_update.text.toString().equals("") && !textviewEnddate_MH_update.text.toString().equals("")) {
-            textviewStartdate_medicalHistory_update.setCompoundDrawables(null, null, null, null)
-            textviewEnddate_MH_update.setCompoundDrawables(null, null, null, null)
-            val startDate0 = SimpleDateFormat("dd/MM/yyyy").format(Date(textviewStartdate_medicalHistory_update.text.toString()))
-            val endDate0 = SimpleDateFormat("dd/MM/yyyy").format(Date(textviewEnddate_MH_update.text.toString()))
-            if (startDate0 > endDate0) {
+            //textviewStartdate_medicalHistory_update.setCompoundDrawables(null, null, null, null)
+            //textviewEnddate_MH_update.setCompoundDrawables(null, null, null, null)
+            val startDatefrmt = SimpleDateFormat("dd/MM/yyyy",Locale.US)
+            var startdate1 =startDatefrmt?.format(cal_StartMh.getTime())
+            val endDatefrmt = SimpleDateFormat("dd/MM/yyyy",Locale.US)
+            var enddate1 =  endDatefrmt?.format(cal_EndMh.getTime())
+
+
+            if (startdate1.compareTo( enddate1)>0) {
                 // date in text view is current date
                 textviewEnddate_MH_update.setText("")
                 //showLongSnackBar("Start date cannot be after end date")
                 textviewEnddate_MH_update!!.setError("Wrong Date Selected")
                 return false;
             }
-        } else {
-            //errorDisplayTextview(startDate)
-            // errorDisplayTextview(stopDate)
-            return false
+            if (startdate1.compareTo(enddate1)< 0){
+                // date in text view is current date
+                //textviewEnddate.setText("")
+                //showLongSnackBar("Start date cannot be after end date")
+                textviewEnddate_MH_update!!.setError(null)
+                return true;
+            }
+            if (startdate1.compareTo(enddate1)==0) {
+                // date in text view is current date
+                //textviewEnddate.setText("")
+                //showLongSnackBar("Start date cannot be after end date")
+                textviewEnddate_MH_update!!.setError(null)
+                return true;
+            }
+
+            else{
+                textviewEnddate_MH_update!!.setError(null)
+                return true;
+            }
         }
+
         return true
     }
 
