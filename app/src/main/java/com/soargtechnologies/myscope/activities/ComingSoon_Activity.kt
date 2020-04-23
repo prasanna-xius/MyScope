@@ -9,6 +9,9 @@ class ComingSoon_Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.comingsoon_main)
+
+        activitiesToolbar()
+
     }
 
 }
