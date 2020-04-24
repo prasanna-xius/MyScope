@@ -35,12 +35,12 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
 
         // Toast.makeText(this ,"place"+ position , Toast.LENGTH_LONG).show()
 
-        holder.itemView.setOnClickListener { v: View? ->
+            holder.itemView.setOnClickListener { v: View? ->
 
-            val  context = v?.context
+                val  context = v?.context
 
 
-            val intent = Intent(context, Prescription_manualDrugDialog::class.java)
+                val intent = Intent(context, Prescription_manualDrugDialog::class.java)
 
             val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
             val editor: SharedPreferences.Editor = pref.edit()

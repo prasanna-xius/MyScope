@@ -18,7 +18,16 @@ import android.graphics.Bitmap.CompressFormat
 import android.text.TextUtils.replace
 import android.util.Base64
 import java.io.ByteArrayOutputStream
-
+import androidx.core.content.ContextCompat.startActivity
+import android.content.Intent
+import android.R.attr.path
+import android.R.attr.path
+import android.net.Uri
+import android.os.Build
+import java.net.URI
+import java.nio.file.Files
+import java.nio.file.Files.readAllBytes
+import java.nio.file.Paths
 
 
 class Prescription_ImageAdapter(private val imglist: List<PrescriptionDataClass>): RecyclerView.Adapter<Prescription_ImageAdapter.ImageViewHolder>()  {
@@ -39,11 +48,15 @@ class Prescription_ImageAdapter(private val imglist: List<PrescriptionDataClass>
 
         val decodedBytes = Base64.decode(pureBase64Encoded,Base64.DEFAULT)
 
+
+        val buf:ByteArray = decodedBytes
+        val s :String= String(buf);
+        val uri :Uri = Uri.parse(s)
         //
         // val imgbytes = android.util.Base64.decode(imgls.p_upload.toString(),android.util.Base64.DEFAULT)
 
         //imageupload.setImageBitmap(bitmap)
-        val bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0,decodedBytes.size)
+//        val bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0,decodedBytes.size)
 
         //val bitmap = BitmapFactory.decodeFile("/path/images/image.jpg")
         //val blob = ByteArrayOutputStream()
@@ -55,8 +68,15 @@ class Prescription_ImageAdapter(private val imglist: List<PrescriptionDataClass>
 
 
         Glide.with(holder.view.context)
-                .load(bitmap)
+                .load(decodedBytes)
                 .into(holder.view.iv_pres)
+
+        holder.itemView.setOnClickListener { v: View? ->
+
+            val context = v?.context
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            context!!.startActivity(intent)
+        }
 
 
         /*val bmp = Bitmap.createBitmap(imageWidth, imageHeight, Bitmap.Config.ARGB_8888)
