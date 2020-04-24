@@ -43,14 +43,14 @@ class Blood_pressureUpdate : BaseActivity() {
         activitiesToolbar()
         header!!.text = "Blood Pressure"
 
+        val pressureSpinnerUpdated = findViewById<Spinner>(R.id.spinner_irregular_heartbeats_update)
+
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
-        val spinner_Pressure = findViewById<Spinner>(R.id.spinner_glucose)
-
         val adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.blood_pressure_dropdown))
-        spinner_Pressure!!.adapter = adapter
+        pressureSpinnerUpdated!!.adapter = adapter
 
         myCalendar = Calendar.getInstance()
         val date= DatePickerDialog.OnDateSetListener{ view, year, monthofyear, dayofmonth ->
@@ -97,7 +97,7 @@ class Blood_pressureUpdate : BaseActivity() {
 
                 blood_pressure?.let {
 
-                    text1.setText(blood_pressure.irregular_heart_beat)
+                    text1!!.setText(blood_pressure.irregular_heart_beat)
                     date_of_bp_update.setText(blood_pressure.date_of_pressure)
                     et_systolic_update.setText(blood_pressure.systolic)
                     et_diastolic_update.setText(blood_pressure.diastrlic)

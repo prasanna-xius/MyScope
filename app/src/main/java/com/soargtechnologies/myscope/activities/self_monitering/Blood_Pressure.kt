@@ -87,7 +87,7 @@ class Blood_Pressure : BaseActivity() {
         validateInput(et_heart_rate , Heart_rate)
         validateSpinner(spinner_irregular_heartbeats!!, Irregular_heartbeats)
 
-        if ((Systolic != "") && (Diastolic != "") && (Pulse != "") &&
+        if ((date_of_Bp != "") && (Systolic != "") && (Diastolic != "") && (Pulse != "") &&
                 (Irregular_heartbeats != "None")
                 && (Heart_rate != "")) {
             showLongToast("save the details")

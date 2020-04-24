@@ -15,11 +15,11 @@ interface Self_monitoring_service {
     //end point of webservice
     @Headers("Content-Type: application/json")
     @POST("addglucose")
-    fun addGlucose(@Body newBloodGlucose: Self_dataClass): Call<Self_dataClass>
+    fun addGlucose(@Body newGlucose: Self_dataClass): Call<Self_dataClass>
 
     @Headers("Content-Type: application/json")
     @POST("updateglucose")
-    fun updateglucose(@Body newBloodGlucose: Self_dataClass): Call<Self_dataClass>
+    fun updateglucose(@Body newGlucose: Self_dataClass): Call<Self_dataClass>
 
     //Blood Pressure
 
@@ -29,11 +29,11 @@ interface Self_monitoring_service {
     //end point of webservice
     @Headers("Content-Type: application/json")
     @POST("addpressure")
-    fun addPressure(@Body newBloodGlucose: Self_dataClass): Call<Self_dataClass>
+    fun addPressure(@Body newPressure: Self_dataClass): Call<Self_dataClass>
 
     @Headers("Content-Type: application/json")
     @POST("updatepressure")
-    fun updatePressure(@Body newBloodGlucose: Self_dataClass): Call<Self_dataClass>
+    fun updatePressure(@Body newPressure: Self_dataClass): Call<Self_dataClass>
 
     //Cholesterol
 
@@ -43,11 +43,11 @@ interface Self_monitoring_service {
     //end point of webservice
     @Headers("Content-Type: application/json")
     @POST("addcholestrol")
-    fun addCholestrol(@Body newBloodGlucose: Self_dataClass): Call<Self_dataClass>
+    fun addCholestrol(@Body newCholestrol: Self_dataClass): Call<Self_dataClass>
 
     @Headers("Content-Type: application/json")
     @POST("updatecholestrol")
-    fun updatCholestrol(@Body newBloodGlucose: Self_dataClass): Call<Self_dataClass>
+    fun updatCholestrol(@Body newCholestrol: Self_dataClass): Call<Self_dataClass>
 
     //Bmi
 

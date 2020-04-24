@@ -44,14 +44,14 @@ class Blood_GlucoseUpdate : BaseActivity() {
         activitiesToolbar()
         header!!.text = "Blood Glucose Monitoring"
 
+        val glucoseSpinnerUpdated = findViewById<Spinner>(R.id.spinner_glucoseUpdate)
+
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
 
-        val spinner_Glucose = findViewById<Spinner>(R.id.spinner_glucose)
-
         val adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.blood_glucose_dropdown))
-        spinner_Glucose!!.adapter = adapter
+        glucoseSpinnerUpdated!!.adapter = adapter
 
         myCalendar = Calendar.getInstance()
         val date= DatePickerDialog.OnDateSetListener{ view, year, monthofyear, dayofmonth ->
