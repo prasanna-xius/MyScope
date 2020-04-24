@@ -181,7 +181,7 @@ class Emotional_state_Update : BaseActivity() {
         }
 
         if(!item1.equals(null)) {
-            newEmotionalStatus.any_emotional_trauma = item
+            newEmotionalStatus.any_emotional_trauma = item1
         }
         else {
             newEmotionalStatus.any_emotional_trauma = spinner_trauma_update?.getSelectedItem().toString()
