@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -43,6 +44,7 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
         headerTextView = findViewById<View>(R.id.header) as TextView
         headerTextView!!.text = "DashBoard"
 
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         card_MH!!.setOnClickListener(this)
         card_Pres!!.setOnClickListener(this)
