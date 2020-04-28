@@ -17,8 +17,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.Contact_Us"></activity>
-        <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
+        <activity android:name=".activities.self_monitering.Blood_Pressure"></activity>
+        <activity android:name=".activities.self_monitering.Emotional_state_Update" />
+        <activity android:name=".activities.self_monitering.Emotional_state_recyclerView" />
+        <!-- <activity android:name=".activities.self_monitering.BloodPressureActivity"></activity> -->
+         <activity android:name=".activities.self_monitering.Bmi_recyclerView"></activity>
+         <activity android:name=".activities.self_monitering.BmiUpdate" />
+         <activity android:name=".activities.self_monitering.Cholestrol_recyclerView" />
+         <activity android:name=".activities.self_monitering.CholestrolUpdate" />
+         <activity android:name=".activities.self_monitering.Blood_pressureUpdate" />
+         <activity android:name=".activities.self_monitering.Blood_Pressure_recyclerView" />
+         <activity android:name=".activities.self_monitering.Blood_GlucoseUpdate" />
+         <activity android:name=".activities.self_monitering.Blood_Glucose_recyclerView" />
+        <activity android:name=".activities.self_monitering.Glucose_Adaptor" />
+        <!-- <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" /> -->
+        <activity android:name=".activities.Contact_Us" /> <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
 
         <activity android:name=".activities.ComingSoon_Activity" />
@@ -139,8 +152,11 @@
         <activity android:name=".activities.medical_history.health_services.Post_discharge_Care_Package" />
         <activity android:name=".activities.medical_history.health_services.Prescription_Audit" />
         <activity android:name=".activities.medical_history.health_services.Drug_interaction" />
-
-        <!--        <activity android:name=".activities.Educational_Blog_Activity" />-->
+        <activity android:name=".activities.self_monitering.Blood_glucose_Monitoring" />
+        <activity android:name=".activities.self_monitering.Bmi_self" />
+        <activity android:name=".activities.self_monitering.Cholesterol" />
+        <activity android:name=".activities.self_monitering.Emotional_state" />
+        <activity android:name=".activities.self_monitering.Exercise_tracker" /> <!-- <activity android:name=".activities.Educational_Blog_Activity" /> -->
         <activity android:name=".activities.Covid_19_Resourses_Activity" />
         <activity android:name=".activities.Covid19_Tracker_WebActivity" />
         <activity android:name=".activities.Map_Covid19_WebActivity" />

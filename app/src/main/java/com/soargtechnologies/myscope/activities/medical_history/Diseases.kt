@@ -39,6 +39,7 @@ data class Diseases(var  known_condition : String? =null,
 
 
                     var diet:String?=null,
+                    var spl_diet_notes:String?=null,
                     var diet_saved_on:String ?=null,
                     var diet_updated_on:String ?=null,
 

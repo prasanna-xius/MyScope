@@ -12,10 +12,6 @@ class Post_discharge_Care_Package : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_discharge__care__package)
 
-        btn_Post_discharge_care_package.setOnClickListener {
 
-            checkbox_Post_discharge_care_package.setChecked(true)
-            finish()
-        }
     }
 }

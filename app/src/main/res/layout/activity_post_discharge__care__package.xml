@@ -36,15 +36,6 @@
             android:text="@string/text4"
             android:textColor="#997CF4" />
 
-        <Button
-            android:id="@+id/btn_Post_discharge_care_package"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10sp"
-            android:background="@color/bg_screen2"
-            android:text="AGREE"
-            android:textColor="@color/colorWhite" />
 
     </LinearLayout>
 

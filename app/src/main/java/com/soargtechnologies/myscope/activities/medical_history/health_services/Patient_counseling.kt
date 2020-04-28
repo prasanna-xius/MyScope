@@ -12,10 +12,6 @@ class Patient_counseling : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_counseling)
 
-        btn_patient_counseling.setOnClickListener {
 
-            checkbox_patient_counselling.setChecked(true)
-finish()
-        }
     }
 }
