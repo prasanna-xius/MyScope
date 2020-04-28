@@ -41,7 +41,7 @@ class BmiAdaptor (private val bmiList: List<Self_dataClass>) : RecyclerView.Adap
 
             intent.putExtra("position" , position)
 
-            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
+  //          Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
 
 
             context?.startActivity(intent)

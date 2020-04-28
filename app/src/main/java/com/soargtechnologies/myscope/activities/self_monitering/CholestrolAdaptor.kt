@@ -42,7 +42,7 @@ class CholestrolAdaptor(private val cholestrolList: List<Self_dataClass>) : Recy
 
             intent.putExtra("position" , position)
 
-            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
+  //          Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
 
 
             context?.startActivity(intent)

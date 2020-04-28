@@ -141,7 +141,7 @@ class DiseaseHistoryUpdate : BaseActivity() {
         btn_medicalHistory_update.setOnClickListener {
 
             assignValuestoVariable()
-            validate(spinner_disease_updated!!)
+          //  validate(spinner_disease_updated!!)
 
         }
 
@@ -174,8 +174,7 @@ class DiseaseHistoryUpdate : BaseActivity() {
         validateInput(et_noOfYrs_updated, disease_duration)
         validateSpinner(spinner_disease_updated!!, diseases)
 
-        if ((condition != "") &&
-                (diseases != "None")
+        if ((condition != "")
                 && (disease_duration != "")) {
            // showLongToast("save the details")
 

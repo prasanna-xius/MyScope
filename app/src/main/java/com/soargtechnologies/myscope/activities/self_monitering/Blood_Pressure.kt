@@ -90,7 +90,7 @@ class Blood_Pressure : BaseActivity() {
         if ((date_of_Bp != "") && (Systolic != "") && (Diastolic != "") && (Pulse != "") &&
                 (Irregular_heartbeats != "None")
                 && (Heart_rate != "")) {
-            showLongToast("save the details")
+     //       showLongToast("save the details")
             sucess()
 
         } else {
@@ -141,17 +141,17 @@ class Blood_Pressure : BaseActivity() {
 
                 if (resp.isSuccessful) {
                     var newbody = resp.body() // Use it or ignore it
-                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+       //             Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+     //               Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<Self_dataClass>, t: Throwable) {
                 //finish()
 //                    Log.d("errormsgfailure ::", t.message)
 //                    Log.e("errorunderfailure:", t.message)
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+     //           Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
 

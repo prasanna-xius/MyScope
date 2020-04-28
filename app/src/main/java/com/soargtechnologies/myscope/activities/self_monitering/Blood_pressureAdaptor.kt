@@ -43,7 +43,7 @@ class Blood_pressureAdaptor(private val pressureList: List<Self_dataClass>) : Re
 
             intent.putExtra("position" , position)
 
-            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
+   //         Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
 
 
             context?.startActivity(intent)

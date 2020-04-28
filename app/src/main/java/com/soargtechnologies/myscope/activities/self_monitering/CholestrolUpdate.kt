@@ -62,7 +62,7 @@ class CholestrolUpdate : BaseActivity() {
             val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
             position = intent.getIntExtra("position", 0)
-            showLongToast(position.toString())
+    //        showLongToast(position.toString())
 
             loadDetails(mobile_no.toString(), position!!)
 
@@ -100,7 +100,7 @@ class CholestrolUpdate : BaseActivity() {
             }
 
             override fun onFailure(call: Call<List<Self_dataClass>>, t: Throwable) {
-                Toast.makeText(this@CholestrolUpdate, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+    //            Toast.makeText(this@CholestrolUpdate, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -153,7 +153,7 @@ class CholestrolUpdate : BaseActivity() {
         if ((date_of_Cholestrol != "") && (Ldl != "") && (Hdl != "") && (Triglycerides != "") &&
                 (Total_cholesterol != "")
                 && (Other_test != "")) {
-            showLongToast("save the details")
+ //           showLongToast("save the details")
             sucess()
 
         } else {
@@ -194,13 +194,14 @@ class CholestrolUpdate : BaseActivity() {
                 if (response.isSuccessful) {
 
                     var updatedDestination = response.body() // Use it or ignore It
-                    Toast.makeText(this@CholestrolUpdate, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+                   Toast.makeText(this@CholestrolUpdate, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     finish() // Move back to DestinationListActivity
-                } else {
+                }
+                else {
                     intent = Intent(this@CholestrolUpdate,Cholestrol_recyclerView::class.java)
                     intent.putExtra("position" , position)
                     startActivity(intent)
-                    Toast.makeText(this@CholestrolUpdate  , "Failed to update item1", Toast.LENGTH_SHORT).show()
+                  Toast.makeText(this@CholestrolUpdate  , "Failed to update item1", Toast.LENGTH_SHORT).show()
                 }
             }
 

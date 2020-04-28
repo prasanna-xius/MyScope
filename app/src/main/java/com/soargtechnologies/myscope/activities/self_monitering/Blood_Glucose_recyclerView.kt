@@ -93,10 +93,10 @@ class Blood_Glucose_recyclerView : BaseActivity() {
                     Log.e("errpr msg resp succ",response.message())
 
                 } else if(response.code() == 401) {
-                    Toast.makeText(this@Blood_Glucose_recyclerView, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+     //               Toast.makeText(this@Blood_Glucose_recyclerView, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure
                     // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@Blood_Glucose_recyclerView, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
+    //                Toast.makeText(this@Blood_Glucose_recyclerView, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -104,7 +104,7 @@ class Blood_Glucose_recyclerView : BaseActivity() {
             // or Error Creating Http Request or Error Processing Http Response
             override fun onFailure(call: Call<List<Self_dataClass>>, t: Throwable) {
 
-                Toast.makeText(this@Blood_Glucose_recyclerView, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+    //            Toast.makeText(this@Blood_Glucose_recyclerView, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }

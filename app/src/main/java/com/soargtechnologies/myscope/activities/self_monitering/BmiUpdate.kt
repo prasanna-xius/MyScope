@@ -98,17 +98,18 @@ class BmiUpdate : BaseActivity() {
 
                 bmi?.let {
 
-                    date_of_bmi_update.setText(bmi.date_of_bmi)
+
                     weight_bmi_update.setText(bmi.weight)
                     height_bmi_update.setText(bmi.height)
                     bmi1_update.setText(bmi.bmi)
                     notes_bmi_update.setText(bmi.bmi_notes)
+                    date_of_bmi_update.setText(bmi.date_of_bmi)
                 }
 
             }
 
             override fun onFailure(call: Call<List<Self_dataClass>>, t: Throwable) {
-                Toast.makeText(this@BmiUpdate, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+   //             Toast.makeText(this@BmiUpdate, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -153,8 +154,8 @@ class BmiUpdate : BaseActivity() {
         validateInput( weight_bmi_update, Weight)
         validateInput(height_bmi_update , Height)
        // validateInput(bmi1_update , Bmi)
-        if ((Bmi != "") && (Weight != "") && (Height != "") ) {
-            showLongToast("save the details")
+        if ((Bmi != "") && (Weight != "") && (Height != "")  && (date_of_Bmi != "")) {
+   //         showLongToast("save the details")
             sucess()
 
         } else {
@@ -193,18 +194,18 @@ class BmiUpdate : BaseActivity() {
                 if (response.isSuccessful) {
 
                     var updatedDestination = response.body() // Use it or ignore It
-                    Toast.makeText(this@BmiUpdate, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+  //                  Toast.makeText(this@BmiUpdate, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     finish() // Move back to DestinationListActivity
                 } else {
                     intent = Intent(this@BmiUpdate,Bmi_recyclerView::class.java)
                     intent.putExtra("position" , position)
                     startActivity(intent)
-                    Toast.makeText(this@BmiUpdate  , "Failed to update item1", Toast.LENGTH_SHORT).show()
+  //                  Toast.makeText(this@BmiUpdate  , "Failed to update item1", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Self_dataClass>, t: Throwable) {
-                Toast.makeText(this@BmiUpdate,  "Failed to update item", Toast.LENGTH_SHORT).show()
+  //              Toast.makeText(this@BmiUpdate,  "Failed to update item", Toast.LENGTH_SHORT).show()
             }
         })
 

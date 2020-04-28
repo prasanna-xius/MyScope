@@ -61,7 +61,8 @@ class Emotional_state_Update : BaseActivity() {
             val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
             position = intent.getIntExtra("position", 0)
-            showLongToast(position.toString())
+
+         //   showLongToast(position.toString())
 
             loadDetails(mobile_no.toString(), position!!)
 
@@ -88,7 +89,7 @@ class Emotional_state_Update : BaseActivity() {
                 newEmotionalStatus?.let {
 
                     et_score_of_wellness_update.setText(newEmotionalStatus.score_of_wellness)
-                   spinner_emotional_update.text1!!.setText(newEmotionalStatus.emotional_status)
+                   spinner_emotional_update.text1?.setText(newEmotionalStatus.emotional_status)
                     spinner_trauma_update.text1!!.setText(newEmotionalStatus.any_emotional_trauma)
                     et_duration_update.setText(newEmotionalStatus.duration)
                     et_reason_of_trauma_update.setText(newEmotionalStatus.reason_of_trauma)
@@ -97,7 +98,7 @@ class Emotional_state_Update : BaseActivity() {
             }
 
             override fun onFailure(call: Call<List<Self_dataClass>>, t: Throwable) {
-                Toast.makeText(this@Emotional_state_Update, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+        //        Toast.makeText(this@Emotional_state_Update, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -108,8 +109,8 @@ class Emotional_state_Update : BaseActivity() {
         btn_emotionalState_update.setOnClickListener {
 
             assignValuestoVariable()
-            validate(spinner_emotional_update!!)
-            validate(spinner_trauma_update!!)
+     //       validate(spinner_emotional_update!!)
+     //        validate(spinner_trauma_update!!)
 
 
         }
@@ -142,14 +143,12 @@ class Emotional_state_Update : BaseActivity() {
         val emotional_duration = et_duration_update!!.text.toString()
         validateInput(et_score_of_wellness_update!!, Score)
         validateInput(et_duration_update!! , emotional_duration)
-        validateSpinner(spinner_emotional_update!!, Emotional)
-        validateSpinner(spinner_trauma_update!!, Trauma)
+   //     validateSpinner(spinner_emotional_update!!, Emotional)
+   //     validateSpinner(spinner_trauma_update!!, Trauma)
 
-        if ((Score != "") &&
-                (Emotional != "None")  &&
-                (Trauma != "None")
+        if ((Score != "")
                 && (emotional_duration != "")) {
-               showLongToast("save the details")
+     //          showLongToast("save the details")
               sucess()
 
         }
@@ -165,10 +164,10 @@ class Emotional_state_Update : BaseActivity() {
 
 
         val item = spinner_emotional_update.text1.text.toString()
-        showLongToast(item)
+    //    showLongToast(item)
 
         val item1 = spinner_trauma_update.text1.text.toString()
-        showLongToast(item1)
+     //   showLongToast(item1)
 
         val newEmotionalStatus = Self_dataClass()
 
@@ -206,18 +205,18 @@ class Emotional_state_Update : BaseActivity() {
                 if (response.isSuccessful) {
 
                     var updatedDestination = response.body() // Use it or ignore It
-                    Toast.makeText(this@Emotional_state_Update, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+           //         Toast.makeText(this@Emotional_state_Update, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     finish() // Move back to DestinationListActivity
                 } else {
                     intent = Intent(this@Emotional_state_Update,Emotional_state_recyclerView::class.java)
                     intent.putExtra("position" , position)
                     startActivity(intent)
-                    Toast.makeText(this@Emotional_state_Update  , "Failed to update item1", Toast.LENGTH_SHORT).show()
+         //           Toast.makeText(this@Emotional_state_Update  , "Failed to update item1", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Self_dataClass>, t: Throwable) {
-                Toast.makeText(this@Emotional_state_Update, "Failed to update item", Toast.LENGTH_SHORT).show()
+     //           Toast.makeText(this@Emotional_state_Update, "Failed to update item", Toast.LENGTH_SHORT).show()
             }
         })
 

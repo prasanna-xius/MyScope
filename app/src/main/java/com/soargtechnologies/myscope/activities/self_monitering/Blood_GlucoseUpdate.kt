@@ -32,7 +32,7 @@ class Blood_GlucoseUpdate : BaseActivity() {
 
     var position: Int = 1;
     internal lateinit var myCalendar: Calendar
-    var spinner_Glucose: Spinner? = null
+    var glucoseSpinnerUpdated: Spinner? = null
     var glucoseId: Int = 0
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
@@ -71,7 +71,8 @@ class Blood_GlucoseUpdate : BaseActivity() {
             val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
             position = intent.getIntExtra("position", 0)
-            showLongToast(position.toString())
+
+         //   showLongToast(position.toString())
 
             loadDetails(mobile_no.toString(), position!!)
 
@@ -107,7 +108,7 @@ class Blood_GlucoseUpdate : BaseActivity() {
             }
 
             override fun onFailure(call: Call<List<Self_dataClass>>, t: Throwable) {
-                Toast.makeText(this@Blood_GlucoseUpdate, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+     //           Toast.makeText(this@Blood_GlucoseUpdate, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -118,7 +119,7 @@ class Blood_GlucoseUpdate : BaseActivity() {
         btn_glucose_updated.setOnClickListener {
 
             assignValuestoVariable()
-            validate(spinner_glucoseUpdate!!)
+       //     validate(spinner_glucoseUpdate!!)
 
         }
 
@@ -149,12 +150,11 @@ class Blood_GlucoseUpdate : BaseActivity() {
         val Test_result = test_result_glucoseUpdate.text.toString()
         //  validateInput(date_of_test, condition)
         validateInput(test_result_glucoseUpdate , Test_result)
-        validateSpinner(spinner_glucoseUpdate!!, Test)
+    //    validateSpinner(spinner_glucoseUpdate!!, Test)
 
-        if ((date_of_Test != "") &&
-                (Test != "None")
+        if ((date_of_Test != "")
                 && (Test_result != "")) {
-            showLongToast("save the details")
+    //        showLongToast("save the details")
             sucess()
         } else {
 
@@ -167,7 +167,7 @@ class Blood_GlucoseUpdate : BaseActivity() {
 
 
         val item = spinner_glucoseUpdate.text1.text.toString()
-        showLongToast(item)
+     //   showLongToast(item)
 
         val newGlucose = Self_dataClass()
         newGlucose.date_of_test = date_of_test_update!!.text.toString().trim()
@@ -196,19 +196,18 @@ class Blood_GlucoseUpdate : BaseActivity() {
                 if (response.isSuccessful) {
 
                     var updatedDestination = response.body() // Use it or ignore It
-                    Toast.makeText(this@Blood_GlucoseUpdate, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+       //             Toast.makeText(this@Blood_GlucoseUpdate, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     finish() // Move back to DestinationListActivity
                 } else {
                     intent = Intent(this@Blood_GlucoseUpdate,Blood_Glucose_recyclerView::class.java)
                     intent.putExtra("position" , position)
                     startActivity(intent)
-                    Toast.makeText(this@Blood_GlucoseUpdate  , "Failed to update item1", Toast.LENGTH_SHORT).show()
+       //             Toast.makeText(this@Blood_GlucoseUpdate  , "Failed to update item1", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Self_dataClass>, t: Throwable) {
-                Toast.makeText(this@Blood_GlucoseUpdate,
-                        "Failed to update item", Toast.LENGTH_SHORT).show()
+     //           Toast.makeText(this@Blood_GlucoseUpdate, "Failed to update item", Toast.LENGTH_SHORT).show()
             }
         })
 

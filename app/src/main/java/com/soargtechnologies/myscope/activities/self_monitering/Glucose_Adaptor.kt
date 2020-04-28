@@ -41,7 +41,7 @@ class Glucose_Adaptor (private val glucoseList: List<Self_dataClass>) : Recycler
 
             intent.putExtra("position" , position)
 
-            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
+ //           Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
 
 
             context?.startActivity(intent)

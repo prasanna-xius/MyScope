@@ -71,7 +71,7 @@ class Blood_pressureUpdate : BaseActivity() {
             val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
             position = intent.getIntExtra("position", 0)
-            showLongToast(position.toString())
+    //        showLongToast(position.toString())
 
             loadDetails(mobile_no.toString(), position!!)
 
@@ -109,7 +109,7 @@ class Blood_pressureUpdate : BaseActivity() {
             }
 
             override fun onFailure(call: Call<List<Self_dataClass>>, t: Throwable) {
-                Toast.makeText(this@Blood_pressureUpdate, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+    //            Toast.makeText(this@Blood_pressureUpdate, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -120,7 +120,7 @@ class Blood_pressureUpdate : BaseActivity() {
         btn_blood_pressure_update.setOnClickListener {
 
             assignValuestoVariable()
-            validate(spinner_irregular_heartbeats_update!!)
+     //       validate(spinner_irregular_heartbeats_update!!)
 
         }
 
@@ -158,12 +158,12 @@ class Blood_pressureUpdate : BaseActivity() {
         validateInput(et_diastolic_update , Diastolic)
         validateInput(et_pulse_update , Pulse)
         validateInput(et_heart_rate_update , HeartRate)
-        validateSpinner(spinner_irregular_heartbeats_update!!, Irregular_HeartBeat)
+  //      validateSpinner(spinner_irregular_heartbeats_update!!, Irregular_HeartBeat)
 
-        if ((date_of_Bp != "") &&(Systolic != "") &&(Diastolic != "") &&(Pulse != "") &&(HeartRate != "") &&
-                (Irregular_HeartBeat != "None")
+        if ((date_of_Bp != "") &&(Systolic != "") &&(Diastolic != "") &&(Pulse != "") &&(HeartRate != "")
+
                ) {
-            showLongToast("save the details")
+ //           showLongToast("save the details")
             sucess()
         } else {
 
@@ -176,7 +176,7 @@ class Blood_pressureUpdate : BaseActivity() {
 
 
         val item = spinner_irregular_heartbeats_update.text1.text.toString()
-        showLongToast(item)
+  //      showLongToast(item)
 
         val newPressure = Self_dataClass()
         newPressure.date_of_pressure = date_of_bp_update!!.text.toString().trim()
@@ -209,18 +209,18 @@ class Blood_pressureUpdate : BaseActivity() {
                 if (response.isSuccessful) {
 
                     var updatedDestination = response.body() // Use it or ignore It
-                    Toast.makeText(this@Blood_pressureUpdate, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+    //                Toast.makeText(this@Blood_pressureUpdate, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     finish() // Move back to DestinationListActivity
                 } else {
                     intent = Intent(this@Blood_pressureUpdate,Blood_Pressure_recyclerView::class.java)
                     intent.putExtra("position" , position)
                     startActivity(intent)
-                    Toast.makeText(this@Blood_pressureUpdate  , "Failed to update item1", Toast.LENGTH_SHORT).show()
+  //                  Toast.makeText(this@Blood_pressureUpdate  , "Failed to update item1", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Self_dataClass>, t: Throwable) {
-                Toast.makeText(this@Blood_pressureUpdate,  "Failed to update item", Toast.LENGTH_SHORT).show()
+    //            Toast.makeText(this@Blood_pressureUpdate,  "Failed to update item", Toast.LENGTH_SHORT).show()
             }
         })
 

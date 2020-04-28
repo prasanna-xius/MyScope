@@ -38,7 +38,7 @@ class Emotional_Adaptor(private val emotionalList: List<Self_dataClass>) : Recyc
 
             intent.putExtra("position" , position)
 
-            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
+     //       Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
 
 
             context?.startActivity(intent)
