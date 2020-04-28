@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="facebook_app_id">226578928549339</string>
     <string name="fb_login_protocol_scheme">fb226578928549339</string>
-
+    <string name="web_client_id">AIzaSyBXlm4bQSHyKr9oaMWf99OQHrJxPJv5Od4</string>
     <string name="app_name">My Scope</string>
     <string name="home">Home</string>
 
@@ -38,7 +38,7 @@
     <!--Medical History-->
     <string name="medical_history">DISEASE HISTORY</string>
     <string name="known_condition">Known Condition <font color='#ff0000'>*</font></string>
-    <string name="disease_statues"> Disease Status <font color='#ff0000'>*</font></string>
+    <string name="disease_statues"> Disease Statues <font color='#ff0000'>*</font></string>
     <string name="disease_duration"> Disease Duration <font color='#ff0000'>*</font></string>
     <string name="no_of_yrs"> No of yrs</string>
     <string name="when_started">When Started</string>
@@ -104,7 +104,7 @@
     <string name="eg_Surgery">E.g. Endoscopy</string>
     <string name="surg_name">Name<font color='#a4c639'>*</font></string>
     <string name="when_performed">When performed</string>
-    <string name="body_location">Organ/System</string>
+    <string name="body_location">Body Location</string>
     <string name="eg_body_location">E.g. Stomach</string>
     <string name="provider">Provider</string>
     <string name="eg_provider">E.g. Doctor Name</string>
@@ -320,7 +320,7 @@
     <string name="start_date">Start Date</string>
     <string name="stop_date">Stop Date</string>
     <string name="medical_condition">Medical Condition</string>
-    <string name="is_prescribed">Is prescribed? <font color='#a4c639'>*</font></string>
+    <string name="is_prescribed">Is prescribed? <font color='#ff0000'>*</font></string>
     <string name="prescription_note">Note</string>
 
     <string name="title_activity_welcome">Home Screen</string>
@@ -345,7 +345,7 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
     <string name="hospital_name">Hospital Name </string>
-    <string name="doctor_name">Doctor Name <font color='#a4c639'>*</font></string>
+    <string name="doctor_name">Doctor Name<font color='#ff0000'>*</font> </string>
     <string name="prescription_manual">Prescription</string>
 
 

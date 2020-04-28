@@ -47,7 +47,7 @@ class Disease_Adaptor(private val diseaseList: List<Diseases>) : RecyclerView.Ad
 
             intent.putExtra("position" , position)
 
-      //      Toast.makeText(context,"holder data"+v,Toast.LENGTH_LONG).show()
+            Toast.makeText(context,"holder data"+v,Toast.LENGTH_LONG).show()
 
 
             context?.startActivity(intent)

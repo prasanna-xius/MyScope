@@ -39,7 +39,7 @@ class AllergyItemListActivity : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-//        Toast.makeText(applicationContext, mobile_no, Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, mobile_no, Toast.LENGTH_LONG).show()
 
         fab = findViewById(R.id.fab)
         //fab?.setBackgroundColor(Color.parseColor("#2196F3"));

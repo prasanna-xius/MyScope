@@ -88,7 +88,7 @@ class SurgeryUpdateActivity : BaseActivity() {
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
 
-//            Toast.makeText(this,"data"+ARG_ITEM_ID.toString(),Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"data"+ARG_ITEM_ID.toString(),Toast.LENGTH_LONG).show()
 
             //val id = intent.getIntExtra(ARG_ITEM_ID, 0)
 

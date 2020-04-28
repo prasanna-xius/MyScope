@@ -125,7 +125,7 @@ class AllergyUpdate_Activity : BaseActivity() {
         val allergyService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
         val requestCall = allergyService.getAllergyByid(mobile_no.toString())
 
-//        Toast.makeText(applicationContext, "data id ::" + " " + id, Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, "data id ::" + " " + id, Toast.LENGTH_LONG).show()
 
         requestCall.enqueue(object : retrofit2.Callback<List<AllergyDataClass>> {
 
@@ -160,7 +160,7 @@ class AllergyUpdate_Activity : BaseActivity() {
                         }!!
 
 
-                        Toast.makeText(applicationContext, "sucess::", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "sucess::" + " " + destination.toString(), Toast.LENGTH_LONG).show()
                     }
 
                 } else {
@@ -184,6 +184,8 @@ class AllergyUpdate_Activity : BaseActivity() {
 
         btn_update.setOnClickListener {
 
+            if (validate(et_name_update, true)){
+
             val item = spinnerAllergy_update.tv_allergy.text.toString()
             //val et_name = et_name_update.text.toString()
 
@@ -201,7 +203,8 @@ class AllergyUpdate_Activity : BaseActivity() {
             }
 
 
-            newAllergyupdate.name = et_name_update.text.toString().trim()
+
+                newAllergyupdate.name = et_name_update.text.toString().trim()
             newAllergyupdate.reaction = et_reaction_update.text.toString().trim()
             newAllergyupdate.treatment = et_treatment_update.text.toString().trim()
             newAllergyupdate.notes = et_notes_allergies_update.text.toString().trim()
@@ -209,7 +212,7 @@ class AllergyUpdate_Activity : BaseActivity() {
             //newAllergyupdate.date = textviewdate_update.text.toString().trim()
             newAllergyupdate.mobile_no = mobile_no!!
             newAllergyupdate.allergy_id = allergyid
-            newAllergyupdate.allergy_updated_on=datesetvalue()
+            newAllergyupdate.allergy_updated_on = datesetvalue()
             // newAllergy.spnrdata =spnritem!
 
 
@@ -236,10 +239,21 @@ class AllergyUpdate_Activity : BaseActivity() {
                 }
             })
 
-
+        }
         }
 
 
+    }
+
+    private fun validate(et_name_update: EditText, b:Boolean):Boolean {
+        if(et_name_update.text.toString().isEmpty()){
+            //et_name_immuupdate.setError("")
+            val snack = Snackbar.make(findViewById(R.id.llallergyupdate)!!, "Mandatory field cannot be left blank.", Snackbar.LENGTH_LONG)
+            snack.show()
+            return false
+
+        }
+        return true
     }
 
 

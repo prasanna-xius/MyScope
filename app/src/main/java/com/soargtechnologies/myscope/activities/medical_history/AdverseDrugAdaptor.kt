@@ -42,14 +42,14 @@ class AdverseDrugAdaptor (private val adverseDrugList: List<Diseases>) : Recycle
 
             val  context = v?.context
 
-     //       Toast.makeText(context, "item Clicked" + position, Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "item Clicked" + position, Toast.LENGTH_LONG).show()
             val intent = Intent(context, Adverse_Drug_Reaction_Update::class.java)
 
             intent.putExtra(ARG_ITEM_ID, holder.adverseDrugConditiondestination!!.mobile_no)
 
             intent.putExtra("position" , position)
 
-    //        Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
+            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
 
 
             context?.startActivity(intent)

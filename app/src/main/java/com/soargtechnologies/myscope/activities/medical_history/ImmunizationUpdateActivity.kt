@@ -94,7 +94,7 @@ class ImmunizationUpdateActivity : BaseActivity() {
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
 
-//            Toast.makeText(this,"data"+ARG_ITEM_ID.toString(),Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"data"+ARG_ITEM_ID.toString(),Toast.LENGTH_LONG).show()
 
             //val id = intent.getIntExtra(ARG_ITEM_ID, 0)
 
@@ -115,7 +115,7 @@ class ImmunizationUpdateActivity : BaseActivity() {
         val requestCall = immuService.getImmunization(id)
 
 
-//        Toast.makeText(this,"test msg "+ id,Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"test msg "+ id,Toast.LENGTH_LONG).show()
 
         requestCall.enqueue(object : retrofit2.Callback<List<MedicalHistoryModelActivity>> {
 

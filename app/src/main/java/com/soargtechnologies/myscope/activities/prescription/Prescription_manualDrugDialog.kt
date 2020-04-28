@@ -275,7 +275,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
                 newPrescriptionDrug.time = d.time_of_taken!!.selectedItemsAsString
 
 
-                newPrescriptionDrug.prescription_id = prescription_id
+//                newPrescriptionDrug.prescription_id = prescription_id
                 newPrescriptionDrug.drug_saved_on = datesetvalue()
 
 

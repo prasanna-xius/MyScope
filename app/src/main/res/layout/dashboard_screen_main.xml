@@ -35,7 +35,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
                     android:text=""
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/jet_black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -86,7 +86,6 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_gravity="center|center_horizontal"
-                        android:layout_weight="2.0"
                         android:layout_marginTop="3dp"
                         android:src="@drawable/medical_historydb"
                         android:layout_height="wrap_content">
@@ -474,7 +473,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="2.0"
-                        android:src="@drawable/education"
+                        android:src="@drawable/education_db"
                         android:layout_height="wrap_content">
 
                     </ImageView>

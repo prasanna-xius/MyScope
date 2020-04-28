@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
+    android:id="@+id/llallergy"
     tools:context=".activities.medical_history.Allergies">
 
     <include layout="@layout/app_bar_main" />
@@ -75,7 +76,7 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/et_name"
+                    android:id="@+id/et_name_allergy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"

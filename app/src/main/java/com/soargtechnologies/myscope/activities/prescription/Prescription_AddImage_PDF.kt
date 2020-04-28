@@ -1,12 +1,11 @@
 package com.soargtechnologies.myscope.activities.prescription
 
-import android.Manifest.permission.CAMERA
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.icu.text.SymbolTable
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Bundle
@@ -16,18 +15,18 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.services.PrescriptionInterface
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder1
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
-import com.soargtechnologies.myscope.R
-import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
-import kotlinx.android.synthetic.main.activity_allergy_list.*
+import kotlinx.android.synthetic.main.activity_prescription_addimages_recyclerview.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
-import kotlinx.android.synthetic.main.list_item_prescription_image.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -37,20 +36,18 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import retrofit2.http.Multipart
 import java.io.*
 import java.util.*
 
-class Prescription_AddImage_PDF : AppCompatActivity() {
+class Prescription_AddImage_PDF :BaseActivity() {
+
     var file: File? = null
     var uri: Uri? = null
     private var mImageUrl = ""
     var p_upload:MultipartBody.Part?=null
     //var byte:byte[]?= null
     internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
-    //    var mobile_no:String = "8142529582"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prescription_image_list)
@@ -169,9 +166,9 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         val Intent = Intent(
                 Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-//        intent.type = "image/jpeg"
-//        intent.data = Uri.parse(mImageUrl)
-        startActivityForResult(Intent, 100)
+        intent.type = "image/jpeg"
+        intent.data = Uri.parse(mImageUrl)
+        startActivityForResult(Intent, 100,null)
         //startActivity(intent)
         //startActivity(intent)
         /*fun workingORnot(){
@@ -188,11 +185,12 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                     val stream: ByteArrayOutputStream = ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
-//                    val `is` = contentResolver.openInputStream(data?.data!!)
-                    uploadImage(stream.toByteArray(),requestCode)
+                    val `is` = contentResolver.openInputStream(data?.data!!)
+                    uploadImage(stream.toByteArray(),requestCode,null)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
+
             }
         }
         if (requestCode == 101) {
@@ -202,7 +200,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                     val thumbnail = data!!.extras!!.get("data") as Bitmap
                     val stream: ByteArrayOutputStream = ByteArrayOutputStream();
                     thumbnail.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    uploadImage(stream.toByteArray(),requestCode)
+                    uploadImage(stream.toByteArray(),101,null)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -210,11 +208,16 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         }
         if (requestCode == 102) {
             if (resultCode == RESULT_OK) {
-                val path:Uri = data?.data!!
 
-                val iStream =   getContentResolver().openInputStream(path);
+                val uri = data?.getData();
 
-                uploadImage(getBytes(iStream!!),requestCode)
+//                val uriString = uri.toString();
+//                val myFile =  File(uriString);
+//                val input: InputStream = FileInputStream(myFile)
+                val outputStream = ByteArrayOutputStream();
+//                val `is` = contentResolver.openInputStream(data?.data!!)
+//                uploadImage( outputStream.toByteArray(),102)
+                uploadImage(outputStream.toByteArray(),requestCode,uri)
 //              val file = data!!.extras!!.get("data") as File
 //      val fis: FileInputStream = FileInputStream(file);
 //      val bos : ByteArrayOutputStream = ByteArrayOutputStream();
@@ -237,20 +240,27 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         return byteBuff.toByteArray()
     }
 
-    private fun uploadImage(imageBytes: ByteArray,code:Int) {
+    //    private fun uploadImage(imageBytes: ByteArray,code:Int) {
+    private fun uploadImage(imageBytes: ByteArray,code:Int,uri: Uri?) {
         val c = Calendar.getInstance()
         val day = c.get(Calendar.DAY_OF_MONTH)
         val month = c.get(Calendar.MONTH)
         val year = c.get(Calendar.YEAR)
         var date1 = day.toString() + "/" + (month + 1) + "/" + year
         var codevalue:Int = code
+
         val requestFile:RequestBody
         val body:MultipartBody.Part
+
+//    val fis: FileInputStream = FileInputStream(myFile);
+//      val bos : ByteArrayOutputStream = ByteArrayOutputStream();
         var date = RequestBody.create(MediaType.parse("text/plain"), date1)
         val destinationService = ServiceBuilder.buildService(PrescriptionInterface::class.java)
         if(codevalue.equals(102))
         {
-            requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageBytes)
+            val uriString = uri.toString();
+            val myFile =  File(uriString);
+            requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), (uriString))
             body = MultipartBody.Part.createFormData("p_upload", "example.pdf", requestFile)
 
         } else {
@@ -258,7 +268,6 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
             body = MultipartBody.Part.createFormData("p_upload", "image.jpg", requestFile)
 
         }
-        Toast.makeText(applicationContext,body.toString(),Toast.LENGTH_LONG).show()
         val call = destinationService.uploadImage(body, mobile_no,date)
         //mProgressBar!!.visibility = View.VISIBLE
         call.enqueue(object : Callback<PrescriptionDataClass> {
@@ -269,11 +278,14 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                     //mBtImageShow!!.visibility = View.VISIBLE
                     //mImageUrl = URL + responseBody!!.path
                     //Snackbar.make(findViewById(R.id.content), responseBody.message!!, Snackbar.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext,"image successful",Toast.LENGTH_LONG).show()
+
                 } else {
                     val errorBody = response.errorBody()
                     val gson = Gson()
                     try {
-                        val errorResponse = gson.fromJson<PrescriptionDataClass>(errorBody!!.string(), Response::class.java!!)
+//                        val errorResponse = gson.fromJson<PrescriptionDataClass>(errorBody!!.string(), Response::class.java!!)
+                        Toast.makeText(applicationContext,"image uploaded in else part",Toast.LENGTH_LONG).show()
                         //Snackbar.make(findViewById(R.id.content), errorResponse.message!!, Snackbar.LENGTH_SHORT).show()
                     } catch (e: IOException) {
                         e.printStackTrace()
@@ -284,6 +296,8 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
             override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
                 //mProgressBar!!.visibility = View.GONE
                 //Log.d(TAG, "onFailure: " + t.localizedMessage)
+                Toast.makeText(applicationContext,"image uploaded in failure part",Toast.LENGTH_LONG).show()
+
             }
         })
     }

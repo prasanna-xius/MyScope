@@ -72,7 +72,7 @@ class Services_medical_history : BaseActivity() {
 
                 val length = response.body()?.size
 
-// showLongToast(length.toString())
+ showLongToast(length.toString())
 
                 if (length!! == 1){
 
@@ -89,6 +89,10 @@ class Services_medical_history : BaseActivity() {
 
                         validate()
 
+
+
+
+
                     }
 
                 }
@@ -96,7 +100,7 @@ class Services_medical_history : BaseActivity() {
 
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
 
-         //       showLongToast("failure")
+                showLongToast("failure")
             }
         })
 
@@ -190,7 +194,7 @@ class Services_medical_history : BaseActivity() {
 
             }
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
-     //           Toast.makeText(this@Services_medical_history , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Services_medical_history , "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -221,17 +225,18 @@ class Services_medical_history : BaseActivity() {
                     val resp = response
                     if (response.isSuccessful)
                     {
-            //            Toast.makeText(this@Services_medical_history, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Services_medical_history, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
 
                     }
                     else {
 
-           //             Toast.makeText(this@Services_medical_history  , "Failed to update item1", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Services_medical_history  , "Failed to update item1", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<Diseases>, t: Throwable) {
-          //          Toast.makeText(this@Services_medical_history, "Failed to update item", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Services_medical_history,
+                            "Failed to update item", Toast.LENGTH_SHORT).show()
                 }
             })
 
@@ -254,7 +259,7 @@ class Services_medical_history : BaseActivity() {
 
                 val length = response.body()?.size
 
-        //        showLongToast("No of lists in DiseaseHistory:" + length.toString())
+                showLongToast("No of lists in DiseaseHistory:" + length.toString())
 
 
 
@@ -285,7 +290,7 @@ class Services_medical_history : BaseActivity() {
                     else {
 
 
-         //               showLongToast("successful")
+                        showLongToast("successful")
                         prescriptiondata()
 
                         if(prescriptiondata().equals(true)){
@@ -305,7 +310,7 @@ class Services_medical_history : BaseActivity() {
 
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
 
-          //      showLongToast("add Disease History")
+                showLongToast("add Disease History")
             }
         })
 
@@ -313,7 +318,7 @@ return false
     }
 
     private fun apicall() {
-   //     showLongToast("entered")
+        showLongToast("entered")
 
         try {
 
@@ -367,7 +372,7 @@ return false
             //        Toast.makeText(applicationContext, "Successfully Added" + newbody, Toast.LENGTH_SHORT).show()
                     //finish()
                 } else {
-           //         Toast.makeText(applicationContext, "Failed at posting data.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Failed at posting data.", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -375,7 +380,7 @@ return false
                 //finish()
 //                    Log.d("errormsgfailure ::", t.message)
 //                    Log.e("errorunderfailure:", t.message)
-         //       Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
 
 
@@ -395,7 +400,7 @@ return false
 
                 val length = response.body()?.size
 
-            //    showLongToast("No of lists in Prescription:" + length.toString())
+                showLongToast("No of lists in Prescription:" + length.toString())
 
                 if (length == 0) {
 
@@ -430,7 +435,7 @@ return false
 
             override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
 
-        //        showLongToast("add Prescription")
+                showLongToast("add Prescription")
             }
         })
 

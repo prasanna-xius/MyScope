@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -19,7 +20,6 @@ import com.soargtechnologies.myscope.activities.medical_documents.Medical_Docume
 import com.soargtechnologies.myscope.activities.medical_history.Medical_History_HomePage
 import com.soargtechnologies.myscope.activities.medical_history.health_services.Services_medical_history
 import com.soargtechnologies.myscope.activities.prescription.Prescriptions_HomePage
-//import com.soargtechnologies.myscope.activities.self_monitering.Self_Monitering_Home_Page
 import com.soargtechnologies.myscope.fragments.NavigationDrawerFragment
 import com.soargtechnologies.myscope.fragments.NavigationDrawerFragment.NavigationDrawerCallbacks
 import de.hdodenhof.circleimageview.CircleImageView
@@ -44,6 +44,7 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
         headerTextView = findViewById<View>(R.id.header) as TextView
         headerTextView!!.text = "DashBoard"
 
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         card_MH!!.setOnClickListener(this)
         card_Pres!!.setOnClickListener(this)
@@ -115,7 +116,7 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
                 navigateToActivity(Intent(applicationContext,Lab_Reports_Homepage::class.java))
             }
             R.id.card_selfMont -> {
-//                navigateToActivity(Intent(applicationContext,Self_Monitering_Home_Page::class.java))
+                navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
             }
             R.id.card_HealthServices-> {
                 navigateToActivity(Intent(applicationContext,Services_medical_history::class.java))

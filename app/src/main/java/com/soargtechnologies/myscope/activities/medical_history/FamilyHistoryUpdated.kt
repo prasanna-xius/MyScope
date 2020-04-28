@@ -55,7 +55,7 @@ class FamilyHistoryUpdated : BaseActivity() {
 //            val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
             val position: Int? = intent.getIntExtra("position", 0)
-     //       showLongToast(position.toString())
+            showLongToast(position.toString())
 
             loadDetails(mobile_no.toString(), position!!)
 
@@ -74,7 +74,7 @@ class FamilyHistoryUpdated : BaseActivity() {
         val familyService = ServiceBuilder.buildService(Disease_service::class.java)
         val requestCall = familyService.getFamily(id)
 
-  //      showLongToast(requestCall.toString())
+        showLongToast(requestCall.toString())
 
 
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>> {
@@ -88,7 +88,7 @@ class FamilyHistoryUpdated : BaseActivity() {
                     } else {
                         family = destination?.get(position)
                         familyid = family?.family_id!!
-              //          showLongToast(familyid.toString())
+                        showLongToast(familyid.toString())
 
                         family?.let {
                             et_family_conditionUpdated.setText(family!!.family_condition)
@@ -99,11 +99,14 @@ class FamilyHistoryUpdated : BaseActivity() {
 
                     }
                 }else {
-                //        Toast.makeText(this@FamilyHistoryUpdated, "Failed to retrieve details", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@FamilyHistoryUpdated, "Failed to retrieve details", Toast.LENGTH_SHORT)
+                                .show()
                     }
                 }
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
-        //        Toast.makeText(this@FamilyHistoryUpdated, "Failed to retrieve details1 " + t.toString(),Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                        this@FamilyHistoryUpdated, "Failed to retrieve details1 " + t.toString(),
+                        Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -147,7 +150,7 @@ class FamilyHistoryUpdated : BaseActivity() {
         if ((familyCondition != ""))
         {
 
-       //     showLongToast("save the details")
+            showLongToast("save the details")
             sucess()
 
         }
@@ -185,15 +188,15 @@ class FamilyHistoryUpdated : BaseActivity() {
                 if (response.isSuccessful) {
 
                     var updatedDestination = response.body() // Use it or ignore It
-             //       Toast.makeText(this@FamilyHistoryUpdated, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@FamilyHistoryUpdated, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     finish() // Move back to DestinationListActivity
                 } else {
-           //         Toast.makeText(this@FamilyHistoryUpdated, "Failed to update item1", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@FamilyHistoryUpdated, "Failed to update item1", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Diseases>, t: Throwable) {
-       //         Toast.makeText(this@FamilyHistoryUpdated, "Failed to update item", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@FamilyHistoryUpdated, "Failed to update item", Toast.LENGTH_SHORT).show()
             }
         })
     }
