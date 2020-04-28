@@ -181,7 +181,7 @@ class CholestrolUpdate : BaseActivity() {
 
         newCholestrol.cholestrol_update_on = datesetvalue()
 
-        newCholestrol.mobile_no = mobile_no!!
+//        newCholestrol.mobile_no = mobile_no!!
         newCholestrol.cholestrol_id = cholestrolId
 
         val destinationService = ServiceBuilder.buildService(Self_monitoring_service::class.java)
