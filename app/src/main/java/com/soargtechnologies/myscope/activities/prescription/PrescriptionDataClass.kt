@@ -1,5 +1,7 @@
 package com.soargtechnologies.myscope.activities.prescription
 
+import okhttp3.MultipartBody
+
 data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var doctor_name: String? = null,
                                  var hospital_name: String? = null,
@@ -21,10 +23,14 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var how_often_taken: String? = null,
                                  var start_date: String? = null,
                                  var stop_date: String? = null,
-                                var drug_saved_on:String?=null,
+                                 var drug_saved_on:String?=null,
                                  var drug_updated_on:String?=null,
-                                 var drug_id: Int =0
+                                 var drug_id: Int =0,
 
+                                 var p_upload: MultipartBody.Part?=null,
+                                 var downloadfile:String? = null,
+                                 var upload_id:Int = 0,
+                                 var upload_saved_on:String ?= null
 
 
 )
