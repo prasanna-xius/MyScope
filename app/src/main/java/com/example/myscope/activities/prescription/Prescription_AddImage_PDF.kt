@@ -7,17 +7,27 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
 import com.example.myscope.activities.PrescriptionInterface
 import com.example.myscope.services.ImageApiService
 import com.example.myscope.services.ServiceBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_navigation_blogs.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -27,26 +37,115 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class Prescription_AddImage_PDF : AppCompatActivity() {
     var file: File? = null
     var uri: Uri? = null
+   // var mobile_no:String?=null
     private var mImageUrl = ""
-    var p_upload:MultipartBody.Part?=null
+    var p_uploadid:String=""
+    var recyclerView: RecyclerView? = null
+    var imageAdapter: Prescription_ImageAdapter? = null
+
+    var imglist: MutableList<PrescriptionDataClass>? = null
+
+    var p_upload: MultipartBody.Part? = null
     //var byte:byte[]?= null
     internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prescription_image_list)
         //val toolbar = findViewById<View>(R.id.toolbar_imageuploader) as Toolbar
         //setSupportActionBar(toolbar)
+
+
+        recyclerView = findViewById(R.id.pres_recycler_view)
+
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        recyclerView!!.layoutManager = layoutManager
+
+
+
+
+        val layoutInflater:LayoutInflater = LayoutInflater.from(applicationContext)
+
+        val view: View = layoutInflater.inflate(
+                R.layout.list_item_prescription_image, // Custom view/ layout
+                activity_pres, // Root layout to attach the view
+                false)
+
+        var  deleteditem = view.findViewById<Button>(R.id.iv_pres_dlt)
+        activity_pres.addView(view,0)
+
+            deleteditem.setOnClickListener(object : View.OnClickListener {
+           override fun onClick(v: View?) {
+//
+//
+             deleteItem()
+           }
+         })
+
+
+
+
         val fab = findViewById<View>(R.id.fab_addimages) as FloatingActionButton
         fab.setOnClickListener {
             //showUploadDialog()
             initViews()
         }
+
+
     }
 
+
+    private fun deleteItem() {
+        val deleteService = ServiceBuilder.buildService(ImageApiService::class.java)
+
+        Log.d("Tag::::::", " "+ deleteService.toString())
+
+
+        val requestCall = deleteService.deleteImageDetails(p_uploadid)
+
+        requestCall.enqueue(object: Callback<MutableList<PrescriptionDataClass>> {
+            //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
+
+            // If you receive a HTTP Response, then this method is executed
+            // Your STATUS Code will decide if your Http Response is a Success or Error
+            override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
+
+                Log.d("Tag::::::", " "+ response.toString())
+                Log.e("Tag::::::", " "+ response.toString())
+
+                if (response.isSuccessful()) {
+                    // Your status code is in the range of 200's
+                  //  val imageList = response.body()!!
+
+
+
+
+
+                } else if(response.code() == 401) {
+                    Toast.makeText(this@Prescription_AddImage_PDF,
+                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+                } else { // Application-level failure
+                    // Your status code is in the range of 300's, 400's and 500's
+                    Toast.makeText(this@Prescription_AddImage_PDF, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            // Invoked in case of Network Error or Establishing connection with Server
+            // or Error Creating Http Request or Error Processing Http Response
+            override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
+
+                Toast.makeText(this@Prescription_AddImage_PDF, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+            }
+
+
+    })
+    }
     override fun onResume() {
         super.onResume()
 
@@ -61,27 +160,32 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
 
                 val requestCall = service.getImageDetails()
 
-        requestCall.enqueue(object: Callback<List<PrescriptionDataClass>> {
-        //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
+        requestCall.enqueue(object: Callback<MutableList<PrescriptionDataClass>> {
+            //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
 
             // If you receive a HTTP Response, then this method is executed
             // Your STATUS Code will decide if your Http Response is a Success or Error
-            override fun onResponse(call: Call<List<PrescriptionDataClass>>, response: Response<List<PrescriptionDataClass>>) {
+            override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val imageList = response.body()!!
 
 
-                    val llm = LinearLayoutManager(applicationContext)
-                    llm.orientation = LinearLayoutManager.VERTICAL
-                    pres_recycler_view.setLayoutManager(llm)
-                    pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
+                    //val llm = LinearLayoutManager(applicationContext)
+                   // llm.orientation = LinearLayoutManager.VERTICAL
+                   // pres_recycler_view.setLayoutManager(llm)
+
+
+                    val adapter= Prescription_ImageAdapter(imageList)
+                    recyclerView!!.adapter = adapter
+
+                    //pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
+
+
+                    imageAdapter = Prescription_ImageAdapter(imageList)
+
                     pres_recycler_view.adapter?.notifyDataSetChanged()
 
-
-                    /// var  bytes :ByteArray = imageList.bytes()
-                     //var bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                    //iv_pres.setImageBitmap(bitmap)
 
                 } else if(response.code() == 401) {
                     Toast.makeText(this@Prescription_AddImage_PDF,
@@ -94,7 +198,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
 
             // Invoked in case of Network Error or Establishing connection with Server
             // or Error Creating Http Request or Error Processing Http Response
-            override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
+            override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
 
                 Toast.makeText(this@Prescription_AddImage_PDF, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }

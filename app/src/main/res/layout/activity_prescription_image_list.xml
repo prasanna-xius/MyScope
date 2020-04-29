@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:weightSum="3.0"
+    android:id="@+id/activity_pres"
     android:orientation="vertical"
     android:background="#fff">
 
