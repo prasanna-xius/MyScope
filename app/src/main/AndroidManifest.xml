@@ -22,6 +22,8 @@
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
 
         <activity android:name=".activities.ComingSoon_Activity" />
+        <activity android:name=".activities.Register_User" />
+
         <!--        <activity android:name=".activities.Facebook_Activity" />-->
 
         <activity

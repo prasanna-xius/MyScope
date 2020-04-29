@@ -41,7 +41,8 @@ class Login_Page : AppCompatActivity(), View.OnClickListener, GoogleApiClient.On
 
     private var signInButton: SignInButton? = null
     private var googleApiClient: GoogleApiClient? = null
-    var name: String? = null
+    var first_name: String? = null
+    var last_name: String? = null
     var email: String? = null
     var idToken: String? = null
     private var firebaseAuth: FirebaseAuth? = null
@@ -88,60 +89,7 @@ class Login_Page : AppCompatActivity(), View.OnClickListener, GoogleApiClient.On
             val intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient)
             startActivityForResult(intent, RC_SIGN_IN)
         })
-
-//        loginButton = findViewById<View>(R.id.btn_facebook)
-//        callbackManager = CallbackManager.Factory.create()
-////        loginButton!!.setReadPermissions(Arrays.asList("email", "public_profile"))
-//        checkingLoginStatus()
-////        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
-//        loginButton!!.registerCallback(callbackManager, object : FacebookCallback<LoginResult?> {
-//            override fun onSuccess(loginResult: LoginResult?) {
-//                navigateToActivity(Intent(applicationContext,Navigation_Drawer_Blogs::class.java))
-//            }
-//            override fun onCancel() {}
-//            override fun onError(error: FacebookException) {}
-//        })
     }
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        callbackManager!!.onActivityResult(requestCode, resultCode, data)
-//        super.onActivityResult(requestCode, resultCode, data)
-//    }
-
-
-//    var tokenTracker: AccessTokenTracker = object : AccessTokenTracker() {
-//        override fun onCurrentAccessTokenChanged(oldAccessToken: AccessToken, currentAccessToken: AccessToken) {
-//            if (currentAccessToken == null) {
-////                Toast.makeText(this@Login_Page, "User Loout", Toast.LENGTH_SHORT).show()
-//                navigateToActivity(Intent(applicationContext,Navigation_Drawer_Blogs::class.java))
-//
-//            } else {
-//                loaduserprofile(currentAccessToken)
-//            }
-//        }
-//    }
-
-
-//    private fun loaduserprofile(newAccesToken: AccessToken) {
-//        val request = GraphRequest.newMeRequest(newAccesToken) { `object`, response ->
-//            try {
-//                val first_name = `object`.getString("first_name")
-//                val last_name = `object`.getString("last_name")
-//                val email = `object`.getString("email")
-//                val id = `object`.getString("id")
-//            } catch (e: JSONException) {
-//                e.printStackTrace()
-//            }
-//        }
-//        val parameters = Bundle()
-//        parameters.putString("fileds", "first_name,last_name,email,id")
-//        request.parameters = parameters
-//        request.executeAsync()
-//    }
-//    private fun checkingLoginStatus() {
-//        if (AccessToken.getCurrentAccessToken() != null) {
-//            loaduserprofile(AccessToken.getCurrentAccessToken())
-//        }
-//    }
 
 
     override fun onClick(v: View) {
@@ -275,16 +223,15 @@ class Login_Page : AppCompatActivity(), View.OnClickListener, GoogleApiClient.On
         if (result.isSuccess) {
             val account = result.signInAccount
             idToken = account!!.idToken
-            name = account.displayName
+            first_name = account.givenName
+            last_name = account.familyName
             email = account.email
+
             // you can store user data to SharedPreference
             val credential = GoogleAuthProvider.getCredential(idToken, null)
             firebaseAuthWithGoogle(credential)
         } else { // Google Sign In failed, update UI appropriately
-            Log.e(TAG, "Login Unsuccessful. $result")
-            val intent = Intent(this@Login_Page, Navigation_Drawer_Blogs::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+//            Log.e(TAG, "Login Unsuccessful. $result")
             Toast.makeText(this, "Login Unsuccessful", Toast.LENGTH_SHORT).show()
         }
     }
@@ -294,7 +241,7 @@ class Login_Page : AppCompatActivity(), View.OnClickListener, GoogleApiClient.On
                 .addOnCompleteListener(this) { task ->
                     Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful)
                     if (task.isSuccessful) {
-                        Toast.makeText(this@Login_Page, "Login successful1", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Login_Page, "Login successful", Toast.LENGTH_SHORT).show()
                         gotoProfile()
                     } else {
                         Log.w(TAG, "signInWithCredential" + task.exception!!.message)
@@ -307,7 +254,7 @@ class Login_Page : AppCompatActivity(), View.OnClickListener, GoogleApiClient.On
 
 
     private fun gotoProfile() {
-        val intent = Intent(this@Login_Page, Navigation_Drawer_Blogs::class.java)
+        val intent = Intent(this@Login_Page, Register_User::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
