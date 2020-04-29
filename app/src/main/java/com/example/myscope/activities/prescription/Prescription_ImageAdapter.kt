@@ -22,14 +22,23 @@ import androidx.core.content.ContextCompat.startActivity
 import android.content.Intent
 import android.R.attr.path
 import android.R.attr.path
+import android.content.Context
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Build
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import com.example.myscope.R
 import com.example.myscope.helpers.AllergyAdapter
+import com.example.myscope.services.ImageApiService
+import com.example.myscope.services.ServiceBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.list_item_prescription_image.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.net.URI
 import java.nio.file.Files
 import java.nio.file.Files.readAllBytes
@@ -42,6 +51,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
     //private var removedItem: PrescriptionDataClass? = null
 
     var removeButton: ImageView? = null
+    var id = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
 
@@ -60,11 +70,11 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
         //holder.deletebutton.text=imglist[position]
         val imgls = imglist[position]
+        id = imgls.p_uploadid
         var encodedString: String = imgls.downloadfile.toString()
         var pureBase64Encoded = encodedString.substring(encodedString.indexOf(",") + 1);
 
         val decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT)
-
 
         val buf: ByteArray = decodedBytes
         val s: String = String(buf);
@@ -96,10 +106,57 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
         holder.deletebutton.setOnClickListener { v: View? ->
 
            // var removedItem: PrescriptionDataClass=imglist.get(position)
+//            imglist.p_uploadid.removeAt(position)
+            val  context = v?.context
+            val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
+            val editor: SharedPreferences.Editor = pref.edit()
+            editor.putInt("uploadid", imglist[position].p_uploadid!!)
+            editor.commit()
 
-            imglist.removeAt(position)  /* remove the item from list */
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position, itemCount)
+            val deleteService = ServiceBuilder.buildService(ImageApiService::class.java)
+            val body = PrescriptionDataClass()
+            body.p_uploadid = imglist[position].p_uploadid!!
+
+
+
+            Log.d("Tag::::::", " "+ deleteService.toString())
+
+
+            val requestCall = deleteService.deleteImageDetails(body)
+
+            requestCall.enqueue(object: Callback<PrescriptionDataClass> {
+                //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
+
+                // If you receive a HTTP Response, then this method is executed
+                // Your STATUS Code will decide if your Http Response is a Success or Error
+                override fun onResponse(call: Call<PrescriptionDataClass>, response: Response<PrescriptionDataClass>) {
+
+                    Log.d("Tag::::::", " "+ response.toString())+
+                            Log.e("Tag::::::", " "+ response.toString())
+
+                    if (response.isSuccessful()) {
+                        // Your status code is in the range of 200's
+                        //  val imageList = response.body()!!
+
+                    } else if(response.code() == 401) {
+                        Toast.makeText(context,
+                                "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+                    } else { // Application-level failure
+//                         Your status code is in the range of 300's, 400's and 500's
+                        Toast.makeText(context, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                // Invoked in case of Network Error or Establishing connection with Server
+                // or Error Creating Http Request or Error Processing Http Response
+                override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
+
+                    Toast.makeText(context, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+                }
+
+
+            })
+
         }
 
 

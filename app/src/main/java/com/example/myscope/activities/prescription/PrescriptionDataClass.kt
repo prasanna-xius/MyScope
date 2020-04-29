@@ -26,7 +26,7 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
 
                                  var p_upload:MultipartBody.Part?=null,
                                  var downloadfile:String? = null,
-                                 var upload_id:Int = 0,
+                                 var p_uploadid:Int = 0,
                                  var upload_saved_on:String ?= null
 
 

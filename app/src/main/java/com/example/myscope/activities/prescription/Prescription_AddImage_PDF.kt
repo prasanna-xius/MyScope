@@ -2,7 +2,9 @@ package com.example.myscope.activities.prescription
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -44,9 +46,10 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
     var uri: Uri? = null
    // var mobile_no:String?=null
     private var mImageUrl = ""
-    var p_uploadid:String=""
+    var p_uploadid:Int = 0
     var recyclerView: RecyclerView? = null
     var imageAdapter: Prescription_ImageAdapter? = null
+    lateinit var sharedpreferences: SharedPreferences
 
     var imglist: MutableList<PrescriptionDataClass>? = null
 
@@ -59,7 +62,8 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         setContentView(R.layout.activity_prescription_image_list)
         //val toolbar = findViewById<View>(R.id.toolbar_imageuploader) as Toolbar
         //setSupportActionBar(toolbar)
-
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        p_uploadid = sharedpreferences.getInt("uploadid",0)
 
         recyclerView = findViewById(R.id.pres_recycler_view)
 
@@ -77,74 +81,12 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                 activity_pres, // Root layout to attach the view
                 false)
 
-        var  deleteditem = view.findViewById<Button>(R.id.iv_pres_dlt)
-        activity_pres.addView(view,0)
-
-            deleteditem.setOnClickListener(object : View.OnClickListener {
-           override fun onClick(v: View?) {
-//
-//
-             deleteItem()
-           }
-         })
-
-
-
 
         val fab = findViewById<View>(R.id.fab_addimages) as FloatingActionButton
         fab.setOnClickListener {
             //showUploadDialog()
             initViews()
         }
-
-
-    }
-
-
-    private fun deleteItem() {
-        val deleteService = ServiceBuilder.buildService(ImageApiService::class.java)
-
-        Log.d("Tag::::::", " "+ deleteService.toString())
-
-
-        val requestCall = deleteService.deleteImageDetails(p_uploadid)
-
-        requestCall.enqueue(object: Callback<MutableList<PrescriptionDataClass>> {
-            //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
-
-            // If you receive a HTTP Response, then this method is executed
-            // Your STATUS Code will decide if your Http Response is a Success or Error
-            override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
-
-                Log.d("Tag::::::", " "+ response.toString())
-                Log.e("Tag::::::", " "+ response.toString())
-
-                if (response.isSuccessful()) {
-                    // Your status code is in the range of 200's
-                  //  val imageList = response.body()!!
-
-
-
-
-
-                } else if(response.code() == 401) {
-                    Toast.makeText(this@Prescription_AddImage_PDF,
-                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
-                } else { // Application-level failure
-                    // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@Prescription_AddImage_PDF, "Failed to retrieve items", Toast.LENGTH_LONG).show()
-                }
-            }
-
-            // Invoked in case of Network Error or Establishing connection with Server
-            // or Error Creating Http Request or Error Processing Http Response
-            override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
-
-                Toast.makeText(this@Prescription_AddImage_PDF, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
-            }
-
-
-    })
     }
     override fun onResume() {
         super.onResume()
