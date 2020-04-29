@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorWhite"
+    tools:context=".activities.medical_history.Disease_History">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/app_bar_main" />
+        <include layout="@layout/background_image" />
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/emotionalState"
+            android:textColor="@color/bg_screen2"
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_marginRight="2dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/score_of_wellness"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_score_of_wellness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/percentage_hint"
+                android:padding="@dimen/dimen_4"
+                android:inputType="number"
+                android:background="@drawable/border_bg"
+                android:textColor="@color/bg_screen2"
+                android:textColorHint="@color/bg_screen2"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/emotional_status"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner_emotional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:popupBackground="@color/colorWhite"
+                android:background="@drawable/edittext_border"
+                android:padding="@dimen/dimen_4"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/emotional_duration"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/no_of_yrs"
+                android:background="@drawable/border_bg"
+                android:padding="@dimen/dimen_4"
+                android:inputType="number"
+                android:textColor="@color/bg_screen2"
+                android:textColorHint="@color/bg_screen2"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/trauma_status"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner_trauma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:popupBackground="@color/colorWhite"
+                android:background="@drawable/edittext_border"
+                android:padding="@dimen/dimen_4"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_marginRight="2dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/reason_of_trauma"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_reason_of_trauma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/trauma_hint"
+                android:padding="@dimen/dimen_4"
+                android:background="@drawable/border_bg"
+                android:textColor="@color/bg_screen2"
+                android:textColorHint="@color/bg_screen2"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_emotionalState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/background_button"
+            android:backgroundTint="#1F78D3"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:text="@string/save"
+            android:textSize="16sp" />
+    </LinearLayout>
+</ScrollView>

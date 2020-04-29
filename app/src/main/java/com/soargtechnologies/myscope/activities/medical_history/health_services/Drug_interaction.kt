@@ -12,10 +12,6 @@ class Drug_interaction : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drug_interaction)
 
-        btn_drug_interaction.setOnClickListener {
 
-            checkbox_Drug_Interaction.setChecked(true)
-            finish()
-        }
     }
 }

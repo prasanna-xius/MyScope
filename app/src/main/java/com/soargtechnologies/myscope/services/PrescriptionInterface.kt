@@ -96,10 +96,15 @@ interface PrescriptionInterface {
 
 
     @Multipart
+//    @Headers("Content-Type: application/json")
     @POST("preupload")
-    fun uploadImage(
-            @Part file: MultipartBody.Part?, @Part("filename") name: RequestBody?
-    ): Call<String>
+    fun uploadImage(@Part file: MultipartBody.Part,
+                    @Part("mobile_no") mobile_no: RequestBody,@Part ("upload_saved_on") upload_saved_on:RequestBody):
+            Call<PrescriptionDataClass>
 
+    @GET("uploadedlist")
+    fun getImageDetails(): Call<MutableList<PrescriptionDataClass>>
 
+    @HTTP(method = "DELETE", path = "deleteupload", hasBody = true)
+    fun deleteImageDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
 }
