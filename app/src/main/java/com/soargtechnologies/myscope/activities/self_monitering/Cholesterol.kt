@@ -66,17 +66,15 @@ class Cholesterol : BaseActivity() {
         val Hdl = hDL.text.toString()
         val Triglycerides = triglycerides.text.toString()
         val Total_cholesterol = total_cholesterol.text.toString()
-        val Other_test = others_test.text.toString()
+    //    val Other_test = others_test.text.toString()
 
         validateInput(lDL , Ldl)
         validateInput(hDL , Hdl)
         validateInput(triglycerides , Triglycerides)
         validateInput(total_cholesterol , Total_cholesterol)
-        validateInput(others_test , Other_test)
 
         if ((date_of_Cholestrol != "") &&  (Ldl != "") && (Hdl != "") && (Triglycerides != "") &&
-                (Total_cholesterol != "")
-                && (Other_test != "")) {
+                (Total_cholesterol != "")) {
    //         showLongToast("save the details")
             sucess()
 

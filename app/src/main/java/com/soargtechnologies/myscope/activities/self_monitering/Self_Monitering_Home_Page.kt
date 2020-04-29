@@ -21,7 +21,7 @@ class Self_Monitering_Home_Page : BaseActivity() {
 
 
     var images = intArrayOf(R.drawable.glucose, R.drawable.hypertension, R.drawable.cholesterol, R.drawable.bmi, R.drawable.heartbeat, R.drawable.dizziness)
-    var names = arrayOf("Blood Glucose", "Blood Pressure", "Cholesterol", "Bmi", "Exercise Tracker", "Emotional State")
+    var names = arrayOf("Blood Glucose", "Blood Pressure", "Cholesterol", "BMI", "Exercise Tracker", "Emotional State")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

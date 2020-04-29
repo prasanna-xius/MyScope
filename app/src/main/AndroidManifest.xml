@@ -41,7 +41,7 @@
             android:name=".activities.SliderActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activities.Login_Page">
+        <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

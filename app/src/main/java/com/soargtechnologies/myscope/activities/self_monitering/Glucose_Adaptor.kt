@@ -24,7 +24,7 @@ class Glucose_Adaptor (private val glucoseList: List<Self_dataClass>) : Recycler
     override fun onBindViewHolder(holder: Glucose_Adaptor.ViewHolder, position: Int) {
         holder.glucosedestination = glucoseList[position]
         holder.glucose_sno.text = glucoseList[position].glucose_id.toString()
-        holder.glucoseTitle.text = glucoseList[position].test_result
+        holder.glucoseTitle.text = glucoseList[position].test_result + "mg/dl"
         holder.glucose_date.text = glucoseList[position].glucose_save_on
 
 

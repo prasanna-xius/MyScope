@@ -59,16 +59,15 @@ class Emotional_state : BaseActivity() {
 
         val Score = et_score_of_wellness.text.toString()
         val Emotional = spinner_emotional!!.selectedItem.toString()
-        val Trauma = spinner_trauma!!.selectedItem.toString()
+    //    val Trauma = spinner_trauma!!.selectedItem.toString()
         val emotional_duration = et_duration.text.toString()
         validateInput(et_score_of_wellness, Score)
         validateInput(et_duration , emotional_duration)
         validateSpinner(spinner_emotional!!, Emotional)
-        validateSpinner(spinner_trauma!!, Trauma)
+     //   validateSpinner(spinner_trauma!!, Trauma)
 
         if ((Score != "") &&
-                (Emotional != "None")  &&
-                (Trauma != "None")
+                (Emotional != "None")
                 && (emotional_duration != "")) {
             //   showLongToast("save the details")
           sucess()

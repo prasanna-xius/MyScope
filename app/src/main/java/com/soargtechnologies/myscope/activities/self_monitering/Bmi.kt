@@ -13,7 +13,6 @@ import com.soargtechnologies.myscope.activities.BaseActivity
 import com.soargtechnologies.myscope.activities.services.Self_monitoring_service
 import com.soargtechnologies.myscope.activities.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_bmi.*
-import kotlinx.android.synthetic.main.activity_cholestrol.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call
 import retrofit2.Callback

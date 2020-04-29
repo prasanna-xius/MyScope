@@ -141,18 +141,16 @@ class CholestrolUpdate : BaseActivity() {
         val Hdl = hDL_update.text.toString()
         val Triglycerides = triglycerides_update.text.toString()
         val Total_cholesterol = total_cholesterol_update.text.toString()
-        val Other_test = others_test_update.text.toString()
+     //   val Other_test = others_test_update.text.toString()
 
         //  validateInput(cholesterol_update, condition)
         validateInput(lDL_update , Ldl)
         validateInput(hDL_update , Hdl)
         validateInput(triglycerides_update , Triglycerides)
         validateInput(total_cholesterol_update , Total_cholesterol)
-        validateInput(others_test_update , Other_test)
 
         if ((date_of_Cholestrol != "") && (Ldl != "") && (Hdl != "") && (Triglycerides != "") &&
-                (Total_cholesterol != "")
-                && (Other_test != "")) {
+                (Total_cholesterol != "")) {
  //           showLongToast("save the details")
             sucess()
 

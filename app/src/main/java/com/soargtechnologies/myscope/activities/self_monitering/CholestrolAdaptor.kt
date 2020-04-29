@@ -25,7 +25,7 @@ class CholestrolAdaptor(private val cholestrolList: List<Self_dataClass>) : Recy
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.cholestroldestination = cholestrolList[position]
         holder.cholestrolSno.text = cholestrolList[position].cholestrol_id.toString()
-        holder.cholestrolTitle.text = cholestrolList[position].total_cholestrol
+        holder.cholestrolTitle.text = cholestrolList[position].total_cholestrol + "mg/dl"
         holder.cholestrolDate.text = cholestrolList[position].cholestrol_save_on
 
 
