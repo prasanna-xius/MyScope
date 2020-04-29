@@ -22,6 +22,7 @@ import androidx.core.content.ContextCompat.startActivity
 import android.content.Intent
 import android.R.attr.path
 import android.R.attr.path
+import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
@@ -66,7 +67,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
     override fun getItemCount() = imglist.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imageDetails=imglist[position]
+        holder.imageDetails = imglist[position]
 
         //holder.deletebutton.text=imglist[position]
         val imgls = imglist[position]
@@ -105,66 +106,84 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
         holder.deletebutton.setOnClickListener { v: View? ->
 
-           // var removedItem: PrescriptionDataClass=imglist.get(position)
+            // var removedItem: PrescriptionDataClass=imglist.get(position)
 //            imglist.p_uploadid.removeAt(position)
-            val  context = v?.context
+
+
+            val context = v?.context
             val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
             val editor: SharedPreferences.Editor = pref.edit()
             editor.putInt("uploadid", imglist[position].p_uploadid!!)
             editor.commit()
 
-            val deleteService = ServiceBuilder.buildService(ImageApiService::class.java)
-            val body = PrescriptionDataClass()
-            body.p_uploadid = imglist[position].p_uploadid!!
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Delete")
+            builder.setMessage("Are you sure you want to delete?")
+            builder.setIcon(android.R.drawable.ic_dialog_alert)
+            builder.setPositiveButton("Yes") { dialogInterface, which ->
+                //Toast.makeText(applicationContext, "clicked yes", Toast.LENGTH_LONG).show()
+
+
+                val deleteService = ServiceBuilder.buildService(ImageApiService::class.java)
+                val body = PrescriptionDataClass()
+                body.p_uploadid = imglist[position].p_uploadid!!
 
 
 
-            Log.d("Tag::::::", " "+ deleteService.toString())
+                Log.d("Tag::::::", " " + deleteService.toString())
 
 
-            val requestCall = deleteService.deleteImageDetails(body)
+                val requestCall = deleteService.deleteImageDetails(body)
 
-            requestCall.enqueue(object: Callback<PrescriptionDataClass> {
-                //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
+                requestCall.enqueue(object : Callback<PrescriptionDataClass> {
+                    //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
 
-                // If you receive a HTTP Response, then this method is executed
-                // Your STATUS Code will decide if your Http Response is a Success or Error
-                override fun onResponse(call: Call<PrescriptionDataClass>, response: Response<PrescriptionDataClass>) {
+                    // If you receive a HTTP Response, then this method is executed
+                    // Your STATUS Code will decide if your Http Response is a Success or Error
+                    override fun onResponse(call: Call<PrescriptionDataClass>, response: Response<PrescriptionDataClass>) {
 
-                    Log.d("Tag::::::", " "+ response.toString())+
-                            Log.e("Tag::::::", " "+ response.toString())
+                        Log.d("Tag::::::", " " + response.toString()) +
+                                Log.e("Tag::::::", " " + response.toString())
 
-                    if (response.isSuccessful()) {
-                        // Your status code is in the range of 200's
-                        //  val imageList = response.body()!!
+                        if (response.isSuccessful()) {
+                            // Your status code is in the range of 200's
+                            //  val imageList = response.body()!!
 
-                    } else if(response.code() == 401) {
-                        Toast.makeText(context,
-                                "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
-                    } else { // Application-level failure
+                        } else if (response.code() == 401) {
+                            Toast.makeText(context,
+                                    "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+                        } else { // Application-level failure
 //                         Your status code is in the range of 300's, 400's and 500's
-                        Toast.makeText(context, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+                        }
                     }
-                }
 
-                // Invoked in case of Network Error or Establishing connection with Server
-                // or Error Creating Http Request or Error Processing Http Response
-                override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
+                    // Invoked in case of Network Error or Establishing connection with Server
+                    // or Error Creating Http Request or Error Processing Http Response
+                    override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
 
-                    Toast.makeText(context, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
-                }
+                        Toast.makeText(context, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+                    }
 
 
-            })
+                })
+
+            }
+            builder.setNegativeButton("No"){dialogInterface, which ->
+
+            }
+
+            val alertDialog: AlertDialog = builder.create()
+            // Set other dialog properties
+            alertDialog.setCancelable(false)
+            alertDialog.show()
 
         }
-
-
     }
 
     class ViewHolder(val itemview: View) : RecyclerView.ViewHolder(itemview) {
 
-        val deletebutton: Button = itemview.findViewById(R.id.iv_pres_dlt)
+        val deletebutton: ImageView = itemview.findViewById(R.id.iv_pres_dlt)
         val imageView: ImageView = itemview.findViewById(R.id.iv_pres)
         var imageDetails: PrescriptionDataClass? = null
     }
