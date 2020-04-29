@@ -28,13 +28,12 @@
 			android:layout_gravity="center_horizontal"
 			/>
 
-		<Button
+		<ImageView
 			android:id="@+id/iv_pres_dlt"
 			android:layout_width="25dp"
 			android:layout_height="25dp"
 			android:layout_weight="0.25"
-
-
+			android:src="@drawable/bin_new_36"
 			android:layout_gravity="center"
 			/>
 	</LinearLayout>
