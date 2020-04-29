@@ -218,7 +218,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                     val stream: ByteArrayOutputStream = ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
-                    val `is` = contentResolver.openInputStream(data?.data!!)
+//                    val `is` = contentResolver.openInputStream(data?.data!!)
                     uploadImage(stream.toByteArray(),requestCode,null)
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -246,11 +246,9 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
 
              val uriString = uri.toString();
             val myFile =  File(uriString);
-                val input:InputStream = FileInputStream(myFile)
-                val outputStream = ByteArrayOutputStream();
                 val `is` = contentResolver.openInputStream(data?.data!!)
 //                uploadImage( outputStream.toByteArray(),102)
-                uploadImage(outputStream.toByteArray(),requestCode,uri)
+                uploadImage(getBytes(`is`!!),102,uri)
 //              val file = data!!.extras!!.get("data") as File
 //      val fis: FileInputStream = FileInputStream(file);
 //      val bos : ByteArrayOutputStream = ByteArrayOutputStream();
