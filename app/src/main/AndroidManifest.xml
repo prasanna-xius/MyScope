@@ -30,10 +30,11 @@
          <activity android:name=".activities.self_monitering.Blood_GlucoseUpdate" />
          <activity android:name=".activities.self_monitering.Blood_Glucose_recyclerView" />
         <activity android:name=".activities.self_monitering.Glucose_Adaptor" />
-        <!-- <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" /> -->
+         <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" />
         <activity android:name=".activities.Contact_Us" /> <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
 
+        <activity android:name=".activities.prescription.Prescription_AddImage_PDF"/>
         <activity android:name=".activities.ComingSoon_Activity" />
         <!--        <activity android:name=".activities.Facebook_Activity" />-->
 
@@ -41,7 +42,7 @@
             android:name=".activities.SliderActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page">
+        <activity android:name=".activities.Login_Page">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -142,7 +143,6 @@
         <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog" />
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
 
-                <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
         <activity android:name=".activities.Educational_Blog_Activity" />
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
         <activity android:name=".activities.labReports.Lab_Reports_Homepage" />

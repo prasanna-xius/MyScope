@@ -6,60 +6,88 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
-import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.soargtechnologies.myscope.R
-import com.soargtechnologies.myscope.activities.BaseActivity
-import com.soargtechnologies.myscope.services.PrescriptionInterface
-import com.soargtechnologies.myscope.activities.services.ServiceBuilder1
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
+import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
-import kotlinx.android.synthetic.main.activity_prescription_addimages_recyclerview.*
+import kotlinx.android.synthetic.main.activity_navigation_blogs.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.json.JSONException
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.io.*
 import java.util.*
+import kotlin.collections.ArrayList
 
-class Prescription_AddImage_PDF :BaseActivity() {
-
+class Prescription_AddImage_PDF : AppCompatActivity() {
     var file: File? = null
     var uri: Uri? = null
+    // var mobile_no:String?=null
     private var mImageUrl = ""
-    var p_upload:MultipartBody.Part?=null
+    var p_uploadid:Int = 0
+    var recyclerView: RecyclerView? = null
+    var imageAdapter: Prescription_ImageAdapter? = null
+    lateinit var sharedpreferences: SharedPreferences
+
+    var imglist: MutableList<PrescriptionDataClass>? = null
+
+    var p_upload: MultipartBody.Part? = null
     //var byte:byte[]?= null
     internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prescription_image_list)
         //val toolbar = findViewById<View>(R.id.toolbar_imageuploader) as Toolbar
         //setSupportActionBar(toolbar)
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        p_uploadid = sharedpreferences.getInt("uploadid",0)
+
+        recyclerView = findViewById(R.id.pres_recycler_view)
+
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        recyclerView!!.layoutManager = layoutManager
+
+
+
+
+        val layoutInflater:LayoutInflater = LayoutInflater.from(applicationContext)
+
+//        val view: View = layoutInflater.inflate(
+//                R.layout.list_item_prescription_image, // Custom view/ layout
+//                activity_pres, // Root layout to attach the view
+//                false)
+
+
         val fab = findViewById<View>(R.id.fab_addimages) as FloatingActionButton
         fab.setOnClickListener {
             //showUploadDialog()
             initViews()
         }
     }
-
     override fun onResume() {
         super.onResume()
 
@@ -74,27 +102,32 @@ class Prescription_AddImage_PDF :BaseActivity() {
 
         val requestCall = service.getImageDetails()
 
-        requestCall.enqueue(object: Callback<List<PrescriptionDataClass>> {
+        requestCall.enqueue(object: Callback<MutableList<PrescriptionDataClass>> {
             //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
 
             // If you receive a HTTP Response, then this method is executed
             // Your STATUS Code will decide if your Http Response is a Success or Error
-            override fun onResponse(call: Call<List<PrescriptionDataClass>>, response: Response<List<PrescriptionDataClass>>) {
+            override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val imageList = response.body()!!
 
 
-                    val llm = LinearLayoutManager(applicationContext)
-                    llm.orientation = LinearLayoutManager.VERTICAL
-                    pres_recycler_view.setLayoutManager(llm)
-                    pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
+                    //val llm = LinearLayoutManager(applicationContext)
+                    // llm.orientation = LinearLayoutManager.VERTICAL
+                    // pres_recycler_view.setLayoutManager(llm)
+
+
+                    val adapter= Prescription_ImageAdapter(imageList)
+                    recyclerView!!.adapter = adapter
+
+                    //pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
+
+
+                    imageAdapter = Prescription_ImageAdapter(imageList)
+
                     pres_recycler_view.adapter?.notifyDataSetChanged()
 
-
-                    /// var  bytes :ByteArray = imageList.bytes()
-                    //var bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                    //iv_pres.setImageBitmap(bitmap)
 
                 } else if(response.code() == 401) {
                     Toast.makeText(this@Prescription_AddImage_PDF,
@@ -107,7 +140,7 @@ class Prescription_AddImage_PDF :BaseActivity() {
 
             // Invoked in case of Network Error or Establishing connection with Server
             // or Error Creating Http Request or Error Processing Http Response
-            override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
+            override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
 
                 Toast.makeText(this@Prescription_AddImage_PDF, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
@@ -185,7 +218,7 @@ class Prescription_AddImage_PDF :BaseActivity() {
                     val stream: ByteArrayOutputStream = ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
-                    val `is` = contentResolver.openInputStream(data?.data!!)
+//                    val `is` = contentResolver.openInputStream(data?.data!!)
                     uploadImage(stream.toByteArray(),requestCode,null)
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -211,13 +244,11 @@ class Prescription_AddImage_PDF :BaseActivity() {
 
                 val uri = data?.getData();
 
-//                val uriString = uri.toString();
-//                val myFile =  File(uriString);
-//                val input: InputStream = FileInputStream(myFile)
-                val outputStream = ByteArrayOutputStream();
-//                val `is` = contentResolver.openInputStream(data?.data!!)
+                val uriString = uri.toString();
+                val myFile =  File(uriString);
+                val `is` = contentResolver.openInputStream(data?.data!!)
 //                uploadImage( outputStream.toByteArray(),102)
-                uploadImage(outputStream.toByteArray(),requestCode,uri)
+                uploadImage(getBytes(`is`!!),102,uri)
 //              val file = data!!.extras!!.get("data") as File
 //      val fis: FileInputStream = FileInputStream(file);
 //      val bos : ByteArrayOutputStream = ByteArrayOutputStream();

@@ -149,7 +149,7 @@
     <string name="Pulse">Pulse/min  <font color='#a4c639'>*</font></string>
     <string name="heart">Heart rate  <font color='#a4c639'>*</font></string>
     <string name="heart_unit">(bpm)</string>
-    <string name="irregular_heartbeats">Irregular heartbeats?  <font color='#a4c639'>*</font></string>
+    <string name="irregular_heartbeats">Irregular heartbeats?</string>
 
 
     <!-- cholestrol -->
@@ -170,7 +170,7 @@
     <string name="percentage_hint"> eg : 1-100 %  </string>
     <string name="emotional_status"> Emotional Status  <font color='#a4c639'>*</font></string>
     <string name="emotional_duration">  Duration  <font color='#a4c639'>*</font></string>
-    <string name="trauma_status"> Any Trauma Status ? </string>
+    <string name="trauma_status"> Any Trauma? </string>
     <string name="reason_of_trauma"> Reason Of Trauma  </string>
     <string name="trauma_hint">eg:death,accident,failure </string>
 

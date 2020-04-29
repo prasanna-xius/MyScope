@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout android:layout_width="match_parent"-->
-<!--	android:layout_height="match_parent"-->
-<!--	xmlns:android="http://schemas.android.com/apk/res/android" >-->
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp"
+    android:id="@+id/pres_ivList"
     android:layout_marginTop="5dp"
     android:layout_marginEnd="10dp"
     android:layout_marginBottom="5dp"
@@ -19,15 +17,24 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_margin="10dp"
+        android:weightSum="2.0"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/iv_pres"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_weight="1.75"
             android:layout_gravity="center_horizontal"
             />
 
+        <ImageView
+            android:id="@+id/iv_pres_dlt"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_weight="0.25"
+            android:src="@drawable/bin_new_36"
+            android:layout_gravity="center"
+            />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
-    <!--</LinearLayout>-->
