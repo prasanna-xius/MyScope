@@ -1,5 +1,6 @@
 package com.example.myscope.activities.prescription
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
@@ -7,6 +8,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -52,7 +54,8 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
     lateinit var sharedpreferences: SharedPreferences
 
     var imglist: MutableList<PrescriptionDataClass>? = null
-
+    private val PermissionsRequestCode = 123
+    private lateinit var managePermissions: ManagePermissions
     var p_upload: MultipartBody.Part? = null
     //var byte:byte[]?= null
     internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
@@ -71,8 +74,12 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView!!.layoutManager = layoutManager
 
-
-
+        val list = listOf<String>(
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+        managePermissions = ManagePermissions(this,list,PermissionsRequestCode)
 
         val layoutInflater:LayoutInflater = LayoutInflater.from(applicationContext)
 
@@ -162,9 +169,27 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         pictureDialog.setItems(pictureDialogItems
         ) { dialog, which ->
             when (which) {
-                0 -> choosephotofromgallery()
-                1 -> choosephotofromcamera()
-                2 -> selectfilechooser()
+                0 -> {
+
+                    choosephotofromgallery()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                      //  managePermissions.checkPermissions()
+                }
+
+
+                1 ->{
+
+                    choosephotofromcamera()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    //managePermissions.checkPermissions()
+                }
+
+                2 -> {
+
+                    selectfilechooser()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    //managePermissions.checkPermissions()
+                }
             }
         }
         pictureDialog.show()
@@ -342,4 +367,28 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         //public static final String URL = "http://10.0.2.2:8080";
         val URL = "http://10.0.2.2:8484/common/myscope/"
     }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
+                                            grantResults: IntArray) {
+        when (requestCode) {
+            PermissionsRequestCode ->{
+                val isPermissionsGranted = managePermissions
+                        .processPermissionsResult(requestCode,permissions,grantResults)
+
+                if(isPermissionsGranted){
+                    // Do the task now
+                    toast("Permissions granted.")
+                }else{
+                    toast("Permissions denied.")
+                }
+                return
+            }
+        }
+    }
+}
+
+
+// Extension function to show toast message
+fun Context.toast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
