@@ -77,6 +77,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imageDetails = imglist[position]
 
+
         //holder.deletebutton.text=imglist[position]
         val imgls = imglist[position]
         id = imgls.p_uploadid
@@ -100,6 +101,8 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
         //val bitmapdata = blob.toByteArray()
         //imageupload.setImageBitmap(bitmap)
 
+        holder.uploadsno.text = imgls.p_uploadid.toString()
+
 
         Glide.with(holder.itemView.context)
                 .load(decodedBytes)
@@ -121,14 +124,16 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                 dialog!!.setContentView(R.layout.custom_dialog)
 
                 var img: ImageView= dialog!!.findViewById(R.id.img);
+                var pdf  = dialog!!.findViewById<com.github.barteksc.pdfviewer.PDFView>(R.id.pdfView)
                 //var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
                 var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
 //                img.setImageResource(imglist.get(holder.getAdapterPosition()).p_uploadid);
                 //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
+                pdf.fromBytes(decodedBytes)
 
-                Glide.with(holder.imageView.context)
-                        .load(decodedBytes)
-                        .into(img)
+//                Glide.with(holder.imageView.context)
+//                        .load(decodedBytes)
+//                        .into(img)
                 dialog!!.show()
 
                 btn_close!!.setOnClickListener( (object : View.OnClickListener {
@@ -223,6 +228,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
         val deletebutton: ImageView = itemview.findViewById(R.id.iv_pres_dlt)
         val imageView: ImageView = itemview.findViewById(R.id.iv_pres)
         var imageDetails: PrescriptionDataClass? = null
+        var uploadsno:TextView = itemview.findViewById(R.id.uploadid)
     }
 
 
