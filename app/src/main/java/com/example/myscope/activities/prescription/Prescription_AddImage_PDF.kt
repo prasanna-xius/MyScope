@@ -1,5 +1,6 @@
 package com.example.myscope.activities.prescription
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
@@ -7,6 +8,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -44,15 +46,16 @@ import kotlin.collections.ArrayList
 class Prescription_AddImage_PDF : AppCompatActivity() {
     var file: File? = null
     var uri: Uri? = null
-   // var mobile_no:String?=null
+    // var mobile_no:String?=null
     private var mImageUrl = ""
-    var p_uploadid:Int = 0
+    var p_uploadid: Int = 0
     var recyclerView: RecyclerView? = null
     var imageAdapter: Prescription_ImageAdapter? = null
     lateinit var sharedpreferences: SharedPreferences
 
     var imglist: MutableList<PrescriptionDataClass>? = null
-
+    private val PermissionsRequestCode = 123
+    private lateinit var managePermissions: ManagePermissions
     var p_upload: MultipartBody.Part? = null
     //var byte:byte[]?= null
     internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
@@ -63,7 +66,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         //val toolbar = findViewById<View>(R.id.toolbar_imageuploader) as Toolbar
         //setSupportActionBar(toolbar)
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-        p_uploadid = sharedpreferences.getInt("uploadid",0)
+        p_uploadid = sharedpreferences.getInt("uploadid", 0)
 
         recyclerView = findViewById(R.id.pres_recycler_view)
 
@@ -71,10 +74,14 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView!!.layoutManager = layoutManager
 
+        val list = listOf<String>(
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+        managePermissions = ManagePermissions(this, list, PermissionsRequestCode)
 
-
-
-        val layoutInflater:LayoutInflater = LayoutInflater.from(applicationContext)
+        val layoutInflater: LayoutInflater = LayoutInflater.from(applicationContext)
 
         val view: View = layoutInflater.inflate(
                 R.layout.list_item_prescription_image, // Custom view/ layout
@@ -88,6 +95,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
             initViews()
         }
     }
+
     override fun onResume() {
         super.onResume()
 
@@ -100,9 +108,9 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         val service = ServiceBuilder.buildService(ImageApiService::class.java)
 
 
-                val requestCall = service.getImageDetails()
+        val requestCall = service.getImageDetails()
 
-        requestCall.enqueue(object: Callback<MutableList<PrescriptionDataClass>> {
+        requestCall.enqueue(object : Callback<MutableList<PrescriptionDataClass>> {
             //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
 
             // If you receive a HTTP Response, then this method is executed
@@ -114,11 +122,11 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
 
 
                     //val llm = LinearLayoutManager(applicationContext)
-                   // llm.orientation = LinearLayoutManager.VERTICAL
-                   // pres_recycler_view.setLayoutManager(llm)
+                    // llm.orientation = LinearLayoutManager.VERTICAL
+                    // pres_recycler_view.setLayoutManager(llm)
 
 
-                    val adapter= Prescription_ImageAdapter(imageList)
+                    val adapter = Prescription_ImageAdapter(imageList)
                     recyclerView!!.adapter = adapter
 
                     //pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
@@ -129,7 +137,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                     pres_recycler_view.adapter?.notifyDataSetChanged()
 
 
-                } else if(response.code() == 401) {
+                } else if (response.code() == 401) {
                     Toast.makeText(this@Prescription_AddImage_PDF,
                             "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure
@@ -148,9 +156,6 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
     }
 
 
-
-
-
     private fun initViews() {
         val pictureDialog = AlertDialog.Builder(this, R.style.Alert_Dialogue_Background)
         pictureDialog.setTitle("Select Action")
@@ -162,9 +167,27 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         pictureDialog.setItems(pictureDialogItems
         ) { dialog, which ->
             when (which) {
-                0 -> choosephotofromgallery()
-                1 -> choosephotofromcamera()
-                2 -> selectfilechooser()
+                0 -> {
+
+                    choosephotofromgallery()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                     // managePermissions.checkPermissions()
+                }
+
+
+                1 -> {
+
+                    choosephotofromcamera()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    //managePermissions.checkPermissions()
+                }
+
+                2 -> {
+
+                    selectfilechooser()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    //managePermissions.checkPermissions()
+                }
             }
         }
         pictureDialog.show()
@@ -172,7 +195,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
 
     private fun selectfilechooser() {
 
-        val intent = Intent( Intent.ACTION_PICK,
+        val intent = Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("application/pdf");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -201,7 +224,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         intent.type = "image/jpeg"
         intent.data = Uri.parse(mImageUrl)
-        startActivityForResult(Intent, 100,null)
+        startActivityForResult(Intent, 100, null)
         //startActivity(intent)
         //startActivity(intent)
         /*fun workingORnot(){
@@ -211,44 +234,44 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
     @SuppressLint("MissingSuperCall")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == 100) {
-//            if (resultCode == Activity.RESULT_OK) {
-//                try {
-//                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, data?.data!!)
-//                    val stream: ByteArrayOutputStream = ByteArrayOutputStream();
-//                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-//
-////                    val `is` = contentResolver.openInputStream(data?.data!!)
-//                    uploadImage(stream.toByteArray(),requestCode,null)
-//                } catch (e: IOException) {
-//                    e.printStackTrace()
-//                }
-//
-//            }
-//        }
-//        if (requestCode == 101) {
-//            if (resultCode == Activity.RESULT_OK) {
-//                try {
-//
-//                    val thumbnail = data!!.extras!!.get("data") as Bitmap
-//                    val stream: ByteArrayOutputStream = ByteArrayOutputStream();
-//                    thumbnail.compress(Bitmap.CompressFormat.PNG, 100, stream);
-//                    uploadImage(stream.toByteArray(),101,null)
-//                } catch (e: IOException) {
-//                    e.printStackTrace()
-//                }
-//            }
-//        }
+        if (requestCode == 100) {
+            if (resultCode == Activity.RESULT_OK) {
+                try {
+                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, data?.data!!)
+                    val stream: ByteArrayOutputStream = ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+//                    val `is` = contentResolver.openInputStream(data?.data!!)
+                    uploadImage(stream.toByteArray(), requestCode, null)
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+
+            }
+        }
+        if (requestCode == 101) {
+            if (resultCode == Activity.RESULT_OK) {
+                try {
+
+                    val thumbnail = data!!.extras!!.get("data") as Bitmap
+                    val stream: ByteArrayOutputStream = ByteArrayOutputStream();
+                    thumbnail.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    uploadImage(stream.toByteArray(), 101, null)
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
         if (requestCode == 102) {
             if (resultCode == RESULT_OK) {
 
-                 val uri:Uri = data!!.getData()!!;
+                val uri = data?.getData();
 
-             val uriString = uri.toString();
-            val myFile =  File(uriString);
-                val `is` = contentResolver.openInputStream(uri)
+                val uriString = uri.toString();
+                val myFile = File(uriString);
+                val `is` = contentResolver.openInputStream(data?.data!!)
 //                uploadImage( outputStream.toByteArray(),102)
-                uploadImage(getBytes(`is`!!),102,uri)
+                uploadImage(getBytes(`is`!!), 102, uri)
 //              val file = data!!.extras!!.get("data") as File
 //      val fis: FileInputStream = FileInputStream(file);
 //      val bos : ByteArrayOutputStream = ByteArrayOutputStream();
@@ -271,27 +294,26 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         return byteBuff.toByteArray()
     }
 
-//    private fun uploadImage(imageBytes: ByteArray,code:Int) {
-    private fun uploadImage(imageBytes: ByteArray,code:Int,uri: Uri?) {
+    //    private fun uploadImage(imageBytes: ByteArray,code:Int) {
+    private fun uploadImage(imageBytes: ByteArray, code: Int, uri: Uri?) {
         val c = Calendar.getInstance()
         val day = c.get(Calendar.DAY_OF_MONTH)
         val month = c.get(Calendar.MONTH)
         val year = c.get(Calendar.YEAR)
         var date1 = day.toString() + "/" + (month + 1) + "/" + year
-        var codevalue:Int = code
+        var codevalue: Int = code
 
-        val requestFile:RequestBody
-        val body:MultipartBody.Part
+        val requestFile: RequestBody
+        val body: MultipartBody.Part
 
 //    val fis: FileInputStream = FileInputStream(myFile);
 //      val bos : ByteArrayOutputStream = ByteArrayOutputStream();
         var date = RequestBody.create(MediaType.parse("text/plain"), date1)
         val destinationService = ServiceBuilder.buildService(PrescriptionInterface::class.java)
-        if(codevalue.equals(102))
-       {
-           val uriString = uri.toString();
-           val myFile =  File(uriString);
-            requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageBytes)
+        if (codevalue.equals(102)) {
+            val uriString = uri.toString();
+            val myFile = File(uriString);
+            requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), (uriString))
             body = MultipartBody.Part.createFormData("p_upload", "example.pdf", requestFile)
 
         } else {
@@ -299,7 +321,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
             body = MultipartBody.Part.createFormData("p_upload", "image.jpg", requestFile)
 
         }
-        val call = destinationService.uploadImage(body, mobile_no,date)
+        val call = destinationService.uploadImage(body, mobile_no, date)
         //mProgressBar!!.visibility = View.VISIBLE
         call.enqueue(object : Callback<PrescriptionDataClass> {
             override fun onResponse(call: Call<PrescriptionDataClass>, response: retrofit2.Response<PrescriptionDataClass>) {
@@ -309,14 +331,14 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                     //mBtImageShow!!.visibility = View.VISIBLE
                     //mImageUrl = URL + responseBody!!.path
                     //Snackbar.make(findViewById(R.id.content), responseBody.message!!, Snackbar.LENGTH_SHORT).show()
-                    Toast.makeText(applicationContext,"image successful",Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "image successful", Toast.LENGTH_LONG).show()
 
                 } else {
                     val errorBody = response.errorBody()
                     val gson = Gson()
                     try {
 //                        val errorResponse = gson.fromJson<PrescriptionDataClass>(errorBody!!.string(), Response::class.java!!)
-                        Toast.makeText(applicationContext,"image uploaded in else part",Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "image uploaded in else part", Toast.LENGTH_LONG).show()
                         //Snackbar.make(findViewById(R.id.content), errorResponse.message!!, Snackbar.LENGTH_SHORT).show()
                     } catch (e: IOException) {
                         e.printStackTrace()
@@ -327,7 +349,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
             override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
                 //mProgressBar!!.visibility = View.GONE
                 //Log.d(TAG, "onFailure: " + t.localizedMessage)
-                Toast.makeText(applicationContext,"image uploaded in failure part",Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "image uploaded in failure part", Toast.LENGTH_LONG).show()
 
             }
         })
@@ -339,5 +361,29 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         //String mobile_no  = "8142529582";
         //public static final String URL = "http://10.0.2.2:8080";
         val URL = "http://10.0.2.2:8484/common/myscope/"
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
+                                            grantResults: IntArray) {
+        when (requestCode) {
+            PermissionsRequestCode -> {
+                val isPermissionsGranted = managePermissions
+                        .processPermissionsResult(requestCode, permissions, grantResults)
+
+                if (isPermissionsGranted) {
+                    // Do the task now
+                    toast("Permissions granted.")
+                } else {
+                    toast("Permissions denied.")
+                }
+                return
+            }
+        }
+    }
+
+
+    // Extension function to show toast message
+    fun Context.toast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

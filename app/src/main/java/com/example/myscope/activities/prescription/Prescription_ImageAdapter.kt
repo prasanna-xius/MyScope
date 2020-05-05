@@ -23,6 +23,7 @@ import android.content.Intent
 import android.R.attr.path
 import android.R.attr.path
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
@@ -30,6 +31,7 @@ import android.os.Build
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import com.example.myscope.R
 import com.example.myscope.helpers.AllergyAdapter
@@ -53,12 +55,45 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
     var removeButton: ImageView? = null
     var id = 0
+     var dialog :Dialog?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
 
         val view= LayoutInflater.from(parent.context)
                         .inflate(R.layout.list_item_prescription_image, parent, false)
-        return ViewHolder(view)
+
+        var viewHolder :ViewHolder  =  ViewHolder(view);
+
+       // dialog!!.setContentView(R.layout.custom_dialog)
+
+
+        viewHolder.imageView.setOnClickListener (object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val context = v?.context
+                  dialog = Dialog(context!!)
+                dialog!!.setContentView(R.layout.custom_dialog)
+
+                var img: ImageView= dialog!!.findViewById(R.id.img);
+               //var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
+                 var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
+
+                img.setImageResource(imglist.get(viewHolder.getAdapterPosition()).p_uploadid);
+                //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
+
+                dialog!!.show()
+
+                btn_close!!.setOnClickListener( (object : View.OnClickListener {
+
+                    override fun onClick(v: View?) {
+                        dialog!!.dismiss()
+                    }
+                }))
+
+            }
+        })
+
+        //return ViewHolder(view)
+        return viewHolder
 
 
 
