@@ -36,7 +36,7 @@ import java.util.*
 
 
 @Suppress("DEPRECATION")
-class Login_Page : AppCompatActivity(), View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
+class Login_Page : BaseActivity(), View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
 //    var loginButton: TextView? = null
 
     private var signInButton: SignInButton? = null
@@ -103,8 +103,10 @@ class Login_Page : AppCompatActivity(), View.OnClickListener, GoogleApiClient.On
                     return
                 }
                 loginApiCall()
-//                navigateToActivity(Intent(applicationContext,Otp_Page::class.java))
 
+                val intent = Intent(this@Login_Page, Otp_Page::class.java)
+                intent.putExtra("Phonenumber", Phonenumber)
+                startActivity(intent)
 
             }
             R.id.btn_register -> {
@@ -168,20 +170,25 @@ class Login_Page : AppCompatActivity(), View.OnClickListener, GoogleApiClient.On
                         }
                         alertDialogBuilder.show()
                     } else {
+                        val Phonenumber = mobile_number.getText().toString().trim { it <= ' ' }
+
                         val pref = applicationContext.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
                         val editor: SharedPreferences.Editor = pref.edit()
                         editor.putString("mobile_no", mobileNumber)
                         editor.commit()
                         //Passing value through bundle
-                        var intent = Intent(this@Login_Page, Navigation_Drawer_Blogs::class.java)
+//                        var intent = Intent(this@Login_Page, Navigation_Drawer_Blogs::class.java)
 //                        var bundle: Bundle = Bundle()
 //                        bundle.putString("mobile_no", mobileNumber)
 //                        intent.putExtras(bundle)
 //                         intent.putExtra("mobile_no",mobileNumber)
-                        startActivity(intent)
+//                        startActivity(intent)
 
 //                        navigateToActivity(Intent(applicationContext, Otp_Page::class.java))
 
+                        val intent = Intent(this@Login_Page, Otp_Page::class.java)
+                        intent.putExtra("Phonenumber", Phonenumber)
+                        startActivity(intent)
                     }
                 }
             }

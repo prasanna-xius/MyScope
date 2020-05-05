@@ -26,7 +26,10 @@ import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.Login_Page
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import kotlinx.android.synthetic.main.login_page_main.*
+import kotlinx.android.synthetic.main.login_page_main.mobile_layout
+import kotlinx.android.synthetic.main.login_page_main.mobile_number
 import kotlinx.android.synthetic.main.otppage_main.*
+import kotlinx.android.synthetic.main.user_register_main.*
 import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
@@ -69,14 +72,19 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
         //initializing objects
         mAuth = FirebaseAuth.getInstance()
 
-        val mobileNumber = mobile_number.getText().toString().trim { it <= ' ' }
-//        val intent = intent
-//        val mobileNumber = intent.getStringExtra("mobile_no")
-        sendVerificationCode(mobileNumber)
+//        val mobileNumber = mobile_number.getText().toString().trim { it <= ' ' }
+////        val intent = intent
+////        val mobileNumber = intent.getStringExtra("mobile_no")
+//        sendVerificationCode(mobileNumber)
+
 
         btn_otp_send = findViewById(R.id.btn_otp_send)
         btn_otp_send!!.setOnClickListener(this)
-        btn_verify_otp!!.setOnClickListener(this)
+        btn_verify_otp_gmail!!.setOnClickListener(this)
+
+//        val intent = intent
+//        val Phonenumber = intent.getStringExtra("Phonenumber")
+//        sendVerificationCode(Phonenumber)
 
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -85,15 +93,17 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso!!)
                 .build()
-        btn_verify_otp.setVisibility(View.GONE);
-        otp_layout.setVisibility(View.GONE);
+        btn_verify_otp_gmail.setVisibility(View.GONE);
+        progressBar_gmail.setVisibility(View.GONE);
+
+        otp_layout_gmail.setVisibility(View.GONE);
     }
 
     override fun onStart() {
         super.onStart()
         if (FirebaseAuth.getInstance().currentUser != null) { //verification successful we will start the profile activity
 //            verificationOtp()
-//            navigateToActivity(Intent(applicationContext, Navigation_Drawer_Blogs::class.java))
+            navigateToActivity(Intent(applicationContext, Navigation_Drawer_Blogs::class.java))
 
         }
         val opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient)
@@ -141,19 +151,23 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
                     return
                 }
 
-                var bundle: Bundle = Bundle()
-                        bundle.putString("mobile_no", mobileNumber)
-                        intent.putExtras(bundle)
-                         intent.putExtra("mobile_no",mobileNumber)
+                intent.putExtra("Phonenumber", Phonenumber)
+                sendVerificationCode(Phonenumber)
+//                var bundle: Bundle = Bundle()
+//                        bundle.putString("mobile_no", mobileNumber)
+//                        intent.putExtras(bundle)
+//                         intent.putExtra("mobile_no",mobileNumber)
+//
+//                navigateToActivity(Intent(applicationContext,Navigation_Drawer_Blogs::class.java))
+                btn_verify_otp_gmail.setVisibility(View.VISIBLE);
+                otp_layout_gmail.setVisibility(View.VISIBLE);
+                progressBar_gmail.setVisibility(View.VISIBLE);
 
-                navigateToActivity(Intent(applicationContext,Navigation_Drawer_Blogs::class.java))
-                btn_verify_otp.setVisibility(View.VISIBLE);
-                otp_layout.setVisibility(View.VISIBLE);
 
 
             }
             R.id.btn_verify_otp -> {
-                val code = edt_otp!!.text.toString().trim()
+                val code = edt_otp_gmail!!.text.toString().trim()
 
                 if (validate1() == false) {
                     return
@@ -166,7 +180,7 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
     }
     private fun validate1(): Boolean {
         var valid = true
-        val code = edt_otp!!.text.toString().trim()
+        val code = edt_otp_gmail!!.text.toString().trim()
         if (code.isEmpty()) {
             otp_layout!!.error = "Enter OTP number"
             valid = false
@@ -224,6 +238,7 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
         mAuth!!.signInWithCredential(credential)
                 .addOnCompleteListener(this@Register_User) { task ->
                     if (task.isSuccessful) { //verification successful we will start the profile activity
+//                        registerApiCall(firstName, lastName, mobileNumber, emailId)
                         val intent = Intent(this@Register_User, Navigation_Drawer_Blogs::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                         startActivity(intent)

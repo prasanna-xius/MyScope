@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_10"
             android:gravity="center"
-            android:text="Verifyng Mobile"
+            android:text="Verifying Mobile"
             android:textColor="@color/colorBackground"
             android:textSize="@dimen/dimen_24"
             android:textStyle="bold" />
@@ -199,7 +199,7 @@
                     android:layout_marginBottom="@dimen/dimen_20"
                     android:textSize="@dimen/dimen_14" />
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/otp_layout"
+                    android:id="@+id/otp_layout_gmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_16"
@@ -212,7 +212,7 @@
 
 
                     <EditText
-                        android:id="@+id/edt_otp"
+                        android:id="@+id/edt_otp_gmail"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_40"
                         android:layout_gravity="center"
@@ -229,7 +229,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_verify_otp"
+                    android:id="@+id/btn_verify_otp_gmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -247,7 +247,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/dimen_20"
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar_gmail"
                     />
 
                     </LinearLayout>

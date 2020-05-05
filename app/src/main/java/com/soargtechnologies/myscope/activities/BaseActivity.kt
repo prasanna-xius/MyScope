@@ -416,8 +416,8 @@ open class BaseActivity : AppCompatActivity() {
                 val contentURI: Uri?
                 contentURI = data.data
                 try {
-                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
-                    val path = saveImage(bitmap)
+//                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
+//                    val path = saveImage(bitmap)
                     Toast.makeText(this@BaseActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
 //                    iv!!.setImageBitmap(bitmap)
 //                    uploadImage(path)

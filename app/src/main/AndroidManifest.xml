@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".activities.self_monitering.Blood_Pressure"></activity>
         <activity android:name=".activities.self_monitering.Emotional_state_Update" />
         <activity android:name=".activities.self_monitering.Emotional_state_recyclerView" />
