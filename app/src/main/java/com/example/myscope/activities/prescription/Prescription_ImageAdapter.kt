@@ -63,7 +63,6 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                         .inflate(R.layout.list_item_prescription_image, parent, false)
 
         var viewHolder :ViewHolder  =  ViewHolder(view);
-
        // dialog!!.setContentView(R.layout.custom_dialog)
         //return ViewHolder(view)
         return viewHolder
