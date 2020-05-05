@@ -3,6 +3,7 @@ package com.example.myscope.activities.prescription
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.pm.PackageManager
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
@@ -15,7 +16,11 @@ class ManagePermissions(val activity: Activity, val list: List<String>, val code
             requestPermissions()
 
         } else {
-            activity.toast("Permissions already granted.")
+            //activity.toast("Permissions already granted.")
+
+            Toast.makeText(activity,"Permissions already granted",Toast.LENGTH_LONG).show()
+
+
         }
     }
 
