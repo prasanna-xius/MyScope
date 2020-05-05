@@ -1,50 +1,42 @@
 {
   "project_info": {
-    "project_number": "533587135341",
-    "firebase_url": "https://my-scope-otp-authentication.firebaseio.com",
-    "project_id": "my-scope-otp-authentication",
-    "storage_bucket": "my-scope-otp-authentication.appspot.com"
+    "project_number": "55249431206",
+    "firebase_url": "https://myscope-5c96d.firebaseio.com",
+    "project_id": "myscope-5c96d",
+    "storage_bucket": "myscope-5c96d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:533587135341:android:5e1f83add4edd7e8192864",
+        "mobilesdk_app_id": "1:55249431206:android:98acdd098e462ef82de267",
         "android_client_info": {
-          "package_name": "com.example.myscope"
+          "package_name": "com.soargtechnologies.myscope"
         }
       },
       "oauth_client": [
         {
-          "client_id": "533587135341-g61aigqtk8pvj0ic1ajbmqflrv7lu654.apps.googleusercontent.com",
+          "client_id": "55249431206-hni4ftmuuhckec1msrsn97jlqujlaub5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.myscope",
-            "certificate_hash": "5072bc8060e324a1663d2376aaf6b6f1ddfbc16e"
-          }
-        },
-        {
-          "client_id": "533587135341-uon1iua2mpfbkq9n9nupgd5jrspmtlep.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.myscope",
+            "package_name": "com.soargtechnologies.myscope",
             "certificate_hash": "4f30aea389c2a4e0cfe9d4c975831d1f49d1c624"
           }
         },
         {
-          "client_id": "533587135341-vmrj1b1jrr0upfrn7ui4nbjcngqeeubp.apps.googleusercontent.com",
+          "client_id": "55249431206-oi7pa240hvq4jmgpok5836b77paj3quf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDphQd-qzHMoQ2_J4hSS_twdnB19dW_yPk"
+          "current_key": "AIzaSyBXlm4bQSHyKr9oaMWf99OQHrJxPJv5Od4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "533587135341-vmrj1b1jrr0upfrn7ui4nbjcngqeeubp.apps.googleusercontent.com",
+              "client_id": "55249431206-oi7pa240hvq4jmgpok5836b77paj3quf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
