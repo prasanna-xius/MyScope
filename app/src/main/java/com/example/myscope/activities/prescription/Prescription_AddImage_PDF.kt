@@ -211,42 +211,42 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
     @SuppressLint("MissingSuperCall")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 100) {
-            if (resultCode == Activity.RESULT_OK) {
-                try {
-                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, data?.data!!)
-                    val stream: ByteArrayOutputStream = ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-
-//                    val `is` = contentResolver.openInputStream(data?.data!!)
-                    uploadImage(stream.toByteArray(),requestCode,null)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-
-            }
-        }
-        if (requestCode == 101) {
-            if (resultCode == Activity.RESULT_OK) {
-                try {
-
-                    val thumbnail = data!!.extras!!.get("data") as Bitmap
-                    val stream: ByteArrayOutputStream = ByteArrayOutputStream();
-                    thumbnail.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    uploadImage(stream.toByteArray(),101,null)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-        }
+//        if (requestCode == 100) {
+//            if (resultCode == Activity.RESULT_OK) {
+//                try {
+//                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, data?.data!!)
+//                    val stream: ByteArrayOutputStream = ByteArrayOutputStream();
+//                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//
+////                    val `is` = contentResolver.openInputStream(data?.data!!)
+//                    uploadImage(stream.toByteArray(),requestCode,null)
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//
+//            }
+//        }
+//        if (requestCode == 101) {
+//            if (resultCode == Activity.RESULT_OK) {
+//                try {
+//
+//                    val thumbnail = data!!.extras!!.get("data") as Bitmap
+//                    val stream: ByteArrayOutputStream = ByteArrayOutputStream();
+//                    thumbnail.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                    uploadImage(stream.toByteArray(),101,null)
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
+//            }
+//        }
         if (requestCode == 102) {
             if (resultCode == RESULT_OK) {
 
-                 val uri = data?.getData();
+                 val uri:Uri = data!!.getData()!!;
 
              val uriString = uri.toString();
             val myFile =  File(uriString);
-                val `is` = contentResolver.openInputStream(data?.data!!)
+                val `is` = contentResolver.openInputStream(uri)
 //                uploadImage( outputStream.toByteArray(),102)
                 uploadImage(getBytes(`is`!!),102,uri)
 //              val file = data!!.extras!!.get("data") as File
@@ -291,7 +291,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
        {
            val uriString = uri.toString();
            val myFile =  File(uriString);
-            requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), (uriString))
+            requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageBytes)
             body = MultipartBody.Part.createFormData("p_upload", "example.pdf", requestFile)
 
         } else {

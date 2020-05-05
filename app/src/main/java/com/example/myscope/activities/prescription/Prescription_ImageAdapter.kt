@@ -79,7 +79,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
         val buf: ByteArray = decodedBytes
         val s: String = String(buf);
-        val uri: Uri = Uri.parse(s)
+        var uri: Uri = Uri.parse(s)
         //
         // val imgbytes = android.util.Base64.decode(imgls.p_upload.toString(),android.util.Base64.DEFAULT)
 
@@ -100,7 +100,8 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
         holder.itemView.setOnClickListener { v: View? ->
 
             val context = v?.context
-            val intent = Intent(Intent.ACTION_VIEW, uri)
+            val intent = Intent(context, PDFopenfile::class.java)
+            intent.putExtra("pdf", imgls.downloadfile!![position])
             context!!.startActivity(intent)
         }
 
@@ -162,7 +163,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                     // or Error Creating Http Request or Error Processing Http Response
                     override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
 
-                        Toast.makeText(context, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Deleted successfully", Toast.LENGTH_LONG).show()
                     }
 
 
