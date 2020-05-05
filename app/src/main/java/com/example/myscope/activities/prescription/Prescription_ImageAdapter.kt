@@ -65,33 +65,6 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
         var viewHolder :ViewHolder  =  ViewHolder(view);
 
        // dialog!!.setContentView(R.layout.custom_dialog)
-
-
-        viewHolder.imageView.setOnClickListener (object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                val context = v?.context
-                  dialog = Dialog(context!!)
-                dialog!!.setContentView(R.layout.custom_dialog)
-
-                var img: ImageView= dialog!!.findViewById(R.id.img);
-               //var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
-                 var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
-
-                img.setImageResource(imglist.get(viewHolder.getAdapterPosition()).p_uploadid);
-                //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
-
-                dialog!!.show()
-
-                btn_close!!.setOnClickListener( (object : View.OnClickListener {
-
-                    override fun onClick(v: View?) {
-                        dialog!!.dismiss()
-                    }
-                }))
-
-            }
-        })
-
         //return ViewHolder(view)
         return viewHolder
 
@@ -132,13 +105,41 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                 .load(decodedBytes)
                 .into(holder.itemview.iv_pres)
 
-        holder.itemView.setOnClickListener { v: View? ->
+//        holder.itemView.setOnClickListener { v: View? ->
+//
+//            val context = v?.context
+//            val intent = Intent(context, PDFopenfile::class.java)
+//            intent.putExtra("pdf", imgls.downloadfile!![position])
+//            context!!.startActivity(intent)
+//        }
 
-            val context = v?.context
-            val intent = Intent(context, PDFopenfile::class.java)
-            intent.putExtra("pdf", imgls.downloadfile!![position])
-            context!!.startActivity(intent)
-        }
+
+        holder.imageView.setOnClickListener (object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val context = v?.context
+                dialog = Dialog(context!!)
+                dialog!!.setContentView(R.layout.custom_dialog)
+
+                var img: ImageView= dialog!!.findViewById(R.id.img);
+                //var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
+                var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
+//                img.setImageResource(imglist.get(holder.getAdapterPosition()).p_uploadid);
+                //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
+
+                Glide.with(holder.imageView.context)
+                        .load(decodedBytes)
+                        .into(img)
+                dialog!!.show()
+
+                btn_close!!.setOnClickListener( (object : View.OnClickListener {
+
+                    override fun onClick(v: View?) {
+                        dialog!!.dismiss()
+                    }
+                }))
+
+            }
+        })
 
         holder.deletebutton.setOnClickListener { v: View? ->
 
