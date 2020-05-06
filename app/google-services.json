@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:55249431206:android:98acdd098e462ef82de267",
         "android_client_info": {
-          "package_name": "com.soargtechnologies.myscope"
+          "package_name": "com.example.myscope"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "55249431206-hni4ftmuuhckec1msrsn97jlqujlaub5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.soargtechnologies.myscope",
+            "package_name": "com.example.myscope",
             "certificate_hash": "4f30aea389c2a4e0cfe9d4c975831d1f49d1c624"
           }
         },

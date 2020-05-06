@@ -8,20 +8,13 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.WindowManager
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
@@ -29,9 +22,7 @@ import com.example.myscope.activities.PrescriptionInterface
 import com.example.myscope.services.ImageApiService
 import com.example.myscope.services.ServiceBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_navigation_blogs.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -57,6 +48,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
     private val PermissionsRequestCode = 123
     private lateinit var managePermissions: ManagePermissions
     var p_upload: MultipartBody.Part? = null
+     var   carItemList:List<PrescriptionDataClass>? = null
     //var byte:byte[]?= null
     internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
 
@@ -135,6 +127,11 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                     imageAdapter = Prescription_ImageAdapter(imageList)
 
                     pres_recycler_view.adapter?.notifyDataSetChanged()
+
+                    /*if(carItemList == null){
+                        carItemList = ArrayList<PrescriptionDataClass>()
+                        carItemList!!.add(PrescriptionDataClass(R.drawable.pdf))
+                    }*/
 
 
                 } else if (response.code() == 401) {

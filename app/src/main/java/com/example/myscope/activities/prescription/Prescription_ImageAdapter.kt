@@ -7,45 +7,25 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 
 
-import android.opengl.ETC1.getHeight
-import android.opengl.ETC1.getWidth
-import android.graphics.Bitmap
-
-import android.graphics.BitmapFactory
-
-import java.nio.ByteBuffer
-import android.graphics.Bitmap.CompressFormat
-import android.text.TextUtils.replace
 import android.util.Base64
-import java.io.ByteArrayOutputStream
-import androidx.core.content.ContextCompat.startActivity
-import android.content.Intent
-import android.R.attr.path
-import android.R.attr.path
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
-import android.os.Build
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.myscope.R
-import com.example.myscope.helpers.AllergyAdapter
 import com.example.myscope.services.ImageApiService
 import com.example.myscope.services.ServiceBuilder
-import com.google.android.material.snackbar.Snackbar
+import com.github.barteksc.pdfviewer.PDFView
 import kotlinx.android.synthetic.main.list_item_prescription_image.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.net.URI
-import java.nio.file.Files
-import java.nio.file.Files.readAllBytes
-import java.nio.file.Paths
 
 
 class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDataClass>): RecyclerView.Adapter<Prescription_ImageAdapter.ViewHolder>() {
@@ -56,7 +36,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
     var removeButton: ImageView? = null
     var id = 0
      var dialog :Dialog?=null
-
+    var pdf :PDFView?=null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
 
         val view= LayoutInflater.from(parent.context)
@@ -102,10 +82,19 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
         holder.uploadsno.text = imgls.p_uploadid.toString()
 
+        if(holder.imageView.equals(null)){
 
-        Glide.with(holder.itemView.context)
-                .load(decodedBytes)
-                .into(holder.itemview.iv_pres)
+           holder.imageView.setImageResource(R.drawable.pdf)
+            /*Glide.with(holder.itemView.context)
+                    .load(R.drawable.pdf)
+                    .into(holder.itemview.iv_pres)*/
+
+        }
+        else {
+
+            Glide.with(holder.itemView.context)
+                    .load(decodedBytes)
+                    .into(holder.itemview.iv_pres)
 
 //        holder.itemView.setOnClickListener { v: View? ->
 //
@@ -114,7 +103,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 //            intent.putExtra("pdf", imgls.downloadfile!![position])
 //            context!!.startActivity(intent)
 //        }
-
+        }
 
         holder.imageView.setOnClickListener (object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -123,12 +112,12 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                 dialog!!.setContentView(R.layout.custom_dialog)
 
                 var img: ImageView= dialog!!.findViewById(R.id.img);
-                var pdf  = dialog!!.findViewById<com.github.barteksc.pdfviewer.PDFView>(R.id.pdfView)
+                 pdf  = dialog!!.findViewById(R.id.pdfView)
                 //var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
                 var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
 //                img.setImageResource(imglist.get(holder.getAdapterPosition()).p_uploadid);
                 //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
-                pdf.fromBytes(decodedBytes)
+                pdf!!.fromBytes(decodedBytes)
 
 //                Glide.with(holder.imageView.context)
 //                        .load(decodedBytes)
