@@ -35,6 +35,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
     var removeButton: ImageView? = null
     var id = 0
+    var images = intArrayOf(R.drawable.pdf)
      var dialog :Dialog?=null
     var pdf :PDFView?=null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
@@ -55,7 +56,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imageDetails = imglist[position]
-
+        holder.savedDate.text = imglist[position].upload_saved_on
 
         //holder.deletebutton.text=imglist[position]
         val imgls = imglist[position]
@@ -82,15 +83,15 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
         holder.uploadsno.text = imgls.p_uploadid.toString()
 
-        if(holder.imageView.equals(null)){
+        //if(holder.imageView.equals(null)){
 
-           holder.imageView.setImageResource(R.drawable.pdf)
+           //holder.imageView.setImageResource(images)
             /*Glide.with(holder.itemView.context)
                     .load(R.drawable.pdf)
                     .into(holder.itemview.iv_pres)*/
 
-        }
-        else {
+        //}
+       // else {
 
             Glide.with(holder.itemView.context)
                     .load(decodedBytes)
@@ -103,7 +104,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 //            intent.putExtra("pdf", imgls.downloadfile!![position])
 //            context!!.startActivity(intent)
 //        }
-        }
+        //}
 
         holder.imageView.setOnClickListener (object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -215,6 +216,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
         val deletebutton: ImageView = itemview.findViewById(R.id.iv_pres_dlt)
         val imageView: ImageView = itemview.findViewById(R.id.iv_pres)
+        val savedDate: TextView = itemView.findViewById(R.id.imagedate)
         var imageDetails: PrescriptionDataClass? = null
         var uploadsno:TextView = itemview.findViewById(R.id.uploadid)
     }
