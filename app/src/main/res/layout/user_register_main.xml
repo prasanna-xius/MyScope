@@ -64,7 +64,7 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/mobile_layout"
+                    android:id="@+id/mobile_layout_gmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_20"
@@ -75,7 +75,7 @@
 
 
                     <EditText
-                        android:id="@+id/mobile_number"
+                        android:id="@+id/mobile_number_gmail"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dimen_40"
                         android:hint="Enter Mobile Number"
@@ -186,7 +186,7 @@
                     android:layout_marginTop="20dp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_otp_send"
+                    android:id="@+id/btn_otp_send_gmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dimen_40"

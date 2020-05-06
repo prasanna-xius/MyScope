@@ -68,7 +68,7 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
         userEmail = findViewById(R.id.email)
         userId = findViewById(R.id.userId)
 
-        progressBar = findViewById(R.id.progressBar)
+        progressBar = findViewById(R.id.progressBar_gmail)
         //initializing objects
         mAuth = FirebaseAuth.getInstance()
 
@@ -78,7 +78,7 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
 //        sendVerificationCode(mobileNumber)
 
 
-        btn_otp_send = findViewById(R.id.btn_otp_send)
+        btn_otp_send = findViewById(R.id.btn_otp_send_gmail)
         btn_otp_send!!.setOnClickListener(this)
         btn_verify_otp_gmail!!.setOnClickListener(this)
 
@@ -103,7 +103,7 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
         super.onStart()
         if (FirebaseAuth.getInstance().currentUser != null) { //verification successful we will start the profile activity
 //            verificationOtp()
-            navigateToActivity(Intent(applicationContext, Navigation_Drawer_Blogs::class.java))
+//            navigateToActivity(Intent(applicationContext, Navigation_Drawer_Blogs::class.java))
 
         }
         val opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient)
@@ -140,9 +140,9 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
     override fun onConnectionFailed(connectionResult: ConnectionResult) {}
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.btn_otp_send -> {
+            R.id.btn_otp_send_gmail -> {
 
-                val Phonenumber = mobile_number.getText().toString().trim { it <= ' ' }
+                val Phonenumber = mobile_number_gmail.getText().toString().trim { it <= ' ' }
 
                 if (validate() == false) {
 
@@ -166,7 +166,7 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
 
 
             }
-            R.id.btn_verify_otp -> {
+            R.id.btn_verify_otp_gmail -> {
                 val code = edt_otp_gmail!!.text.toString().trim()
 
                 if (validate1() == false) {
@@ -182,15 +182,15 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
         var valid = true
         val code = edt_otp_gmail!!.text.toString().trim()
         if (code.isEmpty()) {
-            otp_layout!!.error = "Enter OTP number"
+            otp_layout_gmail!!.error = "Enter OTP number"
             valid = false
         }
         else if (code.length<6){
-            otp_layout!!.error = "Please Enter Valid OTP"
+            otp_layout_gmail!!.error = "Please Enter Valid OTP"
             edt_otp.requestFocus()
             valid = false
         }else {
-            otp_layout!!.error = null
+            otp_layout_gmail!!.error = null
         }
         return valid
     }
@@ -217,7 +217,7 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
 //in this case the code will be null
 //so user has to manually enter the code
             if (code != null) {
-                edt_otp!!.setText(code)
+                edt_otp_gmail!!.setText(code)
                 //verifying the code
                 verifyVerificationCode(code)
             }
@@ -256,15 +256,15 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
 
     private fun validate(): Boolean {
         var valid = true
-        mobileNumber = mobile_number!!.text.toString().trim { it <= ' ' }
+        mobileNumber = mobile_number_gmail!!.text.toString().trim { it <= ' ' }
         if (mobileNumber!!.isEmpty()) {
-            mobile_layout!!.error = "Enter mobile number"
+            mobile_layout_gmail!!.error = "Enter mobile number"
             valid = false
         } else if (mobileNumber!!.length < 10) {
-            mobile_layout!!.error = "Enter Valid mobile number"
+            mobile_layout_gmail!!.error = "Enter Valid mobile number"
             valid = false
         } else {
-            mobile_layout!!.error = null
+            mobile_layout_gmail!!.error = null
             valid = true
         }
         return valid
