@@ -130,7 +130,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
 
                     /*if(carItemList == null){
                         carItemList = ArrayList<PrescriptionDataClass>()
-                        carItemList!!.add(PrescriptionDataClass(R.drawable.pdf))
+                        carItemList!!.add(PrescriptionDataClass(R.drawable.pdf.toString()))
                     }*/
 
 

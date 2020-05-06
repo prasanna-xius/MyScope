@@ -35,8 +35,12 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
     var removeButton: ImageView? = null
     var id = 0
+    //var images = intArrayOf(R.drawable.pdf)
+     var images :Array<Int>?=null
      var dialog :Dialog?=null
     var pdf :PDFView?=null
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
 
         val view= LayoutInflater.from(parent.context)
@@ -55,7 +59,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imageDetails = imglist[position]
-
+        holder.savedDate.text = imglist[position].upload_saved_on
 
         //holder.deletebutton.text=imglist[position]
         val imgls = imglist[position]
@@ -93,8 +97,8 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                     .load(decodedBytes)
                     .into(holder.itemview.iv_pres)
 
-        }
-        else {
+        //}
+       // else {
 
             Glide.with(holder.itemView.context)
                     .load(R.drawable.pdf)
@@ -107,7 +111,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 //            intent.putExtra("pdf", imgls.downloadfile!![position])
 //            context!!.startActivity(intent)
 //        }
-        }
+        //}
 
         holder.imageView.setOnClickListener (object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -116,27 +120,37 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                 dialog!!.setContentView(R.layout.custom_dialog)
 
                 var img: ImageView= dialog!!.findViewById(R.id.img);
-                 pdf  = dialog!!.findViewById(R.id.pdfView)
+                 //pdf  = dialog!!.findViewById(R.id.pdfView)
                 //var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
                 var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
 //                img.setImageResource(imglist.get(holder.getAdapterPosition()).p_uploadid);
                 //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
-                pdf!!.fromBytes(decodedBytes)
 
-//                Glide.with(holder.imageView.context)
-//                        .load(decodedBytes)
-//                        .into(img)
-                dialog!!.show()
 
-                btn_close!!.setOnClickListener( (object : View.OnClickListener {
 
-                    override fun onClick(v: View?) {
-                        dialog!!.dismiss()
+
+                   //      pdf!!.fromBytes(decodedBytes)
+
+                        Glide.with(holder.imageView.context)
+                                .load(decodedBytes)
+                                .into(img)
+                        dialog!!.show()
+
+                        btn_close!!.setOnClickListener((object : View.OnClickListener {
+
+                            override fun onClick(v: View?) {
+                                dialog!!.dismiss()
+                            }
+                        }))
+
+
                     }
-                }))
 
-            }
         })
+
+
+
+
 
         holder.deletebutton.setOnClickListener { v: View? ->
 
@@ -219,6 +233,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
         val deletebutton: ImageView = itemview.findViewById(R.id.iv_pres_dlt)
         val imageView: ImageView = itemview.findViewById(R.id.iv_pres)
+        val savedDate: TextView = itemView.findViewById(R.id.imagedate)
         var imageDetails: PrescriptionDataClass? = null
         var uploadsno:TextView = itemview.findViewById(R.id.uploadid)
     }

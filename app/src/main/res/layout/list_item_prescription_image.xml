@@ -17,13 +17,13 @@
 		android:layout_height="wrap_content"
 		android:gravity="center"
 		android:layout_margin="10dp"
-		android:weightSum="2.0"
+		android:weightSum="4.0"
 		android:orientation="horizontal">
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_weight="0.25"
+			android:layout_weight="0.50"
 			android:id="@+id/uploadid"
 			android:layout_gravity="center"
 			android:textColor="@color/bg_screen2"/>
@@ -33,9 +33,17 @@
 			android:layout_width="100dp"
 			android:layout_height="100dp"
 			android:layout_weight="1.50"
+			android:src="@drawable/pdf"
 			android:layout_gravity="center_horizontal"
 			android:src="@drawable/pdf"
 			/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1.50"
+			android:id="@+id/imagedate"
+			android:layout_gravity="center"
+			android:textColor="@color/bg_screen2"/>
 
 		<ImageView
 			android:id="@+id/iv_pres_dlt"
