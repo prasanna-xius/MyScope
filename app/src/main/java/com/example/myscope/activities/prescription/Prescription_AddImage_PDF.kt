@@ -302,6 +302,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
 
         val requestFile: RequestBody
         val body: MultipartBody.Part
+        var type:RequestBody
 
 //    val fis: FileInputStream = FileInputStream(myFile);
 //      val bos : ByteArrayOutputStream = ByteArrayOutputStream();
@@ -312,13 +313,15 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
             val myFile = File(uriString);
             requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), (uriString))
             body = MultipartBody.Part.createFormData("p_upload", "example.pdf", requestFile)
+            type  = RequestBody.create(MediaType.parse("text/plain"), "pdf")
 
         } else {
             requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes)
             body = MultipartBody.Part.createFormData("p_upload", "image.jpg", requestFile)
+            type = RequestBody.create(MediaType.parse("text/plain"), "image")
 
         }
-        val call = destinationService.uploadImage(body, mobile_no, date)
+        val call = destinationService.uploadImage(body, mobile_no, date,type)
         //mProgressBar!!.visibility = View.VISIBLE
         call.enqueue(object : Callback<PrescriptionDataClass> {
             override fun onResponse(call: Call<PrescriptionDataClass>, response: retrofit2.Response<PrescriptionDataClass>) {
