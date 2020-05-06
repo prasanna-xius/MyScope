@@ -10,25 +10,21 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:background="#fff"
+    android:layout_marginTop="@dimen/dimen_20"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:src="@mipmap/ic_launcher"
         android:id="@+id/img"/>
 
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/pdfView"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
 
-        tools:ignore="MissingConstraints" />
 
-    <TextView
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Name"
@@ -36,11 +32,12 @@
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         android:textSize="35sp"
-        android:id="@+id/name"/>
+        android:id="@+id/name"/>-->
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15sp"
         android:text="Close"
         android:id="@+id/btn_close"/>
 

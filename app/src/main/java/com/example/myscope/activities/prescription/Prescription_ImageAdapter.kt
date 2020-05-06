@@ -35,9 +35,12 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
     var removeButton: ImageView? = null
     var id = 0
-    var images = intArrayOf(R.drawable.pdf)
+    //var images = intArrayOf(R.drawable.pdf)
+     var images :Array<Int>?=null
      var dialog :Dialog?=null
     var pdf :PDFView?=null
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
 
         val view= LayoutInflater.from(parent.context)
@@ -113,27 +116,37 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                 dialog!!.setContentView(R.layout.custom_dialog)
 
                 var img: ImageView= dialog!!.findViewById(R.id.img);
-                 pdf  = dialog!!.findViewById(R.id.pdfView)
+                 //pdf  = dialog!!.findViewById(R.id.pdfView)
                 //var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
                 var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
 //                img.setImageResource(imglist.get(holder.getAdapterPosition()).p_uploadid);
                 //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
-                pdf!!.fromBytes(decodedBytes)
 
-//                Glide.with(holder.imageView.context)
-//                        .load(decodedBytes)
-//                        .into(img)
-                dialog!!.show()
 
-                btn_close!!.setOnClickListener( (object : View.OnClickListener {
 
-                    override fun onClick(v: View?) {
-                        dialog!!.dismiss()
+
+                   //      pdf!!.fromBytes(decodedBytes)
+
+                        Glide.with(holder.imageView.context)
+                                .load(decodedBytes)
+                                .into(img)
+                        dialog!!.show()
+
+                        btn_close!!.setOnClickListener((object : View.OnClickListener {
+
+                            override fun onClick(v: View?) {
+                                dialog!!.dismiss()
+                            }
+                        }))
+
+
                     }
-                }))
 
-            }
         })
+
+
+
+
 
         holder.deletebutton.setOnClickListener { v: View? ->
 
