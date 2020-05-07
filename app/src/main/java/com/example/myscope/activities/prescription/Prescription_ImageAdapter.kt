@@ -83,22 +83,19 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
         // bitmap.compress(CompressFormat.PNG, 0 /* Ignored for PNGs */, blob)
         //val bitmapdata = blob.toByteArray()
         //imageupload.setImageBitmap(bitmap)
-        var img  = imgls.upload_type
-
-        Log.d("toast",img)
 
         holder.uploadsno.text = imgls.p_uploadid.toString()
 
 //        if(holder.imageView.equals(null)){
 
 //           holder.imageView.setImageResource(R.drawable.pdf)
-        if(imgls.upload_type == "image"){
+        if(imgls.upload_type.equals("image") ){
             Glide.with(holder.itemView.context)
                     .load(decodedBytes)
                     .into(holder.itemview.iv_pres)
 
-        //}
-       // else {
+        }
+        else {
 
             Glide.with(holder.itemView.context)
                     .load(R.drawable.pdf)
@@ -111,7 +108,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 //            intent.putExtra("pdf", imgls.downloadfile!![position])
 //            context!!.startActivity(intent)
 //        }
-        //}
+        }
 
         holder.imageView.setOnClickListener (object : View.OnClickListener {
             override fun onClick(v: View?) {
