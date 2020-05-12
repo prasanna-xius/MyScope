@@ -26,6 +26,12 @@ import kotlinx.android.synthetic.main.list_item_prescription_image.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.content.FileProvider
+import com.example.myscope.BuildConfig
+import java.io.File
+import java.net.URI
 
 
 class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDataClass>): RecyclerView.Adapter<Prescription_ImageAdapter.ViewHolder>() {
@@ -116,21 +122,30 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                 dialog = Dialog(context!!)
                 dialog!!.setContentView(R.layout.custom_dialog)
 
-                var img: ImageView= dialog!!.findViewById(R.id.img);
-                 //pdf  = dialog!!.findViewById(R.id.pdfView)
+//                var img: ImageView= dialog!!.findViewById(R.id.img);
+                 pdf  = dialog!!.findViewById(R.id.pdfView)
                 //var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
                 var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
 //                img.setImageResource(imglist.get(holder.getAdapterPosition()).p_uploadid);
                 //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
+//                pdf.fromUri(s
+                var file:File = File(uri.toString())
 
+//                val sab = file.getCanonicalPath()
+//                file = File(URI(sab))
+                val intent = Intent(Intent.ACTION_VIEW)
+//                val data:Uri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider",file)
+        //                         pdf!!.fromBytes(decodedBytes)
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.setDataAndType(uri, "application/pdf");
 
+                context.startActivity(intent);
 
+//                pdf!!.fromUri(uri)
 
-                   //      pdf!!.fromBytes(decodedBytes)
-
-                        Glide.with(holder.imageView.context)
-                                .load(decodedBytes)
-                                .into(img)
+//                        Glide.with(holder.imageView.context)
+//                                .load(decodedBytes)
+//                                .into(img)
                         dialog!!.show()
 
                         btn_close!!.setOnClickListener((object : View.OnClickListener {

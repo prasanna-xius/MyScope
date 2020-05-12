@@ -192,11 +192,18 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
 
     private fun selectfilechooser() {
 
-        val intent = Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("application/pdf");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Pdf"), 102);
+
+        val browseStorage = Intent(Intent.ACTION_GET_CONTENT)
+        browseStorage.type = "application/pdf"
+        browseStorage.addCategory(Intent.CATEGORY_OPENABLE)
+        startActivityForResult(
+                Intent.createChooser(browseStorage, "Select PDF"), 102
+        )
+//        val intent = Intent(Intent.ACTION_PICK,
+//                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        intent.setType("application/pdf");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(Intent.createChooser(intent, "Select Pdf"), 102);
 
 
     }
@@ -261,14 +268,17 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         }
         if (requestCode == 102) {
             if (resultCode == RESULT_OK) {
+                val selectedPdfFromStorage :Uri = data?.data!!
+                val `is` = contentResolver.openInputStream(selectedPdfFromStorage)!!.readBytes()
 
-                val uri = data?.getData();
-
-                val uriString = uri.toString();
-                val myFile = File(uriString);
-                val `is` = contentResolver.openInputStream(data?.data!!)
-//                uploadImage( outputStream.toByteArray(),102)
-                uploadImage(getBytes(`is`!!), 102, uri)
+//                val pdffile = getBytes(`is`!!)
+//                showPdfFromUri(selectedPdfFromStorage);
+//                val uri = data.getData();
+//
+//                val uriString = uri.toString();
+//                val myFile = File(uriString);
+////                uploadImage( outputStream.toByteArray(),102)
+                uploadImage(`is`, 102, selectedPdfFromStorage)
 //              val file = data!!.extras!!.get("data") as File
 //      val fis: FileInputStream = FileInputStream(file);
 //      val bos : ByteArrayOutputStream = ByteArrayOutputStream();
@@ -277,19 +287,19 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         }
     }
 
-    @Throws(IOException::class)
-    fun getBytes(`is`: InputStream): ByteArray {
-        val byteBuff = ByteArrayOutputStream()
-        val buffSize = 1024
-        val buff = ByteArray(buffSize)
-        var len = 0
-        /*while ((len = `is`.read(buff)) != -1) {
-        byteBuff.write(buff, 0, len)
-    }*/
-        while (`is`.read(buff).also { len = it } != -1) {
-        }
-        return byteBuff.toByteArray()
-    }
+//    @Throws(IOException::class)
+//    fun getBytes(`is`: InputStream): ByteArray {
+//        val byteBuff = ByteArrayOutputStream()
+//        val buffSize = 1024
+//        val buff = ByteArray(buffSize)
+//        var len = 0
+//        /*while ((len = `is`.read(buff)) != -1) {
+//        byteBuff.write(buff, 0, len)
+//    }*/
+//        while (`is`.read(buff).also { len = it } != -1) {
+//        }
+//        return byteBuff.toByteArray()
+//    }
 
     //    private fun uploadImage(imageBytes: ByteArray,code:Int) {
     private fun uploadImage(imageBytes: ByteArray, code: Int, uri: Uri?) {
@@ -309,10 +319,10 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         var date = RequestBody.create(MediaType.parse("text/plain"), date1)
         val destinationService = ServiceBuilder.buildService(PrescriptionInterface::class.java)
         if (codevalue.equals(102)) {
-            val uriString = uri.toString();
-            val myFile = File(uriString);
-            requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), (uriString))
-            body = MultipartBody.Part.createFormData("p_upload", "example.pdf", requestFile)
+//            val uriString = uri.toString();
+//            val myFile = File(uriString);
+            requestFile = RequestBody.create(MediaType.parse("application/pdf"),imageBytes)
+            body = MultipartBody.Part.createFormData("p_upload", "Rx", requestFile)
             type  = RequestBody.create(MediaType.parse("text/plain"), "pdf")
 
         } else {
