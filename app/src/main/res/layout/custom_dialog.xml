@@ -14,15 +14,21 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+<!--    <ImageView-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:gravity="center"-->
+<!--        android:src="@mipmap/ic_launcher"-->
+<!--        android:id="@+id/img"/>-->
+
+
+    <com.github.barteksc.pdfviewer.PDFView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/img"/>
-
-
+        android:id="@+id/pdfView"/>
 
     <!--<TextView
         android:layout_width="match_parent"

@@ -28,7 +28,8 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var downloadfile:String? = null,
                                  var p_uploadid:Int = 0,
                                  var upload_saved_on:String ?= null,
-                                 var upload_type:String ?= null
+                                 var upload_type:String ?= null,
+var upload_title:String?=null
 
 
 
