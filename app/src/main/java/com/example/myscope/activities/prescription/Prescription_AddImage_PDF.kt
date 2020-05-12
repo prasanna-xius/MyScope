@@ -309,14 +309,16 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
             if (resultCode == RESULT_OK) {
 
 
-                val uri = data?.getData();
+//                val uri = data?.getData();
+                val selectedPdfFromStorage :Uri = data?.data!!
+                val `is` = contentResolver.openInputStream(selectedPdfFromStorage)!!.readBytes()
 
-                val uriString = uri.toString();
-                val myFile = File(uriString)
-
-
-
-                val `is` = contentResolver.openInputStream(data?.data!!)
+//                val uriString = uri.toString();
+////                val myFile = File(uriString)
+////
+////
+////
+////                val `is` = contentResolver.openInputStream(data?.data!!)
 //                uploadImage( outputStream.toByteArray(),102)
                 uploadImage(getBytes(`is`!!), 102, uri)
 
