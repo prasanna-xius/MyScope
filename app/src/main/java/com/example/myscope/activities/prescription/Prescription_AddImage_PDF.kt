@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -15,6 +16,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myscope.R
@@ -23,6 +25,7 @@ import com.example.myscope.services.ImageApiService
 import com.example.myscope.services.ServiceBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
+import io.fabric.sdk.android.services.network.HttpRequest.post
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -30,7 +33,12 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 import java.io.*
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
+
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -41,13 +49,16 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
     private var mImageUrl = ""
     var p_uploadid: Int = 0
     var recyclerView: RecyclerView? = null
-    var imageAdapter: Prescription_ImageAdapter? = null
+    var presAdapter: Prescription_ImageAdapter? = null
     lateinit var sharedpreferences: SharedPreferences
 
-    var imglist: MutableList<PrescriptionDataClass>? = null
+    private lateinit var mRunnable:Runnable
+
+    var imageList: MutableList<PrescriptionDataClass>? = null
     private val PermissionsRequestCode = 123
     private lateinit var managePermissions: ManagePermissions
     var p_upload: MultipartBody.Part? = null
+    var swipeCount = 0
      var   carItemList:List<PrescriptionDataClass>? = null
     //var byte:byte[]?= null
     internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
@@ -66,6 +77,26 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView!!.layoutManager = layoutManager
 
+        itemsswipetorefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        itemsswipetorefresh.setColorSchemeColors(Color.WHITE)
+        itemsswipetorefresh.setOnRefreshListener {
+
+
+            swipeCount += 1
+            if (swipeCount >= 0) {
+                loadDestinations()
+            }
+            presAdapter!!.notifyDataSetChanged()
+
+
+
+                itemsswipetorefresh.setRefreshing(false);
+
+
+
+
+
+        }
         val list = listOf<String>(
                 Manifest.permission.CAMERA,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -110,45 +141,53 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
             override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
-                    val imageList = response.body()!!
+                     imageList = response.body()!!
 
 
                     //val llm = LinearLayoutManager(applicationContext)
                     // llm.orientation = LinearLayoutManager.VERTICAL
                     // pres_recycler_view.setLayoutManager(llm)
+                   // itemsswipetorefresh.setOnRefreshListener {
+
+                    //    val imageList = response.body()!!
+                    //    imageList.clear()
 
 
-                    val adapter = Prescription_ImageAdapter(imageList)
-                    recyclerView!!.adapter = adapter
+                         presAdapter = Prescription_ImageAdapter(imageList!!)
+                        recyclerView!!.adapter = presAdapter
 
-                    //pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
+                        //pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
 
 
-                    imageAdapter = Prescription_ImageAdapter(imageList)
+                        //imageAdapter = Prescription_ImageAdapter(imageList!!)
 
-                    pres_recycler_view.adapter?.notifyDataSetChanged()
+                        pres_recycler_view.adapter?.notifyDataSetChanged()
 
-                    /*if(carItemList == null){
+                     //   itemsswipetorefresh.isRefreshing = false
+
+                        /*if(carItemList == null){
                         carItemList = ArrayList<PrescriptionDataClass>()
                         carItemList!!.add(PrescriptionDataClass(R.drawable.pdf.toString()))
                     }*/
+                  //  }
 
-
-                } else if (response.code() == 401) {
-                    Toast.makeText(this@Prescription_AddImage_PDF,
-                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
-                } else { // Application-level failure
-                    // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@Prescription_AddImage_PDF, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+                    } else if (response.code() == 401) {
+                        Toast.makeText(this@Prescription_AddImage_PDF,
+                                "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+                    } else {
+                        // Application-level failure
+                        // Your status code is in the range of 300's, 400's and 500's
+                        Toast.makeText(this@Prescription_AddImage_PDF, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+                    }
                 }
-            }
 
-            // Invoked in case of Network Error or Establishing connection with Server
-            // or Error Creating Http Request or Error Processing Http Response
-            override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
+                // Invoked in case of Network Error or Establishing connection with Server
+                // or Error Creating Http Request or Error Processing Http Response
+                override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
 
-                Toast.makeText(this@Prescription_AddImage_PDF, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
-            }
+                    Toast.makeText(this@Prescription_AddImage_PDF, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+                }
+
         })
     }
 
@@ -228,7 +267,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
     }*/
     }
 
-    @SuppressLint("MissingSuperCall")
+    @SuppressLint("MissingSuperCall", "NewApi")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 100) {
@@ -265,7 +304,10 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
                 val uri = data?.getData();
 
                 val uriString = uri.toString();
-                val myFile = File(uriString);
+                val myFile = File(uriString)
+
+
+
                 val `is` = contentResolver.openInputStream(data?.data!!)
 //                uploadImage( outputStream.toByteArray(),102)
                 uploadImage(getBytes(`is`!!), 102, uri)
