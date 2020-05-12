@@ -28,11 +28,21 @@
 			android:layout_gravity="center"
 			android:textColor="@color/bg_screen2"/>
 
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.75"
+			android:id="@+id/titleImage"
+			android:text="Rx"
+			android:textSize="@dimen/_14ssp"
+			android:layout_gravity="center"
+			android:textColor="@color/bg_screen2"/>
+
 		<ImageView
 			android:id="@+id/iv_pres"
 			android:layout_width="100dp"
 			android:layout_height="100dp"
-			android:layout_weight="1.50"
+			android:layout_weight="1.0"
 			android:src="@drawable/pdf"
 			android:layout_gravity="center_horizontal"
 			/>
@@ -43,6 +53,9 @@
 			android:id="@+id/imagedate"
 			android:layout_gravity="center"
 			android:textColor="@color/bg_screen2"/>
+
+
+
 
 		<ImageView
 			android:id="@+id/iv_pres_dlt"
