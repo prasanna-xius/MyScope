@@ -15,16 +15,14 @@ class PDFopenfile : AppCompatActivity() {
     lateinit var sharedpreferences:SharedPreferences
 
 
-    lateinit   var pdfview: PDFView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pdfopenfile)
-        pdfview = findViewById(R.id.pdfView)
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         var format = sharedpreferences.getString("buffer",null)
 
         var uri1: Uri = Uri.parse(format)
-        pdfView.fromUri(uri1)
+        pdf.fromUri(uri1)
                 .defaultPage(0)
                 .spacing(10)
                 .load()
