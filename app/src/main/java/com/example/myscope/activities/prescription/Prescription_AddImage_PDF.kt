@@ -320,7 +320,7 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
 ////
 ////                val `is` = contentResolver.openInputStream(data?.data!!)
 //                uploadImage( outputStream.toByteArray(),102)
-                uploadImage(getBytes(`is`!!), 102, uri)
+                uploadImage(`is`!!, 102, selectedPdfFromStorage)
 
 //              val file = data!!.extras!!.get("data") as File
 //      val fis: FileInputStream = FileInputStream(file);
