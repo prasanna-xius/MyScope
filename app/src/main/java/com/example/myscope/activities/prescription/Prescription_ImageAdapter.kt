@@ -73,11 +73,11 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
         var encodedString: String = imgls.downloadfile.toString()
         var pureBase64Encoded = encodedString.substring(encodedString.indexOf(",") + 1);
 
-        val decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT)
-
-        val buf: ByteArray = decodedBytes
-        val s: String = String(buf);
-        var uri: Uri = Uri.parse(s)
+        var decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT)
+//
+//        val buf: ByteArray = decodedBytes
+//        val s: String = String(buf);
+//        var uri: Uri = Uri.parse(s)
         //
         // val imgbytes = android.util.Base64.decode(imgls.p_upload.toString(),android.util.Base64.DEFAULT)
 
@@ -119,43 +119,67 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
         holder.imageView.setOnClickListener (object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val context = v?.context
-                dialog = Dialog(context!!)
-                dialog!!.setContentView(R.layout.custom_dialog)
+                var s = imglist[position].downloadfile.toString()
+                var base63 = s.substring(s.indexOf(",") + 1);
 
-//                var img: ImageView= dialog!!.findViewById(R.id.img);
-                 pdf  = dialog!!.findViewById(R.id.pdfView)
-                //var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
-                var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
-//                img.setImageResource(imglist.get(holder.getAdapterPosition()).p_uploadid);
-                //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
-//                pdf.fromUri(s
-                var file:File = File(uri.toString())
-
-//                val sab = file.getCanonicalPath()
-//                file = File(URI(sab))
-                val intent = Intent(Intent.ACTION_VIEW)
-//                val data:Uri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider",file)
-        //                         pdf!!.fromBytes(decodedBytes)
+                var byte = Base64.decode(base63, Base64.DEFAULT)
+                val buf: ByteArray = byte
+                val sa: String = String(buf);
+//                var uri: Uri = Uri.parse(sa)
+                val intent = Intent(context,PDFopenfile::class.java)
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                intent.setDataAndType(uri, "application/pdf");
-
-                context.startActivity(intent);
-
-//                pdf!!.fromUri(uri)
-
-//                        Glide.with(holder.imageView.context)
-//                                .load(decodedBytes)
-//                                .into(img)
-                        dialog!!.show()
-
-                        btn_close!!.setOnClickListener((object : View.OnClickListener {
-
-                            override fun onClick(v: View?) {
-                                dialog!!.dismiss()
-                            }
-                        }))
-
-
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
+                val editor: SharedPreferences.Editor = pref.edit()
+                editor.putString("buffer", sa)
+                editor.commit()
+//                intent.putExtra("buffer",sa)
+                context!!.startActivity(intent)
+//                dialog = Dialog(context!!)
+//                dialog!!.setContentView(R.layout.custom_dialog)
+//
+////                var img: ImageView= dialog!!.findViewById(R.id.img);
+//                 pdf  = dialog!!.findViewById(R.id.pdfView)
+//                //var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
+//                var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
+////                  var s = imglist[position].downloadfile.toString()
+////                 var base63 = s.substring(s.indexOf(",") + 1);
+////
+////                 var byte = Base64.decode(base63, Base64.DEFAULT)
+////                val buf: ByteArray = byte
+////                val sa: String = String(buf);
+////                var uri: Uri = Uri.parse(sa)
+//
+////                img.setImageResource(imglist.get(holder.getAdapterPosition()).p_uploadid);
+//                //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
+////                pdf.fromUri(s
+//                var file:File = File(uri.toString())
+//
+////                val sab = file.getCanonicalPath()
+////                file = File(URI(sab))
+////                val intent = Intent(Intent.ACTION_VIEW)
+////
+////                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+////                intent.setDataAndType(uri, "application/pdf");
+////
+////                context.startActivity(intent);
+////                pdf!!.fromBytes(byte).load()
+//
+////                pdf!!.fromUri(uri)
+//
+////                        Glide.with(holder.imageView.context)
+////                                .load(decodedBytes)
+////                                .into(img)
+//                        dialog!!.show()
+//
+//                        btn_close!!.setOnClickListener((object : View.OnClickListener {
+//
+//                            override fun onClick(v: View?) {
+//                                dialog!!.dismiss()
+//                            }
+//                        }))
+//
+//
                     }
 
         })
