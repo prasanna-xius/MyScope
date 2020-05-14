@@ -61,9 +61,9 @@ class AllergyUpdate_Activity : BaseActivity() {
         //supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // tv = findViewById(R.id.tv_allergy)
-        buttondate_update = findViewById(R.id.buttondate_update)
+     //   buttondate_update = findViewById(R.id.buttondate_update)
 
-        buttondate_update!!.setOnClickListener {
+        textviewdate_update!!.setOnClickListener {
             DatePickerDialog(this@AllergyUpdate_Activity,
                     dateSetListener,
                     // set DatePickerDialog to point to today's date when it loads up

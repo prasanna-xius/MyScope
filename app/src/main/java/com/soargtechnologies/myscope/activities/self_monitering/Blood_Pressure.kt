@@ -47,6 +47,7 @@ class Blood_Pressure : BaseActivity() {
 
         val adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.blood_pressure_dropdown))
+
         spinner_pressure!!.adapter = adapter
 
         myCalendar = Calendar.getInstance()

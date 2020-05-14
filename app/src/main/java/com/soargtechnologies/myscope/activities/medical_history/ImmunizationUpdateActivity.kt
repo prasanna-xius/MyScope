@@ -43,7 +43,7 @@ class ImmunizationUpdateActivity : BaseActivity() {
     var dateUpdate:String?=null
     var position: Int= 1;
     var cal = Calendar.getInstance()
-    var buttondate_immuupdate:ImageView?=null
+    var buttondate_immuupdate:TextView?=null
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
     var immunid:Int=0
@@ -69,9 +69,9 @@ class ImmunizationUpdateActivity : BaseActivity() {
         notesUpdate = findViewById<View>(R.id.et_notes_immunupdate).toString()
         eventUpdate = findViewById<View>(R.id.et_adverse_eventupdate).toString()
         brandUpdate = findViewById<View>(R.id.et_brandupdate).toString()
-        dateUpdate = findViewById<View>(R.id.textviewdate_immuupdate).toString()
+     //   dateUpdate = findViewById<View>(R.id.textviewdate_immuupdate).toString()
 
-        buttondate_immuupdate=findViewById(R.id.buttondate_immuupdate)
+        buttondate_immuupdate=findViewById(R.id.textviewdate_immuupdate)
 
 
         buttondate_immuupdate!!.setOnClickListener(View.OnClickListener {

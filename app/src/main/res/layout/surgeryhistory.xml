@@ -26,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/surgery_history"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="30sp" />
 
@@ -42,6 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/surg_name"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -72,36 +74,24 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/when_performed"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:orientation="horizontal"
-                    android:weightSum="2.0">
 
-                    <ImageView
-                        android:id="@+id/buttondate_surg"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_gravity="start"
-                        android:layout_weight=".05"
-                        android:padding="5dp"
-                        android:src="@drawable/calendar_36"
-                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textviewdate_surg"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text=" "
+                        android:padding="5dp"
+                        android:hint="@string/dOB"
+                        android:drawableRight="@drawable/calendar_36"
+                        android:textColorHint="@color/bg_screen2"
+                        android:background="@drawable/border_bg"
                         android:textColor="@color/bg_screen2" />
-                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -118,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/body_location"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -147,6 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/provider"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -176,6 +168,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/hospital_name"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -205,6 +198,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/notes"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -236,7 +230,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1.0"
-                    android:background="@drawable/shape_btn"
+                    android:background="@drawable/background_button"
+                    android:backgroundTint="#1F78D3"
                     android:text="@string/save"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp" />

@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/user_profile"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="30sp" />
 
@@ -35,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/first_name"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -64,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/last_name"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -93,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/mobile_number"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -122,6 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/email_text"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -151,6 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/gender"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -177,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/dob"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -206,6 +213,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/age"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -235,6 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/weight"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -263,6 +272,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/height"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -292,6 +302,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/bmi"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -322,6 +333,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/blood_group"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -348,6 +360,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/doctor_name"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -376,6 +389,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/pharmacists_name"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -405,6 +419,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/language_known"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -433,6 +448,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/education_level"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -458,6 +474,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/marital_status"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -483,6 +500,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/family_income"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 

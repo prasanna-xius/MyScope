@@ -29,7 +29,7 @@ class Bmi_recyclerView : BaseActivity() {
 
         activitiesToolbar()
 
-        header!!.text = "Bmi"
+        header!!.text = "BMI"
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)

@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/emotionalState"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="30sp" />
 
@@ -37,6 +38,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/score_of_wellness"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -66,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/emotional_status"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -75,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:popupBackground="@color/colorWhite"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"/>
 
         </LinearLayout>
@@ -92,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/emotional_duration"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -121,6 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/trauma_status"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -130,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:popupBackground="@color/colorWhite"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"/>
 
         </LinearLayout>
@@ -148,6 +153,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/reason_of_trauma"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -176,5 +182,13 @@
             android:layout_marginRight="@dimen/dimen_10"
             android:text="@string/update"
             android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-100dp"
+            android:src="@drawable/emotional_state"/>
+
     </LinearLayout>
+
 </ScrollView>

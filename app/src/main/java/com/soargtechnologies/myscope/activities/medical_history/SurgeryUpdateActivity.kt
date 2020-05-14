@@ -66,10 +66,10 @@ class SurgeryUpdateActivity : BaseActivity() {
 
         //dateUpdate = findViewById<View>(R.id.textviewdate_immuupdate).toString()
 
-        buttondate_surg_update=findViewById(R.id.buttondate_surg_update)
+   //     buttondate_surg_update=findViewById(R.id.buttondate_surg_update)
 
 
-        buttondate_surg_update!!.setOnClickListener(View.OnClickListener {
+        textviewdate_surgery_update!!.setOnClickListener(View.OnClickListener {
 
             DatePickerDialog(this@SurgeryUpdateActivity,
                     dateSetListener,

@@ -76,7 +76,7 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
 
         // get the references from layout file
         textview_date = this.textviewdate
-        button_date = this.buttondate
+      //  button_date = this.buttondate
 
         etname = findViewById(R.id.et_name_allergy)
 
@@ -184,7 +184,7 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
             }
         }
 
-        button_date?.setOnClickListener(object : View.OnClickListener {
+        textviewdate?.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 DatePickerDialog(this@Allergies,
                         dateSetListener,

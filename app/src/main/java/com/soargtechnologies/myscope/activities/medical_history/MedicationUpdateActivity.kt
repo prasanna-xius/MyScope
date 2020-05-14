@@ -55,7 +55,9 @@ class MedicationUpdateActivity : BaseActivity() {
     var button_date_StartMh: ImageView? = null
     var button_date_EndMh: ImageView? = null
     var textview_Startdate: TextView? = null
-    var textview_Enddate: TextView? = null
+
+
+
     var cal_StartMh = java.util.Calendar.getInstance()
     var cal_EndMh = java.util.Calendar.getInstance()
 
@@ -121,8 +123,8 @@ class MedicationUpdateActivity : BaseActivity() {
                 resources.getStringArray(R.array.dose_unit_arrays))
         doseunit!!.adapter = adapter4
 
-        button_date_StartMhUpdate = this.buttonStartdate_medicalHistory_update
-        button_date_EndMhupdate = this.buttonEnddate_MH_update
+//        button_date_StartMhUpdate = this.buttonStartdate_medicalHistory_update
+//        button_date_EndMhupdate = this.buttonEnddate_MH_update
 
 
         val bundle: Bundle? = intent.extras
@@ -166,10 +168,10 @@ class MedicationUpdateActivity : BaseActivity() {
         }
 
 
-        button_date_StartMhUpdate!!.setOnClickListener(object : View.OnClickListener {
+        textviewStartdate_medicalHistory_update!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 DatePickerDialog(this@MedicationUpdateActivity,
-                        dateSetListenerSatar,
+                        dateSetListenerEnd,
                         // set DatePickerDialog to point to today's date when it loads up
                         cal_StartMh.get(java.util.Calendar.YEAR),
                         cal_StartMh.get(java.util.Calendar.MONTH),
@@ -179,7 +181,7 @@ class MedicationUpdateActivity : BaseActivity() {
         })
 
 
-        button_date_EndMhupdate!!.setOnClickListener(object : View.OnClickListener {
+        textviewEnddate_MH_update!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 DatePickerDialog(this@MedicationUpdateActivity,
                         dateSetListenerEnd,

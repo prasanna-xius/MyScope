@@ -69,8 +69,6 @@ class MedicationHistory : BaseActivity() {
     //var sprTwoItem: String? = null
     var sdf1: SimpleDateFormat? = null
     var sdf2: SimpleDateFormat? = null
-    var button_date_StartMh: ImageView? = null
-    var button_date_EndMh: ImageView? = null
     var textview_Startdate: TextView? = null
     var textview_Enddate: TextView? = null
     var cal_StartMh = Calendar.getInstance()
@@ -112,8 +110,8 @@ class MedicationHistory : BaseActivity() {
         textview_Enddate = this.textviewEnddate_MH
         textview_Startdate = this.textviewStartdate_medicalHistory
 
-        button_date_StartMh = this.buttonStartdate_medicalHistory
-        button_date_EndMh = this.buttonEnddate_MH
+//        button_date_StartMh = this.buttonStartdate_medicalHistory
+//        button_date_EndMh = this.buttonEnddate_MH
 
         etname_med = findViewById(R.id.et_name)
         etdose_med = findViewById(R.id.et_dose_strength)
@@ -255,7 +253,7 @@ class MedicationHistory : BaseActivity() {
         }
 
 
-        button_date_StartMh!!.setOnClickListener(object : OnClickListener {
+        textviewStartdate_medicalHistory!!.setOnClickListener(object : OnClickListener {
             override fun onClick(view: View) {
                 DatePickerDialog(this@MedicationHistory,
                         dateSetListenerSatar,
@@ -268,7 +266,7 @@ class MedicationHistory : BaseActivity() {
         })
 
 
-        button_date_EndMh!!.setOnClickListener(object : OnClickListener {
+        textviewEnddate_MH!!.setOnClickListener(object : OnClickListener {
             override fun onClick(view: View) {
                 DatePickerDialog(this@MedicationHistory,
                         dateSetListenerEnd,

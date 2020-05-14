@@ -44,6 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/is_prescribed"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15" />
 
@@ -71,6 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/doctor_name"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15" />
 
@@ -99,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/hospital_name"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15" />
 
@@ -128,6 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/prescription_note"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_15" />
 

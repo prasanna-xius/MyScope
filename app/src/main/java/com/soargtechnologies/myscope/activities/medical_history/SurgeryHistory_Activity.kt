@@ -58,7 +58,7 @@ class SurgeryHistory_Activity : BaseActivity() {
         header!!.text = "Surgery History"
 
         textview_date_surg = this.textviewdate_surg
-        button_date_surg = this.buttondate_surg
+    //    button_date_surg = this.buttondate_surg
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
@@ -164,7 +164,7 @@ class SurgeryHistory_Activity : BaseActivity() {
         }
 
         // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
-        button_date_surg!!.setOnClickListener(object : View.OnClickListener {
+        textviewdate_surg!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 DatePickerDialog(this@SurgeryHistory_Activity,
                         dateSetListener,

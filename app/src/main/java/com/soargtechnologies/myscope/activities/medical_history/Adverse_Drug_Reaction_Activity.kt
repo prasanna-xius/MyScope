@@ -39,7 +39,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-        showLongToast(mobile_no.toString())
+   //     showLongToast(mobile_no.toString())
 
         val c = Calendar.getInstance()
         val day = c.get(Calendar.DAY_OF_MONTH)

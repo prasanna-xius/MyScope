@@ -20,10 +20,10 @@
     <string name="dOB">DD/MM/YYYY</string>
     <string name="age">Age</string>
     <string name="yrs">(Yrs)</string>
-    <string name="weight">Weight</string>
+    <string name="weight">Weight <font color='#ff0000'>*</font></string>
     <string name="kgs">(Kg)</string>
-    <string name="height">Height</string>
-    <string name="height_et">(m) (1feet =0.3048m) </string>
+    <string name="height">Height<font color='#ff0000'>*</font></string>
+    <string name="height_et">feet.inches </string>
     <string name="bmi">BMI<font color='#ff0000'>*</font></string>
     <string name="bmi_attr"> (kg/m2)</string>
     <string name="blood_group">Blood group<font color='#ff0000'>*</font></string>
@@ -57,7 +57,7 @@
     <!--Family History-->
     <string name="family_history"> Family History</string>
     <string name="condition">Condition<font color='#ff0000'>*</font></string>
-    <string name="diabetes"> Diabetes</string>
+    <string name="diabetes"> e.g Diabetes</string>
     <string name="relationship">Relationship<font color='#ff0000'>*</font></string>
     <!--/Family History-->
     <!--Social History-->
@@ -75,8 +75,8 @@
     <!--Diet-->
     <!--MedicalHistoryModelActivity-->
     <string name="allergy">Allergy</string>
-    <string name="add_allergy">Add Allergy<font color='#a4c639'>*</font></string>
-    <string name="name">Name<font color='#a4c639'>*</font></string>
+    <string name="add_allergy">Add Allergy<font color='#ff0000'>*</font></string>
+    <string name="name">Name<font color='#ff0000'>*</font></string>
     <string name="eg_allergy">Aspirin,sea food,dust</string>
     <string name="reaction">Reaction</string>
     <string name="eg_reaction">sneezing,itching</string>
@@ -88,7 +88,7 @@
     <!--Immunization History-->
     <string name="immunization_history">Immunization History</string>
     <string name="hepatitis_b">Hepatitis B</string>
-    <string name="immun_name">Name<font color='#a4c639'>*</font></string>
+    <string name="immun_name">Name<font color='#ff0000'>*</font></string>
     <string name="when_given">When given</string>
     <string name="adverse_event">Adverse event</string>
     <string name="brand">Brand</string>
@@ -102,7 +102,7 @@
     <!--Surgery History-->
     <string name="surgery_history">Surgery History</string>
     <string name="eg_Surgery">E.g. Endoscopy</string>
-    <string name="surg_name">Name<font color='#a4c639'>*</font></string>
+    <string name="surg_name">Name<font color='#ff0000'>*</font></string>
     <string name="when_performed">When performed</string>
     <string name="body_location">Body Location</string>
     <string name="eg_body_location">E.g. Stomach</string>
@@ -111,7 +111,7 @@
     <!--Surgery History-->
     <!--Drug Reaction-->
     <string name="drug_title">Adverse Drug Reaction</string>
-    <string name="drug_Name">Drug Name<font color='#a4c639'>*</font></string>
+    <string name="drug_Name">Drug Name<font color='#ff0000'>*</font></string>
     <string name="reaction_effect">Reaction/Effect</string>
     <string name="date_of_start">Date of Start</string>
     <string name="treatment_taken">Treatment taken</string>
@@ -128,48 +128,48 @@
 
     <!--Contact Us-->
     <string name="contact_us_title">Contact Us</string>
-    <string name="email_id">Email to us at  <font color='#a4c639'>*</font></string>
-    <string name="message">Message <font color='#a4c639'>*</font></string>
-    <string name="subject">Subject<font color='#a4c639'>*</font></string>
+    <string name="email_id">Email to us at  <font color='#ff0000'>*</font></string>
+    <string name="message">Message <font color='#ff0000'>*</font></string>
+    <string name="subject">Subject<font color='#ff0000'>*</font></string>
 
     <!--Blood glucose -->
     <string name="blood_glucose"> Blood Glucose </string>
-    <string name="date">Date  <font color='#a4c639'>*</font></string>
-    <string name="test">Test  <font color='#a4c639'>*</font> </string>
+    <string name="date">Date  <font color='#ff0000'>*</font></string>
+    <string name="test">Test  <font color='#ff0000'>*</font> </string>
     <string name="date_of_test">(dd/mm/yyyy) </string>
-    <string name="test_result">Test Result <font color='#a4c639'>*</font></string>
+    <string name="test_result">Test Result <font color='#ff0000'>*</font></string>
     <string name="test_units">(mg/dl)</string>
 
 
     <!--Blood pressure -->
     <string name="blood_pressure">Blood Pressure</string>
-    <string name="systolic">Systolic (Upper) <font color='#a4c639'>*</font></string>
-    <string name="diastolic">Diastolic (Lower)  <font color='#a4c639'>*</font> </string>
-    <string name="systolic_units">mmHg </string>
-    <string name="Pulse">Pulse/min  <font color='#a4c639'>*</font></string>
-    <string name="heart">Heart rate  <font color='#a4c639'>*</font></string>
+    <string name="systolic">Systolic (Upper) <font color='#ff0000'>*</font></string>
+    <string name="diastolic">Diastolic (Lower)  <font color='#ff0000'>*</font> </string>
+    <string name="systolic_units"> (mmHg) </string>
+    <string name="Pulse">Pulse/min  <font color='#ff0000'>*</font></string>
+    <string name="heart">Heart rate  <font color='#ff0000'>*</font></string>
     <string name="heart_unit">(bpm)</string>
-    <string name="irregular_heartbeats">Irregular heartbeats?  <font color='#a4c639'>*</font></string>
+    <string name="irregular_heartbeats">Irregular heartbeats?  <font color='#ff0000'>*</font></string>
 
 
     <!-- cholestrol -->
     <string name="cholesterol">Cholesterol</string>
-    <string name="lDL"> LDL  <font color='#a4c639'>*</font></string>
-    <string name="hDL"> HDL  <font color='#a4c639'>*</font> </string>
+    <string name="lDL"> LDL  <font color='#ff0000'>*</font></string>
+    <string name="hDL"> HDL  <font color='#ff0000'>*</font> </string>
     <string name="triglycerides_units"> (mmol/L) </string>
-    <string name="triglycerides"> Triglycerides  <font color='#a4c639'>*</font></string>
+    <string name="triglycerides"> Triglycerides  <font color='#ff0000'>*</font></string>
     <string name="others_test">Other Test </string>
-    <string name="total_cholesterol"> Total Cholesterol  <font color='#a4c639'>*</font></string>
+    <string name="total_cholesterol"> Total Cholesterol  <font color='#ff0000'>*</font></string>
 
     <!-- bmi -->
     <string name="bmi1">BMI</string>
 
     <!-- emotional_state -->
     <string name="emotionalState">Emotional State</string>
-    <string name="score_of_wellness"> Score Of Wellness  <font color='#a4c639'>*</font> </string>
+    <string name="score_of_wellness"> Score Of Wellness  <font color='#ff0000'>*</font> </string>
     <string name="percentage_hint"> eg : 1-100 %  </string>
-    <string name="emotional_status"> Emotional Status  <font color='#a4c639'>*</font></string>
-    <string name="emotional_duration">  Duration  <font color='#a4c639'>*</font></string>
+    <string name="emotional_status"> Emotional Status  <font color='#ff0000'>*</font></string>
+    <string name="emotional_duration">  Duration  <font color='#ff0000'>*</font></string>
     <string name="trauma_status"> Any Trauma Status ? </string>
     <string name="reason_of_trauma"> Reason Of Trauma  </string>
     <string name="trauma_hint">eg:death,accident,failure </string>
@@ -197,7 +197,7 @@
 
     <string-array name="emotional_status_dropdown">
         <item>None</item>
-        <item>Depression</item>
+        <item>Feeling Depressed</item>
         <item>Anxiety</item>
         <item>Suicidal Feeling</item>
     </string-array>
@@ -772,7 +772,7 @@ Single-living status, medication complexity, multiple medications, multiple dise
     <string name="dialogTitle">Alert Dailog</string>
 
 
-    <string name="dialogMessage">My Scope technical team will get back to you soon.
-        In case of emergency you can mail to info@scopemedics.com </string>
+    <string name="dialogMessage">My Scope technical team will get back to you soon.In case of emergency you can mail to info@scopemedics.com </string>
+    <string name="title_activity_contact_us">Contact_us</string>
 
 </resources>

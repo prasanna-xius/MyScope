@@ -63,13 +63,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen_10"
             android:orientation="horizontal"
-            android:weightSum="2"
-            >
+            android:weightSum="2">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/is_prescribed"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="@dimen/dimen_15" />
             <Spinner
@@ -94,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/doctor_name"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="@dimen/dimen_15" />
             <EditText
@@ -114,13 +115,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_margin="@dimen/dimen_10"
-            >
+            android:layout_margin="@dimen/dimen_10">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/hospital_name"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="@dimen/dimen_15" />
             <EditText
@@ -146,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/medical_condition"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="@dimen/dimen_15" />
             <EditText
@@ -171,6 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/prescription_note"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="@dimen/dimen_15" />
             <EditText

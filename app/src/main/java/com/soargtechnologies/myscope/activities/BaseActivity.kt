@@ -207,13 +207,22 @@ open class BaseActivity : AppCompatActivity() {
     fun bmicalculator(weight: EditText,height: EditText,bmi: TextView)
     {
         if(!height.text.toString().equals("") && !weight.text.toString().equals("")) {
-            val height= (height.text.toString()).toFloat()
+
+            val height1= (height.text.toString() ).toDouble()
+
+            val height = height1 * 0.3048
 
             val square = height * height
-            val weight = (weight.text.toString()).toFloat()
+            val weight = (weight.text.toString()).toDouble()
 
             val bmivalue = weight / square
-            bmi.text = bmivalue.toString()
+
+            val number3digits = Math.round(bmivalue * 1000.0) / 1000.0
+            val number2digits = Math.round(number3digits * 100.0) / 100.0
+
+
+
+            bmi.text = number2digits.toString()
 
             if (bmivalue < 16) {
                 showLongToast("Severely underweight")
