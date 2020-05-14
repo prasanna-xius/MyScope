@@ -42,20 +42,19 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
     var removeButton: ImageView? = null
     var id = 0
     //var images = intArrayOf(R.drawable.pdf)
-     var images :Array<Int>?=null
-     var dialog :Dialog?=null
+    var images: Array<Int>? = null
+    var dialog: Dialog? = null
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val view= LayoutInflater.from(parent.context)
-                        .inflate(R.layout.list_item_prescription_image, parent, false)
+        val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.list_item_prescription_image, parent, false)
 
-        var viewHolder :ViewHolder  =  ViewHolder(view);
-       // dialog!!.setContentView(R.layout.custom_dialog)
+        var viewHolder: ViewHolder = ViewHolder(view);
+        // dialog!!.setContentView(R.layout.custom_dialog)
         //return ViewHolder(view)
         return viewHolder
-
 
 
     }
@@ -95,103 +94,69 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 //        if(holder.imageView.equals(null)){
 
 //           holder.imageView.setImageResource(R.drawable.pdf)
-        if(imgls.upload_type.equals("image") ){
+        if (imgls.upload_type.equals("image")) {
             Glide.with(holder.itemView.context)
                     .load(decodedBytes)
                     .into(holder.itemview.iv_pres)
 
-        }
-        else {
+
+        } else {
 
             Glide.with(holder.itemView.context)
                     .load(R.drawable.pdf)
                     .into(holder.itemview.iv_pres)
 
-        holder.itemView.setOnClickListener { v: View? ->
+
+        }
+        holder.imageView.setOnClickListener { v: View? ->
 
             val context = v?.context
-            val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
+
+            if (imgls.upload_type.equals("pdf")) {
+
+
+                val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
                 val editor: SharedPreferences.Editor = pref.edit()
-            var s = imglist[position].downloadfile
-               editor.putString("buffer",s)
+                var s = imglist[position].downloadfile
+                editor.putString("buffer", s)
                 editor.commit()
-            val intent = Intent(context, PDFopenfile::class.java)
+                val intent = Intent(context, PDFopenfile::class.java)
 //            intent.putExtra("pdf", imgls.downloadfile!![position])
-            context.startActivity(intent)
-        }
-        }
+                context.startActivity(intent)
+            }
+            if (imgls.upload_type.equals("image")) {
+
 
 //        holder.imageView.setOnClickListener (object : View.OnClickListener {
 //            override fun onClick(v: View?) {
 //                val context = v?.context
 //
-//                var base63 = s.substring(s.indexOf(",") + 1);
 //
-////                var byte = Base64.decode(base63, Base64.DEFAULT)
-////                val buf: ByteArray = byte
-////                val sa: String = String(buf);
-////                var uri: Uri = Uri.parse(sa)
-////                val intent = Intent(context,PDFopenfile::class.java)
-////                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-////                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-////                val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
-////                val editor: SharedPreferences.Editor = pref.edit()
-////               editor.putString("buffer",byte.toString())
-////                editor.commit()
-//////                intent.putExtra("buffer",sa)
-////                context!!.startActivity(intent)
-//                dialog = Dialog(context!!)
-//                dialog!!.setContentView(R.layout.custom_dialog)
+                dialog = Dialog(context!!)
+                dialog!!.setContentView(R.layout.custom_dialog)
 ////
-//////                var img: ImageView= dialog!!.findViewById(R.id.img);
+                var img: ImageView = dialog!!.findViewById(R.id.img);
 //                var pdf: PDFView = dialog!!.findViewById(R.id.pdfView)
 //////                var tv: TextView  = (TextView) dialog.findViewById(R.id.name);
-//                var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
-//////                  var s = imglist[position].downloadfile.toString()
-//////                 var base63 = s.substring(s.indexOf(",") + 1);
-//////
-//                var byte = Base64.decode(base63, Base64.DEFAULT)
-//                val buf: ByteArray = byte
-//                val sa: String = String(buf);
-//                var uri: Uri = Uri.parse(sa)
-////                pdf.fromUri(uri)
-//
-//////                img.setImageResource(imglist.get(holder.getAdapterPosition()).p_uploadid);
-////                //name.setText(list.get(viewHolder.getAdapterPosition()).getName());
-//////                pdf.fromUri(s
-////                var file:File = File(uri.toString())
-////
-//////                val sab = file.getCanonicalPath()
-//////                file = File(URI(sab))
-//                val intent = Intent(Intent.ACTION_VIEW)
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-//
-//                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                intent.setDataAndType(uri, "application/pdf");
-//
-//                context.startActivity(intent);
-//////                pdf!!.fromBytes(byte).load()
-////
-//////                pdf!!.fromUri(uri)
-////
-//////                        Glide.with(holder.imageView.context)
-//////                                .load(decodedBytes)
-//////                                .into(img)
-//
-//                dialog!!.show()
-//
-//                        btn_close!!.setOnClickListener((object : View.OnClickListener {
-//
-//                            override fun onClick(v: View?) {
-//                                dialog!!.dismiss()
-//                            }
-//                        }))
-//
-//
-//                    }
-//
-//        })
-//
+                var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
+
+                Glide.with(holder.itemView.context)
+                        .load(decodedBytes)
+                        .into(img)
+
+                dialog!!.show()
+
+                btn_close!!.setOnClickListener((object : View.OnClickListener {
+
+                    override fun onClick(v: View?) {
+                        dialog!!.dismiss()
+                    }
+                }))
+
+            }
+
+        }
+
 
 
 
@@ -271,7 +236,11 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
             alertDialog.show()
 
         }
+
+
+
     }
+
 
     class ViewHolder(val itemview: View) : RecyclerView.ViewHolder(itemview) {
 
