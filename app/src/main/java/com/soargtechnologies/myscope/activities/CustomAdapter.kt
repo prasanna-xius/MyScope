@@ -9,11 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.activities.prescription.Prescription_ImageAdapter
 import java.util.*
 
-class CustomAdapter //        this.personNames = personNames;
-(var context: Context, //    ArrayList personNames;
- var covidImages: ArrayList<*>) : RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
+class CustomAdapter(private val covidImages: MutableList<PrescriptionDataClass>): RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
+
+    var context:Context? =null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder { // infalte the item Layout
         val v = LayoutInflater.from(parent.context).inflate(R.layout.rowlayout, parent, false)
         // set the view's size, margins, paddings and layout parameters
@@ -26,9 +28,10 @@ class CustomAdapter //        this.personNames = personNames;
         // implement setOnClickListener event on item view.
         holder.itemView.setOnClickListener {
             // open another activity on item click
+
             val intent = Intent(context, Full_Image_Activity::class.java)
             intent.putExtra("image", covidImages[position].hashCode()) // put image data in Intent
-            context.startActivity(intent) // start Intent
+            context!!.startActivity(intent) // start Intent
         }
     }
 

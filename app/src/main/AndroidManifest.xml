@@ -68,6 +68,9 @@
             android:name=".activities.MobileChange_Activity"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
+            android:name=".activities.Full_Image_Activity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
             android:name=".activities.View_UserDetails_Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -177,7 +180,7 @@
         <activity android:name=".activities.Nature_Covid19_WebActivity" />
 
 
-        <activity android:name=".activities.Full_Image_Activity" />
+<!--        <activity android:name=".activities.Full_Image_Activity" />-->
         <activity android:name=".activities.Guidelines_Activity" />
         <activity android:name=".activities.Courses_Training_Activity" />
 

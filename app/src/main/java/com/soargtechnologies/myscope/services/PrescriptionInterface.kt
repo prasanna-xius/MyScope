@@ -105,6 +105,11 @@ interface PrescriptionInterface {
     @GET("uploadedlist")
     fun getImageDetails(): Call<MutableList<PrescriptionDataClass>>
 
+    @GET("educationimg")
+    fun getCovidImageDetails(): Call<MutableList<PrescriptionDataClass>>
+
     @HTTP(method = "DELETE", path = "deleteupload", hasBody = true)
     fun deleteImageDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
+
+
 }

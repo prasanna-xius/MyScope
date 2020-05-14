@@ -76,279 +76,286 @@
                 android:layout_marginTop="@dimen/dimen_10"
                 android:orientation="horizontal" />
 
-            <TextView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_weblink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
                 android:layout_marginTop="@dimen/dimen_10"
-                android:text="Covid-19 Tracker"
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
+                android:orientation="vertical" />
 
-            <TextView
-                android:id="@+id/covid19_tracker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://www.covid19india.org/"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="Coronavirus COVID-19 Global Cases "
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/map_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://coronavirus.jhu.edu/map.html"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="Wiley Online Library"
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/wiley_library_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://novel-coronavirus.onlinelibrary.wiley.com/"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="Centers for Disease Control and Prevention (CDC)"
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/cdc_centers_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://www.cdc.gov/mmwr/Novel_Coronavirus_Reports.html"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="New England Journal of Medicine (NEJM)"
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/newengland_medicine_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://www.nejm.org/coronavirus"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="JAMA Network"
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/jama_network_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://jamanetwork.com/journals/jama/pages/coronavirus-alert"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="The Lancet"
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/lancet_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://www.thelancet.com/coronavirus"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="The Cell"
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/cell_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://www.cell.com/2019-nCOV"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="British Medical Journal (BMJ)"
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/medical_journey_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://www.bmj.com/coronavirus"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="The Science "
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/science_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://www.sciencemag.org/collections/coronavirus"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="Elsevier Network"
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/elsevier_network_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://www.elsevier.com/connect/coronavirus-information-center"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="Oxward Acadamics "
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/oxward_acadamics_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://academic.oup.com/journals/pages/coronavirus"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="Nature "
-                android:textColor="@color/colorBackground"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/nature_covid19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_10"
-                android:layout_marginTop="@dimen/dimen_10"
-                android:text="https://www.nature.com/collections/hajgidghjb"
-                android:textColor="@color/lightBlue"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="Covid-19 Tracker"-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/covid19_tracker"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://www.covid19india.org/"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="Coronavirus COVID-19 Global Cases "-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/map_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://coronavirus.jhu.edu/map.html"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="Wiley Online Library"-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/wiley_library_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://novel-coronavirus.onlinelibrary.wiley.com/"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="Centers for Disease Control and Prevention (CDC)"-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/cdc_centers_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://www.cdc.gov/mmwr/Novel_Coronavirus_Reports.html"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="New England Journal of Medicine (NEJM)"-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/newengland_medicine_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://www.nejm.org/coronavirus"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="JAMA Network"-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/jama_network_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://jamanetwork.com/journals/jama/pages/coronavirus-alert"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="The Lancet"-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/lancet_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://www.thelancet.com/coronavirus"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="The Cell"-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/cell_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://www.cell.com/2019-nCOV"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="British Medical Journal (BMJ)"-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/medical_journey_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://www.bmj.com/coronavirus"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="The Science "-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/science_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://www.sciencemag.org/collections/coronavirus"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="Elsevier Network"-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/elsevier_network_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://www.elsevier.com/connect/coronavirus-information-center"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="Oxward Acadamics "-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/oxward_acadamics_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://academic.oup.com/journals/pages/coronavirus"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="Nature "-->
+    <!--android:textColor="@color/colorBackground"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/nature_covid19"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="@dimen/dimen_10"-->
+    <!--android:layout_marginTop="@dimen/dimen_10"-->
+    <!--android:text="https://www.nature.com/collections/hajgidghjb"-->
+    <!--android:textColor="@color/lightBlue"-->
+    <!--android:textSize="@dimen/dimen_16sp"-->
+    <!--android:textStyle="bold" />-->

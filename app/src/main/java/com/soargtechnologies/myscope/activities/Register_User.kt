@@ -146,22 +146,25 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
 
                 if (validate() == false) {
 
-//                    registerApiCall(firstName, lastName, mobileNumber, emailId);
+                    registerApiCall(firstName, lastName, mobileNumber, emailId);
 
                     return
                 }
 
-                intent.putExtra("Phonenumber", Phonenumber)
-                sendVerificationCode(Phonenumber)
+//                intent.putExtra("Phonenumber", Phonenumber)
+//                sendVerificationCode(Phonenumber)
+
+
 //                var bundle: Bundle = Bundle()
 //                        bundle.putString("mobile_no", mobileNumber)
 //                        intent.putExtras(bundle)
 //                         intent.putExtra("mobile_no",mobileNumber)
 //
 //                navigateToActivity(Intent(applicationContext,Navigation_Drawer_Blogs::class.java))
-                btn_verify_otp_gmail.setVisibility(View.VISIBLE);
-                otp_layout_gmail.setVisibility(View.VISIBLE);
-                progressBar_gmail.setVisibility(View.VISIBLE);
+
+//                btn_verify_otp_gmail.setVisibility(View.VISIBLE);
+//                otp_layout_gmail.setVisibility(View.VISIBLE);
+//                progressBar_gmail.setVisibility(View.VISIBLE);
 
 
 
@@ -169,11 +172,13 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
             R.id.btn_verify_otp_gmail -> {
                 val code = edt_otp_gmail!!.text.toString().trim()
 
-                if (validate1() == false) {
-                    return
-                }
-                verifyVerificationCode(code)
+//                if (validate1() == false) {
+//                    return
+//                }
+//                verifyVerificationCode(code)
+
 //                registerApiCall(firstName, lastName, mobileNumber, emailId);
+
 //                navigateToActivity(Intent(applicationContext,Navigation_Drawer_Blogs::class.java))
             }
         }
@@ -238,7 +243,7 @@ class Register_User : BaseActivity(), GoogleApiClient.OnConnectionFailedListener
         mAuth!!.signInWithCredential(credential)
                 .addOnCompleteListener(this@Register_User) { task ->
                     if (task.isSuccessful) { //verification successful we will start the profile activity
-//                        registerApiCall(firstName, lastName, mobileNumber, emailId)
+                        registerApiCall(firstName, lastName, mobileNumber, emailId)
                         val intent = Intent(this@Register_User, Navigation_Drawer_Blogs::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                         startActivity(intent)

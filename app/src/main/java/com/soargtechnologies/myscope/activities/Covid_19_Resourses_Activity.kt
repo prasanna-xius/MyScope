@@ -3,19 +3,30 @@ package com.soargtechnologies.myscope.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.activities.prescription.Prescription_ImageAdapter
+import com.soargtechnologies.myscope.services.PrescriptionInterface
+import com.soargtechnologies.myscope.services.ServiceBuilder
+import kotlinx.android.synthetic.main.activity_prescription_image_list.*
 import kotlinx.android.synthetic.main.covid_resourses_main.*
 import kotlinx.android.synthetic.main.educational_blog_main.header1
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
 
 
-class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
+class Covid_19_Resourses_Activity : BaseActivity() {
+
     //    var personNames: ArrayList<*> = ArrayList(Arrays.asList("Person 1"))
+
     var covidImages: ArrayList<*> = ArrayList(Arrays.asList(R.drawable.carona_image))
 
     private val pdflist: MutableList<covid_pdflist> = ArrayList()
@@ -47,6 +58,9 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
 
     val pageUrl_Covid_Nature = "https://www.nature.com/collections/hajgidghjb"
 
+    var recyclerView_image: RecyclerView? = null
+    var customAdapter_image: CustomAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.covid_resourses_main)
@@ -54,33 +68,45 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
         activitiesToolbar()
         header1!!.text = "COVID-19 Resourses"
 
-        covid19_tracker.setOnClickListener(this)
-        map_covid19.setOnClickListener(this)
+//        covid19_tracker.setOnClickListener(this)
+//        map_covid19.setOnClickListener(this)
+//
+//        wiley_library_covid19.setOnClickListener(this)
+//        cdc_centers_covid19.setOnClickListener(this)
+//        newengland_medicine_covid19.setOnClickListener(this)
+//        jama_network_covid19.setOnClickListener(this)
+//        lancet_covid19.setOnClickListener(this)
+//        cell_covid19.setOnClickListener(this)
+//        medical_journey_covid19.setOnClickListener(this)
+//        science_covid19.setOnClickListener(this)
+//        elsevier_network_covid19.setOnClickListener(this)
+//        oxward_acadamics_covid19.setOnClickListener(this)
+//        nature_covid19.setOnClickListener(this)
 
-        wiley_library_covid19.setOnClickListener(this)
-        cdc_centers_covid19.setOnClickListener(this)
-        newengland_medicine_covid19.setOnClickListener(this)
-        jama_network_covid19.setOnClickListener(this)
-        lancet_covid19.setOnClickListener(this)
-        cell_covid19.setOnClickListener(this)
-        medical_journey_covid19.setOnClickListener(this)
-        science_covid19.setOnClickListener(this)
-        elsevier_network_covid19.setOnClickListener(this)
-        oxward_acadamics_covid19.setOnClickListener(this)
-        nature_covid19.setOnClickListener(this)
+         recyclerView_image = findViewById(R.id.recycler_view_images) as RecyclerView
 
-        val recyclerView_image = findViewById(R.id.recycler_view_images) as RecyclerView
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        recyclerView_image!!.layoutManager = layoutManager
+
         // set a GridLayoutManager with default vertical orientation and 2 number of columns
         // set a GridLayoutManager with default vertical orientation and 2 number of columns
 //        val gridLayoutManager = GridLayoutManager(applicationContext, 2)
-        recyclerView_image.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false) // set LayoutManager to RecyclerView
-
-        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-        val customAdapter_image = CustomAdapter(this@Covid_19_Resourses_Activity, covidImages)
-        recyclerView_image.adapter = customAdapter_image // set the Adapter to RecyclerView
-
+//        recyclerView_image!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false) // set LayoutManager to RecyclerView
 //
+//        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+//        //  call the constructor of CustomAdapter to send the reference and data to Adapter
+//         customAdapter_image = CustomAdapter(this@Covid_19_Resourses_Activity, covidImages)
+//        recyclerView_image!!.adapter = customAdapter_image
+
+
+        loadDestinations()
+
+        // set the Adapter to RecyclerView
+//        val layoutManager = LinearLayoutManager(this)
+//        layoutManager.orientation = LinearLayoutManager.VERTICAL
+//        recyclerView_image!!.layoutManager = layoutManager
+
 
         val recyclerView_pdf = findViewById(R.id.recycler_view_pdf) as RecyclerView
         mAdapter = CustomAdapter_Pdf(pdflist)
@@ -120,6 +146,58 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
 
     }
 
+    private fun loadDestinations() {
+
+        val service = ServiceBuilder.buildService(PrescriptionInterface::class.java)
+
+
+        val requestCall = service.getCovidImageDetails()
+
+        requestCall.enqueue(object: Callback<MutableList<PrescriptionDataClass>> {
+            //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
+
+            // If you receive a HTTP Response, then this method is executed
+            // Your STATUS Code will decide if your Http Response is a Success or Error
+            override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
+                if (response.isSuccessful()) {
+                    // Your status code is in the range of 200's
+                    val covidImages = response.body()!!
+
+
+                    //val llm = LinearLayoutManager(applicationContext)
+                    // llm.orientation = LinearLayoutManager.VERTICAL
+                    // pres_recycler_view.setLayoutManager(llm)
+
+
+                    val adapter= CustomAdapter(covidImages)
+                    recyclerView_image!!.adapter = adapter
+
+                    //pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
+
+
+                    customAdapter_image = CustomAdapter(covidImages)
+
+                    recycler_view_images.adapter?.notifyDataSetChanged()
+
+
+                } else if(response.code() == 401) {
+                    Toast.makeText(this@Covid_19_Resourses_Activity,
+                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+                } else { // Application-level failure
+                    // Your status code is in the range of 300's, 400's and 500's
+                    Toast.makeText(this@Covid_19_Resourses_Activity, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            // Invoked in case of Network Error or Establishing connection with Server
+            // or Error Creating Http Request or Error Processing Http Response
+            override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
+
+                Toast.makeText(this@Covid_19_Resourses_Activity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
     private fun pdffileslist() {
 
         var pdf_file = covid_pdflist(R.drawable.covidview_pdf, "Covid-19 Update 12March")
@@ -133,60 +211,60 @@ class Covid_19_Resourses_Activity : BaseActivity(), View.OnClickListener {
 
     }
 
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.covid19_tracker -> {
-                val intent = Covid19_Tracker_WebActivity.newIntent(this, pageUrl_Covidtracker)
-                startActivity(intent)
-            }
-            R.id.map_covid19 -> {
-                val intent = Map_Covid19_WebActivity.newIntent1(this, pageUrl_CovidMap)
-                startActivity(intent)
-            }
-            R.id.wiley_library_covid19 -> {
-                val intent = Willey_Library_Covid19_WebActivity.newIntent1(this, pageUrl_Wiley_Library)
-                startActivity(intent)
-            }
-            R.id.cdc_centers_covid19 -> {
-                val intent = CDC_Centers_Covid19_WebActivity.newIntent1(this, pageUrl_Centers_Cdc)
-                startActivity(intent)
-            }
-            R.id.newengland_medicine_covid19 -> {
-                val intent = Newzeland_Medicine_Covid19_WebActivity.newIntent1(this, pageUrl_NewEngland_Journal_Medicine)
-                startActivity(intent)
-            }
-            R.id.jama_network_covid19 -> {
-                val intent = Jama_Network_Covid19_WebActivity.newIntent1(this, pageUrl_CovidJama_Network)
-                startActivity(intent)
-            }
-            R.id.lancet_covid19 -> {
-                val intent = Lancet_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Lancet)
-                startActivity(intent)
-            }
-            R.id.cell_covid19 -> {
-                val intent = Cell_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Cell)
-                startActivity(intent)
-            }
-            R.id.medical_journey_covid19 -> {
-                val intent = Medical_Journey_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_British_Medical)
-                startActivity(intent)
-            }
-            R.id.science_covid19 -> {
-                val intent = Science_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Sciencemag)
-                startActivity(intent)
-            }
-            R.id.elsevier_network_covid19 -> {
-                val intent = Elsevier_Network_Covid19_WebActivity.newIntent1(this, pageUrl_Elsevier)
-                startActivity(intent)
-            }
-            R.id.oxward_acadamics_covid19 -> {
-                val intent = Oxward_Acadamic_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Oxward_Acadamic)
-                startActivity(intent)
-            }R.id.nature_covid19 -> {
-            val intent = Nature_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Nature)
-            startActivity(intent)
-        }
+//    override fun onClick(v: View) {
+//        when (v.id) {
+//            R.id.covid19_tracker -> {
+//                val intent = Covid19_Tracker_WebActivity.newIntent(this, pageUrl_Covidtracker)
+//                startActivity(intent)
+//            }
+//            R.id.map_covid19 -> {
+//                val intent = Map_Covid19_WebActivity.newIntent1(this, pageUrl_CovidMap)
+//                startActivity(intent)
+//            }
+//            R.id.wiley_library_covid19 -> {
+//                val intent = Willey_Library_Covid19_WebActivity.newIntent1(this, pageUrl_Wiley_Library)
+//                startActivity(intent)
+//            }
+//            R.id.cdc_centers_covid19 -> {
+//                val intent = CDC_Centers_Covid19_WebActivity.newIntent1(this, pageUrl_Centers_Cdc)
+//                startActivity(intent)
+//            }
+//            R.id.newengland_medicine_covid19 -> {
+//                val intent = Newzeland_Medicine_Covid19_WebActivity.newIntent1(this, pageUrl_NewEngland_Journal_Medicine)
+//                startActivity(intent)
+//            }
+//            R.id.jama_network_covid19 -> {
+//                val intent = Jama_Network_Covid19_WebActivity.newIntent1(this, pageUrl_CovidJama_Network)
+//                startActivity(intent)
+//            }
+//            R.id.lancet_covid19 -> {
+//                val intent = Lancet_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Lancet)
+//                startActivity(intent)
+//            }
+//            R.id.cell_covid19 -> {
+//                val intent = Cell_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Cell)
+//                startActivity(intent)
+//            }
+//            R.id.medical_journey_covid19 -> {
+//                val intent = Medical_Journey_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_British_Medical)
+//                startActivity(intent)
+//            }
+//            R.id.science_covid19 -> {
+//                val intent = Science_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Sciencemag)
+//                startActivity(intent)
+//            }
+//            R.id.elsevier_network_covid19 -> {
+//                val intent = Elsevier_Network_Covid19_WebActivity.newIntent1(this, pageUrl_Elsevier)
+//                startActivity(intent)
+//            }
+//            R.id.oxward_acadamics_covid19 -> {
+//                val intent = Oxward_Acadamic_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Oxward_Acadamic)
+//                startActivity(intent)
+//            }R.id.nature_covid19 -> {
+//            val intent = Nature_Covid19_WebActivity.newIntent1(this, pageUrl_Covid_Nature)
+//            startActivity(intent)
+//        }
 
         }
-    }
-}
+//    }
+//}
