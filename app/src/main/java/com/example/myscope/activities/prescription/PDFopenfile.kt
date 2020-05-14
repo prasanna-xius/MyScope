@@ -13,6 +13,9 @@ import com.github.barteksc.pdfviewer.PDFView
 import kotlinx.android.synthetic.main.activity_pdfopenfile.*
 import kotlinx.android.synthetic.main.custom_dialog.*
 
+
+
+
 @ExperimentalStdlibApi
 class PDFopenfile : AppCompatActivity() {
     lateinit var sharedpreferences:SharedPreferences
@@ -39,6 +42,7 @@ class PDFopenfile : AppCompatActivity() {
       pdf.fromBytes(decodedBytes).load()
         pdfclose.setOnClickListener(View.OnClickListener {
             val intent = Intent(this,Prescription_AddImage_PDF::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             startActivity(intent)
         })
     }

@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+
+
+
+<RelativeLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:id="@+id/realativeMain"
     tools:context=".activities.prescription.PDFopenfile">
 
 
+
     <com.github.barteksc.pdfviewer.PDFView
-    android:id="@+id/pdf"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+        android:id="@+id/pdf"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:ignore="MissingConstraints" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="close"
-        android:id="@+id/pdfclose"
-        android:background="@color/bg_screen2"
-        android:layout_below="@id/pdf"
-        android:layout_gravity="center_horizontal"
-        tools:ignore="MissingConstraints" />
-</RelativeLayout>
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="close"
+           android:layout_margin="@dimen/_14ssp"
+            android:id="@+id/pdfclose"
+            android:layout_alignParentBottom="true"
+            tools:ignore="MissingConstraints" />
+    </RelativeLayout>
