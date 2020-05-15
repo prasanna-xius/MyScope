@@ -1,4 +1,4 @@
-package com.soargtechnologies.myscope.activities.prescription
+package com.soargtechnologies.myscope.helpers
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,32 +7,19 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 
 
-import android.opengl.ETC1.getHeight
-import android.opengl.ETC1.getWidth
-import android.graphics.Bitmap
-
-import android.graphics.BitmapFactory
-
-import java.nio.ByteBuffer
-import android.graphics.Bitmap.CompressFormat
-import android.text.TextUtils.replace
 import android.util.Base64
-import java.io.ByteArrayOutputStream
-import androidx.core.content.ContextCompat.startActivity
 import android.content.Intent
-import android.R.attr.path
-import android.R.attr.path
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
-import android.net.Uri
-import android.os.Build
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.prescription.PDFopenfile
 import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
@@ -40,10 +27,6 @@ import kotlinx.android.synthetic.main.list_item_prescription_image.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.net.URI
-import java.nio.file.Files
-import java.nio.file.Files.readAllBytes
-import java.nio.file.Paths
 
 
 class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDataClass>): RecyclerView.Adapter<Prescription_ImageAdapter.ViewHolder>() {
@@ -53,61 +36,91 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
     var removeButton: ImageView? = null
     var id = 0
+    //var images = intArrayOf(R.drawable.pdf)
+    var images: Array<Int>? = null
+    var dialog: Dialog? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):ViewHolder {
 
-        val view= LayoutInflater.from(parent.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
+        val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.list_item_prescription_image, parent, false)
-        return ViewHolder(view)
 
+        var viewHolder: ViewHolder = ViewHolder(view);
+        // dialog!!.setContentView(R.layout.custom_dialog)
+        //return ViewHolder(view)
+        return viewHolder
 
 
     }
 
     override fun getItemCount() = imglist.size
 
+    @ExperimentalStdlibApi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.imageDetails = imglist[position]
-
-        //holder.deletebutton.text=imglist[position]
+        holder.savedDate.text = imglist[position].upload_saved_on
         val imgls = imglist[position]
+        id = imgls.p_uploadid
         var encodedString: String = imgls.downloadfile.toString()
         var pureBase64Encoded = encodedString.substring(encodedString.indexOf(",") + 1);
 
-        val decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT)
+        var decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT)
 
-        val buf: ByteArray = decodedBytes
-        val s: String = String(buf);
-        val uri: Uri = Uri.parse(s)
-        //
-        // val imgbytes = android.util.Base64.decode(imgls.p_upload.toString(),android.util.Base64.DEFAULT)
+        holder.uploadsno.text = imgls.p_uploadid.toString()
 
-        //imageupload.setImageBitmap(bitmap)
-//        val bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0,decodedBytes.size)
-
-        //val bitmap = BitmapFactory.decodeFile("/path/images/image.jpg")
-        //val blob = ByteArrayOutputStream()
-        // bitmap.compress(CompressFormat.PNG, 0 /* Ignored for PNGs */, blob)
-        //val bitmapdata = blob.toByteArray()
-        //imageupload.setImageBitmap(bitmap)
+        if (imgls.upload_type.equals("image")) {
+            Glide.with(holder.itemView.context)
+                    .load(decodedBytes)
+                    .into(holder.itemview.iv_pres)
 
 
-        Glide.with(holder.itemView.context)
-                .load(decodedBytes)
-                .into(holder.itemview.iv_pres)
+        } else {
 
-        holder.itemView.setOnClickListener { v: View? ->
+            Glide.with(holder.itemView.context)
+                    .load(R.drawable.pdf)
+                    .into(holder.itemview.iv_pres)
+
+
+        }
+        holder.imageView.setOnClickListener { v: View? ->
 
             val context = v?.context
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            context!!.startActivity(intent)
+
+            if (imgls.upload_type.equals("pdf")) {
+
+
+                val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
+                val editor: SharedPreferences.Editor = pref.edit()
+                var s = imglist[position].downloadfile
+                editor.putString("buffer", s)
+                editor.commit()
+                val intent = Intent(context, PDFopenfile::class.java)
+                context.startActivity(intent)
+            }
+            if (imgls.upload_type.equals("image")) {
+                dialog = Dialog(context!!)
+                dialog!!.setContentView(R.layout.custom_dialog)
+                var img: ImageView = dialog!!.findViewById(R.id.img)
+                var btn_close: Button = dialog!!.findViewById(R.id.btn_close);
+
+                Glide.with(holder.itemView.context)
+                        .load(decodedBytes)
+                        .into(img)
+
+                dialog!!.show()
+
+                btn_close!!.setOnClickListener((object : View.OnClickListener {
+
+                    override fun onClick(v: View?) {
+                        dialog!!.dismiss()
+                    }
+                }))
+
+            }
+
         }
-
         holder.deletebutton.setOnClickListener { v: View? ->
-
-            // var removedItem: PrescriptionDataClass=imglist.get(position)
-//            imglist.p_uploadid.removeAt(position)
-
 
             val context = v?.context
             val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
@@ -178,13 +191,19 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
             alertDialog.show()
 
         }
+
+
+
     }
+
 
     class ViewHolder(val itemview: View) : RecyclerView.ViewHolder(itemview) {
 
         val deletebutton: ImageView = itemview.findViewById(R.id.iv_pres_dlt)
         val imageView: ImageView = itemview.findViewById(R.id.iv_pres)
+        val savedDate: TextView = itemView.findViewById(R.id.imagedate)
         var imageDetails: PrescriptionDataClass? = null
+        var uploadsno: TextView = itemview.findViewById(R.id.uploadid)
     }
 
 

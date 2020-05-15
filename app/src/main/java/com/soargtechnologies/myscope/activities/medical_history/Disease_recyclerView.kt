@@ -7,12 +7,12 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.BaseActivity
 import com.soargtechnologies.myscope.activities.services.Disease_service
 import com.soargtechnologies.myscope.activities.services.ServiceBuilder
+import com.soargtechnologies.myscope.helpers.Disease_Adaptor
 //import com.google.android.gms.common.api.Response
 //import com.soargtechnologies.myscope.activities.Service.DiseaseService
 //import com.soargtechnologies.myscope.activities.Service.Disease_serviceBuilder

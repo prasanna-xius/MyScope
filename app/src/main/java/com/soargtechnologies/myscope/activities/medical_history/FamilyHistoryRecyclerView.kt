@@ -11,6 +11,7 @@ import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.BaseActivity
 import com.soargtechnologies.myscope.activities.services.Disease_service
 import com.soargtechnologies.myscope.activities.services.ServiceBuilder
+import com.soargtechnologies.myscope.helpers.FamilyAdaptor
 import kotlinx.android.synthetic.main.activity_family_history_recycler_view.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call

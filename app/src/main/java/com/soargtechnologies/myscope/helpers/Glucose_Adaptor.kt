@@ -1,17 +1,18 @@
-package com.soargtechnologies.myscope.activities.self_monitering
+package com.soargtechnologies.myscope.helpers
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.self_monitering.Blood_GlucoseUpdate
+import com.soargtechnologies.myscope.activities.self_monitering.Self_dataClass
 
 class Glucose_Adaptor (private val glucoseList: List<Self_dataClass>) : RecyclerView.Adapter<Glucose_Adaptor.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Glucose_Adaptor.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_glucose, parent, false)
         return ViewHolder(view)
     }
@@ -21,7 +22,7 @@ class Glucose_Adaptor (private val glucoseList: List<Self_dataClass>) : Recycler
         return glucoseList.size
     }
 
-    override fun onBindViewHolder(holder: Glucose_Adaptor.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.glucosedestination = glucoseList[position]
         holder.glucose_sno.text = glucoseList[position].glucose_id.toString()
         holder.glucoseTitle.text = glucoseList[position].test_result + "mg/dl"

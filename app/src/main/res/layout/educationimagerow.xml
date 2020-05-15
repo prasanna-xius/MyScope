@@ -8,19 +8,17 @@
     grid items for RecyclerView
     -->
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/educovid"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_110"
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+        />
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/educovidtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="ABCD"
-        android:visibility="gone"
         android:textSize="20sp"
         android:textColor="#fff" />
 </RelativeLayout>

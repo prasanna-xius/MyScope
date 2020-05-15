@@ -1,16 +1,16 @@
-package com.soargtechnologies.myscope.activities.prescription
+package com.soargtechnologies.myscope.helpers
 
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.activities.prescription.Prescription_manualDrugDialog
 
 
 class Prscription_DoctorList_Adapter(private val prescriptionList: List<PrescriptionDataClass>) : RecyclerView.Adapter<Prscription_DoctorList_Adapter.ViewHolder>()  {

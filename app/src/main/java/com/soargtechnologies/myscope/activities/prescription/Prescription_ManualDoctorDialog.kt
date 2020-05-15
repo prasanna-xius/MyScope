@@ -21,13 +21,12 @@ import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.activities.services.ServiceBuilder1
 import com.google.android.gms.security.ProviderInstaller
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_prescription_manual.*
+import com.soargtechnologies.myscope.helpers.Prscription_DoctorList_Adapter
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.isprescribed_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 import javax.net.ssl.SSLContext
 
 

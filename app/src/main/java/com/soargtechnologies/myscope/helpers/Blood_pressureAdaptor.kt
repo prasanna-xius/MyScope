@@ -1,13 +1,14 @@
-package com.soargtechnologies.myscope.activities.self_monitering
+package com.soargtechnologies.myscope.helpers
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.self_monitering.Blood_pressureUpdate
+import com.soargtechnologies.myscope.activities.self_monitering.Self_dataClass
 
 class Blood_pressureAdaptor(private val pressureList: List<Self_dataClass>) : RecyclerView.Adapter<Blood_pressureAdaptor.ViewHolder>() {
 

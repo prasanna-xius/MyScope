@@ -99,7 +99,7 @@ interface PrescriptionInterface {
 //    @Headers("Content-Type: application/json")
     @POST("preupload")
     fun uploadImage(@Part file: MultipartBody.Part,
-                    @Part("mobile_no") mobile_no: RequestBody,@Part ("upload_saved_on") upload_saved_on:RequestBody):
+                    @Part("mobile_no") mobile_no: RequestBody,@Part ("upload_saved_on") upload_saved_on:RequestBody, @Part("upload_type") upload_type:RequestBody,@Part("model_name") model_name:RequestBody):
             Call<PrescriptionDataClass>
 
     @GET("uploadedlist")

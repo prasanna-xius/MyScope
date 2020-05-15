@@ -3,15 +3,14 @@ package com.soargtechnologies.myscope.activities.self_monitering
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.BaseActivity
 import com.soargtechnologies.myscope.activities.services.Self_monitoring_service
 import com.soargtechnologies.myscope.activities.services.ServiceBuilder
+import com.soargtechnologies.myscope.helpers.BmiAdaptor
 import kotlinx.android.synthetic.main.activity_bmi_recycler_view.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import retrofit2.Call

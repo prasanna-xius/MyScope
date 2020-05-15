@@ -1,13 +1,14 @@
-package com.soargtechnologies.myscope.activities.self_monitering
+package com.soargtechnologies.myscope.helpers
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.self_monitering.CholestrolUpdate
+import com.soargtechnologies.myscope.activities.self_monitering.Self_dataClass
 
 class CholestrolAdaptor(private val cholestrolList: List<Self_dataClass>) : RecyclerView.Adapter<CholestrolAdaptor.ViewHolder>() {
 

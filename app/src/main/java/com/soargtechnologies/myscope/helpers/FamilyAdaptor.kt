@@ -1,4 +1,4 @@
-package com.soargtechnologies.myscope.activities.medical_history
+package com.soargtechnologies.myscope.helpers
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,6 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.medical_history.Diseases
+import com.soargtechnologies.myscope.activities.medical_history.FamilyHistoryUpdated
 
 class FamilyAdaptor(private val familyList: List<Diseases>) : RecyclerView.Adapter<FamilyAdaptor.ViewHolder>()  {
 

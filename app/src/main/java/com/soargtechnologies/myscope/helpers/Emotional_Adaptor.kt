@@ -1,13 +1,14 @@
-package com.soargtechnologies.myscope.activities.self_monitering
+package com.soargtechnologies.myscope.helpers
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.self_monitering.Emotional_state_Update
+import com.soargtechnologies.myscope.activities.self_monitering.Self_dataClass
 
 class Emotional_Adaptor(private val emotionalList: List<Self_dataClass>) : RecyclerView.Adapter<Emotional_Adaptor.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

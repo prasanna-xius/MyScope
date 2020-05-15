@@ -1,17 +1,18 @@
-package com.soargtechnologies.myscope.activities.self_monitering
+package com.soargtechnologies.myscope.helpers
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.self_monitering.BmiUpdate
 import com.soargtechnologies.myscope.activities.self_monitering.BmiUpdate.Companion.ARG_ITEM_ID
+import com.soargtechnologies.myscope.activities.self_monitering.Self_dataClass
 
 
-class BmiAdaptor (private val bmiList: List<Self_dataClass>) : RecyclerView.Adapter<BmiAdaptor .ViewHolder>() {
+class BmiAdaptor (private val bmiList: List<Self_dataClass>) : RecyclerView.Adapter<BmiAdaptor.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_bmi, parent, false)
         return ViewHolder(view)

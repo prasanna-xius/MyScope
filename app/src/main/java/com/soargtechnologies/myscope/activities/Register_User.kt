@@ -1,11 +1,9 @@
 package com.soargtechnologies.myscope.activities
 
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.Window
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -23,11 +21,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.soargtechnologies.myscope.R
-import com.soargtechnologies.myscope.activities.Login_Page
+import com.soargtechnologies.myscope.activities.services.APIClient
 import com.soargtechnologies.myscope.services.PrescriptionInterface
-import kotlinx.android.synthetic.main.login_page_main.*
-import kotlinx.android.synthetic.main.login_page_main.mobile_layout
-import kotlinx.android.synthetic.main.login_page_main.mobile_number
 import kotlinx.android.synthetic.main.otppage_main.*
 import kotlinx.android.synthetic.main.user_register_main.*
 import org.json.JSONException

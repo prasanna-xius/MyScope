@@ -5,15 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
-import com.soargtechnologies.myscope.activities.prescription.Prescription_ImageAdapter
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
-import kotlinx.android.synthetic.main.activity_prescription_image_list.*
 import kotlinx.android.synthetic.main.covid_resourses_main.*
 import kotlinx.android.synthetic.main.educational_blog_main.header1
 import retrofit2.Call

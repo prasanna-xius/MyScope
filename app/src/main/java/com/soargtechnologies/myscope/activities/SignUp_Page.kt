@@ -11,6 +11,7 @@ import android.widget.CheckBox
 import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.google.gson.JsonParser
+import com.soargtechnologies.myscope.activities.services.APIClient
 import kotlinx.android.synthetic.main.signuppage_main.*
 import kotlinx.android.synthetic.main.terms_conditions_main.*
 import org.json.JSONException

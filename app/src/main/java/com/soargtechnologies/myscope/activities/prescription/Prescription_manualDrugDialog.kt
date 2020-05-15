@@ -19,8 +19,8 @@ import com.soargtechnologies.myscope.activities.MultiSelectionSpinner
 import com.soargtechnologies.myscope.activities.MultiSpinnerTime
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.activities.services.ServiceBuilder1
+import com.soargtechnologies.myscope.helpers.Prscription_DrugList_Adapter
 import kotlinx.android.synthetic.main.activity_prescription_manual.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.prescribed_main.*
 import retrofit2.Call
 import retrofit2.Callback

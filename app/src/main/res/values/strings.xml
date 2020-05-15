@@ -197,7 +197,7 @@
 
     <string-array name="emotional_status_dropdown">
         <item>None</item>
-        <item>Depression</item>
+        <item>Feeling Depressed</item>
         <item>Anxiety</item>
         <item>Suicidal Feeling</item>
     </string-array>
