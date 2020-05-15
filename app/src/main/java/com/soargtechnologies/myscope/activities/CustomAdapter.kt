@@ -1,6 +1,8 @@
 package com.soargtechnologies.myscope.activities
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +19,7 @@ class CustomAdapter(private val covidImages: MutableList<PrescriptionDataClass>)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder { // infalte the item Layout
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.rowlayout, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.educationimagerow, parent, false)
         // set the view's size, margins, paddings and layout parameters
         return ViewHolder(v)
     }
@@ -43,13 +45,13 @@ class CustomAdapter(private val covidImages: MutableList<PrescriptionDataClass>)
 //        holder.image.setImageResource(covidImages[position].hashCode())
         Glide.with(holder.itemView.context)
                 .load(decodedBytes)
-                .into(holder.itemview.image_covid)
+                .into(holder.itemview.educovid)
 
         // implement setOnClickListener event on item view.
         holder.itemView.setOnClickListener {v: View? ->
 
             val context = v?.context
-            val intent = Intent(Intent.ACTION_VIEW, decodedBytes)
+            val intent = Intent(Intent.ACTION_VIEW, uri)
             context!!.startActivity(intent)
 
 //            // open another activity on item click
@@ -65,21 +67,21 @@ class CustomAdapter(private val covidImages: MutableList<PrescriptionDataClass>)
     class ViewHolder(val itemview: View) : RecyclerView.ViewHolder(itemview) {
 
 //        val deletebutton: ImageView = itemview.findViewById(R.id.iv_pres_dlt)
-        val imageView: ImageView = itemview.findViewById(R.id.image_covid)
+//        val imageView: ImageView = itemview.findViewById(R.id.image_covid)
         var imageDetails: PrescriptionDataClass? = null
 
     }
-//    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        // init the item view's
-//        var name: TextView
-//        var image: ImageView
-//
-//        init {
-//            // get the reference of item view's
-//            name = itemView.findViewById<View>(R.id.name) as TextView
-//            image = itemView.findViewById<View>(R.id.image) as ImageView
-//
-//        }
-//    }
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        // init the item view's
+        var name: TextView
+        var image: ImageView
+
+        init {
+            // get the reference of item view's
+            name = itemView.findViewById<View>(R.id.educovidtitle) as TextView
+            image = itemView.findViewById<View>(R.id.educovid) as ImageView
+
+        }
+    }
 
 }
