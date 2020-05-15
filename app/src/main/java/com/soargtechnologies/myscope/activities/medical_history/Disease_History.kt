@@ -44,7 +44,8 @@ class Disease_History : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-        showLongToast(mobile_no.toString())
+
+ //       showLongToast(mobile_no.toString())
 
         val adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.disease_arrays))
@@ -99,7 +100,7 @@ class Disease_History : BaseActivity() {
         if ((condition != "") &&
                 (diseases != "None")
                 && (disease_duration != "")) {
-            showLongToast("save the details")
+  //          showLongToast("save the details")
             sucess()
 
         }
@@ -152,17 +153,17 @@ class Disease_History : BaseActivity() {
 
                 if (resp.isSuccessful) {
                     var newbody = resp.body() // Use it or ignore it
-                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+   //                 Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+   //                 Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<Diseases>, t: Throwable) {
                 //finish()
 //                    Log.d("errormsgfailure ::", t.message)
 //                    Log.e("errorunderfailure:", t.message)
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+ //               Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
 

@@ -176,6 +176,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="@dimen/dimen_15" />
+
             <EditText
                 android:id="@+id/et_precsription_note"
                 android:layout_width="match_parent"

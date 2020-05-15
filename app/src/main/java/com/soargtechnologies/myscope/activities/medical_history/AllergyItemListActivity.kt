@@ -39,7 +39,8 @@ class AllergyItemListActivity : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-        Toast.makeText(applicationContext, mobile_no, Toast.LENGTH_LONG).show()
+
+ //       Toast.makeText(applicationContext, mobile_no, Toast.LENGTH_LONG).show()
 
         fab = findViewById(R.id.fab)
         //fab?.setBackgroundColor(Color.parseColor("#2196F3"));
@@ -92,11 +93,10 @@ class AllergyItemListActivity : BaseActivity() {
 
 
                 } else if (response.code() == 401) {
-                    Toast.makeText(this@AllergyItemListActivity,
-                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+       //             Toast.makeText(this@AllergyItemListActivity,"Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure
                     // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@AllergyItemListActivity, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+      //              Toast.makeText(this@AllergyItemListActivity, "Failed to retrieve items", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -104,7 +104,7 @@ class AllergyItemListActivity : BaseActivity() {
             // or Error Creating Http Request or Error Processing Http Response
             override fun onFailure(call: Call<List<AllergyDataClass>>, t: Throwable) {
 
-                Toast.makeText(this@AllergyItemListActivity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+ //               Toast.makeText(this@AllergyItemListActivity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }

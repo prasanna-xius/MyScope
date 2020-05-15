@@ -100,11 +100,10 @@ class ImmunizationItemListActivity : BaseActivity() {
 
 
                 } else if(response.code() == 401) {
-                    Toast.makeText(this@ImmunizationItemListActivity,
-                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+       //             Toast.makeText(this@ImmunizationItemListActivity, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure
                     // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@ImmunizationItemListActivity, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+    //                Toast.makeText(this@ImmunizationItemListActivity, "Failed to retrieve items", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -112,7 +111,7 @@ class ImmunizationItemListActivity : BaseActivity() {
             // or Error Creating Http Request or Error Processing Http Response
             override fun onFailure(call: Call<List<MedicalHistoryModelActivity>>, t: Throwable) {
 
-                Toast.makeText(this@ImmunizationItemListActivity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+   //             Toast.makeText(this@ImmunizationItemListActivity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }

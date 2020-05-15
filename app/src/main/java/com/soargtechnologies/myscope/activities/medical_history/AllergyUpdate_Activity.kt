@@ -125,7 +125,7 @@ class AllergyUpdate_Activity : BaseActivity() {
         val allergyService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
         val requestCall = allergyService.getAllergyByid(mobile_no.toString())
 
-        Toast.makeText(applicationContext, "data id ::" + " " + id, Toast.LENGTH_LONG).show()
+  //      Toast.makeText(applicationContext, "data id ::" + " " + id, Toast.LENGTH_LONG).show()
 
         requestCall.enqueue(object : retrofit2.Callback<List<AllergyDataClass>> {
 
@@ -160,21 +160,16 @@ class AllergyUpdate_Activity : BaseActivity() {
                         }!!
 
 
-                        Toast.makeText(applicationContext, "sucess::" + " " + destination.toString(), Toast.LENGTH_LONG).show()
+  //                      Toast.makeText(applicationContext, "sucess::" + " " + destination.toString(), Toast.LENGTH_LONG).show()
                     }
 
                 } else {
-                    Toast.makeText(this@AllergyUpdate_Activity, "Failed to retrieve details under else", Toast.LENGTH_SHORT)
-                            .show()
+       //             Toast.makeText(this@AllergyUpdate_Activity, "Failed to retrieve details under else", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<AllergyDataClass>>, t: Throwable) {
-                Toast.makeText(
-                        this@AllergyUpdate_Activity,
-                        "Failed to retrieve details " + t.toString(),
-                        Toast.LENGTH_SHORT
-                ).show()
+      //          Toast.makeText(this@AllergyUpdate_Activity,"Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -225,17 +220,14 @@ class AllergyUpdate_Activity : BaseActivity() {
                     if (response.isSuccessful) {
                         finish() // Move back to DestinationListActivity
                         var updatedDestination = response.body() // Use it or ignore It
-                        Toast.makeText(this@AllergyUpdate_Activity,
-                                "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+      //                  Toast.makeText(this@AllergyUpdate_Activity,"Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this@AllergyUpdate_Activity,
-                                "Failed to update item", Toast.LENGTH_SHORT).show()
+      //                  Toast.makeText(this@AllergyUpdate_Activity, "Failed to update item", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<AllergyDataClass>, t: Throwable) {
-                    Toast.makeText(this@AllergyUpdate_Activity,
-                            "Failed to update item", Toast.LENGTH_SHORT).show()
+      //              Toast.makeText(this@AllergyUpdate_Activity,"Failed to update item", Toast.LENGTH_SHORT).show()
                 }
             })
 

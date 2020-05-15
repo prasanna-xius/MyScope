@@ -177,8 +177,7 @@ class MedicationHistory : BaseActivity() {
                 newmedication.mobile_no = mobile_no!!
                 newmedication.medication_saved_on=datesetvalue()
 
-                Toast.makeText(applicationContext, newmedication.how_often_taken + " " + newmedication.formulation
-                        + " " + newmedication.isprescribed + " " + newmedication.doseunit, Toast.LENGTH_LONG).show()
+      //          Toast.makeText(applicationContext, newmedication.how_often_taken + " " + newmedication.formulation  + " " + newmedication.isprescribed + " " + newmedication.doseunit, Toast.LENGTH_LONG).show()
 
                
 
@@ -198,20 +197,20 @@ class MedicationHistory : BaseActivity() {
 
                             var newbody = resp.body() // Use it or ignore it
 
-                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+   //                         Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                             finish()
                         } else {
 
-                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+  //                          Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<MedicationDataClass>, t: Throwable) {
                         //finish()
-                        Log.d("errormsgfailure ::", t.message)
-
-                        Log.e("errorunderfailure:", t.message)
-                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+//                        Log.d("errormsgfailure ::", t.message)
+//
+//                        Log.e("errorunderfailure:", t.message)
+//                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                     }
                 })
 

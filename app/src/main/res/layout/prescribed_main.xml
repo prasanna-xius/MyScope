@@ -52,6 +52,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/formulation"
+                        android:textStyle="bold"
                         android:textColor="@color/bg_screen2"
                         android:textSize="15sp" />
 
@@ -80,6 +81,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/brand_name"
+                        android:textStyle="bold"
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_15" />
 
@@ -109,6 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/generic_name"
+                        android:textStyle="bold"
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_15" />
 
@@ -139,6 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/time"
+                        android:textStyle="bold"
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_15" />
 
@@ -167,6 +171,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/dose_strength"
+                        android:textStyle="bold"
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_15" />
 
@@ -197,6 +202,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/dose_unit"
+                        android:textStyle="bold"
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_15" />
 
@@ -223,6 +229,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/how_often_taken"
+                        android:textStyle="bold"
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_15" />
 
@@ -253,6 +260,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/start_date"
+                        android:textStyle="bold"
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_15" />
 
@@ -261,8 +269,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/edittext_border"
+                        android:background="@drawable/border_bg"
                         android:inputType="date"
+                        android:hint="@string/started_date"
+                        android:textColorHint="@color/bg_screen2"
+                        android:drawableRight="@drawable/calendar_36"
                         android:padding="@dimen/dimen_4"
                         android:textColor="@color/bg_screen2"
                         android:textSize="15sp" />
@@ -282,6 +293,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/stop_date"
+                        android:textStyle="bold"
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_15" />
 
@@ -290,8 +302,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:background="@drawable/edittext_border"
+                        android:background="@drawable/border_bg"
                         android:inputType="date"
+                        android:hint="@string/stop_date"
+                        android:textColorHint="@color/bg_screen2"
+                        android:drawableRight="@drawable/calendar_36"
                         android:padding="@dimen/dimen_4"
                         android:textColor="@color/bg_screen2"
                         android:textSize="15sp" />

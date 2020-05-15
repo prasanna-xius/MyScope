@@ -137,19 +137,19 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
                             }
                         } else {
-                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
 
-                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+ //                       Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                     }
                 })
 
 
         add_drug.setOnClickListener {
-            showLongToast("clicked")
+//            showLongToast("clicked")
             showDialog()
         }
 
@@ -294,12 +294,12 @@ class Prescription_manualDrugDialog : BaseActivity() {
 
                         if (resp.isSuccessful) {
                             var newbody = resp.body() // Use it or ignore it
-                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+ //                           Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                             val intent = intent
                             finish()
                             startActivity(intent)
                         } else {
-                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                         }
                     }
 
@@ -307,7 +307,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
                         //finish()
 //                    Log.d("errormsgfailure ::", t.message)
 //                    Log.e("errorunderfailure:", t.message)
-                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                     }
                 })
 
@@ -363,13 +363,13 @@ class Prescription_manualDrugDialog : BaseActivity() {
                     rv!!.adapter!!.notifyDataSetChanged()
 
 
-                    Log.e("errpr msg resp succ", response.message())
+ //                   Log.e("errpr msg resp succ", response.message())
 
                 } else if (response.code() == 401) {
-                    Toast.makeText(this@Prescription_manualDrugDialog, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+ //                   Toast.makeText(this@Prescription_manualDrugDialog, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure
                     // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@Prescription_manualDrugDialog, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@Prescription_manualDrugDialog, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -377,7 +377,7 @@ class Prescription_manualDrugDialog : BaseActivity() {
             // or Error Creating Http Request or Error Processing Http Response
             override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
 
-                Toast.makeText(this@Prescription_manualDrugDialog, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+ //               Toast.makeText(this@Prescription_manualDrugDialog, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }

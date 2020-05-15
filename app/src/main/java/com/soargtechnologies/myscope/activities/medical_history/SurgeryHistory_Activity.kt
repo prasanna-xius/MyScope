@@ -62,7 +62,7 @@ class SurgeryHistory_Activity : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-        showLongToast(mobile_no.toString())
+   //     showLongToast(mobile_no.toString())
       //  button_date_surg= findViewById(R.id.)
 
         et_namesurg = findViewById(R.id.et_name_surgery_history)
@@ -122,22 +122,22 @@ class SurgeryHistory_Activity : BaseActivity() {
 
                             var newbody = resp.body() // Use it or ignore it
 
-                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+ //                           Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                             finish()
                         }
                         else
                         {
 
-                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
                         //finish()
-                        Log.d("errormsgfailure ::",t.message)
-
-                        Log.e("errorunderfailure:",t.message)
-                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+//                        Log.d("errormsgfailure ::",t.message)
+//
+//                        Log.e("errorunderfailure:",t.message)
+//                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                     }
                 })
 

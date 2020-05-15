@@ -148,22 +148,22 @@ class ImmunizationHistory : BaseActivity() {
 
                                 var newbody = resp.body() // Use it or ignore it
 
-                                Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+ //                               Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                                 finish()
                             }
                             else
                             {
 
-                                Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+ //                               Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                             }
                         }
 
                         override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
                             //finish()
-                            Log.d("errormsgfailure ::",t.message)
+  //                          Log.d("errormsgfailure ::",t.message)
 
-                            Log.e("errorunderfailure:",t.message)
-                            Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+ //                           Log.e("errorunderfailure:",t.message)
+  //                          Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                         }
                     })
 

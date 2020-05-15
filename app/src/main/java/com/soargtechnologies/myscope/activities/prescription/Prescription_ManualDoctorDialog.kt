@@ -194,13 +194,13 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
                         // Use it or ignore it
                         navigateToActivity(Intent(applicationContext, Prescription_manualDrugDialog::class.java))
                     } else {
-                        Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+ //                       Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
 
-                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+////                    Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                 }
             })
 
@@ -211,7 +211,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
     private fun loadDetails() {
         val prescription_data = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
         val requestCall = prescription_data.getDoctorListbyId(mobile_no.toString(),model_name.toString())
-        showLongToast(requestCall.toString())
+ //       showLongToast(requestCall.toString())
         requestCall.enqueue(object : retrofit2.Callback<List<PrescriptionDataClass>> {
             override fun onResponse(call: Call<List<PrescriptionDataClass>>, response: Response<List<PrescriptionDataClass>>) {
                 if (response.isSuccessful) {
@@ -284,7 +284,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
                     Log.e("errpr msg resp succ", response.message())
 
                 } else if (response.code() == 401) {
-                    Toast.makeText(this@Prescription_ManualDoctorDialog, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@Prescription_ManualDoctorDialog, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -292,7 +292,7 @@ class Prescription_ManualDoctorDialog : BaseActivity() {
             // or Error Creating Http Request or Error Processing Http Response
             override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
 
-                Toast.makeText(this@Prescription_ManualDoctorDialog, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+ //               Toast.makeText(this@Prescription_ManualDoctorDialog, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }

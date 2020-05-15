@@ -91,7 +91,8 @@ class DiseaseHistoryUpdate : BaseActivity() {
             val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
             position = intent.getIntExtra("position", 0)
-            showLongToast(position.toString())
+
+      //      showLongToast(position.toString())
 
             loadDetails(mobile_no.toString(), position!!)
 
@@ -130,7 +131,7 @@ class DiseaseHistoryUpdate : BaseActivity() {
             }
 
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
-                Toast.makeText(this@DiseaseHistoryUpdate, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
+     //           Toast.makeText(this@DiseaseHistoryUpdate, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -168,15 +169,15 @@ class DiseaseHistoryUpdate : BaseActivity() {
     private fun assignValuestoVariable() {
 
         val condition = et_condition_updated.text.toString()
-        val diseases = spinner_disease_updated!!.selectedItem.toString()
+  //      val diseases = spinner_disease_updated!!.selectedItem.toString()
         val disease_duration = et_noOfYrs_updated.text.toString()
         validateInput(et_condition_updated, condition)
         validateInput(et_noOfYrs_updated, disease_duration)
-        validateSpinner(spinner_disease_updated!!, diseases)
+ //       validateSpinner(spinner_disease_updated!!, diseases)
 
         if ((condition != "")
                 && (disease_duration != "")) {
-            showLongToast("save the details")
+  //          showLongToast("save the details")
 
             sucess()
         } else {
@@ -190,7 +191,7 @@ class DiseaseHistoryUpdate : BaseActivity() {
 
 
         val item = spinner_disease_updated.text1.text.toString()
-        showLongToast(item)
+  //      showLongToast(item)
 
         val newDisease = Diseases()
         newDisease.known_condition = et_condition_updated!!.text.toString().trim()
@@ -220,19 +221,18 @@ class DiseaseHistoryUpdate : BaseActivity() {
                 if (response.isSuccessful) {
 
                     var updatedDestination = response.body() // Use it or ignore It
-                    Toast.makeText(this@DiseaseHistoryUpdate, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+  //                  Toast.makeText(this@DiseaseHistoryUpdate, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     finish() // Move back to DestinationListActivity
                 } else {
                     intent = Intent(this@DiseaseHistoryUpdate,Disease_recyclerView::class.java)
                     intent.putExtra("position" , position)
                     startActivity(intent)
-                    Toast.makeText(this@DiseaseHistoryUpdate  , "Failed to update item1", Toast.LENGTH_SHORT).show()
+   //                 Toast.makeText(this@DiseaseHistoryUpdate  , "Failed to update item1", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                Toast.makeText(this@DiseaseHistoryUpdate,
-                        "Failed to update item", Toast.LENGTH_SHORT).show()
+        //        Toast.makeText(this@DiseaseHistoryUpdate,"Failed to update item", Toast.LENGTH_SHORT).show()
             }
         })
 

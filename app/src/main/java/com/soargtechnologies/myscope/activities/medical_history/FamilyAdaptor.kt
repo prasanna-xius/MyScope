@@ -36,14 +36,14 @@ class FamilyAdaptor(private val familyList: List<Diseases>) : RecyclerView.Adapt
 
             val  context = v?.context
 
-            Toast.makeText(context, "item Clicked" + position, Toast.LENGTH_LONG).show()
+   //         Toast.makeText(context, "item Clicked" + position, Toast.LENGTH_LONG).show()
             val intent = Intent(context, FamilyHistoryUpdated::class.java)
 
             intent.putExtra(FamilyHistoryUpdated.ARG_ITEM_ID, holder.familyConditiondestination!!.mobile_no)
 
             intent.putExtra("position" , position)
 
-            Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
+   //         Toast.makeText(context,"holder data"+v, Toast.LENGTH_LONG).show()
 
 
             context?.startActivity(intent)

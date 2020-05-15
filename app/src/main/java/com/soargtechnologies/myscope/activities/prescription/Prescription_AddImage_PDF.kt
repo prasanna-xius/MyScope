@@ -97,11 +97,10 @@ class Prescription_AddImage_PDF :BaseActivity() {
                     //iv_pres.setImageBitmap(bitmap)
 
                 } else if(response.code() == 401) {
-                    Toast.makeText(this@Prescription_AddImage_PDF,
-                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+      //              Toast.makeText(this@Prescription_AddImage_PDF,"Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure
                     // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@Prescription_AddImage_PDF, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+ //                   Toast.makeText(this@Prescription_AddImage_PDF, "Failed to retrieve items", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -109,7 +108,7 @@ class Prescription_AddImage_PDF :BaseActivity() {
             // or Error Creating Http Request or Error Processing Http Response
             override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
 
-                Toast.makeText(this@Prescription_AddImage_PDF, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@Prescription_AddImage_PDF, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -278,14 +277,14 @@ class Prescription_AddImage_PDF :BaseActivity() {
                     //mBtImageShow!!.visibility = View.VISIBLE
                     //mImageUrl = URL + responseBody!!.path
                     //Snackbar.make(findViewById(R.id.content), responseBody.message!!, Snackbar.LENGTH_SHORT).show()
-                    Toast.makeText(applicationContext,"image successful",Toast.LENGTH_LONG).show()
+//                    Toast.makeText(applicationContext,"image successful",Toast.LENGTH_LONG).show()
 
                 } else {
                     val errorBody = response.errorBody()
                     val gson = Gson()
                     try {
 //                        val errorResponse = gson.fromJson<PrescriptionDataClass>(errorBody!!.string(), Response::class.java!!)
-                        Toast.makeText(applicationContext,"image uploaded in else part",Toast.LENGTH_LONG).show()
+//                        Toast.makeText(applicationContext,"image uploaded in else part",Toast.LENGTH_LONG).show()
                         //Snackbar.make(findViewById(R.id.content), errorResponse.message!!, Snackbar.LENGTH_SHORT).show()
                     } catch (e: IOException) {
                         e.printStackTrace()
@@ -296,7 +295,7 @@ class Prescription_AddImage_PDF :BaseActivity() {
             override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
                 //mProgressBar!!.visibility = View.GONE
                 //Log.d(TAG, "onFailure: " + t.localizedMessage)
-                Toast.makeText(applicationContext,"image uploaded in failure part",Toast.LENGTH_LONG).show()
+//                Toast.makeText(applicationContext,"image uploaded in failure part",Toast.LENGTH_LONG).show()
 
             }
         })

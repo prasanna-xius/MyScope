@@ -88,7 +88,7 @@ class SurgeryUpdateActivity : BaseActivity() {
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
 
-            Toast.makeText(this,"data"+ARG_ITEM_ID.toString(),Toast.LENGTH_LONG).show()
+  //          Toast.makeText(this,"data"+ARG_ITEM_ID.toString(),Toast.LENGTH_LONG).show()
 
             //val id = intent.getIntExtra(ARG_ITEM_ID, 0)
 
@@ -131,7 +131,7 @@ class SurgeryUpdateActivity : BaseActivity() {
         val requestCall = immuService.getSurgeryByid(id)
 
 
-        Toast.makeText(this,"test msg "+ id,Toast.LENGTH_LONG).show()
+  //      Toast.makeText(this,"test msg "+ id,Toast.LENGTH_LONG).show()
 
         requestCall.enqueue(object : retrofit2.Callback<List<MedicalHistoryModelActivity>> {
 
@@ -165,17 +165,12 @@ class SurgeryUpdateActivity : BaseActivity() {
                         //collapsing_toolbar.title = destination.city
                     }!!
                 } else {
-                    Toast.makeText(this@SurgeryUpdateActivity, "Failed to retrieve details under else", Toast.LENGTH_SHORT)
-                            .show()
+   //                 Toast.makeText(this@SurgeryUpdateActivity, "Failed to retrieve details under else", Toast.LENGTH_SHORT) .show()
                 }
             }
 
             override fun onFailure(call: Call<List<MedicalHistoryModelActivity>>, t: Throwable) {
-                Toast.makeText(
-                        this@SurgeryUpdateActivity,
-                        "Failed to retrieve details " + t.toString(),
-                        Toast.LENGTH_SHORT
-                ).show()
+ //               Toast.makeText(this@SurgeryUpdateActivity,"Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT  ).show()
             }
         })
     }
@@ -212,24 +207,21 @@ class SurgeryUpdateActivity : BaseActivity() {
 
                     override fun onResponse(call: Call<MedicalHistoryModelActivity>, response: Response<MedicalHistoryModelActivity>) {
 
-                        Log.d("tag:::::", response.toString())
-                        Log.d("tag:::::", response.message())
+//                        Log.d("tag:::::", response.toString())
+//                        Log.d("tag:::::", response.message())
 
                         var updatedDestination = response.body()
                         if (response.isSuccessful) {
                             finish() // Move back to DestinationListActivity
                             var updatedDestination = response.body() // Use it or ignore It
-                            Toast.makeText(this@SurgeryUpdateActivity,
-                                    "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+       //                     Toast.makeText(this@SurgeryUpdateActivity,"Item Updated Successfully", Toast.LENGTH_SHORT).show()
                         } else {
-                            Toast.makeText(this@SurgeryUpdateActivity,
-                                    "Failed to update item under else", Toast.LENGTH_SHORT).show()
+ //                           Toast.makeText(this@SurgeryUpdateActivity, "Failed to update item under else", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
-                        Toast.makeText(this@SurgeryUpdateActivity,
-                                "Failed to update item", Toast.LENGTH_SHORT).show()
+        //                Toast.makeText(this@SurgeryUpdateActivity,  "Failed to update item", Toast.LENGTH_SHORT).show()
                     }
                 })
             }

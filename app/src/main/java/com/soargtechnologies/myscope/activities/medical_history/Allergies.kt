@@ -143,18 +143,18 @@ class Allergies : BaseActivity(),  AdapterView.OnItemSelectedListener {
                                 if (resp.isSuccessful) {
 
                                     // var newbody = resp.body() // Use it or ignore it
-                                    Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+      //                              Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                                     finish()
                                 } else {
 
-                                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+     //                               Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                                 }
                             }
 
                             override fun onFailure(call: Call<AllergyDataClass>, t: Throwable) {
                                 //finish()
 
-                                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+    //                            Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                             }
                         })
 

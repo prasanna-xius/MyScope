@@ -279,17 +279,12 @@ class MedicationUpdateActivity : BaseActivity() {
                     }
 
                 } else {
-                    Toast.makeText(this@MedicationUpdateActivity, "Failed to retrieve details under else", Toast.LENGTH_SHORT)
-                            .show()
+ //                   Toast.makeText(this@MedicationUpdateActivity, "Failed to retrieve details under else", Toast.LENGTH_SHORT) .show()
                 }
             }
 
             override fun onFailure(call: Call<List<MedicationDataClass>>, t: Throwable) {
-                Toast.makeText(
-                        this@MedicationUpdateActivity,
-                        "Failed to retrieve details " + t.toString(),
-                        Toast.LENGTH_SHORT
-                ).show()
+       //         Toast.makeText( this@MedicationUpdateActivity,"Failed to retrieve details " + t.toString(),Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -369,31 +364,28 @@ class MedicationUpdateActivity : BaseActivity() {
 
                 override fun onResponse(call: Call<MedicationDataClass>, response: Response<MedicationDataClass>) {
 
-                    Log.d("tag:::::", response.toString())
-                    Log.d("tag:::::", response.message())
+//                    Log.d("tag:::::", response.toString())
+//                    Log.d("tag:::::", response.message())
 
                     var updatedDestination = response.body()
                     if (response.isSuccessful) {
                         finish() // Move back to DestinationListActivity
                         var updatedDestination = response.body() // Use it or ignore It
-                        Toast.makeText(this@MedicationUpdateActivity,
-                                "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+       //                 Toast.makeText(this@MedicationUpdateActivity, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     } else {
 
                         intent = Intent(this@MedicationUpdateActivity, MedicationItemListActivity::class.java)
                         intent.putExtra("position", position)
                         startActivity(intent)
-                        Toast.makeText(this@MedicationUpdateActivity, "Failed to update item1", Toast.LENGTH_SHORT).show()
+    //                    Toast.makeText(this@MedicationUpdateActivity, "Failed to update item1", Toast.LENGTH_SHORT).show()
 
 
-                        Toast.makeText(this@MedicationUpdateActivity,
-                                "Failed to update item under else", Toast.LENGTH_SHORT).show()
+    //                    Toast.makeText(this@MedicationUpdateActivity, "Failed to update item under else", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<MedicationDataClass>, t: Throwable) {
-                    Toast.makeText(this@MedicationUpdateActivity,
-                            "Failed to update item", Toast.LENGTH_SHORT).show()
+ //                   Toast.makeText(this@MedicationUpdateActivity,"Failed to update item", Toast.LENGTH_SHORT).show()
                 }
             })
         }

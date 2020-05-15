@@ -182,8 +182,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:padding="4dp"
+                        android:padding="5dp"
                         android:hint="@string/dOB"
+                        android:drawableRight="@drawable/calendar_36"
                         android:textColorHint="@color/bg_screen2"
                         android:background="@drawable/border_bg"
                         android:textColor="@color/bg_screen2" />
