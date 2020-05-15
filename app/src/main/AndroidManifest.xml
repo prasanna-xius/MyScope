@@ -45,7 +45,7 @@
             android:name=".activities.SliderActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activities.Login_Page">
+        <activity android:name=".activities.Navigation_Drawer_Blogs">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,7 +81,7 @@
             android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.Navigation_Drawer_Blogs"
+            android:name=".activities.Login_Page"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.medical_history.Medical_History_HomePage"

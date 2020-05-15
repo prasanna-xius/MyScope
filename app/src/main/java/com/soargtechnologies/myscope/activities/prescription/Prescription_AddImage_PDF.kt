@@ -123,7 +123,6 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
 
                     //pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
 
-
                     imageAdapter = Prescription_ImageAdapter(imageList)
 
                     pres_recycler_view.adapter?.notifyDataSetChanged()

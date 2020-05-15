@@ -100,7 +100,7 @@ class Covid_19_Resourses_Activity : BaseActivity() {
 //        recyclerView_image!!.adapter = customAdapter_image
 
 
-        loadDestinations()
+        loadImages()
 
         // set the Adapter to RecyclerView
 //        val layoutManager = LinearLayoutManager(this)
@@ -146,7 +146,7 @@ class Covid_19_Resourses_Activity : BaseActivity() {
 
     }
 
-    private fun loadDestinations() {
+    private fun loadImages() {
 
         val service = ServiceBuilder.buildService(PrescriptionInterface::class.java)
 
