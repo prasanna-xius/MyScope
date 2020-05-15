@@ -131,9 +131,21 @@ class Prescription_AddImage_PDF : AppCompatActivity() {
             override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
-                    imageList = response.body()!!
-                    presAdapter = Prescription_ImageAdapter(imageList!!)
-                    recyclerView!!.adapter = presAdapter
+                    val imageList = response.body()!!
+
+
+                    //val llm = LinearLayoutManager(applicationContext)
+                    // llm.orientation = LinearLayoutManager.VERTICAL
+                    // pres_recycler_view.setLayoutManager(llm)
+
+
+                    val adapter= Prescription_ImageAdapter(imageList)
+                    recyclerView!!.adapter = adapter
+
+                    //pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
+
+                    imageAdapter = Prescription_ImageAdapter(imageList)
+
                     pres_recycler_view.adapter?.notifyDataSetChanged()
                 } else if (response.code() == 401) {
                     Toast.makeText(this@Prescription_AddImage_PDF,

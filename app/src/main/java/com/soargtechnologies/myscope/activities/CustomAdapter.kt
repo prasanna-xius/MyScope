@@ -13,53 +13,73 @@ import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
 import kotlinx.android.synthetic.main.educationimagerow.view.*
 
-class CustomAdapter(private val covidImages: MutableList<PrescriptionDataClass>): RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
+class CustomAdapter(private val covidImages: MutableList<PrescriptionDataClass>): RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-    var context:Context? =null
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder { // infalte the item Layout
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.educationimagerow, parent, false)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder { // infalte the item Layout
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.rowlayout, parent, false)
         // set the view's size, margins, paddings and layout parameters
-        return MyViewHolder(v)
+        return ViewHolder(v)
     }
+    override fun getItemCount() = covidImages.size
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) { // set the data in items
-//        holder.name.setText(personNames.get(position).toString());
-//        hol = imglist[position]
-//        holder.savedDate.text = imglist[position].upload_saved_on
-        holder.educationimage = covidImages[position]
-        val educovid = covidImages[position]
-        holder.name.text =  educovid.education_imagetitle
-        var encodedString: String = educovid.educationdownloadfile.toString()
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.imageDetails = covidImages[position]
+
+        val imgls = covidImages[position]
+
+        var encodedString: String = imgls.education_image.toString()
+
         var pureBase64Encoded = encodedString.substring(encodedString.indexOf(",") + 1);
+        val decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT)
+        val buf: ByteArray = decodedBytes
+        val s: String = String(buf);
 
-        var decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT)
+        val uri: Uri = Uri.parse(s)
 
+        // set the data in items
+//        holder.name.setText(personNames.get(position).toString());
+
+//        holder.image.setImageResource(covidImages[position].hashCode())
         Glide.with(holder.itemView.context)
                 .load(decodedBytes)
-                .into(holder.itemView.educovid)
+                .into(holder.itemview.image_covid)
 
         // implement setOnClickListener event on item view.
-//        holder.itemView.setOnClickListener {
+        holder.itemView.setOnClickListener {v: View? ->
+
+            val context = v?.context
+            val intent = Intent(Intent.ACTION_VIEW, decodedBytes)
+            context!!.startActivity(intent)
+
 //            // open another activity on item click
-//
 //            val intent = Intent(context, Full_Image_Activity::class.java)
-//            intent.putExtra("image", covidImages[position].hashCode()) // put image data in Intent
-//            context!!.startActivity(intent) // start Intent
+//            intent.putExtra("image", covidImages[position].hashCode())
+//            // put image data in Intent
+//            context!!.startActivity(intent)
+            // start Intent
+        }
+    }
+
+
+    class ViewHolder(val itemview: View) : RecyclerView.ViewHolder(itemview) {
+
+//        val deletebutton: ImageView = itemview.findViewById(R.id.iv_pres_dlt)
+        val imageView: ImageView = itemview.findViewById(R.id.image_covid)
+        var imageDetails: PrescriptionDataClass? = null
+
+    }
+//    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+//        // init the item view's
+//        var name: TextView
+//        var image: ImageView
+//
+//        init {
+//            // get the reference of item view's
+//            name = itemView.findViewById<View>(R.id.name) as TextView
+//            image = itemView.findViewById<View>(R.id.image) as ImageView
+//
 //        }
-    }
-
-    override fun getItemCount(): Int {
-        return covidImages.size
-    }
-
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        // init the item view's
-
-            // get the reference of item view's
-           var name = itemView.findViewById<View>(R.id.educovidtitle) as TextView
-            var educationimage: PrescriptionDataClass? = null
-           var image = itemView.findViewById<View>(R.id.educovid) as ImageView
-
-    }
+//    }
 
 }
