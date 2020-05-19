@@ -17,36 +17,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".activities.self_monitering.Blood_Pressure"></activity>
+        <activity android:name=".activities.medical_documents.MedicalDoc_Other"></activity>
+        <activity android:name=".activities.medical_documents.MedicalDoc_Education" />
+        <activity android:name=".activities.medical_documents.MedicalDoc_Diet" />
+        <activity android:name=".activities.medical_documents.MedicalDoc_Health" />
+        <activity android:name=".activities.medical_documents.MedicalDoc_Immun" />
+        <activity android:name=".activities.medical_documents.MedicalDoc_Dental" />
+        <activity android:name=".activities.medical_documents.MedicalDoc_Discharge" />
+        <activity android:name=".activities.self_monitering.Blood_Pressure" />
         <activity android:name=".activities.self_monitering.Emotional_state_Update" />
-        <activity android:name=".activities.self_monitering.Emotional_state_recyclerView" />
-        <!-- <activity android:name=".activities.self_monitering.BloodPressureActivity"></activity> -->
-         <activity android:name=".activities.self_monitering.Bmi_recyclerView"></activity>
-         <activity android:name=".activities.self_monitering.BmiUpdate" />
-         <activity android:name=".activities.self_monitering.Cholestrol_recyclerView" />
-         <activity android:name=".activities.self_monitering.CholestrolUpdate" />
-         <activity android:name=".activities.self_monitering.Blood_pressureUpdate" />
-         <activity android:name=".activities.self_monitering.Blood_Pressure_recyclerView" />
-         <activity android:name=".activities.self_monitering.Blood_GlucoseUpdate" />
-         <activity android:name=".activities.self_monitering.Blood_Glucose_recyclerView" />
+        <activity android:name=".activities.self_monitering.Emotional_state_recyclerView" /> <!-- <activity android:name=".activities.self_monitering.BloodPressureActivity"></activity> -->
+        <activity android:name=".activities.self_monitering.Bmi_recyclerView" />
+        <activity android:name=".activities.self_monitering.BmiUpdate" />
+        <activity android:name=".activities.self_monitering.Cholestrol_recyclerView" />
+        <activity android:name=".activities.self_monitering.CholestrolUpdate" />
+        <activity android:name=".activities.self_monitering.Blood_pressureUpdate" />
+        <activity android:name=".activities.self_monitering.Blood_Pressure_recyclerView" />
+        <activity android:name=".activities.self_monitering.Blood_GlucoseUpdate" />
+        <activity android:name=".activities.self_monitering.Blood_Glucose_recyclerView" />
         <activity android:name=".activities.self_monitering.Glucose_Adaptor" />
-         <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" />
+        <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" />
         <activity android:name=".activities.Contact_Us" /> <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
-
-        <activity android:name=".activities.prescription.Prescription_AddImage_PDF"/>
+        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
         <activity android:name=".activities.ComingSoon_Activity" />
-        <activity android:name=".activities.Register_User" />
-
-        <!--        <activity android:name=".activities.Facebook_Activity" />-->
-
+        <activity android:name=".activities.Register_User" /> <!-- <activity android:name=".activities.Facebook_Activity" /> -->
         <activity
             android:name=".activities.SliderActivity"
             android:screenOrientation="portrait" />
-
         <activity android:name=".activities.Navigation_Drawer_Blogs">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -148,7 +147,6 @@
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
         <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog" />
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
-
         <activity android:name=".activities.Educational_Blog_Activity" />
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
         <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
@@ -166,7 +164,6 @@
         <activity android:name=".activities.Covid_19_Resourses_Activity" />
         <activity android:name=".activities.Covid19_Tracker_WebActivity" />
         <activity android:name=".activities.Map_Covid19_WebActivity" />
-
         <activity android:name=".activities.Willey_Library_Covid19_WebActivity" />
         <activity android:name=".activities.CDC_Centers_Covid19_WebActivity" />
         <activity android:name=".activities.Newzeland_Medicine_Covid19_WebActivity" />
@@ -177,13 +174,9 @@
         <activity android:name=".activities.Science_Covid19_WebActivity" />
         <activity android:name=".activities.Elsevier_Network_Covid19_WebActivity" />
         <activity android:name=".activities.Oxward_Acadamic_Covid19_WebActivity" />
-        <activity android:name=".activities.Nature_Covid19_WebActivity" />
-
-
-<!--        <activity android:name=".activities.Full_Image_Activity" />-->
+        <activity android:name=".activities.Nature_Covid19_WebActivity" /> <!-- <activity android:name=".activities.Full_Image_Activity" /> -->
         <activity android:name=".activities.Guidelines_Activity" />
         <activity android:name=".activities.Courses_Training_Activity" />
-
         <activity android:name=".activities.News_Updates_Activity" />
         <activity android:name=".activities.Covid_19_Update_Activity" />
         <activity android:name=".activities.Covid_19_Guidelines_HomeQuarantine" />
@@ -211,8 +204,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>

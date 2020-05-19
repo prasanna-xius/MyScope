@@ -102,8 +102,8 @@ interface PrescriptionInterface {
                     @Part("mobile_no") mobile_no: RequestBody,@Part ("upload_saved_on") upload_saved_on:RequestBody, @Part("upload_type") upload_type:RequestBody,@Part("model_name") model_name:RequestBody):
             Call<PrescriptionDataClass>
 
-    @GET("uploadedlist")
-    fun getImageDetails(): Call<MutableList<PrescriptionDataClass>>
+    @GET("uploadedlist/{mobile_no}/{model_name}")
+    fun getImageDetails(@Path("mobile_no") mobile_no:String,@Path("model_name") model_name:String): Call<MutableList<PrescriptionDataClass>>
 
     @GET("educationimg")
     fun getCovidImageDetails(): Call<MutableList<PrescriptionDataClass>>
@@ -111,5 +111,91 @@ interface PrescriptionInterface {
     @HTTP(method = "DELETE", path = "deleteupload", hasBody = true)
     fun deleteImageDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
 
+    @Multipart
+//    @Headers("Content-Type: application/json")
+    @POST("docdischargeupload")
+    fun uploaddocDischarge(@Part("mobile_no") mobile_no: RequestBody,@Part file: MultipartBody.Part,@Part ("document_discharge_saved_on") upload_saved_on:RequestBody, @Part("document_discharge_type") upload_type:RequestBody):
+            Call<PrescriptionDataClass>
 
+    @GET("docdischargelist/{mobile_no}")
+    fun getDischargeDetails(@Path("mobile_no") mobile_no:String): Call<MutableList<PrescriptionDataClass>>
+
+    @HTTP(method = "DELETE", path = "docdeletedischarge", hasBody = true)
+    fun deleteDischargeDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
+
+
+    @Multipart
+//    @Headers("Content-Type: application/json")
+    @POST("docdentalupload")
+    fun uploaddocDental(@Part("mobile_no") mobile_no: RequestBody,@Part file: MultipartBody.Part,@Part ("document_dental_saved_on") upload_saved_on:RequestBody, @Part("document_dental_type") upload_type:RequestBody):
+            Call<PrescriptionDataClass>
+
+    @GET("docdental/{mobile_no}")
+    fun getDentalDetails(@Path("mobile_no") mobile_no:String): Call<MutableList<PrescriptionDataClass>>
+
+    @HTTP(method = "DELETE", path = "docdentaldelete", hasBody = true)
+    fun deleteDentalDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
+
+
+    @Multipart
+//    @Headers("Content-Type: application/json")
+    @POST("dietdocupload")
+    fun uploaddocDiet(@Part("mobile_no") mobile_no: RequestBody,@Part file: MultipartBody.Part,@Part ("document_diet_saved_on") upload_saved_on:RequestBody, @Part("document_diet_type") upload_type:RequestBody):
+            Call<PrescriptionDataClass>
+
+    @GET("dietdoc/{mobile_no}")
+    fun getDietDetails(@Path("mobile_no") mobile_no:String): Call<MutableList<PrescriptionDataClass>>
+
+    @HTTP(method = "DELETE", path = "deletedietdoc", hasBody = true)
+    fun deleteDietDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
+
+    @Multipart
+//    @Headers("Content-Type: application/json")
+    @POST("doceducationupload")
+    fun uploaddocEducation(@Part("mobile_no") mobile_no: RequestBody,@Part file: MultipartBody.Part,@Part ("document_education_saved_on") upload_saved_on:RequestBody, @Part("document_education_type") upload_type:RequestBody):
+            Call<PrescriptionDataClass>
+
+    @GET("doceducationlist/{mobile_no}")
+    fun getEducationDetails(@Path("mobile_no") mobile_no:String): Call<MutableList<PrescriptionDataClass>>
+
+    @HTTP(method = "DELETE", path = "docdeleteEducation", hasBody = true)
+    fun deleteEducationDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
+
+    @Multipart
+//    @Headers("Content-Type: application/json")
+    @POST("docinsuranceupload")
+    fun uploaddocHealth(@Part("mobile_no") mobile_no: RequestBody,@Part file: MultipartBody.Part,@Part ("document_insurance_saved_on") upload_saved_on:RequestBody, @Part("document_insurance_type") upload_type:RequestBody):
+            Call<PrescriptionDataClass>
+
+    @GET("docinsurancelist/{mobile_no}")
+    fun getHealthDetails(@Path("mobile_no") mobile_no:String): Call<MutableList<PrescriptionDataClass>>
+
+    @HTTP(method = "DELETE", path = "docdeleteinsurance", hasBody = true)
+    fun deleteInsuranceDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
+
+
+    @Multipart
+//    @Headers("Content-Type: application/json")
+    @POST("docimmunupload")
+    fun uploaddocImmun(@Part("mobile_no") mobile_no: RequestBody,@Part file: MultipartBody.Part,@Part ("document_immunization_saved_on") upload_saved_on:RequestBody, @Part("document_immunization_type") upload_type:RequestBody):
+            Call<PrescriptionDataClass>
+
+    @GET("docimmunlist/{mobile_no}")
+    fun getImmunDetails(@Path("mobile_no") mobile_no:String): Call<MutableList<PrescriptionDataClass>>
+
+    @HTTP(method = "DELETE", path = "docdeleteimmun", hasBody = true)
+    fun deleteImmunDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
+
+
+    @Multipart
+//    @Headers("Content-Type: application/json")
+    @POST("docotherupload")
+    fun uploaddocOther(@Part("mobile_no") mobile_no: RequestBody,@Part file: MultipartBody.Part,@Part ("document_other_saved_on") upload_saved_on:RequestBody, @Part("document_other_type") upload_type:RequestBody):
+            Call<PrescriptionDataClass>
+
+    @GET("otherdoclist/{mobile_no}")
+    fun getOtherDetails(@Path("mobile_no") mobile_no:String): Call<MutableList<PrescriptionDataClass>>
+
+    @HTTP(method = "DELETE", path = "deleteotherdoc", hasBody = true)
+    fun deleteOtherDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
 }

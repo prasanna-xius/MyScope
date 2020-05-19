@@ -1,4 +1,4 @@
-package com.soargtechnologies.myscope.activities.prescription
+package com.soargtechnologies.myscope.activities.medical_documents
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -7,25 +7,27 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.prescription.ManagePermissions
+import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.helpers.Document_DentalAdapter
+import com.soargtechnologies.myscope.helpers.Document_DischargeAdapter
 import com.soargtechnologies.myscope.helpers.Prescription_ImageAdapter
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
+import kotlinx.android.synthetic.main.activity_medical_doc__dental.*
+import kotlinx.android.synthetic.main.activity_medical_doc__discharge.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -33,10 +35,11 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.*
-import java.util.*
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.IOException
 
-class Prescription_AddImage_PDF : BaseActivity() {
+class MedicalDoc_Dental : BaseActivity() {
     var file: File? = null
     private var mImageUrl = ""
     var p_uploadid: Int = 0
@@ -48,41 +51,37 @@ class Prescription_AddImage_PDF : BaseActivity() {
     private val PermissionsRequestCode = 123
     private lateinit var managePermissions: ManagePermissions
     var swipeCount = 0
-    //var byte:byte[]?= null
-//    internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_prescription_image_list)
-        //val toolbar = findViewById<View>(R.id.toolbar_imageuploader) as Toolbar
-        //setSupportActionBar(toolbar)
+        setContentView(R.layout.activity_medical_doc__dental)
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
-        p_uploadid = sharedpreferences.getInt("uploadid", 0)
-         model_name = sharedpreferences!!.getString("model_name",null)!!
-         mobile_no = sharedpreferences!!.getString("mobile_no",null)!!
+        p_uploadid = sharedpreferences.getInt("dentalid", 0)
+        model_name = sharedpreferences!!.getString("model_name",null)!!
+        mobile_no = sharedpreferences!!.getString("mobile_no",null)!!
 
-        recyclerView = findViewById(R.id.pres_recycler_view)
+        recyclerView = findViewById(R.id.dental_recycler_view)
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView!!.layoutManager = layoutManager
 
-        itemsswipetorefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
-        itemsswipetorefresh.setColorSchemeColors(Color.WHITE)
-        itemsswipetorefresh.setOnRefreshListener {
-
-
-            swipeCount += 1
-            if (swipeCount >= 0) {
-                loadDestinations()
-            }
-            presAdapter!!.notifyDataSetChanged()
-
-
-
-            itemsswipetorefresh.setRefreshing(false);
-
-        }
+//        itemsswipetorefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
+//        itemsswipetorefresh.setColorSchemeColors(Color.WHITE)
+//        itemsswipetorefresh.setOnRefreshListener {
+//
+//
+//            swipeCount += 1
+//            if (swipeCount >= 0) {
+////                loadDestinations()
+//            }
+//            presAdapter!!.notifyDataSetChanged()
+//
+//
+//
+//            itemsswipetorefresh.setRefreshing(false);
+//
+//        }
         val list = listOf<String>(
                 Manifest.permission.CAMERA,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -98,11 +97,11 @@ class Prescription_AddImage_PDF : BaseActivity() {
                 false)
 
 
-        val fab = findViewById<View>(R.id.fab_addimages) as FloatingActionButton
+        val fab = findViewById<View>(R.id.fab_dentaldocs) as FloatingActionButton
         fab.setOnClickListener {
             //showUploadDialog()
             imagecall()
-             }
+        }
     }
 
     override fun onResume() {
@@ -114,8 +113,7 @@ class Prescription_AddImage_PDF : BaseActivity() {
 
         val service = ServiceBuilder.buildService(PrescriptionInterface::class.java)
 
-
-        val requestCall = service.getImageDetails("8142529582",model_name)
+        val requestCall = service.getDentalDetails("8142529582")
 
         requestCall.enqueue(object : Callback<MutableList<PrescriptionDataClass>> {
             // If you receive a HTTP Response, then this method is executed
@@ -124,9 +122,9 @@ class Prescription_AddImage_PDF : BaseActivity() {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val imageList = response.body()!!
-                    val adapter= Prescription_ImageAdapter(imageList)
+                    val adapter= Document_DentalAdapter(imageList)
                     recyclerView!!.adapter = adapter
-                    pres_recycler_view.adapter?.notifyDataSetChanged()
+                    dental_recycler_view.adapter?.notifyDataSetChanged()
                 } else if (response.code() == 401) {
                     showLongToast("Your session has expired. Please Login again.")
                 } else {
@@ -139,7 +137,6 @@ class Prescription_AddImage_PDF : BaseActivity() {
             // Invoked in case of Network Error or Establishing connection with Server
             // or Error Creating Http Request or Error Processing Http Response
             override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
-
                 showLongToast("Error Occurred" + t.toString())
             }
 
@@ -155,8 +152,6 @@ class Prescription_AddImage_PDF : BaseActivity() {
                     val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, data?.data!!)
                     val stream: ByteArrayOutputStream = ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-
-//                    val `is` = contentResolver.openInputStream(data?.data!!)
                     uploadImage(stream.toByteArray(), requestCode)
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -178,8 +173,8 @@ class Prescription_AddImage_PDF : BaseActivity() {
             }
         }
         if (requestCode == 102) {
-            if (resultCode == RESULT_OK) {
-                val selectedPdfFromStorage :Uri = data?.data!!
+            if (resultCode == AppCompatActivity.RESULT_OK) {
+                val selectedPdfFromStorage : Uri = data?.data!!
                 val `is` = contentResolver.openInputStream(selectedPdfFromStorage)!!.readBytes()
                 uploadImage(`is`!!, 102)
             }
@@ -191,25 +186,24 @@ class Prescription_AddImage_PDF : BaseActivity() {
 
         val requestFile: RequestBody
         val body: MultipartBody.Part
-        var type:RequestBody
-        var mobile = RequestBody.create(MediaType.parse("text/plain"), mobile_no)
+        var type: RequestBody
+        var mobile = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
 
 
         var date = RequestBody.create(MediaType.parse("text/plain"), datesetvalue())
-        var model = RequestBody.create(MediaType.parse("text/plain"), model_name)
         val destinationService = ServiceBuilder.buildService(PrescriptionInterface::class.java)
         if (codevalue.equals(102)) {
             requestFile = RequestBody.create(MediaType.parse("application/pdf"),imageBytes)
-            body = MultipartBody.Part.createFormData("p_upload", "Rx", requestFile)
+            body = MultipartBody.Part.createFormData("document_dental_file", "Rx", requestFile)
             type  = RequestBody.create(MediaType.parse("text/plain"), "pdf")
 
         } else {
             requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes)
-            body = MultipartBody.Part.createFormData("p_upload", "image.jpg", requestFile)
+            body = MultipartBody.Part.createFormData("document_dental_file", "image.jpg", requestFile)
             type = RequestBody.create(MediaType.parse("text/plain"), "image")
 
         }
-        val call = destinationService.uploadImage(body, mobile, date,type,model)
+        val call = destinationService.uploaddocDental( mobile,body, date,type)
         //mProgressBar!!.visibility = View.VISIBLE
         call.enqueue(object : Callback<PrescriptionDataClass> {
             override fun onResponse(call: Call<PrescriptionDataClass>, response: retrofit2.Response<PrescriptionDataClass>) {

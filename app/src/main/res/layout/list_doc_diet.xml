@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:id="@+id/pres_ivList"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="5dp"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:weightSum="4.0"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:id="@+id/dietid"
+            android:layout_gravity="center"
+            android:textColor="@color/bg_screen2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:id="@+id/diettitle"
+            android:text="MedR"
+            android:textSize="@dimen/_14ssp"
+            android:layout_gravity="center"
+            android:textColor="@color/bg_screen2"/>
+
+        <ImageView
+            android:id="@+id/diet_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_weight="1.0"
+            android:src="@drawable/pdf"
+            android:layout_gravity="center_horizontal"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.50"
+            android:id="@+id/dietdate"
+            android:layout_gravity="center"
+            android:textColor="@color/bg_screen2"/>
+
+
+
+
+        <ImageView
+            android:id="@+id/docdietdlt"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_weight="0.25"
+            android:src="@drawable/bin_new_36"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

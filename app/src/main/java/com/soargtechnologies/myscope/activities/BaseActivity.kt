@@ -39,6 +39,8 @@ open class BaseActivity : AppCompatActivity() {
     val CAMERA = 2
     val PICK_PDF_REQUEST = 3
     var filePath: Uri? = null
+    private var mImageUrl = ""
+
 
     fun showShortToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -184,25 +186,25 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
-    fun showPictureDialogReports1() {
-        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
-        pictureDialog.setTitle("Select Action")
-
-        val pictureDialogItems = arrayOf(
-                "Select photo from gallery",
-                "Capture photo from camera",
-                "Select pdf file from folder")
-        pictureDialog.setItems(pictureDialogItems
-        ) { dialog, which ->
-            when (which) {
-                0 -> choosePhotoFromGallary()
-                1 -> takePhotoFromCamera()
-                2 -> showFileChooser()
-
-            }
-        }
-        pictureDialog.show()
-    }
+//    fun showPictureDialogReports1() {
+//        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
+//        pictureDialog.setTitle("Select Action")
+//
+//        val pictureDialogItems = arrayOf(
+//                "Select photo from gallery",
+//                "Capture photo from camera",
+//                "Select pdf file from folder")
+//        pictureDialog.setItems(pictureDialogItems
+//        ) { dialog, which ->
+//            when (which) {
+//                0 -> choosePhotoFromGallary()
+//                1 -> takePhotoFromCamera()
+//                2 -> showFileChooser()
+//
+//            }
+//        }
+//        pictureDialog.show()
+//    }
 
     fun bmicalculator(weight: EditText,height: EditText,bmi: TextView)
     {
@@ -338,103 +340,83 @@ open class BaseActivity : AppCompatActivity() {
         
         return true
     }
-    fun showPictureDialog() {
-        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
-        pictureDialog.setTitle("Select Action")
 
-        val pictureDialogItems = arrayOf(
-                "Select photo from gallery",
-                "Capture photo from camera",
-                "Select pdf file from folder",
-                "Manual Entry")
-        pictureDialog.setItems(pictureDialogItems
-        ) { dialog, which ->
-            when (which) {
-                0 -> choosePhotoFromGallary()
-                1 -> takePhotoFromCamera()
-                2 -> showFileChooser()
-                3 -> showFilemanual()
 
-            }
-        }
-        pictureDialog.show()
-    }
-
-    fun showPictureDialogReports() {
-        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
-        pictureDialog.setTitle("Select Action")
-
-        val pictureDialogItems = arrayOf(
-                "Select photo from gallery",
-                "Capture photo from camera",
-                "Select pdf file from folder")
-        pictureDialog.setItems(pictureDialogItems
-        ) { dialog, which ->
-            when (which) {
-                0 -> choosePhotoFromGallary()
-                1 -> takePhotoFromCamera()
-                2 -> showFileChooser()
-
-            }
-        }
-        pictureDialog.show()
-    }
-    private fun showFilemanual() {
-
-        navigateToActivity(Intent(applicationContext, Prescription_ManualDoctorDialog::class.java))
-    }
-
-    private fun showFileChooser() {
-
-//        DownloadTask(this@Image_Uploader3, URL)
-
-        val intent = Intent()
-        intent.type = "application/pdf"
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Select Pdf"), PICK_PDF_REQUEST)
-    }
-
-    private fun takePhotoFromCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, CAMERA)
-    }
-
-    private fun choosePhotoFromGallary() {
-        val galleryIntent = Intent(Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(galleryIntent, GALLERY)
-    }
-
-    @Suppress("DEPRECATION")
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        /* if (resultCode == this.RESULT_CANCELED) {
-             return
-         }*/
-        if (requestCode == GALLERY) {
-            if (data != null) {
-                val contentURI: Uri?
-                contentURI = data.data
-                try {
-//                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
-//                    val path = saveImage(bitmap)
-                    Toast.makeText(this@BaseActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
-//                    iv!!.setImageBitmap(bitmap)
-//                    uploadImage(path)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                    Toast.makeText(this@BaseActivity, "Failed!", Toast.LENGTH_SHORT).show()
-                }
-            }
-        } else if (requestCode == CAMERA) {
-            val thumbnail = data!!.extras!!["data"] as Bitmap?
-//            iv!!.setImageBitmap(thumbnail)
-            saveImage(thumbnail)
-            Toast.makeText(this@BaseActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
-        } else if (requestCode == PICK_PDF_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            filePath = data.data
-        }
-    }
+//    fun showPictureDialogReports() {
+//        val pictureDialog = AlertDialog.Builder(this,R.style.Alert_Dialogue_Background)
+//        pictureDialog.setTitle("Select Action")
+//
+//        val pictureDialogItems = arrayOf(
+//                "Select photo from gallery",
+//                "Capture photo from camera",
+//                "Select pdf file from folder")
+//        pictureDialog.setItems(pictureDialogItems
+//        ) { dialog, which ->
+//            when (which) {
+//                0 -> choosePhotoFromGallary()
+//                1 -> takePhotoFromCamera()
+//                2 -> showFileChooser()
+//
+//            }
+//        }
+//        pictureDialog.show()
+//    }
+//    private fun showFilemanual() {
+//
+//        navigateToActivity(Intent(applicationContext, Prescription_ManualDoctorDialog::class.java))
+//    }
+//
+//    private fun showFileChooser() {
+//
+////        DownloadTask(this@Image_Uploader3, URL)
+//
+//        val intent = Intent()
+//        intent.type = "application/pdf"
+//        intent.action = Intent.ACTION_GET_CONTENT
+//        startActivityForResult(Intent.createChooser(intent, "Select Pdf"), PICK_PDF_REQUEST)
+//    }
+//
+//    private fun takePhotoFromCamera() {
+//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//        startActivityForResult(intent, CAMERA)
+//    }
+//
+//    private fun choosePhotoFromGallary() {
+//        val galleryIntent = Intent(Intent.ACTION_PICK,
+//                MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+//        startActivityForResult(galleryIntent, GALLERY)
+//    }
+//
+//    @Suppress("DEPRECATION")
+//    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        /* if (resultCode == this.RESULT_CANCELED) {
+//             return
+//         }*/
+//        if (requestCode == GALLERY) {
+//            if (data != null) {
+//                val contentURI: Uri?
+//                contentURI = data.data
+//                try {
+////                    val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
+////                    val path = saveImage(bitmap)
+//                    Toast.makeText(this@BaseActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
+////                    iv!!.setImageBitmap(bitmap)
+////                    uploadImage(path)
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                    Toast.makeText(this@BaseActivity, "Failed!", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        } else if (requestCode == CAMERA) {
+//            val thumbnail = data!!.extras!!["data"] as Bitmap?
+////            iv!!.setImageBitmap(thumbnail)
+//            saveImage(thumbnail)
+//            Toast.makeText(this@BaseActivity, "Image Saved!", Toast.LENGTH_SHORT).show()
+//        } else if (requestCode == PICK_PDF_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+//            filePath = data.data
+//        }
+//    }
 
 //    private fun uploadImage(path: String) {
 //
@@ -505,7 +487,69 @@ open class BaseActivity : AppCompatActivity() {
         return ""
     }
 
+     fun imagecall() {
+        val pictureDialog = androidx.appcompat.app.AlertDialog.Builder(this, R.style.Alert_Dialogue_Background)
+        pictureDialog.setTitle("Select Action")
+        val pictureDialogItems = arrayOf(
+                "Select photo from gallery",
+                "Capture photo from camera",
+                "Select pdf file from folder"
+        )
+        pictureDialog.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> {
 
+                    choosephotofromgallery()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    // managePermissions.checkPermissions()
+                }
+
+                1 -> {
+
+                    choosephotofromcamera()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    //managePermissions.checkPermissions()
+                }
+
+                2 -> {
+
+                    selectfilechooser()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    //managePermissions.checkPermissions()
+                }
+            }
+        }
+        pictureDialog.show()
+    }
+
+    private fun selectfilechooser() {
+
+
+        val browseStorage = Intent(Intent.ACTION_GET_CONTENT)
+        browseStorage.type = "application/pdf"
+        browseStorage.addCategory(Intent.CATEGORY_OPENABLE)
+        startActivityForResult(
+                Intent.createChooser(browseStorage, "Select PDF"), 102
+        )
+    }
+
+    private fun choosephotofromcamera() {
+
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent, 101)
+
+    }
+
+    private fun choosephotofromgallery() {
+        //val intent = Intent(Intent.ACTION_GET_CONTENT)
+        val Intent = Intent(
+                Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "image/jpeg"
+        intent.data = Uri.parse(mImageUrl)
+        startActivityForResult(Intent, 100, null)
+    }
 
     companion object {
         private val TAG = BaseActivity::class.java.name

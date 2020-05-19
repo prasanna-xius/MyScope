@@ -54,40 +54,40 @@ class Lab_Reports_Homepage : BaseActivity() {
                 // TODO Auto-generated method stub
                 if (position == 0) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 } else if (position == 1) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 } else if (position == 2) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 } else if (position == 3) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 } else if (position == 4) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 } else if (position == 5) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 } else if (position == 6) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 } else if (position == 7) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 } else if (position == 8) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 }else if (position == 9) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 } else if (position == 10) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 } else if (position == 11) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    imagecall()
                 }
             }
             return rowView

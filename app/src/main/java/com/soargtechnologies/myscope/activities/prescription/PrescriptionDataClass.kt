@@ -34,11 +34,46 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var upload_type:String ?= null,
 
 
+        //Medican Documents
+                                 var document_discharge_file: MultipartBody.Part?=null,
+                                 var document_discharge_id:Int = 0,
+                                 var document_discharge_saved_on:String ?= null,
+                                 var document_discharge_type:String ?= null,
 
+                                 var document_dental_file: MultipartBody.Part?=null,
+                                 var document_dental_id:Int = 0,
+                                 var document_dental_saved_on:String ?= null,
+                                 var document_dental_type:String ?= null,
+
+                                 var document_diet_file: MultipartBody.Part?=null,
+                                 var document_diet_id:Int = 0,
+                                 var document_diet_saved_on:String ?= null,
+                                 var document_diet_type:String ?= null,
+
+
+                                 var document_education_file: MultipartBody.Part?=null,
+                                 var document_education_id:Int = 0,
+                                 var document_education_saved_on:String ?= null,
+                                 var document_education_type:String ?= null,
+
+                                 var document_insurance_file: MultipartBody.Part?=null,
+                                 var document_insurance_id:Int = 0,
+                                 var document_insurance_saved_on:String ?= null,
+                                 var document_insurance_type:String ?= null,
+
+                                 var document_immun_file: MultipartBody.Part?=null,
+                                 var document_immunization_id:Int = 0,
+                                 var document_immun_saved_on:String ?= null,
+                                 var document_immun_type:String ?= null,
+
+                                 var document_other_file: MultipartBody.Part?=null,
+                                 var document_other_id:Int = 0,
+                                 var document_other_saved_on:String ?= null,
+                                 var document_other_type:String ?= null,
         //Education blog - image
 
                                 var educationdownloadfile:String?=null,
-                                 var education_imagetitle:String?=null
+//                                 var education_imagetitle:String?=null,
 
 
                                  var education_imagetitle:String? = null,

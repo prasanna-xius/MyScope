@@ -1,6 +1,7 @@
 package com.soargtechnologies.myscope.activities.medical_documents
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,26 +55,26 @@ class Medical_Documents_HomePage : BaseActivity() {
             rowView.setOnClickListener {
                 // TODO Auto-generated method stub
                 if (position == 0) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    navigateToActivity(Intent(applicationContext, MedicalDoc_Discharge::class.java))
+//                    imagecall()
                 } else if (position == 1) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    navigateToActivity(Intent(applicationContext, MedicalDoc_Dental::class.java))
+//                    imagecall()
                 } else if (position == 2) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    navigateToActivity(Intent(applicationContext, MedicalDoc_Immun::class.java))
+//                    imagecall()
                 } else if (position == 3) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    navigateToActivity(Intent(applicationContext, MedicalDoc_Health::class.java))
+//                    imagecall()
                 } else if (position == 4) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    navigateToActivity(Intent(applicationContext, MedicalDoc_Diet::class.java))
+//                    imagecall()
                 } else if (position == 5) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    navigateToActivity(Intent(applicationContext, MedicalDoc_Education::class.java))
+//                    imagecall()
                 } else if (position == 6) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    showPictureDialogReports()
+                    navigateToActivity(Intent(applicationContext, MedicalDoc_Other::class.java))
+//                    imagecall()
                 }
             }
             return rowView
