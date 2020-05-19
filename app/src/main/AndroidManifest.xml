@@ -35,7 +35,6 @@
         <activity android:name=".activities.self_monitering.Blood_Pressure_recyclerView" />
         <activity android:name=".activities.self_monitering.Blood_GlucoseUpdate" />
         <activity android:name=".activities.self_monitering.Blood_Glucose_recyclerView" />
-        <activity android:name=".activities.self_monitering.Glucose_Adaptor" />
         <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" />
         <activity android:name=".activities.Contact_Us" /> <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
@@ -148,9 +147,24 @@
         <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog" />
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
         <activity android:name=".activities.Educational_Blog_Activity" />
+        <activity android:name=".activities.labReports.Lab_BloodAddImage_PDF"></activity>
+        <activity android:name=".activities.labReports.Lab_ColonoScopyAddImage_PDF"></activity>
+        <activity android:name=".activities.labReports.Lab_CtScanAddImage_PDF"></activity>
+
+        <activity android:name=".activities.labReports.Lab_EcgAddImage_PDF"></activity>
+
+        <activity android:name=".activities.labReports.Lab_EcoAddImage_PDF"></activity>
+        <activity android:name=".activities.labReports.Lab_MriAddImage_PDF"></activity>
+        <activity android:name=".activities.labReports.Lab_OtherAddImage_PDF"></activity>
+        <activity android:name=".activities.labReports.Lab_UrineAddImage_PDF"></activity>
+        <activity android:name=".activities.labReports.Lab_Reports_Homepage"></activity>
+        <activity android:name=".activities.labReports.Lab_StressAddImage_PDF"></activity>
+        <activity android:name=".activities.labReports.Lab_UltraSoundAddImage_PDF"></activity>
+
+        <activity android:name=".activities.labReports.Lab_XrayAddImage_PDF"></activity>
+
 
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
-        <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
         <activity android:name=".activities.medical_history.health_services.Services_medical_history" />
         <activity android:name=".activities.medical_history.health_services.Adverse_Drug_Event_Monitoring" />
         <activity android:name=".activities.medical_history.health_services.Patient_counseling" />
