@@ -1,6 +1,8 @@
 package com.soargtechnologies.myscope.activities.labReports
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +19,6 @@ import kotlinx.android.synthetic.main.medicaldocuments_homepage_main.*
 class Lab_Reports_Homepage : BaseActivity() {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.labreports_homepage_main)
@@ -32,16 +33,20 @@ class Lab_Reports_Homepage : BaseActivity() {
         override fun getCount(): Int { // TODO Auto-generated method stub
             return result.size
         }
+
         override fun getItem(position: Int): Any { // TODO Auto-generated method stub
             return position
         }
+
         override fun getItemId(position: Int): Long { // TODO Auto-generated method stub
             return position.toLong()
         }
+
         inner class Holder {
             var os_text: TextView? = null
             var os_image: ImageView? = null
         }
+
         override fun getView(position: Int, convertView: View?, parent: ViewGroup): View { // TODO Auto-generated method stub
             val holder = Holder()
             val rowView: View
@@ -53,49 +58,51 @@ class Lab_Reports_Homepage : BaseActivity() {
             rowView.setOnClickListener {
                 // TODO Auto-generated method stub
                 if (position == 0) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+                    navigateToActivity(Intent(applicationContext, Lab_BloodAddImage_PDF::class.java))
+           //         showPictureDialogReports()
                 } else if (position == 1) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+                   navigateToActivity(Intent(applicationContext, Lab_UrineAddImage_PDF::class.java))
+    //                showPictureDialogReports()
                 } else if (position == 2) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+                   navigateToActivity(Intent(applicationContext, Lab_UltraSoundAddImage_PDF::class.java))
+     //               showPictureDialogReports()
                 } else if (position == 3) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+                    navigateToActivity(Intent(applicationContext, Lab_XrayAddImage_PDF::class.java))
+       //             showPictureDialogReports()
                 } else if (position == 4) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+                    navigateToActivity(Intent(applicationContext, Lab_CtScanAddImage_PDF::class.java))
+        //            showPictureDialogReports()
                 } else if (position == 5) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+                    navigateToActivity(Intent(applicationContext, Lab_MriAddImage_PDF::class.java))
+          //          showPictureDialogReports()
                 } else if (position == 6) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+                    navigateToActivity(Intent(applicationContext, Lab_EcgAddImage_PDF::class.java))
+          //          showPictureDialogReports()
                 } else if (position == 7) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+                   navigateToActivity(Intent(applicationContext, Lab_EcoAddImage_PDF::class.java))
+           //         showPictureDialogReports()
                 } else if (position == 8) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
-                }else if (position == 9) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+                   navigateToActivity(Intent(applicationContext, Lab_StressAddImage_PDF::class.java))
+            //        showPictureDialogReports()
+                } else if (position == 9) {
+                   navigateToActivity(Intent(applicationContext,Lab_ColonoScopyAddImage_PDF::class.java))
+           //         showPictureDialogReports()
                 } else if (position == 10) {
-//                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+                   navigateToActivity(Intent(applicationContext,Lab_OtherAddImage_PDF::class.java))
+           //         showPictureDialogReports()
                 } else if (position == 11) {
 //                    navigateToActivity(Intent(applicationContext, Medical_History::class.java))
-                    imagecall()
+          //          showPictureDialogReports()
                 }
             }
             return rowView
         }
+
         init { // TODO Auto-generated constructor stub
             inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         }
     }
+
     var images = intArrayOf(R.drawable.blood_report,
             R.drawable.urine_report,
             R.drawable.ultrasound_icon,
@@ -119,4 +126,24 @@ class Lab_Reports_Homepage : BaseActivity() {
             "ColonoScopy",
             "Others")
 
+
+   /* fun showPictureDialogReports() {
+        val pictureDialog = AlertDialog.Builder(this, R.style.Alert_Dialogue_Background)
+        pictureDialog.setTitle("Select Action")
+
+        val pictureDialogItems = arrayOf(
+                "Select photo from gallery",
+                "Capture photo from camera",
+                "Select pdf file from folder")
+        pictureDialog.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> choosePhotoFromGallary()
+                1 -> takePhotoFromCamera()
+                2 -> showFileChooser()
+
+            }
+        }
+        pictureDialog.show()
+    }*/
 }

@@ -1,4 +1,4 @@
-package com.soargtechnologies.myscope.activities.prescription
+package com.soargtechnologies.myscope.activities.labReports
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -22,12 +22,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.soargtechnologies.myscope.R
-import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.prescription.ManagePermissions
+import com.soargtechnologies.myscope.helpers.Lab_Blood_ImageAdapter
+import com.soargtechnologies.myscope.helpers.Lab_Ecg_ImageAdapter
 import com.soargtechnologies.myscope.helpers.Prescription_ImageAdapter
+import com.soargtechnologies.myscope.services.LabReportsService
 
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
+import kotlinx.android.synthetic.main.activity_lab_blood_image_list.*
+import kotlinx.android.synthetic.main.activity_lab_ecg_image_list.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
+import kotlinx.android.synthetic.main.activity_prescription_image_list.itemsswipetorefresh
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -37,32 +43,39 @@ import retrofit2.Response
 import java.io.*
 import java.util.*
 
-class Prescription_AddImage_PDF : BaseActivity() {
+class Lab_EcgAddImage_PDF : AppCompatActivity() {
     var file: File? = null
+    var uri: Uri? = null
+    // var mobile_no:String?=null
     private var mImageUrl = ""
     var p_uploadid: Int = 0
     var recyclerView: RecyclerView? = null
-    var presAdapter: Prescription_ImageAdapter? = null
+    var labAdapter: Lab_Ecg_ImageAdapter? = null
     lateinit var sharedpreferences: SharedPreferences
-    var mobile_no:String = ""
-    var model_name:String = ""
+    var model_name: String? = null
+
+
+
+
+    var imageList: MutableList<Lab_ReportDataClass>? = null
     private val PermissionsRequestCode = 123
     private lateinit var managePermissions: ManagePermissions
+    var p_upload: MultipartBody.Part? = null
     var swipeCount = 0
+   // var   carItemList:List<PrescriptionDataClass>? = null
     //var byte:byte[]?= null
-//    internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
+    internal var mobile_no = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_prescription_image_list)
+        setContentView(R.layout.activity_lab_ecg_image_list)
         //val toolbar = findViewById<View>(R.id.toolbar_imageuploader) as Toolbar
         //setSupportActionBar(toolbar)
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         p_uploadid = sharedpreferences.getInt("uploadid", 0)
-         model_name = sharedpreferences!!.getString("model_name",null)!!
-         mobile_no = sharedpreferences!!.getString("mobile_no",null)!!
+        model_name = sharedpreferences!!.getString("model_name",null)!!
 
-        recyclerView = findViewById(R.id.pres_recycler_view)
+        recyclerView = findViewById(R.id.lab_ecg_recycler_view)
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -77,7 +90,7 @@ class Prescription_AddImage_PDF : BaseActivity() {
             if (swipeCount >= 0) {
                 loadDestinations()
             }
-            presAdapter!!.notifyDataSetChanged()
+            labAdapter!!.notifyDataSetChanged()
 
 
 
@@ -94,7 +107,7 @@ class Prescription_AddImage_PDF : BaseActivity() {
         val layoutInflater: LayoutInflater = LayoutInflater.from(applicationContext)
 
         val view: View = layoutInflater.inflate(
-                R.layout.list_item_prescription_image, // Custom view/ layout
+                R.layout.list_item_lab_image, // Custom view/ layout
                 activity_pres, // Root layout to attach the view
                 false)
 
@@ -102,8 +115,8 @@ class Prescription_AddImage_PDF : BaseActivity() {
         val fab = findViewById<View>(R.id.fab_addimages) as FloatingActionButton
         fab.setOnClickListener {
             //showUploadDialog()
-            imagecall()
-             }
+            initViews()
+        }
     }
 
     override fun onResume() {
@@ -113,38 +126,114 @@ class Prescription_AddImage_PDF : BaseActivity() {
 
     private fun loadDestinations() {
 
-        val service = ServiceBuilder.buildService(PrescriptionInterface::class.java)
+        val service = ServiceBuilder.buildService(LabReportsService::class.java)
 
 
-        val requestCall = service.getImageDetails("8142529582",model_name)
+        val requestCall = service.getEcgDetails()
 
-        requestCall.enqueue(object : Callback<MutableList<PrescriptionDataClass>> {
+        requestCall.enqueue(object : Callback<MutableList<Lab_ReportDataClass>> {
+            //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
+
             // If you receive a HTTP Response, then this method is executed
             // Your STATUS Code will decide if your Http Response is a Success or Error
-            override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
+            override fun onResponse(call: Call<MutableList<Lab_ReportDataClass>>, response: Response<MutableList<Lab_ReportDataClass>>) {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val imageList = response.body()!!
-                    val adapter= Prescription_ImageAdapter(imageList)
-                    recyclerView!!.adapter = adapter
-                    pres_recycler_view.adapter?.notifyDataSetChanged()
+
+
+                    //val llm = LinearLayoutManager(applicationContext)
+                    // llm.orientation = LinearLayoutManager.VERTICAL
+                    // pres_recycler_view.setLayoutManager(llm)
+
+
+                    labAdapter = Lab_Ecg_ImageAdapter(imageList!!)
+                    recyclerView!!.adapter = labAdapter
+
+                    lab_ecg_recycler_view.adapter?.notifyDataSetChanged()
                 } else if (response.code() == 401) {
-                    showLongToast("Your session has expired. Please Login again.")
+                    Toast.makeText(this@Lab_EcgAddImage_PDF,
+                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else {
                     // Application-level failure
                     // Your status code is in the range of 300's, 400's and 500's
-                    showLongToast("Failed to retrieve items")
+                    Toast.makeText(this@Lab_EcgAddImage_PDF, "Failed to retrieve items", Toast.LENGTH_LONG).show()
                 }
             }
 
             // Invoked in case of Network Error or Establishing connection with Server
             // or Error Creating Http Request or Error Processing Http Response
-            override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
+            override fun onFailure(call: Call<MutableList<Lab_ReportDataClass>>, t: Throwable) {
 
-                showLongToast("Error Occurred" + t.toString())
+                Toast.makeText(this@Lab_EcgAddImage_PDF, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
 
         })
+    }
+
+
+    private fun initViews() {
+        val pictureDialog = AlertDialog.Builder(this, R.style.Alert_Dialogue_Background)
+        pictureDialog.setTitle("Select Action")
+        val pictureDialogItems = arrayOf(
+                "Select photo from gallery",
+                "Capture photo from camera",
+                "Select pdf file from folder"
+        )
+        pictureDialog.setItems(pictureDialogItems
+        ) { dialog, which ->
+            when (which) {
+                0 -> {
+
+                    choosephotofromgallery()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    // managePermissions.checkPermissions()
+                }
+
+                1 -> {
+
+                    choosephotofromcamera()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    //managePermissions.checkPermissions()
+                     }
+
+                2 -> {
+
+                    selectfilechooser()
+                    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    //managePermissions.checkPermissions()
+                }
+            }
+        }
+        pictureDialog.show()
+    }
+
+    private fun selectfilechooser() {
+
+
+        val browseStorage = Intent(Intent.ACTION_GET_CONTENT)
+        browseStorage.type = "application/pdf"
+        browseStorage.addCategory(Intent.CATEGORY_OPENABLE)
+        startActivityForResult(
+                Intent.createChooser(browseStorage, "Select PDF"), 102
+        )
+    }
+
+    private fun choosephotofromcamera() {
+
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent, 101)
+
+    }
+
+    private fun choosephotofromgallery() {
+        //val intent = Intent(Intent.ACTION_GET_CONTENT)
+        val Intent = Intent(
+                Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "image/jpeg"
+        intent.data = Uri.parse(mImageUrl)
+        startActivityForResult(Intent, 100, null)
     }
 
     @SuppressLint("MissingSuperCall", "NewApi")
@@ -158,7 +247,7 @@ class Prescription_AddImage_PDF : BaseActivity() {
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
 //                    val `is` = contentResolver.openInputStream(data?.data!!)
-                    uploadImage(stream.toByteArray(), requestCode)
+                    uploadImage(stream.toByteArray(), requestCode, null)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -172,7 +261,7 @@ class Prescription_AddImage_PDF : BaseActivity() {
                     val thumbnail = data!!.extras!!.get("data") as Bitmap
                     val stream: ByteArrayOutputStream = ByteArrayOutputStream();
                     thumbnail.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    uploadImage(stream.toByteArray(), 101)
+                    uploadImage(stream.toByteArray(), 101, null)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -182,48 +271,52 @@ class Prescription_AddImage_PDF : BaseActivity() {
             if (resultCode == RESULT_OK) {
                 val selectedPdfFromStorage :Uri = data?.data!!
                 val `is` = contentResolver.openInputStream(selectedPdfFromStorage)!!.readBytes()
-                uploadImage(`is`!!, 102)
+                uploadImage(`is`!!, 102, selectedPdfFromStorage)
             }
         }
     }
 
-    private fun uploadImage(imageBytes: ByteArray, code: Int) {
+    private fun uploadImage(imageBytes: ByteArray, code: Int, uri: Uri?) {
+        val c = Calendar.getInstance()
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        val month = c.get(Calendar.MONTH)
+        val year = c.get(Calendar.YEAR)
+        var date1 = day.toString() + "/" + (month + 1) + "/" + year
         var codevalue: Int = code
 
         val requestFile: RequestBody
         val body: MultipartBody.Part
         var type:RequestBody
-        var mobile = RequestBody.create(MediaType.parse("text/plain"), mobile_no)
 
-
-        var date = RequestBody.create(MediaType.parse("text/plain"), datesetvalue())
-        var model = RequestBody.create(MediaType.parse("text/plain"), model_name)
-        val destinationService = ServiceBuilder.buildService(PrescriptionInterface::class.java)
+        var date = RequestBody.create(MediaType.parse("text/plain"), date1)
+       // var model = RequestBody.create(MediaType.parse("text/plain"), model_name)
+        val destinationService = ServiceBuilder.buildService(LabReportsService::class.java)
         if (codevalue.equals(102)) {
             requestFile = RequestBody.create(MediaType.parse("application/pdf"),imageBytes)
-            body = MultipartBody.Part.createFormData("p_upload", "Rx", requestFile)
+            body = MultipartBody.Part.createFormData("lab_ecg_file", "Rx", requestFile)
             type  = RequestBody.create(MediaType.parse("text/plain"), "pdf")
 
         } else {
             requestFile = RequestBody.create(MediaType.parse("image/jpeg"), imageBytes)
-            body = MultipartBody.Part.createFormData("p_upload", "image.jpg", requestFile)
+            body = MultipartBody.Part.createFormData("lab_ecg_file", "image.jpg", requestFile)
             type = RequestBody.create(MediaType.parse("text/plain"), "image")
 
         }
-        val call = destinationService.uploadImage(body, mobile, date,type,model)
+        val call = destinationService.uploadEcgDetails(body, mobile_no, date,type)
         //mProgressBar!!.visibility = View.VISIBLE
-        call.enqueue(object : Callback<PrescriptionDataClass> {
-            override fun onResponse(call: Call<PrescriptionDataClass>, response: retrofit2.Response<PrescriptionDataClass>) {
+        call.enqueue(object : Callback<Lab_ReportDataClass> {
+            override fun onResponse(call: Call<Lab_ReportDataClass>, response: retrofit2.Response<Lab_ReportDataClass>) {
                 //mProgressBar!!.visibility = View.GONE
                 if (response.isSuccessful) {
                     val responseBody = response.body()
-                    showLongToast("image successful")
+                    Toast.makeText(applicationContext, "image successful", Toast.LENGTH_LONG).show()
+
                 } else {
                     val errorBody = response.errorBody()
                     val gson = Gson()
                     try {
 //                        val errorResponse = gson.fromJson<PrescriptionDataClass>(errorBody!!.string(), Response::class.java!!)
-                        showLongToast("image uploaded in else part")
+                        Toast.makeText(applicationContext, "image uploaded in else part", Toast.LENGTH_LONG).show()
                         //Snackbar.make(findViewById(R.id.content), errorResponse.message!!, Snackbar.LENGTH_SHORT).show()
                     } catch (e: IOException) {
                         e.printStackTrace()
@@ -231,15 +324,20 @@ class Prescription_AddImage_PDF : BaseActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
+            override fun onFailure(call: Call<Lab_ReportDataClass>, t: Throwable) {
                 //mProgressBar!!.visibility = View.GONE
                 //Log.d(TAG, "onFailure: " + t.localizedMessage)
-                showLongToast("image uploaded in failure part")
+                Toast.makeText(applicationContext, "image uploaded in failure part", Toast.LENGTH_LONG).show()
 
             }
         })
     }
 
+    companion object {
+        val TAG = Lab_EcgAddImage_PDF::class.java!!.getSimpleName()
+        private val INTENT_REQUEST_CODE = 100
+        val URL = "http://10.0.2.2:8484/common/myscope/"
+    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
                                             grantResults: IntArray) {
@@ -250,13 +348,18 @@ class Prescription_AddImage_PDF : BaseActivity() {
 
                 if (isPermissionsGranted) {
                     // Do the task now
-                    showShortToast("Permissions granted.")
+                    toast("Permissions granted.")
                 } else {
-                    showShortToast("Permissions denied.")
+                    toast("Permissions denied.")
                 }
                 return
             }
         }
     }
 
+
+    // Extension function to show toast message
+    fun Context.toast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 }
