@@ -148,8 +148,23 @@
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
         <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog" />
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
+        <activity android:name=".activities.prescription.PDFopenfile"/>
+
+
+        <activity android:name=".activities.labReports.Lab_BloodAddImage_PDF"/>
+        <activity android:name=".activities.labReports.Lab_ColonoScopyAddImage_PDF"/>
+        <activity android:name=".activities.labReports.Lab_CtScanAddImage_PDF"/>
+        <activity android:name=".activities.labReports.Lab_EcgAddImage_PDF"/>
+        <activity android:name=".activities.labReports.Lab_EcoAddImage_PDF"/>
+        <activity android:name=".activities.labReports.Lab_MriAddImage_PDF"/>
+        <activity android:name=".activities.labReports.Lab_OtherAddImage_PDF"/>
+        <activity android:name=".activities.labReports.Lab_StressAddImage_PDF"/>
+        <activity android:name=".activities.labReports.Lab_UltraSoundAddImage_PDF"/>
+        <activity android:name=".activities.labReports.Lab_UrineAddImage_PDF"/>
+        <activity android:name=".activities.labReports.Lab_XrayAddImage_PDF"/>
 
         <activity android:name=".activities.Educational_Blog_Activity" />
+
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
         <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
         <activity android:name=".activities.medical_history.health_services.Services_medical_history" />

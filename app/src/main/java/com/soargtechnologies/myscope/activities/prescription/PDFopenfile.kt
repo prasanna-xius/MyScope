@@ -35,9 +35,11 @@ class PDFopenfile : AppCompatActivity() {
 //        pdf.fromUri(uri1).load()
         pdf.fromBytes(decodedBytes).load()
         pdfclose.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this,Prescription_AddImage_PDF::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            startActivity(intent)
+
+            finish()
+       //     val intent = Intent(this,Prescription_AddImage_PDF::class.java)
+       //     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+       //     startActivity(intent)
         })
     }
 }

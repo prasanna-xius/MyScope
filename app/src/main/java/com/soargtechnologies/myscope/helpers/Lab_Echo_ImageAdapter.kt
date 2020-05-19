@@ -20,17 +20,20 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.labReports.Lab_ReportDataClass
 import com.soargtechnologies.myscope.activities.prescription.PDFopenfile
 import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.services.LabReportsService
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
+import kotlinx.android.synthetic.main.list_item_lab_image.view.*
 import kotlinx.android.synthetic.main.list_item_prescription_image.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDataClass>): RecyclerView.Adapter<Prescription_ImageAdapter.ViewHolder>() {
+class Lab_Echo_ImageAdapter(private val imglist: MutableList<Lab_ReportDataClass>): RecyclerView.Adapter<Lab_Echo_ImageAdapter.ViewHolder>() {
 
     private var removedPosition: Int = 0
     //private var removedItem: PrescriptionDataClass? = null
@@ -45,7 +48,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_item_prescription_image, parent, false)
+                .inflate(R.layout.list_item_lab_image, parent, false)
 
         var viewHolder: ViewHolder = ViewHolder(view);
         // dialog!!.setContentView(R.layout.custom_dialog)
@@ -59,28 +62,28 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
     @ExperimentalStdlibApi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imageDetails = imglist[position]
-        holder.savedDate.text = imglist[position].upload_saved_on
+       // holder.imageDetails = imglist[position]
+        holder.savedDate.text = imglist[position].lab_echo_saved
         val imgls = imglist[position]
-        id = imgls.p_uploadid
+        id = imgls.lab_echo_id
         var encodedString: String = imgls.downloadfile.toString()
         var pureBase64Encoded = encodedString.substring(encodedString.indexOf(",") + 1);
 
         var decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT)
 
-        holder.uploadsno.text = imgls.p_uploadid.toString()
+        holder.uploadsno.text = imgls.lab_echo_id.toString()
 
-        if (imgls.upload_type.equals("image")) {
+        if (imgls.lab_echo_type.equals("image")) {
             Glide.with(holder.itemView.context)
                     .load(decodedBytes)
-                    .into(holder.itemview.iv_pres)
+                    .into(holder.itemview.iv_lab)
 
 
         } else {
 
             Glide.with(holder.itemView.context)
                     .load(R.drawable.pdf)
-                    .into(holder.itemview.iv_pres)
+                    .into(holder.itemview.iv_lab)
 
 
         }
@@ -88,7 +91,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
             val context = v?.context
 
-            if (imgls.upload_type.equals("pdf")) {
+            if (imgls.lab_echo_type.equals("pdf")) {
 
 
                 val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
@@ -99,7 +102,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                 val intent = Intent(context, PDFopenfile::class.java)
                 context!!.startActivity(intent)
             }
-            if (imgls.upload_type.equals("image")) {
+            if (imgls.lab_echo_type.equals("image")) {
                 dialog = Dialog(context!!)
                 dialog!!.setContentView(R.layout.custom_dialog)
                 var img: ImageView = dialog!!.findViewById(R.id.img)
@@ -126,7 +129,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
             val context = v?.context
             val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
             val editor: SharedPreferences.Editor = pref.edit()
-            editor.putInt("uploadid", imglist[position].p_uploadid!!)
+            editor.putInt("uploadid", imglist[position].lab_echo_id!!)
             editor.commit()
 
             val builder = AlertDialog.Builder(context)
@@ -137,23 +140,23 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
                 //Toast.makeText(applicationContext, "clicked yes", Toast.LENGTH_LONG).show()
 
 
-                val deleteService = ServiceBuilder.buildService(PrescriptionInterface::class.java)
-                val body = PrescriptionDataClass()
-                body.p_uploadid = imglist[position].p_uploadid!!
+                val deleteService = ServiceBuilder.buildService(LabReportsService::class.java)
+                val body = Lab_ReportDataClass()
+                body.lab_echo_id = imglist[position].lab_echo_id!!
 
 
 
                 Log.d("Tag::::::", " " + deleteService.toString())
 
 
-                val requestCall = deleteService.deleteImageDetails(body)
+                val requestCall = deleteService.deleteEcoDetails(body)
 
-                requestCall.enqueue(object : Callback<PrescriptionDataClass> {
+                requestCall.enqueue(object : Callback<Lab_ReportDataClass> {
                     //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
 
                     // If you receive a HTTP Response, then this method is executed
                     // Your STATUS Code will decide if your Http Response is a Success or Error
-                    override fun onResponse(call: Call<PrescriptionDataClass>, response: Response<PrescriptionDataClass>) {
+                    override fun onResponse(call: Call<Lab_ReportDataClass>, response: Response<Lab_ReportDataClass>) {
 
                         Log.d("Tag::::::", " " + response.toString()) +
                                 Log.e("Tag::::::", " " + response.toString())
@@ -173,7 +176,7 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
                     // Invoked in case of Network Error or Establishing connection with Server
                     // or Error Creating Http Request or Error Processing Http Response
-                    override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
+                    override fun onFailure(call: Call<Lab_ReportDataClass>, t: Throwable) {
 
                         Toast.makeText(context, "Deleted successfully", Toast.LENGTH_LONG).show()
                     }
@@ -200,11 +203,11 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
 
     class ViewHolder(val itemview: View) : RecyclerView.ViewHolder(itemview) {
 
-        val deletebutton: ImageView = itemview.findViewById(R.id.iv_pres_dlt)
-        val imageView: ImageView = itemview.findViewById(R.id.iv_pres)
-        val savedDate: TextView = itemView.findViewById(R.id.imagedate)
-        var imageDetails: PrescriptionDataClass? = null
-        var uploadsno: TextView = itemview.findViewById(R.id.uploadid)
+        val deletebutton: ImageView = itemview.findViewById(R.id.iv_lab_dlt)
+        val imageView: ImageView = itemview.findViewById(R.id.iv_lab)
+        val savedDate: TextView = itemView.findViewById(R.id.imagedateLab)
+        //var imageDetails: PrescriptionDataClass? = null
+        var uploadsno: TextView = itemview.findViewById(R.id.uploadidLab)
     }
 
 

@@ -38,7 +38,7 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
         //Education blog - image
 
                                 var educationdownloadfile:String?=null,
-                                 var education_imagetitle:String?=null
+                                // var education_imagetitle:String?=null,
 
 
                                  var education_imagetitle:String? = null,
