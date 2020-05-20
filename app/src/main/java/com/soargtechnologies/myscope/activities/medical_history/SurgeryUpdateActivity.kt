@@ -29,6 +29,7 @@ import kotlinx.android.synthetic.main.surgeryhistory_update.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -46,6 +47,7 @@ class SurgeryUpdateActivity : BaseActivity() {
     var buttondate_surg_update:ImageView?=null
     var surgeryid:Int=0
 
+    internal lateinit var myCalendar: Calendar
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
 
@@ -69,18 +71,18 @@ class SurgeryUpdateActivity : BaseActivity() {
    //     buttondate_surg_update=findViewById(R.id.buttondate_surg_update)
 
 
-        textviewdate_surgery_update!!.setOnClickListener(View.OnClickListener {
-
-            DatePickerDialog(this@SurgeryUpdateActivity,
-                    dateSetListener,
-                    // set DatePickerDialog to point to today's date when it loads up
-                    cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)).show()
-
-
-
-        })
+        myCalendar = Calendar.getInstance()
+        val date= DatePickerDialog.OnDateSetListener{ view, year, monthofyear, dayofmonth ->
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, monthofyear)
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayofmonth)
+            val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
+            textviewdate_surgery_update.setText(date1)
+        }
+        textviewdate_surgery_update.setOnClickListener {
+            DatePickerDialog(this, R.style.MyDatePicker, date ,  myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                    myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
 
 
         val bundle: Bundle? = intent.extras
@@ -130,6 +132,7 @@ class SurgeryUpdateActivity : BaseActivity() {
         val immuService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
         val requestCall = immuService.getSurgeryByid(id)
 
+        progressbar()
 
   //      Toast.makeText(this,"test msg "+ id,Toast.LENGTH_LONG).show()
 

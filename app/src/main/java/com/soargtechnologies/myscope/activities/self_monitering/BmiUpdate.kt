@@ -71,7 +71,8 @@ class BmiUpdate : BaseActivity() {
             val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
             position = intent.getIntExtra("position", 0)
-            showLongToast(position.toString())
+
+ //           showLongToast(position.toString())
 
             loadDetails(mobile_no.toString(), position!!)
 

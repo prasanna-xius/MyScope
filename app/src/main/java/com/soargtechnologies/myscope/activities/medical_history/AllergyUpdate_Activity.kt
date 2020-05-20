@@ -32,6 +32,7 @@ import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -43,6 +44,7 @@ class AllergyUpdate_Activity : BaseActivity() {
     var allergyid: Int = 0
     var cal = Calendar.getInstance()
     var allergySpinner: Spinner? = null
+    internal lateinit var myCalendar: Calendar
     var buttondate_update: ImageView? = null
 
     var mobile_no: String? = null
@@ -63,15 +65,29 @@ class AllergyUpdate_Activity : BaseActivity() {
         // tv = findViewById(R.id.tv_allergy)
      //   buttondate_update = findViewById(R.id.buttondate_update)
 
-        textviewdate_update!!.setOnClickListener {
-            DatePickerDialog(this@AllergyUpdate_Activity,
-                    dateSetListener,
-                    // set DatePickerDialog to point to today's date when it loads up
-                    cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)).show()
+//        textviewdate_update!!.setOnClickListener {
+//            DatePickerDialog(this@AllergyUpdate_Activity,
+//                    dateSetListener,
+//                    // set DatePickerDialog to point to today's date when it loads up
+//                    cal.get(Calendar.YEAR),
+//                    cal.get(Calendar.MONTH),
+//                    cal.get(Calendar.DAY_OF_MONTH)).show()
+//
+//        }
 
+        myCalendar = Calendar.getInstance()
+        val date= DatePickerDialog.OnDateSetListener{ view, year, monthofyear, dayofmonth ->
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, monthofyear)
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayofmonth)
+            val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
+            textviewdate_update.setText(date1)
         }
+        textviewdate_update.setOnClickListener {
+            DatePickerDialog(this, R.style.MyDatePicker, date ,  myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                    myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
         allergySpinner = findViewById<Spinner>(R.id.spinnerAllergy_update)
         val adapter2 = ArrayAdapter(this, R.layout.spinner_dropdown_item_allergy,
                 resources.getStringArray(R.array.allergy_arrays))
@@ -126,6 +142,8 @@ class AllergyUpdate_Activity : BaseActivity() {
         val requestCall = allergyService.getAllergyByid(mobile_no.toString())
 
   //      Toast.makeText(applicationContext, "data id ::" + " " + id, Toast.LENGTH_LONG).show()
+
+        progressbar()
 
         requestCall.enqueue(object : retrofit2.Callback<List<AllergyDataClass>> {
 

@@ -178,6 +178,9 @@ class Social_History : BaseActivity() {
         val requestCall = diseaseService.getSocialHabits(mobile_no!!)
 //        var timeitem = tobaccoUsage!!.social_multi.text.toString()
 
+        progressbar()
+
+
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>> {
 
             override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>> ) {

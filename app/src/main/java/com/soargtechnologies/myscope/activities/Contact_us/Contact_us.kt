@@ -37,8 +37,8 @@ class Contact_us : BaseActivity() {
     private fun sendMail() {
         val mail = "sanksharma7@gmail.com"
 
-        val subject = subject.text.toString().trim() + name.text.toString().trim()
-        val message = message.text.toString().trim ()
+        val subject = subject.text.toString().trim()
+        val message = message.text.toString().trim ()  +  System.getProperty("line.separator")  +   name.text.toString().trim()  + "\n"  +   name.text.toString().trim()
 
 //        + "from" +  edt_email!!.text.toString().trim()
 

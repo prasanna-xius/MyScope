@@ -98,7 +98,7 @@
                     android:background="@drawable/border_bg"
                     android:entries="@array/how_often_taken_arrays"
 
-                    android:padding="2dp">
+                    android:padding="5dp">
                 </com.soargtechnologies.myscope.activities.medical_history.MultiSelectionSpinnerMedication>
 
 
@@ -130,7 +130,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_bg"
                     android:hint="@string/eg_dose_strength"
-                    android:padding="2dp"
+                    android:padding="5dp"
                     android:textColor="@color/bg_screen2"
                     android:textColorHint="@color/bg_screen2"
                     android:textSize="16sp" />
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:entries="@array/formulation_arrays"
-                    android:padding="2dp"
+                    android:padding="5dp"
                     android:background="@drawable/border_bg"
 
                     android:popupBackground="#fff" />
@@ -200,7 +200,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:entries="@array/dose_unit_arrays"
-                    android:padding="2dp"
+                    android:padding="5dp"
 android:background="@drawable/border_bg"
                     android:popupBackground="#fff" />
             </LinearLayout>
@@ -264,7 +264,7 @@ android:background="@drawable/border_bg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:padding="4dp"
+                        android:padding="5dp"
                         android:hint="@string/started_date"
                         android:drawableRight="@drawable/calendar_36"
                         android:textColorHint="@color/bg_screen2"
@@ -303,7 +303,7 @@ android:background="@drawable/border_bg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:padding="4dp"
+                        android:padding="5dp"
                         android:hint="@string/stop_date"
                         android:drawableRight="@drawable/calendar_36"
                         android:textColorHint="@color/bg_screen2"
@@ -337,7 +337,7 @@ android:background="@drawable/border_bg"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:entries="@array/is_prescribed_arrays"
-                    android:padding="2dp"
+                    android:padding="5dp"
 android:background="@drawable/border_bg"
                     android:popupBackground="#fff" />
 

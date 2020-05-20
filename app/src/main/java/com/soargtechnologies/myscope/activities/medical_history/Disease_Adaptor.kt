@@ -40,6 +40,8 @@ class Disease_Adaptor(private val diseaseList: List<Diseases>) : RecyclerView.Ad
 
            val  context = v?.context
 
+          //  progressbar()
+
             //Toast.makeText(context, "item Clicked" + position, Toast.LENGTH_LONG).show()
             val intent = Intent(context, DiseaseHistoryUpdate::class.java)
 

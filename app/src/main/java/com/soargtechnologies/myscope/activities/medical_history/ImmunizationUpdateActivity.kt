@@ -29,6 +29,7 @@ import kotlinx.android.synthetic.main.immunizationhistory_update.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -44,6 +45,7 @@ class ImmunizationUpdateActivity : BaseActivity() {
     var position: Int= 1;
     var cal = Calendar.getInstance()
     var buttondate_immuupdate:TextView?=null
+    internal lateinit var myCalendar: Calendar
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
     var immunid:Int=0
@@ -74,20 +76,28 @@ class ImmunizationUpdateActivity : BaseActivity() {
         buttondate_immuupdate=findViewById(R.id.textviewdate_immuupdate)
 
 
-        buttondate_immuupdate!!.setOnClickListener(View.OnClickListener {
+//        buttondate_immuupdate!!.setOnClickListener(View.OnClickListener {
+//
+//            DatePickerDialog(this@ImmunizationUpdateActivity,
+//                    dateSetListener,
+//                    // set DatePickerDialog to point to today's date when it loads up
+//                    cal.get(Calendar.YEAR),
+//                    cal.get(Calendar.MONTH),
+//                    cal.get(Calendar.DAY_OF_MONTH)).show()
+//        })
 
-            DatePickerDialog(this@ImmunizationUpdateActivity,
-                    dateSetListener,
-                    // set DatePickerDialog to point to today's date when it loads up
-                    cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)).show()
-
-
-
-
-        })
-
+        myCalendar = Calendar.getInstance()
+        val date= DatePickerDialog.OnDateSetListener{ view, year, monthofyear, dayofmonth ->
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, monthofyear)
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayofmonth)
+            val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
+            textviewdate_immuupdate.setText(date1)
+        }
+        textviewdate_immuupdate.setOnClickListener {
+            DatePickerDialog(this, R.style.MyDatePicker, date ,  myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                    myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
 
         val bundle: Bundle? = intent.extras
 
@@ -114,6 +124,8 @@ class ImmunizationUpdateActivity : BaseActivity() {
         val immuService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
         val requestCall = immuService.getImmunization(id)
 
+
+        progressbar()
 
    //     Toast.makeText(this,"test msg "+ id,Toast.LENGTH_LONG).show()
 

@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+
+    xmlns:anroid="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container1"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:anroid="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/colorWhite"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@color/colorWhite">
 
     <include layout="@layout/app_bar_main" />
     <include layout="@layout/background_image" />
+
 
 
 
@@ -21,6 +27,7 @@
         android:textSize="30sp" />
 
     <LinearLayout
+        android:id="@+id/date1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -52,6 +59,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/weight1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -82,6 +90,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/height1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -112,6 +121,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/bmi11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -142,6 +152,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/note1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -183,10 +194,27 @@
         android:text="@string/save"
         android:textSize="16sp" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_4"
-        android:src="@drawable/bmi_chart" />
+
+
+
+    <ImageButton
+        android:id="@+id/bmi_image"
+        android:layout_width="250dp"
+        android:layout_height="175dp"
+        android:layout_gravity="center"
+        android:src="@drawable/bmi_chart"
+        android:layout_margin="@dimen/dimen_10"
+        android:scaleType="centerCrop"
+        android:contentDescription="sankeerth" />
 
 </LinearLayout>
+
+    <ImageView
+        android:id="@+id/expanded_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:contentDescription="sai" />
+
+</FrameLayout>
+

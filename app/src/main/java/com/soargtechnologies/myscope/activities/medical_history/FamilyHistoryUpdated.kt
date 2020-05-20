@@ -77,6 +77,9 @@ class FamilyHistoryUpdated : BaseActivity() {
   //      showLongToast(requestCall.toString())
 
 
+        progressbar()
+
+
         requestCall.enqueue(object : retrofit2.Callback<List<Diseases>> {
 
             override fun onResponse(call: Call<List<Diseases>>, response: Response<List<Diseases>>) {

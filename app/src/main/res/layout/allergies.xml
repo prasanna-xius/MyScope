@@ -208,7 +208,8 @@
                     android:text="@string/notes"
                     android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
+
 
                 <EditText
 
@@ -216,7 +217,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-
                     android:background="@drawable/border_bg"
                     android:padding="5dp"
                     android:textColor="@color/bg_screen2"

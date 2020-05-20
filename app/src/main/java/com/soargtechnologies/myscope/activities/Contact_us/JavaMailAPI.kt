@@ -35,6 +35,9 @@ class JavaMailAPI(private val mContext: Context, private val mEmail: String, pri
         Toast.makeText(mContext, "Mail Sent", Toast.LENGTH_SHORT).show()
     }
 
+
+
+
     override fun doInBackground(vararg params: Void): Void? {
         //Creating properties
         val props = Properties()

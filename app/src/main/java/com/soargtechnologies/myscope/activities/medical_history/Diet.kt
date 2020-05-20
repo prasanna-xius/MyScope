@@ -134,6 +134,8 @@ class Diet : BaseActivity() {
         btn_diet_updated.visibility = View.VISIBLE
         btn_diet.visibility = View.GONE
 
+        progressbar()
+
 
         val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
         val requestCall = diseaseService.getDiet(mobile_no!!)

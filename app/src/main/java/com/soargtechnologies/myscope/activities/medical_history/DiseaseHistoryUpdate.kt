@@ -105,6 +105,9 @@ class DiseaseHistoryUpdate : BaseActivity() {
     }
 
     private fun loadDetails(id: String, position: Int) {
+
+        progressbar()
+
         val diseaseService = ServiceBuilder.buildService(Disease_service::class.java)
         val requestCall = diseaseService.getdisease(mobile_no.toString())
 
