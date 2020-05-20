@@ -7,12 +7,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -65,22 +67,22 @@ class MedicalDoc_Health : BaseActivity() {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView!!.layoutManager = layoutManager
 
-//        itemsswipetorefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
-//        itemsswipetorefresh.setColorSchemeColors(Color.WHITE)
-//        itemsswipetorefresh.setOnRefreshListener {
-//
-//
-//            swipeCount += 1
-//            if (swipeCount >= 0) {
-////                loadDestinations()
-//            }
-//            presAdapter!!.notifyDataSetChanged()
-//
-//
-//
-//            itemsswipetorefresh.setRefreshing(false);
-//
-//        }
+        itemsswipetorefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        itemsswipetorefresh.setColorSchemeColors(Color.WHITE)
+        itemsswipetorefresh.setOnRefreshListener {
+
+
+            swipeCount += 1
+            if (swipeCount >= 0) {
+//                loadDestinations()
+            }
+            presAdapter!!.notifyDataSetChanged()
+
+
+
+            itemsswipetorefresh.setRefreshing(false);
+
+        }
         val list = listOf<String>(
                 Manifest.permission.CAMERA,
                 Manifest.permission.READ_EXTERNAL_STORAGE,

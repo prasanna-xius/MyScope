@@ -64,22 +64,22 @@ class MedicalDoc_Discharge : BaseActivity() {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView!!.layoutManager = layoutManager
 
-//        itemsswipetorefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
-//        itemsswipetorefresh.setColorSchemeColors(Color.WHITE)
-//        itemsswipetorefresh.setOnRefreshListener {
-//
-//
-//            swipeCount += 1
-//            if (swipeCount >= 0) {
-////                loadDestinations()
-//            }
-//            presAdapter!!.notifyDataSetChanged()
-//
-//
-//
-//            itemsswipetorefresh.setRefreshing(false);
-//
-//        }
+        itemsswipetorefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        itemsswipetorefresh.setColorSchemeColors(Color.WHITE)
+        itemsswipetorefresh.setOnRefreshListener {
+
+
+            swipeCount += 1
+            if (swipeCount >= 0) {
+//                loadDestinations()
+            }
+            presAdapter!!.notifyDataSetChanged()
+
+
+
+            itemsswipetorefresh.setRefreshing(false);
+
+        }
         val list = listOf<String>(
                 Manifest.permission.CAMERA,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
