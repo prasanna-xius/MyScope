@@ -68,9 +68,9 @@ class MedicalDoc_Dental : BaseActivity() {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView!!.layoutManager = layoutManager
 
-        itemsswipetorefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
-        itemsswipetorefresh.setColorSchemeColors(Color.WHITE)
-        itemsswipetorefresh.setOnRefreshListener {
+        docdental.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        docdental.setColorSchemeColors(Color.WHITE)
+        docdental.setOnRefreshListener {
 
 
             swipeCount += 1
@@ -81,7 +81,7 @@ class MedicalDoc_Dental : BaseActivity() {
 
 
 
-            itemsswipetorefresh.setRefreshing(false);
+            docdental.setRefreshing(false);
 
         }
         val list = listOf<String>(

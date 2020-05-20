@@ -64,9 +64,9 @@ class MedicalDoc_Discharge : BaseActivity() {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView!!.layoutManager = layoutManager
 
-        itemsswipetorefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
-        itemsswipetorefresh.setColorSchemeColors(Color.WHITE)
-        itemsswipetorefresh.setOnRefreshListener {
+        docdischarge.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        docdischarge.setColorSchemeColors(Color.WHITE)
+        docdischarge.setOnRefreshListener {
 
 
             swipeCount += 1
@@ -77,7 +77,7 @@ class MedicalDoc_Discharge : BaseActivity() {
 
 
 
-            itemsswipetorefresh.setRefreshing(false);
+            docdischarge.setRefreshing(false);
 
         }
         val list = listOf<String>(
@@ -91,7 +91,7 @@ class MedicalDoc_Discharge : BaseActivity() {
 
         val view: View = layoutInflater.inflate(
                 R.layout.list_item_prescription_image, // Custom view/ layout
-                activity_pres, // Root layout to attach the view
+                doc_discharge, // Root layout to attach the view
                 false)
 
 
@@ -226,6 +226,7 @@ class MedicalDoc_Discharge : BaseActivity() {
                 //mProgressBar!!.visibility = View.GONE
                 //Log.d(TAG, "onFailure: " + t.localizedMessage)
                 showLongToast("image uploaded in failure part")
+
 
             }
         })
