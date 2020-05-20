@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/immunization_history"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="30sp" />
 
@@ -43,6 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/name"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -71,39 +73,25 @@
                     android:id="@+id/when_given"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="1.0"
                     android:text="@string/when_given"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:orientation="horizontal"
-                    android:weightSum="2.0">
-
-                    <ImageView
-                        android:id="@+id/buttondate_immuupdate"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_gravity="start"
-                        android:layout_weight=".05"
-                        android:padding="5dp"
-                        android:src="@drawable/calendar_36"
-                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/textviewdate_immuupdate"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:gravity="center"
-                        android:padding="2dp"
-
-                        android:text=""
+                        android:hint="@string/dOB"
+                        android:padding="5dp"
+                        android:drawableRight="@drawable/calendar_36"
+                        android:textColorHint="@color/bg_screen2"
+                        android:background="@drawable/border_bg"
                         android:textColor="@color/bg_screen2" />
-                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -120,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/adverse_event"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -149,6 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/brand"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -179,6 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/notes"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -208,8 +199,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1.0"
-                    android:background="@drawable/shape_btn"
+                    android:background="@drawable/background_button"
                     android:text="update"
+                    android:backgroundTint="#1F78D3"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp" />
             </LinearLayout>

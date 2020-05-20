@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityOptions
 import android.app.AlertDialog
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -12,6 +13,7 @@ import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.os.Handler
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
@@ -209,13 +211,22 @@ open class BaseActivity : AppCompatActivity() {
     fun bmicalculator(weight: EditText,height: EditText,bmi: TextView)
     {
         if(!height.text.toString().equals("") && !weight.text.toString().equals("")) {
-            val height= (height.text.toString()).toFloat()
+
+            val height1= (height.text.toString() ).toDouble()
+
+            val height = height1 * 0.3048
 
             val square = height * height
-            val weight = (weight.text.toString()).toFloat()
+            val weight = (weight.text.toString()).toDouble()
 
             val bmivalue = weight / square
-            bmi.text = bmivalue.toString()
+
+            val number3digits = Math.round(bmivalue * 1000.0) / 1000.0
+            val number2digits = Math.round(number3digits * 100.0) / 100.0
+
+
+
+            bmi.text = number2digits.toString()
 
             if (bmivalue < 16) {
                 showLongToast("Severely underweight")
@@ -234,7 +245,15 @@ open class BaseActivity : AppCompatActivity() {
 
     }
 
+    fun progressbar () {
+       val progressDialog =  ProgressDialog(this)
+        progressDialog.setMessage("Loading")
+        progressDialog.setCancelable(false)
+        progressDialog.show()
 
+        Handler().postDelayed({progressDialog.dismiss()},3000)
+
+    }
 
     fun validateDate1( dob: TextView, today :TextView){
         if(!dob.text.toString().equals("") ){
@@ -286,7 +305,8 @@ open class BaseActivity : AppCompatActivity() {
                     val year = dob4.toInt() - dob3.toInt() - 1
                     years.text = month.toString() + "month  " + year + "Years"
                 }
-            } else if (dob3.toInt() == dob4.toInt()) {
+            }
+            else if (dob3.toInt() == dob4.toInt()) {
 
                 if (dob1.toInt() < dob2.toInt()) {
                     val month = dob2.toInt() - dob1.toInt()
@@ -317,28 +337,59 @@ open class BaseActivity : AppCompatActivity() {
 
 
    
-    fun validateDate(startDate: TextView, stopDate: TextView, boolean: Any ): Boolean {
+    fun validateDate(startDate: TextView, stopDate: TextView  ) {
         if (!startDate.text.toString().equals("") && !stopDate.text.toString().equals("")) {
-            startDate.setCompoundDrawables(null, null, null, null)
-            stopDate.setCompoundDrawables(null, null, null, null)
-            val startDate1 = SimpleDateFormat("MM-yyyy").format(Date(startDate.text.toString()))
-            val endDate1 = SimpleDateFormat("MM-yyyy").format(Date(stopDate.text.toString()))
-            if (startDate1 > endDate1) {
-                // date in text view is current date
-                stopDate.setText("")
-                showLongSnackBar("Start date cannot be after end date")
-                errorDisplayTextview(startDate)
-                return false
-            }
-        } else {
-            errorDisplayTextview(startDate)
-            errorDisplayTextview(stopDate)
-            return false
+            val dob1 = SimpleDateFormat("MM").format(Date(startDate.text.toString()))
+            val dob2 = SimpleDateFormat("MM").format(Date(stopDate.text.toString()))
+            val dob3 = SimpleDateFormat("YYYY").format(Date(startDate.text.toString()))
+            val dob4 = SimpleDateFormat("YYYY").format(Date(stopDate.text.toString()))
+            val dob5 = SimpleDateFormat("dd").format(Date(startDate.text.toString()))
+            val dob6 = SimpleDateFormat("dd").format(Date(stopDate.text.toString()))
 
-                return false;
-           }
+            if (dob3.toInt() < dob4.toInt()) {
+
+                if (dob1.toInt() < dob2.toInt()) {
+                    val month = dob2.toInt() - dob1.toInt()
+                    val year = dob4.toInt() - dob3.toInt()
+
+                } else if (dob1.toInt() == dob2.toInt()) {
+                    val month = dob4.toInt() - dob3.toInt()
+
+                } else if (dob1.toInt() > dob2.toInt()) {
+
+                    val x = 12 - dob1.toInt()
+                    val month = x + dob2.toInt()
+                    val year = dob4.toInt() - dob3.toInt() - 1
+
+                }
+            }
+            else if (dob3.toInt() == dob4.toInt()) {
+
+                if (dob1.toInt() < dob2.toInt()) {
+
+                } else if (dob1.toInt() == dob2.toInt()) {
+                    if (dob6.toInt() > dob5.toInt()) {
+
+                    } else {
+
+                        showLongSnackBar("Start date cannot be after end date")
+
+                    }
+
+                } else if (dob1.toInt() > dob2.toInt()) {
+
+                    showLongSnackBar("Start date cannot be after end date")
+                }
+            }
+            else if (dob3.toInt() > dob4.toInt()) {
+
+                showLongSnackBar("Start date cannot be after end date")
+            }
+        }
+
+
         
-        return true
+
     }
 
 

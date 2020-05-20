@@ -42,6 +42,7 @@ import kotlinx.android.synthetic.main.spinner_dropdown_item_prescribed.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -55,11 +56,10 @@ class MedicationUpdateActivity : BaseActivity() {
     var button_date_StartMh: ImageView? = null
     var button_date_EndMh: ImageView? = null
     var textview_Startdate: TextView? = null
-    var textview_Enddate: TextView? = null
+    internal lateinit var myCalendar: java.util.Calendar
+    private var startDateOrEndDAte = true
     var cal_StartMh = java.util.Calendar.getInstance()
     var cal_EndMh = java.util.Calendar.getInstance()
-
-
     var formulation: Spinner? = null
     var isprescribed: Spinner? = null
     var doseunit: Spinner? = null
@@ -75,7 +75,6 @@ class MedicationUpdateActivity : BaseActivity() {
     var adapter4: ArrayAdapter<String>? = null
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
-    internal lateinit var myCalendar: Calendar
     var buttondate_immuupdate: Button? = null
     var medicationid: Int = 0
 
@@ -121,8 +120,8 @@ class MedicationUpdateActivity : BaseActivity() {
                 resources.getStringArray(R.array.dose_unit_arrays))
         doseunit!!.adapter = adapter4
 
-        button_date_StartMhUpdate = this.buttonStartdate_medicalHistory_update
-        button_date_EndMhupdate = this.buttonEnddate_MH_update
+//        button_date_StartMhUpdate = this.buttonStartdate_medicalHistory_update
+//        button_date_EndMhupdate = this.buttonEnddate_MH_update
 
 
         val bundle: Bundle? = intent.extras
@@ -138,85 +137,34 @@ class MedicationUpdateActivity : BaseActivity() {
         position = intent.getIntExtra("position", 0)
 
 
-        val dateSetListenerSatar = object : DatePickerDialog.OnDateSetListener {
-            override fun onDateSet(view_start: DatePicker, year_start: Int, monthOfYear_start: Int,
-                                   dayOfMonth_start: Int) {
-                cal_StartMh.set(java.util.Calendar.YEAR, year_start)
-                cal_StartMh.set(java.util.Calendar.MONTH, monthOfYear_start)
-                cal_StartMh.set(java.util.Calendar.DAY_OF_MONTH, dayOfMonth_start)
+        myCalendar = java.util.Calendar.getInstance()
+        val date = DatePickerDialog.OnDateSetListener { view: View, year, monthOfYear, dayOfMonth ->
+            myCalendar.set(java.util.Calendar.YEAR, year)
+            myCalendar.set(java.util.Calendar.MONTH, monthOfYear)
+            myCalendar.set(java.util.Calendar.DAY_OF_MONTH, dayOfMonth)
 
-
-                updateDateInViewStart()
+            val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
+            if (startDateOrEndDAte) {
+                textviewStartdate_medicalHistory_update.setText(date1)
+            } else {
+                textviewEnddate_MH_update.setText(date1)
             }
+
         }
 
-        val dateSetListenerEnd = object : DatePickerDialog.OnDateSetListener {
-            override fun onDateSet(view_end: DatePicker, year_end: Int, monthOfYear_end: Int,
-                                   dayOfMonth_end: Int) {
-
-                cal_EndMh.set(java.util.Calendar.YEAR, year_end)
-                cal_EndMh.set(java.util.Calendar.MONTH, monthOfYear_end)
-                cal_EndMh.set(java.util.Calendar.DAY_OF_MONTH, dayOfMonth_end)
-
-                updateDateInViewEnd()
-
-
-                validateDate(textviewStartdate_medicalHistory_update!!, textviewEnddate_MH_update!!, true)
-            }
+        textviewStartdate_medicalHistory_update.setOnClickListener {
+            DatePickerDialog(this, R.style.MyDatePicker, date, myCalendar.get(java.util.Calendar.YEAR), myCalendar.get(java.util.Calendar.MONTH),
+                    myCalendar.get(java.util.Calendar.DAY_OF_MONTH)).show()
+            startDateOrEndDAte = true
         }
 
-
-        button_date_StartMhUpdate!!.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View) {
-                DatePickerDialog(this@MedicationUpdateActivity,
-                        dateSetListenerSatar,
-                        // set DatePickerDialog to point to today's date when it loads up
-                        cal_StartMh.get(java.util.Calendar.YEAR),
-                        cal_StartMh.get(java.util.Calendar.MONTH),
-                        cal_StartMh.get(java.util.Calendar.DAY_OF_MONTH)).show()
-            }
-
-        })
-
-
-        button_date_EndMhupdate!!.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View) {
-                DatePickerDialog(this@MedicationUpdateActivity,
-                        dateSetListenerEnd,
-                        // set DatePickerDialog to point to today's date when it loads up
-                        cal_EndMh.get(java.util.Calendar.YEAR),
-                        cal_EndMh.get(java.util.Calendar.MONTH),
-                        cal_EndMh.get(java.util.Calendar.DAY_OF_MONTH)).show()
-                try {
-                    validateDate(textviewStartdate_medicalHistory_update!!, textviewEnddate_MH_update!!, true)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-
-
-                //Toast.makeText(this,"date value::::${textview_EndDate}",Toast.LENGTH_LONG).show()
-            }
-
-        })
-    }
-
-    private fun updateDateInViewStart() {
-
-        val myFormat = "dd/MM/yyyy" // mention the format you need
-        sdf1 = SimpleDateFormat(myFormat, Locale.US)
-        textviewStartdate_medicalHistory_update!!.text = sdf1?.format(cal_StartMh.getTime())
-    }
-
-    private fun updateDateInViewEnd() {
-        val myFormat = "dd/MM/yyyy" // mention the format you need
-        sdf2 = SimpleDateFormat(myFormat, Locale.US)
-
-        textviewEnddate_MH_update!!.text = sdf2?.format(cal_EndMh.getTime())
-
+        textviewEnddate_MH_update.setOnClickListener {
+            DatePickerDialog(this, R.style.MyDatePicker, date, myCalendar.get(java.util.Calendar.YEAR), myCalendar.get(java.util.Calendar.MONTH),
+                    myCalendar.get(java.util.Calendar.DAY_OF_MONTH)).show()
+            startDateOrEndDAte = false
+        }
 
     }
-
-
     override fun onResume() {
         super.onResume()
 
@@ -236,6 +184,7 @@ class MedicationUpdateActivity : BaseActivity() {
         val medService = ServiceBuilder.buildService(MedicalHistoryService::class.java)
         val requestCall = medService.getMedicationByid(mobile_no.toString())
 
+        progressbar()
 
         //Toast.makeText(this,"test msg "+ id,Toast.LENGTH_LONG).show()
 
@@ -277,17 +226,12 @@ class MedicationUpdateActivity : BaseActivity() {
                     }
 
                 } else {
-                    Toast.makeText(this@MedicationUpdateActivity, "Failed to retrieve details under else", Toast.LENGTH_SHORT)
-                            .show()
+ //                   Toast.makeText(this@MedicationUpdateActivity, "Failed to retrieve details under else", Toast.LENGTH_SHORT) .show()
                 }
             }
 
             override fun onFailure(call: Call<List<MedicationDataClass>>, t: Throwable) {
-                Toast.makeText(
-                        this@MedicationUpdateActivity,
-                        "Failed to retrieve details " + t.toString(),
-                        Toast.LENGTH_SHORT
-                ).show()
+       //         Toast.makeText( this@MedicationUpdateActivity,"Failed to retrieve details " + t.toString(),Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -367,31 +311,28 @@ class MedicationUpdateActivity : BaseActivity() {
 
                 override fun onResponse(call: Call<MedicationDataClass>, response: Response<MedicationDataClass>) {
 
-                    Log.d("tag:::::", response.toString())
-                    Log.d("tag:::::", response.message())
+//                    Log.d("tag:::::", response.toString())
+//                    Log.d("tag:::::", response.message())
 
                     var updatedDestination = response.body()
                     if (response.isSuccessful) {
                         finish() // Move back to DestinationListActivity
                         var updatedDestination = response.body() // Use it or ignore It
-                        Toast.makeText(this@MedicationUpdateActivity,
-                                "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+       //                 Toast.makeText(this@MedicationUpdateActivity, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     } else {
 
                         intent = Intent(this@MedicationUpdateActivity, MedicationItemListActivity::class.java)
                         intent.putExtra("position", position)
                         startActivity(intent)
-                        Toast.makeText(this@MedicationUpdateActivity, "Failed to update item1", Toast.LENGTH_SHORT).show()
+    //                    Toast.makeText(this@MedicationUpdateActivity, "Failed to update item1", Toast.LENGTH_SHORT).show()
 
 
-                        Toast.makeText(this@MedicationUpdateActivity,
-                                "Failed to update item under else", Toast.LENGTH_SHORT).show()
+    //                    Toast.makeText(this@MedicationUpdateActivity, "Failed to update item under else", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<MedicationDataClass>, t: Throwable) {
-                    Toast.makeText(this@MedicationUpdateActivity,
-                            "Failed to update item", Toast.LENGTH_SHORT).show()
+ //                   Toast.makeText(this@MedicationUpdateActivity,"Failed to update item", Toast.LENGTH_SHORT).show()
                 }
             })
         }

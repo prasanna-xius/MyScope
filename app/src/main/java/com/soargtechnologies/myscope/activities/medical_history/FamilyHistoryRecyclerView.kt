@@ -32,7 +32,8 @@ class FamilyHistoryRecyclerView : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-        showLongToast(mobile_no.toString())
+
+ //       showLongToast(mobile_no.toString())
 
         fab_btn_familyHistory.setOnClickListener {
 
@@ -81,10 +82,10 @@ class FamilyHistoryRecyclerView : BaseActivity() {
                     Log.e("errpr msg resp succ",response.message())
 
                 } else if(response.code() == 401) {
-                    Toast.makeText(this@FamilyHistoryRecyclerView, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+ //                   Toast.makeText(this@FamilyHistoryRecyclerView, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure
                     // Your status code is in the range of 300's, 400's and 500's
-                    Toast.makeText(this@FamilyHistoryRecyclerView, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
+  //                  Toast.makeText(this@FamilyHistoryRecyclerView, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -92,7 +93,7 @@ class FamilyHistoryRecyclerView : BaseActivity() {
             // or Error Creating Http Request or Error Processing Http Response
             override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
 
-                Toast.makeText(this@FamilyHistoryRecyclerView, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+  //              Toast.makeText(this@FamilyHistoryRecyclerView, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }

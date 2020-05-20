@@ -27,7 +27,7 @@ class Blood_pressureAdaptor(private val pressureList: List<Self_dataClass>) : Re
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.pressuredestination = pressureList[position]
         holder.pressureSno.text = pressureList[position].pressure_id.toString()
-        holder.pressureTitle.text = pressureList[position].systolic + "/" +  pressureList[position].diastrlic
+        holder.pressureTitle.text = pressureList[position].systolic + "/" +  pressureList[position].diastrlic + "(mmHg)"
         holder.pressureDate.text = pressureList[position].pressure_save_on
 
 

@@ -93,13 +93,13 @@ private fun loadValues() {
                disease_recycler_view.adapter!!.notifyDataSetChanged()
 
 
-               Log.e("errpr msg resp succ",response.message())
+   //            Log.e("errpr msg resp succ",response.message())
 
             } else if(response.code() == 401) {
-                Toast.makeText(this@Disease_recyclerView, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+   //             Toast.makeText(this@Disease_recyclerView, "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
             } else { // Application-level failure
                 // Your status code is in the range of 300's, 400's and 500's
-                Toast.makeText(this@Disease_recyclerView, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
+  //              Toast.makeText(this@Disease_recyclerView, "Failed to retrieve items123", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -107,7 +107,7 @@ private fun loadValues() {
         // or Error Creating Http Request or Error Processing Http Response
         override fun onFailure(call: Call<List<Diseases>>, t: Throwable) {
 
-            Toast.makeText(this@Disease_recyclerView, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+   //         Toast.makeText(this@Disease_recyclerView, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
         }
     })
 }

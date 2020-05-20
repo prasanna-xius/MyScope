@@ -27,6 +27,15 @@
         <activity android:name=".activities.self_monitering.Blood_Pressure" />
         <activity android:name=".activities.self_monitering.Emotional_state_Update" />
         <activity android:name=".activities.self_monitering.Emotional_state_recyclerView" /> <!-- <activity android:name=".activities.self_monitering.BloodPressureActivity"></activity> -->
+        <activity
+            android:name=".activities.Contact_us.Contact_us"
+            android:label="@string/title_activity_contact_us"
+            android:theme="@style/NoActionBar"></activity>
+
+        <activity android:name=".activities.Contact_us.JavaMailAPI" />
+
+
+        <!-- <activity android:name=".activities.self_monitering.BloodPressureActivity"></activity> -->
         <activity android:name=".activities.self_monitering.Bmi_recyclerView" />
         <activity android:name=".activities.self_monitering.BmiUpdate" />
         <activity android:name=".activities.self_monitering.Cholestrol_recyclerView" />
@@ -78,14 +87,15 @@
         <activity
             android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.Login_Page"
-            android:screenOrientation="portrait" />
+<!--        <activity-->
+<!--            android:name=".activities.Navigation_Drawer_Blogs"-->
+<!--            android:screenOrientation="portrait" />-->
         <activity
             android:name=".activities.medical_history.Medical_History_HomePage"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.medical_history.Disease_recyclerView"
+
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.medical_history.Disease_History"
@@ -146,6 +156,7 @@
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
         <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog" />
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
+        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
         <activity android:name=".activities.Educational_Blog_Activity" />
         <activity android:name=".activities.labReports.Lab_BloodAddImage_PDF"></activity>
         <activity android:name=".activities.labReports.Lab_ColonoScopyAddImage_PDF"></activity>
@@ -175,7 +186,8 @@
         <activity android:name=".activities.self_monitering.Bmi_self" />
         <activity android:name=".activities.self_monitering.Cholesterol" />
         <activity android:name=".activities.self_monitering.Emotional_state" />
-        <activity android:name=".activities.self_monitering.Exercise_tracker" /> <!-- <activity android:name=".activities.Educational_Blog_Activity" /> -->
+        <activity android:name=".activities.self_monitering.Exercise_tracker" />
+<!--         <activity android:name=".activities.Educational_Blog_Activity" /> -->
         <activity android:name=".activities.Covid_19_Resourses_Activity" />
         <activity android:name=".activities.Covid19_Tracker_WebActivity" />
         <activity android:name=".activities.Map_Covid19_WebActivity" />
@@ -189,7 +201,8 @@
         <activity android:name=".activities.Science_Covid19_WebActivity" />
         <activity android:name=".activities.Elsevier_Network_Covid19_WebActivity" />
         <activity android:name=".activities.Oxward_Acadamic_Covid19_WebActivity" />
-        <activity android:name=".activities.Nature_Covid19_WebActivity" /> <!-- <activity android:name=".activities.Full_Image_Activity" /> -->
+        <activity android:name=".activities.Nature_Covid19_WebActivity" />
+        <activity android:name=".activities.Full_Image_Activity" />
         <activity android:name=".activities.Guidelines_Activity" />
         <activity android:name=".activities.Courses_Training_Activity" />
         <activity android:name=".activities.News_Updates_Activity" />

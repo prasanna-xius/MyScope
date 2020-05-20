@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/cholesterol"
+        android:textStyle="bold"
         android:textColor="@color/bg_screen2"
         android:textSize="30sp" />
 
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/date"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
@@ -40,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/date_of_test"
+            android:drawableRight="@drawable/calendar_36"
             android:background="@drawable/border_bg"
             android:padding="@dimen/dimen_4"
             android:inputType="date"
@@ -60,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/lDL"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
@@ -89,6 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/hDL"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
@@ -117,6 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/triglycerides"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
@@ -145,6 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/total_cholesterol"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
@@ -173,6 +180,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/others_test"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
@@ -204,6 +212,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/notes"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16dp" />
         <EditText

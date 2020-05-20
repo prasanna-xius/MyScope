@@ -14,20 +14,21 @@
         <include layout="@layout/app_bar_main" />
         <include layout="@layout/background_image" />
 
-        <Button
-            android:id="@+id/editbtn_disease"
-            android:layout_width="37dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="@dimen/dimen_20"
-            android:textStyle="bold"
-            android:background="@drawable/edit_icon1" />
+<!--        <Button-->
+<!--            android:id="@+id/editbtn_disease"-->
+<!--            android:layout_width="37dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="right"-->
+<!--            android:layout_marginRight="@dimen/dimen_20"-->
+<!--            android:textStyle="bold"-->
+<!--            android:background="@drawable/edit_icon1" />-->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/medical_history"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="30sp" />
 
@@ -44,6 +45,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/known_condition"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -70,9 +72,10 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/disease_statues"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -82,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:popupBackground="@color/colorWhite"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"/>
 
         </LinearLayout>
@@ -99,6 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/disease_duration"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -128,6 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/when_started"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -140,6 +145,8 @@
                 android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"
                 android:inputType="date"
+
+                android:drawableRight="@drawable/calendar_36"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -157,6 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/when_ended"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -169,6 +177,7 @@
                 android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"
                 android:inputType="date"
+                android:drawableRight="@drawable/calendar_36"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -186,6 +195,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/notes"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16dp" />
 

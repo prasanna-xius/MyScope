@@ -38,6 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/add_allergy"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -50,9 +51,12 @@
                         android:id="@+id/spinnerAllergy"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+
+                        android:background="@drawable/border_bg"
                         android:entries="@array/allergy_arrays"
 
-                        android:padding="2dp"
+
+                        android:padding="5dp"
                         android:popupBackground="#fff" />
                 </FrameLayout>
             </LinearLayout>
@@ -72,6 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/name"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -103,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/reaction"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -134,6 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/treatment"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -160,43 +167,29 @@
 
                 <TextView
                     android:id="@+id/first_observed"
-                    android:layout_width="50sp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:text="@string/first_observed"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:weightSum="2.0">
 
-                    <ImageView
-                        android:id="@+id/buttondate"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_gravity="start"
-                        android:layout_weight=".05"
-                        android:padding="5dp"
-                        android:src="@drawable/calendar_36"
-                        android:textSize="14sp"
-
-                        />
 
                     <TextView
                         android:id="@+id/textviewdate"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text=" "
+                        android:padding="5dp"
+                        android:hint="@string/dOB"
+                        android:drawableRight="@drawable/calendar_36"
+                        android:textColorHint="@color/bg_screen2"
+                        android:background="@drawable/border_bg"
                         android:textColor="@color/bg_screen2" />
-                </LinearLayout>
+
+
             </LinearLayout>
 
 
@@ -213,8 +206,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/notes"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
-                    android:textSize="16sp" />
+                    android:textSize="16dp" />
+
 
                 <EditText
 
@@ -222,9 +217,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_weight="1"
-
                     android:background="@drawable/border_bg"
-                    android:hint="Enter Notes"
                     android:padding="5dp"
                     android:textColor="@color/bg_screen2"
                     android:textColorHint="@color/bg_screen2"
@@ -246,7 +239,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1.0"
-                    android:background="@drawable/shape_btn"
+                    android:background="@drawable/background_button"
+                    android:backgroundTint="#1F78D3"
+
                     android:padding="5dp"
                     android:text="SAVE"
                     android:textColor="@color/colorWhite"

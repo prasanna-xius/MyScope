@@ -39,7 +39,7 @@ class BmiUpdate : BaseActivity() {
         setContentView(R.layout.activity_bmi_update)
 
         activitiesToolbar()
-        header!!.text = "Bmi"
+        header!!.text = "BMI"
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
@@ -71,7 +71,8 @@ class BmiUpdate : BaseActivity() {
             val id: String = intent.getStringExtra(ARG_ITEM_ID)
 
             position = intent.getIntExtra("position", 0)
-            showLongToast(position.toString())
+
+ //           showLongToast(position.toString())
 
             loadDetails(mobile_no.toString(), position!!)
 

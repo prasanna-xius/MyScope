@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/blood_glucose"
+        android:textStyle="bold"
         android:textColor="@color/bg_screen2"
         android:textSize="30sp" />
 
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/date"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
@@ -40,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/date_of_test"
+            android:drawableRight="@drawable/calendar_36"
             android:background="@drawable/border_bg"
             android:padding="@dimen/dimen_4"
             android:inputType="date"
@@ -62,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/test"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
@@ -71,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:popupBackground="@color/colorWhite"
-            android:background="@drawable/edittext_border"
+            android:background="@drawable/border_bg"
             android:padding="@dimen/dimen_4"/>
 
     </LinearLayout>
@@ -88,6 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/test_result"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16sp" />
 
@@ -118,6 +123,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/notes"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="16dp" />
         <EditText
@@ -145,6 +151,7 @@
         android:layout_marginRight="@dimen/dimen_10"
         android:layout_marginBottom="@dimen/dimen_10"
         android:background="@drawable/background_button"
+        android:backgroundTint="#1F78D3"
         android:text="@string/update"
         android:textColor="@color/colorWhite"
         android:textSize="16sp"/>

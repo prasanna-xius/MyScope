@@ -38,9 +38,7 @@ import java.util.*
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-
-
+import java.text.DateFormat
 
 
 class MedicationHistory : BaseActivity() {
@@ -62,6 +60,8 @@ class MedicationHistory : BaseActivity() {
     var etdose_med: EditText? = null;
     var etreason_med: EditText? = null
     var etnotes_med: EditText? = null
+    internal lateinit var myCalendar: Calendar
+    private var startDateOrEndDAte = true
     var flag: Boolean? = true
     //var sprOneItem: String? = null
     //var sprThreeItem: String? = null;
@@ -69,8 +69,6 @@ class MedicationHistory : BaseActivity() {
     //var sprTwoItem: String? = null
     var sdf1: SimpleDateFormat? = null
     var sdf2: SimpleDateFormat? = null
-    var button_date_StartMh: ImageView? = null
-    var button_date_EndMh: ImageView? = null
     var textview_Startdate: TextView? = null
     var textview_Enddate: TextView? = null
     var cal_StartMh = Calendar.getInstance()
@@ -95,7 +93,7 @@ class MedicationHistory : BaseActivity() {
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.soargtechnologies.myscope.R.layout.medicationhistory)
+        setContentView(R.layout.medicationhistory)
 
         activitiesToolbar()
         header!!.text = "Medication History"
@@ -112,8 +110,39 @@ class MedicationHistory : BaseActivity() {
         textview_Enddate = this.textviewEnddate_MH
         textview_Startdate = this.textviewStartdate_medicalHistory
 
-        button_date_StartMh = this.buttonStartdate_medicalHistory
-        button_date_EndMh = this.buttonEnddate_MH
+        myCalendar = Calendar.getInstance()
+        val date = DatePickerDialog.OnDateSetListener { view:View, year, monthOfYear, dayOfMonth ->
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, monthOfYear)
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+
+            val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
+            if (startDateOrEndDAte) {
+                textviewStartdate_medicalHistory.setText(date1)
+                val x = textview_Startdate.toString()
+            } else {
+                textviewEnddate_MH.setText(date1)
+           }
+       //     validateDate(textviewStartdate_medicalHistory ,textviewEnddate_MH )
+        }
+
+        textviewStartdate_medicalHistory.setOnClickListener {
+            DatePickerDialog(this, R.style.MyDatePicker, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                    myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+            startDateOrEndDAte = true
+        }
+
+        textviewEnddate_MH.setOnClickListener {
+            DatePickerDialog(this, R.style.MyDatePicker, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                    myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+            startDateOrEndDAte = false
+        }
+
+
+
+
+//        button_date_StartMh = this.buttonStartdate_medicalHistory
+//        button_date_EndMh = this.buttonEnddate_MH
 
         etname_med = findViewById(R.id.et_name)
         etdose_med = findViewById(R.id.et_dose_strength)
@@ -179,8 +208,7 @@ class MedicationHistory : BaseActivity() {
                 newmedication.mobile_no = mobile_no!!
                 newmedication.medication_saved_on=datesetvalue()
 
-                Toast.makeText(applicationContext, newmedication.how_often_taken + " " + newmedication.formulation
-                        + " " + newmedication.isprescribed + " " + newmedication.doseunit, Toast.LENGTH_LONG).show()
+      //          Toast.makeText(applicationContext, newmedication.how_often_taken + " " + newmedication.formulation  + " " + newmedication.isprescribed + " " + newmedication.doseunit, Toast.LENGTH_LONG).show()
 
                
 
@@ -200,20 +228,20 @@ class MedicationHistory : BaseActivity() {
 
                             var newbody = resp.body() // Use it or ignore it
 
-                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+   //                         Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                             finish()
                         } else {
 
-                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+  //                          Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<MedicationDataClass>, t: Throwable) {
                         //finish()
-                        Log.d("errormsgfailure ::", t.message)
-
-                        Log.e("errorunderfailure:", t.message)
-                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+//                        Log.d("errormsgfailure ::", t.message)
+//
+//                        Log.e("errorunderfailure:", t.message)
+//                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                     }
                 })
 
@@ -227,67 +255,71 @@ class MedicationHistory : BaseActivity() {
             }
 
         }
-        val dateSetListenerSatar = object : DatePickerDialog.OnDateSetListener {
-            override fun onDateSet(view_start: DatePicker, year_start: Int, monthOfYear_start: Int,
-                                   dayOfMonth_start: Int) {
-                cal_StartMh.set(Calendar.YEAR, year_start)
-                cal_StartMh.set(Calendar.MONTH, monthOfYear_start)
-                cal_StartMh.set(Calendar.DAY_OF_MONTH, dayOfMonth_start)
+
+//        val dateSetListenerSatar = object : DatePickerDialog.OnDateSetListener {
+//            override fun onDateSet(view_start: DatePicker, year_start: Int, monthOfYear_start: Int,
+//                                   dayOfMonth_start: Int) {
+//                cal_StartMh.set(Calendar.YEAR, year_start)
+//                cal_StartMh.set(Calendar.MONTH, monthOfYear_start)
+//                cal_StartMh.set(Calendar.DAY_OF_MONTH, dayOfMonth_start)
+//
+//
+//                updateDateInViewStart()
+//            }
+//        }
+//
+//        val dateSetListenerEnd = object : DatePickerDialog.OnDateSetListener {
+//            override fun onDateSet(view_end: DatePicker, year_end: Int, monthOfYear_end: Int,
+//                                   dayOfMonth_end: Int) {
+//
+//                cal_EndMh.set(Calendar.YEAR, year_end)
+//                cal_EndMh.set(Calendar.MONTH, monthOfYear_end)
+//                cal_EndMh.set(Calendar.DAY_OF_MONTH, dayOfMonth_end)
+//
+//                updateDateInViewEnd()
+//
+//
+      //          validateDate(textview_Startdate!!, textview_Enddate!!, true)
+//            }
+//        }
+//
+//
+//        textviewStartdate_medicalHistory!!.setOnClickListener(object : OnClickListener {
+//            override fun onClick(view: View) {
+//                DatePickerDialog(this@MedicationHistory,
+//                        dateSetListenerSatar,
+//                        // set DatePickerDialog to point to today's date when it loads up
+//                        cal_StartMh.get(Calendar.YEAR),
+//                        cal_StartMh.get(Calendar.MONTH),
+//                        cal_StartMh.get(Calendar.DAY_OF_MONTH)).show()
+//            }
+//
+//        })
+//
+//
+//        textviewEnddate_MH!!.setOnClickListener(object : OnClickListener {
+//            override fun onClick(view: View) {
+//                DatePickerDialog(this@MedicationHistory,
+//                        dateSetListenerEnd,
+//                        // set DatePickerDialog to point to today's date when it loads up
+//                        cal_EndMh.get(Calendar.YEAR),
+//                        cal_EndMh.get(Calendar.MONTH),
+//                        cal_EndMh.get(Calendar.DAY_OF_MONTH)).show()
+//                try {
+//                    validateDate(textview_Startdate!!, textview_Enddate!!, true)
+//                } catch (e: Exception) {
+//                    e.printStackTrace()
+//                }
+//
+//
+//
+//                //Toast.makeText(this,"date value::::${textview_EndDate}",Toast.LENGTH_LONG).show()
+//            }
+//
+//        })
 
 
-                updateDateInViewStart()
-            }
-        }
 
-        val dateSetListenerEnd = object : DatePickerDialog.OnDateSetListener {
-            override fun onDateSet(view_end: DatePicker, year_end: Int, monthOfYear_end: Int,
-                                   dayOfMonth_end: Int) {
-
-                cal_EndMh.set(Calendar.YEAR, year_end)
-                cal_EndMh.set(Calendar.MONTH, monthOfYear_end)
-                cal_EndMh.set(Calendar.DAY_OF_MONTH, dayOfMonth_end)
-
-                updateDateInViewEnd()
-
-
-                validateDate(textview_Startdate!!, textview_Enddate!!, true)
-            }
-        }
-
-
-        button_date_StartMh!!.setOnClickListener(object : OnClickListener {
-            override fun onClick(view: View) {
-                DatePickerDialog(this@MedicationHistory,
-                        dateSetListenerSatar,
-                        // set DatePickerDialog to point to today's date when it loads up
-                        cal_StartMh.get(Calendar.YEAR),
-                        cal_StartMh.get(Calendar.MONTH),
-                        cal_StartMh.get(Calendar.DAY_OF_MONTH)).show()
-            }
-
-        })
-
-
-        button_date_EndMh!!.setOnClickListener(object : OnClickListener {
-            override fun onClick(view: View) {
-                DatePickerDialog(this@MedicationHistory,
-                        dateSetListenerEnd,
-                        // set DatePickerDialog to point to today's date when it loads up
-                        cal_EndMh.get(Calendar.YEAR),
-                        cal_EndMh.get(Calendar.MONTH),
-                        cal_EndMh.get(Calendar.DAY_OF_MONTH)).show()
-                try {
-                    validateDate(textview_Startdate!!, textview_Enddate!!, true)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-
-
-
-                //Toast.makeText(this,"date value::::${textview_EndDate}",Toast.LENGTH_LONG).show()
-            }
-
-        })
     }
 
     fun validateName(et_name: EditText, b: Boolean): Boolean {

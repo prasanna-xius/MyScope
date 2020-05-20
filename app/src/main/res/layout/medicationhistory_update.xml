@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/medication_history"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="30sp" />
 
@@ -52,6 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/name"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -82,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:text="@string/how_often_taken"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -95,7 +98,7 @@
                     android:background="@drawable/border_bg"
                     android:entries="@array/how_often_taken_arrays"
 
-                    android:padding="2dp">
+                    android:padding="5dp">
                 </com.soargtechnologies.myscope.activities.medical_history.MultiSelectionSpinnerMedication>
 
 
@@ -115,6 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/dose_strength"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -126,7 +130,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_bg"
                     android:hint="@string/eg_dose_strength"
-                    android:padding="2dp"
+                    android:padding="5dp"
                     android:textColor="@color/bg_screen2"
                     android:textColorHint="@color/bg_screen2"
                     android:textSize="16sp" />
@@ -156,6 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:text="@string/formulation"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -166,7 +171,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:entries="@array/formulation_arrays"
-                    android:padding="2dp"
+                    android:padding="5dp"
+                    android:background="@drawable/border_bg"
 
                     android:popupBackground="#fff" />
             </LinearLayout>
@@ -184,6 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/dose_unit"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -193,8 +200,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:entries="@array/dose_unit_arrays"
-                    android:padding="2dp"
-
+                    android:padding="5dp"
+android:background="@drawable/border_bg"
                     android:popupBackground="#fff" />
             </LinearLayout>
 
@@ -215,6 +222,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/reason"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -246,37 +254,25 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/started_date"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:orientation="horizontal"
-                    android:weightSum="2.0">
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_gravity="start"
-                        android:layout_weight=".05"
-                        android:src="@drawable/calendar_36"
-                        android:padding="5dp"
-                        android:textSize="14sp"
-                        android:id="@+id/buttonStartdate_medicalHistory_update"
-                        />
 
                     <TextView
                         android:id="@+id/textviewStartdate_medicalHistory_update"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text=" "
+                        android:padding="5dp"
+                        android:hint="@string/started_date"
+                        android:drawableRight="@drawable/calendar_36"
+                        android:textColorHint="@color/bg_screen2"
+                        android:background="@drawable/border_bg"
                         android:textColor="@color/bg_screen2" />
-                </LinearLayout>
+
+
+
             </LinearLayout>
 
             <LinearLayout
@@ -295,37 +291,26 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/ended_date"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:orientation="horizontal"
-                    android:weightSum="2.0">
 
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_gravity="start"
-                        android:layout_weight=".05"
-                        android:src="@drawable/calendar_36"
-                        android:padding="5dp"
-                        android:textSize="14sp"
-                        android:id="@+id/buttonEnddate_MH_update"
-                        />
+
 
                     <TextView
                         android:id="@+id/textviewEnddate_MH_update"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text=" "
+                        android:padding="5dp"
+                        android:hint="@string/stop_date"
+                        android:drawableRight="@drawable/calendar_36"
+                        android:textColorHint="@color/bg_screen2"
+                        android:background="@drawable/border_bg"
                         android:textColor="@color/bg_screen2" />
-                </LinearLayout>
+
+
             </LinearLayout>
 
             <LinearLayout
@@ -342,6 +327,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/is_prescribed"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -351,8 +337,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:entries="@array/is_prescribed_arrays"
-                    android:padding="2dp"
-
+                    android:padding="5dp"
+android:background="@drawable/border_bg"
                     android:popupBackground="#fff" />
 
             </LinearLayout>
@@ -370,6 +356,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/notes"
+                    android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="16sp" />
 
@@ -379,7 +366,6 @@
                     android:layout_height="75dp"
                     android:layout_weight="1"
                     android:background="@drawable/border_bg"
-                    android:hint="Enter Notes"
                     android:padding="5dp"
                     android:textColor="@color/bg_screen2"
                     android:textColorHint="@color/bg_screen2"
@@ -402,8 +388,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1.0"
-                    android:background="@drawable/shape_btn"
+                    android:background="@drawable/background_button"
                     android:text="update"
+                    android:backgroundTint="#1F78D3"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp" />
 

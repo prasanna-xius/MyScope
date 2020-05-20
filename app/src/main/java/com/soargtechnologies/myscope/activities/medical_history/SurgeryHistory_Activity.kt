@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.surgeryhistory.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -33,6 +34,7 @@ class SurgeryHistory_Activity : BaseActivity() {
     var button_date_surg: ImageView? = null
     var button_surg: Button? = null;
     var textview_date_surg: TextView? = null
+    internal lateinit var myCalendar: Calendar
     var cal_surg = Calendar.getInstance()
 
     var mobile_no: String? = null
@@ -58,11 +60,11 @@ class SurgeryHistory_Activity : BaseActivity() {
         header!!.text = "Surgery History"
 
         textview_date_surg = this.textviewdate_surg
-        button_date_surg = this.buttondate_surg
+    //    button_date_surg = this.buttondate_surg
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-        showLongToast(mobile_no.toString())
+   //     showLongToast(mobile_no.toString())
       //  button_date_surg= findViewById(R.id.)
 
         et_namesurg = findViewById(R.id.et_name_surgery_history)
@@ -122,22 +124,22 @@ class SurgeryHistory_Activity : BaseActivity() {
 
                             var newbody = resp.body() // Use it or ignore it
 
-                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+ //                           Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                             finish()
                         }
                         else
                         {
 
-                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
                         //finish()
-                        Log.d("errormsgfailure ::",t.message)
-
-                        Log.e("errorunderfailure:",t.message)
-                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+//                        Log.d("errormsgfailure ::",t.message)
+//
+//                        Log.e("errorunderfailure:",t.message)
+//                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                     }
                 })
 
@@ -153,28 +155,18 @@ class SurgeryHistory_Activity : BaseActivity() {
 
 
         // create an OnDateSetListener
-        val dateSetListener = object : DatePickerDialog.OnDateSetListener {
-            override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int,
-                                   dayOfMonth: Int) {
-                cal_surg.set(Calendar.YEAR, year)
-                cal_surg.set(Calendar.MONTH, monthOfYear)
-                cal_surg.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                updateDateInView()
-            }
+        myCalendar = Calendar.getInstance()
+        val date= DatePickerDialog.OnDateSetListener{ view, year, monthofyear, dayofmonth ->
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, monthofyear)
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayofmonth)
+            val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
+            textviewdate_surg.setText(date1)
         }
-
-        // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
-        button_date_surg!!.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View) {
-                DatePickerDialog(this@SurgeryHistory_Activity,
-                        dateSetListener,
-                        // set DatePickerDialog to point to today's date when it loads up
-                        cal_surg.get(Calendar.YEAR),
-                        cal_surg.get(Calendar.MONTH),
-                        cal_surg.get(Calendar.DAY_OF_MONTH)).show()
-            }
-
-        })
+        textviewdate_surg.setOnClickListener {
+            DatePickerDialog(this, R.style.MyDatePicker, date ,  myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                    myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
     }
 
     private fun updateDateInView() {

@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/drug_title"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
             android:textSize="30sp" />
 
@@ -40,6 +41,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/drug_Name"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -71,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/reaction_effect"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -99,6 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/date_of_start"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -111,6 +115,7 @@
                 android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"
                 android:inputType="date"
+                android:drawableRight="@drawable/calendar_36"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -131,6 +136,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/treatment_taken"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 

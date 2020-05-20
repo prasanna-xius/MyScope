@@ -124,7 +124,7 @@ class PrescriptionDrugListUpdate : BaseActivity() {
 
             override fun onFailure(call: Call<List<PrescriptionDataClass>>, t: Throwable) {
 
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
         prescription_update_dialog.setOnClickListener() {
@@ -191,20 +191,20 @@ class PrescriptionDrugListUpdate : BaseActivity() {
 
                         if (resp.isSuccessful) {
                             var newbody = resp.body() // Use it or ignore it
-                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(applicationContext, "Successfully Added", Toast.LENGTH_SHORT).show()
                             val intent = Intent(applicationContext, Prescription_manualDrugDialog::class.java)
                             val bundle = Bundle()
                             bundle.putInt("prescription_id", prescription_idupdate)
                             intent.putExtras(bundle)
                             startActivity(intent)
                         } else {
-                            Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+ //                           Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<PrescriptionDataClass>, t: Throwable) {
 
-                        Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+ //                       Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
                     }
                 })
 

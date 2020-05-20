@@ -29,6 +29,7 @@ import kotlinx.android.synthetic.main.immunizationhistory_update.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -43,7 +44,8 @@ class ImmunizationUpdateActivity : BaseActivity() {
     var dateUpdate:String?=null
     var position: Int= 1;
     var cal = Calendar.getInstance()
-    var buttondate_immuupdate:ImageView?=null
+    var buttondate_immuupdate:TextView?=null
+    internal lateinit var myCalendar: Calendar
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
     var immunid:Int=0
@@ -69,32 +71,40 @@ class ImmunizationUpdateActivity : BaseActivity() {
         notesUpdate = findViewById<View>(R.id.et_notes_immunupdate).toString()
         eventUpdate = findViewById<View>(R.id.et_adverse_eventupdate).toString()
         brandUpdate = findViewById<View>(R.id.et_brandupdate).toString()
-        dateUpdate = findViewById<View>(R.id.textviewdate_immuupdate).toString()
+     //   dateUpdate = findViewById<View>(R.id.textviewdate_immuupdate).toString()
 
-        buttondate_immuupdate=findViewById(R.id.buttondate_immuupdate)
-
-
-        buttondate_immuupdate!!.setOnClickListener(View.OnClickListener {
-
-            DatePickerDialog(this@ImmunizationUpdateActivity,
-                    dateSetListener,
-                    // set DatePickerDialog to point to today's date when it loads up
-                    cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)).show()
+        buttondate_immuupdate=findViewById(R.id.textviewdate_immuupdate)
 
 
+//        buttondate_immuupdate!!.setOnClickListener(View.OnClickListener {
+//
+//            DatePickerDialog(this@ImmunizationUpdateActivity,
+//                    dateSetListener,
+//                    // set DatePickerDialog to point to today's date when it loads up
+//                    cal.get(Calendar.YEAR),
+//                    cal.get(Calendar.MONTH),
+//                    cal.get(Calendar.DAY_OF_MONTH)).show()
+//        })
 
-
-        })
-
+        myCalendar = Calendar.getInstance()
+        val date= DatePickerDialog.OnDateSetListener{ view, year, monthofyear, dayofmonth ->
+            myCalendar.set(Calendar.YEAR, year)
+            myCalendar.set(Calendar.MONTH, monthofyear)
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayofmonth)
+            val date1 = DateFormat.getDateInstance().format(myCalendar.getTime())
+            textviewdate_immuupdate.setText(date1)
+        }
+        textviewdate_immuupdate.setOnClickListener {
+            DatePickerDialog(this, R.style.MyDatePicker, date ,  myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                    myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
 
         val bundle: Bundle? = intent.extras
 
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
 
-            Toast.makeText(this,"data"+ARG_ITEM_ID.toString(),Toast.LENGTH_LONG).show()
+    //        Toast.makeText(this,"data"+ARG_ITEM_ID.toString(),Toast.LENGTH_LONG).show()
 
             //val id = intent.getIntExtra(ARG_ITEM_ID, 0)
 
@@ -115,7 +125,9 @@ class ImmunizationUpdateActivity : BaseActivity() {
         val requestCall = immuService.getImmunization(id)
 
 
-        Toast.makeText(this,"test msg "+ id,Toast.LENGTH_LONG).show()
+        progressbar()
+
+   //     Toast.makeText(this,"test msg "+ id,Toast.LENGTH_LONG).show()
 
         requestCall.enqueue(object : retrofit2.Callback<List<MedicalHistoryModelActivity>> {
 
@@ -150,17 +162,12 @@ class ImmunizationUpdateActivity : BaseActivity() {
                         //collapsing_toolbar.title = destination.city
                     }!!
                 } else {
-                    Toast.makeText(this@ImmunizationUpdateActivity, "Failed to retrieve details under else", Toast.LENGTH_SHORT)
-                            .show()
+      //              Toast.makeText(this@ImmunizationUpdateActivity, "Failed to retrieve details under else", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<MedicalHistoryModelActivity>>, t: Throwable) {
-                Toast.makeText(
-                        this@ImmunizationUpdateActivity,
-                        "Failed to retrieve details " + t.toString(),
-                        Toast.LENGTH_SHORT
-                ).show()
+      //          Toast.makeText( this@ImmunizationUpdateActivity,"Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT  ).show()
             }
         })
     }
@@ -216,24 +223,21 @@ class ImmunizationUpdateActivity : BaseActivity() {
 
                     override fun onResponse(call: Call<MedicalHistoryModelActivity>, response: Response<MedicalHistoryModelActivity>) {
 
-                        Log.d("tag:::::", response.toString())
-                        Log.d("tag:::::", response.message())
+//                        Log.d("tag:::::", response.toString())
+//                        Log.d("tag:::::", response.message())
 
                         var updatedDestination = response.body()
                         if (response.isSuccessful) {
                             finish() // Move back to DestinationListActivity
                             var updatedDestination = response.body() // Use it or ignore It
-                            Toast.makeText(this@ImmunizationUpdateActivity,
-                                    "Item Updated Successfully", Toast.LENGTH_SHORT).show()
+      //                      Toast.makeText(this@ImmunizationUpdateActivity,  "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                         } else {
-                            Toast.makeText(this@ImmunizationUpdateActivity,
-                                    "Failed to update item under else", Toast.LENGTH_SHORT).show()
+  //                          Toast.makeText(this@ImmunizationUpdateActivity, "Failed to update item under else", Toast.LENGTH_SHORT).show()
                         }
                     }
 
                     override fun onFailure(call: Call<MedicalHistoryModelActivity>, t: Throwable) {
-                        Toast.makeText(this@ImmunizationUpdateActivity,
-                                "Failed to update item", Toast.LENGTH_SHORT).show()
+  //                      Toast.makeText(this@ImmunizationUpdateActivity,    "Failed to update item", Toast.LENGTH_SHORT).show()
                     }
                 })
             }

@@ -39,7 +39,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
 
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         mobile_no = sharedpreferences!!.getString("mobile_no", null)
-        showLongToast(mobile_no.toString())
+   //     showLongToast(mobile_no.toString())
 
         val c = Calendar.getInstance()
         val day = c.get(Calendar.DAY_OF_MONTH)
@@ -76,7 +76,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
         val drugName = et_drug_Name.text.toString()
         validateInput(et_drug_Name, drugName)
         if ((drugName != "") ) {
-            showLongToast("save the details")
+ //           showLongToast("save the details")
 
             sucess()
         }
@@ -115,14 +115,14 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
             override fun onResponse(call: Call<Diseases>, resp: Response<Diseases>) {
                 if (resp.isSuccessful) {
                     var newbody = resp.body() // Use it or ignore it
-                    Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
+  //                  Toast.makeText(applicationContext, "Successfully Added"+newbody, Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+ //                   Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<Diseases>, t: Throwable) {
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+ //               Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
 

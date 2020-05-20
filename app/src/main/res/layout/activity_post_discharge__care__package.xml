@@ -12,19 +12,16 @@
 
         <include layout="@layout/app_bar_main" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="128sp"
-            android:background="#fff"
-            android:src="@drawable/wave_scaled" />
+        <include layout="@layout/background_image"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/post_discharge_care_package"
+            android:textStyle="bold"
             android:textColor="@color/bg_screen2"
-            android:textSize="20sp" />
+            android:textSize="29dp" />
 
 
         <TextView

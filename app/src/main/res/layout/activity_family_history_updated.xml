@@ -14,10 +14,12 @@
         <include layout="@layout/app_bar_main" />
 
         <include layout="@layout/background_image"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/family_history"
+            android:textStyle="bold"
             android:textSize="30sp"
             android:gravity="center"
             android:textColor="@color/bg_screen2" />
@@ -35,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/condition"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -46,7 +49,7 @@
                 android:background="@drawable/border_bg"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="@string/diabetes"
-                android:padding="2dp"
+                android:padding="5dp"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -64,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/relationship"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -72,8 +76,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/edittext_border"
-                android:padding="@dimen/dimen_4"
+                android:background="@drawable/border_bg"
+                android:padding="@dimen/dimen_5"
                 android:popupBackground="@color/colorWhite" />
 
         </LinearLayout>
@@ -90,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/notes"
+                android:textStyle="bold"
                 android:textColor="@color/bg_screen2"
                 android:textSize="16sp" />
 
@@ -111,7 +116,7 @@
             <Button
                 android:id="@+id/btn_familyUpdated"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/dimen_10"
                 android:layout_marginTop="@dimen/dimen_10"

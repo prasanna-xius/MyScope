@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.Contact_us.Contact_us
 import com.soargtechnologies.myscope.activities.labReports.Lab_Reports_Homepage
 import com.soargtechnologies.myscope.activities.medical_documents.Medical_Documents_HomePage
 import com.soargtechnologies.myscope.activities.medical_history.Medical_History_HomePage
@@ -129,7 +130,7 @@ class Navigation_Drawer_Blogs : BaseActivity(), NavigationDrawerCallbacks, View.
                 navigateToActivity(Intent(applicationContext,ComingSoon_Activity::class.java))
             }
             R.id.card_ContactUs -> {
-                navigateToActivity(Intent(applicationContext,Contact_Us::class.java))
+                navigateToActivity(Intent(applicationContext,Contact_us::class.java))
             }
         }
     }

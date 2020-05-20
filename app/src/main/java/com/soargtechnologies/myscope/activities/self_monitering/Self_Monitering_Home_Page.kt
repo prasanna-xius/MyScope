@@ -20,7 +20,7 @@ class Self_Monitering_Home_Page : BaseActivity() {
 
 
 
-    var images = intArrayOf(R.drawable.glucose, R.drawable.hypertension, R.drawable.cholesterol, R.drawable.bmi, R.drawable.heartbeat, R.drawable.dizziness)
+    var images = intArrayOf(R.drawable.glucose1, R.drawable.hypertension1, R.drawable.cholesterol1, R.drawable.bmi1, R.drawable.heartbeat1, R.drawable.dizziness1)
     var names = arrayOf("Blood Glucose", "Blood Pressure", "Cholesterol", "BMI", "Exercise Tracker", "Emotional State")
 
 

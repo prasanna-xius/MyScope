@@ -14,6 +14,7 @@
         <item name="android:textColorPrimary">@color/bg_screen2</item>
         <item name="android:textColor">@color/bg_screen2</item>
     </style>
+
     <style name="TextStyle_Title">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -54,5 +55,14 @@
         <item name="android:textColor">@color/bg_screen2</item>
         <item name="colorAccent">@color/bg_screen2</item>
     </style>
+
+    <style name="NoActionBar" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
