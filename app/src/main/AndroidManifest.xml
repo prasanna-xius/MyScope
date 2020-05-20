@@ -45,7 +45,7 @@
         <activity android:name=".activities.self_monitering.Blood_GlucoseUpdate" />
         <activity android:name=".activities.self_monitering.Blood_Glucose_recyclerView" />
         <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" />
-        <activity android:name=".activities.Contact_Us" /> <!-- <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> -->
+<!--        <activity android:name=".activities.Contact_Us" /> &lt;!&ndash; <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> &ndash;&gt;-->
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
         <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
         <activity android:name=".activities.ComingSoon_Activity" />
@@ -156,7 +156,7 @@
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
         <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog" />
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
-        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
+<!--        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />-->
         <activity android:name=".activities.Educational_Blog_Activity" />
         <activity android:name=".activities.labReports.Lab_BloodAddImage_PDF"></activity>
         <activity android:name=".activities.labReports.Lab_ColonoScopyAddImage_PDF"></activity>
@@ -202,7 +202,7 @@
         <activity android:name=".activities.Elsevier_Network_Covid19_WebActivity" />
         <activity android:name=".activities.Oxward_Acadamic_Covid19_WebActivity" />
         <activity android:name=".activities.Nature_Covid19_WebActivity" />
-        <activity android:name=".activities.Full_Image_Activity" />
+<!--        <activity android:name=".activities.Full_Image_Activity" />-->
         <activity android:name=".activities.Guidelines_Activity" />
         <activity android:name=".activities.Courses_Training_Activity" />
         <activity android:name=".activities.News_Updates_Activity" />
