@@ -111,7 +111,7 @@ class MedicalDoc_Discharge : BaseActivity() {
 
         val service = ServiceBuilder.buildService(PrescriptionInterface::class.java)
 
-        val requestCall = service.getDischargeDetails("8142529582")
+        val requestCall = service.getDischargeDetails(mobile_no)
 
         requestCall.enqueue(object : Callback<MutableList<PrescriptionDataClass>> {
             // If you receive a HTTP Response, then this method is executed
@@ -185,7 +185,7 @@ class MedicalDoc_Discharge : BaseActivity() {
         val requestFile: RequestBody
         val body: MultipartBody.Part
         var type: RequestBody
-        var mobile = RequestBody.create(MediaType.parse("text/plain"), "8142529582")
+        var mobile = RequestBody.create(MediaType.parse("text/plain"), mobile_no)
 
 
         var date = RequestBody.create(MediaType.parse("text/plain"), datesetvalue())
