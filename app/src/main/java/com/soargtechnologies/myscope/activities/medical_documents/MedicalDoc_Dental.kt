@@ -46,7 +46,7 @@ class MedicalDoc_Dental : BaseActivity() {
     private var mImageUrl = ""
     var p_uploadid: Int = 0
     var recyclerView: RecyclerView? = null
-    var presAdapter: Prescription_ImageAdapter? = null
+    var DocAdapter: Document_DentalAdapter? = null
     lateinit var sharedpreferences: SharedPreferences
     var mobile_no:String = ""
     var model_name:String = ""
@@ -74,10 +74,10 @@ class MedicalDoc_Dental : BaseActivity() {
 
 
             swipeCount += 1
-            if (swipeCount >= 0) {
-//                loadDestinations()
+            if (swipeCount > 0) {
+                loadDestinations()
             }
-            presAdapter!!.notifyDataSetChanged()
+            DocAdapter!!.notifyDataSetChanged()
 
 
 
@@ -124,8 +124,8 @@ class MedicalDoc_Dental : BaseActivity() {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val imageList = response.body()!!
-                    val adapter= Document_DentalAdapter(imageList)
-                    recyclerView!!.adapter = adapter
+                    DocAdapter= Document_DentalAdapter(imageList)
+                    recyclerView!!.adapter = DocAdapter
                     dental_recycler_view.adapter?.notifyDataSetChanged()
                 } else if (response.code() == 401) {
                     showLongToast("Your session has expired. Please Login again.")

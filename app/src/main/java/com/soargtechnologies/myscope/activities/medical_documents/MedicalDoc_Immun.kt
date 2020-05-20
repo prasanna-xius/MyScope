@@ -47,7 +47,7 @@ class MedicalDoc_Immun : BaseActivity() {
     private var mImageUrl = ""
     var p_uploadid: Int = 0
     var recyclerView: RecyclerView? = null
-    var presAdapter: Prescription_ImageAdapter? = null
+    var DocAdapter: Document_ImmunAdapter? = null
     lateinit var sharedpreferences: SharedPreferences
     var mobile_no:String = ""
     var model_name:String = ""
@@ -75,10 +75,10 @@ class MedicalDoc_Immun : BaseActivity() {
 
 
             swipeCount += 1
-            if (swipeCount >= 0) {
+            if (swipeCount > 0) {
 //                loadDestinations()
             }
-            presAdapter!!.notifyDataSetChanged()
+            DocAdapter!!.notifyDataSetChanged()
 
 
 
@@ -125,8 +125,8 @@ class MedicalDoc_Immun : BaseActivity() {
                 if (response.isSuccessful()) {
                     // Your status code is in the range of 200's
                     val imageList = response.body()!!
-                    val adapter= Document_ImmunAdapter(imageList)
-                    recyclerView!!.adapter = adapter
+                     DocAdapter= Document_ImmunAdapter(imageList)
+                    recyclerView!!.adapter = DocAdapter
                     immundoc_recycler_view.adapter?.notifyDataSetChanged()
                 } else if (response.code() == 401) {
                     showLongToast("Your session has expired. Please Login again.")
