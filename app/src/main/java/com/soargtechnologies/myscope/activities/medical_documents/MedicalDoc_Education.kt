@@ -31,6 +31,7 @@ import com.soargtechnologies.myscope.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_medical_doc__discharge.*
 import kotlinx.android.synthetic.main.activity_medical_doc__education.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -62,6 +63,7 @@ class MedicalDoc_Education: BaseActivity() {
         mobile_no = sharedpreferences!!.getString("mobile_no",null)!!
 
         recyclerView = findViewById(R.id.education_recycler_view)
+        header.text = "Education Documents"
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -94,7 +96,7 @@ class MedicalDoc_Education: BaseActivity() {
 
         val view: View = layoutInflater.inflate(
                 R.layout.list_doc_education, // Custom view/ layout
-                activity_pres, // Root layout to attach the view
+                doc_education, // Root layout to attach the view
                 false)
 
 

@@ -28,6 +28,7 @@ import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_medical_doc__discharge.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -59,6 +60,7 @@ class MedicalDoc_Discharge : BaseActivity() {
         mobile_no = sharedpreferences!!.getString("mobile_no",null)!!
 
         recyclerView = findViewById(R.id.discharge_recycler_view)
+        header.text = "Discharge Documents"
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL

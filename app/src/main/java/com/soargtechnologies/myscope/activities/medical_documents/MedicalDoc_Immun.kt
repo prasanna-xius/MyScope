@@ -32,6 +32,7 @@ import kotlinx.android.synthetic.main.activity_immunization_list.*
 import kotlinx.android.synthetic.main.activity_medical_doc__discharge.*
 import kotlinx.android.synthetic.main.activity_medical_doc__immun.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -60,10 +61,10 @@ class MedicalDoc_Immun : BaseActivity() {
         setContentView(R.layout.activity_medical_doc__immun)
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         p_uploadid = sharedpreferences.getInt("immunid", 0)
-        model_name = sharedpreferences!!.getString("model_name",null)!!
         mobile_no = sharedpreferences!!.getString("mobile_no",null)!!
 
         recyclerView = findViewById(R.id.immundoc_recycler_view)
+        header.text = "Immunization Documents"
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -96,7 +97,7 @@ class MedicalDoc_Immun : BaseActivity() {
 
         val view: View = layoutInflater.inflate(
                 R.layout.list_doc_immun, // Custom view/ layout
-                activity_pres, // Root layout to attach the view
+                doc_immun, // Root layout to attach the view
                 false)
 
 

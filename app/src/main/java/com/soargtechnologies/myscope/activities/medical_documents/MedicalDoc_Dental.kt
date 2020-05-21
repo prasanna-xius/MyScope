@@ -31,6 +31,7 @@ import com.soargtechnologies.myscope.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_medical_doc__dental.*
 import kotlinx.android.synthetic.main.activity_medical_doc__discharge.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -59,8 +60,8 @@ class MedicalDoc_Dental : BaseActivity() {
         setContentView(R.layout.activity_medical_doc__dental)
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         p_uploadid = sharedpreferences.getInt("dentalid", 0)
-        model_name = sharedpreferences!!.getString("model_name",null)!!
         mobile_no = sharedpreferences!!.getString("mobile_no",null)!!
+        header.text = "Dental Documents"
 
         recyclerView = findViewById(R.id.dental_recycler_view)
 
@@ -95,7 +96,7 @@ class MedicalDoc_Dental : BaseActivity() {
 
         val view: View = layoutInflater.inflate(
                 R.layout.list_item_prescription_image, // Custom view/ layout
-                activity_pres, // Root layout to attach the view
+                doc_dental, // Root layout to attach the view
                 false)
 
 

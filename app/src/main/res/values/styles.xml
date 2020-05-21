@@ -9,11 +9,11 @@
 
     </style>
 
-    <style name="MyDatePicker" parent="android:Widget.Material.Light.DatePicker" tools:targetApi="lollipop">
-        <item name="colorAccent">@color/bg_screen2</item>
-        <item name="android:textColorPrimary">@color/bg_screen2</item>
-        <item name="android:textColor">@color/bg_screen2</item>
-    </style>
+<!--    <style name="MyDatePicker" parent="android:Widget.Material.Light.DatePicker" tools:targetApi="lollipop">-->
+<!--        <item name="colorAccent">@color/bg_screen2</item>-->
+<!--        <item name="android:textColorPrimary">@color/bg_screen2</item>-->
+<!--        <item name="android:textColor">@color/bg_screen2</item>-->
+<!--    </style>-->
 
     <style name="TextStyle_Title">
         <item name="android:layout_width">match_parent</item>

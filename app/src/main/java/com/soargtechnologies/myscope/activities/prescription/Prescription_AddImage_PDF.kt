@@ -28,6 +28,8 @@ import com.soargtechnologies.myscope.helpers.Prescription_ImageAdapter
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
+import kotlinx.android.synthetic.main.activity_prescription_manual.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -61,6 +63,7 @@ class Prescription_AddImage_PDF : BaseActivity() {
         p_uploadid = sharedpreferences.getInt("uploadid", 0)
          model_name = sharedpreferences!!.getString("model_name",null)!!
          mobile_no = sharedpreferences!!.getString("mobile_no",null)!!
+        header!!.text = "Prescription-" + model_name
 
         recyclerView = findViewById(R.id.pres_recycler_view)
 

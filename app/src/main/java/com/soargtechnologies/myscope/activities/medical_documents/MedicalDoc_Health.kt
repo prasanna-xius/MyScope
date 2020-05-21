@@ -31,6 +31,7 @@ import com.soargtechnologies.myscope.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_medical_doc__discharge.*
 import kotlinx.android.synthetic.main.activity_medical_doc__health.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -63,6 +64,7 @@ class MedicalDoc_Health : BaseActivity() {
 
         recyclerView = findViewById(R.id.health_recycler_view)
 
+        header.text="Health Insurance Documents"
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView!!.layoutManager = layoutManager
@@ -94,7 +96,7 @@ class MedicalDoc_Health : BaseActivity() {
 
         val view: View = layoutInflater.inflate(
                 R.layout.list_doc_health, // Custom view/ layout
-                activity_pres, // Root layout to attach the view
+                doc_health, // Root layout to attach the view
                 false)
 
 

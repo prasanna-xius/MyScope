@@ -31,6 +31,7 @@ import com.soargtechnologies.myscope.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_medical_doc__diet.*
 import kotlinx.android.synthetic.main.activity_medical_doc__discharge.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -61,6 +62,7 @@ class MedicalDoc_Diet : BaseActivity() {
         p_uploadid = sharedpreferences.getInt("dietid", 0)
         mobile_no = sharedpreferences!!.getString("mobile_no",null)!!
 
+        header.text = "Diet Documents"
         recyclerView = findViewById(R.id.diet_recycler_view)
 
         val layoutManager = LinearLayoutManager(this)
@@ -94,7 +96,7 @@ class MedicalDoc_Diet : BaseActivity() {
 
         val view: View = layoutInflater.inflate(
                 R.layout.list_doc_diet, // Custom view/ layout
-                activity_pres, // Root layout to attach the view
+                doc_diet, // Root layout to attach the view
                 false)
 
 
