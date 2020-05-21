@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.BaseActivity
 import com.soargtechnologies.myscope.activities.prescription.ManagePermissions
 import com.soargtechnologies.myscope.helpers.Lab_Blood_ImageAdapter
 import com.soargtechnologies.myscope.helpers.Lab_Urine_ImageAdapter
@@ -34,6 +35,7 @@ import kotlinx.android.synthetic.main.activity_lab_blood_image_list.*
 import kotlinx.android.synthetic.main.activity_lab_urine_image_list.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.itemsswipetorefresh
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -43,7 +45,7 @@ import retrofit2.Response
 import java.io.*
 import java.util.*
 
-class Lab_UrineAddImage_PDF : AppCompatActivity() {
+class Lab_UrineAddImage_PDF :BaseActivity() {
     var file: File? = null
     var uri: Uri? = null
     // var mobile_no:String?=null
@@ -71,6 +73,9 @@ class Lab_UrineAddImage_PDF : AppCompatActivity() {
         setContentView(R.layout.activity_lab_urine_image_list)
         //val toolbar = findViewById<View>(R.id.toolbar_imageuploader) as Toolbar
         //setSupportActionBar(toolbar)
+        activitiesToolbar()
+
+        header!!.text = "Lab Reports"
         sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
         p_uploadid = sharedpreferences.getInt("uploadid", 0)
        // model_name = sharedpreferences!!.getString("model_name",null)!!
