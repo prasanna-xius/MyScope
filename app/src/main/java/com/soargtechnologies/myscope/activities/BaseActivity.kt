@@ -165,6 +165,8 @@ open class BaseActivity : AppCompatActivity() {
 
         } else {
             editText.setCompoundDrawables(null, null, null, null)
+            editText.error = null
+
         }
     }
 
@@ -246,10 +248,9 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun progressbar () {
-       val progressDialog =  ProgressDialog(this)
-        progressDialog.setMessage("Loading")
-        progressDialog.setCancelable(false)
-        progressDialog.show()
+       var progressDialog =  ProgressDialog(this , R.style.MyProgressTheme)
+
+        progressDialog = ProgressDialog.show(this, "Loading", "Please wait...", false, false   )
 
         Handler().postDelayed({progressDialog.dismiss()},3000)
 

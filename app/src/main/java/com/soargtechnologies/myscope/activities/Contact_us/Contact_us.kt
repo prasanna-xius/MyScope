@@ -27,7 +27,7 @@ class Contact_us : BaseActivity() {
         header!!.text = "Contact Us"
 
         btn_contact_us.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+    //        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
             sendMail()
         }
 
@@ -38,7 +38,7 @@ class Contact_us : BaseActivity() {
         val mail = "sanksharma7@gmail.com"
 
         val subject = subject.text.toString().trim()
-        val message = message.text.toString().trim ()  +  System.getProperty("line.separator")  +   name.text.toString().trim()  + "\n"  +   name.text.toString().trim()
+        val message = message.text.toString().trim ()  + "\n"  +   name.text.toString().trim()
 
 //        + "from" +  edt_email!!.text.toString().trim()
 

@@ -25,6 +25,16 @@
             <include layout="@layout/side_activity" />
 
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/allergy"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:textSize="30sp" />
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,7 +62,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:entries="@array/allergy_arrays"
-
                         android:background="@drawable/border_bg"
                         android:padding="5dp"
                         android:popupBackground="#fff" />
@@ -63,9 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:padding="3dp"
                 android:weightSum="2">
 
                 <TextView
@@ -180,7 +187,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
                         android:padding="4dp"
-                        android:hint="@string/dOB"
+                        android:hint="@string/date_of_test"
                         android:drawableRight="@drawable/calendar_36"
                         android:textColorHint="@color/bg_screen2"
                         android:background="@drawable/border_bg"

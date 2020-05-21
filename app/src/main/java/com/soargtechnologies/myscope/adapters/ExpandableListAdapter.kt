@@ -155,8 +155,8 @@ class ExpandableListAdapter(private val context: Context, private val expandable
         var Blood_Glucose_Monitoring = 0
         var Blood_Pressure = 1
         var Cholostrol = 2
-        var Weight = 3
+        var BMI = 3
         var Exercise_Tracker = 4
-        var SpO2 = 5
+        var Emotional_State = 5
     }
 }

@@ -36,10 +36,10 @@
     <string name="nameerror">Name Required</string>
 
     <!--Medical History-->
-    <string name="medical_history">DISEASE HISTORY</string>
+    <string name="medical_history">Disease History</string>
     <string name="known_condition">Known Condition <font color='#ff0000'>*</font></string>
-    <string name="disease_statues"> Disease Statues <font color='#ff0000'>*</font></string>
-    <string name="disease_duration"> Disease Duration <font color='#ff0000'>*</font></string>
+    <string name="disease_statues">Disease Statues <font color='#ff0000'>*</font></string>
+    <string name="disease_duration">Disease Duration <font color='#ff0000'>*</font></string>
     <string name="no_of_yrs"> No of yrs</string>
     <string name="when_started">When Started</string>
     <string name="started_date">Started Date</string>
@@ -69,8 +69,8 @@
     <string name="tobacco_usage">Tobacco usage<font color='#ff0000'>*</font></string>
     <!--Social History-->
     <!--Diet-->
-    <string name="diet_title">DIET</string>
-    <string name="diet">DIET<font color='#ff0000'>*</font></string>
+    <string name="diet_title">Diet</string>
+    <string name="diet">Diet<font color='#ff0000'>*</font></string>
     <string name="diet_notes">Special Diet Notes</string>
     <!--Diet-->
     <!--MedicalHistoryModelActivity-->

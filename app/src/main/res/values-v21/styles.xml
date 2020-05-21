@@ -33,8 +33,33 @@
         <item name="colorAccent">@color/bg_screen2</item>
         <item name="android:textColorPrimary">@color/colorWhite</item>
         <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@color/bg_screen2</item>
+        <item name="android:layout_width">@dimen/dimen_100</item>
+        <item name="android:layout_height">@dimen/dimen_100</item>
 
 
     </style>
 
+    <style name="MyProgressTheme"  parent="Theme.AppCompat.Light.Dialog.Alert">
+
+<!--        <item name="android:textColorPrimary">#000000</item>-->
+<!--        <item name="android:alertDialogStyle">@style/background</item>-->
+
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@color/bg_screen2</item>
+
+    </style>
+
+    <style name="background" >
+        <item name="android:background">@color/bg_screen2</item>
+        <item name="android:colorBackground">@color/bg_screen2</item>
+    <item name="android:bottomBright">@color/bg_screen2</item>
+    <item name="android:bottomDark">@color/bg_screen2</item>
+    <item name="android:bottomMedium">@color/bg_screen2</item>
+    <item name="android:centerBright">@color/bg_screen2</item>
+    <item name="android:centerDark">@color/bg_screen2</item>
+    <item name="android:centerMedium">@color/bg_screen2</item>
+    <item name="android:topBright">@color/bg_screen2</item>
+    <item name="android:topDark">@color/bg_screen2</item>
+    </style>
 </resources>
