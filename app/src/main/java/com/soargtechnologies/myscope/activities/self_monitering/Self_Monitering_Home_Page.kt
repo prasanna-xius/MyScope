@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.BaseActivity
+import com.soargtechnologies.myscope.activities.ComingSoon_Activity
 import com.soargtechnologies.myscope.activities.medical_history.*
 import kotlinx.android.synthetic.main.activity_self__monitering__home__page.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -72,7 +73,7 @@ class Self_Monitering_Home_Page : BaseActivity() {
                 } else if (position == 3) {
                     navigateToActivity(Intent(applicationContext, Bmi_recyclerView::class.java))
                 } else if (position == 4) {
-                    navigateToActivity(Intent(applicationContext, Exercise_tracker::class.java))
+                    navigateToActivity(Intent(applicationContext, ComingSoon_Activity::class.java))
                 } else if (position == 5) {
                     navigateToActivity(Intent(applicationContext, Emotional_state_recyclerView::class.java))
                 }

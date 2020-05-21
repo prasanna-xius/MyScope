@@ -16,11 +16,17 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.ComingSoon_Activity
 import com.soargtechnologies.myscope.activities.Dash_Board_Activity
 import com.soargtechnologies.myscope.activities.medical_documents.Medical_Documents_HomePage
 import com.soargtechnologies.myscope.activities.prescription.Prescription_manualDrugDialog
 import com.soargtechnologies.myscope.activities.medical_history.*
+import com.soargtechnologies.myscope.activities.self_monitering.Blood_Glucose_recyclerView
+import com.soargtechnologies.myscope.activities.self_monitering.Blood_Pressure_recyclerView
+import com.soargtechnologies.myscope.activities.self_monitering.Cholestrol_recyclerView
+import com.soargtechnologies.myscope.activities.self_monitering.Emotional_state_recyclerView
 import com.soargtechnologies.myscope.adapters.ExpandableListAdapter
+import kotlinx.android.synthetic.main.activity_bmi_recycler_view.*
 import java.util.*
 
 class NavigationDrawerFragment : Fragment() {
@@ -223,27 +229,27 @@ class NavigationDrawerFragment : Fragment() {
                 }
             } else if (groupPosition == ExpandableListAdapter.Self_Monitoring) {
                 if (childPosition == ExpandableListAdapter.Blood_Glucose_Monitoring) { // call activity here
-                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
+                    val intent = Intent(activity, Blood_Glucose_recyclerView::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Blood_Pressure) { // call activity here
-                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
+                    val intent = Intent(activity, Blood_Pressure_recyclerView::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Cholostrol) { // call activity here
-                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
+                    val intent = Intent(activity, Cholestrol_recyclerView::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
-                } else if (childPosition == ExpandableListAdapter.Weight) { // call activity here
-                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
+                } else if (childPosition == ExpandableListAdapter.BMI) { // call activity here
+                    val intent = Intent(activity, bmi_recycler_view::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 } else if (childPosition == ExpandableListAdapter.Exercise_Tracker) { // call activity here
-                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
+                    val intent = Intent(activity, ComingSoon_Activity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
-                } else if (childPosition == ExpandableListAdapter.SpO2) { // call activity here
-                    val intent = Intent(activity, Medical_Documents_HomePage::class.java)
+                } else if (childPosition == ExpandableListAdapter.Emotional_State) { // call activity here
+                    val intent = Intent(activity, Emotional_state_recyclerView::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
                 }

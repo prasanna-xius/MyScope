@@ -156,7 +156,7 @@
         <activity android:name=".activities.prescription.PrescriptionDrugListUpdate" />
         <activity android:name=".activities.prescription.Prescription_ManualDoctorDialog" />
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
-<!--        <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />-->
+        <activity android:name=".activities.prescription.PDFopenfile" />
         <activity android:name=".activities.Educational_Blog_Activity" />
         <activity android:name=".activities.labReports.Lab_BloodAddImage_PDF"></activity>
         <activity android:name=".activities.labReports.Lab_ColonoScopyAddImage_PDF"></activity>

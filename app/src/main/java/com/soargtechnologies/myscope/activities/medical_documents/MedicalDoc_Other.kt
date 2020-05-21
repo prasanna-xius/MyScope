@@ -31,6 +31,7 @@ import com.soargtechnologies.myscope.services.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_medical_doc__discharge.*
 import kotlinx.android.synthetic.main.activity_medical_doc__other.*
 import kotlinx.android.synthetic.main.activity_prescription_image_list.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -66,6 +67,7 @@ class MedicalDoc_Other: BaseActivity() {
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recyclerView!!.layoutManager = layoutManager
+        header.text = "Other Documents"
 
         docother.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this, R.color.colorPrimary))
         docother.setColorSchemeColors(Color.WHITE)
@@ -94,7 +96,7 @@ class MedicalDoc_Other: BaseActivity() {
 
         val view: View = layoutInflater.inflate(
                 R.layout.list_doc_other, // Custom view/ layout
-                activity_pres, // Root layout to attach the view
+                doc_other, // Root layout to attach the view
                 false)
 
 
