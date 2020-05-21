@@ -12,6 +12,7 @@
     android:orientation="vertical"
     android:background="#fff">
 
+    <include layout="@layout/app_bar_main" />
 
 
     <LinearLayout
