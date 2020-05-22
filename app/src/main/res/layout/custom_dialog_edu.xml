@@ -7,12 +7,18 @@
     android:background="#fff"
     android:layout_margin="15dp"
     android:orientation="vertical">
-
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:visibility="invisible"
+        android:background="@drawable/wave_scaled_new"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_450"
         android:layout_gravity="center"
         android:gravity="center"
+        android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher"
         android:id="@+id/img"/>
 

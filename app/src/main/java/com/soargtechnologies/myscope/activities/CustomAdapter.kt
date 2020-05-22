@@ -36,7 +36,7 @@ class CustomAdapter(private val covidImages: MutableList<PrescriptionDataClass>)
         val imgls = covidImages[position]
         id = imgls.education_imagesno
 
-        var encodedString: String = imgls.downloadimage.toString()
+        var encodedString: String = imgls.educationdownloadimage.toString()
         var pureBase64Encoded = encodedString.substring(encodedString.indexOf(",") + 1);
 
         var decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT)
