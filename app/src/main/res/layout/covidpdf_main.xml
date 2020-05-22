@@ -3,6 +3,7 @@
     android:layout_width="@dimen/dimen_150"
     android:layout_height="wrap_content"
     android:background="@color/colorWhite"
+    android:layout_margin="@dimen/dimen_10"
     android:orientation="vertical">
 
     <ImageView

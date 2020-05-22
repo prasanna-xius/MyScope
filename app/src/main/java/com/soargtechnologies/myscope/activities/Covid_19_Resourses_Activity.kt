@@ -28,8 +28,8 @@ class Covid_19_Resourses_Activity : BaseActivity() {
 
     var covidImages: ArrayList<*> = ArrayList(Arrays.asList(R.drawable.carona_image))
 
-    private val pdflist: MutableList<covid_pdflist> = ArrayList()
-    private var mAdapter: CustomAdapter_Pdf? = null
+//    private val pdflist: MutableList<covid_pdflist> = ArrayList()
+//    private var mAdapter: CustomAdapter_Pdf? = null
 
     val pageUrl_Covidtracker = "https://www.covid19india.org/"
 
@@ -58,6 +58,10 @@ class Covid_19_Resourses_Activity : BaseActivity() {
     val pageUrl_Covid_Nature = "https://www.nature.com/collections/hajgidghjb"
 
     var recyclerView_image: RecyclerView? = null
+    var recyclerView_pdf: RecyclerView? = null
+    var recyclerView_link: RecyclerView? = null
+
+
     var customAdapter_image: CustomAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,70 +71,111 @@ class Covid_19_Resourses_Activity : BaseActivity() {
         activitiesToolbar()
         header1!!.text = "COVID-19 Resourses"
 
-//        covid19_tracker.setOnClickListener(this)
-//        map_covid19.setOnClickListener(this)
-//
-//        wiley_library_covid19.setOnClickListener(this)
-//        cdc_centers_covid19.setOnClickListener(this)
-//        newengland_medicine_covid19.setOnClickListener(this)
-//        jama_network_covid19.setOnClickListener(this)
-//        lancet_covid19.setOnClickListener(this)
-//        cell_covid19.setOnClickListener(this)
-//        medical_journey_covid19.setOnClickListener(this)
-//        science_covid19.setOnClickListener(this)
-//        elsevier_network_covid19.setOnClickListener(this)
-//        oxward_acadamics_covid19.setOnClickListener(this)
-//        nature_covid19.setOnClickListener(this)
-
-         recyclerView_image = findViewById(R.id.recycler_view_images) as RecyclerView
+        recyclerView_image = findViewById(R.id.recycler_view_images) as RecyclerView
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         recyclerView_image!!.layoutManager = layoutManager
 
+        recyclerView_pdf = findViewById(R.id.recycler_view_pdf) as RecyclerView
 
 
+        val layoutManager_pdf = LinearLayoutManager(this)
+        layoutManager_pdf.orientation = LinearLayoutManager.HORIZONTAL
+        recyclerView_pdf!!.layoutManager = layoutManager_pdf
+
+        recyclerView_link = findViewById(R.id.recycler_view_weblink) as RecyclerView
+
+        val layoutManager_weblink = LinearLayoutManager(this)
+        layoutManager_weblink.orientation = LinearLayoutManager.VERTICAL
+        recyclerView_link!!.layoutManager = layoutManager_weblink
+
+        loadlinks()
 
         loadImages()
 
+        loadPdf()
+
+    }
+
+    private fun loadlinks() {
+
+        val service = ServiceBuilder.buildService(PrescriptionInterface::class.java)
 
 
+        val requestCall = service.getCovidWebLinkDetails()
 
-        val recyclerView_pdf = findViewById(R.id.recycler_view_pdf) as RecyclerView
-        mAdapter = CustomAdapter_Pdf(pdflist)
-        recyclerView_pdf.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false) // set LayoutManager to RecyclerView
+        requestCall.enqueue(object : Callback<MutableList<PrescriptionDataClass>> {
 
-        recyclerView_pdf!!.itemAnimator = DefaultItemAnimator()
-        recyclerView_pdf!!.adapter = mAdapter
+            override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
+                if (response.isSuccessful()) {
 
-        recyclerView_pdf!!.addOnItemTouchListener(RecyclerTouchListener(applicationContext, recyclerView_pdf!!, object : RecyclerTouchListener.ClickListener {
-            override fun onClick(view: View?, position: Int) {
-                val mIntent: Intent
-                when (position) {
-                    0 -> {
-                        navigateToActivity(Intent(applicationContext, Covid_19_Update_Activity::class.java))
 
-                    }
-                    1 -> {
-                        navigateToActivity(Intent(applicationContext, Covid_19_Guidelines_HomeQuarantine::class.java))
+                    val covid_weblinklist = response.body()!!
 
-                    }
-                    2 -> {
-                        navigateToActivity(Intent(applicationContext, Covid_19_IFMSA_Library_Overview_Converted::class.java))
+                    val adapter = CustomAdapter_WebLinks(covid_weblinklist)
 
-                    }
-                    3 -> {
-                        navigateToActivity(Intent(applicationContext, Covid_19_Who_China_Joint_Mission_Final_Reported_Activity::class.java))
+                            recyclerView_link!!.adapter = adapter
 
-                    }
+//                    pres_recycler_view.adapter?.notifyDataSetChanged()
+
+
+                } else if (response.code() == 401) {
+                    Toast.makeText(this@Covid_19_Resourses_Activity,
+                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+                } else { // Application-level failure
+                    // Your status code is in the range of 300's, 400's and 500's
+                    Toast.makeText(this@Covid_19_Resourses_Activity, "Failed to retrieve items", Toast.LENGTH_LONG).show()
                 }
             }
 
-            override fun onLongClick(view: View?, position: Int) {}
+            // Invoked in case of Network Error or Establishing connection with Server
+            // or Error Creating Http Request or Error Processing Http Response
+            override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
+
+                Toast.makeText(this@Covid_19_Resourses_Activity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+            }
+        })
+
+    }
+
+    private fun loadPdf() {
+
+        val service = ServiceBuilder.buildService(PrescriptionInterface::class.java)
 
 
-        }))
-        pdffileslist()
+        val requestCall = service.getCovidPdfDetails()
+
+        requestCall.enqueue(object : Callback<MutableList<PrescriptionDataClass>> {
+
+            override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
+                if (response.isSuccessful()) {
+
+
+                    val covid_pdflist = response.body()!!
+
+                    val adapter = CustomAdapter_Pdf(covid_pdflist)
+
+                    recyclerView_pdf!!.adapter = adapter
+//                    pres_recycler_view.adapter?.notifyDataSetChanged()
+
+
+                } else if (response.code() == 401) {
+                    Toast.makeText(this@Covid_19_Resourses_Activity,
+                            "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
+                } else { // Application-level failure
+                    // Your status code is in the range of 300's, 400's and 500's
+                    Toast.makeText(this@Covid_19_Resourses_Activity, "Failed to retrieve items", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            // Invoked in case of Network Error or Establishing connection with Server
+            // or Error Creating Http Request or Error Processing Http Response
+            override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
+
+                Toast.makeText(this@Covid_19_Resourses_Activity, "Error Occurred" + t.toString(), Toast.LENGTH_LONG).show()
+            }
+        })
 
     }
 
@@ -141,20 +186,19 @@ class Covid_19_Resourses_Activity : BaseActivity() {
 
         val requestCall = service.getCovidImageDetails()
 
-        requestCall.enqueue(object: Callback<MutableList<PrescriptionDataClass>> {
+        requestCall.enqueue(object : Callback<MutableList<PrescriptionDataClass>> {
 
             override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
                 if (response.isSuccessful()) {
 
 
                     val imageList = response.body()!!
-                    val adapter= CustomAdapter(imageList)
+                    val adapter = CustomAdapter(imageList)
                     recyclerView_image!!.adapter = adapter
 //                    pres_recycler_view.adapter?.notifyDataSetChanged()
 
 
-
-                } else if(response.code() == 401) {
+                } else if (response.code() == 401) {
                     Toast.makeText(this@Covid_19_Resourses_Activity,
                             "Your session has expired. Please Login again.", Toast.LENGTH_LONG).show()
                 } else { // Application-level failure
@@ -172,18 +216,18 @@ class Covid_19_Resourses_Activity : BaseActivity() {
         })
     }
 
-    private fun pdffileslist() {
-
-        var pdf_file = covid_pdflist(R.drawable.covidview_pdf, "Covid-19 Update 12March")
-        pdflist.add(pdf_file)
-        pdf_file = covid_pdflist(R.drawable.covidview_pdf, "Guidelines for Home Quarantine")
-        pdflist.add(pdf_file)
-        pdf_file = covid_pdflist(R.drawable.covidview_pdf, "IFMSA Covid-19 Library Overview Converted")
-        pdflist.add(pdf_file)
-        pdf_file = covid_pdflist(R.drawable.covidview_pdf, "WHO China Joint Mission on Covid-19 final report")
-        pdflist.add(pdf_file)
-
-    }
+//    private fun pdffileslist() {
+//
+//        var pdf_file = covid_pdflist(R.drawable.covidview_pdf, "Covid-19 Update 12March")
+//        pdflist.add(pdf_file)
+//        pdf_file = covid_pdflist(R.drawable.covidview_pdf, "Guidelines for Home Quarantine")
+//        pdflist.add(pdf_file)
+//        pdf_file = covid_pdflist(R.drawable.covidview_pdf, "IFMSA Covid-19 Library Overview Converted")
+//        pdflist.add(pdf_file)
+//        pdf_file = covid_pdflist(R.drawable.covidview_pdf, "WHO China Joint Mission on Covid-19 final report")
+//        pdflist.add(pdf_file)
+//
+//    }
 
 //    override fun onClick(v: View) {
 //        when (v.id) {
@@ -239,6 +283,6 @@ class Covid_19_Resourses_Activity : BaseActivity() {
 //            startActivity(intent)
 //        }
 
-        }
+}
 //    }
 //}

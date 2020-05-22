@@ -49,6 +49,7 @@
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
         <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
         <activity android:name=".activities.ComingSoon_Activity" />
+
         <activity android:name=".activities.Register_User" /> <!-- <activity android:name=".activities.Facebook_Activity" /> -->
         <activity
             android:name=".activities.SliderActivity"
@@ -174,6 +175,8 @@
 
         <activity android:name=".activities.labReports.Lab_XrayAddImage_PDF"></activity>
 
+        <activity android:name=".activities.PDFopenfile_Edu"></activity>
+
 
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
         <activity android:name=".activities.medical_history.health_services.Services_medical_history" />
@@ -194,6 +197,7 @@
         <activity android:name=".activities.Willey_Library_Covid19_WebActivity" />
         <activity android:name=".activities.CDC_Centers_Covid19_WebActivity" />
         <activity android:name=".activities.Newzeland_Medicine_Covid19_WebActivity" />
+
         <activity android:name=".activities.Jama_Network_Covid19_WebActivity" />
         <activity android:name=".activities.Lancet_Covid19_WebActivity" />
         <activity android:name=".activities.Cell_Covid19_WebActivity" />
