@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.helpers.Prescription_ImageAdapter
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
+import kotlinx.android.synthetic.main.activity_prescription_image_list.*
 import kotlinx.android.synthetic.main.covid_resourses_main.*
 import kotlinx.android.synthetic.main.educational_blog_main.header1
 import retrofit2.Call
@@ -86,23 +88,12 @@ class Covid_19_Resourses_Activity : BaseActivity() {
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         recyclerView_image!!.layoutManager = layoutManager
 
-        // set a GridLayoutManager with default vertical orientation and 2 number of columns
-        // set a GridLayoutManager with default vertical orientation and 2 number of columns
-//        val gridLayoutManager = GridLayoutManager(applicationContext, 2)
-//        recyclerView_image!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false) // set LayoutManager to RecyclerView
-//
-//        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-//        //  call the constructor of CustomAdapter to send the reference and data to Adapter
-//         customAdapter_image = CustomAdapter(this@Covid_19_Resourses_Activity, covidImages)
-//        recyclerView_image!!.adapter = customAdapter_image
+
 
 
         loadImages()
 
-        // set the Adapter to RecyclerView
-//        val layoutManager = LinearLayoutManager(this)
-//        layoutManager.orientation = LinearLayoutManager.VERTICAL
-//        recyclerView_image!!.layoutManager = layoutManager
+
 
 
         val recyclerView_pdf = findViewById(R.id.recycler_view_pdf) as RecyclerView
@@ -151,30 +142,16 @@ class Covid_19_Resourses_Activity : BaseActivity() {
         val requestCall = service.getCovidImageDetails()
 
         requestCall.enqueue(object: Callback<MutableList<PrescriptionDataClass>> {
-            //PrescriptionInterface().getImageDetails().enqueue(object: Callback<List<PrescriptionDataClass>> {
 
-            // If you receive a HTTP Response, then this method is executed
-            // Your STATUS Code will decide if your Http Response is a Success or Error
             override fun onResponse(call: Call<MutableList<PrescriptionDataClass>>, response: Response<MutableList<PrescriptionDataClass>>) {
                 if (response.isSuccessful()) {
-                    // Your status code is in the range of 200's
-                    val covidImages = response.body()!!
 
 
-                    //val llm = LinearLayoutManager(applicationContext)
-                    // llm.orientation = LinearLayoutManager.VERTICAL
-                    // pres_recycler_view.setLayoutManager(llm)
-
-
-                    val adapter= CustomAdapter(covidImages)
+                    val imageList = response.body()!!
+                    val adapter= CustomAdapter(imageList)
                     recyclerView_image!!.adapter = adapter
+//                    pres_recycler_view.adapter?.notifyDataSetChanged()
 
-                    //pres_recycler_view.adapter = Prescription_ImageAdapter(imageList)
-
-
-                    customAdapter_image = CustomAdapter(covidImages)
-
-                    recycler_view_images.adapter?.notifyDataSetChanged()
 
 
                 } else if(response.code() == 401) {

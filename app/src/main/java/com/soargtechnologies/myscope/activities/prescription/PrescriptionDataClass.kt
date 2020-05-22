@@ -72,14 +72,13 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var document_other_type:String ?= null,
         //Education blog - image
 
-                                var educationdownloadfile:String?=null,
-//                                 var education_imagetitle:String?=null,
-
-
                                  var education_imagetitle:String? = null,
-                                 var education_image:Byte? = null,
-                                 var PatientRegDAO:Int = 0,
-                                 var education_imagesubtype:String ?= null
+                                 var education_imagesubtype:String ?= null,
+
+                                 var education_image: MultipartBody.Part?=null,
+                                 var downloadimage:String? = null,
+                                 var education_imagesno:Int = 0
+
 
 
 
