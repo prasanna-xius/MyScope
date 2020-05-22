@@ -78,7 +78,7 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var downloadimage: String? = null,
                                  var education_imagesno: Int = 0,
 
-        //Education blog - pdf
+
 
                                  var education_pdftitle: String? = null,
                                  var education_pdfsubtype: String? = null,
