@@ -3,6 +3,7 @@ package com.soargtechnologies.myscope.helpers
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.util.Base64
 import android.util.Log
@@ -16,6 +17,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.soargtechnologies.myscope.R
+import com.soargtechnologies.myscope.activities.prescription.PDFopenfile
 import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import com.soargtechnologies.myscope.services.ServiceBuilder
@@ -29,6 +31,7 @@ import retrofit2.Response
 class Document_HealthAdapter(private val imglist: MutableList<PrescriptionDataClass>): RecyclerView.Adapter<Document_HealthAdapter.ViewHolder>() {
 
 
+    @ExperimentalStdlibApi
     override fun onBindViewHolder(holder: Document_HealthAdapter.ViewHolder, position: Int) {
         holder.imageDetails = imglist[position]
         holder.savedDate.text = imglist[position].document_insurance_saved_on
@@ -67,8 +70,8 @@ class Document_HealthAdapter(private val imglist: MutableList<PrescriptionDataCl
                 var s = imglist[position].downloadfile
                 editor.putString("buffer", s)
                 editor.commit()
-//                val intent = Intent(context, PDFopenfile::class.java)
-//                context.startActivity(intent)
+                val intent = Intent(context, PDFopenfile::class.java)
+                context.startActivity(intent)
             }
             if (imgls.document_insurance_type.equals("image")) {
                 dialog = Dialog(context!!)

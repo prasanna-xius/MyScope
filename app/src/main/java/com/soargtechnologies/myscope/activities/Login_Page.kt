@@ -104,7 +104,7 @@ class Login_Page : BaseActivity(), View.OnClickListener, GoogleApiClient.OnConne
                 }
                 loginApiCall()
 
-                val intent = Intent(this@Login_Page, Otp_Page::class.java)
+                val intent = Intent(this@Login_Page, Navigation_Drawer_Blogs::class.java)
                 intent.putExtra("Phonenumber", Phonenumber)
                 startActivity(intent)
 
