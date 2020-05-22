@@ -30,6 +30,7 @@ import retrofit2.Response
 class Document_DischargeAdapter(private val imglist: MutableList<PrescriptionDataClass>): RecyclerView.Adapter<Document_DischargeAdapter.ViewHolder>() {
 
 
+    @ExperimentalStdlibApi
     override fun onBindViewHolder(holder: Document_DischargeAdapter.ViewHolder, position: Int) {
         holder.imageDetails = imglist[position]
         holder.savedDate.text = imglist[position].document_discharge_saved_on
@@ -68,8 +69,8 @@ class Document_DischargeAdapter(private val imglist: MutableList<PrescriptionDat
                 var s = imglist[position].downloadfile
                 editor.putString("buffer", s)
                 editor.commit()
-//                val intent = Intent(context, PDFopenfile::class.java)
-//                context.startActivity(intent)
+                val intent = Intent(context, PDFopenfile::class.java)
+                context.startActivity(intent)
             }
             if (imgls.document_discharge_type.equals("image")) {
                 dialog = Dialog(context!!)
