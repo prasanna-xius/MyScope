@@ -76,7 +76,7 @@ data class PrescriptionDataClass(var is_prescribed: String? = null,
                                  var education_imagesubtype:String ?= null,
 
                                  var education_image: MultipartBody.Part?=null,
-                                 var downloadimage:String? = null,
+                                 var educationdownloadimage:String? = null,
                                  var education_imagesno:Int = 0
 
 
