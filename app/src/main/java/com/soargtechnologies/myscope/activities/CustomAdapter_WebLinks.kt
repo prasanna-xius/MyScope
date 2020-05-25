@@ -44,7 +44,7 @@ class CustomAdapter_WebLinks(private val covid_weblinklist: List<PrescriptionDat
             val context = v?.context
 
 
-            val intent = Intent(context, Jama_Network_Covid19_WebActivity::class.java)
+            val intent = Intent(context, Weblink_Activity::class.java)
             context!!.startActivity(intent)
 
         }
