@@ -175,8 +175,6 @@
 
         <activity android:name=".activities.labReports.Lab_XrayAddImage_PDF"></activity>
 
-        <activity android:name=".activities.PDFopenfile_Edu"></activity>
-
 
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
         <activity android:name=".activities.medical_history.health_services.Services_medical_history" />
@@ -191,13 +189,11 @@
         <activity android:name=".activities.self_monitering.Emotional_state" />
         <activity android:name=".activities.self_monitering.Exercise_tracker" />
 <!--         <activity android:name=".activities.Educational_Blog_Activity" /> -->
-
-
+        <activity android:name=".activities.Covid_19_Resourses_Activity" />
 <!--        <activity android:name=".activities.Full_Image_Activity" />-->
         <activity android:name=".activities.Guidelines_Activity" />
         <activity android:name=".activities.Courses_Training_Activity" />
         <activity android:name=".activities.News_Updates_Activity" />
-
         <activity android:name=".activities.Facebook_Activity" />
 
         <meta-data
