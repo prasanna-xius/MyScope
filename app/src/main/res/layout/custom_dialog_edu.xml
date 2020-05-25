@@ -15,7 +15,7 @@
         />
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_550"
+        android:layout_height="@dimen/dimen_450"
         android:layout_gravity="center"
         android:gravity="center"
         android:scaleType="fitXY"
