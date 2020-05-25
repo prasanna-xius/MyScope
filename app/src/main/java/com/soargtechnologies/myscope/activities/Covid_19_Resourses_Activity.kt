@@ -32,7 +32,7 @@ class Covid_19_Resourses_Activity : BaseActivity() {
         val layoutManager_pdf = LinearLayoutManager(this)
         layoutManager_pdf.orientation = LinearLayoutManager.HORIZONTAL
         recyclerView_pdf!!.layoutManager = layoutManager_pdf
-        recyclerView_link = findViewById(R.id.recycler_view_weblink) as RecyclerView
+        recyclerView_link = findViewById(R.id.recycler_view_weblinks) as RecyclerView
         val layoutManager_weblink = LinearLayoutManager(this)
         layoutManager_weblink.orientation = LinearLayoutManager.VERTICAL
         recyclerView_link!!.layoutManager = layoutManager_weblink

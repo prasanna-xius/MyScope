@@ -77,7 +77,7 @@
                 android:orientation="horizontal" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_weblink"
+                android:id="@+id/recycler_view_weblinks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_10"

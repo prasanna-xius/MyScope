@@ -41,11 +41,11 @@ class CustomAdapter_WebLinks(private val covid_weblinklist: List<PrescriptionDat
         // implement setOnClickListener event on item view.
         holder.web_link.setOnClickListener { v: View? ->
 
-            val context = v?.context
-
-
-            val intent = Intent(context, Weblink_Activity::class.java)
-            context!!.startActivity(intent)
+//            val context = v?.context
+//
+//
+//            val intent = Intent(context, Weblink_Activity::class.java)
+//            context!!.startActivity(intent)
 
         }
     }

@@ -197,6 +197,7 @@
         <activity android:name=".activities.Facebook_Activity" />
 
         <activity android:name=".activities.Weblink_Activity" />
+        <activity android:name=".activities.PDFopenfile_Edu"/>
 
 
         <meta-data

@@ -25,5 +25,6 @@
         android:text="https://www.covid19india.org/"
         android:textColor="@color/lightBlue"
         android:textSize="@dimen/dimen_16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:autoLink="web"/>
 </LinearLayout>
