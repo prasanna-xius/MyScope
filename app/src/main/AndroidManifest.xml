@@ -196,6 +196,9 @@
         <activity android:name=".activities.News_Updates_Activity" />
         <activity android:name=".activities.Facebook_Activity" />
 
+        <activity android:name=".activities.Weblink_Activity" />
+
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
