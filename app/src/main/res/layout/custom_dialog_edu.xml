@@ -9,13 +9,13 @@
     android:orientation="vertical">
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="5dp"
         android:visibility="invisible"
         android:background="@drawable/wave_scaled_new"
         />
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_450"
+        android:layout_height="@dimen/dimen_550"
         android:layout_gravity="center"
         android:gravity="center"
         android:scaleType="fitXY"

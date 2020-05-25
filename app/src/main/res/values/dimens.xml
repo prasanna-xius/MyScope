@@ -78,6 +78,7 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="_12sp">12sp</dimen>
     <dimen name="dimen_18sp">18sp</dimen>
+    <dimen name="dimen_550">550dp</dimen>
 </resources>
 
 
