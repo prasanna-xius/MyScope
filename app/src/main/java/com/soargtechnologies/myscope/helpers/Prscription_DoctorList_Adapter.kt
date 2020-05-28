@@ -6,7 +6,9 @@ import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.widget.RecyclerView
 import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
@@ -68,6 +70,16 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
 
         }
 
+        holder.share_btn.setOnClickListener { v:View? ->
+
+            val  context = v?.context
+            val message : String= toString()
+            val intent=Intent()
+            intent.action=Intent.ACTION_SEND
+            intent.putExtra(Intent.EXTRA_TEXT,message)
+            intent.type="text/plain"
+            context?.startActivity(Intent.createChooser(intent,"Please Select App"))
+        }
 
     }
 
@@ -80,6 +92,7 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
         val doctor_sno: TextView = itemView.findViewById(R.id.doctor_sno)
         val doctor_name: TextView = itemView.findViewById(R.id.doctorTitle)  //item_list tv_id
         val doctor_date: TextView = itemView.findViewById(R.id.doctor_date)  //item_list tv_id
+        val share_btn: ImageView = itemView.findViewById(R.id.share_btn)
 
         var prescriptiondestination: PrescriptionDataClass? = null
 
@@ -87,6 +100,15 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
         override fun toString(): String {
             return """${super.toString()} '${doctor_name.text}''${doctor_sno.text}'"""
         }
+
+        fun getItemDetails(): ItemDetailsLookup.ItemDetails<Long> =
+                object: ItemDetailsLookup.ItemDetails<Long>() {
+
+                    override fun getPosition(): Int = adapterPosition
+                    override fun getSelectionKey(): Long? {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                }
     }
 
 }

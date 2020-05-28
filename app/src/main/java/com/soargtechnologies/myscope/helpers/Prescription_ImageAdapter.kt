@@ -13,6 +13,12 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
@@ -28,6 +34,10 @@ import kotlinx.android.synthetic.main.list_item_prescription_image.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
 
 class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDataClass>): RecyclerView.Adapter<Prescription_ImageAdapter.ViewHolder>() {
@@ -121,6 +131,18 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
             }
 
         }
+
+
+        holder.iv_pres_share_button.setOnClickListener { v: View? ->
+            val context = v?.context
+
+            val shareIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_STREAM, imglist[position].p_uploadid)
+                type = "image/jpeg"
+            }
+            context!!.startActivity(Intent.createChooser(shareIntent,"Share images to.."))
+        }
         holder.deletebutton.setOnClickListener { v: View? ->
 
             val context = v?.context
@@ -205,6 +227,9 @@ class Prescription_ImageAdapter(private val imglist: MutableList<PrescriptionDat
         val savedDate: TextView = itemView.findViewById(R.id.imagedate)
         var imageDetails: PrescriptionDataClass? = null
         var uploadsno: TextView = itemview.findViewById(R.id.uploadid)
+        val iv_pres_share_button: ImageView = itemview.findViewById(R.id.iv_pres_share)
+
+
     }
 
 
