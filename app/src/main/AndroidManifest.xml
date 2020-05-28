@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.medical_documents.MedicalDoc_Other"></activity>
+        <activity android:name=".activities.View_and_Share.ViewData"></activity>
+        <activity android:name=".activities.medical_documents.MedicalDoc_Other" />
         <activity android:name=".activities.medical_documents.MedicalDoc_Education" />
         <activity android:name=".activities.medical_documents.MedicalDoc_Diet" />
         <activity android:name=".activities.medical_documents.MedicalDoc_Health" />
@@ -32,12 +33,8 @@
         <activity
             android:name=".activities.Contact_us.Contact_us"
             android:label="@string/title_activity_contact_us"
-            android:theme="@style/NoActionBar"></activity>
-
-        <activity android:name=".activities.Contact_us.JavaMailAPI" />
-
-
-        <!-- <activity android:name=".activities.self_monitering.BloodPressureActivity"></activity> -->
+            android:theme="@style/NoActionBar" />
+        <activity android:name=".activities.Contact_us.JavaMailAPI" /> <!-- <activity android:name=".activities.self_monitering.BloodPressureActivity"></activity> -->
         <activity android:name=".activities.self_monitering.Bmi_recyclerView" />
         <activity android:name=".activities.self_monitering.BmiUpdate" />
         <activity android:name=".activities.self_monitering.Cholestrol_recyclerView" />
@@ -46,12 +43,10 @@
         <activity android:name=".activities.self_monitering.Blood_Pressure_recyclerView" />
         <activity android:name=".activities.self_monitering.Blood_GlucoseUpdate" />
         <activity android:name=".activities.self_monitering.Blood_Glucose_recyclerView" />
-        <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" />
-<!--        <activity android:name=".activities.Contact_Us" /> &lt;!&ndash; <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> &ndash;&gt;-->
+        <activity android:name=".activities.self_monitering.Self_Monitering_Home_Page" /> <!-- <activity android:name=".activities.Contact_Us" /> &lt;!&ndash; <activity android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"></activity> &ndash;&gt; -->
         <activity android:name=".activities.medical_history.Adverse_Drug_Reaction_Update" />
         <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
         <activity android:name=".activities.ComingSoon_Activity" />
-
         <activity android:name=".activities.Register_User" /> <!-- <activity android:name=".activities.Facebook_Activity" /> -->
         <activity
             android:name=".activities.SliderActivity"
@@ -67,8 +62,7 @@
             android:name=".activities.SignUp_Page"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" /> <!-- <activity -->
-        <activity android:name=".activities.Navigation_Drawer_Blogs" />
-        <!-- android:screenOrientation="portrait" -->
+        <activity android:name=".activities.Navigation_Drawer_Blogs" /> <!-- android:screenOrientation="portrait" -->
         <!-- android:windowSoftInputMode="stateAlwaysHidden" /> -->
         <activity
             android:name=".activities.Otp_Page"
@@ -89,16 +83,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.medical_history.AdverseDrugReaction_RecyclerView"
-            android:screenOrientation="portrait" />
-<!--        <activity-->
-<!--            android:name=".activities.Navigation_Drawer_Blogs"-->
-<!--            android:screenOrientation="portrait" />-->
+            android:screenOrientation="portrait" /> <!-- <activity -->
+        <!-- android:name=".activities.Navigation_Drawer_Blogs" -->
+        <!-- android:screenOrientation="portrait" /> -->
         <activity
             android:name=".activities.medical_history.Medical_History_HomePage"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.medical_history.Disease_recyclerView"
-
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.medical_history.Disease_History"
@@ -161,23 +153,18 @@
         <activity android:name=".activities.prescription.Prescription_manualDrugDialog" />
         <activity android:name=".activities.prescription.PDFopenfile" />
         <activity android:name=".activities.Educational_Blog_Activity" />
-        <activity android:name=".activities.labReports.Lab_BloodAddImage_PDF"></activity>
-        <activity android:name=".activities.labReports.Lab_ColonoScopyAddImage_PDF"></activity>
-        <activity android:name=".activities.labReports.Lab_CtScanAddImage_PDF"></activity>
-
-        <activity android:name=".activities.labReports.Lab_EcgAddImage_PDF"></activity>
-
-        <activity android:name=".activities.labReports.Lab_EcoAddImage_PDF"></activity>
-        <activity android:name=".activities.labReports.Lab_MriAddImage_PDF"></activity>
-        <activity android:name=".activities.labReports.Lab_OtherAddImage_PDF"></activity>
-        <activity android:name=".activities.labReports.Lab_UrineAddImage_PDF"></activity>
-        <activity android:name=".activities.labReports.Lab_Reports_Homepage"></activity>
-        <activity android:name=".activities.labReports.Lab_StressAddImage_PDF"></activity>
-        <activity android:name=".activities.labReports.Lab_UltraSoundAddImage_PDF"></activity>
-
-        <activity android:name=".activities.labReports.Lab_XrayAddImage_PDF"></activity>
-
-
+        <activity android:name=".activities.labReports.Lab_BloodAddImage_PDF" />
+        <activity android:name=".activities.labReports.Lab_ColonoScopyAddImage_PDF" />
+        <activity android:name=".activities.labReports.Lab_CtScanAddImage_PDF" />
+        <activity android:name=".activities.labReports.Lab_EcgAddImage_PDF" />
+        <activity android:name=".activities.labReports.Lab_EcoAddImage_PDF" />
+        <activity android:name=".activities.labReports.Lab_MriAddImage_PDF" />
+        <activity android:name=".activities.labReports.Lab_OtherAddImage_PDF" />
+        <activity android:name=".activities.labReports.Lab_UrineAddImage_PDF" />
+        <activity android:name=".activities.labReports.Lab_Reports_Homepage" />
+        <activity android:name=".activities.labReports.Lab_StressAddImage_PDF" />
+        <activity android:name=".activities.labReports.Lab_UltraSoundAddImage_PDF" />
+        <activity android:name=".activities.labReports.Lab_XrayAddImage_PDF" />
         <activity android:name=".activities.medical_documents.Medical_Documents_HomePage" />
         <activity android:name=".activities.medical_history.health_services.Services_medical_history" />
         <activity android:name=".activities.medical_history.health_services.Adverse_Drug_Event_Monitoring" />
@@ -189,18 +176,14 @@
         <activity android:name=".activities.self_monitering.Bmi_self" />
         <activity android:name=".activities.self_monitering.Cholesterol" />
         <activity android:name=".activities.self_monitering.Emotional_state" />
-        <activity android:name=".activities.self_monitering.Exercise_tracker" />
-<!--         <activity android:name=".activities.Educational_Blog_Activity" /> -->
-        <activity android:name=".activities.Covid_19_Resourses_Activity" />
-<!--        <activity android:name=".activities.Full_Image_Activity" />-->
+        <activity android:name=".activities.self_monitering.Exercise_tracker" /> <!-- <activity android:name=".activities.Educational_Blog_Activity" /> -->
+        <activity android:name=".activities.Covid_19_Resourses_Activity" /> <!-- <activity android:name=".activities.Full_Image_Activity" /> -->
         <activity android:name=".activities.Guidelines_Activity" />
         <activity android:name=".activities.Courses_Training_Activity" />
         <activity android:name=".activities.News_Updates_Activity" />
         <activity android:name=".activities.Facebook_Activity" />
-
         <activity android:name=".activities.Weblink_Activity" />
-        <activity android:name=".activities.PDFopenfile_Edu"/>
-
+        <activity android:name=".activities.PDFopenfile_Edu" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
