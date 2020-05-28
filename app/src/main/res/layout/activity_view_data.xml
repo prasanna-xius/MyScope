@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.View_and_Share.ViewData"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dimen_10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+        <ImageView
+            android:layout_width="@dimen/dimen_100"
+            android:layout_height="@dimen/dimen_100"
+            android:src="@drawable/myscopelogo"
+            android:layout_gravity="center">
+        </ImageView>
+        </LinearLayout>
+
+            //First two lines code
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Patient Name"
+                        android:textColor="@color/bg_screen2"
+                        android:textSize="@dimen/dimen_16sp"
+                        android:layout_weight="1"
+                        ></TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/view_patientname"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hospital Name:"
+                        android:textColor="@color/bg_screen2"
+                        android:textSize="@dimen/dimen_16sp"
+                        android:layout_marginLeft="@dimen/dimen_10"
+                        android:layout_weight="1"
+                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/view_hospname"
+                        android:layout_weight="1"
+
+                        />
+            </LinearLayout>
+
+            //second lines code
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Age"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_weight="1"
+
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_Age"
+                    android:layout_weight="1"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hospital ID:"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:paddingLeft="@dimen/dimen_40"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_hospid"
+                    android:layout_weight="1"
+
+                    />
+            </LinearLayout>
+
+        //Third Line code
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender:"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_weight="1"
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_gender"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Doctor Name:"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:paddingLeft="@dimen/dimen_30"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_docname"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            //Fourth line code
+            //Third Line code
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SCOPE ID:"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_weight="1"
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_scopeid"
+                    android:layout_weight="0.5"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address:"
+                    android:textColor="@color/bg_screen2"
+                    android:paddingLeft="@dimen/dimen_30"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_address"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+                <View
+                    android:id="@+id/SplitLine_hor1"
+                    android:layout_width="match_parent"
+                    android:layout_height= "2dp"
+                    android:background="@color/bluegray700"
+                    android:layout_marginTop="@dimen/dimen_10"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:layout_marginTop="@dimen/dimen_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Marital status:"
+                    android:textStyle="bold"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_weight="0.2"
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_maritalstatus"
+                    android:layout_weight="0.6"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:text="Height:"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_weight="0.2"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_height"
+                    android:layout_weight="0.6"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weight:"
+                    android:textStyle="bold"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_weight="0.2"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_weight"
+                    android:layout_weight="0.6"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                android:text="BMI:"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_weight="0.2"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_bmi"
+                    android:layout_weight="0.6"
+                    />
+
+            </LinearLayout>
+
+            //Current disease data
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Disease/Condition:"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_10">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date of starting:"
+                android:textColor="@color/bg_screen2"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:id="@+id/view_diseasedate">
+
+            </TextView>
+
+            //Prescriptions recycler view
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Medications/Prescription:"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_10">
+
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/view_manualprescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:orientation="vertical" />
+
+
+            //Medical history recycler view
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medical History:"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_10">
+
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/view_medicalhistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:orientation="vertical" />
+
+            // Medication history recycler view
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medication History:"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_marginTop="@dimen/dimen_10">
+
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/view_medicationhistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:orientation="vertical" />
+
+
+            //other medication layout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Any other Medication/Therapy:"
+                    android:textStyle="bold"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginTop="@dimen/dimen_10">
+
+                </TextView>
+
+                <Spinner
+                    android:id="@+id/view_othermedication"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/edittext_border"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:padding="@dimen/dimen_4"
+                    android:popupBackground="@color/colorWhite" />
+            </LinearLayout>
+
+            //other name and reason layout
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+               >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Name:"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:textColor="@color/bg_screen2"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_othername"
+                    android:layout_weight="0.5"
+                    ></EditText>
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:text="Reason:"
+                        android:textSize="@dimen/dimen_16sp"
+                        android:textColor="@color/bg_screen2"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/view_otherreason"
+                        android:layout_weight="0.5"
+                        ></EditText>
+                </LinearLayout>
+            </LinearLayout>
+
+            //Surgery History
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/surgery_history"
+                android:textSize="@dimen/dimen_16sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nil"
+                android:textSize="@dimen/dimen_16sp"
+                android:textColor="@color/bg_screen2"
+                android:id="@+id/view_surgery"
+                android:layout_marginTop="@dimen/dimen_10"/>
+
+            //Family History
+
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/family_history"
+            android:textSize="@dimen/dimen_16sp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_screen2"
+            android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nil"
+        android:textSize="@dimen/dimen_16sp"
+        android:textColor="@color/bg_screen2"
+        android:id="@+id/view_family"
+        android:layout_marginTop="@dimen/dimen_10"/>
+
+
+            //Allergies
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Allergies"
+                android:textSize="@dimen/dimen_16sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nil"
+                android:textSize="@dimen/dimen_16sp"
+                android:textColor="@color/bg_screen2"
+                android:id="@+id/view_allergy"
+                android:layout_marginTop="@dimen/dimen_10"/>
+
+            //Immunization
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/immunization_history"
+                android:textSize="@dimen/dimen_16sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nil"
+                android:textSize="@dimen/dimen_16sp"
+                android:textColor="@color/bg_screen2"
+                android:id="@+id/view_immun"
+                android:layout_marginTop="@dimen/dimen_10"/>
+
+            //Any adverse drug reaction
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Any Adverse Drug Reaction Observed:"
+                android:textSize="@dimen/dimen_16sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nil"
+                android:textSize="@dimen/dimen_16sp"
+                android:textColor="@color/bg_screen2"
+                android:id="@+id/view_adversedrug"
+                android:layout_marginTop="@dimen/dimen_10"/>
+
+
+            //Social Habits
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/social_history"
+                android:textSize="@dimen/dimen_16sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nil"
+                android:textSize="@dimen/dimen_16sp"
+                android:textColor="@color/bg_screen2"
+                android:id="@+id/view_socialhistory"
+                android:layout_marginTop="@dimen/dimen_10"/>
+
+            //Diet
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diet"
+                android:textSize="@dimen/dimen_16sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nil"
+                android:textSize="@dimen/dimen_16sp"
+                android:textColor="@color/bg_screen2"
+                android:id="@+id/view_diet"
+                android:layout_marginTop="@dimen/dimen_10"/>
+
+            //Uploaded Prescription
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medical Documents Uploaded"
+                android:textSize="@dimen/dimen_16sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nil"
+                android:textSize="@dimen/dimen_16sp"
+                android:textColor="@color/bg_screen2"
+                android:id="@+id/view_medicaldocupload"
+                android:layout_marginTop="@dimen/dimen_10"/>
+
+            //Self monitoring report
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Self Monitoring Report"
+                android:textSize="@dimen/dimen_16sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Date and Time:"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nil"
+                android:textSize="@dimen/dimen_16sp"
+                android:layout_weight="1"
+                android:textColor="@color/bg_screen2"
+                android:id="@+id/view_selfmonitoring"
+                android:layout_marginTop="@dimen/dimen_10"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="What checked?"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nil"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/bg_screen2"
+                    android:id="@+id/view_whatchecked"
+                    android:layout_marginTop="@dimen/dimen_10"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Report:"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nil"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/bg_screen2"
+                    android:id="@+id/view_report"
+                    android:layout_marginTop="@dimen/dimen_10"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Furthur reports:"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/dimen_10"></TextView>
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nil"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/bg_screen2"
+                    android:id="@+id/view_furtherreport"
+                    android:layout_marginTop="@dimen/dimen_10"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
