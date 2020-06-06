@@ -48,10 +48,10 @@
         <activity android:name=".activities.prescription.Prescription_AddImage_PDF" />
         <activity android:name=".activities.ComingSoon_Activity" />
         <activity android:name=".activities.Register_User" /> <!-- <activity android:name=".activities.Facebook_Activity" /> -->
-        <activity
-            android:name=".activities.SliderActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".activities.Login_Page">
+<!--        <activity-->
+<!--            android:name=".activities.LoginPage"-->
+<!--            android:screenOrientation="portrait" />-->
+        <activity android:name=".activities.SliderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -182,7 +182,7 @@
         <activity android:name=".activities.Courses_Training_Activity" />
         <activity android:name=".activities.News_Updates_Activity" />
         <activity android:name=".activities.Facebook_Activity" />
-        <activity android:name=".activities.Weblink_Activity" />
+<!--        <activity android:name=".activities.Weblink_Activity" />-->
         <activity android:name=".activities.PDFopenfile_Edu" />
 
         <meta-data
