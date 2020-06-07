@@ -237,46 +237,52 @@ class View_UserDetails_Activity : BaseActivity() {
 
                 if (resp.isSuccessful) {
                     var newbody = resp.body()
-                    val userprofilevalues = newbody?.first()
-
-                    if(userprofilevalues!!.first_name.equals(null) ||
-                            userprofilevalues!!.last_name.equals(null) ||
-                            userprofilevalues!!.mobile_no.equals(null) ||
-                            userprofilevalues!!.email.equals(null)){
+                    if(newbody!!.isEmpty()){
                         btn_save_userProfile.visibility = View.VISIBLE
                         btn_update_userProfile.visibility = View.GONE
                         callsignupprofile()
-                    } else {
-                        btn_save_userProfile.visibility = View.GONE
-                        btn_update_userProfile.visibility = View.VISIBLE
-                        first_name_get!!.setText(userprofilevalues!!.first_name)
-                        last_name_get!!.setText(userprofilevalues.last_name)
-                        mobile_number_get!!.setText(userprofilevalues.mobile_no)
-                        email_get!!.setText(userprofilevalues.email)
+                    }else {
+                        val userprofilevalues = newbody?.first()
 
-                        age_get!!.setText(userprofilevalues.age)
-                        bmi_get!!.setText(userprofilevalues.bmi)
-                        height_get!!.setText(userprofilevalues.height)
-                        weight_get!!.setText(userprofilevalues.weight)
+                        if (userprofilevalues!!.first_name.equals(null) ||
+                                userprofilevalues!!.last_name.equals(null) ||
+                                userprofilevalues!!.mobile_no.equals(null) ||
+                                userprofilevalues!!.email.equals(null)) {
+                            btn_save_userProfile.visibility = View.VISIBLE
+                            btn_update_userProfile.visibility = View.GONE
+                            callsignupprofile()
+                        } else {
+                            btn_save_userProfile.visibility = View.GONE
+                            btn_update_userProfile.visibility = View.VISIBLE
+                            first_name_get!!.setText(userprofilevalues!!.first_name)
+                            last_name_get!!.setText(userprofilevalues.last_name)
+                            mobile_number_get!!.setText(userprofilevalues.mobile_no)
+                            email_get!!.setText(userprofilevalues.email)
 
-                        dob_get!!.setText(userprofilevalues.dob)
-                        doctorname_get!!.setText(userprofilevalues.doctor_name)
-                        pharmacist_name_get!!.setText(userprofilevalues.pharmacist_name)
+                            age_get!!.setText(userprofilevalues.age)
+                            bmi_get!!.setText(userprofilevalues.bmi)
+                            height_get!!.setText(userprofilevalues.height)
+                            weight_get!!.setText(userprofilevalues.weight)
 
-                        val spinner_bloodGroup_get = bloodGroupAdapter!!.getPosition(userprofilevalues.blood_group);
-                        spinner_bloodGroup.setSelection(spinner_bloodGroup_get);
-                        val spinnereducationLevel_get = educationLevelAdaptor!!.getPosition(userprofilevalues.education);
-                        spinner_gender.setSelection(spinnereducationLevel_get);
-                        val spinnergender_get = genderAdapter!!.getPosition(userprofilevalues.gender);
-                        spinner_educationLevel.setSelection(spinnergender_get);
-                        val spinnerfamilyIncome_get = familyIncomeAdaptor!!.getPosition(userprofilevalues.family_income);
-                        spinner_maritalStatus.setSelection(spinnerfamilyIncome_get);
-                        val spinnermarriageStatus_get = marriageStatusAdaptor!!.getPosition(userprofilevalues.marrital_status);
-                        spinner_familyIncome.setSelection(spinnermarriageStatus_get);
+                            dob_get!!.setText(userprofilevalues.dob)
+                            doctorname_get!!.setText(userprofilevalues.doctor_name)
+                            pharmacist_name_get!!.setText(userprofilevalues.pharmacist_name)
 
-                        languagesKnown_get!!.languages_multi?.setText(userprofilevalues.languages_known)
+                            val spinner_bloodGroup_get = bloodGroupAdapter!!.getPosition(userprofilevalues.blood_group);
+                            spinner_bloodGroup.setSelection(spinner_bloodGroup_get);
+                            val spinnereducationLevel_get = educationLevelAdaptor!!.getPosition(userprofilevalues.education);
+                            spinner_gender.setSelection(spinnereducationLevel_get);
+                            val spinnergender_get = genderAdapter!!.getPosition(userprofilevalues.gender);
+                            spinner_educationLevel.setSelection(spinnergender_get);
+                            val spinnerfamilyIncome_get = familyIncomeAdaptor!!.getPosition(userprofilevalues.family_income);
+                            spinner_maritalStatus.setSelection(spinnerfamilyIncome_get);
+                            val spinnermarriageStatus_get = marriageStatusAdaptor!!.getPosition(userprofilevalues.marrital_status);
+                            spinner_familyIncome.setSelection(spinnermarriageStatus_get);
 
-                        Toast.makeText(applicationContext, "API success", Toast.LENGTH_SHORT).show()
+                            languagesKnown_get!!.languages_multi?.setText(userprofilevalues.languages_known)
+
+                            Toast.makeText(applicationContext, "API success", Toast.LENGTH_SHORT).show()
+                        }
                     }
 
                 } else {
