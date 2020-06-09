@@ -2,39 +2,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_screen2">
+    android:background="#fff">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="150dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="4.0">
 
         <ImageView
-            android:layout_width="@dimen/img_width_height"
-            android:layout_height="@dimen/img_width_height"
-            android:src="@drawable/medicine_a" />
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:layout_gravity="center"
+            android:layout_weight="2.0"
+            android:src="@drawable/prescription_audit_services" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estimate Lab Reports"
-            android:textColor="@android:color/white"
+            android:layout_weight="1.0"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/slide_2_title"
+            android:textColor="#1E88E5"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_weight="1.0"
+            android:layout_gravity="center"
+            android:text="@string/slide_2_title_1"
+            android:textColor="#1E88E5"
+            android:textSize="@dimen/slide_title"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
             android:paddingLeft="@dimen/desc_padding"
+            android:layout_gravity="center"
             android:paddingRight="@dimen/desc_padding"
             android:text="@string/slide_2_desc"
             android:textAlignment="center"
-            android:textColor="@android:color/white"
+            android:textColor="#1E88E5"
             android:textSize="@dimen/slide_desc" />
-
     </LinearLayout>
 
 

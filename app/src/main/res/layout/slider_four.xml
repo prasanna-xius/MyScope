@@ -8,46 +8,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:gravity="center"
+        android:background="#ffffff"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="280dp"
             android:layout_height="280dp"
             android:layout_gravity="center"
-            android:background="@drawable/personalized_health_records"
-            />
+            android:src="@drawable/patient_counselling" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/slide_1_title"
+            android:text="@string/slide_4_title"
             android:textColor="#1E88E5"
             android:textSize="@dimen/slide_title"
-            android:textStyle="bold" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/slide_1_title_1"
-            android:textColor="#1E88E5"
-            android:textSize="@dimen/slide_title"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
             android:layout_gravity="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
             android:paddingLeft="@dimen/desc_padding"
             android:paddingRight="@dimen/desc_padding"
-            android:text="@string/slide_1_desc"
+            android:layout_gravity="center"
+            android:text="@string/slide_4_desc"
             android:textAlignment="center"
             android:textColor="#1E88E5"
             android:textSize="@dimen/slide_desc" />
 
     </LinearLayout>
-
 
 </RelativeLayout>

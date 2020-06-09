@@ -116,6 +116,7 @@ class ExpandableListAdapter(private val context: Context, private val expandable
         var Appointments = 7
         var Services = 8
         var ContactUs = 9
+        var View_Data = 10
 
         var Medical_History1 = 0
         var Family_History = 1

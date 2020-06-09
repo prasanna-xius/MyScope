@@ -12,6 +12,7 @@ object ExpandableListDataPump {
             val services: List<String> = ArrayList()
             val contactus: List<String> = ArrayList()
             val medicalhistory: MutableList<String> = ArrayList()
+            val View_Data: MutableList<String> = ArrayList()
 
             medicalhistory.add("Medical History")
             medicalhistory.add("Family History")
@@ -24,19 +25,19 @@ object ExpandableListDataPump {
             medicalhistory.add("Adverse Drug Reaction")
 
             val prescriptions: MutableList<String> = ArrayList()
-            prescriptions.add("Prescriptions")
-            prescriptions.add("Antibiotic")
-            prescriptions.add("Ayurvedic")
+            prescriptions.add("Allopathy")
+            prescriptions.add("Homeopathy")
+            prescriptions.add("Ayurveda")
 
             val medicaldocuments: MutableList<String> = ArrayList()
-            medicaldocuments.add("Discharge Summery")
-            medicaldocuments.add("Dental Recards")
+            medicaldocuments.add("Discharge Summary")
+            medicaldocuments.add("Dental Records")
             medicaldocuments.add("Immuzination")
             medicaldocuments.add("Health Insurance")
             medicaldocuments.add("Allergies")
             medicaldocuments.add("Diet Chart")
             medicaldocuments.add("Education Material")
-            medicaldocuments.add("Other Documets")
+            medicaldocuments.add("Other Documents")
 
             val labreports: MutableList<String> = ArrayList()
             labreports.add("Blood Reports")
@@ -47,18 +48,17 @@ object ExpandableListDataPump {
             labreports.add("MRI")
             labreports.add("ECG")
             labreports.add("ECHO")
-            labreports.add("Sress Test")
-            labreports.add("SonoGraphy")
-            labreports.add("Colono Scopy")
+            labreports.add("Stress Test")
+            labreports.add("ColonoScopy")
             labreports.add("Others")
 
             val selfmonitoring: MutableList<String> = ArrayList()
             selfmonitoring.add("Blood Glucose  Monitoring")
             selfmonitoring.add("Blood pressure")
-            selfmonitoring.add("Cholostrol")
-            selfmonitoring.add("Weight")
+            selfmonitoring.add("Cholesterol")
+            selfmonitoring.add("BMI")
             selfmonitoring.add("Exercise Tracker")
-            selfmonitoring.add("SpO2")
+            selfmonitoring.add("Emotional State")
             expandableListDetail["DashBoard"] = dashboard
             expandableListDetail["Medical History"] = medicalhistory
             expandableListDetail["Prescriptions"] = prescriptions
@@ -69,6 +69,7 @@ object ExpandableListDataPump {
             expandableListDetail["Appointments"] = appointments
             expandableListDetail["Services"] = services
             expandableListDetail["ContactUs"] = contactus
+            expandableListDetail["View Data"] = View_Data
             return expandableListDetail
         }
 }

@@ -45,7 +45,7 @@ data class Diseases(var  known_condition : String? =null,
 
 
                     var  drugname : String? =null,
-                    var reaction : String? =null,
+                    var adverse_reaction : String? =null,
                     var date_of_start:String? =null,
                     var treatment_taken:String?=null,
                     var adverse_id:Int = 0 ,
