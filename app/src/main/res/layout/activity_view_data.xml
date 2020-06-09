@@ -323,11 +323,12 @@
 
             </TextView>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <TextView
                 android:id="@+id/view_medicalhistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_10"
+                android:textColor="@color/bg_screen2"
                 android:orientation="vertical" />
 
             // Medication history recycler view
@@ -343,10 +344,11 @@
 
             </TextView>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <TextView
                 android:id="@+id/view_medicationhistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/bg_screen2"
                 android:layout_marginTop="@dimen/dimen_10"
                 android:orientation="vertical" />
 
@@ -469,7 +471,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nil"
         android:textSize="@dimen/dimen_16sp"
         android:textColor="@color/bg_screen2"
         android:id="@+id/view_family"
@@ -492,11 +493,20 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nil"
                 android:textSize="@dimen/dimen_16sp"
                 android:textColor="@color/bg_screen2"
                 android:id="@+id/view_allergy"
                 android:layout_marginTop="@dimen/dimen_10"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nil"
+                android:textSize="@dimen/dimen_16sp"
+                android:textColor="@color/bg_screen2"
+                android:id="@+id/view_adversedrug"
+                android:layout_marginTop="@dimen/dimen_10"/>
+
 
             //Immunization
 
@@ -514,32 +524,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nil"
                 android:textSize="@dimen/dimen_16sp"
                 android:textColor="@color/bg_screen2"
                 android:id="@+id/view_immun"
-                android:layout_marginTop="@dimen/dimen_10"/>
-
-            //Any adverse drug reaction
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Any Adverse Drug Reaction Observed:"
-                android:textSize="@dimen/dimen_16sp"
-                android:textStyle="bold"
-                android:textColor="@color/bg_screen2"
-                android:layout_marginTop="@dimen/dimen_10"></TextView>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nil"
-                android:textSize="@dimen/dimen_16sp"
-                android:textColor="@color/bg_screen2"
-                android:id="@+id/view_adversedrug"
                 android:layout_marginTop="@dimen/dimen_10"/>
 
 

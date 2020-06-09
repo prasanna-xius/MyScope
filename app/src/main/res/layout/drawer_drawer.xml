@@ -3,7 +3,7 @@
     android:layout_width="300dp"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="@drawable/actionbar_background"
+    android:background="@color/colorWhite"
     android:choiceMode="singleChoice"
     android:divider="#ffffff"
     android:dividerHeight="0.2dp"

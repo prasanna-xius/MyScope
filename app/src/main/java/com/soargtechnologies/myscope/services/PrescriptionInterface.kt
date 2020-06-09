@@ -3,6 +3,7 @@ package com.soargtechnologies.myscope.services
 import com.soargtechnologies.myscope.ProfileDataClass
 import com.soargtechnologies.myscope.activities.SignupResponse
 import com.soargtechnologies.myscope.activities.prescription.PrescriptionDataClass
+import com.soargtechnologies.myscope.models.ViewWindowDataClass
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -204,4 +205,7 @@ interface PrescriptionInterface {
 
     @HTTP(method = "DELETE", path = "deleteotherdoc", hasBody = true)
     fun deleteOtherDetails(@Body newPrescriptionDrug: PrescriptionDataClass): Call<PrescriptionDataClass>
+
+    @GET("diseaseapilist")
+    fun getViewWindowDetails(): Call<List<ViewWindowDataClass>>
 }

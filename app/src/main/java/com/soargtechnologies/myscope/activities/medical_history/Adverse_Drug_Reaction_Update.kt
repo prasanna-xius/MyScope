@@ -91,7 +91,7 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
 
                     adverseDrug?.let {
                         et_drug_Name_updated?.setText(adverseDrug!!.drugname) 
-                        reaction_effect_updated?.setText(adverseDrug!!.reaction)
+                        reaction_effect_updated?.setText(adverseDrug!!.adverse_reaction)
                         et_date_of_start_updated?.setText(adverseDrug!!.date_of_start)
                         et_treatment_taken_updated?.setText(adverseDrug!!.treatment_taken)
 
@@ -121,7 +121,7 @@ class Adverse_Drug_Reaction_Update : BaseActivity() {
 
                 val newDrug = Diseases()
                 newDrug.drugname = et_drug_Name_updated!!.text.toString().trim()
-                newDrug.reaction = reaction_effect_updated!!.text.toString().trim()
+                newDrug.adverse_reaction = reaction_effect_updated!!.text.toString().trim()
                 newDrug.date_of_start = et_date_of_start_updated!!.text.toString().trim()
                 newDrug.treatment_taken = et_treatment_taken_updated!!.text.toString().trim()
                 newDrug.adverse_updated_on = datesetvalue()

@@ -330,17 +330,23 @@
 
     <string name="action_notification">Notification</string>
 
-    <string name="slide_1_title">Hello Food!</string>
-    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+    <string name="slide_1_title">Personalized Health</string>
+    <string name="slide_1_title_1">Records</string>
+    <string name="slide_1_desc">Keep your medical records secure and updated</string>
 
-    <string name="slide_2_title">Movie Tickets</string>
-    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+    <string name="slide_2_title">Prescription Audit</string>
+    <string name="slide_2_title_1">Services</string>
+    <string name="slide_2_desc">Prescription check for the drug related issues to avoid unexpected discomfort</string>
 
-    <string name="slide_3_title">Great Discounts</string>
-    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+    <string name="slide_3_title">Adverse Drug Event</string>
+    <string name="slide_3_title_1">Monitoring</string>
+    <string name="slide_3_desc">A quick check for drugs’ side effects and allergies, monitoring, prevention and special advises</string>
 
-    <string name="slide_4_title">World Travel</string>
-    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+    <string name="slide_4_title">Patient Counselling</string>
+    <string name="slide_4_desc">Complete information on disease, drugs and lifestyle for better cure</string>
+
+    <string name="slide_5_title" >Post-Discharge Care</string>
+    <string name="slide_5_desc" >Short-term and long-term services for better recovery and improved clinical outcomes and health-related quality of life</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>

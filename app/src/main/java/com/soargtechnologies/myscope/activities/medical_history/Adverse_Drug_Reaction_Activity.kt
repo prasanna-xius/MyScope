@@ -103,7 +103,7 @@ class Adverse_Drug_Reaction_Activity : BaseActivity() {
 
         val newDrug = Diseases()
         newDrug.drugname = et_drug_Name!!.text.toString().trim()
-        newDrug.reaction = reaction_effect!!.text.toString().trim()
+        newDrug.adverse_reaction = reaction_effect!!.text.toString().trim()
         newDrug.date_of_start = et_date_of_start!!.text.toString().trim()
         newDrug.treatment_taken = et_treatment_taken!!.text.toString().trim()
         newDrug.adverse_save_on = date1.toString()
