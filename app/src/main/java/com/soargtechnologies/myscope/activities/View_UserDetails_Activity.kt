@@ -68,6 +68,7 @@ class View_UserDetails_Activity : BaseActivity() {
     var height_get: EditText? = null
     var weight_get: EditText? = null
     var bmi_get: TextView? = null
+    var address: EditText? = null
     lateinit var profileclass:ProfileDataClass
 
     lateinit var signupclass:SignupResponse
@@ -88,6 +89,7 @@ class View_UserDetails_Activity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.N)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_userdetails_main)
@@ -120,6 +122,7 @@ class View_UserDetails_Activity : BaseActivity() {
         weight_get = findViewById<View>(R.id.et_weight) as EditText
         pharmacist_name_get = findViewById<View>(R.id.et_pharmacist_name) as EditText
         dob_get = findViewById<View>(R.id.et_dob) as TextView
+        address = findViewById<View>(R.id.address_viewProfile) as EditText
 
 
         languagesKnown_get = findViewById<MultiSelectionlanuageSpinner>(R.id.languagesKnown)
@@ -144,10 +147,15 @@ class View_UserDetails_Activity : BaseActivity() {
         familyIncomeAdaptor = ArrayAdapter(this, R.layout.spinner_dropdown_item,
                 resources.getStringArray(R.array.familyIncome_array))
         spinnerfamilyIncome_get!!.adapter = familyIncomeAdaptor
-        if (!et_height.text.equals(null) && !et_weight.text.equals(null)) {
+
+        et_bmi.setOnClickListener {
+
+
             bmicalculator(et_height, et_weight, et_bmi)
-            showLongToast(et_bmi.text.toString())
+   //         showLongToast(et_bmi.text.toString())
+
         }
+
         myCalendar = Calendar.getInstance()
 
 
@@ -167,34 +175,58 @@ class View_UserDetails_Activity : BaseActivity() {
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show()
         }
 
-        getuserprofileapi()
+
+
+        val addPatient = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+
+        val requestCall = addPatient.userprofilegetAllValues(mobile_no!!)
+
+
+
+        requestCall.enqueue(object : retrofit2.Callback<List<ProfileDataClass>>{
+
+            override fun onResponse(call: Call<List<ProfileDataClass>>, response: Response<List<ProfileDataClass>>) {
+
+                val length = response.body()?.size
+
+                //             showLongToast(length.toString())
+
+                if (length!! > 0){
+
+                    //                  showLongToast("successful")
+                    getuserprofileapi()
+
+                }
+                else{
+                    btn_save_userProfile.setOnClickListener {
+
+                        assignValuestoVariable()
+                        validate(spinnergender_get!!)
+                        validate(spinner_bloodGroup!!)
+                        profilepostapi();
+
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<ProfileDataClass>>, t: Throwable) {
+
+ //               showLongToast("failureee")
+            }
+        })
 
 
 
 
-        btn_update_userProfile.setOnClickListener {
-
-            //            assignValuestoVariable()
-//            validate(spinnergender_get!!)
-//            validate(spinner_bloodGroup!!)
-            profileupdateapi();
 
 
-        }
 
-        btn_save_userProfile.setOnClickListener {
-
-            assignValuestoVariable()
-            validate(spinnergender_get!!)
-            validate(spinner_bloodGroup!!)
-            profilepostapi();
-
-        }
 
 
     }
 
     private fun signupUpdateapi() {
+
         updatevaluestosignupclass()
 
         val updateSignup = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
@@ -210,22 +242,24 @@ class View_UserDetails_Activity : BaseActivity() {
             override fun onResponse(call: Call<SignupResponse>, resp: Response<SignupResponse>) {
 
                 if (resp.isSuccessful) {
-                    Toast.makeText(applicationContext, "Updated Profile" , Toast.LENGTH_SHORT).show()
+  //                  Toast.makeText(applicationContext, "Updated Profile" , Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+  //                  Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
 
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+ //               Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
 
     }
 
     private fun getuserprofileapi() {
+
         val userGetProfileService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+
         val requestGetValuesCall = userGetProfileService.userprofilegetAllValues(mobile_no!!)
 
         requestGetValuesCall.enqueue(object : Callback<List<ProfileDataClass>> {
@@ -237,64 +271,89 @@ class View_UserDetails_Activity : BaseActivity() {
 
                 if (resp.isSuccessful) {
                     var newbody = resp.body()
-                    if(newbody!!.isEmpty()){
+                    val userprofilevalues = newbody?.first()
+
+                    if(userprofilevalues!!.first_name.equals(null) ||
+                            userprofilevalues!!.last_name.equals(null) ||
+                            userprofilevalues!!.mobile_no.equals(null) ||
+                            userprofilevalues!!.email.equals(null)){
                         btn_save_userProfile.visibility = View.VISIBLE
                         btn_update_userProfile.visibility = View.GONE
                         callsignupprofile()
-                    }else {
-                        val userprofilevalues = newbody?.first()
+                    }
+                    else {
+                        btn_save_userProfile.visibility = View.GONE
+                        btn_update_userProfile.visibility = View.VISIBLE
 
-                        if (userprofilevalues!!.first_name.equals(null) ||
-                                userprofilevalues!!.last_name.equals(null) ||
-                                userprofilevalues!!.mobile_no.equals(null) ||
-                                userprofilevalues!!.email.equals(null)) {
-                            btn_save_userProfile.visibility = View.VISIBLE
-                            btn_update_userProfile.visibility = View.GONE
-                            callsignupprofile()
-                        } else {
-                            btn_save_userProfile.visibility = View.GONE
-                            btn_update_userProfile.visibility = View.VISIBLE
-                            first_name_get!!.setText(userprofilevalues!!.first_name)
-                            last_name_get!!.setText(userprofilevalues.last_name)
-                            mobile_number_get!!.setText(userprofilevalues.mobile_no)
-                            email_get!!.setText(userprofilevalues.email)
+                        first_name_get!!.setText(userprofilevalues!!.first_name)
+                        last_name_get!!.setText(userprofilevalues.last_name)
+                        mobile_number_get!!.setText(userprofilevalues.mobile_no)
+                        email_get!!.setText(userprofilevalues.email)
 
-                            age_get!!.setText(userprofilevalues.age)
-                            bmi_get!!.setText(userprofilevalues.bmi)
-                            height_get!!.setText(userprofilevalues.height)
-                            weight_get!!.setText(userprofilevalues.weight)
+                        age_get!!.setText(userprofilevalues.age)
+                        bmi_get!!.setText(userprofilevalues.bmi)
+                        height_get!!.setText(userprofilevalues.height)
+                        weight_get!!.setText(userprofilevalues.weight)
 
-                            dob_get!!.setText(userprofilevalues.dob)
-                            doctorname_get!!.setText(userprofilevalues.doctor_name)
-                            pharmacist_name_get!!.setText(userprofilevalues.pharmacist_name)
+                        dob_get!!.setText(userprofilevalues.dob)
+                        doctorname_get!!.setText(userprofilevalues.doctor_name)
+                        pharmacist_name_get!!.setText(userprofilevalues.pharmacist_name)
+                        address!!.setText(userprofilevalues.address)
 
-                            val spinner_bloodGroup_get = bloodGroupAdapter!!.getPosition(userprofilevalues.blood_group);
-                            spinner_bloodGroup.setSelection(spinner_bloodGroup_get);
-                            val spinnereducationLevel_get = educationLevelAdaptor!!.getPosition(userprofilevalues.education);
-                            spinner_gender.setSelection(spinnereducationLevel_get);
-                            val spinnergender_get = genderAdapter!!.getPosition(userprofilevalues.gender);
-                            spinner_educationLevel.setSelection(spinnergender_get);
-                            val spinnerfamilyIncome_get = familyIncomeAdaptor!!.getPosition(userprofilevalues.family_income);
-                            spinner_maritalStatus.setSelection(spinnerfamilyIncome_get);
-                            val spinnermarriageStatus_get = marriageStatusAdaptor!!.getPosition(userprofilevalues.marrital_status);
-                            spinner_familyIncome.setSelection(spinnermarriageStatus_get);
+                        spinner_bloodGroup?.text1?.setText(userprofilevalues.blood_group)
 
-                            languagesKnown_get!!.languages_multi?.setText(userprofilevalues.languages_known)
+//                        val spinner_bloodGroup_get = bloodGroupAdapter!!.getPosition(userprofilevalues.blood_group);
+//                        spinner_bloodGroup.setSelection(spinner_bloodGroup_get);
 
-                            Toast.makeText(applicationContext, "API success", Toast.LENGTH_SHORT).show()
-                        }
+                        spinner_gender?.text1?.setText(userprofilevalues.gender)
+
+
+                        spinner_educationLevel?.text1?.setText(userprofilevalues.education)
+
+//                        val spinnereducationLevel_get = educationLevelAdaptor!!.getPosition(userprofilevalues.education);
+//                        spinner_gender.setSelection(spinnereducationLevel_get);
+//
+//                        val spinnergender_get = genderAdapter!!.getPosition(userprofilevalues.gender);
+//                        spinner_educationLevel.setSelection(spinnergender_get);
+
+                        spinner_maritalStatus?.text1?.setText(userprofilevalues.marrital_status)
+
+
+                        spinner_familyIncome?.text1?.setText(userprofilevalues.family_income)
+
+
+//                        val spinnerfamilyIncome_get = familyIncomeAdaptor!!.getPosition(userprofilevalues.family_income);
+//                        spinner_maritalStatus.setSelection(spinnerfamilyIncome_get);
+//                        val spinnermarriageStatus_get = marriageStatusAdaptor!!.getPosition(userprofilevalues.marrital_status);
+//                        spinner_familyIncome.setSelection(spinnermarriageStatus_get);
+
+                        languagesKnown_get!!.languages_multi?.setText(userprofilevalues.languages_known)
+
+                        initUpdateButton()
                     }
 
-                } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
+
             }
 
             override fun onFailure(call: Call<List<ProfileDataClass>>, t: Throwable) {
 
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun initUpdateButton() {
+
+        btn_update_userProfile.setOnClickListener {
+
+            //            assignValuestoVariable()
+//            validate(spinnergender_get!!)
+//            validate(spinner_bloodGroup!!)
+            profileupdateapi();
+
+        }
+
     }
 
     private fun callsignupprofile() {
@@ -318,13 +377,13 @@ class View_UserDetails_Activity : BaseActivity() {
                     email_get!!.setText(userprofileget.email)
 //                    Toast.makeText(applicationContext, "API success" + userprofileget!!.first_name, Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<SignupResponse>>, t: Throwable) {
 
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+ //               Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -354,13 +413,13 @@ class View_UserDetails_Activity : BaseActivity() {
                     startActivity(intent)
 
                 } else {
-                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<ProfileDataClass>, t: Throwable) {
 
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+ //               Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -384,13 +443,14 @@ class View_UserDetails_Activity : BaseActivity() {
             override fun onResponse(call: Call<ProfileDataClass>, resp: Response<ProfileDataClass>) {
 
                 if (resp.isSuccessful) {
+                    finish()
 //                    Toast.makeText(applicationContext, "Data added", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<ProfileDataClass>, t: Throwable) {
 
-                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -441,6 +501,7 @@ class View_UserDetails_Activity : BaseActivity() {
         val weight = et_weight.text.toString()
         val height = et_height.text.toString()
         val dob = et_dob.text.toString()
+        val address = address_viewProfile.text.toString()
         val language = languagesKnown!!.languages_multi.text.toString()
         val education = spinnereducationLevel_get!!.selectedItem.toString()
         val family_income = spinnerfamilyIncome_get!!.selectedItem.toString()
@@ -510,6 +571,11 @@ class View_UserDetails_Activity : BaseActivity() {
             profileclass.dob = dob
         } else {
             profileclass.dob = et_dob.text.toString()
+        }
+        if(!address.equals(null)) {
+            profileclass.address = address
+        } else {
+            profileclass.address = address_viewProfile.text.toString()
         }
         if(!language.equals(null)) {
             profileclass.languages_known = language

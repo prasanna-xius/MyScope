@@ -225,7 +225,7 @@ class Diet : BaseActivity() {
 
 
         if ((!dietS.equals("None"))) {
-            showLongToast("save details")
+ //           showLongToast("save details")
         } else {
             showLongSnackBar("Please fill the required fields")
         }

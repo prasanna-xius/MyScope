@@ -144,7 +144,7 @@ class Prescription_AddImage_PDF : BaseActivity() {
             // or Error Creating Http Request or Error Processing Http Response
             override fun onFailure(call: Call<MutableList<PrescriptionDataClass>>, t: Throwable) {
 
-                showLongToast("Error Occurred" + t.toString())
+  //              showLongToast("Error Occurred" + t.toString())
             }
 
         })

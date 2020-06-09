@@ -1,15 +1,24 @@
 package com.soargtechnologies.myscope.activities.self_monitering
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.annotation.TargetApi
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Point
+import android.graphics.Rect
+import android.graphics.RectF
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.DecelerateInterpolator
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.soargtechnologies.myscope.R
@@ -33,6 +42,9 @@ class BmiUpdate : BaseActivity() {
     var mobile_no: String? = null
     var sharedpreferences: SharedPreferences? = null
     internal lateinit var myCalendar: Calendar
+    var currentAnimator: Animator? = null
+
+    var shortAnimationDuration: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +77,18 @@ class BmiUpdate : BaseActivity() {
 
         }
 
+        val thumb1View: View = findViewById(R.id.bmi_image_update)
+        thumb1View.setOnClickListener({
+            zoomImageFromThumb(thumb1View, R.drawable.bmi_chart)
+            date1_update.visibility = View.GONE
+            weight1_update.visibility = View.GONE
+            height_update.visibility = View.GONE
+            bmi_update.visibility = View.GONE
+            notes_update.visibility = View.GONE
+            btn_bmi_update.visibility = View.GONE
+
+        })
+
         val bundle: Bundle? = intent.extras
         if (bundle?.containsKey(ARG_ITEM_ID)!!) {
 
@@ -78,10 +102,131 @@ class BmiUpdate : BaseActivity() {
 
             initUpdateButton(mobile_no.toString())
 
+
+
             //initDeleteButton(id)
         }
 
     }
+
+    private fun zoomImageFromThumb(thumbView: View, imageResId: Int) {
+        // If there's an animation in progress, cancel it
+        // immediately and proceed with this one.
+
+        currentAnimator?.cancel()
+
+
+        val expandedImageView: ImageView = findViewById(R.id.expanded_image_update)
+        expandedImageView.setImageResource(imageResId)
+
+
+        val startBoundsInt = Rect()
+        val finalBoundsInt = Rect()
+        val globalOffset = Point()
+
+
+        thumbView.getGlobalVisibleRect(startBoundsInt)
+        findViewById<View>(R.id.container_update)
+                .getGlobalVisibleRect(finalBoundsInt, globalOffset)
+        startBoundsInt.offset(-globalOffset.x, -globalOffset.y)
+        finalBoundsInt.offset(-globalOffset.x, -globalOffset.y)
+
+        val startBounds = RectF(startBoundsInt)
+        val finalBounds = RectF(finalBoundsInt)
+
+
+        val startScale: Float
+        if ((finalBounds.width() / finalBounds.height() > startBounds.width() / startBounds.height())) {
+
+            startScale = startBounds.height() / finalBounds.height()
+            val startWidth: Float = startScale * finalBounds.width()
+            val deltaWidth: Float = (startWidth - startBounds.width()) / 2
+            startBounds.left -= deltaWidth.toInt()
+            startBounds.right += deltaWidth.toInt()
+        } else {
+
+            startScale = startBounds.width() / finalBounds.width()
+            val startHeight: Float = startScale * finalBounds.height()
+            val deltaHeight: Float = (startHeight - startBounds.height()) / 2f
+            startBounds.top -= deltaHeight.toInt()
+            startBounds.bottom += deltaHeight.toInt()
+        }
+
+
+        thumbView.alpha = 0f
+
+        expandedImageView.visibility = View.VISIBLE
+
+
+        expandedImageView.pivotX = 0f
+        expandedImageView.pivotY = 0f
+
+
+        currentAnimator = AnimatorSet().apply {
+            play(ObjectAnimator.ofFloat(
+                    expandedImageView,
+                    View.X,
+                    startBounds.left,
+                    finalBounds.left)
+            ).apply {
+                with(ObjectAnimator.ofFloat(expandedImageView, View.Y, startBounds.top, finalBounds.top))
+                with(ObjectAnimator.ofFloat(expandedImageView, View.SCALE_X, startScale, 1f))
+                with(ObjectAnimator.ofFloat(expandedImageView, View.SCALE_Y, startScale, 1f))
+            }
+            duration = shortAnimationDuration.toLong()
+            interpolator = DecelerateInterpolator()
+            addListener(object : AnimatorListenerAdapter() {
+
+                override fun onAnimationEnd(animation: Animator) {
+                    currentAnimator = null
+                }
+
+                override fun onAnimationCancel(animation: Animator) {
+                    currentAnimator = null
+                }
+            })
+            start()
+        }
+
+
+        expandedImageView.setOnClickListener {
+            currentAnimator?.cancel()
+
+
+            currentAnimator = AnimatorSet().apply {
+                play(ObjectAnimator.ofFloat(expandedImageView, View.X, startBounds.left)).apply {
+                    with(ObjectAnimator.ofFloat(expandedImageView, View.Y, startBounds.top))
+                    with(ObjectAnimator.ofFloat(expandedImageView, View.SCALE_X, startScale))
+                    with(ObjectAnimator.ofFloat(expandedImageView, View.SCALE_Y, startScale))
+                }
+                duration = shortAnimationDuration.toLong()
+                interpolator = DecelerateInterpolator()
+                addListener(object : AnimatorListenerAdapter() {
+
+                    override fun onAnimationEnd(animation: Animator) {
+                        thumbView.alpha = 1f
+                        expandedImageView.visibility = View.GONE
+                        height_update.visibility = View.VISIBLE
+                        weight1_update.visibility = View.VISIBLE
+                        bmi_update.visibility = View.VISIBLE
+                        date1_update.visibility = View.VISIBLE
+                        notes_update.visibility = View.VISIBLE
+                        btn_bmi_update.visibility = View.VISIBLE
+                        currentAnimator = null
+                    }
+
+                    override fun onAnimationCancel(animation: Animator) {
+                        thumbView.alpha = 1f
+                        expandedImageView.visibility = View.GONE
+
+                        currentAnimator = null
+                    }
+                })
+                start()
+            }
+        }
+    }
+
 
     private fun loadDetails(id: String, position: Int) {
         val bmiService = ServiceBuilder.buildService(Self_monitoring_service::class.java)

@@ -89,8 +89,8 @@ class Emotional_state_Update : BaseActivity() {
                 newEmotionalStatus?.let {
 
                     et_score_of_wellness_update.setText(newEmotionalStatus.score_of_wellness)
-                   spinner_emotional_update.text1?.setText(newEmotionalStatus.emotional_status)
-                    spinner_trauma_update.text1!!.setText(newEmotionalStatus.any_emotional_trauma)
+                    spinner_emotional_update.text1?.setText(newEmotionalStatus.emotional_status)
+                    spinner_trauma_update.text1?.setText(newEmotionalStatus.any_emotional_trauma)
                     et_duration_update.setText(newEmotionalStatus.duration)
                     et_reason_of_trauma_update.setText(newEmotionalStatus.reason_of_trauma)
                 }

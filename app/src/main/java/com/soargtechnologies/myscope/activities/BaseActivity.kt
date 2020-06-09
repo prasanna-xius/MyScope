@@ -285,8 +285,8 @@ open class BaseActivity : AppCompatActivity() {
         if (!startdate.text.toString().equals("") && !stopdate.text.toString().equals("")) {
             val dob1 = SimpleDateFormat("MM").format(Date(startdate.text.toString()))
             val dob2 = SimpleDateFormat("MM").format(Date(stopdate.text.toString()))
-            val dob3 = SimpleDateFormat("YYYY").format(Date(startdate.text.toString()))
-            val dob4 = SimpleDateFormat("YYYY").format(Date(stopdate.text.toString()))
+            val dob3 = SimpleDateFormat("yyyy").format(Date(startdate.text.toString()))
+            val dob4 = SimpleDateFormat("yyyy").format(Date(stopdate.text.toString()))
             val dob5 = SimpleDateFormat("dd").format(Date(startdate.text.toString()))
             val dob6 = SimpleDateFormat("dd").format(Date(stopdate.text.toString()))
 

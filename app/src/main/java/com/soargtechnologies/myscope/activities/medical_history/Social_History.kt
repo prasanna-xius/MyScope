@@ -279,6 +279,7 @@ class Social_History : BaseActivity() {
                     if (response.isSuccessful)
                     {
 
+                        finish()
   //                      Toast.makeText(this@Social_History, "Item Updated Successfully", Toast.LENGTH_SHORT).show()
 
                     }

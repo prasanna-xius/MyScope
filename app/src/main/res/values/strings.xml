@@ -619,7 +619,8 @@ Drug-related issues, Disease information, self-monitoring, attendee\'s issues ab
 <br>
     <font size="12">
 A drug interaction is a change in the effect of the drug by other drug or food administered along with or by an existing disease.
-    In most of the cases, it worsens the condition and causes unexpected discomfort to patient and attendee.    \n</font>
+    In most of the cases, it worsens the condition and causes unexpected discomfort to patient and attendee.  \n \n
+        \n</font>
 
 </br>
     <br>
@@ -637,7 +638,9 @@ A drug interaction is a change in the effect of the drug by other drug or food a
         </br>
 <br>
     <font size="12">
-We will check your prescription for possible drug-drug interactions, drug-food interactions, drug-disease interactions, which will help you and your doctor to understand the nature of onset and severity of drug interaction effect, probable mechanism, and suggested clinical management.\n
+We will check your prescription for possible drug-drug interactions, drug-food interactions,
+        drug-disease interactions, which will help you and your doctor to understand the nature of onset and
+        severity of drug interaction effect, probable mechanism, and suggested clinical management.\n
  \n
     </font>
 </br>
@@ -663,7 +666,8 @@ Disease-disease interactions: Kidney failure increase the risk of heart attack, 
       </br>
 <br> <font size="12">
 A prescription audit is a multilevel approach that is necessary to improve patient care.
-    It is a full check of your prescription for the drug and disease-related issues.   \n</font>
+    It is a full check of your prescription for the drug and disease-related issues.  \n \n
+    \n</font>
 </br>
     <br>
         <font size="15"> <b>Why you need this? </b>\n\n </font>
@@ -681,14 +685,15 @@ A prescription audit is a multilevel approach that is necessary to improve patie
     <font size="12">
 We will check your prescription for medication errors, contraindications,
         drug-interaction, incomplete or inadequate prescription, drug duplication issues, and other drug-related problems. \n
-    </font>
+   \n </font>
 </br>
         <br>
         <font size="15"> <b>The Scenario where we help? </b>\n\n </font>
          </br>
 <br> <font size="12">
 Missed doses, missed units, drug interactions with other drugs, food to be avoided, adverse effects,
-    duplicate drugs, and other drug-related issues \n   </font>  </br>
+    duplicate drugs, and other drug-related issues \n
+  \n</font>  </br>
 
     </string>
 
@@ -700,7 +705,8 @@ Missed doses, missed units, drug interactions with other drugs, food to be avoid
 <br> <font size="12">
 An adverse drug event is an injury or problem that occurred to the patient because of administered medicine.
     It could be because of medication errors, drug reactions, allergic reactions, and/or overdoses.
-    It can happen during hospitalization, out-patient setting, or post-discharge at home.   \n</font>
+    It can happen during hospitalization, out-patient setting, or post-discharge at home. \n
+    \n</font>
 </br>
     <br>
         <font size="15"> <b>Why you need this? </b>\n\n </font>
@@ -718,13 +724,14 @@ An adverse drug event is an injury or problem that occurred to the patient becau
     <font size="12">
 We will check your drugs for side effects and allergies and counsel you
         about monitoring of side effects, preventive measures to be taken, and specific advice related to drugs, etc. \n
-    </font>
+     \n </font>
 </br>
         <br>
         <font size="15"> <b>The Scenario where we help? </b>\n\n </font>
          </br>
 <br> <font size="12">
-Allergies, giddiness, vomiting, headache, hypotension, hypoglycemia and low electrolyte levels, etc \n   </font>  </br>
+Allergies, giddiness, vomiting, headache, hypotension, hypoglycemia and low electrolyte levels, etc \n
+    \n</font>  </br>
 
     </string>
 
@@ -737,7 +744,8 @@ Allergies, giddiness, vomiting, headache, hypotension, hypoglycemia and low elec
 Post-discharge care includes the short-term and long-term services required by the patient
     for better recovery and to improve clinical outcomes and health-related quality of life. It includes
     all the services like prescription audit,
-    patient counseling, patient compliance assessment, medication adherence, and prescription refill alerts   \n</font>
+    patient counseling, patient compliance assessment, medication adherence, and prescription refill alerts  \n
+    \n</font>
 </br>
     <br>
         <font size="15"> <b>Why you need this? </b>\n\n </font>
@@ -757,14 +765,15 @@ Post-discharge care includes the short-term and long-term services required by t
 The SCOPE healthcare team will help to deliver patient-centered post-discharge care management, which
         will cover patient counseling, prescription audit, drug interactions,
         and side effect monitoring, drug and refill alerts, outcome assessment, query-check, and other Patient-related questions. \n
-    </font>
+  \n \n  </font>
 </br>
         <br>
         <font size="15"> <b>The Scenario where we help? </b>\n\n </font>
          </br>
 <br> <font size="12">
 Single-living status, medication complexity, multiple medications, multiple disease condition, busy schedules, self-monitoring,
-    home-care, drug-related queries, medication adherence, outcome assessment, prescription refill updates, etc \n   </font>  </br>
+    home-care, drug-related queries, medication adherence, outcome assessment, prescription refill updates, etc \n
+ \n</font>  </br>
 
     </string>
 
@@ -774,5 +783,6 @@ Single-living status, medication complexity, multiple medications, multiple dise
 
     <string name="dialogMessage">My Scope technical team will get back to you soon.In case of emergency you can mail to info@scopemedics.com </string>
     <string name="title_activity_contact_us">Contact_us</string>
+    <string name="address">Address</string>
 
 </resources>

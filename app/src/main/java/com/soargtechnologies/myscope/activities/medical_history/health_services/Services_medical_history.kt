@@ -115,25 +115,25 @@ class Services_medical_history : BaseActivity() {
         Drug_interaction_card.setOnClickListener {
 
             intent = Intent(this , Drug_interaction::class.java)
-
+            startActivity(intent)
         }
 
         Adverse_Drug_Event_monitoring.setOnClickListener {
 
             intent = Intent(this , Adverse_Drug_Event_Monitoring::class.java)
-
+            startActivity(intent)
         }
 
         Prescription_audit.setOnClickListener {
 
             intent = Intent(this , Prescription_Audit::class.java)
-
+            startActivity(intent)
         }
 
         Post_discharge_Care_Package_card.setOnClickListener {
 
             intent = Intent(this , Post_discharge_Care_Package::class.java)
-
+            startActivity(intent)
         }
 
 

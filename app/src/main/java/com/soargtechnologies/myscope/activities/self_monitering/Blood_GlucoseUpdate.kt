@@ -99,7 +99,7 @@ class Blood_GlucoseUpdate : BaseActivity() {
 
                 blood_glucose?.let {
 
-                   text1.setText(blood_glucose.test)
+                    text1?.setText(blood_glucose.test)
                     date_of_test_update.setText(blood_glucose.date_of_test)
                     test_result_glucoseUpdate.setText(blood_glucose.test_result)
                     notes_blood_glucoseUpdate.setText(blood_glucose.glucose_notes)

@@ -14,9 +14,6 @@
         <item name="colorAccent">@color/bg_screen2</item>
         <item name="android:textColorPrimary">@color/bg_screen2</item>
         <item name="android:textColor">@color/bg_screen2</item>
-        <item name="android:colorBackground">@color/bg_screen2</item>
-        <item name="android:layout_width">@dimen/dimen_10</item>
-        <item name="android:layout_height">@dimen/dimen_10</item>
 
     </style>
 
