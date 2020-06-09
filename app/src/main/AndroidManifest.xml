@@ -60,8 +60,16 @@
         <activity android:name=".activities.Register_User" /> <!-- <activity android:name=".activities.Facebook_Activity" /> -->
         <activity
             android:name=".activities.Login_Page"
-            android:screenOrientation="portrait"
-            />
+
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".activities.SliderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.SignUp_Page"
             android:screenOrientation="portrait"
