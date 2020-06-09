@@ -48,7 +48,7 @@
                 android:background="@drawable/border_bg"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="@string/firstName"
-                android:padding="2dp"
+                android:padding="4dp"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -78,7 +78,7 @@
                 android:background="@drawable/border_bg"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="@string/lastName"
-                android:padding="2dp"
+                android:padding="4dp"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -108,7 +108,7 @@
                 android:background="@drawable/border_bg"
                 android:digits="@string/mobile"
                 android:hint="@string/mobile_hint"
-                android:padding="2dp"
+                android:padding="4dp"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -138,7 +138,7 @@
                 android:background="@drawable/border_bg"
                 android:digits="qwetryuioplkjhgfdsazxcvbnm0123456789@.QWERTYUIOPLKJHGFDSAZXCVBNM"
                 android:hint="@string/email"
-                android:padding="2dp"
+                android:padding="4dp"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -165,7 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"
                 android:popupBackground="@color/colorWhite" />
 
@@ -196,6 +196,7 @@
                 android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"
                 android:inputType="date"
+                android:drawableRight="@drawable/calendar_36"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -342,7 +343,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"
                 android:popupBackground="@color/colorWhite" />
 
@@ -372,7 +373,7 @@
                 android:background="@drawable/border_bg"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="@string/doctorName"
-                android:padding="2dp"
+                android:padding="4dp"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -401,7 +402,7 @@
                 android:background="@drawable/border_bg"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:hint="@string/pharmacistsName"
-                android:padding="2dp"
+                android:padding="4dp"
                 android:textColor="@color/bg_screen2"
                 android:textColorHint="@color/bg_screen2"
                 android:textSize="16sp" />
@@ -428,7 +429,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/border_bg"
                 android:entries="@array/languagesKnown_array"
                 android:padding="@dimen/dimen_4"
                 android:popupBackground="@color/colorWhite"
@@ -457,7 +458,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"
                 android:popupBackground="@color/colorWhite" />
 
@@ -483,7 +484,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"
                 android:popupBackground="@color/colorWhite" />
 
@@ -509,22 +510,50 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/edittext_border"
+                android:background="@drawable/border_bg"
                 android:padding="@dimen/dimen_4"
                 android:popupBackground="@color/colorWhite" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/address"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/address_viewProfile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_75"
+                android:layout_weight="1"
+                android:background="@drawable/border_bg"
+                android:inputType="textMultiLine"
+                android:gravity="start"
+                android:padding="@dimen/dimen_4"
+                android:textColor="@color/bg_screen2"
+                android:textSize="16sp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_save_userProfile"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/dimen_10"
             android:layout_marginTop="@dimen/dimen_10"
             android:layout_marginRight="@dimen/dimen_10"
+            android:layout_marginBottom="@dimen/dimen_10"
             android:background="@drawable/background_button"
             android:backgroundTint="#1F78D3"
             android:text="@string/save"
@@ -534,16 +563,18 @@
         <Button
             android:id="@+id/btn_update_userProfile"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/dimen_10"
             android:layout_marginTop="@dimen/dimen_10"
             android:layout_marginRight="@dimen/dimen_10"
+            android:layout_marginBottom="@dimen/dimen_10"
             android:background="@drawable/background_button"
             android:backgroundTint="#1F78D3"
             android:text="@string/update"
             android:textColor="@color/colorWhite"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="gone" />
     </LinearLayout>
 
 

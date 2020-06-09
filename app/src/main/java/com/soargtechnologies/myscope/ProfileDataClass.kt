@@ -16,4 +16,5 @@ data class ProfileDataClass(var first_name: String? = null,
                             var languages_known: String? = null,
                             var education: String? = null,
                             var marrital_status: String? = null,
-                            var family_income: String? = null)
+                            var family_income: String? = null,
+                            var address: String? = null )

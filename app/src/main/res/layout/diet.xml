@@ -49,8 +49,8 @@
                     android:entries="@array/diet_arrays"
                     android:layout_weight="1"
                     android:popupBackground="@color/colorWhite"
-                    android:background="@drawable/edittext_border"
-                    android:padding="2dp" />
+                    android:background="@drawable/border_bg"
+                    android:padding="4dp" />
 
 
         </LinearLayout>

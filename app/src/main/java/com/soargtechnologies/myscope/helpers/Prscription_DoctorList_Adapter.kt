@@ -42,14 +42,16 @@ class Prscription_DoctorList_Adapter(private val prescriptionList: List<Prescrip
 
             val  context = v?.context
 
-
             val intent = Intent(context, Prescription_manualDrugDialog::class.java)
 
             val pref = context!!.getSharedPreferences("MyPref", Context.MODE_PRIVATE) // 0 - for private mode
 
             val editor: SharedPreferences.Editor = pref.edit()
+
             editor.putInt("prescription_id",prescriptionList[position].prescription_id!!)
+
             editor.commit()
+
 //            var bundle = Bundle()
 //
 //            Toast.makeText(context, "item Clicked" + position, Toast.LENGTH_LONG).show()

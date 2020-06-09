@@ -1,220 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
 
-    xmlns:anroid="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container1"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorWhite">
-
-    <include layout="@layout/app_bar_main" />
-    <include layout="@layout/background_image" />
+    android:background="@color/colorWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
 
 
 
-    <TextView
+
+    <FrameLayout
+
+        android:id="@+id/container1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/bmi1"
-        android:textStyle="bold"
-        android:textColor="@color/bg_screen2"
-        android:textSize="30sp" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/date1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorWhite">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/date"
-            android:textStyle="bold"
-            android:textColor="@color/bg_screen2"
-            android:textSize="16sp" />
+            <include layout="@layout/app_bar_main" />
+            <include layout="@layout/background_image" />
 
-        <TextView
-            android:id="@+id/date_of_bmi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/date_of_test"
-            android:background="@drawable/border_bg"
-            android:padding="@dimen/dimen_4"
-            android:inputType="date"
-            android:drawableRight="@drawable/calendar_36"
-            android:textColor="@color/bg_screen2"
-            android:textColorHint="@color/bg_screen2"
-            android:textSize="16sp" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/weight1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/weight"
-            android:textStyle="bold"
-            android:textColor="@color/bg_screen2"
-            android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/weight_bmi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/kgs"
-            android:background="@drawable/border_bg"
-            android:padding="@dimen/dimen_4"
-            android:inputType="number"
-            android:textColor="@color/bg_screen2"
-            android:textColorHint="@color/bg_screen2"
-            android:textSize="16sp" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bmi1"
+                android:textStyle="bold"
+                android:textColor="@color/bg_screen2"
+                android:textSize="30sp" />
 
-    <LinearLayout
-        android:id="@+id/height1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+            <LinearLayout
+                android:id="@+id/date1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/height"
-            android:textStyle="bold"
-            android:textColor="@color/bg_screen2"
-            android:textSize="16sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/date"
+                    android:textStyle="bold"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/height_bmi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/height_et"
-            android:background="@drawable/border_bg"
-            android:padding="@dimen/dimen_4"
-            android:inputType="numberDecimal"
-            android:textColor="@color/bg_screen2"
-            android:textColorHint="@color/bg_screen2"
-            android:textSize="16sp" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/date_of_bmi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/date_of_test"
+                    android:background="@drawable/border_bg"
+                    android:padding="@dimen/dimen_4"
+                    android:inputType="date"
+                    android:drawableRight="@drawable/calendar_36"
+                    android:textColor="@color/bg_screen2"
+                    android:textColorHint="@color/bg_screen2"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/bmi11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+            <LinearLayout
+                android:id="@+id/weight1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/bmi"
-            android:textStyle="bold"
-            android:textColor="@color/bg_screen2"
-            android:textSize="16sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/weight"
+                    android:textStyle="bold"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/bmi1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/bmi_attr"
-            android:background="@drawable/border_bg"
-            android:padding="@dimen/dimen_4"
-            android:inputType="numberDecimal"
-            android:textColor="@color/bg_screen2"
-            android:textColorHint="@color/bg_screen2"
-            android:textSize="16sp" />
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/weight_bmi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/kgs"
+                    android:background="@drawable/border_bg"
+                    android:padding="@dimen/dimen_4"
+                    android:inputType="number"
+                    android:textColor="@color/bg_screen2"
+                    android:textColorHint="@color/bg_screen2"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/note1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-        <!--        -->
-        <TextView
+            <LinearLayout
+                android:id="@+id/height1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/height"
+                    android:textStyle="bold"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/height_bmi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/height_et"
+                    android:background="@drawable/border_bg"
+                    android:padding="@dimen/dimen_4"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/bg_screen2"
+                    android:textColorHint="@color/bg_screen2"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bmi11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/bmi"
+                    android:textStyle="bold"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/bmi1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/bmi_attr"
+                    android:background="@drawable/border_bg"
+                    android:padding="@dimen/dimen_4"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/bg_screen2"
+                    android:textColorHint="@color/bg_screen2"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/note1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/notes"
+                    android:textStyle="bold"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="16dp" />
+                <EditText
+                    android:id="@+id/notes_bmi"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_75"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_bg"
+                    android:inputType="textMultiLine"
+                    android:gravity="start"
+                    android:padding="@dimen/dimen_4"
+                    android:textColor="@color/bg_screen2"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_bmi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/background_button"
+                android:backgroundTint="#1F78D3"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_marginRight="@dimen/dimen_10"
+                android:text="@string/save"
+                android:textSize="16sp" />
+
+
+
+
+            <ImageButton
+                android:id="@+id/bmi_image"
+                android:layout_width="250dp"
+                android:layout_height="175dp"
+                android:layout_gravity="center"
+                android:src="@drawable/bmi_chart"
+                android:layout_margin="@dimen/dimen_10"
+                android:scaleType="centerCrop" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/expanded_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/notes"
-            android:textStyle="bold"
-            android:textColor="@color/bg_screen2"
-            android:textSize="16dp" />
-        <EditText
-            android:id="@+id/notes_bmi"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_75"
-            android:layout_weight="1"
-            android:background="@drawable/border_bg"
-            android:inputType="textMultiLine"
-            android:gravity="start"
-            android:padding="@dimen/dimen_4"
-            android:textColor="@color/bg_screen2"
-            android:textSize="16sp" />
+            android:visibility="invisible"
+            android:contentDescription="sai" />
 
-    </LinearLayout>
+    </FrameLayout>
 
-    <Button
-        android:id="@+id/btn_bmi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/background_button"
-        android:backgroundTint="#1F78D3"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:layout_marginLeft="@dimen/dimen_10"
-        android:layout_marginRight="@dimen/dimen_10"
-        android:text="@string/save"
-        android:textSize="16sp" />
-
-
-
-
-    <ImageButton
-        android:id="@+id/bmi_image"
-        android:layout_width="250dp"
-        android:layout_height="175dp"
-        android:layout_gravity="center"
-        android:src="@drawable/bmi_chart"
-        android:layout_margin="@dimen/dimen_10"
-        android:scaleType="centerCrop"
-        android:contentDescription="sankeerth" />
-
-</LinearLayout>
-
-    <ImageView
-        android:id="@+id/expanded_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        android:contentDescription="sai" />
-
-</FrameLayout>
+</ScrollView>
 
