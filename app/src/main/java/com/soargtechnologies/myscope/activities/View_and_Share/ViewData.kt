@@ -1,27 +1,38 @@
 package com.soargtechnologies.myscope.activities.View_and_Share
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import com.soargtechnologies.myscope.ProfileDataClass
 import com.soargtechnologies.myscope.R
 import com.soargtechnologies.myscope.activities.services.ServiceBuilder
+import com.soargtechnologies.myscope.activities.services.ServiceBuilder1
 
 import com.soargtechnologies.myscope.models.ViewWindowDataClass
 import com.soargtechnologies.myscope.services.PrescriptionInterface
 import kotlinx.android.synthetic.main.activity_view_data.*
+import kotlinx.android.synthetic.main.profile_user_language.view.*
+import kotlinx.android.synthetic.main.view_userdetails_main.*
 
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class ViewData : AppCompatActivity() {
     var position: Int = 1;
     var mobile_no: String? = null
+    var sharedpreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_data)
 
         position = intent.getIntExtra("position", 0)
-
+        sharedpreferences = getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        mobile_no = sharedpreferences!!.getString("mobile_no", mobile_no)
     }
 
     override fun onResume() {
@@ -32,11 +43,47 @@ class ViewData : AppCompatActivity() {
 
         loadDetails(mobile_no.toString(), position!!)
 
+        profileapi()
         //initUpdateButton(mobile_no.toString())
 
         //initDeleteButton(id)
 //        }
     }
+
+    private fun profileapi() {
+        val userGetProfileService = ServiceBuilder1.buildService(PrescriptionInterface::class.java)
+        val requestGetValuesCall = userGetProfileService.userprofilegetAllValues(mobile_no!!)
+
+        requestGetValuesCall.enqueue(object : Callback<List<ProfileDataClass>> {
+            /**
+             * Invoked when a network exception occurred talking to the server or when an unexpected
+             * exception occurred creating the request or processing the response.
+             */
+            override fun onResponse(call: Call<List<ProfileDataClass>>, resp: Response<List<ProfileDataClass>>) {
+
+                if (resp.isSuccessful) {
+                    var newbody = resp.body()
+                    view_patientname.setText(newbody!!.get(position).first_name+" "+newbody!!.get(position).last_name);
+                    view_Age.setText(newbody.get(position).age)
+                    view_gender.setText(newbody.get(position).gender)
+                    view_address.setText(newbody.get(position).address)
+                    view_maritalstatus.setText(newbody.get(position).marrital_status)
+                    view_height.setText(newbody.get(position).height)
+                    view_weight.setText(newbody.get(position).weight)
+                    view_bmi.setText(newbody.get(position).bmi)
+
+                } else {
+                    Toast.makeText(applicationContext, "Failed at else part.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<ProfileDataClass>>, t: Throwable) {
+
+                Toast.makeText(applicationContext, "Failed to add item", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
 
     private fun loadDetails(id: String, position: Int) {
 

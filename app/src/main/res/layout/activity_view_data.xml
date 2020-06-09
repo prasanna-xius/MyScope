@@ -49,6 +49,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/view_patientname"
+                        android:textColor="@color/bg_screen2"
                         android:layout_weight="1"
                         />
                     <TextView
@@ -64,6 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/view_hospname"
+                        android:textColor="@color/bg_screen2"
                         android:layout_weight="1"
 
                         />
@@ -90,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/view_Age"
                     android:layout_weight="1"
+                    android:textColor="@color/bg_screen2"
 
                     />
                 <TextView
@@ -98,14 +101,14 @@
                     android:text="Hospital ID:"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
-                    android:layout_marginLeft="@dimen/dimen_10"
-                    android:paddingLeft="@dimen/dimen_40"
+
                     android:layout_weight="1"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/view_hospid"
+                    android:textColor="@color/bg_screen2"
                     android:layout_weight="1"
 
                     />
@@ -130,6 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/view_gender"
+                    android:textColor="@color/bg_screen2"
                     android:layout_weight="1"
                     />
                 <TextView
@@ -138,13 +142,13 @@
                     android:text="Doctor Name:"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
-                    android:paddingLeft="@dimen/dimen_30"
-                    android:layout_marginLeft="@dimen/dimen_10"
+
                     android:layout_weight="1"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/view_docname"
+                    android:textColor="@color/bg_screen2"
                     android:layout_weight="1"
                     />
             </LinearLayout>
@@ -169,6 +173,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/view_scopeid"
+                    android:textColor="@color/bg_screen2"
                     android:layout_weight="0.5"
                     />
                 <TextView
@@ -176,14 +181,13 @@
                     android:layout_height="wrap_content"
                     android:text="Address:"
                     android:textColor="@color/bg_screen2"
-                    android:paddingLeft="@dimen/dimen_30"
                     android:textSize="@dimen/dimen_16sp"
-                    android:layout_marginLeft="@dimen/dimen_10"
                     android:layout_weight="1"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/view_address"
+                    android:textColor="@color/bg_screen2"
                     android:layout_weight="1"
                     />
             </LinearLayout>
@@ -208,13 +212,14 @@
                     android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="1"
                     ></TextView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/view_maritalstatus"
-                    android:layout_weight="0.6"
+                    android:textColor="@color/bg_screen2"
+                    android:layout_weight="1"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -223,14 +228,22 @@
                     android:textSize="@dimen/dimen_16sp"
                     android:text="Height:"
                     android:textStyle="bold"
-                    android:layout_marginLeft="@dimen/dimen_10"
-                    android:layout_weight="0.2"/>
+                    android:layout_weight="1"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/view_height"
-                    android:layout_weight="0.6"
+                    android:textColor="@color/bg_screen2"
+                    android:layout_weight="1"
                     />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:layout_marginTop="@dimen/dimen_10">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -238,14 +251,15 @@
                     android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
-                    android:layout_weight="0.2"
-                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_weight="1"
+
                     ></TextView>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/view_weight"
-                    android:layout_weight="0.6"
+                    android:layout_weight="1"
+                    android:textColor="@color/bg_screen2"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -254,13 +268,14 @@
                     android:textSize="@dimen/dimen_16sp"
                 android:text="BMI:"
                     android:textStyle="bold"
-                    android:layout_marginLeft="@dimen/dimen_10"
-                    android:layout_weight="0.2"/>
+                    android:layout_weight="1"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/view_bmi"
-                    android:layout_weight="0.6"
+                    android:textColor="@color/bg_screen2"
+                    android:layout_weight="1"
                     />
 
             </LinearLayout>
