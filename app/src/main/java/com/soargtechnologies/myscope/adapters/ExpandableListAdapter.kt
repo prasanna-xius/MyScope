@@ -77,6 +77,8 @@ class ExpandableListAdapter(private val context: Context, private val expandable
             listTitleTextIconView.setImageResource(R.drawable.services_navigation)
         } else if (listPosition == ContactUs) {
             listTitleTextIconView.setImageResource(R.drawable.contactus_navigation)
+        } else if (listPosition == View_Data) {
+            listTitleTextIconView.setImageResource(R.drawable.view_navigation)
         }
         // set arrow icons for relevant items
         if (listPosition == Medical_History || listPosition == Presccriptions || listPosition == Medical_Documents || listPosition == Lab_Reports || listPosition == Self_Monitoring) {
