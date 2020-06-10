@@ -231,8 +231,6 @@
         <item>Never smoke</item>
         <item>Former smoker</item>
         <item>Occasional Smoker</item>
-        <item>Monthly Smoker</item>
-        <item>Weekly Smoker</item>
         <item>Daily Light Smoker (Less than 2 cigarettes/day)</item>
         <item>Daily Heavy Smoker (More than 5 cigarettes/day)</item>
     </string-array>
@@ -257,8 +255,7 @@
         <item>Never Drink</item>
         <item>Former Drinker</item>
         <item>Occasional Drinker</item>
-        <item>Monthly Drinker</item>
-        <item>Weekly Drinker</item>
+
         <item>Daily Light Drinker (Less than 2 Drinker /day)</item>
         <item>Daily Heavy Drinker (More than 2 Drinker /day)</item>
     </string-array>
