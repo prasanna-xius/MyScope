@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".activities.View_and_Share.ViewData"
     android:orientation="vertical"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    android:id="@+id/viewwindow">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,83 +36,89 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                    android:weightSum="4">
+                    android:weightSum="2"
+                 >
+<!--                    <TableRow-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height = "wrap_content"-->
+<!--                  -->
+<!--                        >-->
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Patient Name"
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_16sp"
                         android:layout_weight="1"
-                        ></TextView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/view_patientname"
-                        android:textColor="@color/bg_screen2"
-                        android:layout_weight="1"
-                        />
+                        android:ellipsize="end"
+                        ></TextView>
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Hospital Name:"
+                        android:text="Age"
                         android:textColor="@color/bg_screen2"
                         android:textSize="@dimen/dimen_16sp"
-                        android:layout_marginLeft="@dimen/dimen_10"
                         android:layout_weight="1"
-                    />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/view_hospname"
-                        android:textColor="@color/bg_screen2"
-                        android:layout_weight="1"
+                        android:id="@+id/view_Age"
 
-                        />
-            </LinearLayout>
+                        ></TextView>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textColor="@color/bg_screen2"-->
+<!--                        android:layout_weight="1"-->
+
+
+
+                </LinearLayout>
 
             //second lines code
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:weightSum="4">
+                android:weightSum="2">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Age"
+                    android:text="Hospital Name:"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
                     android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
 
-                    ></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/view_Age"
-                    android:layout_weight="1"
-                    android:textColor="@color/bg_screen2"
-
+                    android:id="@+id/view_hospname"
                     />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                -->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@color/bg_screen2"-->
+
+<!--                    />-->
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Hospital ID:"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
-
-                    android:layout_weight="1"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/view_hospid"
-                    android:textColor="@color/bg_screen2"
                     android:layout_weight="1"
-
                     />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    -->
+<!--                    android:textColor="@color/bg_screen2"-->
+<!--                    android:layout_weight="1"-->
+
+<!--                    />-->
             </LinearLayout>
 
         //Third Line code
@@ -119,38 +126,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:weightSum="4">
+                android:weightSum="2">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Gender:"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
                     android:layout_weight="1"
-                    ></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/view_gender"
-                    android:textColor="@color/bg_screen2"
-                    android:layout_weight="1"
-                    />
+
+                    ></TextView>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@color/bg_screen2"-->
+<!--                    android:layout_weight="1"-->
+<!--                    />-->
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Doctor Name:"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
-
-                    android:layout_weight="1"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/view_docname"
-                    android:textColor="@color/bg_screen2"
-                    android:layout_weight="1"
-                    />
+                    android:layout_weight="1"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                   -->
+<!--                    android:textColor="@color/bg_screen2"-->
+<!--                    android:layout_weight="1"-->
+<!--                    />-->
             </LinearLayout>
 
             //Fourth line code
@@ -159,37 +167,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:weightSum="4">
+                android:weightSum="2">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="SCOPE ID:"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
+                    android:id="@+id/view_scopeid"
+
                     android:layout_weight="1"
                     ></TextView>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@color/bg_screen2"-->
+<!--                    android:layout_weight="0.5"-->
+<!--                    />-->
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/view_scopeid"
-                    android:textColor="@color/bg_screen2"
-                    android:layout_weight="0.5"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Address:"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
-                    android:layout_weight="1"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/view_address"
-                    android:textColor="@color/bg_screen2"
-                    android:layout_weight="1"
-                    />
+
+                    android:layout_weight="1"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColor="@color/bg_screen2"-->
+<!--                    android:layout_weight="1"-->
+<!--                    />-->
             </LinearLayout>
                 <View
                     android:id="@+id/SplitLine_hor1"
@@ -202,81 +212,85 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:weightSum="4"
+                android:weightSum="2"
                 android:layout_marginTop="@dimen/dimen_10">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Marital status:"
+                    android:text="Marital status"
                     android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
                     android:layout_weight="1"
-                    ></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/view_maritalstatus"
-                    android:textColor="@color/bg_screen2"
-                    android:layout_weight="1"
-                    />
+                    ></TextView>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/view_maritalstatus"-->
+<!--                    android:textColor="@color/bg_screen2"-->
+<!--                    android:layout_weight="1"-->
+<!--                    />-->
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
-                    android:text="Height:"
+                    android:text="Height"
                     android:textStyle="bold"
-                    android:layout_weight="1"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/view_height"
-                    android:textColor="@color/bg_screen2"
                     android:layout_weight="1"
                     />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/view_height"-->
+<!--                    android:textColor="@color/bg_screen2"-->
+<!--                    android:layout_weight="1"-->
+<!--                    />-->
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:weightSum="4"
+                android:weightSum="2"
                 android:layout_marginTop="@dimen/dimen_10">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Weight:"
+                    android:text="Weight"
                     android:textStyle="bold"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
                     android:layout_weight="1"
+                    android:id="@+id/view_weight"
 
                     ></TextView>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/view_weight"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@color/bg_screen2"-->
+<!--                    />-->
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/view_weight"
-                    android:layout_weight="1"
-                    android:textColor="@color/bg_screen2"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/bg_screen2"
                     android:textSize="@dimen/dimen_16sp"
-                android:text="BMI:"
+                android:text="BMI"
                     android:textStyle="bold"
-                    android:layout_weight="1"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/view_bmi"
-                    android:textColor="@color/bg_screen2"
                     android:layout_weight="1"
                     />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/view_bmi"-->
+<!--                    android:textColor="@color/bg_screen2"-->
+<!--                    android:layout_weight="1"-->
+<!--                    />-->
 
             </LinearLayout>
 
@@ -722,8 +736,15 @@
                     android:layout_marginTop="@dimen/dimen_10"/>
             </LinearLayout>
 
-
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnwrite"
+                android:text="PDF"
+                android:onClick="GeneratePDF"
+                />
         </LinearLayout>
+
 
 
     </ScrollView>
